@@ -1,4 +1,12 @@
 {
-  "air-community":"空中社区",
-  "about":"关于"
+  "air-community":"Air Community",
+  "about":"关于",
+  "home":{
+    "airjet":"airjet",
+    "airtaxi":"airtaxi",
+    "airtour":"空中观光",
+    "airtrain":"飞行培训",
+    "airclub":"airclub"
+  }
+
 }
