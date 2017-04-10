@@ -6,6 +6,10 @@
     <meta charset="utf-8" />
     <meta name="description" content="IOT,M2M,MQTT,HNA" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
     <title>Airs</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -38,6 +42,11 @@
     <div class="panel panel-left panel-reveal">
         <div class="content-block">
             <p>Left panel content goes here</p>
+            <ul>
+                <li>sdf</li>
+                <li>sdf</li>
+                <li>sdf</li>
+            </ul>
         </div>
     </div>
     <!-- Right panel with cover effect-->
@@ -53,10 +62,15 @@
             <!-- Top Navbar-->
             <div class="navbar">
                 <div class="navbar-inner">
+                    <div class="left">
+                        <!-- Right link contains only icon - additional "icon-only" class-->
+                        <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                    </div>
                     <!-- We have home navbar without left link-->
                     <div class="center sliding">Airs</div>
                     <div class="right">
-                        <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                        <!-- Right link contains only icon - additional "icon-only" class-->
+                        <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
                     </div>
                 </div>
             </div>
@@ -106,10 +120,10 @@
                     </div>
                 </div>
             </div>
-            <!-- Bottom Toolbar-->
-            <div class="toolbar">
-                <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
-            </div>
+            <!--&lt;!&ndash; Bottom Toolbar&ndash;&gt;-->
+            <!--<div class="toolbar">-->
+                <!--<div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>-->
+            <!--</div>-->
         </div>
     </div>
 
