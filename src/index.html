@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body ng-controller="mainController as vm">
 
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
@@ -43,9 +43,9 @@
         <div class="content-block">
             <p>Left panel content goes here</p>
             <ul>
-                <li>sdf</li>
-                <li>sdf</li>
-                <li>sdf</li>
+                <li>{{vm.title}}</li>
+                <li>{{vm.title}}</li>
+                <li>{{vm.title}}</li>
             </ul>
         </div>
     </div>
