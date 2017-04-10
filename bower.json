@@ -28,7 +28,8 @@
     "backbone": "^1.3.3",
     "underscore": "^1.8.3",
     "w5c-validator": "angular-w5c-validator#^2.4.21",
-    "framework7": "^1.5.4"
+    "framework7": "^1.5.4",
+    "bower-framework7-angularjs": "framework7-angularjs#*"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.7"
