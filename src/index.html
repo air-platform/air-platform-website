@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- ng-strict-di -->
+<html lang="en" ng-app='airs'>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="IOT,M2M,MQTT,HNA" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Airs</title>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
+    <!--
+    <link rel="icon" href="_/img/favicon.png">
+    <link rel="icon" href="http://sstatic.net/so/favicon.ico">
+    <link rel="apple-itouch-icon" href="http://sstatic.net/so/apple-touch-icon.png">
+    -->
+    <!-- build:css({tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+</head>
+
+<body>
+
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block">
+            <p>Left panel content goes here</p>
+        </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+        <div class="content-block">
+            <p>Right panel content goes here</p>
+        </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class-->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We have home navbar without left link-->
+                    <div class="center sliding">Airs</div>
+                    <div class="right">
+                        <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, data-page contains page name-->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content-->
+                    <div class="page-content">
+                        <div class="content-block-title">Welcome To My Awesome App</div>
+                        <div class="content-block">
+                            <div class="content-block-inner">
+                                <p>Couple of worlds here because my app is so awesome!</p>
+                                <p>Duis sed erat ac eros ultrices pharetra id ut tellus. Praesent rhoncus enim ornare ipsum aliquet ultricies. Pellentesque sodales erat quis elementum sagittis.</p>
+                            </div>
+                        </div>
+                        <div class="content-block-title">What about simple navigation?</div>
+                        <div class="list-block">
+                            <ul>
+                                <li><a href="app/components/about/about.html" class="item-link">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">About</div>
+                                        </div>
+                                    </div></a></li>
+                                <li><a href="app/components/services/services.html" class="item-link">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">Services</div>
+                                        </div>
+                                    </div></a></li>
+                                <li><a href="form.html" class="item-link">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">Form</div>
+                                        </div>
+                                    </div></a></li>
+                            </ul>
+                        </div>
+                        <div class="content-block-title">Side panels</div>
+                        <div class="content-block">
+                            <div class="row">
+                                <div class="col-50"><a href="#" data-panel="left" class="button open-panel">Left Panel</a></div>
+                                <div class="col-50"><a href="#" data-panel="right" class="button open-panel">Right Panel</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({tmp/serve,tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+</body>
+
+</html>
