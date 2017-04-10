@@ -13,6 +13,7 @@
 
         vm.title = "Is in main.controller.js";
 
+        vm.about = 'about';
     }
 
 })();
