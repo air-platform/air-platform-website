@@ -28,14 +28,15 @@
 
         if (page.name === 'about') {
             // Following code will be executed for page with data-page attribute equal to "about"
-            myApp.alert('Here comes About page');
+            // myApp.alert('Here comes About page');
+            console.log(page.name);
         }
     })
 
     // Option 2. Using live 'pageInit' event handlers for each page
     $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         // Following code will be executed for page with data-page attribute equal to "about"
-        myApp.alert('Here comes About page');
+        // myApp.alert('Here comes About page');
     })
 
 })();
