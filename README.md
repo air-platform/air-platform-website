@@ -15,7 +15,8 @@ air-platform-console
 ......app.config.js * 配置
 ......app.constants.js * 常量
 ......app.module.js * module
-......app.route.js * 路由
+......app.less * 样式
+......app.js *
 ....assets/ * 资源
 ......locales/ * 国际化文件
 ......images/ * 图片
