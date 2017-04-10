@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#2196f3">
-    <title>Air Community</title>
+    <title>空中社区-Air Community</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
@@ -32,7 +32,7 @@
 
 </head>
 
-<body ng-controller="mainController as vm">
+<body ng-controller="mainController">
 
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
@@ -85,7 +85,7 @@
                         <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
                     </div>
                     <!-- We have home navbar without left link-->
-                    <div class="center sliding">Airs</div>
+                    <div class="center sliding">{{'air-community' | translate}}</div>
                     <div class="right">
                         <!-- Right link contains only icon - additional "icon-only" class-->
                         <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
@@ -97,7 +97,44 @@
                 <!-- Page, data-page contains page name-->
                 <div data-page="index" class="page">
                     <!-- Scrollable page content-->
+
+                    <!-- Search Bar -->
+                    <form class="searchbar">
+                        <div class="searchbar-input">
+                            <input type="search" placeholder="大家都在搜海峡航线">
+                            <a href="#" class="searchbar-clear"></a>
+                        </div>
+                        <a href="#" class="searchbar-cancel">Cancel</a>
+                    </form>
+
+                    <!-- Search Bar overlay-->
+                    <div class="searchbar-overlay"></div>
+                    <!-- Page content -->
+                    <!--<div class="page-content">-->
+                        <!--<div class="content-block searchbar-not-found">-->
+                            <!--Nothing found-->
+                        <!--</div>-->
+
+                        <!--<div class="list-block list-block-search searchbar-found">-->
+                            <!--<ul>-->
+                                <!--... list view items ...-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
                     <div class="page-content">
+
+                        <!-- Slider -->
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><span>Slide 1</span></div>
+                                <div class="swiper-slide"><span>Slide 2</span></div>
+                                <div class="swiper-slide"><span>Slide 3</span></div>
+                                <div class="swiper-slide"><span>Slide 4</span></div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+
                         <div class="content-block-title">Welcome To My Awesome App</div>
                         <div class="content-block">
                             <div class="content-block-inner">
