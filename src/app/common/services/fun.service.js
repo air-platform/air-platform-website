@@ -9,7 +9,7 @@
      *
      */
     angular
-        .module('airs')
+        .module('airsc')
         .filter('capitalize', capitalize);
 
     /** @ngInject */
@@ -23,7 +23,7 @@
 
 
     angular
-        .module('airs')
+        .module('airsc')
         .filter('descTime', descTime);
 
         /** @ngInject */
@@ -84,7 +84,7 @@
      *
      */
     angular
-        .module('airs')
+        .module('airsc')
         .filter('num', num);
 
     /** @ngInject */
@@ -98,7 +98,7 @@
 
 
     angular
-        .module('airs')
+        .module('airsc')
         .factory('iotUtil', iotUtil);
 
     /** @ngInject */
@@ -160,7 +160,7 @@
 
 
     angular
-        .module('airs')
+        .module('airsc')
         .factory('deepcopy', deepcopy);
 
     /** @ngInject */
@@ -187,7 +187,7 @@
     //  *
     //  */
     // angular
-    //     .module('airs')
+    //     .module('airsc')
     //     .filter("T", T);
     //
     // /** @ngInject */
@@ -206,7 +206,7 @@
      *
      */
     angular
-        .module('airs')
+        .module('airsc')
         .factory("i18n", i18n);
 
     /** @ngInject */
@@ -233,7 +233,7 @@
      *
      */
     angular
-        .module('airs')
+        .module('airsc')
         .factory('logger', logger);
 
     /** @ngInject */

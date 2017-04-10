@@ -10,7 +10,7 @@
     'use strict';
 
     angular
-        .module('airs')
+        .module('airsc')
         .config(config);
 
     /** @ngInject */

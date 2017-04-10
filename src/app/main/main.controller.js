@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('airs').controller('mainController', mainController);
+    angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
     function mainController($translate,iotUtil) {

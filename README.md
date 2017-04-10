@@ -1,11 +1,11 @@
-## Air-platform-console
+## air-community
 
-Admin console for AIR Platform
+Air Community
 
 ### 目录
 ```
 
-air-platform-console
+air-community
 ..src/
 ....robots.txt
 ....index.html * 入口

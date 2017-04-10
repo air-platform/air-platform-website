@@ -3,7 +3,7 @@
     'use strict';
 
     // Constants used by the entire app
-    angular.module('airs')
+    angular.module('airsc')
         .constant('malarkey', malarkey)
         .constant('moment', moment)
         .constant('constdata', {

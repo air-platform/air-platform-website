@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-      .module('airs')
+      .module('airsc')
       .service('webDevTec', webDevTec);
 
 

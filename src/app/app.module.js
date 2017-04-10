@@ -3,7 +3,7 @@
 
     // Declare app level module which depends on views, and components
     angular
-        .module('airs', [
+        .module('airsc', [
             /* Angular Modules */
             'ngCookies',
             'ngTouch',

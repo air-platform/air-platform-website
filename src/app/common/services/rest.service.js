@@ -3,7 +3,7 @@
 
      /** RestService */
     angular
-        .module('airs')
+        .module('airsc')
         .factory('RestService', RestService);
 
     // REST service based on Restangular  that uses setFullResponse
@@ -25,7 +25,7 @@
 
     /** NetworkService */
     angular
-        .module('airs')
+        .module('airsc')
         .factory('NetworkService', NetworkService);
 
     /** @ngInject */
@@ -110,7 +110,7 @@
 
     /** StorageService */
     angular
-        .module('airs')
+        .module('airsc')
         .service('StorageService', StorageService);
 
     /** @ngInject */
@@ -184,7 +184,7 @@
       *
       */
      angular
-         .module('airs')
+         .module('airsc')
          .factory('UserInfoServer', UserInfoServer);
 
      /** @ngInject */

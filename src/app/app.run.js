@@ -10,7 +10,7 @@
 
     // 'use strict';
 
-    angular.module('airs').run(runBlock);
+    angular.module('airsc').run(runBlock);
 
     /** @ngInject */
     function runBlock($log) {
