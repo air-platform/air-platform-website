@@ -2,11 +2,12 @@
   "air-community":"Air Community",
   "about":"关于",
   "home":{
-    "airjet":"airjet",
-    "airtaxi":"airtaxi",
+    "airjet":"Air Jet",
+    "airtaxi":"Air Taxi",
     "airtour":"空中观光",
     "airtrain":"飞行培训",
-    "airclub":"airclub"
+    "airclub":"airclub",
+    "indexTitle":"一键打飞的 去看全世界"
   },
   "menu":{
 
