@@ -18,6 +18,9 @@
         $scope.gotoRigister = function () {
             console.log('Go to register');
         }
+        $scope.forgotPassword = function () {
+            console.log('forgot password');
+        }
 
         console.log('----');
     }

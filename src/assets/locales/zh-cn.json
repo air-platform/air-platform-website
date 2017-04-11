@@ -16,6 +16,7 @@
     "register":"注册"
   },
   "login":{
+    "login":"登 录",
     "username":"用户名",
     "password":"密码",
     "username-placeholder":"请输入用户名...",

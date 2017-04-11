@@ -1,33 +1,35 @@
 <div data-page="login-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="loginController">
     <div class="page-content login-screen-content no-border">
         <div class="air-login-top">
-            <div style="padding-top: 120px;">
-                <img src="../../../assets/images/login_logo_icon.svg" width="80" height="65">
-                <span>Air Community</span>
+            <div class="air-login-top">
+                <div class="air-login-container">
+                    <img src="../../../assets/images/login_logo_icon.svg">
+                    <span> &nbsp;Air Community.</span>
+                </div>
             </div>
         </div>
         <form>
             <div class="list-block">
                 <ul>
                     <li class="item-content">
-                        <div class="item-inner">
-                            <div class="item-title icon"><img src="../../../assets/images/login_user_h.svg">&nbsp;&nbsp;</div>
+                        <div class="item-inner login-inner">
+                            <div class="item-title login-icon"><img src="../../../assets/images/login_user_h.svg">&nbsp;&nbsp;</div>
                             <div class="item-input">
-                                <input type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}"/>
+                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner login-inner">
+                            <div class="item-title login-icon"><img src="../../../assets/images/login_pwd_h.svg">&nbsp;&nbsp;</div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}"/>
                             </div>
                         </div>
                     </li>
                     <li class="item-content">
                         <div class="item-inner">
-                            <div class="item-title icon"><img src="../../../assets/images/login_pwd_h.svg">&nbsp;&nbsp;</div>
-                            <div class="item-input">
-                                <input type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}"/>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner">
-                            <div class="">{{'login.forgot-password' | translate}}</div>
+                            <div class="login-forgot-pwd" ng-click="forgotPassword()">{{'login.forgot-password' | translate}}</div>
                         </div>
                     </li>
                 </ul>
@@ -38,13 +40,13 @@
                     <li>
                         <div class="row">
                             <span class="col-5"></span>
-                            <a href="#" class="col-90 button button-big button-round button-red" ng-click="signinAction()">{{'profile.login' | translate}}</a>
+                            <button class="col-90 login-btn" ng-click="signinAction()">{{'login.login' | translate}}</button>
                             <span class="col-5"></span>
                         </div>
                     </li>
                 </ul>
                 <div class="list-block-label">
-                    <p ng-click="gotoRigister()">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></p>
+                    <p ng-click="gotoRigister()" class="login-goto-register">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></p>
                 </div>
             </div>
         </form>
