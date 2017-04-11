@@ -4,7 +4,7 @@
     font-size: .32rem;
     background-color: #fbfbfb;
     a{
-        color: #666;
+        color: @base-gray-6;
         display: block;
         height: 100%;
         line-height: .88rem;
@@ -17,24 +17,264 @@
         margin-top: -.05rem;
     }
     .active{
-        color: #ee4a4a;
+        color: @base-red-light;
     }
     .active:after{
-        background-color: #ee4a4a;
+        background-color: @base-red-light;
     }
 }
 
 .dream-flying-content{
-    margin-top: 1.28rem;
+    margin-top: .4rem;
     width: 100%;
     height: 2.6rem;
     padding: 0 .16rem 0 .2rem;
     box-sizing: border-box;
     .dream-flying-item{
-        background:#fff;
+        background-color:@base-white;
         height: 100%;
-        border:.02rem solid #f2f2f2;
-        border-radius:8px;
+        border:.02rem solid @base-white-f2;
+        box-sizing: border-box;
         margin-bottom: .3rem;
+        border-radius: .16rem;
+        display: flex;
+        display: -webkit-flex;
+        position: relative;
+        overflow: hidden;
+        .dfi-left{
+            width: calc(~"100% - 2.26rem");
+            height: 100%;
+            box-sizing: border-box;
+            padding: .18rem .24rem;
+            border-top-left-radius: .16rem;
+            border-bottom-left-radius: .16rem;
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            .dfi-top{
+                display: flex;
+                display: -webkit-flex;
+                height: .36rem;
+                line-height: .36rem;
+                justify-content: space-between;
+                .dreaam-flying-date{
+                    font-size: .24rem;
+                    color: @base-gray-6;
+                }
+                .dreaam-flying-logo{
+                    img{
+                        width: 1.32rem;
+                        height: .32rem;
+                        vertical-align: top;
+                    }
+                }
+            }
+            .dfi-middle{
+                margin: .42rem .62rem .42rem .62rem;
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                color: @base-gray-6;
+                .dfim-address{
+                    font-size: .36rem;
+                }
+                .dfim-time{
+                    font-size: .28rem;
+                }
+                .dfim-left{
+                    text-align: left;
+                }
+                .dfim-right{
+                    text-align: right;
+                }
+            }
+            .dfi-bottom{
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                p{
+                    font-size: .24rem;
+                    color: @base-gray-6;
+                }
+            }
+            
+        }
+        .dfi-right{
+            width: 2.26rem;
+            box-sizing: border-box;
+            padding: .18rem .24rem;
+            height: 100%;
+            background: @base-dark-op;
+            border-top-right-radius: .16rem;
+            border-bottom-right-radius: .16rem;
+            .dfi-right.active{
+                background: @base-blue-dark;
+            }
+        }
+        &:after{
+            content: "";
+            display: block;
+            width: .5rem;
+            height: .5rem;
+            background-color: @base-white;
+            position: absolute;
+            border-radius: 50%;
+            right: -.25rem;
+            top:calc(~"50% - 0.25rem");
+            z-index: 99;
+        }
     }
+}
+
+.air-tabs {
+    height: 0.88rem;
+    line-height: 0.88rem;
+    background-color: #fbfbfb;
+    display: flex;
+
+    .tab-link {
+        flex: 1;
+        text-align: center;
+        font-size: 0.32rem;
+        color: #666;
+
+        &.active {
+            color: #ee4a4a;
+
+            span {
+                display: inline-block;
+                padding: 0 0.2rem;
+                position: relative;
+
+                &:after {
+                    content: "";
+                    width: 100%;
+                    height: 2px;
+                    background-color: #ee4a4a;
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+
+    }
+}
+
+.page-content[data-page=airjet] {
+    background-color: #f4f4f4;
+}
+
+.air-special-card(@color) {
+    background-color: #fff;
+    border: 2px solid @color;
+    color: @color;
+
+    .card-footer {
+        color: @color;
+
+        span {
+            font-size: 0.24rem;
+        }
+    }
+}
+
+.air-card {
+    padding: 0.34rem 0.42rem;
+    border-radius: 0.16rem;
+    box-shadow: none;
+    color: #fff;
+
+    .card-header {
+        font-size: 0.12rem;
+        font-weight: 300;
+        padding: 0;
+        min-height: initial;
+        letter-spacing: 1px;
+
+        &:after {
+            display: none;
+        }
+
+        .action {
+            display: inline-block;
+            float: right;
+
+            span {
+                vertical-align: top;
+                margin-left: 0.1rem;
+                vertical-align: top;
+                margin-top: 3px;
+                display: inline-block;
+            }
+
+            i {
+                font-size: 0.4rem;
+            }
+        }
+    }
+
+    .card-content {
+        font-size: 0.72rem;
+        margin-top: 0.3rem;
+        letter-spacing: 0.2rem;
+
+        span {
+            font-size: 0.36rem;
+            letter-spacing: 0;
+            float: right;
+            vertical-align: top;
+            margin-top: 0.48rem;
+        }
+    }
+
+    .card-footer {
+        padding: 0;
+        color: #fff;
+
+        &:before {
+            display: none;
+        }
+
+        span:first-child {
+            font-size: 0.24rem;
+            font-weight: 300;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+
+        span:last-child {
+            font-size: 0.36rem;
+        }
+    }
+
+    &.air-card-level-1 {
+        background-color: #f5c684;
+    }
+
+    &.air-card-level-2 {
+        background-color: #d993cf;
+    }
+
+    &.air-card-level-3 {
+        background-color: #b38fd7;
+    }
+
+    &.air-card-level-4 {
+        background-color: #8fd2d7;
+    }
+
+    &.air-card-level-5 {
+        .air-special-card(#7293d6);
+    }
+
+    &.air-card-level-6 {
+        .air-special-card(#3bbb84);
+    }
+
+    &.air-card-level-7 {
+        .air-special-card(#f0844f);
+    }
+
 }

@@ -1,25 +1,127 @@
 .text-center {
-	text-align: center;
+  text-align: center;
 }
 
 img {
-	width: 100%;
-	display: inline-block;
-	vertical-align: middle;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .page {
-	background-color: #fff;
+  background-color: #f7f7f7;
 }
 
 .content-block {
-	margin: 0.61rem 0;
+  padding: 0.61rem 0;
+  margin: 0;
+  background: #fff;
 }
 
 .index-nav {
-	.text-center {
-		img {
-			margin-bottom: 0.35rem;
+  padding: 0 0.2rem;
+  .text-center {
+    a {
+      font-size: 0.28rem;
+      color: #4A4A4A;
+    }
+    img {
+      margin-bottom: 0.35rem;
+    }
+  }
+}
+
+.content-line {
+  margin: 0 0.2rem;
+  padding-top: .28rem;
+  background-color: #fff;
+  border-bottom: 0.01rem solid #e5e5e5;
+}
+
+.index-news {
+  background-color: #fff;
+  border-bottom: 0.01rem solid #e5e5e5;
+  .news-img {
+    width: .94rem;
+  }
+  .news-box {
+    padding: .28rem .2rem;
+    .news-text-box {
+      height: 46px;
+      width: calc(~"100% - 0.94rem - 0.485rem");
+      position: relative;
+      overflow: hidden;
+      .news-text {
+      	position: absolute;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+          width: 100%;
+          line-height: 22px;
+          a {
+            font-size: .24rem;
+            color: #747C82;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bottom-title {
+	font-size: .28rem;
+	height: 1.02rem;
+	line-height: 1.02rem;
+	color: #4A4A4A;
+	text-align: center;
+	border-top: 0.01rem solid #e5e5e5;
+	border-bottom: 0.01rem solid #e5e5e5;
+	background-color: #fff;
+	margin: .19rem 0 0 0;
+}
+
+.pro-content {
+	border-bottom: 0.01rem solid #e5e5e5;
+	background-color: #fff;
+	.pro-left {
+		padding: .5rem 1.23rem .59rem .39rem;
+		border-right: .01rem solid #e5e5e5;
+		h5 {
+			padding: 0;
+			margin: 0;
+			font-size: .28rem;
+			color: #4A4A4A;
+			font-weight: 500;
+		}
+		.price {
+			margin-top: .11rem;
+			width: 1.65rem;
+			padding: .05rem 0;
+			text-align: center;
+			background-color: #EE4A4A;
+			border-radius: .04rem;
+			font-size: .28rem;
+			color: #fff;
+			margin-bottom: .12rem;
+		}
+		span {
+			font-size: .18rem;
+			color: #9B9B9B;
+			text-decoration:line-through;
+		}
+	}
+	.pro-right {
+		width: 57.2%;
+		.top-left {
+			p {
+				font-size: .18rem;
+				color: #4A4A4A;
+			}
+			.pro-adr {
+				font-size: .24rem;
+				color: #4A4A4A;
+			}
 		}
 	}
 }
