@@ -4,10 +4,20 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a></div>
-        <div class="center sliding">AirJet</div>
-        <!--<div class="right">-->
-        <!--&lt;!&ndash; Right link contains only icon - additional "icon-only" class&ndash;&gt;<a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>-->
-        <!--</div>-->
+        <div class="sliding">Air Jet</div>
+        <div class="right">
+            <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
+
+        <!-- Sub navbar -->
+        <div class="subnavbar airjet-subnavbar">
+            <a href="#tab1" class="col-33 active">旅行计划</a>
+            <a href="#tab2" class="col-33">缘梦飞行</a>
+            <a href="#tab3" class="col-33">卡产品</a>
+            <!--<a href="#tab1" class="col-33 active">{{'airjet.travel-plan' | translate}}</a>
+            <a href="#tab2" class="col-33">{{'airjet.dream-flying' | translate}}</a>
+            <a href="#tab3" class="col-33">{{'airjet.card-service' | translate}}</a>-->
+        </div>
     </div>
 </div>
 <div class="pages">
@@ -15,6 +25,11 @@
     <div data-page="airjet" class="page" ng-controller="jetController">
         <!-- Scrollable page content-->
         <div class="page-content">
+            <div class="dream-flying-content">
+                <div class="dream-flying-item">
+                    
+                </div>
+            </div>
             <div class="content-block">
                 <div class="content-block-inner">
                     <p class="air-red">jet</p>
