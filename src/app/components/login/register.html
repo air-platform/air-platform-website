@@ -1,6 +1,7 @@
 <div data-page="register-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="registerController">
     <div class="page-content login-screen-contentxx no-border">
         <div class="air-login-top">
+            <div><a class="register-back"><img src="../../../assets/images/back.png"></a></div>
             <div class="air-login-container">
                 <img src="../../../assets/images/login_logo_icon.svg">
                 <img src="../../../assets/images/logo_text.svg">
@@ -25,11 +26,6 @@
                             </div>
                         </div>
                     </li>
-                    <li class="item-content">
-                        <div class="item-inner">
-                            <div class="login-forgot-pwd" ng-click="forgotPassword()">{{'login.forgot-password' | translate}}</div>
-                        </div>
-                    </li>
                 </ul>
             </div>
 
@@ -43,9 +39,6 @@
                         </div>
                     </li>
                 </ul>
-                <div class="list-block-label">
-                    <a href="../../../app/components/login/register.html" class="login-goto-register">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
-                </div>
             </div>
         </form>
     </div>

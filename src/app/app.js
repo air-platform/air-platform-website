@@ -27,6 +27,10 @@
             console.log('register app.js');
             // mainView.router.back();
         });
+        pageContainer.find('.login-cancel').on('click',function () {
+            console.log('register app.js');
+            mainView.router.back();
+        });
         pageContainer.find('.login-btn').on('click', function () {
             var username = pageContainer.find('input[name="username"]').val();
             var password = pageContainer.find('input[name="password"]').val();
@@ -42,6 +46,9 @@
         pageContainer.find('.login-goto-register').on('click',function () {
             console.log('register app.js');
             // mainView.router.back();
+        });
+        pageContainer.find('.register-back').on('click',function () {
+            mainView.router.back();
         });
         pageContainer.find('.login-btn').on('click', function () {
             var username = pageContainer.find('input[name="username"]').val();
