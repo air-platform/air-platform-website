@@ -1,7 +1,8 @@
 /*login*/
 
-.login-cancel ,
-.register-back {
+.login-cancel,
+.register-back,
+.reset-back {
   position: absolute;
   left: 20px;
   top: 20px;
@@ -30,6 +31,10 @@
   img{
     display: block;
   }
+}
+
+.air-register-top {
+  height: 2.2rem;
 }
 
 .air-login-container {
@@ -85,8 +90,15 @@
       background-image: url("../../assets/images/login_user.svg");
       background-repeat: no-repeat;
     }
-
+    &.login-authcode {
+      background-image: url("../../assets/images/login_pwd.svg");
+      background-repeat: no-repeat;
+    }
     &.login-password {
+      background-image: url("../../assets/images/login_pwd.svg");
+      background-repeat: no-repeat;
+    }
+    &.login-confirm-password {
       background-image: url("../../assets/images/login_pwd.svg");
       background-repeat: no-repeat;
     }
@@ -97,7 +109,15 @@
       background-image: url("../../assets/images/login_user_h.svg");
       background-repeat: no-repeat;
     }
+    &.login-authcode {
+      background-image: url("../../assets/images/login_pwd_h.svg");
+      background-repeat: no-repeat;
+    }
     .login-password {
+      background-image: url("../../assets/images/login_pwd_h.svg");
+      background-repeat: no-repeat;
+    }
+    .login-confirm-password {
       background-image: url("../../assets/images/login_pwd_h.svg");
       background-repeat: no-repeat;
     }

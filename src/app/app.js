@@ -59,6 +59,24 @@
             });
         });
     });
+    myApp.onPageInit('reset-password-screen', function (page) {
+        var pageContainer = $$(page.container);
+        pageContainer.find('.login-goto-register').on('click',function () {
+            console.log('register app.js');
+            // mainView.router.back();
+        });
+        pageContainer.find('.reset-back').on('click',function () {
+            mainView.router.back();
+        });
+        pageContainer.find('.login-btn').on('click', function () {
+            var username = pageContainer.find('input[name="username"]').val();
+            var password = pageContainer.find('input[name="password"]').val();
+            // Handle username and password
+            myApp.alert('Username: ' + username + ', Password: ' + password, function () {
+                mainView.router.back();
+            });
+        });
+    });
 
     // Option 2. Using one 'pageInit' event handler for all pages:
     $$(document).on('pageInit', function (e) {

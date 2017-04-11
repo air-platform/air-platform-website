@@ -1,7 +1,7 @@
 <div data-page="reset-password-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="resetController">
     <div class="page-content login-screen-contentxx no-border">
-        <div class="air-login-top">
-            <div><a class="register-back"><img src="../../../assets/images/back.png"></a></div>
+        <div class="air-login-top air-register-top">
+            <div><a class="reset-back"><img src="../../../assets/images/back.png"></a></div>
             <div class="air-login-container">
                 <img src="../../../assets/images/login_logo_icon.svg">
                 <img src="../../../assets/images/logo_text.svg">
@@ -19,10 +19,26 @@
                         </div>
                     </li>
                     <li class="item-content">
+                        <div class="item-inner login-inner {{authActive}}">
+                            <div class="item-title login-icon login-authcode"></div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="text" name="auth" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
                         <div class="item-inner login-inner {{passwordActive}}">
                             <div class="item-title login-icon login-password"></div>
                             <div class="item-input">
                                 <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner login-inner {{confirmActive}}">
+                            <div class="item-title login-icon login-confirm-password"></div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="password" name="confirm" placeholder="{{'login.comfirm-placeholder' | translate}}" ng-click="confirmActive='active'" ng-blur="confirmActive=''"/>
                             </div>
                         </div>
                     </li>

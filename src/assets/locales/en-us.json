@@ -20,8 +20,10 @@
     "register":"注 册",
     "username":"用户名",
     "password":"密码",
-    "username-placeholder":"请输入用户名...",
+    "username-placeholder":"请输入手机号...",
+    "authcode-placeholder":"请输入验证码...",
     "password-placeholder":"请输入密码...",
+    "comfirm-placeholder":"再次输入密码...",
     "forgot-password":"忘记密码?",
     "go-register":"还没有账号，去注册？"
   }
