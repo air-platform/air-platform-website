@@ -63,9 +63,15 @@
                 }
                 .dreaam-flying-logo{
                     img{
-                        width: 1.32rem;
-                        height: .32rem;
+                        // width: 1.32rem;
+                        // height: .32rem;
+                        width: 1.056rem;
+                        height: .256rem;
                         vertical-align: top;
+                    }
+                    span{
+                        font-size: .2rem;
+                        color: @base-gray-dark;
                     }
                 }
             }
@@ -102,9 +108,9 @@
         .dfi-right{
             width: 2.26rem;
             box-sizing: border-box;
-            padding: .18rem .24rem;
+            padding: .18rem 0 .18rem .24rem;
             height: 100%;
-            background: rgba(#000, 0.2);
+            background: rgba(0, 0, 0, 0.2);
             border-top-right-radius: .16rem;
             border-bottom-right-radius: .16rem;
             color: @base-white;
@@ -121,14 +127,16 @@
                 height: .34rem;
                 line-height: .34rem;
                 font-size: .28rem;
-                text-align: center;
+                text-indent: .18rem;
             }
-            .plane-item:first{
+            .plane-item.first{
                 margin-bottom: .2rem;
+            }
+            .plane-item.last{
+                margin-bottom: .06rem;
             }
             .plane-require{
                 height: .24rem;
-                line-height: .24rem;
                 font-size: .2rem;
             }
         }
