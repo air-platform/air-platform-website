@@ -12,6 +12,12 @@
     /** @ngInject */
     function loginController($scope,iotUtil) {
 
+        $scope.signinAction = function () {
+            console.log('Sign in');
+        }
+        $scope.gotoRigister = function () {
+            console.log('Go to register');
+        }
 
         console.log('----');
     }

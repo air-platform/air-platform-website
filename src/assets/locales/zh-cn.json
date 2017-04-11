@@ -14,6 +14,14 @@
   "profile":{
     "login":"登录",
     "register":"注册"
+  },
+  "login":{
+    "username":"用户名",
+    "password":"密码",
+    "username-placeholder":"请输入用户名...",
+    "password-placeholder":"请输入密码...",
+    "forgot-password":"忘记密码?",
+    "go-register":"还没有账号，去注册？"
   }
 
 }
