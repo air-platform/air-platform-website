@@ -1,0 +1,104 @@
+.air-dream-detail {
+  color: #666;
+
+  .air-info {
+    .text-vertical-center(0.88rem);
+    background-color: @base-white;
+
+    .air-info-header {
+      padding: 0 0.36rem;
+      color: #9a9090;
+      font-size: 0.24rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+
+      span:last-child {
+        float: right;
+      }
+    }
+
+    .air-info-content {
+      display: flex;
+      background-color: @base-white;
+      padding: 0.5rem 0.2rem;
+
+      .content-part:nth-child(1) {
+        flex: 1;
+        display: flex;
+        line-height: initial;
+
+        & > div {
+          text-align: center;
+          flex: 1;
+
+          .air-location {
+            font-size: 0.36rem;
+          }
+          .air-date {
+            color: #666;
+            font-weight: 300;
+          }
+        }
+      }
+
+      .content-part {
+        line-height: initial;
+        font-size: 0.2rem;
+
+        & > div {
+          margin-left: 0.3rem;
+          margin-bottom: 0.25rem;
+
+          > span:not(:nth-child(2)) {
+            font-weight: 300;
+          }
+
+          .money {
+            font-size: 0.28rem;
+          }
+        }
+      }
+    }
+
+    .air-info-footer {
+      padding: 0 0.36rem;
+      color: #9a9090;
+      font-size: 0.24rem;
+      background-color: @base-white;
+      border-top: 1px solid rgba(0, 0, 0, 0.09);
+
+      span {
+        float: right;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+.company-attention {
+  color: #666;
+  background-color: #fff;
+  margin-top: 0.2rem;
+  padding: 0.2rem 0 0.2rem 0.7rem;
+
+  textarea {
+    height: 1.6rem;
+    background-color: #f4f4f4;
+    border: none;
+    outline: none;
+    padding: 0.08rem 0.16rem;
+    border-radius: 0.06rem;
+    width: 5.2rem;
+    font-size: 0.32rem;
+    font-weight: 300;
+
+  }
+
+  label {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 0.28rem;
+    color: #999;
+    font-weight: 300;
+  }
+
+}
