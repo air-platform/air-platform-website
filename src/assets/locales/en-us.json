@@ -7,6 +7,16 @@
     "airtour":"空中观光",
     "airtrain":"飞行培训",
     "airclub":"airclub"
+  },
+  "menu":{
+
+  },
+  "profile":{
+    "login":"登录",
+    "signin":"注册",
+    "order":"订单中心",
+    "info":"登录",
+    "login":"登录"
   }
 
 }
