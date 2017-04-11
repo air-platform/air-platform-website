@@ -32,6 +32,7 @@
         var userLanguage = window.localStorage.userLanguage || navigator.language || navigator.userLanguage;
         // var userLanguage = navigator.language || navigator.userLanguage;
         userLanguage = userLanguage.toLocaleLowerCase();
+        userLanguage = 'zh-cn';
         if (userLanguage == 'zh-cn'){
             timeAgoSettings.overrideLang = 'zh_CN';
         }else{
