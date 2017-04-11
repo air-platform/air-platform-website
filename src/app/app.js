@@ -21,6 +21,38 @@
 
     })
 
+    myApp.onPageInit('login-screen', function (page) {
+        var pageContainer = $$(page.container);
+        pageContainer.find('.login-goto-register').on('click',function () {
+            console.log('register app.js');
+            // mainView.router.back();
+        });
+        pageContainer.find('.login-btn').on('click', function () {
+            var username = pageContainer.find('input[name="username"]').val();
+            var password = pageContainer.find('input[name="password"]').val();
+            // Handle username and password
+            myApp.alert('Username: ' + username + ', Password: ' + password, function () {
+                mainView.router.back();
+            });
+        });
+    });
+
+    myApp.onPageInit('register-screen', function (page) {
+        var pageContainer = $$(page.container);
+        pageContainer.find('.login-goto-register').on('click',function () {
+            console.log('register app.js');
+            // mainView.router.back();
+        });
+        pageContainer.find('.login-btn').on('click', function () {
+            var username = pageContainer.find('input[name="username"]').val();
+            var password = pageContainer.find('input[name="password"]').val();
+            // Handle username and password
+            myApp.alert('Username: ' + username + ', Password: ' + password, function () {
+                mainView.router.back();
+            });
+        });
+    });
+
     // Option 2. Using one 'pageInit' event handler for all pages:
     $$(document).on('pageInit', function (e) {
         // Get page data from event data
@@ -38,6 +70,8 @@
         // Following code will be executed for page with data-page attribute equal to "about"
         // myApp.alert('Here comes About page');
     })
+
+
 
 })();
 

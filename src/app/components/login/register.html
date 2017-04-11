@@ -1,0 +1,52 @@
+<div data-page="register-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="registerController">
+    <div class="page-content login-screen-contentxx no-border">
+        <div class="air-login-top">
+            <div class="air-login-container">
+                <img src="../../../assets/images/login_logo_icon.svg">
+                <img src="../../../assets/images/logo_text.svg">
+            </div>
+        </div>
+        <form>
+            <div class="list-block">
+                <ul>
+                    <li class="item-content">
+                        <div class="item-inner login-inner {{userActive}}">
+                            <div class="item-title login-icon login-user"></div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner login-inner {{passwordActive}}">
+                            <div class="item-title login-icon login-password"></div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="login-forgot-pwd" ng-click="forgotPassword()">{{'login.forgot-password' | translate}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="row">
+                            <span class="col-5"></span>
+                            <button class="col-90 login-btn register-btn">{{'login.register' | translate}}</button>
+                            <span class="col-5"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="list-block-label">
+                    <a href="../../../app/components/login/register.html" class="login-goto-register">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
