@@ -1,0 +1,87 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a>
+        </div>
+        <div class="sliding">Air Jet</div>
+        <div class="right">
+            <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
+
+    </div>
+</div>
+<div data-page="airjet" class="page page-content air-dream-detail" ng-controller="jetController">
+    <div class="swiper-container swiper-init" data-speed="400" data-space-between="40" data-autoplay="3000" data-pagination=".swiper-pagination">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
+            <div class="swiper-slide"><img src="assets/images/banner1.jpg"></div>
+            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="air-info">
+        <div class="air-info-header">
+            <span>2017-04-07  13:00PM</span>
+            <span>载客人数: 16</span>
+        </div>
+        <div class="air-info-content">
+            <div class="content-part">
+                <div>
+                    <div class="air-location">香港</div>
+                    <div class="air-date">13:00</div>
+                </div>
+                <div class="arrow-right"></div>
+                <div>
+                    <div class="air-location">北京</div>
+                    <div class="air-date">16:00</div>
+                </div>
+            </div>
+            <div class="content-part">
+                <div>
+                    <span>整机</span>
+                    <span class="money">¥343.2万元</span>
+                 </div>
+                <div>
+                    <span>座位</span>
+                    <span class="money">¥2,800元</span>
+                    <span>（最少3人成行）</span>
+                </div>
+            </div>
+        </div>
+        <div class="air-info-footer clearfix">
+            <span>机型号: G650</span>
+            <span>飞机号: 00092834</span>
+        </div>
+        <div class="user-info">
+            <div class="user-info-title">客户信息</div>
+            <div class="form">
+                <div class="form-group">
+                    <label>姓名 :</label>
+                    <input type="text" placeholder="请输入...">
+                </div>
+                <div class="form-group">
+                    <label>电话 :</label>
+                    <input type="text" placeholder="请输入...">
+                </div>
+                <div class="form-group">
+                    <label>邮箱 :</label>
+                    <input type="text" placeholder="请输入...">
+                </div>
+            </div>
+        </div>
+        <div class="company-name">
+            <div class="form-group">
+                <label>客户名称 :</label>
+                <input type="text" placeholder="请输入企业或机构名称…">
+            </div>
+
+        </div>
+        <div class="company-attention">
+            <div class="form-group">
+                <label>备注 :</label>
+                <textarea type="text" placeholder="请输入备注…"></textarea>
+            </div>
+        </div>
+        <div class="airjet-detail-form-footer"><input type="submit" value="提交"></div>
+    </div>
+</div>

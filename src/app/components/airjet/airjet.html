@@ -9,15 +9,6 @@
         <div class="right">
             <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
         </div>
-        <!-- Sub navbar -->
-        <!--<div class="subnavbar airjet-subnavbar">-->
-        <!--<a href="#tab1" class="col-33 active">旅行计划</a>-->
-        <!--<a href="#tab2" class="col-33">缘梦飞行</a>-->
-        <!--<a href="#tab3" class="col-33">卡产品</a>-->
-        <!--&lt;!&ndash;<a href="#tab1" class="col-33 active">{{'airjet.travel-plan' | translate}}</a>-->
-        <!--<a href="#tab2" class="col-33">{{'airjet.dream-flying' | translate}}</a>-->
-        <!--<a href="#tab3" class="col-33">{{'airjet.card-service' | translate}}</a>&ndash;&gt;-->
-        <!--</div>-->
 
     </div>
 </div>
@@ -25,18 +16,20 @@
 <div data-page="airjet" class="page page-content" ng-controller="jetController">
     <div class="buttons-row air-tabs">
         <!-- Link to 1st tab, active -->
-        <a href="#tab1" class="tab-link"><span>旅行计划</span></a>
+        <a href="#tab1" class="tab-link active"><span>旅行计划</span></a>
         <!-- Link to 2nd tab -->
         <a href="#tab2" class="tab-link"><span>缘梦飞行</span></a>
         <!-- Link to 3rd tab -->
-        <a href="#tab3" class="tab-link active"><span>卡产品</span></a>
+        <a href="#tab3" class="tab-link"><span>卡产品</span></a>
     </div>
     <div class="tabs">
         <!-- Tab 1, active by default -->
-        <div id="tab1" class="tab">
+        <div id="tab1" class="tab active">
             <div class="content-block">
-                <p>This is tab 1 content</p>
-                ...
+                旅行计划
+                <a href="app/components/airjet/tour-detail.html">详情</a>
+                <a href="app/components/airjet/dream-detail.html">详情</a>
+                <a href="app/components/airjet/dream-inner.html">详情</a>
             </div>
         </div>
         <!-- Tab 2 -->
@@ -226,7 +219,7 @@
             </div>
         </div>
         <!-- Tab 3 -->
-        <div id="tab3" class="tab active">
+        <div id="tab3" class="tab">
             <div class="card air-card air-card-level-1">
                 <a href="app/components/airjet/airjet-detail.html">
                     <div class="card-header">
@@ -242,7 +235,6 @@
                         <span>RMB 1,000,000</span>
                     </div>
                 </a>
-
             </div>
             <div class="card air-card air-card-level-2">
                 <div class="card-header">
@@ -337,26 +329,3 @@
         </div>
     </div>
 </div>
-<!--</div>-->
-
-<!--<div class="pages">-->
-<!--&lt;!&ndash; Page, data-page contains page name&ndash;&gt;-->
-<!--<div data-page="airjet" class="page" ng-controller="jetController">-->
-<!--&lt;!&ndash; Scrollable page content&ndash;&gt;-->
-<!--<div class="page-content">-->
-<!--<div class="dream-flying-content">-->
-<!--<div class="dream-flying-item">-->
-<!---->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="content-block">-->
-<!--<div class="content-block-inner">-->
-<!--<p class="air-red">jet</p>-->
-<!--<p>Go <a href="#" class="back">back</a> or click  <a href="#" class="create-page">here </a>to create dynamic page.</p>-->
-<!--<p>Mauris posuere sit amet metus id venenatis. Ut ante dolor, tempor nec commodo rutrum, varius at sem. Nullam ac nisi non neque ornare pretium. Nulla mauris mauris, consequat et elementum sit amet, egestas sed orci. In hac habitasse platea dictumst.</p>-->
-<!--<p>Fusce eros lectus, accumsan eget mi vel, iaculis tincidunt felis. Nulla tincidunt pharetra sagittis. Fusce in felis eros. Nulla sit amet aliquam lorem, et gravida ipsum. Mauris consectetur nisl non sollicitudin tristique. Praesent vitae metus ac quam rhoncus mattis vel et nisi. Aenean aliquet, felis quis dignissim iaculis, lectus quam tincidunt ligula, et venenatis turpis risus sed lorem. Morbi eu metus elit. Ut vel diam dolor.</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
