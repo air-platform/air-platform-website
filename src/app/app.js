@@ -25,6 +25,7 @@
         var pageContainer = $$(page.container);
         pageContainer.find('.login-goto-register').on('click',function () {
             console.log('register app.js');
+            // mainView.router.back();
         });
         pageContainer.find('.login-btn').on('click', function () {
             var username = pageContainer.find('input[name="username"]').val();

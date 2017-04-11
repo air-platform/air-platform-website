@@ -1,21 +1,52 @@
-
-<!-- We don't need full layout here, because this page will be parsed with Ajax-->
-<!-- Top Navbar-->
-<div class="navbar">
-    <div class="navbar-inner">
-        <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a></div>
-        <div class="center sliding">{{'profile.register' | translate}}</div>
-        <!--<div class="right">-->
-        <!--&lt;!&ndash; Right link contains only icon - additional "icon-only" class&ndash;&gt;<a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>-->
-        <!--</div>-->
-    </div>
-</div>
-<div class="pages">
-    <!-- Page, data-page contains page name-->
-    <div data-page="login" class="page" ng-controller="registerController">
-        <!-- Scrollable page content-->
-        <div class="page-content">
-
+<div data-page="login-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="loginController">
+    <div class="page-content login-screen-contentxx no-border">
+        <div class="air-login-top">
+            <div class="air-login-container">
+                <img src="../../../assets/images/login_logo_icon.svg">
+                <img src="../../../assets/images/logo_text.svg">
+            </div>
         </div>
+        <form>
+            <div class="list-block">
+                <ul>
+                    <li class="item-content">
+                        <div class="item-inner login-inner {{userActive}}">
+                            <div class="item-title login-icon login-user"></div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner login-inner {{passwordActive}}">
+                            <div class="item-title login-icon login-password"></div>
+                            <div class="item-input">
+                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="login-forgot-pwd" ng-click="forgotPassword()">{{'login.forgot-password' | translate}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="row">
+                            <span class="col-5"></span>
+                            <button class="col-90 login-btn">{{'login.login' | translate}}</button>
+                            <span class="col-5"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="list-block-label">
+                    <a href="../../../app/components/login/register.html" class="login-goto-register">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
