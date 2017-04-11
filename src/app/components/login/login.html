@@ -1,31 +1,27 @@
 <div data-page="login-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="loginController">
     <div class="page-content login-screen-content no-border">
         <div class="air-login-top">
-            <div class="air-login-top">
-                    <div class="content-block" style="margin: 0;">
-                        <div class="row">
-                            <div class="col-40 air-login-plane"><img src="../../../assets/images/login_logo_icon.svg"></div>
-                            <div class="col-60 air-login-title">&nbsp;Air Community.</div>
-                        </div>
-                    </div>
+            <div class="air-login-container">
+                <img src="../../../assets/images/login_logo_icon.svg">
+                <img src="../../../assets/images/logo_text.svg">
             </div>
         </div>
         <form>
             <div class="list-block">
                 <ul>
                     <li class="item-content">
-                        <div class="item-inner login-inner">
-                            <div class="item-title login-icon"><img src="../../../assets/images/login_user_h.svg">&nbsp;&nbsp;</div>
+                        <div class="item-inner login-inner {{userActive}}">
+                            <div class="item-title login-icon login-user"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}"/>
+                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''"/>
                             </div>
                         </div>
                     </li>
                     <li class="item-content">
-                        <div class="item-inner login-inner">
-                            <div class="item-title login-icon"><img src="../../../assets/images/login_pwd_h.svg">&nbsp;&nbsp;</div>
+                        <div class="item-inner login-inner {{passwordActive}}">
+                            <div class="item-title login-icon login-password"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}"/>
+                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''"/>
                             </div>
                         </div>
                     </li>
