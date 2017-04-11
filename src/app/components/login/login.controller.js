@@ -12,6 +12,7 @@
     /** @ngInject */
     function loginController($scope,iotUtil) {
 
+
         $scope.signinAction = function () {
             console.log('Sign in');
         }

@@ -23,7 +23,10 @@
 
     myApp.onPageInit('login-screen', function (page) {
         var pageContainer = $$(page.container);
-        pageContainer.find('.list-button').on('click', function () {
+        pageContainer.find('.login-goto-register').on('click',function () {
+            console.log('register app.js');
+        });
+        pageContainer.find('.login-btn').on('click', function () {
             var username = pageContainer.find('input[name="username"]').val();
             var password = pageContainer.find('input[name="password"]').val();
             // Handle username and password
