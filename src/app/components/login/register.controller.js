@@ -12,6 +12,9 @@
     /** @ngInject */
     function registerController($scope,iotUtil) {
 
+        $scope.registerAction = function () {
+            
+        }
 
     }
 
