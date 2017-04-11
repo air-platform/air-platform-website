@@ -4,7 +4,7 @@
     font-size: .32rem;
     background-color: #fbfbfb;
     a{
-        color: #666;
+        color: @base-gray-6;
         display: block;
         height: 100%;
         line-height: .88rem;
@@ -17,25 +17,112 @@
         margin-top: -.05rem;
     }
     .active{
-        color: #ee4a4a;
+        color: @base-red-light;
     }
     .active:after{
-        background-color: #ee4a4a;
+        background-color: @base-red-light;
     }
 }
 
 .dream-flying-content{
-    margin-top: 1.28rem;
+    margin-top: .4rem;
     width: 100%;
     height: 2.6rem;
     padding: 0 .16rem 0 .2rem;
     box-sizing: border-box;
     .dream-flying-item{
-        background:#fff;
+        background-color:@base-white;
         height: 100%;
-        border:.02rem solid #f2f2f2;
-        border-radius:8px;
+        border:.02rem solid @base-white-f2;
+        box-sizing: border-box;
         margin-bottom: .3rem;
+        border-radius: .16rem;
+        display: flex;
+        display: -webkit-flex;
+        position: relative;
+        overflow: hidden;
+        .dfi-left{
+            width: calc(~"100% - 2.26rem");
+            height: 100%;
+            box-sizing: border-box;
+            padding: .18rem .24rem;
+            border-top-left-radius: .16rem;
+            border-bottom-left-radius: .16rem;
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            .dfi-top{
+                display: flex;
+                display: -webkit-flex;
+                height: .36rem;
+                line-height: .36rem;
+                justify-content: space-between;
+                .dreaam-flying-date{
+                    font-size: .24rem;
+                    color: @base-gray-6;
+                }
+                .dreaam-flying-logo{
+                    img{
+                        width: 1.32rem;
+                        height: .32rem;
+                        vertical-align: top;
+                    }
+                }
+            }
+            .dfi-middle{
+                margin: .42rem .62rem .42rem .62rem;
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                color: @base-gray-6;
+                .dfim-address{
+                    font-size: .36rem;
+                }
+                .dfim-time{
+                    font-size: .28rem;
+                }
+                .dfim-left{
+                    text-align: left;
+                }
+                .dfim-right{
+                    text-align: right;
+                }
+            }
+            .dfi-bottom{
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                p{
+                    font-size: .24rem;
+                    color: @base-gray-6;
+                }
+            }
+            
+        }
+        .dfi-right{
+            width: 2.26rem;
+            box-sizing: border-box;
+            padding: .18rem .24rem;
+            height: 100%;
+            background: @base-dark-op;
+            border-top-right-radius: .16rem;
+            border-bottom-right-radius: .16rem;
+            .dfi-right.active{
+                background: @base-blue-dark;
+            }
+        }
+        &:after{
+            content: "";
+            display: block;
+            width: .5rem;
+            height: .5rem;
+            background-color: @base-white;
+            position: absolute;
+            border-radius: 50%;
+            right: -.25rem;
+            top:calc(~"50% - 0.25rem");
+            z-index: 99;
+        }
     }
 }
 
