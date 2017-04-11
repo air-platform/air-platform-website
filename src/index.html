@@ -99,21 +99,29 @@
                     <!-- Scrollable page content-->
 
                     <div class="page-content">
+                        <div class="swiper-container swiper-init" data-speed="400" data-space-between="40" data-autoplay="3000" data-pagination=".swiper-pagination">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
+                            <div class="swiper-slide"><img src="assets/images/banner1.jpg"></div>
+                            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
 
                         <div class="content-block">
                             <!-- Additional "no-gutter" class on row to remove space between cells -->
                             <div class="row">
                                 <!-- Each "cell" has col-[widht in percents] class -->
-                                <div class="col-25 bg-white">
+                                <div class="col-25 bg-white text-center">
                                     <a href="app/components/airjet/airjet.html">{{'home.airjet' | translate}}</a>
                                 </div>
-                                <div class="col-25 bg-white">
+                                <div class="col-25 bg-white text-center">
                                     <a href="app/components/airtaxi/airtaxi.html">{{'home.airtaxi' | translate}}</a>
                                 </div>
-                                <div class="col-25 bg-white">
+                                <div class="col-25 bg-white text-center">
                                     <a href="app/components/airtour/airtour.html">{{'home.airtour' | translate}}</a>
                                 </div>
-                                <div class="col-25 bg-white">
+                                <div class="col-25 bg-white text-center">
                                     <a href="app/components/airtrain/airtrain.html">{{'home.airtrain' | translate}}</a>
                                 </div>
                             </div>
