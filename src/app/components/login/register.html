@@ -22,9 +22,10 @@
                         <div class="item-inner login-inner {{authActive}}">
                             <div class="item-title login-icon login-authcode"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="text" name="auth" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''"/>
+                                <input class="login-placeholder " type="text" name="auth" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''"/>
                             </div>
                         </div>
+                        <div class="item-media"><button class="login-authcode-btn">获取验证码</button></div>
                     </li>
                     <li class="item-content">
                         <div class="item-inner login-inner {{passwordActive}}">
