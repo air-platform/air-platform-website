@@ -20,11 +20,11 @@
             '#【原创】飞机飞到哪里去啊#'
         ]
 
-        NetworkService.get('account/auth', function(res) {
-            console.log(res);
-        }, function(err) {
-            console.log(err);
-        });
+        // NetworkService.get('account/auth',null, function(res) {
+        //     console.log(res);
+        // }, function(err) {
+        //     console.log(err);
+        // });
     }
 
 })();

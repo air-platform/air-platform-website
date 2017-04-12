@@ -1,71 +1,88 @@
-<div data-page="register-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="registerController">
-    <div class="page-content login-screen-contentxx no-border bg-white">
-        <div class="air-login-top air-register-top">
-            <div><a class="register-back" ng-click="backAction()"><img src="../../../assets/images/back.png"></a></div>
-            <div class="air-login-container">
-                <img src="../../../assets/images/login_logo_icon.svg">
-                <img src="../../../assets/images/logo_text.svg">
+<!--<div class="navbar">-->
+    <!--<div class="navbar-inner">-->
+        <!--<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>-->
+        <!--<div class="center sliding">Register</div>-->
+        <!--&lt;!&ndash;<div class="right">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; Right link contains only icon - additional "icon-only" class&ndash;&gt;<a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding"><a href="../../../index.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="center sliding">Register</div>
+    </div>
+</div>
+<div class="pages navbar-through">
+    <div data-page="register-screen" class="page no-swipeback no-border" ng-controller="registerController">
+        <div class="page-content login-screen-contentxx no-border bg-white">
+            <div class="air-login-top air-register-top">
+                <div><a class="register-back" ng-click="backAction()"><img src="../../../assets/images/back.png"></a></div>
+                <div class="air-login-container">
+                    <img src="../../../assets/images/login_logo_icon.svg">
+                    <img src="../../../assets/images/logo_text.svg">
+                </div>
             </div>
-        </div>
-        <form role="form" name="form">
-            <div class="list-block">
-                <ul>
-                    <li class="item-content">
-                        <div class="item-inner login-inner {{userActive}}">
-                            <div class="item-title login-icon login-user"></div>
-                            <div class="item-input">
-                                <input class="login-placeholder" type="text" ng-model="mobile" name="mobile" placeholder="{{'login.username-placeholder' | translate}}" ng-pattern="/^0?(13|14|15|18)[0-9]{9}$/" ui-validate=" '$value.length == 11' " ng-click="userActive='active'" ng-blur="userActive=''" required />
+            <form role="form" name="form">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner login-inner {{userActive}}">
+                                <div class="item-title login-icon login-user"></div>
+                                <div class="item-input">
+                                    <input class="login-placeholder" type="text" ng-model="mobile" name="mobile" placeholder="{{'login.username-placeholder' | translate}}" ng-pattern="/^0?(13|14|15|18)[0-9]{9}$/" ui-validate=" '$value.length == 11' " ng-click="userActive='active'" ng-blur="userActive=''" required />
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner login-inner {{authActive}}">
-                            <div class="item-title login-icon login-authcode"></div>
-                            <div class="item-input">
-                                <input class="login-placeholder " type="text" ng-model="authcode" name="auth" ng-minlength="4" ng-maxlength="6" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''" required />
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner login-inner {{authActive}}">
+                                <div class="item-title login-icon login-authcode"></div>
+                                <div class="item-input">
+                                    <input class="login-placeholder " type="text" ng-model="authcode" name="auth" ng-minlength="4" ng-maxlength="6" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''" required />
+                                </div>
                             </div>
-                        </div>
-                        <div class="item-media">
-                            <button class="login-get-authcode-btn" ng-click="getAuthcode()" ng-disabled="authcodediabled || form.mobile.$error.validator">{{authcodetip}}</button>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner login-inner {{passwordActive}}">
-                            <div class="item-title login-icon login-password"></div>
-                            <div class="item-input">
-                                <input class="login-placeholder" type="password" ng-model="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required />
+                            <div class="item-media">
+                                <button class="login-get-authcode-btn" ng-click="getAuthcode()" ng-disabled="authcodediabled || form.mobile.$error.validator">{{authcodetip}}</button>
                             </div>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner login-inner {{confirmActive}}">
-                            <div class="item-title login-icon login-confirm-password"></div>
-                            <div class="item-input">
-                                <input class="login-placeholder" type="password" ng-model="confirm_password" name="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' " placeholder="{{'login.comfirm-placeholder' | translate}}" ng-click="confirmActive='active'" ng-blur="confirmActive=''" required />
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner login-inner {{passwordActive}}">
+                                <div class="item-title login-icon login-password"></div>
+                                <div class="item-input">
+                                    <input class="login-placeholder" type="password" ng-model="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required />
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner login-inner">
-                            <div class="item-text">
-                                <span class="login-err-tip" ng-show='form.confirm_password.$error.validator'>{{'login.not-match' | translate}}</span>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner login-inner {{confirmActive}}">
+                                <div class="item-title login-icon login-confirm-password"></div>
+                                <div class="item-input">
+                                    <input class="login-placeholder" type="password" ng-model="confirm_password" name="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' " placeholder="{{'login.comfirm-placeholder' | translate}}" ng-click="confirmActive='active'" ng-blur="confirmActive=''" required />
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner login-inner">
+                                <div class="item-text">
+                                    <span class="login-err-tip" ng-show='form.confirm_password.$error.validator'>{{'login.not-match' | translate}}</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="list-block">
-                <ul>
-                    <li>
-                        <div class="row">
-                            <span class="col-5"></span>
-                            <button class="col-90 login-btn register-btn" ng-click="registerAction()" ng-disabled='form.$invalid'>{{'login.register' | translate}}</button>
-                            <span class="col-5"></span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </form>
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="row">
+                                <span class="col-5"></span>
+                                <button class="col-90 login-btn register-btn" ng-click="registerAction()" ng-disabled='form.$invalid'>{{'login.register' | translate}}</button>
+                                <span class="col-5"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
