@@ -11,18 +11,17 @@
     </div>
 </div>
 <div data-page="dream-inner" class="page page-content air-dream-detail" ng-controller="jetController">
-    <div class="swiper-container swiper-init" data-speed="400" data-space-between="40" data-autoplay="3000" data-pagination=".swiper-pagination">
+    <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true"
+        data-pagination=".swiper-pagination">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
-            <div class="swiper-slide"><img src="assets/images/banner1.jpg"></div>
-            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
+            <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
     <div class="air-info">
         <div class="air-info-header">
             <span ng-bind="dreamObj.createTime | date:'yyyy-MM-dd  HH:mma'"></span>
-            <span>{{'airjet.guest-number' | translate}}<span ng-bind="dreamObj.guest"></span></span>
+            <span>{{'airjet.guest-number' | translate}}<em ng-bind="dreamObj.guest"></em></span>
         </div>
         <div class="air-info-content">
             <div class="content-part">
@@ -40,7 +39,7 @@
                 <div>
                     <span>{{'airjet.machine' | translate}}</span>
                     <span class="money" ng-bind="dreamObj.machine | RMB"></span>
-                 </div>
+                </div>
                 <div>
                     <span>{{'airjet.seat' | translate}}</span>
                     <span class="money" ng-bind="dreamObj.seat | RMB"></span>
@@ -49,39 +48,46 @@
             </div>
         </div>
         <div class="air-info-footer clearfix">
-            <span>{{'airjet.model-number' | translate}}<span ng-bind="dreamObj.model"></span></span>
-            <span>{{'airjet.aircraft-number' | translate}}<span ng-bind="dreamObj.aircraft"></span></span>
+            <img src="assets/images/logo.png" alt="logo">
+            <span>{{'airjet.model-number' | translate}}<em ng-bind="dreamObj.model"></em></span>
+            <span>{{'airjet.aircraft-number' | translate}}<em ng-bind="dreamObj.aircraft"></em></span>
         </div>
         <div class="user-info">
-            <div class="user-info-title">客户信息</div>
+            <div class="user-info-title clearfix">
+                <div class="pull-left">{{'airjet.guest-info' | translate}}</div>
+                <div class="pull-right">
+                    <img src="assets/images/phone.png" alt="phone">
+                    <span>{{'airjet.service' | translate}}</span>
+                </div>
+            </div>
             <div class="form">
                 <div class="form-group">
-                    <label>姓名 :</label>
-                    <input type="text" placeholder="请输入...">
+                    <label>{{'airjet.name' | translate}}</label>
+                    <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.name">
                 </div>
                 <div class="form-group">
-                    <label>电话 :</label>
-                    <input type="text" placeholder="请输入...">
+                    <label>{{'airjet.phone' | translate}}</label>
+                    <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.phone">
                 </div>
                 <div class="form-group">
-                    <label>邮箱 :</label>
-                    <input type="text" placeholder="请输入...">
+                    <label>{{'airjet.email' | translate}}</label>
+                    <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.email">
                 </div>
             </div>
         </div>
         <div class="company-name">
             <div class="form-group">
-                <label>客户名称 :</label>
-                <input type="text" placeholder="请输入企业或机构名称…">
+                <label>{{'airjet.guest-name' | translate}}</label>
+                <input type="text" placeholder="{{'airjet.guest-name-enter' | translate}}" ng-model="formData.guest">
             </div>
 
         </div>
         <div class="company-attention">
             <div class="form-group">
-                <label>备注 :</label>
-                <textarea type="text" placeholder="请输入备注…"></textarea>
+                <label>{{'airjet.remark' | translate}}</label>
+                <textarea type="text" placeholder="{{'airjet.remark-enter' | translate}}" ng-model="formData.remark"></textarea>
             </div>
         </div>
-        <div class="airjet-detail-form-footer"><input type="submit" value="提交"></div>
+        <div class="airjet-detail-form-footer"><input type="submit" value="{{'airjet.submit' | translate}}" ng-click="submit(formData)"></div>
     </div>
 </div>

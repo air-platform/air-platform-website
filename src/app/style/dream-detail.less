@@ -5,6 +5,10 @@
     .text-vertical-center(0.88rem);
     background-color: @base-white;
 
+    em{
+        font-style: normal;
+    }
+
     .air-info-header {
       padding: 0 0.36rem;
       color: #9a9090;
@@ -66,9 +70,17 @@
       background-color: @base-white;
       border-top: 1px solid rgba(0, 0, 0, 0.09);
 
+      img{
+          width: 1.32rem;
+          height: .32rem;
+          vertical-align: middle;
+      }
+
       span {
         float: right;
-        margin-right: 0.5rem;
+        &:last-child{
+          margin-right: 0.5rem;
+        }
       }
     }
   }
@@ -81,6 +93,7 @@
   padding: 0.2rem 0 0.2rem 0.7rem;
 
   textarea {
+    font-family: Arial;
     height: 1.6rem;
     background-color: #f4f4f4;
     border: none;
