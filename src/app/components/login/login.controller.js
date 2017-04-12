@@ -19,7 +19,7 @@
         $scope.cancelAction = cancelAction;
         $scope.signinAction = signinAction;
         $scope.gotoRegister = gotoRegister;
-        
+        $scope.gotoResetPassword = gotoResetPassword;
 
 
         // 获取 f7 页面
@@ -32,7 +32,7 @@
 
 
         function cancelAction() {
-            mainView.router.back();
+            mainView.router.back('#index');
         }
 
         function signinAction() {
@@ -51,6 +51,9 @@
         }
         function gotoRegister() {
             mainView.router.loadPage('app/components/login/register.html');
+        }
+        function gotoResetPassword() {
+            mainView.router.loadPage('app/components/login/reset.html');
         }
 
     }
