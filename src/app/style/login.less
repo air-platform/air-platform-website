@@ -73,11 +73,6 @@
   }
 }
 
-.login-authcode-btn {
-  right: 25px;
-  position: absolute;
-}
-
 .item-input .login-placeholder {
   font-size: 0.14rem;
   color: #999;
@@ -147,7 +142,7 @@
 }
 
 .login-btn{
-  background-color: #ee4a4a;
+  background-color: @base-red;
   border-radius: 0.44rem;
   height: 0.88rem;
   border: none;
@@ -155,11 +150,24 @@
   font-size: 0.36rem;
   font-weight: lighter;
   box-shadow:0 2px 8px 0 rgba(238,74,74,0.50);
+  &:hover {
+    background-color: lighten(@base-red-light,10%);
+    border: none;
+  }
+}
+
+.login-get-authcode-btn {
+  right: 25px;
+  position: absolute;
+  &:hover {
+    color: lighten(@base-dark,10%);
+  }
 }
 
 .login-goto-register {
   font-size: 0.32rem;
   color: @base-gray;
+  font-weight: lighter;
   img {
     width: 0.24rem;
     height: 0.18rem;

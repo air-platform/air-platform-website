@@ -21,6 +21,7 @@
     "reset":"重 置",
     "username":"用户名",
     "password":"密码",
+    "login-placeholder":"请输入手机号/邮箱/用户名",
     "username-placeholder":"请输入手机号...",
     "authcode-placeholder":"请输入验证码...",
     "password-placeholder":"请输入密码...",
