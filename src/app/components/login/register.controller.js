@@ -10,15 +10,22 @@
     angular.module('airsc').controller('registerController', registerController);
 
     /** @ngInject */
-    function registerController($scope,NetworkService,iotUtil) {
+    function registerController($scope,NetworkService,$interval,iotUtil) {
 
         $scope.mobile = '';
         $scope.password = '';
         $scope.authcode = '';
         $scope.confirm_password = '';
 
+        $scope.authcodetip = '获取验证码';
+        $scope.authcodediabled = false;
+
         $scope.backAction = backAction;
         $scope.registerAction = registerAction;
+        $scope.getAuthcode = getAuthcode;
+
+        var countDown = 60;
+        var timer;
 
         // 获取 f7 页面
         // var page = myApp.views[0];
@@ -30,6 +37,22 @@
 
         function backAction() {
             mainView.router.back();
+        }
+
+        function getAuthcode() {
+            $scope.authcodediabled = true;
+            countDown = 60;
+            timer = $interval($scope.upd_count ,1000,60);
+            NetworkService.post('account/verification?mobile=' + $scope.mobile,null,function (res) {
+                myApp.hideIndicator();
+                myApp.alert('注册成功！', 'Air Community', function () {
+                    mainView.router.back();
+                });
+            },function (err) {
+                var errDesc = err.statusText;
+                myApp.hideIndicator();
+                myApp.alert('操作失败！' + errDesc, null);
+            });
         }
         
         function registerAction() {
@@ -47,6 +70,23 @@
             });
             
         }
+
+
+
+
+        $scope.upd_count = function () {
+            countDown = countDown - 1;
+            if (countDown <= 0){
+                $scope.authcodediabled = false;
+                $scope.authcodetip = '获取验证码';
+            }else{
+                $scope.authcodetip = countDown + '秒后重试';
+            }
+        };
+        $scope.$on('$destroy',function(){
+            $interval.cancel(timer);
+        });
+
 
 
     }
