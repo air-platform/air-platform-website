@@ -62,6 +62,7 @@ img {
         padding: 0;
         margin: 0;
         list-style: none;
+        width: 100%;
         li {
           width: 100%;
           line-height: 22px;
@@ -122,27 +123,28 @@ img {
   .pro-right {
     width: 57.2%;
     .pro-top {
-    	padding-left: .32rem;
-      .top-left {
-        p {
-          font-size: .18rem;
-          color: @base-dark;
-        }
-        .pro-adr {
-          font-size: .24rem;
-          color: @base-dark;
-        }
-      }
-      .top-right {
-        .pro-sur {
-          font-size: .42rem;
-          span {
-            font-size: .13rem;
-            color: @base-dark;
+      padding: .23rem .2rem .265rem .32rem;
+      .pro-adr {
+        font-size: .24rem;
+        color: @base-dark;
+        .dfim-center {
+          display: inline-block;
+          .arrow-right {
             display: inline-block;
-            width: .57rem;
+            width: .28rem;
+            margin: .12rem;
+            vertical-align: middle;
+            &:after {
+              width: .15rem;
+              top: -0.06rem;
+            }
           }
         }
+      }
+      .price {
+      	margin-top: .1rem;
+        font-size: .18rem;
+        color: @index-red;
       }
     }
   }

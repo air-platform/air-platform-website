@@ -124,11 +124,9 @@
                 <div class="news-img pull-left">
                   <img src="assets/images/nav-icon.png">
                 </div>
-                <div class="news-text-box pull-right swiper-container swiper-init" data-speed="400" data-loop="true" data-direction="vertical" data-slides-per-view="2" data-slides-per-group="2" data-observer="true" data-observe-parents="true" data-autoplay="2000">
-                  <ul class="news-text swiper-wrapper">
-                    <li class="swiper-slide" ng-repeat="new in news">
-                      <a href="" ng-bind="new"></a>
-                    </li>
+                <div class="news-text-box pull-right">
+                  <ul class="news-text" auto-text>
+                    <!-- <li ng-repeat="listNew in listNews track by $index" auto-text><a href="#"></a></li> -->
                   </ul>
                 </div>
               </div>
@@ -144,15 +142,12 @@
               </div>
               <div class="pro-right pull-right">
                 <div class="pro-top clearfix">
-                  <div class="pull-left top-left">
-                    <p>2017年5月1日 08:00—09:00</p>
-                    <div class="pro-adr">徐闻<i></i>海口美兰机场</div>
-                  </div>
-                  <div class="pull-left top-right">
-                    <div class="pro-sur">
-                      <span>剩余<br>座位</span>2
+                    <div class="pro-adr">徐闻
+                        <div class="dfim-center">
+                            <div class="arrow-right"></div>
+                        </div>海口美兰机场
                     </div>
-                  </div>
+                    <div class="price">¥ <b>966</b> /人 起</div>
                 </div>
                 <div class="pro-bottom">
                   <h5>固定翼飞行员一期招募</h5>
