@@ -7,14 +7,14 @@
                 <img src="../../../assets/images/logo_text.svg">
             </div>
         </div>
-        <form>
+        <form role="form" name="form">
             <div class="list-block">
                 <ul>
                     <li class="item-content">
                         <div class="item-inner login-inner {{userActive}}">
                             <div class="item-title login-icon login-user"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''"/>
+                                <input class="login-placeholder" type="text" ng-model="principal" name="username" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required/>
                             </div>
                         </div>
                     </li>
@@ -22,7 +22,7 @@
                         <div class="item-inner login-inner {{passwordActive}}">
                             <div class="item-title login-icon login-password"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''"/>
+                                <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required/>
                             </div>
                         </div>
                     </li>
@@ -39,7 +39,7 @@
                     <li>
                         <div class="row">
                             <span class="col-5"></span>
-                            <button class="col-90 login-btn" ng-click="signinAction()">{{'login.login' | translate}}</button>
+                            <button class="col-90 login-btn" ng-click="signinAction()" ng-disabled='form.$invalid'>{{'login.login' | translate}}</button>
                             <span class="col-5"></span>
                         </div>
                     </li>

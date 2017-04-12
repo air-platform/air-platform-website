@@ -7,14 +7,14 @@
                 <img src="../../../assets/images/logo_text.svg">
             </div>
         </div>
-        <form>
+        <form role="form" name="form">
             <div class="list-block">
                 <ul>
                     <li class="item-content">
                         <div class="item-inner login-inner {{userActive}}">
                             <div class="item-title login-icon login-user"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="text" name="username" placeholder="{{'login.username-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''"/>
+                                <input class="login-placeholder" type="text" name="username" ng-length="10" placeholder="{{'login.username-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required />
                             </div>
                         </div>
                     </li>
@@ -22,7 +22,7 @@
                         <div class="item-inner login-inner {{authActive}}">
                             <div class="item-title login-icon login-authcode"></div>
                             <div class="item-input">
-                                <input class="login-placeholder " type="text" name="auth" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''"/>
+                                <input class="login-placeholder " type="text" name="auth" placeholder="{{'login.authcode-placeholder' | translate}}" ng-click="authActive='active'" ng-blur="authActive=''" required />
                             </div>
                         </div>
                         <div class="item-media"><button class="login-get-authcode-btn">获取验证码</button></div>
@@ -31,7 +31,7 @@
                         <div class="item-inner login-inner {{passwordActive}}">
                             <div class="item-title login-icon login-password"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''"/>
+                                <input class="login-placeholder" type="password" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required />
                             </div>
                         </div>
                     </li>
@@ -39,7 +39,7 @@
                         <div class="item-inner login-inner {{confirmActive}}">
                             <div class="item-title login-icon login-confirm-password"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="password" name="confirm" placeholder="{{'login.comfirm-placeholder' | translate}}" ng-click="confirmActive='active'" ng-blur="confirmActive=''"/>
+                                <input class="login-placeholder" type="password" name="confirm" placeholder="{{'login.comfirm-placeholder' | translate}}" ng-click="confirmActive='active'" ng-blur="confirmActive=''" required />
                             </div>
                         </div>
                     </li>
@@ -51,7 +51,7 @@
                     <li>
                         <div class="row">
                             <span class="col-5"></span>
-                            <button class="col-90 login-btn register-btn" ng-click="registerAction()">{{'login.register' | translate}}</button>
+                            <button class="col-90 login-btn register-btn" ng-click="registerAction()" ng-disabled='form.$invalid'>{{'login.register' | translate}}</button>
                             <span class="col-5"></span>
                         </div>
                     </li>

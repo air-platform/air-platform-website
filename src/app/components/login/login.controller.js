@@ -13,21 +13,24 @@
     function loginController($scope,NetworkService,iotUtil) {
 
 
+        $scope.principal = '';
+        $scope.credential = '';
+
         // 获取 f7 页面
-        var page = myApp.views[0];
-        var pageContainer = $$(page.container);
+        // var page = myApp.views[0];
+        // var pageContainer = $$(page.container);
+        // var username = pageContainer.find('input[name="username"]').val();
+        // var password = pageContainer.find('input[name="password"]').val();
 
         $scope.cancelAction = function () {
             mainView.router.back();
         }
 
         $scope.signinAction = function () {
+
             myApp.showIndicator();
 
-            var username = pageContainer.find('input[name="username"]').val();
-            var password = pageContainer.find('input[name="password"]').val();
-
-            NetworkService.post('account/auth',{principal:username,credential:password},function (res) {
+            NetworkService.post('account/auth',{principal:$scope.principal,credential:$scope.credential},function (res) {
                 myApp.hideIndicator();
                 myApp.alert('登录成功！', 'Air Community', function () {
                     mainView.router.back();

@@ -13,6 +13,7 @@
             /* 3rd-Party Modules */
             'ui.jq',
             'ui.load',
+            'ui.validate',
             'yaru22.angular-timeago',
             'monospaced.elastic',
             'pascalprecht.translate',
