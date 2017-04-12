@@ -14,7 +14,7 @@
                         <div class="item-inner login-inner {{userActive}}">
                             <div class="item-title login-icon login-user"></div>
                             <div class="item-input">
-                                <input class="login-placeholder" type="text" ng-model="principal" name="username" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required/>
+                                <input class="login-placeholder" type="text" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required/>
                             </div>
                         </div>
                     </li>

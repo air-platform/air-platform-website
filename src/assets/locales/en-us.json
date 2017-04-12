@@ -28,7 +28,8 @@
     "new-password-placeholder":"请输入新密码...",
     "comfirm-placeholder":"再次输入密码...",
     "forgot-password":"忘记密码?",
-    "go-register":"还没有账号，去注册？"
+    "go-register":"还没有账号，去注册？",
+    "not-match":"Passwords do not match!"
   },
   "airjet": {
     "travel-plan": "旅行计划",

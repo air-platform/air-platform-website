@@ -12,22 +12,30 @@
     /** @ngInject */
     function registerController($scope,NetworkService,iotUtil) {
 
-        // 获取 f7 页面
-        var page = myApp.views[0];
-        var pageContainer = $$(page.container);
+        $scope.mobile = '';
+        $scope.password = '';
+        $scope.authcode = '';
+        $scope.confirm_password = '';
 
-        $scope.backAction = function () {
+        $scope.backAction = backAction;
+        $scope.registerAction = registerAction;
+
+        // 获取 f7 页面
+        // var page = myApp.views[0];
+        // var pageContainer = $$(page.container);
+        // var username = pageContainer.find('input[name="username"]').val();
+        // var authcode = pageContainer.find('input[name="auth"]').val();
+        // var password = pageContainer.find('input[name="password"]').val();
+
+
+        function backAction() {
             mainView.router.back();
         }
         
-        $scope.registerAction = function () {
+        function registerAction() {
             myApp.showIndicator();
 
-            var username = pageContainer.find('input[name="username"]').val();
-            var authcode = pageContainer.find('input[name="auth"]').val();
-            var password = pageContainer.find('input[name="password"]').val();
-
-            NetworkService.post('account',{mobile:username,verificationCode:authcode,password:password},function (res) {
+            NetworkService.post('account',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {
                 myApp.hideIndicator();
                 myApp.alert('注册成功！', 'Air Community', function () {
                     mainView.router.back();

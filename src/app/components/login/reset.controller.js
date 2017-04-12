@@ -12,8 +12,19 @@
     /** @ngInject */
     function resetController($scope,iotUtil) {
 
-        $scope.registerAction = function () {
+        $scope.mobile = '';
+        $scope.password = '';
+        $scope.authcode = '';
 
+        $scope.backAction = backAction;
+
+        $scope.resetAction = resetAction;
+
+        function resetAction() {
+
+        }
+        function backAction() {
+            mainView.router.back();
         }
 
     }
