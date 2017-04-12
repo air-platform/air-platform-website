@@ -13,20 +13,20 @@
     </div>
 </div>
 <!--<div class="page-content">-->
-<div data-page="airjet" class="page page-content" ng-controller="jetController">
+<div data-page="airjet" class="page page-content" ng-controller="jetController as jet">
     <div class="buttons-row air-tabs">
         <!-- Link to 1st tab, active -->
-        <a href="#tab1" class="tab-link active"><span>{{'travel-plan' | translate}}</span></a>
+        <a href="#tab1" class="tab-link active"><span>{{'airjet.travel-plan' | translate}}</span></a>
         <!-- Link to 2nd tab -->
-        <a href="#tab2" class="tab-link"><span>{{'dream-flying' | translate}}</span></a>
+        <a href="#tab2" class="tab-link"><span>{{'airjet.dream-flying' | translate}}</span></a>
         <!-- Link to 3rd tab -->
-        <a href="#tab3" class="tab-link"><span>{{'card-products' | translate}}</span></a>
+        <a href="#tab3" class="tab-link"><span>{{'airjet.card-products' | translate}}</span></a>
     </div>
     <div class="tabs">
         <!-- Tab 1, active by default -->
         <div id="tab1" class="tab active">
             <div class="content-block">
-                {{'travel-plan' | translate}}
+                {{'airjet.travel-plan' | translate}}
                 <a href="app/components/airjet/tour-detail.html">详情</a>
                 <a href="app/components/airjet/dream-detail.html">详情</a>
                 <a href="app/components/airjet/dream-inner.html">详情</a>
@@ -35,184 +35,49 @@
         <!-- Tab 2 -->
         <div id="tab2" class="tab">
             <div class="dream-flying-content">
-                <div class="dream-flying-item active">
+                <div class="dream-flying-item" ng-repeat="item in jet.dreamFlyList track by $index">
                     <div class="dfi-left">
                         <div class="dfi-top">
-                            <div class="dreaam-flying-date">2017年04月07日 周六</div>
+                            <div class="dreaam-flying-date" ng-bind="item.createTime"></div>
                             <div class="dreaam-flying-logo">
                                 <img src="assets/images/logo.png" alt="logo">
                             </div>
                         </div>
                         <div class="dfi-middle">
                             <div class="dfim-left">
-                                <strong class="dfim-address">香港</strong>
-                                <span class="dfim-time">13:00</span>
+                                <strong class="dfim-address" ng-bind="item.departure"></strong>
+                                <span class="dfim-time" ng-bind="item.startTime"></span>
                             </div>
                             <div class="dfim-center">
                                 <div class="arrow-right"></div>
                             </div>
                             <div class="dfim-right">
-                                <strong class="dfim-address">北京</strong>
-                                <span class="dfim-time">16:30</span>
+                                <strong class="dfim-address" ng-bind="item.destination"></strong>
+                                <span class="dfim-time" ng-bind="item.endTime"></span>
                             </div>
                         </div>
                         <div class="dfi-bottom">
                             <p>
-                                <span>{{'model-number' | translate}}</span>
-                                <span>G650</span>
+                                <span>{{'airjet.model-number' | translate}}</span>
+                                <span ng-bind="item.model"></span>
                             </p>
                             <p>
-                                <span>{{'aircraft-number' | translate}}</span>
-                                <span>00092842</span>
+                                <span>{{'airjet.aircraft-number' | translate}}</span>
+                                <span ng-bind="item.aircraft"></span>
                             </p>
                         </div>
                     </div>
                     <div class="dfi-right">
-                        <div class="guest-count">{{'guest-number' | translate}}16</div>
+                        <div class="guest-count">{{'airjet.guest-number' | translate}}16</div>
                         <div class="plane-item first">
-                            <div class="plane">整机</div>
-                            <div class="plane-money">¥7.7万元</div>
+                            <div class="plane">{{'airjet.machine' | translate}}</div>
+                            <div class="plane-money" ng-bind="item.machine | RMB">¥7.7万元</div>
                         </div>
                         <div class="plane-item last">
-                            <div class="plane">座位</div>
-                            <div class="plane-money">¥1,300元</div>
+                            <div class="plane">{{'airjet.seat' | translate}}</div>
+                            <div class="plane-money" ng-bind="item.seat | RMB">¥1,300元</div>
                         </div>
-                        <div class="plane-require">（最少3人成行）</div>
-                    </div>
-                </div>
-                <div class="dream-flying-item">
-                    <div class="dfi-left">
-                        <div class="dfi-top">
-                            <div class="dreaam-flying-date">2017年04月07日 周六</div>
-                            <div class="dreaam-flying-logo">
-                                <img src="assets/images/logo.png" alt="logo">
-                            </div>
-                        </div>
-                        <div class="dfi-middle">
-                            <div class="dfim-left">
-                                <strong class="dfim-address">香港</strong>
-                                <span class="dfim-time">13:00</span>
-                            </div>
-                            <div class="dfim-center">
-                                <div class="arrow-right"></div>
-                            </div>
-                            <div class="dfim-right">
-                                <strong class="dfim-address">北京</strong>
-                                <span class="dfim-time">16:30</span>
-                            </div>
-                        </div>
-                        <div class="dfi-bottom">
-                            <p>
-                                <span>{{'model-number' | translate}}</span>
-                                <span>G650</span>
-                            </p>
-                            <p>
-                                <span>{{'aircraft-number' | translate}}</span>
-                                <span>00092842</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="dfi-right">
-                        <div class="guest-count">{{'guest-number' | translate}}16</div>
-                        <div class="plane-item first">
-                            <div class="plane">整机</div>
-                            <div class="plane-money">¥7.7万元</div>
-                        </div>
-                        <div class="plane-item last">
-                            <div class="plane">座位</div>
-                            <div class="plane-money">¥1,300元</div>
-                        </div>
-                        <div class="plane-require">（最少3人成行）</div>
-                    </div>
-                </div>
-                <div class="dream-flying-item">
-                    <div class="dfi-left">
-                        <div class="dfi-top">
-                            <div class="dreaam-flying-date">2017年04月07日 周六</div>
-                            <div class="dreaam-flying-logo">
-                                <img src="assets/images/logo.png" alt="logo">
-                            </div>
-                        </div>
-                        <div class="dfi-middle">
-                            <div class="dfim-left">
-                                <strong class="dfim-address">香港</strong>
-                                <span class="dfim-time">13:00</span>
-                            </div>
-                            <div class="dfim-center">
-                                <div class="arrow-right"></div>
-                            </div>
-                            <div class="dfim-right">
-                                <strong class="dfim-address">北京</strong>
-                                <span class="dfim-time">16:30</span>
-                            </div>
-                        </div>
-                        <div class="dfi-bottom">
-                            <p>
-                                <span>{{'model-number' | translate}}</span>
-                                <span>G650</span>
-                            </p>
-                            <p>
-                                <span>{{'aircraft-number' | translate}}</span>
-                                <span>00092842</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="dfi-right">
-                        <div class="guest-count">{{'guest-number' | translate}}16</div>
-                        <div class="plane-item first">
-                            <div class="plane">整机</div>
-                            <div class="plane-money">¥7.7万元</div>
-                        </div>
-                        <div class="plane-item last">
-                            <div class="plane">座位</div>
-                            <div class="plane-money">¥1,300元</div>
-                        </div>
-                        <div class="plane-require">（最少3人成行）</div>
-                    </div>
-                </div>
-                <div class="dream-flying-item">
-                    <div class="dfi-left">
-                        <div class="dfi-top">
-                            <div class="dreaam-flying-date">2017年04月07日 周六</div>
-                            <div class="dreaam-flying-logo">
-                                <img src="assets/images/logo.png" alt="logo">
-                            </div>
-                        </div>
-                        <div class="dfi-middle">
-                            <div class="dfim-left">
-                                <strong class="dfim-address">香港</strong>
-                                <span class="dfim-time">13:00</span>
-                            </div>
-                            <div class="dfim-center">
-                                <div class="arrow-right"></div>
-                            </div>
-                            <div class="dfim-right">
-                                <strong class="dfim-address">北京</strong>
-                                <span class="dfim-time">16:30</span>
-                            </div>
-                        </div>
-                        <div class="dfi-bottom">
-                            <p>
-                                <span>{{'model-number' | translate}}</span>
-                                <span>G650</span>
-                            </p>
-                            <p>
-                                <span>{{'aircraft-number' | translate}}</span>
-                                <span>00092842</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="dfi-right">
-                        <div class="guest-count">{{'guest-number' | translate}}16</div>
-                        <div class="plane-item first">
-                            <div class="plane">整机</div>
-                            <div class="plane-money">¥7.7万元</div>
-                        </div>
-                        <div class="plane-item last">
-                            <div class="plane">座位</div>
-                            <div class="plane-money">¥1,300元</div>
-                        </div>
-                        <div class="plane-require">（最少3人成行）</div>
+                        <div class="plane-require">{{'airjet.least' | translate:item.least}}</div>
                     </div>
                 </div>
             </div>
