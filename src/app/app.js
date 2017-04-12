@@ -18,7 +18,7 @@
     $$(document).on('navbarInit', function (e) {
         var navbar = e.detail.navbar;
         var page = e.detail.page
-        console.log(navbar);
+        // console.log(navbar);
     });
 
     // Now we need to run the code that will be executed only for About page.
