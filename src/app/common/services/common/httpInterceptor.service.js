@@ -2,20 +2,18 @@
   angular.module('airsc')
     .factory('HttpInterceptor', HttpInterceptor);
 
-  function HttpInterceptor($q, TIMEOUT) {
+  function HttpInterceptor($q, TIMEOUT, STATUS) {
     return {
       request: function (config) {
         config.timeout = TIMEOUT.HTTP;
         // myApp.showIndicator();
-        console.log(config);
         return config;
       },
       responseError: function (res) {
-        console.log(res);
         // myApp.hideIndicator();
-        switch (res.status) {
-          case 201 :
-            console.log('未登录');
+        switch (res.status.code) {
+          case STATUS.HTTP.UNAUTHORIZED :
+            //Todo 未登录逻辑
             break;
         }
         return $q.reject(res);
