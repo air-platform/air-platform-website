@@ -14,7 +14,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($translateProvider,timeAgoSettings, $logProvider, RestangularProvider,constdata) {
+    function config($translateProvider,timeAgoSettings, $logProvider, RestangularProvider,constdata, $httpProvider) {
         // Enable log
         $logProvider.debugEnabled(true);
 
@@ -51,7 +51,8 @@
             'Accept': 'application/json'
         });
 
-
+        // set http interceptors
+        $httpProvider.interceptors.push('HttpInterceptor');
     }
 
 })();
