@@ -8,12 +8,12 @@
     <div data-page="schoollist" class="page" ng-controller="schoollistController">
         <div class="page-content">
 
-            <div>
+            <div ng-repeat="item in items">
                 <div class="card school-card-header-pic">
-                    <div style="background-image:url(http://lorempixel.com/1000/600/nature/3/)" valign="bottom" class="card-header color-white no-border"></div>
+                    <div style="background-image:url({{item.imgUrl}})" valign="bottom" class="card-header color-white no-border"></div>
                     <div class="card-content">
                         <div class="card-content-inner">
-                            <p><span>海南航空学校有限责任公司</span></p>
+                            <p><span>{{item.title}}</span></p>
                         </div>
                     </div>
                 </div>
