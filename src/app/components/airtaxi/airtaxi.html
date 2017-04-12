@@ -12,8 +12,8 @@
         </div>
         <div class="subnavbar airtaxi-subnavbar">
           <div class="buttons-row airtaxi-nav">
-            <a href="#air-taxi-cross-channel" class="button tab-link airtaxi-issue active">飞跃海峡</a>
-            <a href="#air-taxi-tour" class="button tab-link airtaxi-issue">观光旅游</a>
+            <a href="#air-taxi-cross-channel" class="button tab-link airtaxi-project active">飞跃海峡</a>
+            <a href="#air-taxi-tour" class="button tab-link airtaxi-project">观光旅游</a>
           </div>
         </div>
     </div>
@@ -25,11 +25,12 @@
         <div class="page-content hide-bars-on-scroll">
           <div class="tabs">
             <div id="air-taxi-cross-channel" class="tab active">
-              <div class="content-block map">
+              <div class="content-block">
                 <div class="air-taxi-map" id="air-taxi-map"></div>
-                <div class="tour-select">
-                  <div class="content-block-title">行程一</div>
-                  <div class="list-block tour-select-content">
+                <div class="channel-select">
+                  <div class="button add-schedule-button pull-right">+</div>
+                  <div class="schedule-title">行程一</div>
+                  <div class="list-block channel-select-content">
                     <div class="row">
                       <div class="item-content col-50">
                         <div class="item-inner">
@@ -52,9 +53,9 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="item-content">
+                      <div class="item-content start-city-select col-45">
                         <div class="item-inner">
-                          <div class="item-title label start-city-select airtaxi-select-label">起飞城市</div>
+                          <div class="item-title label airtaxi-select-label">起飞城市</div>
                           <div class="item-input">
                             <select>
                               <option>徐闻</option>
@@ -62,10 +63,13 @@
                           </div>
                         </div>
                       </div>
-                      <div class="arrow-bidirection"></div>
-                      <div class="item-content">
+                      <div class="arrow-bidirection">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                      </div>
+                      <div class="item-content arrival-city-select col-50">
                         <div class="item-inner">
-                          <div class="item-title label arrival-city-select airtaxi-select-label">到达城市</div>
+                          <div class="item-title label airtaxi-select-label">到达城市</div>
                           <div class="item-input">
                             <select>
                               <option>海口港</option>
@@ -78,9 +82,9 @@
                     </div>
                     <div class="row">
                       <div class="item-content">
-                        <div class="item-inner row">
-                          <div class="item-title label col-50">选择航班</div>
-                          <div class="item-input col-50">
+                        <div class="item-inner">
+                          <div class="item-title label">选择航班</div>
+                          <div class="item-input select-flight">
                             <select>
                               <option>首都航空B-7186</option>
                               <option>海南航空B-7898</option>
