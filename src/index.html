@@ -92,6 +92,9 @@
       <div class="pages navbar-through">
         <div data-page="index" class="page index-page">
           <div class="page-content">
+            <a href="#" class="open-popup">
+                <div class="index-search"><i class="fa fa-search"></i><input type="text" placeholder="大家都在搜五一飞跃海峡航线"></input></div>
+            </a>
             <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
@@ -164,6 +167,29 @@
       <!--</div>-->
     </div>
   </div>
+  <div class="popup" style="display: none;">
+      <div class="view">
+        <div class="pages">
+          <div class="page navbar-fixed">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <form class="searchbar searchbar-active">
+                  <div class="searchbar-input">
+                    <input type="search" placeholder="Search" class=""><a href="#" class="close-popup" style="opacity: 1;font-size: 15px;position: absolute;right: 0;display: block;top: 0;">X</a>
+                    <div class="preloader preloader-white"><span class="preloader-inner"><span class="preloader-inner-gap"></span><span class="preloader-inner-left"><span class="preloader-inner-half-circle"></span></span><span class="preloader-inner-right"><span class="preloader-inner-half-circle"></span></span></span></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="list-block">
+                <ul class="search-results"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uZ6QZYpe6GUT2wTjBvLrEDx8wlZaMOmu"></script>
   <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>

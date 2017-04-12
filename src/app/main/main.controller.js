@@ -35,14 +35,11 @@
             $scope.addLi($scope.listNews[i]);
         }
 
-        function get() {
-            NetworkService.get('account/auth', function(res) {
-                console.log(res);
-            }, function(err) {
-                console.log(err);
-            });
-        }
-
+        NetworkService.get('account/auth', function(res) {
+            console.log(res);
+        }, function(err) {
+            console.log(err);
+        });
     }
 
 })();
