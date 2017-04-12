@@ -1,7 +1,19 @@
 /*login*/
 
+.login-cancel,
+.register-back,
+.reset-back {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .air-login-top {
-  background-image: url("../../assets/images/login_top.svg");
+  background-image: url("@{base-image-path}login_top.svg");
   width: 100%;
   height: 6.66rem;
   background-size: cover;
@@ -19,6 +31,10 @@
   img{
     display: block;
   }
+}
+
+.air-register-top {
+  height: 2.2rem;
 }
 
 .air-login-container {
@@ -71,23 +87,38 @@
     height: 0.5rem;
 
     &.login-user {
-      background-image: url("../../assets/images/login_user.svg");
+      background-image: url("@{base-image-path}login_user.svg");
       background-repeat: no-repeat;
     }
-
+    &.login-authcode {
+      background-image: url("@{base-image-path}login_pwd.svg");
+      background-repeat: no-repeat;
+    }
     &.login-password {
-      background-image: url("../../assets/images/login_pwd.svg");
+      background-image: url("@{base-image-path}login_pwd.svg");
+      background-repeat: no-repeat;
+    }
+    &.login-confirm-password {
+      background-image: url("@{base-image-path}login_pwd.svg");
       background-repeat: no-repeat;
     }
   }
 
   &.active {
     .login-user {
-      background-image: url("../../assets/images/login_user_h.svg");
+      background-image: url("@{base-image-path}login_user_h.svg");
+      background-repeat: no-repeat;
+    }
+    &.login-authcode {
+      background-image: url("@{base-image-path}login_pwd_h.svg");
       background-repeat: no-repeat;
     }
     .login-password {
-      background-image: url("../../assets/images/login_pwd_h.svg");
+      background-image: url("@{base-image-path}login_pwd_h.svg");
+      background-repeat: no-repeat;
+    }
+    .login-confirm-password {
+      background-image: url("@{base-image-path}login_pwd_h.svg");
       background-repeat: no-repeat;
     }
 
@@ -111,7 +142,7 @@
 }
 
 .login-btn{
-  background-color: #ee4a4a;
+  background-color: @base-red;
   border-radius: 0.44rem;
   height: 0.88rem;
   border: none;
@@ -119,11 +150,24 @@
   font-size: 0.36rem;
   font-weight: lighter;
   box-shadow:0 2px 8px 0 rgba(238,74,74,0.50);
+  &:hover {
+    background-color: lighten(@base-red-light,10%);
+    border: none;
+  }
+}
+
+.login-get-authcode-btn {
+  right: 25px;
+  position: absolute;
+  &:hover {
+    color: lighten(@base-dark,10%);
+  }
 }
 
 .login-goto-register {
   font-size: 0.32rem;
-
+  color: @base-gray;
+  font-weight: lighter;
   img {
     width: 0.24rem;
     height: 0.18rem;

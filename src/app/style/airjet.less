@@ -4,7 +4,7 @@
     font-size: .32rem;
     background-color: #fbfbfb;
     a{
-        color: #666;
+        color: @base-gray-dark;
         display: block;
         height: 100%;
         line-height: .88rem;
@@ -17,25 +17,147 @@
         margin-top: -.05rem;
     }
     .active{
-        color: #ee4a4a;
+        color: @base-red-light;
     }
     .active:after{
-        background-color: #ee4a4a;
+        background-color: @base-red-light;
     }
 }
 
 .dream-flying-content{
-    margin-top: 1.28rem;
+    margin-top: .4rem;
     width: 100%;
     height: 2.6rem;
     padding: 0 .16rem 0 .2rem;
     box-sizing: border-box;
+    font-family:PingFangSC-Regular;
     .dream-flying-item{
-        background:#fff;
+        background-color:@base-white;
         height: 100%;
-        border:.02rem solid #f2f2f2;
-        border-radius:8px;
+        border:.02rem solid @base-white-dark;
+        box-sizing: border-box;
         margin-bottom: .3rem;
+        border-radius: .16rem;
+        display: flex;
+        display: -webkit-flex;
+        position: relative;
+        overflow: hidden;
+        color: @base-gray-light;
+        .dfi-left{
+            width: calc(~"100% - 2.26rem");
+            height: 100%;
+            box-sizing: border-box;
+            padding: .18rem .24rem;
+            border-top-left-radius: .16rem;
+            border-bottom-left-radius: .16rem;
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            .dfi-top{
+                display: flex;
+                display: -webkit-flex;
+                height: .36rem;
+                line-height: .36rem;
+                justify-content: space-between;
+                .dreaam-flying-date{
+                    font-size: .24rem
+                }
+                .dreaam-flying-logo{
+                    img{
+                        width: 1.32rem;
+                        height: .32rem;
+                        // width: 1.056rem;
+                        // height: .256rem;
+                        vertical-align: top;
+                    }
+                }
+            }
+            .dfi-middle{
+                margin: .42rem .62rem .42rem .62rem;
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                .dfim-address{
+                    font-weight: 400;
+                    font-size: .36rem;
+                    font-family:PingFangSC-Medium;
+                }
+                .dfim-time{
+                    font-size: .28rem;
+                }
+                .dfim-left{
+                    text-align: left;
+                }
+                .dfim-right{
+                    text-align: right;
+                }
+            }
+            .dfi-bottom{
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                p{
+                    font-size: .24rem;
+                }
+            }
+            
+        }
+        .dfi-right{
+            width: 2.26rem;
+            box-sizing: border-box;
+            padding: .18rem 0 .18rem .24rem;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border-top-right-radius: .16rem;
+            border-bottom-right-radius: .16rem;
+            color: @base-white;
+            text-align: left;
+            .guest-count{
+                margin-bottom: .12rem;
+            }
+            .plane, .guest-count{
+                height: .28rem;
+                line-height: .28rem;
+                font-size: .24rem;
+            }
+            .plane-money{
+                font-family:PingFangSC-Medium;
+                height: .34rem;
+                line-height: .34rem;
+                font-size: .28rem;
+                text-indent: .18rem;
+            }
+            .plane-item.first{
+                margin-bottom: .2rem;
+            }
+            .plane-item.last{
+                margin-bottom: .06rem;
+            }
+            .plane-require{
+                height: .24rem;
+                font-size: .2rem;
+            }
+        }
+        &.active{
+            .dfim-address{
+                color: @base-gray-dark;
+            }
+            .dfi-right{
+                background: @base-blue-dark
+            }
+        }
+        &:after{
+            content: "";
+            display: block;
+            width: .5rem;
+            height: .5rem;
+            background-color: @base-light-dark;
+            position: absolute;
+            border-radius: 50%;
+            right: -.25rem;
+            top:calc(~"50% - 0.25rem");
+            z-index: 99;
+        }
     }
 }
 
@@ -188,6 +310,18 @@
 
     &.air-card-level-7 {
         .air-special-card(#f0844f);
+    }
+
+    &.air-card-level-1,
+    &.air-card-level-2,
+    &.air-card-level-3,
+    &.air-card-level-4,
+    &.air-card-level-5,
+    &.air-card-level-6,
+    &.air-card-level-7 {
+        a {
+            color: inherit;
+        }
     }
 
 }
