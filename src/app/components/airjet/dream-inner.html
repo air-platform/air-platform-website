@@ -10,7 +10,7 @@
 
     </div>
 </div>
-<div data-page="airjet" class="page page-content air-dream-detail" ng-controller="jetController">
+<div data-page="dream-inner" class="page page-content air-dream-detail" ng-controller="jetController">
     <div class="swiper-container swiper-init" data-speed="400" data-space-between="40" data-autoplay="3000" data-pagination=".swiper-pagination">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
@@ -21,36 +21,36 @@
     </div>
     <div class="air-info">
         <div class="air-info-header">
-            <span>2017-04-07  13:00PM</span>
-            <span>载客人数: 16</span>
+            <span ng-bind="dreamObj.createTime | date:'yyyy-MM-dd  HH:mma'"></span>
+            <span>{{'airjet.guest-number' | translate}}<span ng-bind="dreamObj.guest"></span></span>
         </div>
         <div class="air-info-content">
             <div class="content-part">
                 <div>
-                    <div class="air-location">香港</div>
-                    <div class="air-date">13:00</div>
+                    <div class="air-location" ng-bind="dreamObj.departure"></div>
+                    <div class="air-date" ng-bind="dreamObj.startTime"></div>
                 </div>
                 <div class="arrow-right"></div>
                 <div>
-                    <div class="air-location">北京</div>
-                    <div class="air-date">16:00</div>
+                    <div class="air-location" ng-bind="dreamObj.destination"></div>
+                    <div class="air-date" ng-bind="dreamObj.endTime"></div>
                 </div>
             </div>
             <div class="content-part">
                 <div>
-                    <span>整机</span>
-                    <span class="money">¥343.2万元</span>
+                    <span>{{'airjet.machine' | translate}}</span>
+                    <span class="money" ng-bind="dreamObj.machine | RMB"></span>
                  </div>
                 <div>
-                    <span>座位</span>
-                    <span class="money">¥2,800元</span>
-                    <span>（最少3人成行）</span>
+                    <span>{{'airjet.seat' | translate}}</span>
+                    <span class="money" ng-bind="dreamObj.seat | RMB"></span>
+                    <span>{{'airjet.least' | translate:dreamObj.least}}</span>
                 </div>
             </div>
         </div>
         <div class="air-info-footer clearfix">
-            <span>机型号: G650</span>
-            <span>飞机号: 00092834</span>
+            <span>{{'airjet.model-number' | translate}}<span ng-bind="dreamObj.model"></span></span>
+            <span>{{'airjet.aircraft-number' | translate}}<span ng-bind="dreamObj.aircraft"></span></span>
         </div>
         <div class="user-info">
             <div class="user-info-title">客户信息</div>

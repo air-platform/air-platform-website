@@ -1,53 +1,70 @@
-<div data-page="login-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="loginController">
-    <div class="page-content login-screen-content no-border">
-        <div class="air-login-top">
-            <div><a class="login-cancel" ng-click="cancelAction()"><img src="../../../assets/images/cancel.png"></a></div>
-            <div class="air-login-container">
-                <img src="../../../assets/images/login_logo_icon.svg">
-                <img src="../../../assets/images/logo_text.svg">
-            </div>
-        </div>
-        <form role="form" name="form">
-            <div class="list-block">
-                <ul>
-                    <li class="item-content">
-                        <div class="item-inner login-inner {{userActive}}">
-                            <div class="item-title login-icon login-user"></div>
-                            <div class="item-input">
-                                <input class="login-placeholder" type="text" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required/>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner login-inner {{passwordActive}}">
-                            <div class="item-title login-icon login-password"></div>
-                            <div class="item-input">
-                                <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required/>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content">
-                        <div class="item-inner">
-                            <a class="login-forgot-pwd" href="../../../app/components/login/reset.html">{{'login.forgot-password' | translate}}</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="list-block">
-                <ul>
-                    <li>
-                        <div class="row">
-                            <span class="col-5"></span>
-                            <button class="col-90 login-btn" ng-click="signinAction()" ng-disabled='form.$invalid'>{{'login.login' | translate}}</button>
-                            <span class="col-5"></span>
-                        </div>
-                    </li>
-                </ul>
-                <div class="list-block-label">
-                    <a href="../../../app/components/login/register.html" class="login-goto-register">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
+<!--<div class="navbar">-->
+    <!--<div class="navbar-inner">-->
+        <!--<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>-->
+        <!--<div class="center sliding">Login</div>-->
+        <!--&lt;!&ndash;<div class="right">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; Right link contains only icon - additional "icon-only" class&ndash;&gt;<a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="navbar">-->
+    <!--<div class="navbar-inner">-->
+        <!--<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>-->
+        <!--<div class="center sliding">Login</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="pages navbar-through">
+    <div data-page="login-screen" class="page no-navbar no-swipeback no-border" ng-controller="loginController">
+        <div class="page-content login-screen-content no-border">
+            <div class="air-login-top">
+                <div><a class="login-cancel" ng-click="cancelAction()"><img src="../../../assets/images/cancel.png"></a></div>
+                <div class="air-login-container">
+                    <img src="../../../assets/images/login_logo_icon.svg">
+                    <img src="../../../assets/images/logo_text.svg">
                 </div>
             </div>
-        </form>
+            <form role="form" name="form">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner login-inner {{userActive}}">
+                                <div class="item-title login-icon login-user"></div>
+                                <div class="item-input">
+                                    <input class="login-placeholder" type="text" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required/>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner login-inner {{passwordActive}}">
+                                <div class="item-title login-icon login-password"></div>
+                                <div class="item-input">
+                                    <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required/>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <a class="login-forgot-pwd" href="../../../app/components/login/reset.html">{{'login.forgot-password' | translate}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="row">
+                                <span class="col-5"></span>
+                                <button class="col-90 login-btn" ng-click="signinAction()" ng-disabled='form.$invalid'>{{'login.login' | translate}}</button>
+                                <span class="col-5"></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="list-block-label">
+                        <a class="login-goto-register" ng-click="gotoRegister()">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

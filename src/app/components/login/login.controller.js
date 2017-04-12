@@ -18,14 +18,17 @@
 
         $scope.cancelAction = cancelAction;
         $scope.signinAction = signinAction;
+        $scope.gotoRegister = gotoRegister;
+        
 
 
         // 获取 f7 页面
         // var page = myApp.views[0];
+        // var page = myApp.getCurrentView();
+        // console.log(page.activePage);
         // var pageContainer = $$(page.container);
         // var username = pageContainer.find('input[name="username"]').val();
         // var password = pageContainer.find('input[name="password"]').val();
-
 
 
         function cancelAction() {
@@ -45,6 +48,9 @@
                 myApp.alert('操作失败！' + errDesc, null);
             });
 
+        }
+        function gotoRegister() {
+            mainView.router.loadPage('../../../app/components/login/register.html');
         }
 
     }

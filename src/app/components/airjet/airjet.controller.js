@@ -8,65 +8,84 @@
 
     /** @ngInject */
     function jetController($scope,iotUtil) {
-        var airjetVm = this;
+        var page = myApp.views[0];
+        var formData = page.activePage.query;
 
-        airjetVm.dreamFlyList = [{
-            createTime: '2017年04月07日 周六',
+        $scope.dreamFlyList = [{
+            id:'1',
+            createTime: '1491541200000',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
             model: 'G650',
+            guest: '16',
             aircraft: '00092842',
             machine: '77000',
             seat: '1300',
             least:{number: '3'}
         },{
+            id:'2',
             createTime: '2017年04月07日 周六',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
             model: 'G650',
+            guest: '16',
             aircraft: '00092842',
             machine: '666636',
             seat: '1300',
             least:{number: '3'}
         },{
+            id:'3',
             createTime: '2017年04月07日 周六',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
             model: 'G650',
+            guest: '16',
             aircraft: '00092842',
             machine: '77000',
             seat: '1300',
             least:{number: '3'}
         },{
+            id:'4',
             createTime: '2017年04月07日 周六',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
             model: 'G650',
+            guest: '16',
             aircraft: '00092842',
             machine: '44265',
             seat: '1300',
             least:{number: '3'}
         },{
+            id:'5',
             createTime: '2017年04月07日 周六',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
             model: 'G650',
+            guest: '16',
             aircraft: '00092842',
-            machine: '1347236',
-            seat: '1300',
+            machine: '34320000',
+            seat: '2800',
             least:{number: '3'}
         }];
 
+        if(formData.id){
+            $scope.dreamFlyList.forEach(function(item){
+                if(item.id === formData.id){
+                    $scope.dreamObj = item;
+                    return;
+                }
+            })
+        }
     }
 
 })();
