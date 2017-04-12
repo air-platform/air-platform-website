@@ -2,10 +2,10 @@
   "air-community":"Air Community",
   "about":"关于",
   "home":{
-    "airjet":"airjet",
-    "airtaxi":"airtaxi",
-    "airtour":"空中观光",
-    "airtrain":"飞行培训",
+    "airjet":"Air jet",
+    "airtaxi":"Air taxi",
+    "airtour":"Air trans",
+    "airtrain":"Air training",
     "airclub":"airclub",
     "indexTitle":"一起打飞的 去看全世界"
   },
@@ -41,6 +41,17 @@
     "guest-number": "载客人数: ",
     "machine": "整机",
     "seat": "座位",
-    "least": "（最少{{number}}人成行）"
+    "least": "（最少{{number}}人成行）",
+    "service": "咨询客服",
+    "guest-info": "客户信息",
+    "guest-name": "客户名称 :",
+    "guest-name-enter": "请输入企业或机构名称…",
+    "remark": "备注 :",
+    "remark-enter": "请输入备注…",
+    "name": "姓名 :",
+    "phone": "电话 :",
+    "email": "邮箱 :",
+    "enter": "请输入...",
+    "submit": "提交"
   }
 }

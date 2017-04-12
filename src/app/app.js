@@ -3,8 +3,20 @@
 
     // Initialize app and store it to myApp variable for futher access to its methods
     var myApp = new Framework7({
-        animateNavBackIcon:true,
+        modalTitle: 'Air Community',
+        animateNavBackIcon: true,
+        hideNavbarOnPageScroll: true,
+        scrollTopOnNavbarClick: true,
         pushState: true,
+        sortable: false,
+        swipeout: false,
+        // // Hide and show indicator during ajax requests
+        // onAjaxStart: function (xhr) {
+        //     myApp.showIndicator();
+        // },
+        // onAjaxComplete: function (xhr) {
+        //     myApp.hideIndicator();
+        // }
     });
 
     // We need to use custom DOM library, let's save it to $$ variable:

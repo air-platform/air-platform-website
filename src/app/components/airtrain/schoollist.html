@@ -1,0 +1,24 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding"><a href="airtrain.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="center sliding">飞机培训</div>
+    </div>
+</div>
+<div class="pages navbar-through">
+    <div data-page="schoollist" class="page" ng-controller="schoollistController">
+        <div class="page-content">
+
+            <div ng-repeat="item in items">
+                <div class="card school-card-header-pic">
+                    <div style="background-image:url({{item.imgUrl}})" valign="bottom" class="card-header color-white no-border"></div>
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <p><span>{{item.title}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

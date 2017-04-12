@@ -11,6 +11,12 @@
         var page = myApp.views[0];
         var formData = page.activePage.query;
 
+        $scope.imgSrc = [
+            './../assets/images/banner0.jpg',
+            './../assets/images/banner1.jpg',
+            './../assets/images/banner0.jpg'
+        ];
+
         $scope.dreamFlyList = [{
             id:'1',
             createTime: '1491541200000',

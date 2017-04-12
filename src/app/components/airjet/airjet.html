@@ -38,7 +38,7 @@
                 <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" href="app/components/airjet/dream-inner.html?id={{item.id}}">
                     <div class="dfi-left">
                         <div class="dfi-top">
-                            <div class="dreaam-flying-date" ng-bind="item.createTime"></div>
+                            <div class="dreaam-flying-date" ng-bind="item.createTime | date:'yyyy年MM月dd日 EEE' | chinaweek"></div>
                             <div class="dreaam-flying-logo">
                                 <img src="assets/images/logo.png" alt="logo">
                             </div>
