@@ -22,10 +22,11 @@
 
         // 获取 f7 页面
         // var page = myApp.views[0];
+        // var page = myApp.getCurrentView();
+        // console.log(page.activePage);
         // var pageContainer = $$(page.container);
         // var username = pageContainer.find('input[name="username"]').val();
         // var password = pageContainer.find('input[name="password"]').val();
-
 
 
         function cancelAction() {
