@@ -43,11 +43,12 @@
             $scope.authcodediabled = true;
             countDown = 60;
             timer = $interval($scope.upd_count ,1000,60);
+            myApp.showIndicator();
             NetworkService.post('account/verification?mobile=' + $scope.mobile,null,function (res) {
-                myApp.hideIndicator();
-                myApp.alert('注册成功！', 'Air Community', function () {
-                    mainView.router.back();
-                });
+                myApp.showPreloader('验证码发送成功，请注意查收');
+                setTimeout(function () {
+                    myApp.hidePreloader();
+                }, 2000);
             },function (err) {
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
