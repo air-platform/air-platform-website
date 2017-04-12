@@ -12,7 +12,7 @@
   border-radius: 0 1rem 1rem 0;
 }
 
-.airtaxi-issue {
+.airtaxi-project {
   color: @base-black;
   border: 1px solid @base-dark;
   background-color: @base-white;
@@ -22,63 +22,149 @@
   }
 }
 
-.content-block.map {
-  padding-top: 0;
-}
+.arrow-bidirection {
+  position: relative;
+  padding: 5px;
+  top: 1em;
+  left: -1em;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  background-color: #eee;
 
-.air-taxi-map {
-  width: 99.5%;
-  height: 323px;
-  border:1px solid @base-gray;
-}
-
-.airtaxi-select-label {
-  width: 100% !important;
-}
-
-.tour-select-content {
-  margin-left: 25px;
-  margin-bottom: 10px;
-}
-
-.tour-select .row {
-  border-bottom: 1px solid @base-gray;
-
-  .item-content {
-    padding-left: 0;
+  .left {
+    position: relative;
+    top: 0.4em;
+    border-top: 2px solid @base-gray;
+    &::after {
+      content: "";
+      display: block;
+      width: 8px;
+      border-top: 2px solid @base-gray;
+      transform: rotate(45deg);
+      float: right;
+      position: relative;
+      top: -5px;
+    }
   }
-  &:last-child {
-    border: none;
 
-    .item-inner {
-      display: inline-flex;
+  .right {
+    position: relative;
+    top: 0.8em;
+    border-bottom: 2px solid @base-gray;
+    &::after {
+      content: "";
+      position: relative;
+      top: 5px;
+      display: block;
+      width: 8px;
+      border-bottom: 2px solid @base-gray;
+      transform: rotate(45deg);
     }
   }
 }
 
-.tour-select .list-block .item-inner {
-  display: block;
-  border: none;
-
-  &::after {
-    display: none;
+#air-taxi-cross-channel {
+  .content-block {
+    padding: 0;
   }
 
-  .item-input {
-    margin-left: 0;
+  .air-taxi-map {
+    width: 100%;
+    height: 323px;
+    border:1px solid @base-gray;
   }
 
-  .item-input * {
-    font-size: 1.2em;
+  .channel-select {
+    border-top: 1px solid @base-gray-light;
+    border-left: 1px solid @base-gray-light;
+    border-right: 1px solid @base-gray-light;
+    border-radius: 5px;
   }
-}
 
-.start-flight {
-  height: 50px;
-  line-height: 50px;
-  border: 1px solid @base-red-light;
-  background-color: @base-red-light;
-  border-radius: 0;
-  color: @base-white;
-  font-weight: bold;
+  .schedule-title {
+    padding: 10px 22px;
+    color: @base-sky;
+    border-bottom: 1px solid @base-gray-light;
+  }
+
+  .add-schedule-button {
+
+    position: relative;
+    top: -0.5em;
+    right: 0.5em;
+    color: @base-white;
+    background-color: @base-sky;
+    border: none;
+    border-radius: 1rem;
+    font-size: 3em;
+    width: 1em;
+    height: 1em;
+    line-height: 0.8em;
+  }
+
+  .airtaxi-select-label {
+    width: 100% !important;
+    font-size: 14px;
+  }
+
+  .channel-select-content {
+    margin: 10px 0 10px 25px;
+  }
+
+  .channel-select .row {
+    width: 100%;
+    border-bottom: 1px solid @base-gray;
+
+    .item-content {
+      padding-left: 0;
+    }
+    &:last-child {
+      line-height: 67px;
+      border: none;
+
+      .item-content {
+        width: 100%;
+      }
+
+      .item-inner {
+        display: inline-flex;
+      }
+
+      .item-title {
+        width: 50%;
+      }
+    }
+  }
+
+  .channel-select .list-block .item-inner {
+    display: block;
+    border: none;
+
+    &::after {
+      display: none;
+    }
+
+    .item-input {
+      margin-left: 0;
+      &.select-flight {
+        margin-left: 15px; // caused by f7 col-xx calculation
+      }
+    }
+
+    .item-input * {
+      font-size: 1.2em;
+    }
+  }
+
+  .start-flight {
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid @base-red-light;
+    background-color: @base-red-light;
+    border-radius: 0;
+    color: @base-white;
+    font-size: 17px;
+    font-weight: bold;
+  }
 }

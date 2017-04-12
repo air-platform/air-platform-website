@@ -1,7 +1,7 @@
 /**
  * Created by Otherplayer on 2017/1/9.
  */
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -14,7 +14,7 @@
 
     /** @ngInject */
     function capitalize() {
-        return function(input){        //input是我们传入的字符串
+        return function (input) {        //input是我们传入的字符串
             if (input) {
                 return input[0].toUpperCase() + input.slice(1);
             }
@@ -26,7 +26,7 @@
         .module('airsc')
         .filter('descTime', descTime);
 
-        /** @ngInject */
+    /** @ngInject */
     function descTime() {
 
         return service;
@@ -45,28 +45,28 @@
             var bef = date.getTime();
 
             var diffValue = now - bef;
-            var monthC =diffValue/month;
-            var weekC =diffValue/(7*day);
-            var dayC =diffValue/day;
-            var hourC =diffValue/hour;
-            var minC =diffValue/minute;
+            var monthC = diffValue / month;
+            var weekC = diffValue / (7 * day);
+            var dayC = diffValue / day;
+            var hourC = diffValue / hour;
+            var minC = diffValue / minute;
             var result = '';
-            if(monthC>=1){
+            if (monthC >= 1) {
                 // result = parseInt(monthC) + "个月前";
-                return (date.getFullYear()+"/"+date.getMonth()+1)+"/"+date.getDate();
+                return (date.getFullYear() + "/" + date.getMonth() + 1) + "/" + date.getDate();
             }
-            else if(weekC>=1){
+            else if (weekC >= 1) {
                 result = parseInt(weekC) + "周前";
             }
-            else if(dayC>=1){
-                result =parseInt(dayC) +"天前";
+            else if (dayC >= 1) {
+                result = parseInt(dayC) + "天前";
             }
-            else if(hourC>=1){
-                result =parseInt(hourC) +"个小时前";
+            else if (hourC >= 1) {
+                result = parseInt(hourC) + "个小时前";
             }
-            else if(minC>=1){
-                result = parseInt(minC) +"分钟前";
-            }else
+            else if (minC >= 1) {
+                result = parseInt(minC) + "分钟前";
+            } else
                 result = "刚刚";
 
             return result;
@@ -89,7 +89,7 @@
 
     /** @ngInject */
     function num() {
-        return function(input){        //input是我们传入的字符串
+        return function (input) {        //input是我们传入的字符串
             if (input) {
                 return Number(input);
             }
@@ -107,11 +107,11 @@
 
     /** @ngInject */
     function rmb() {
-        return function(number){
+        return function (number) {
             if (number) {
                 var result = '';
                 var num = Number(number).toFixed(1).split('.');
-                if(number.length >= 5) {
+                if (number.length >= 5) {
                     num = (Number(number) / 10000).toFixed(1).split('.');
                 }
                 var int = num[0];
@@ -120,14 +120,14 @@
                     result = ',' + int.slice(-3) + result;
                     int = int.slice(0, int.length - 3);
                 }
-                if(int) {
+                if (int) {
                     result = int + result;
                 }
-                if(Number(float) !== 0){
+                if (Number(float) !== 0) {
                     result += '.' + float;
                 }
-                result = '¥' +　result;
-                if(number.length >= 5) {
+                result = '¥' + 　result;
+                if (number.length >= 5) {
                     result += '万元';
                 } else {
                     result += '元';
@@ -137,6 +137,30 @@
         };
     };
 
+    /**
+     * 字符串限制长度并加省略号。
+     *
+     */
+    angular
+        .module('airsc')
+        .filter('words', function () {
+            return function (input, words) {
+                if (isNaN(words)) {
+                    return input;
+                }
+                if (words <= 0) {
+                    return '';
+                }
+                if (input) {
+                    var inputWords = input.split(/\s+/);
+                    if (inputWords.length > words) {
+                        input = inputWords.slice(0, words).join(' ') + '…';
+                    }
+                }
+                return input;
+            };
+        })
+
 
     angular
         .module('airsc')
@@ -145,11 +169,11 @@
     /** @ngInject */
     function iotUtil(StorageService) {
         var service = {
-            uuid : uuid,
-            isNull : isNull,
-            pagesize : pagesize,
-            htmlToPlaintext : htmlToPlaintext,
-            getKeyValueFromURL : getKeyValueFromURL
+            uuid: uuid,
+            isNull: isNull,
+            pagesize: pagesize,
+            htmlToPlaintext: htmlToPlaintext,
+            getKeyValueFromURL: getKeyValueFromURL
         };
         return service;
 
@@ -168,8 +192,8 @@
             var uuid = s.join("");
             return uuid;
         }
-        function isNull( str ) {
-            if ( !str || str == "" ) return true;
+        function isNull(str) {
+            if (!str || str == "") return true;
             var regu = "^[ ]+$";
             var re = new RegExp(regu);
             return re.test(str);
@@ -179,7 +203,7 @@
             var infomation = StorageService.get(hnaInfo);
             var pageSizeKey = 'airspc.pagesize.' + infomation.username;
             var tempPageSize = StorageService.get(pageSizeKey);
-            if (tempPageSize && tempPageSize != 'undefined'){
+            if (tempPageSize && tempPageSize != 'undefined') {
                 return tempPageSize;
             }
             return 10;
@@ -187,9 +211,9 @@
         function htmlToPlaintext(text) {
             return text ? String(text).replace(/<[^>]+>/gm, '') : '';
         }
-        function getKeyValueFromURL(key,urlstring) {
+        function getKeyValueFromURL(key, urlstring) {
             var tempData = urlstring.split(key + '=');
-            if (tempData.length == 1){
+            if (tempData.length == 1) {
                 return 'undefined';
             }
             var lastPath = tempData.pop();
@@ -207,16 +231,16 @@
     /** @ngInject */
     function deepcopy() {
         var service = {
-            copy : copy
+            copy: copy
         };
         return service;
 
         ////////////////////
 
         function copy(source) {
-            var result={};
+            var result = {};
             for (var key in source) {
-                result[key] = typeof source[key]==='object'? copy(source[key]): source[key];
+                result[key] = typeof source[key] === 'object' ? copy(source[key]) : source[key];
             }
             return result;
         }
@@ -254,14 +278,14 @@
     function i18n($translate) {
         var service = {
             t: translate,
-            value : translate
+            value: translate
         };
         return service;
 
         ////////////////////
 
         function translate(key) {
-            if(key){
+            if (key) {
                 return $translate.instant(key);
             }
             return key;
@@ -344,19 +368,19 @@
 
 })();
 
-Array.prototype.indexOf = function(val) {
+Array.prototype.indexOf = function (val) {
     for (var i = 0; i < this.length; i++) {
         if (this[i] == val) return i;
     }
     return -1;
 };
-Array.prototype.remove = function(val) {
+Array.prototype.remove = function (val) {
     var index = this.indexOf(val);
     if (index > -1) {
         this.splice(index, 1);
     }
 };
-Array.prototype.clone = function(){
+Array.prototype.clone = function () {
     return this.slice(0);
 };
 

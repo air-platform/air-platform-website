@@ -13,7 +13,7 @@
     </div>
 </div>
 <!--<div class="page-content">-->
-<div data-page="airjet" class="page page-content" ng-controller="jetController as jet">
+<div data-page="airjet" class="page page-content" ng-controller="jetController">
     <div class="buttons-row air-tabs">
         <!-- Link to 1st tab, active -->
         <a href="#tab1" class="tab-link active"><span>{{'airjet.travel-plan' | translate}}</span></a>
@@ -35,7 +35,7 @@
         <!-- Tab 2 -->
         <div id="tab2" class="tab">
             <div class="dream-flying-content">
-                <div class="dream-flying-item" ng-repeat="item in jet.dreamFlyList track by $index">
+                <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" href="app/components/airjet/dream-inner.html?id={{item.id}}">
                     <div class="dfi-left">
                         <div class="dfi-top">
                             <div class="dreaam-flying-date" ng-bind="item.createTime"></div>
@@ -68,18 +68,21 @@
                         </div>
                     </div>
                     <div class="dfi-right">
-                        <div class="guest-count">{{'airjet.guest-number' | translate}}16</div>
+                        <div class="guest-count">
+                            {{'airjet.guest-number' | translate}}
+                            <span ng-bind="item.guest"></span>
+                        </div>
                         <div class="plane-item first">
                             <div class="plane">{{'airjet.machine' | translate}}</div>
-                            <div class="plane-money" ng-bind="item.machine | RMB">¥7.7万元</div>
+                            <div class="plane-money" ng-bind="item.machine | RMB"></div>
                         </div>
                         <div class="plane-item last">
                             <div class="plane">{{'airjet.seat' | translate}}</div>
-                            <div class="plane-money" ng-bind="item.seat | RMB">¥1,300元</div>
+                            <div class="plane-money" ng-bind="item.seat | RMB"></div>
                         </div>
                         <div class="plane-require">{{'airjet.least' | translate:item.least}}</div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <!-- Tab 3 -->
