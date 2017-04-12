@@ -2,11 +2,10 @@
   angular.module('airsc')
     .factory('HttpInterceptor', HttpInterceptor);
 
-  function HttpInterceptor($q) {
+  function HttpInterceptor($q, TIMEOUT) {
     return {
       request: function (config) {
-        // Todo to constant
-        config.timeout = 2000;
+        config.timeout = TIMEOUT.HTTP;
         // myApp.showIndicator();
         console.log(config);
         return config;
