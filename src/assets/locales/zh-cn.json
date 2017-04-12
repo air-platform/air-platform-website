@@ -6,7 +6,8 @@
     "airtaxi":"airtaxi",
     "airtour":"空中观光",
     "airtrain":"飞行培训",
-    "airclub":"airclub"
+    "airclub":"airclub",
+    "indexTitle":"一起打飞的 去看全世界"
   },
   "menu":{
 
@@ -37,7 +38,10 @@
     "card-products": "卡产品",
     "model-number": "机型号: ",
     "aircraft-number": "飞机号: ",
-    "guest-number": "载客人数: "
+    "guest-number": "载客人数: ",
+    "machine": "整机",
+    "seat": "座位",
+    "least": "（最少{{number}}人成行）"
   }
 
 }

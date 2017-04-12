@@ -97,6 +97,47 @@
     };
 
 
+    /**
+     * 数字转换为人民币格式
+     *
+     */
+    angular
+        .module('airsc')
+        .filter('RMB', rmb);
+
+    /** @ngInject */
+    function rmb() {
+        return function(number){
+            if (number) {
+                var result = '';
+                var num = Number(number).toFixed(1).split('.');
+                if(number.length >= 5) {
+                    num = (Number(number) / 10000).toFixed(1).split('.');
+                }
+                var int = num[0];
+                var float = num[1];
+                while (int.length > 3) {
+                    result = ',' + int.slice(-3) + result;
+                    int = int.slice(0, int.length - 3);
+                }
+                if(int) {
+                    result = int + result;
+                }
+                if(Number(float) !== 0){
+                    result += '.' + float;
+                }
+                result = '¥' +　result;
+                if(number.length >= 5) {
+                    result += '万元';
+                } else {
+                    result += '元';
+                }
+                return result;
+            }
+        };
+    };
+
+
     angular
         .module('airsc')
         .factory('iotUtil', iotUtil);

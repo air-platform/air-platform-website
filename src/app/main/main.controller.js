@@ -7,10 +7,7 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope,iotUtil) {
-        /* jshint validthis: true */
-        var vm = this;
-
+    function mainController($scope, iotUtil, NetworkService) {
         $scope.imgSrc = [
             './../assets/images/banner0.jpg',
             './../assets/images/banner1.jpg',
@@ -23,6 +20,11 @@
             '#【原创】飞机飞到哪里去啊#'
         ]
 
+        NetworkService.get('account/auth', function(res) {
+            console.log(res);
+        }, function(err) {
+            console.log(err);
+        });
     }
 
 })();
