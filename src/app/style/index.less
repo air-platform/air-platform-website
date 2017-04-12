@@ -37,6 +37,35 @@ img {
   }
 }
 
+.index-search {
+	position: absolute;
+	top: 49px;
+	z-index: 5;
+	width: 100%;
+	i {
+		position: absolute;
+		left: 10%;
+		top: 50%;
+		color: @base-gray-light;
+		transform: translateY(-55%);
+		font-size: .45rem;
+	}
+	input {
+		display: block;
+		background-color: @base-white;
+		border-radius: .08rem;
+		width: 90.8%;
+		margin: 0 auto;
+		text-align: center;
+		border: .01rem solid @base-white;
+		.text-vertical-center(.73rem);
+		&::-webkit-input-placeholder {
+			font-size: .28rem;
+			color: @base-gray-light;
+		}
+	}
+}
+
 .content-line {
   margin: 0 0.2rem;
   padding-top: .28rem;

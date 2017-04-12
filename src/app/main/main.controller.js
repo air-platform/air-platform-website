@@ -11,6 +11,7 @@
         var page = myApp.views[0];
         var pageContainer = $$(page.container);
         var ul = pageContainer.find('.news-text');
+        var mainView = myApp.addView('.view-main');
 
         $scope.imgSrc = [
             './../assets/images/banner0.jpg',
@@ -30,6 +31,10 @@
             '#【原创】请问徐闻zhih到海口的直升机多长时间一班#',
             '#【原创】飞机飞到哪里去啊#'
         ]
+
+        $scope.goSearch = function() {
+            alert('111');
+        }
 
         for (var i = 0; i < $scope.listNews.length; i++) {
             $scope.addLi($scope.listNews[i]);
