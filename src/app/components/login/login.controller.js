@@ -10,7 +10,7 @@
     angular.module('airsc').controller('loginController', loginController);
 
     /** @ngInject */
-    function loginController($scope,NetworkService,iotUtil, NotificationService) {
+    function loginController($scope,NetworkService,iotUtil, NotificationService, URL) {
 
 
         $scope.principal = '';
@@ -37,7 +37,7 @@
 
         function signinAction() {
             myApp.showIndicator();
-            NetworkService.post('account/auth',{principal:$scope.principal,credential:$scope.credential},function (res) {
+            NetworkService.post(URL.LOGIN, {principal:$scope.principal,credential:$scope.credential},function (res) {
                 myApp.hideIndicator();
                 myApp.alert('登录成功！', 'Air Community', function () {
                     mainView.router.back();
