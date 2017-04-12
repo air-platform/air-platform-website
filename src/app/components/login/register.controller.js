@@ -10,7 +10,7 @@
     angular.module('airsc').controller('registerController', registerController);
 
     /** @ngInject */
-    function registerController($scope,iotUtil,NetworkService) {
+    function registerController($scope,NetworkService,iotUtil) {
 
         // 获取 f7 页面
         var page = myApp.views[0];
@@ -29,7 +29,7 @@
 
             NetworkService.post('account',{mobile:username,verificationCode:authcode,password:password},function (res) {
                 myApp.hideIndicator();
-                myApp.alert('注册成功！' + 'Username: ' + username + ', Password: ' + password + ', auth' + authcode, function () {
+                myApp.alert('注册成功！', 'Air Community', function () {
                     mainView.router.back();
                 });
             },function (err) {

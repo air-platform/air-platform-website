@@ -1,7 +1,7 @@
 <div data-page="login-screen" class="page no-navbar no-toolbar no-swipeback no-border" ng-controller="loginController">
     <div class="page-content login-screen-content no-border">
         <div class="air-login-top">
-            <div><a class="login-cancel"><img src="../../../assets/images/cancel.png"></a></div>
+            <div><a class="login-cancel" ng-click="cancelAction()"><img src="../../../assets/images/cancel.png"></a></div>
             <div class="air-login-container">
                 <img src="../../../assets/images/login_logo_icon.svg">
                 <img src="../../../assets/images/logo_text.svg">
@@ -39,7 +39,7 @@
                     <li>
                         <div class="row">
                             <span class="col-5"></span>
-                            <button class="col-90 login-btn">{{'login.login' | translate}}</button>
+                            <button class="col-90 login-btn" ng-click="signinAction()">{{'login.login' | translate}}</button>
                             <span class="col-5"></span>
                         </div>
                     </li>

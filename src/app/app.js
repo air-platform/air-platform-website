@@ -21,25 +21,25 @@
 
     })
 
-    myApp.onPageInit('login-screen', function (page) {
-        var pageContainer = $$(page.container);
-        pageContainer.find('.login-goto-register').on('click',function () {
-            console.log('register app.js');
-            // mainView.router.back();
-        });
-        pageContainer.find('.login-cancel').on('click',function () {
-            console.log('register app.js');
-            mainView.router.back();
-        });
-        pageContainer.find('.login-btn').on('click', function () {
-            var username = pageContainer.find('input[name="username"]').val();
-            var password = pageContainer.find('input[name="password"]').val();
-            // Handle username and password
-            myApp.alert('Username: ' + username + ', Password: ' + password, function () {
-                mainView.router.back();
-            });
-        });
-    });
+    // myApp.onPageInit('login-screen', function (page) {
+    //     var pageContainer = $$(page.container);
+    //     pageContainer.find('.login-goto-register').on('click',function () {
+    //         console.log('register app.js');
+    //         // mainView.router.back();
+    //     });
+    //     pageContainer.find('.login-cancel').on('click',function () {
+    //         console.log('register app.js');
+    //         mainView.router.back();
+    //     });
+    //     pageContainer.find('.login-btn').on('click', function () {
+    //         var username = pageContainer.find('input[name="username"]').val();
+    //         var password = pageContainer.find('input[name="password"]').val();
+    //         // Handle username and password
+    //         myApp.alert('Username: ' + username + ', Password: ' + password, function () {
+    //             mainView.router.back();
+    //         });
+    //     });
+    // });
 
     // myApp.onPageInit('register-screen', function (page) {
     //     var pageContainer = $$(page.container);
