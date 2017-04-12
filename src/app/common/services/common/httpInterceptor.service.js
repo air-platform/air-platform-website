@@ -1,8 +1,8 @@
 (function () {
   angular.module('airsc')
-    .factory('HttpInterceptor', HttpInterceptor);
+    .factory('HttpInterceptorService', HttpInterceptorService);
 
-  function HttpInterceptor($q, TIMEOUT, STATUS) {
+  function HttpInterceptorService($q, TIMEOUT, STATUS) {
     return {
       request: function (config) {
         config.timeout = TIMEOUT.HTTP;

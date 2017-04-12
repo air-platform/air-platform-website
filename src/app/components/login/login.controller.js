@@ -10,7 +10,7 @@
     angular.module('airsc').controller('loginController', loginController);
 
     /** @ngInject */
-    function loginController($scope,NetworkService,iotUtil) {
+    function loginController($scope,NetworkService,iotUtil, NotificationService) {
 
 
         $scope.principal = '';
@@ -45,7 +45,7 @@
             },function (err) {
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                NotificationService.alert.error('操作失败！' + errDesc, null)
             });
 
         }

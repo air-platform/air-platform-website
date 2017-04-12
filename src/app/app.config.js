@@ -52,7 +52,7 @@
         });
 
         // set http interceptors
-        $httpProvider.interceptors.push('HttpInterceptor');
+        $httpProvider.interceptors.push('HttpInterceptorService');
     }
 
 })();
