@@ -2,7 +2,7 @@
   angular.module('airsc')
     .factory('ValidatorService', ValidatorService);
 
-  function ValidatorService() {
+  function ValidatorService(REGEX) {
     var service = {
       validate: new Validator()
     };
@@ -27,7 +27,7 @@
 
     Validator.prototype.phone = function () {
       //Todo
-      return true;
+      return REGEX.PHONE.test(this.phone);
     }
   }
 })();
