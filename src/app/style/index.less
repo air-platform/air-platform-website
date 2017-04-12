@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .text-center {
   text-align: center;
 }
@@ -8,14 +14,14 @@ img {
   vertical-align: middle;
 }
 
-.page {
+.page.index-page {
   background-color: #f7f7f7;
 }
 
 .content-block {
   padding: 0.61rem 0;
   margin: 0;
-  background: #fff;
+  background: @base-white;
 }
 
 .index-nav {
@@ -23,10 +29,10 @@ img {
   .text-center {
     a {
       font-size: 0.28rem;
-      color: #4A4A4A;
+      color: @base-dark;
     }
     img {
-      margin-bottom: 0.35rem;
+      padding-bottom: 0.35rem;
     }
   }
 }
@@ -34,13 +40,13 @@ img {
 .content-line {
   margin: 0 0.2rem;
   padding-top: .28rem;
-  background-color: #fff;
-  border-bottom: 0.01rem solid #e5e5e5;
+  background-color: @base-white;
+  border-bottom: 0.01rem solid @base-border;
 }
 
 .index-news {
-  background-color: #fff;
-  border-bottom: 0.01rem solid #e5e5e5;
+  background-color: @base-white;
+  border-bottom: 0.01rem solid @base-border;
   .news-img {
     width: .94rem;
   }
@@ -52,13 +58,14 @@ img {
       position: relative;
       overflow: hidden;
       .news-text {
-      	position: absolute;
+        position: absolute;
         padding: 0;
         margin: 0;
         list-style: none;
         li {
           width: 100%;
           line-height: 22px;
+          .text-overflow();
           a {
             font-size: .24rem;
             color: #747C82;
@@ -70,58 +77,88 @@ img {
 }
 
 .bottom-title {
-	font-size: .28rem;
-	height: 1.02rem;
-	line-height: 1.02rem;
-	color: #4A4A4A;
-	text-align: center;
-	border-top: 0.01rem solid #e5e5e5;
-	border-bottom: 0.01rem solid #e5e5e5;
-	background-color: #fff;
-	margin: .19rem 0 0 0;
+  font-size: .28rem;
+  height: 1.02rem;
+  line-height: 1.02rem;
+  color: @base-dark;
+  text-align: center;
+  border-top: 0.01rem solid @base-border;
+  border-bottom: 0.01rem solid @base-border;
+  background-color: @base-white;
+  margin: .19rem 0 0 0;
 }
 
 .pro-content {
-	border-bottom: 0.01rem solid #e5e5e5;
-	background-color: #fff;
-	.pro-left {
-		padding: .5rem 1.23rem .59rem .39rem;
-		border-right: .01rem solid #e5e5e5;
-		h5 {
-			padding: 0;
-			margin: 0;
-			font-size: .28rem;
-			color: #4A4A4A;
-			font-weight: 500;
-		}
-		.price {
-			margin-top: .11rem;
-			width: 1.65rem;
-			padding: .05rem 0;
-			text-align: center;
-			background-color: #EE4A4A;
-			border-radius: .04rem;
-			font-size: .28rem;
-			color: #fff;
-			margin-bottom: .12rem;
-		}
-		span {
-			font-size: .18rem;
-			color: #9B9B9B;
-			text-decoration:line-through;
-		}
-	}
-	.pro-right {
-		width: 57.2%;
-		.top-left {
-			p {
-				font-size: .18rem;
-				color: #4A4A4A;
-			}
-			.pro-adr {
-				font-size: .24rem;
-				color: #4A4A4A;
-			}
-		}
-	}
+  border-bottom: 0.01rem solid @base-border;
+  background-color: @base-white;
+  .pro-left {
+    width: 42.8%;
+    padding: .5rem 1.23rem .59rem .39rem;
+    border-right: .01rem solid @base-border;
+    h5 {
+      padding: 0;
+      margin: 0;
+      font-size: .28rem;
+      color: @base-dark;
+      font-weight: 500;
+    }
+    .price {
+      margin-top: .11rem;
+      width: 1.65rem;
+      padding: .05rem 0;
+      text-align: center;
+      background-color: @index-red;
+      border-radius: .04rem;
+      font-size: .28rem;
+      color: @base-white;
+      margin-bottom: .12rem;
+    }
+    span {
+      font-size: .18rem;
+      color: #9B9B9B;
+      text-decoration: line-through;
+    }
+  }
+  .pro-right {
+    width: 57.2%;
+    .pro-top {
+    	padding-left: .32rem;
+      .top-left {
+        p {
+          font-size: .18rem;
+          color: @base-dark;
+        }
+        .pro-adr {
+          font-size: .24rem;
+          color: @base-dark;
+        }
+      }
+      .top-right {
+        .pro-sur {
+          font-size: .42rem;
+          span {
+            font-size: .13rem;
+            color: @base-dark;
+            display: inline-block;
+            width: .57rem;
+          }
+        }
+      }
+    }
+  }
+  .pro-bottom {
+    padding-left: .32rem;
+    padding-top: .185rem;
+    border-top: .01rem solid @base-border;
+    h5 {
+      font-size: .24rem;
+      color: @base-dark;
+      margin: 0;
+    }
+    span {
+      font-size: .18rem;
+      color: @index-red;
+      padding-top: .1rem;
+    }
+  }
 }

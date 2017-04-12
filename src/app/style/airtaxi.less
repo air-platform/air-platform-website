@@ -1,0 +1,84 @@
+/*AirTaxi*/
+
+.airtaxi-nav {
+  padding: 0 1rem 0 1rem;
+}
+
+.buttons-row .button:first-child {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.buttons-row .button:last-child {
+  border-radius: 0 1rem 1rem 0;
+}
+
+.airtaxi-issue {
+  color: @base-black;
+  border: 1px solid @base-dark;
+  background-color: @base-white;
+
+  &.active {
+    background-color: @base-dark;
+  }
+}
+
+.content-block.map {
+  padding-top: 0;
+}
+
+.air-taxi-map {
+  width: 99.5%;
+  height: 323px;
+  border:1px solid @base-gray;
+}
+
+.airtaxi-select-label {
+  width: 100% !important;
+}
+
+.tour-select-content {
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.tour-select .row {
+  border-bottom: 1px solid @base-gray;
+
+  .item-content {
+    padding-left: 0;
+  }
+  &:last-child {
+    border: none;
+
+    .item-inner {
+      display: inline-flex;
+    }
+  }
+}
+
+.tour-select .list-block .item-inner {
+  display: block;
+  border: none;
+
+  &::after {
+    display: none;
+  }
+
+  .item-input {
+    margin-left: 0;
+  }
+
+  .item-input * {
+    font-size: 1.2em;
+  }
+}
+
+.start-flight {
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid @base-red-light;
+  background-color: @base-red-light;
+  border-radius: 0;
+  color: @base-white;
+  font-weight: bold;
+}

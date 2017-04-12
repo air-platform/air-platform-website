@@ -3,202 +3,201 @@
 <html lang="en" ng-app='airsc'>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="IOT,M2M,MQTT,HNA" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#2196f3">
-    <title>空中社区-Air Community</title>
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
-    <!--
+  <meta charset="utf-8" />
+  <meta name="description" content="IOT,M2M,MQTT,HNA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#2196f3">
+  <title>空中社区-Air Community</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
+  <!--
     <link rel="icon" href="_/img/favicon.png">
     <link rel="icon" href="http://sstatic.net/so/favicon.ico">
     <link rel="apple-itouch-icon" href="http://sstatic.net/so/apple-touch-icon.png">
     -->
-    <!-- build:css({tmp/serve,src}) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css({tmp/serve,src}) styles/app.css -->
-    <!-- inject:css -->
-    <!-- css files will be automatically insert here -->
-    <!-- endinject -->
-    <!-- endbuild -->
-
+  <!-- build:css({tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
 </head>
 
 <body ng-controller="mainController">
-
-    <!-- Status bar overlay for fullscreen mode-->
-    <div class="statusbar-overlay"></div>
-    <!-- Panels overlay-->
-    <div class="panel-overlay"></div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal layout-dark">
-        <div class="content-block-title">Left Panel</div>
-        <div class="content-block">
-            <p>This is a side panel. You can close it by clicking outsite or on this link: <a href="#" class="close-panel">close me</a>. You can put here anything, even another isolated view like in <a href="#" data-panel="right" class="open-panel">Right Panel</a></p>
-        </div>
-        <div class="content-block-title">Framework7 Kitchen Sink</div>
-        <div class="list-block">
-            <ul>
-                <li><a href="app/components/about/about.html" class="item-link close-panel">
-                    <div class="item-content">
-                        <div class="item-media"><i class="icon icon-f7"></i></div>
-                        <div class="item-inner">
-                            <div class="item-title">About</div>
-                        </div>
-                    </div></a></li>
-            </ul>
-        </div>
+  <!-- Status bar overlay for fullscreen mode-->
+  <div class="statusbar-overlay"></div>
+  <!-- Panels overlay-->
+  <div class="panel-overlay"></div>
+  <!-- Left panel with reveal effect-->
+  <div class="panel panel-left panel-reveal layout-dark">
+    <div class="content-block-title">Left Panel</div>
+    <div class="content-block">
+      <p>This is a side panel. You can close it by clicking outsite or on this link: <a href="#" class="close-panel">close me</a>. You can put here anything, even another isolated view like in <a href="#" data-panel="right" class="open-panel">Right Panel</a></p>
     </div>
-    <!-- Right panel with cover effect-->
-    <div class="panel panel-right panel-cover">
-        <div class="content-block">
-            <p>Right panel content goes here</p>
-        </div>
-        <div class="content-block-title">Framework7</div>
-        <div class="list-block">
-            <ul>
-                <li>
-                    <a href="app/components/login/login.html" class="open-login-screen item-link close-panel">
-                    <div class="item-content">
-                        <div class="item-media"><i class="icon icon-f7"></i></div>
-                        <div class="item-inner">
-                            <div class="item-title">{{'profile.login' | translate}}</div>
-                        </div>
-                    </div></a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- Views-->
-    <div class="views">
-        <!-- Your main view, should have "view-main" class-->
-        <div class="view view-main">
-            <!-- Top Navbar-->
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="left">
-                        <!-- Right link contains only icon - additional "icon-only" class-->
-                        <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
-                    </div>
-                    <!-- We have home navbar without left link-->
-                    <div class="sliding">{{'air-community' | translate}}</div>
-                    <div class="right">
-                        <!-- Right link contains only icon - additional "icon-only" class-->
-                        <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
-                    </div>
-                </div>
+    <div class="content-block-title">Framework7 Kitchen Sink</div>
+    <div class="list-block">
+      <ul>
+        <li>
+          <a href="app/components/about/about.html" class="item-link close-panel">
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner">
+                <div class="item-title">About</div>
+              </div>
             </div>
-            <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-            <div class="pages navbar-through toolbar-through">
-                <!-- Page, data-page contains page name-->
-                <div data-page="index" class="page">
-                    <!-- Scrollable page content-->
-
-                    <div class="page-content">
-                        <div class="swiper-container swiper-init" data-speed="400" data-space-between="40" data-autoplay="3000" data-pagination=".swiper-pagination">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
-                            <div class="swiper-slide"><img src="assets/images/banner1.jpg"></div>
-                            <div class="swiper-slide"><img src="assets/images/banner0.jpg"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-
-                        <div class="content-block">
-                            <!-- Additional "no-gutter" class on row to remove space between cells -->
-                            <div class="row index-nav">
-                                <!-- Each "cell" has col-[widht in percents] class -->
-                                <div class="col-25 bg-white text-center">
-                                    <a href="app/components/airjet/airjet.html"><img src="assets/images/nav-icon.png"><br>{{'home.airjet' | translate}}</a>
-                                </div>
-                                <div class="col-25 bg-white text-center">
-                                    <a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/nav-icon.png"><br>{{'home.airtaxi' | translate}}</a>
-                                </div>
-                                <div class="col-25 bg-white text-center">
-                                    <a href="app/components/airtour/airtour.html"><img src="assets/images/nav-icon.png"><br>{{'home.airtour' | translate}}</a>
-                                </div>
-                                <div class="col-25 bg-white text-center">
-                                    <a href="app/components/airtrain/airtrain.html"><img src="assets/images/nav-icon.png"><br>{{'home.airtrain' | translate}}</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="index-news">
-                            <div class="content-line"></div>
-                            <div class="news-box clearfix">
-                                <div class="news-img pull-left">
-                                <img src="assets/images/nav-icon.png">
-                                </div>
-                                <div class="news-text-box pull-right">
-                                    <ul auto-text class="news-text">
-                                        <li><a href="#">#111最美航线大PK#</a></li>
-                                        <li><a href="#">#222最美航线大PK#</a></li>
-                                        <li><a href="#">#333最美航线大PK#</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <h2 class="bottom-title" ng-bind="'home.indexTitle' | translate"></h2>
-                        <div class="pro-content clearfix">
-                            <div class="pro-left pull-left">
-                                <a href="#">
-                                    <h5>鸟巢空中游览</h5>
-                                    <div class="price">¥ 1588 /人</div>
-                                    <span>原价 ¥ 2000 /人</span>
-                                </a>
-                            </div>
-                            <div class="pro-right pull-right">
-                                <div class="pro-top clearfix">
-                                    <div class="pull-left top-left">
-                                        <p>2017年5月1日 08:00—09:00</p>
-                                        <div class="pro-adr">徐闻<i></i>海口美兰机场</div>
-                                    </div>
-                                    <div class="pull-left top-right">
-                                        <div class="pro-sur">
-                                            <span>剩余座位</span>2
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pro-bottom">
-                                    <h5>固定翼飞行员一期招募</h5>
-                                    <span>报名立享8.8折优惠</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Right panel with cover effect-->
+  <div class="panel panel-right panel-cover">
+    <div class="content-block">
+      <p>Right panel content goes here</p>
+    </div>
+    <div class="content-block-title">Framework7</div>
+    <div class="list-block">
+      <ul>
+        <li>
+          <a href="app/components/login/login.html" class="open-login-screen item-link close-panel">
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner">
+                <div class="item-title">{{'profile.login' | translate}}</div>
+              </div>
             </div>
-            <!--&lt;!&ndash; Bottom Toolbar&ndash;&gt;-->
-            <!--<div class="toolbar">-->
-                <!--<div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>-->
-            <!--</div>-->
-
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Views-->
+  <div class="views">
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view view-main">
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <!-- Right link contains only icon - additional "icon-only" class-->
+            <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+          </div>
+          <!-- We have home navbar without left link-->
+          <div class="sliding">{{'air-community' | translate}}</div>
+          <div class="right">
+            <!-- Right link contains only icon - additional "icon-only" class-->
+            <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+          </div>
         </div>
+      </div>
+      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages navbar-through toolbar-through">
+        <!-- Page, data-page contains page name-->
+        <div data-page="index" class="page index-page">
+          <!-- Scrollable page content-->
+          <div class="page-content">
+            <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="content-block">
+              <!-- Additional "no-gutter" class on row to remove space between cells -->
+              <div class="row index-nav">
+                <!-- Each "cell" has col-[widht in percents] class -->
+                <div class="col-25 bg-white text-center">
+                  <a href="app/components/airjet/airjet.html"><img src="assets/images/nav-icon.png">
+                    <br>{{'home.airjet' | translate}}</a>
+                </div>
+                <div class="col-25 bg-white text-center">
+                  <a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/nav-icon.png">
+                    <br>{{'home.airtaxi' | translate}}</a>
+                </div>
+                <div class="col-25 bg-white text-center">
+                  <a href="app/components/airtour/airtour.html"><img src="assets/images/nav-icon.png">
+                    <br>{{'home.airtour' | translate}}</a>
+                </div>
+                <div class="col-25 bg-white text-center">
+                  <a href="app/components/airtrain/airtrain.html"><img src="assets/images/nav-icon.png">
+                    <br>{{'home.airtrain' | translate}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="index-news">
+              <div class="content-line"></div>
+              <div class="news-box clearfix">
+                <div class="news-img pull-left">
+                  <img src="assets/images/nav-icon.png">
+                </div>
+                <div class="news-text-box pull-right swiper-container swiper-init" data-speed="400" data-loop="true" data-direction="vertical" data-slides-per-view="2" data-slides-per-group="2" data-observer="true" data-observe-parents="true" data-autoplay="2000">
+                  <ul class="news-text swiper-wrapper">
+                    <li class="swiper-slide" ng-repeat="new in news">
+                      <a href="" ng-bind="new"></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <h2 class="bottom-title" ng-bind="'home.indexTitle' | translate"></h2>
+            <div class="pro-content clearfix">
+              <div class="pro-left pull-left">
+                <a href="#">
+                  <h5>鸟巢空中游览</h5>
+                  <div class="price">¥ 1588 /人</div>
+                  <span>原价 ¥ 2000 /人</span>
+                </a>
+              </div>
+              <div class="pro-right pull-right">
+                <div class="pro-top clearfix">
+                  <div class="pull-left top-left">
+                    <p>2017年5月1日 08:00—09:00</p>
+                    <div class="pro-adr">徐闻<i></i>海口美兰机场</div>
+                  </div>
+                  <div class="pull-left top-right">
+                    <div class="pro-sur">
+                      <span>剩余<br>座位</span>2
+                    </div>
+                  </div>
+                </div>
+                <div class="pro-bottom">
+                  <h5>固定翼飞行员一期招募</h5>
+                  <span>报名立享8.8折优惠</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--&lt;!&ndash; Bottom Toolbar&ndash;&gt;-->
+      <!--<div class="toolbar">-->
+      <!--<div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>-->
+      <!--</div>-->
     </div>
 
-
-
-
-    <script src="app/common/directives/responsive.js"></script>
-    <!-- build:js(src) scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- run `gulp inject` to automatically populate bower script dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:js({tmp/serve,tmp/partials,src}) scripts/app.js -->
-    <!-- inject:js -->
-    <!-- js files will be automatically insert here -->
-    <!-- endinject -->
-    <!-- inject:partials -->
-    <!-- angular templates will be automatically converted in js and inserted here -->
-    <!-- endinject -->
-    <!-- endbuild -->
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uZ6QZYpe6GUT2wTjBvLrEDx8wlZaMOmu"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
+  <script src="app/common/directives/responsive.js"></script>
+  <!-- build:js(src) scripts/vendor.js -->
+  <!-- bower:js -->
+  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:js({tmp/serve,tmp/partials,src}) scripts/app.js -->
+  <!-- inject:js -->
+  <!-- js files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- inject:partials -->
+  <!-- angular templates will be automatically converted in js and inserted here -->
+  <!-- endinject -->
+  <!-- endbuild -->
 
 </body>
 
