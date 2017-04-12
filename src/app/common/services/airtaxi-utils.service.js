@@ -42,8 +42,6 @@
 
         	function addClickHandler(content,curve){
           		curve.addEventListener("click",function(e){
-                // selectRouting(e.target);
-                // addMarker(e.target);
                 while( window.markedOverlays.length > 0 ) map.removeOverlay(window.markedOverlays.pop());
                 window.markedOverlays.push(selectRouting(e.target));
                 window.markedOverlays.push(addMarker(e.target));
@@ -53,9 +51,9 @@
 
           function selectRouting(target) {
             target.w.strokeColor = "red";
-            var data = target.Ku
-            var points = [new BMap.Point(data.Ke, data.Ee),
-        				new BMap.Point(data.Fe, data.Je)];
+            var data = target.cornerPoints
+            var points = [new BMap.Point(data[0].lng, data[0].lat),
+                          new BMap.Point(data[1].lng, data[1].lat)];
             var curve = new BMapLib.CurveLine(points,{strokeColor:"red", strokeWeight:5, strokeOpacity:0.5})
             map.addOverlay(curve);
             return curve;
@@ -74,8 +72,8 @@
             var copter = new BMap.Icon("assets/images/copter.png", new BMap.Size(43,24), {
               offset: new BMap.Size(10, 25)
             });
-            var data = target.Ku
-            var point = getOverlayOffset([data.Ke, data.Ee], [data.Fe, data.Je]);
+            var data = target.cornerPoints
+            var point = getOverlayOffset([data[0].lng, data[0].lat], [data[1].lng, data[1].lat]);
             var marker = new BMap.Marker(new BMap.Point(point[0], point[1]), {icon: copter});
             map.addOverlay(marker);
             return marker;
