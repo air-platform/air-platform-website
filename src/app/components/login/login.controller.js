@@ -32,7 +32,7 @@
 
 
         function cancelAction() {
-            mainView.router.back('#index');
+            mainView.router.back();
         }
 
         function signinAction() {
