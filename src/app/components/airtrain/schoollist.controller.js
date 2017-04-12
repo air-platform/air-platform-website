@@ -15,6 +15,14 @@
 
         $scope.items = [];
 
+        $scope.gotoSchoolInfo = gotoSchoolInfo;
+
+
+        function gotoSchoolInfo(index) {
+            mainView.router.loadPage('app/components/airtrain/school.html');
+        }
+
+
         $scope.items = [
             {imgUrl:'http://lorempixel.com/1000/600/nature/3/',title:'海南航空学校有限责任公司'},
             {imgUrl:'http://lorempixel.com/1000/600/nature/3/',title:'海南航空学校有限责任公司'},
