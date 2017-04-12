@@ -18,6 +18,8 @@
 
         $scope.cancelAction = cancelAction;
         $scope.signinAction = signinAction;
+        $scope.gotoRegister = gotoRegister;
+        
 
 
         // 获取 f7 页面
@@ -46,6 +48,9 @@
                 myApp.alert('操作失败！' + errDesc, null);
             });
 
+        }
+        function gotoRegister() {
+            mainView.router.loadPage('../../../app/components/login/register.html');
         }
 
     }

@@ -7,14 +7,14 @@
         <!--&lt;!&ndash;</div>&ndash;&gt;-->
     <!--</div>-->
 <!--</div>-->
-<div class="navbar">
-    <div class="navbar-inner">
-        <div class="left sliding"><a href="../../../index.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding">Login</div>
-    </div>
-</div>
+<!--<div class="navbar">-->
+    <!--<div class="navbar-inner">-->
+        <!--<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>-->
+        <!--<div class="center sliding">Login</div>-->
+    <!--</div>-->
+<!--</div>-->
 <div class="pages navbar-through">
-    <div data-page="login-screen" class="page no-swipeback no-border" ng-controller="loginController">
+    <div data-page="login-screen" class="page no-navbar no-swipeback no-border" ng-controller="loginController">
         <div class="page-content login-screen-content no-border">
             <div class="air-login-top">
                 <div><a class="login-cancel" ng-click="cancelAction()"><img src="../../../assets/images/cancel.png"></a></div>
@@ -61,7 +61,7 @@
                         </li>
                     </ul>
                     <div class="list-block-label">
-                        <a href="../../../app/components/login/register.html" class="login-goto-register">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
+                        <a class="login-goto-register" ng-click="gotoRegister()">{{'login.go-register' | translate}}<img src="../../../assets/images/login_arrow_right.svg"></a>
                     </div>
                 </div>
             </form>
