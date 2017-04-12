@@ -11,11 +11,17 @@
         /* jshint validthis: true */
         var vm = this;
 
-        $scope.title = "Is in main.controller.js";
+        $scope.imgSrc = [
+            './../assets/images/banner0.jpg',
+            './../assets/images/banner1.jpg',
+            './../assets/images/banner0.jpg'
+        ];
 
-        $scope.about = 'about';
-
-        console.log(iotUtil.uuid());
+        $scope.news = [
+            '#最美航线大PK#',
+            '#【原创】请问徐闻zhih到海口的直升机多长时间一班#',
+            '#【原创】飞机飞到哪里去啊#'
+        ]
     }
 
 })();
