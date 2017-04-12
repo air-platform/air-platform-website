@@ -50,7 +50,7 @@
 
         }
         function gotoRegister() {
-            mainView.router.loadPage('../../../app/components/login/register.html');
+            mainView.router.loadPage('app/components/login/register.html');
         }
 
     }
