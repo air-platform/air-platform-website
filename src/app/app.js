@@ -3,7 +3,8 @@
 
     // Initialize app and store it to myApp variable for futher access to its methods
     var myApp = new Framework7({
-        animateNavBackIcon:true
+        animateNavBackIcon:true,
+        pushState: true,
     });
 
     // We need to use custom DOM library, let's save it to $$ variable:
