@@ -29,6 +29,13 @@
     "comfirm-placeholder":"再次输入密码...",
     "forgot-password":"忘记密码?",
     "go-register":"还没有账号，去注册？"
+  },
+  "airjet": {
+    "travel-plan": "旅行计划",
+    "dream-flying": "缘梦飞行",
+    "card-products": "卡产品",
+    "model-number": "机型号: ",
+    "aircraft-number": "飞机号: ",
+    "guest-number": "载客人数: "
   }
-
 }

@@ -30,6 +30,7 @@
     height: 2.6rem;
     padding: 0 .16rem 0 .2rem;
     box-sizing: border-box;
+    font-family:PingFangSC-Regular;
     .dream-flying-item{
         background-color:@base-white;
         height: 100%;
@@ -41,6 +42,7 @@
         display: -webkit-flex;
         position: relative;
         overflow: hidden;
+        color: @base-gray-light;
         .dfi-left{
             width: calc(~"100% - 2.26rem");
             height: 100%;
@@ -58,20 +60,15 @@
                 line-height: .36rem;
                 justify-content: space-between;
                 .dreaam-flying-date{
-                    font-size: .24rem;
-                    color: @base-gray-dark;
+                    font-size: .24rem
                 }
                 .dreaam-flying-logo{
                     img{
-                        // width: 1.32rem;
-                        // height: .32rem;
-                        width: 1.056rem;
-                        height: .256rem;
+                        width: 1.32rem;
+                        height: .32rem;
+                        // width: 1.056rem;
+                        // height: .256rem;
                         vertical-align: top;
-                    }
-                    span{
-                        font-size: .2rem;
-                        color: @base-gray-dark;
                     }
                 }
             }
@@ -80,9 +77,10 @@
                 display: flex;
                 display: -webkit-flex;
                 justify-content: space-between;
-                color: @base-gray-dark;
                 .dfim-address{
+                    font-weight: 400;
                     font-size: .36rem;
+                    font-family:PingFangSC-Medium;
                 }
                 .dfim-time{
                     font-size: .28rem;
@@ -100,7 +98,6 @@
                 justify-content: space-between;
                 p{
                     font-size: .24rem;
-                    color: @base-gray-dark;
                 }
             }
             
@@ -124,6 +121,7 @@
                 font-size: .24rem;
             }
             .plane-money{
+                font-family:PingFangSC-Medium;
                 height: .34rem;
                 line-height: .34rem;
                 font-size: .28rem;
@@ -141,6 +139,9 @@
             }
         }
         &.active{
+            .dfim-address{
+                color: @base-gray-dark;
+            }
             .dfi-right{
                 background: @base-blue-dark
             }
@@ -150,7 +151,7 @@
             display: block;
             width: .5rem;
             height: .5rem;
-            background-color: @base-white;
+            background-color: @base-light-dark;
             position: absolute;
             border-radius: 50%;
             right: -.25rem;
