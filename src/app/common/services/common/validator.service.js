@@ -3,31 +3,44 @@
     .factory('ValidatorService', ValidatorService);
 
   function ValidatorService(REGEX) {
+
+
+    var validate = {
+      password: '',
+      phone: '',
+      email: '',
+      hasParams: hasParams,
+      checkEmail: checkEmail,
+      checkPassword: checkPassword,
+      checkPhone: checkPhone,
+    };
+
+    function hasParams (params) {
+      return params.length > 0;
+    }
+
+    function checkEmail () {
+      //Todo
+      return true;
+    }
+
+    function checkPassword () {
+      if (validate.hasParams(arguments)) {
+        validate.password = arguments[0];
+      }
+
+      return REGEX.PASSWORD.test(validate.password);
+    }
+
+    function checkPhone () {
+      //Todo
+      return REGEX.PHONE.test(validate.phone);
+    }
+
     var service = {
-      validate: new Validator()
+      validate: validate
     };
 
     return service;
-
-    function Validator() {
-      
-    }
-
-    Validator.prototype.email = function () {
-      //Todo
-      // this.email
-      // useage xxx.email.bind('email')
-      return true;
-    }
-
-    Validator.prototype.password = function () {
-      //Todo
-      return true;
-    }
-
-    Validator.prototype.phone = function () {
-      //Todo
-      return REGEX.PHONE.test(this.phone);
-    }
   }
 })();

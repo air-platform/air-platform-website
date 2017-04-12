@@ -10,7 +10,7 @@
     angular.module('airsc').controller('loginController', loginController);
 
     /** @ngInject */
-    function loginController($scope,NetworkService,iotUtil, NotificationService, UrlService, URL) {
+    function loginController($scope,NetworkService,iotUtil, NotificationService, UrlService, URL, ValidatorService) {
 
 
         $scope.principal = '';
@@ -36,6 +36,7 @@
         }
 
         function signinAction() {
+            console.log(ValidatorService.validate.checkPassword.call(null, $scope.credential), 'password');
             myApp.showIndicator();
             NetworkService.post(UrlService.getUrl(URL.LOGIN), {principal:$scope.principal,credential:$scope.credential},function (res) {
                 myApp.hideIndicator();
