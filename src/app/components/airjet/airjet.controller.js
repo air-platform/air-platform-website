@@ -7,9 +7,10 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope,iotUtil) {
+    function jetController($scope, $window, iotUtil) {
         var page = myApp.views[0];
         var formData = page.activePage.query;
+        $scope.submit = submit;
 
         $scope.imgSrc = [
             './../assets/images/banner0.jpg',
@@ -83,6 +84,7 @@
             seat: '2800',
             least:{number: '3'}
         }];
+        
 
         if(formData.id){
             $scope.dreamFlyList.forEach(function(item){
@@ -92,6 +94,10 @@
                 }
             })
         }
+
+        function submit(formData) {
+            myApp.addView('.view-main').router.loadPage('app/components/airjet/dream-detail.html')
+        };
     }
 
 })();
