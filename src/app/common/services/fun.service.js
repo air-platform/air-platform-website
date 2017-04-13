@@ -144,33 +144,33 @@
     angular
         .module('airsc')
         .filter('characters', characters);
-        function characters() {
-            return function (input, chars, breakOnWord) {
-                if (isNaN(chars)) {
-                    return input;
-                }
-                if (chars <= 0) {
-                    return '';
-                }
-                if (input && input.length > chars) {
-                    input = input.substring(0, chars);
-
-                    if (!breakOnWord) {
-                        var lastspace = input.lastIndexOf(' ');
-                        //get last space
-                        if (lastspace !== -1) {
-                            input = input.substr(0, lastspace);
-                        }
-                    } else {
-                        while (input.charAt(input.length - 1) === ' ') {
-                            input = input.substr(0, input.length - 1);
-                        }
-                    }
-                    return input + '…';
-                }
+    function characters() {
+        return function (input, chars, breakOnWord) {
+            if (isNaN(chars)) {
                 return input;
-            };
+            }
+            if (chars <= 0) {
+                return '';
+            }
+            if (input && input.length > chars) {
+                input = input.substring(0, chars);
+
+                if (!breakOnWord) {
+                    var lastspace = input.lastIndexOf(' ');
+                    //get last space
+                    if (lastspace !== -1) {
+                        input = input.substr(0, lastspace);
+                    }
+                } else {
+                    while (input.charAt(input.length - 1) === ' ') {
+                        input = input.substr(0, input.length - 1);
+                    }
+                }
+                return input + '…';
+            }
+            return input;
         };
+    };
 
     /**
      * 日期转换为中国日期
@@ -179,27 +179,58 @@
     angular
         .module('airsc')
         .filter('chinaweek', chinaweek);
-        function chinaweek() {
-            return function (input) {
-                var weekArr = {
-                    "周一": "Mon",
-                    "周二": "Tues",
-                    "周三": "Wed",
-                    "周四": "Thur",
-                    "周五": "Fri",
-                    "周六": "Sat",
-                    "周日": "Sun"
-                };
-                for(var key in weekArr) {
-                    if(input.indexOf(weekArr[key]) !== -1) {
-                        input = input.replace(weekArr[key], key);
-                        break;
+    function chinaweek() {
+        return function (input) {
+            var weekArr = {
+                "周一": "Mon",
+                "周二": "Tues",
+                "周三": "Wed",
+                "周四": "Thur",
+                "周五": "Fri",
+                "周六": "Sat",
+                "周日": "Sun"
+            };
+            for (var key in weekArr) {
+                if (input.indexOf(weekArr[key]) !== -1) {
+                    input = input.replace(weekArr[key], key);
+                    break;
+                }
+            }
+
+            return input;
+        };
+    };
+
+    /**
+     * 一百以下数字转换为中国数字
+     *
+     */
+    angular
+        .module('airsc')
+        .filter('chinanum', chinanum);
+    function chinanum() {
+        return function (num) {
+            var ary = num + '';
+            var ary0 = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+            if (ary.length === 1) {
+                return ary0[Number(ary)]
+            } else if (ary.length === 2) {
+                if (ary[0] === '1') {
+                    if (ary[1] === '0') {
+                        return ary0[10];
+                    } else {
+                        return ary0[10] + ary0[Number(ary[1])];
+                    }
+                } else {
+                    if (ary[1] === '0') {
+                        return ary0[Number(ary[0])] + ary0[10];
+                    } else {
+                        return ary0[Number(ary[0])] + ary0[10] + ary0[Number(ary[1])];
                     }
                 }
-                
-                return input;
-            };
+            }
         };
+    };
 
 
     angular

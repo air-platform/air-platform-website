@@ -24,6 +24,118 @@
     }
 }
 
+.travel-plan-content{
+    padding: .26rem .26rem .24rem .28rem;
+    font-family:PingFangSC-Regular;
+
+    .travel-plan-card{
+        background-color: @base-white;
+        border-radius: .16rem;
+        margin-bottom: .24rem;
+
+        em{
+            font-style: normal;
+        }
+        .tpc-top{
+            height: .8rem;
+            color: @base-white;
+            font-size: .36rem;
+            line-height: .8rem;
+            text-align: center;
+            background-color: @index-red;
+            border-top-left-radius: .16rem;
+            border-top-right-radius: .16rem;
+        }
+        .tpc-bottom{
+            .tpcb-top{
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                padding: .4rem .72rem;
+                border-bottom: .02rem dashed @base-grey;
+                position: relative;
+
+                .tpcbt-city{
+                    text-align: left;
+                    font-size: .24rem;
+                    color: @base-gray-light;
+                    .tpcbt-select{
+                        ul{
+                            list-style: none;
+                            margin: 0;
+                            padding: 0;
+
+                            .item-title{
+                                color: @base-black-light;
+                                font-size: .48rem;
+                            }
+                        }
+                    }
+                }
+                .tpcbt-arrow{
+                    i{
+                        width: .5rem;
+                        height: .5rem;
+                        margin-top: .44rem;
+                        color: @index-red;
+                        border:.02rem solid @index-red;
+                        border-radius: 50%;
+                        display: flex;
+                        display: -webkit-flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
+                &:after, &:before{
+                    content: "";
+                    display: block;
+                    width: .22rem;
+                    height: .22rem;
+                    background-color: @base-light-dark;
+                    position: absolute;
+                    border-radius: 50%;
+                    right: -.11rem;
+                    bottom:-.11rem;
+                    z-index: 99;
+                }
+                &:before{
+                    right: auto;
+                    left: -.11rem;
+                }
+            }
+            .tpcb-bottom{
+                padding: .4rem .72rem;
+                font-size: .28rem;
+                color:@base-gray-light;
+
+                input{
+                    height: 0.6rem;
+                    background-color: @base-light-dark;
+                    border: none;
+                    outline: none;
+                    padding: 0.08rem 0.16rem;
+                    border-radius: 0.06rem;
+                    width: 4.08rem;
+                    font-size: 0.32rem;
+                    font-weight: 300;
+                }
+                .tpcbb-time, .tpcbb-guest{
+                    margin-bottom: .28rem;
+                }
+                .tpcbb-back{
+                    font-size: .32rem;
+                    color: @base-gray-dark;
+                }
+            }
+            &:not(:first-child){
+                border-top: .02rem solid @base-grey;
+            }
+        }
+    }
+    
+}
+
 .dream-flying-content{
     margin-top: .4rem;
     width: 100%;
