@@ -9,6 +9,11 @@
     /** @ngInject */
     function mainController($scope, $rootScope,$translate,iotUtil,$timeout,NetworkService,constdata,StorageService) {
 
+        // 订阅登录通知->刷新界面
+        $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
+            refresh();
+        });
+
 
         var rightPanelItems = [
             {title:'profile.order',target:'app/components/login/login.html'},
@@ -18,24 +23,19 @@
 
         $translate('profile.login-register').then(function (headline) {
             loginItemTitle = headline;
-            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
+            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/profile/profile.html'};
         }, function (translationId) {
             loginItemTitle = translationId;
-            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
+            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/profile/profile.html'};
         });
 
         $scope.rightPanelItems = rightPanelItems;
         $scope.gotoItemAction = gotoItemAction;
+        $scope.logoutAction = logoutAction;
+        $scope.islogin = false;
 
-
-        // 订阅登录通知->刷新界面
-        $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
-            refresh();
-        });
 
         refresh();
-
-
 
 
         function gotoItemAction(item) {
@@ -53,24 +53,23 @@
             $timeout(function () {
                 StorageService.clear(constdata.token);
                 StorageService.clear(constdata.information);
-                refresh();
+                myApp.alert('退出成功！', function () {
+                    refresh();
+                });
             },60);
         }
         function refresh() {
             if (iotUtil.islogin()){
                 info = iotUtil.userInfo();
+                $scope.islogin = true;
                 $scope.rightUserItem.title = info.nickName;
-                $scope.rightUserItem.target = 'app/components/login/login.html';
-                $scope.rightPanelItems.push({title:'profile.out',target:'out'});
+                $scope.rightUserItem.target = 'app/components/profile/profile.html';
             }else{
                 info = {};
+                $scope.islogin = false;
                 $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
             }
         }
-
-
-
-
 
 
         var page = myApp.views[0];

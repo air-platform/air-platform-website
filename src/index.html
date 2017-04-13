@@ -82,6 +82,16 @@
             </div>
           </a>
         </li>
+        <li ng-show="islogin">
+          <a href class="item-link close-panel" ng-click="logoutAction()">
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner">
+                <div class="item-title">{{'profile.out' | translate}}</div>
+              </div>
+            </div>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
