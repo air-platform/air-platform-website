@@ -39,7 +39,7 @@
 
         .tpc-top{
             height: .8rem;
-            color: @index-red;
+            color: @base-red-light;
             font-size: .36rem;
             line-height: .8rem;
             text-align: left;
@@ -58,7 +58,7 @@
             &:before{
                 position: absolute;
                 content: "";
-                background-color: @index-red;
+                background-color: @base-red-light;
                 width: .06rem;
                 height: .32rem;
                 border-radius: .03rem;
@@ -97,8 +97,8 @@
                         width: .5rem;
                         height: .5rem;
                         margin-top: .44rem;
-                        color: @index-red;
-                        border:.02rem solid @index-red;
+                        color: @base-red-light;
+                        border:.02rem solid @base-red-light;
                         border-radius: 50%;
                         display: flex;
                         display: -webkit-flex;
@@ -148,7 +148,7 @@
                     content: "\f107";
                     position: absolute;
                     font-size: .4rem;
-                    color: @index-red;
+                    color: @base-red-light;
                     right: .1rem;
                     line-height: 0.6rem;
                 }
@@ -252,6 +252,30 @@
         }
         .tpbr-middle{
             padding-left: .44rem;
+            padding-right: .28rem;
+            .tpbrm-item{
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 1.44rem;
+                .tpbrmi-left{
+                    display: flex;
+                    display: -webkit-flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: .4rem;
+                }
+                .tpbrmi-right{
+                    font-size: .28rem;
+                    color: @base-gray-light;
+                    em{
+                        font-style: normal;
+                        font-size: .36rem;
+                        color: @base-red-light;
+                    }
+                }
+            }
         }
         .tpbr-bottom{
             display: flex;
@@ -262,18 +286,18 @@
         height: .88rem;
         border-radius: .16rem;
         color:@base-white;
-        border: .02rem solid @index-red;
+        border: .02rem solid @base-red-light;
         display: flex;
         display: -webkit-flex;
         justify-content: center;
         align-items: center;
         
         &.tpb-submit{
-            background-color: @index-red;
+            background-color: @base-red-light;
         }
 
         &.tpb-model{
-            color: @index-red;
+            color: @base-red-light;
         }
     }
 }
