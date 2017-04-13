@@ -26,8 +26,8 @@
         <!-- Tab 1, active by default -->
         <div id="tab1" class="tab active">
             <div class="travel-plan-content">
-                <div class="travel-plan-card">
-                    <div class="tpc-top"><em>{{'airjet.stroke' | translate}}<span>一</span></em></div>
+                <div class="travel-plan-card" ng-repeat="item in travelPlanList track by $index">
+                    <div class="tpc-top"><em>{{'airjet.stroke' | translate}}<span ng-bind="item | chinanum"></span></em></div>
                     <div class="tpc-bottom">
                         <div class="tpcb-top">
                             <div class="tpcbt-city">
@@ -165,9 +165,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="travel-plan-add">
-                    <i class="fa fa-plus-circle"></i>
+                <div class="travel-plan-add" ng-click="addCard()">
+                    <em>+</em>
                     <span>{{'airjet.add-trip' | translate}}</span>
+                </div>
+                <div class="travel-plan-button">
+                    <div class="tpb-submit">{{'airjet.release' | translate}}</div>
+                    <div class="tpb-model">{{'airjet.model-custom' | translate}}</div>
                 </div>
             </div>
             <div class="content-block">
