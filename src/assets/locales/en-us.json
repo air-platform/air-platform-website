@@ -88,5 +88,10 @@
     "school-brief":"航校简介",
     "base-brief":"基地介绍",
     "plane-train":"飞机培训"
+  },
+  "airtaxi": {
+    "plane-select": "Choose a Plane",
+    "fixed-wing": "Fixed Wing",
+    "helicopter": "Helicopter"
   }
 }
