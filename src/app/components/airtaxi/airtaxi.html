@@ -6,14 +6,14 @@
         <div class="left">
           <a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a>
         </div>
-        <div class="center sliding">AirTaxi</div>
+        <div class="center sliding">Air Transportation</div>
         <div class="right">
           <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
         </div>
         <div class="subnavbar airtaxi-subnavbar">
-          <div class="buttons-row airtaxi-nav">
-            <a href="#air-taxi-cross-channel" class="button tab-link airtaxi-project active">飞跃海峡</a>
-            <a href="#air-taxi-tour" class="button tab-link airtaxi-project">观光旅游</a>
+          <div class="buttons-row air-tabs airtaxi-nav">
+            <a href="#air-taxi-cross-channel" class="tab-link airtaxi-project active"><span>飞跃海峡</span></a>
+            <a href="#mongolia-routes" class="tab-link mongolia-project"><span>内蒙航线</span></a>
           </div>
         </div>
     </div>
@@ -87,7 +87,7 @@
                         <div class="row">
                           <div class="item-content">
                             <div class="item-inner">
-                              <div class="item-title label">选择航班</div>
+                              <div class="item-title label select-flight-label">选择航班</div>
                               <div class="item-input select-flight">
                                 <select ng-model="schedule.flight" ng-disabled="$index != 0">
                                   <option>首都航空B-7186</option>
@@ -104,7 +104,7 @@
                 <a href="#" class="button button-red start-flight">立即起飞</a>
               </div>
             </div>
-            <div id="air-taxi-tour" class="tab">
+            <div id="mongolia-routes" class="tab">
               <div class="content-block">
                 <p>Air Taxi Tour Page</p>
                 <p>To be developed...</p>
