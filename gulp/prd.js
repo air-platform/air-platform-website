@@ -59,6 +59,18 @@ gulp.task('inject:partials', ['build:partials'], function () {
         .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
 });
 
+gulp.task('framework7:template', function () {
+    return gulp.src([
+        path.join(conf.paths.src, '/app/**/*.html')
+    ])
+      .pipe($.minifyHtml({
+          empty: true,
+          spare: true,
+          quotes: true
+      }))
+      .pipe(gulp.dest(path.join(conf.paths.build, '/app/')))
+});
+
 /**
  * Build html (inject, minify)
  */
@@ -180,7 +192,7 @@ gulp.task('build:images', function () {
             interlaced: true, //type：Boolean defaults：false, Interlace gif for progressive rendering(gif)
             multipass: true //type：Boolean defaults：false, Optimize svg multiple times until it's fully optimized(svg)
         }))
-        .pipe(gulp.dest(path.join(conf.paths.build, '/images')));
+        .pipe(gulp.dest(path.join(conf.paths.build, '/assets/images')));
 });
 /**
  * Build locales (minify and copy to the target build folder)
@@ -241,7 +253,7 @@ gulp.task('build:all', ['build:rev'], function () {
         .pipe($.size({ title: 'build', gzip: true }));
 });
 
-gulp.task('build', ['build:clean', 'build:html', 'build:fonts', 'build:images', 'build:locales','build:js_components'], function () {
+gulp.task('build', ['build:clean', 'build:html', 'framework7:template', 'build:fonts', 'build:images', 'build:locales','build:js_components'], function () {
     //display the size of dist finally when gzip
     return gulp.src(path.join(conf.paths.build, '/**/*'))
         .pipe($.size({ title: 'build', gzip: true }));
