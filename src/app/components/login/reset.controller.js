@@ -10,7 +10,7 @@
     angular.module('airsc').controller('resetController', resetController);
 
     /** @ngInject */
-    function resetController($scope,NetworkService,iotUtil) {
+    function resetController($scope,NetworkService,$interval,iotUtil) {
 
         $scope.mobile = '';
         $scope.password = '';

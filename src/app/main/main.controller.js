@@ -7,7 +7,14 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope, iotUtil, NetworkService) {
+    function mainController($scope, iotUtil,$translate, NetworkService) {
+
+        $translate('air-community').then(function (headline) {
+            $scope.title = headline;
+        }, function (translationId) {
+            $scope.title = translationId;
+        });
+
         var page = myApp.views[0];
         var pageContainer = $$(page.container);
         var ul = pageContainer.find('.news-text');
@@ -35,11 +42,14 @@
             $scope.addLi($scope.listNews[i]);
         }
 
-        NetworkService.get('account/auth', function(res) {
-            console.log(res);
-        }, function(err) {
-            console.log(err);
-        });
+        function test() {
+            NetworkService.get('account/auth',null, function(res) {
+                console.log(res);
+            }, function(err) {
+                console.log(err);
+            });
+        }
+
     }
 
 })();
