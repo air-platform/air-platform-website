@@ -7,42 +7,66 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope, $rootScope,$translate,iotUtil, NetworkService,constdata) {
+    function mainController($scope, $rootScope,$translate,iotUtil,$timeout,NetworkService,constdata,StorageService) {
 
-        $translate('air-community').then(function (headline) {
-            $scope.title = headline;
+
+        var rightPanelItems = [
+            {title:'profile.order',target:'app/components/login/login.html'},
+            {title:'profile.setting',target:'app/components/profile/setting.html'}];
+        var info = {};
+        var loginItemTitle = '';
+
+        $translate('profile.login-register').then(function (headline) {
+            loginItemTitle = headline;
+            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
         }, function (translationId) {
-            $scope.title = translationId;
+            loginItemTitle = translationId;
+            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
         });
 
-        var rightPanel = [
-            {title:'profile.login-register',target:'app/components/login/login.html'},
-            {title:'profile.order',target:'app/components/login/login.html'},
-            {title:'profile.info',target:'app/components/login/login.html'},
-            {title:'profile.setting',target:'app/components/login/login.html'},
-            {title:'profile.out',target:''}];
-        var info = {};
-
-        $scope.rightPanelItems = rightPanel;
-
-        function refresh() {
-            if (iotUtil.islogin){
-                info = iotUtil.userInfo();
-                $scope.rightPanelItems[0].title = info.nickName;
-                $scope.rightPanelItems[0].target = 'app/components/login/login.html';
-            }else{
-                info = {};
-                $scope.rightPanelItems = rightPanel;
-            }
-        }
-
-        refresh();
+        $scope.rightPanelItems = rightPanelItems;
+        $scope.gotoItemAction = gotoItemAction;
 
 
+        // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
             refresh();
         });
 
+        refresh();
+
+
+
+
+        function gotoItemAction(item) {
+            if (item.target === 'out'){
+                logoutAction();
+            }else{
+                if (iotUtil.islogin()){
+                    mainView.router.loadPage(item.target);
+                }else {
+                    mainView.router.loadPage($scope.rightUserItem.target);
+                }
+            }
+        }
+        function logoutAction() {
+            $timeout(function () {
+                StorageService.clear(constdata.token);
+                StorageService.clear(constdata.information);
+                refresh();
+            },60);
+        }
+        function refresh() {
+            if (iotUtil.islogin()){
+                info = iotUtil.userInfo();
+                $scope.rightUserItem.title = info.nickName;
+                $scope.rightUserItem.target = 'app/components/login/login.html';
+                $scope.rightPanelItems.push({title:'profile.out',target:'out'});
+            }else{
+                info = {};
+                $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
+            }
+        }
 
 
 
