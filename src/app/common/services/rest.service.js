@@ -43,9 +43,10 @@
 
         /////////////////
 
-        function post(path,body,successHandler,failedHandler) {
+        function post(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customPOST(body,requestHeader()).then(
+            console.log(param);
+            account.customPOST(param,"","",requestHeader()).then(
                 successHandler,function (response) {
                     failedResponse(response,failedHandler,path);
                 }
@@ -61,13 +62,13 @@
         
         function put(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customPUT(param,requestHeader()).then(successHandler,function (response) {
+            account.customPUT(param,"",param,requestHeader()).then(successHandler,function (response) {
                 failedResponse(response,failedHandler,path);
             });
         }
         function del(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customDELETE("",requestHeader()).then(successHandler,function (response) {
+            account.customDELETE("","",requestHeader()).then(successHandler,function (response) {
                 console.log('delete failed');
                 failedResponse(response,failedHandler,path);
             });
@@ -96,7 +97,7 @@
             var token = StorageService.get('airspc_access_token');
             if (token && token.length > 0){
                 token = 'Bearer ' + token;
-                return {Authorization:token};
+                return {"Authorization":token};
             }
             return {};
         }
