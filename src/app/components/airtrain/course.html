@@ -1,22 +1,66 @@
 <div class="navbar">
-    <div class="navbar-inner">
-        <div class="left sliding"><a href="airtrain.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding">Air Training</div>
-    </div>
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="airtrain.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">精品课程</div>
+  </div>
 </div>
 <div class="pages navbar-through">
-    <div data-page="course" class="page" ng-controller="courseController">
-        <div class="page-content">
-            <div class="content-block">
-                <div class="content-block-inner">
-                    <p class="air-red">taxi</p>
-                    <p>Go <a href="#" class="back">back</a> or click  <a href="#" class="create-page">here </a>to create dynamic page.</p>
-                    <p>Mauris posuere sit amet metus id venenatis. Ut ante dolor, tempor nec commodo rutrum, varius at sem. Nullam ac nisi non neque ornare pretium. Nulla mauris mauris, consequat et elementum sit amet, egestas sed orci. In hac habitasse platea dictumst.</p>
-                    <a href="#" class="back">goto</a>
-                    <a href="#" class="back">back</a>
-                    <a href="#" class="back">back</a>
-                </div>
-            </div>
+  <div data-page="course" class="page" ng-controller="courseController">
+    <div class="page-content">
+      <div class="subnavbar course-nav">
+        <div class="buttons-row">
+          <a href="#tab1" class="button tab-link active">固定翼</a>
+          <a href="#tab2" class="button tab-link">直升机</a>
         </div>
+      </div>
+      <div class="tabs course-content">
+        <div id="tab1" class="tab active">
+          <div class="course-list">
+            <ul>
+              <li ng-repeat="item in courseList track by $index">
+                <a href="#" class="clearfix">
+                  <div class="course-list-img pull-left">
+                    <img ng-src="{{item.imgSrc}}">
+                  </div>
+                  <div class="course-list-main pull-left">
+                    <div class="list-title clearfix">
+                      <h5 class="pull-left" ng-bind="item.titleText"></h5>
+                      <span class="pull-right">¥ <i ng-bind="item.price"></i></span>
+                    </div>
+                    <div class="list-desc clearfix">
+                      <div class="pull-left" ng-bind="item.school"></div>
+                      <p class="pull-right">报名截止：<span ng-bind="item.deadline"></span></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="tab2" class="tab">
+          <div class="course-list">
+            <ul>
+              <li ng-repeat="item in courseList track by $index">
+                <a href="#" class="clearfix">
+                  <div class="course-list-img pull-left">
+                    <img ng-src="{{item.imgSrc}}">
+                  </div>
+                  <div class="course-list-main pull-left">
+                    <div class="list-title clearfix">
+                      <h5 class="pull-left" ng-bind="item.school"></h5>
+                      <span class="pull-right">¥ <i ng-bind="item.price"></i></span>
+                    </div>
+                    <div class="list-desc clearfix">
+                      <div class="pull-left" ng-bind="item.titleText"></div>
+                      <p class="pull-right">报名截止：<span ng-bind="item.deadline"></span></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
