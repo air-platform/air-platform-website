@@ -24,7 +24,13 @@
                 <!-- Tab 2 -->
                 <div id="tab2" class="tab">
                     <div class="content-block school-content">
-                        <div style="background-image:url({{items[0].imgUrl}})" class="color-white no-border school-brief-image"></div>
+                        <div style="background-image:url({{items[1].imgUrl}})" class="color-white no-border school-brief-image"></div>
+                        <div ng-repeat="content in items[1].contents">
+                            <div class="p-title-container">
+                                <span class="p-title">{{content.title}}</span>
+                            </div>
+                            <p>{{content.content}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
