@@ -81,9 +81,6 @@
       .button-schedule-delete {
         display: none;
       }
-      .flight-input a {
-        color: @base-black;
-      }
     }
   }
 
@@ -95,18 +92,23 @@
   }
 
   .add-schedule-button {
-
     position: relative;
     top: -0.5em;
     right: 0.5em;
     color: @base-white;
     background-color: @base-sky;
     border: none;
-    border-radius: 1rem;
+    border-radius: 1em;
     font-size: 3em;
     width: 1em;
     height: 1em;
-    line-height: 0.8em;
+    line-height: 1em;
+    text-align: center;
+    i {
+      font-size: 0.6em;
+      position: relative;
+      top: -0.2em;
+    }
   }
 
   .airtaxi-select-label {
@@ -184,7 +186,7 @@
   }
 
   .flight-input a {
-    color: #6d6d72;
+    color: @base-black;
   }
 
   .start-flight {
