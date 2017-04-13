@@ -36,6 +36,16 @@
     "travel-plan": "旅行计划",
     "dream-flying": "缘梦飞行",
     "card-products": "卡产品",
+    "stroke": "行程",
+    "departure": "出发城市",
+    "destination": "到达城市",
+    "select": "请选择",
+    "start-time": "出发时间 :",
+    "guest-count": "乘客人数 :",
+    "round-trip": "该行程为往返行程",
+    "add-trip": "新增行程",
+    "release": "快速发布",
+    "model-custom": "自主选择机型",
     "model-number": "机型号: ",
     "aircraft-number": "飞机号: ",
     "guest-number": "载客人数: ",
@@ -53,5 +63,9 @@
     "email": "邮箱 :",
     "enter": "请输入...",
     "submit": "提交"
+  },
+  "airtrain":{
+    "school-brief":"航校简介",
+    "base-brief":"基地介绍"
   }
 }

@@ -10,7 +10,7 @@
     angular.module('airsc').controller('loginController', loginController);
 
     /** @ngInject */
-    function loginController($scope,NetworkService,iotUtil) {
+    function loginController($scope,NetworkService,iotUtil, NotificationService, UrlService, URL, ValidatorService) {
 
 
         $scope.principal = '';
@@ -36,16 +36,22 @@
         }
 
         function signinAction() {
+            // console.log(ValidatorService.validate.checkPassword.call(null, $scope.credential), 'password');
             myApp.showIndicator();
-            NetworkService.post('account/auth',{principal:$scope.principal,credential:$scope.credential},function (res) {
+            NetworkService.post(UrlService.getUrl(URL.LOGIN), {principal:$scope.principal,credential:$scope.credential},function (res) {
+
+                console.log(res);
                 myApp.hideIndicator();
                 myApp.alert('登录成功！', 'Air Community', function () {
                     mainView.router.back();
                 });
+
             },function (err) {
+
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                NotificationService.alert.error('操作失败！' + errDesc, null)
+
             });
 
         }

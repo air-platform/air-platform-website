@@ -24,7 +24,7 @@
         $scope.registerAction = registerAction;
         $scope.getAuthcode = getAuthcode;
 
-        var countDown = 60;
+        var countDown = 120;
         var timer;
 
         // 获取 f7 页面
@@ -41,15 +41,16 @@
 
         function getAuthcode() {
             $scope.authcodediabled = true;
-            countDown = 60;
-            timer = $interval($scope.upd_count ,1000,60);
             myApp.showIndicator();
             NetworkService.post('account/verification?mobile=' + $scope.mobile,null,function (res) {
+                countDown = 120;
+                timer = $interval($scope.upd_count ,1000,120);
                 myApp.showPreloader('验证码发送成功，请注意查收');
                 setTimeout(function () {
                     myApp.hidePreloader();
                 }, 2000);
             },function (err) {
+                $scope.authcodediabled = false;
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
                 myApp.alert('操作失败！' + errDesc, null);

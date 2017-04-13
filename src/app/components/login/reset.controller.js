@@ -15,16 +15,47 @@
         $scope.mobile = '';
         $scope.password = '';
         $scope.authcode = '';
+        $scope.confirm_password = '';
+
+        $scope.authcodetip = '获取验证码';
+        $scope.authcodediabled = false;
 
         $scope.backAction = backAction;
-        $scope.resetAction = resetAction;
+        $scope.registerAction = registerAction;
+        $scope.getAuthcode = getAuthcode;
 
-        function resetAction() {
+        var countDown = 120;
+        var timer;
+
+
+        function backAction() {
+            mainView.router.back();
+        }
+
+        function getAuthcode() {
+            $scope.authcodediabled = true;
+            myApp.showIndicator();
+            NetworkService.post('account/verification?mobile=' + $scope.mobile,null,function (res) {
+                countDown = 120;
+                timer = $interval($scope.upd_count ,1000,120);
+                myApp.showPreloader('验证码发送成功，请注意查收');
+                setTimeout(function () {
+                    myApp.hidePreloader();
+                }, 2000);
+            },function (err) {
+                $scope.authcodediabled = false;
+                var errDesc = err.statusText;
+                myApp.hideIndicator();
+                myApp.alert('操作失败！' + errDesc, null);
+            });
+        }
+
+        function registerAction() {
             myApp.showIndicator();
 
-            NetworkService.post('account',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {
+            NetworkService.post('account/reset',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {
                 myApp.hideIndicator();
-                myApp.alert('修改成功！', 'Air Community', function () {
+                myApp.alert('重置密码成功！', 'Air Community', function () {
                     mainView.router.back();
                 });
             },function (err) {
@@ -32,10 +63,25 @@
                 myApp.hideIndicator();
                 myApp.alert('操作失败！' + errDesc, null);
             });
+
         }
-        function backAction() {
-            mainView.router.back();
-        }
+
+
+
+
+        $scope.upd_count = function () {
+            countDown = countDown - 1;
+            if (countDown <= 0){
+                $scope.authcodediabled = false;
+                $scope.authcodetip = '获取验证码';
+            }else{
+                $scope.authcodetip = countDown + '秒后重试';
+            }
+        };
+        $scope.$on('$destroy',function(){
+            $interval.cancel(timer);
+        });
+
 
     }
 
