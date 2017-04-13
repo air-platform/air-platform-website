@@ -45,7 +45,7 @@
 
         function post(path,body,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customPOST(body).then(
+            account.customPOST(body,requestHeader()).then(
                 successHandler,function (response) {
                     failedResponse(response,failedHandler,path);
                 }
@@ -54,22 +54,20 @@
 
         function get(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            var token = StorageService.get('airspc_access_token');
-            token = 'Bearer ' + token;
-            account.customGET("",param,{Authorization:token}).then(successHandler,function (response) {
+            account.customGET("",param,requestHeader()).then(successHandler,function (response) {
                 failedResponse(response,failedHandler,path);
             });
         }
         
         function put(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customPUT(param).then(successHandler,function (response) {
+            account.customPUT(param,requestHeader()).then(successHandler,function (response) {
                 failedResponse(response,failedHandler,path);
             });
         }
         function del(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customDELETE().then(successHandler,function (response) {
+            account.customDELETE("",requestHeader()).then(successHandler,function (response) {
                 console.log('delete failed');
                 failedResponse(response,failedHandler,path);
             });
@@ -88,21 +86,19 @@
             }else{
                 newResponse.statusText = '服务器连接错误';
             }
-            if (response.status == 401){
-                if (path != 'account/auth'){
-                    if (failedHandler){
-                        failedHandler(newResponse);
-                    }
-                }else{
-                    if (failedHandler){
-                        failedHandler(newResponse);
-                    }
-                }
-            }else{
-                if (failedHandler){
-                    failedHandler(newResponse);
-                }
+
+            if (failedHandler){
+                failedHandler(newResponse);
             }
+        }
+
+        function requestHeader() {
+            var token = StorageService.get('airspc_access_token');
+            if (token && token.length > 0){
+                token = 'Bearer ' + token;
+                return {Authorization:token};
+            }
+            return {};
         }
 
     }
@@ -171,52 +167,5 @@
         };
 
     }
-
-
-
-
-
-
-     /**
-      *
-      * facotry是一个单例,它返回一个包含service成员的对象。
-      * 注：所有的Angular services都是单例，这意味着每个injector都只有一个实例化的service。
-      *
-      */
-     angular
-         .module('airsc')
-         .factory('UserInfoServer', UserInfoServer);
-
-     /** @ngInject */
-     function UserInfoServer(constdata,StorageService) {
-
-
-         var service = {
-             tenantName: tenantName
-         };
-
-         return service;
-
-         ////////////
-
-         function tenantName() {
-             /* 获取租房name */
-             var tenant = localStorage.getItem(constdata.tenant);
-             var prefix = '';
-             if (tenant && tenant.length > 0) {
-                 prefix = 'tenant-' + tenant;
-             } else {
-                 var information = StorageService.get('airspc.information');
-                 if (information && information.name) {
-                     prefix = information.username;
-                 }
-             }
-             return prefix;
-         }
-     }
-
-
-
-
 
 })();

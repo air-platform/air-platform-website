@@ -3,5 +3,6 @@
     .constant('URL', {
       BASE: '',
       LOGIN: 'account/auth',
+      PROFILE:'account/profile',
     })
 })();

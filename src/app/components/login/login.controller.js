@@ -36,17 +36,22 @@
         }
 
         function signinAction() {
-            console.log(ValidatorService.validate.checkPassword.call(null, $scope.credential), 'password');
+            // console.log(ValidatorService.validate.checkPassword.call(null, $scope.credential), 'password');
             myApp.showIndicator();
             NetworkService.post(UrlService.getUrl(URL.LOGIN), {principal:$scope.principal,credential:$scope.credential},function (res) {
+
+                console.log(res);
                 myApp.hideIndicator();
                 myApp.alert('登录成功！', 'Air Community', function () {
                     mainView.router.back();
                 });
+
             },function (err) {
+
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
                 NotificationService.alert.error('操作失败！' + errDesc, null)
+
             });
 
         }
