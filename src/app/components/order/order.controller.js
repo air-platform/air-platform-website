@@ -12,6 +12,13 @@
     /** @ngInject */
     function orderController($scope,NetworkService,$interval,iotUtil) {
 
+        $scope.showSelectViewAction = showSelectViewAction;
+        
+        
+        
+        function showSelectViewAction() {
+            
+        }
 
     }
 
