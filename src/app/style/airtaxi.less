@@ -26,7 +26,7 @@
   position: relative;
   padding: 5px;
   top: 1em;
-  left: -1em;
+  left: 1em;
   width: 2em;
   height: 2em;
   border-radius: 1em;
@@ -74,11 +74,34 @@
     height: 328px;
   }
 
-  .channel-select {
-    border-top: 1px solid @base-gray-light;
-    border-left: 1px solid @base-gray-light;
-    border-right: 1px solid @base-gray-light;
-    border-radius: 5px;
+  .button-schedule-delete {
+    float: right;
+  }
+
+  .schedule-card {
+    margin-top: 1em;
+    border: 1px solid @base-gray-light;
+    border-radius: 5px 5px 0 0;
+
+    .add-schedule-button {
+      display: none;
+    }
+  }
+
+  .schedule-card-list {
+    margin: 0;
+    padding: 0;
+
+    li:first-child .schedule-card{
+      margin-top: 0;
+
+      .add-schedule-button {
+        display: block;
+      }
+      .button-schedule-delete {
+        display: none;
+      }
+    }
   }
 
   .schedule-title {
@@ -107,11 +130,11 @@
     font-size: 14px;
   }
 
-  .channel-select-content {
+  .schedule-content {
     margin: 10px 0 10px 25px;
   }
 
-  .channel-select .row {
+  .schedule-card .row {
     width: 100%;
     border-bottom: 1px solid @base-gray;
 
@@ -136,7 +159,7 @@
     }
   }
 
-  .channel-select .list-block .item-inner {
+  .schedule-card .list-block .item-inner {
     display: block;
     border: none;
 

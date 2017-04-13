@@ -26,76 +26,82 @@
           <div class="tabs">
             <div id="air-taxi-cross-channel" class="tab active">
               <div class="content-block">
-                <div class="air-taxi-map" id="air-taxi-map"></div>
-                <div class="channel-select">
-                  <div class="button add-schedule-button pull-right">+</div>
-                  <div class="schedule-title">行程一</div>
-                  <div class="list-block channel-select-content">
-                    <div class="row">
-                      <div class="item-content col-50">
-                        <div class="item-inner">
-                          <div class="item-title label date-select airtaxi-select-label">选择日期</div>
-                          <div class="item-input">
-                            <input type="date" value="2017-04-30">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-content col-50">
-                        <div class="item-inner">
-                          <div class="item-title label datetime-select airtaxi-select-label">选择时间段</div>
-                          <div class="item-input">
-                            <select class="airtaxi-schedule" name="airtaxi-schedule">
-                              <option>08:00-09:00</option>
-                              <option>14:30-15:30</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="item-content start-city-select col-45">
-                        <div class="item-inner">
-                          <div class="item-title label airtaxi-select-label">起飞城市</div>
-                          <div class="item-input">
-                            <select>
-                              <option>徐闻</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="arrow-bidirection">
-                        <div class="left"></div>
-                        <div class="right"></div>
-                      </div>
-                      <div class="item-content arrival-city-select col-50">
-                        <div class="item-inner">
-                          <div class="item-title label airtaxi-select-label">到达城市</div>
-                          <div class="item-input">
-                            <select>
-                              <option>海口港</option>
-                              <option>海口美兰机场</option>
-                              <option>海航大厦</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title label">选择航班</div>
-                          <div class="item-input select-flight">
-                            <select>
-                              <option>首都航空B-7186</option>
-                              <option>海南航空B-7898</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <a href="#" class="button button-red start-flight">立即起飞</a>
+                <div class="map">
+                    <div class="air-taxi-map" id="air-taxi-map"></div>
                 </div>
+                <ul class="schedule-card-list">
+                  <li ng-repeat="schedule in airtaxiCtl.schedules">
+                    <div class="schedule-card">
+                      <div class="button pull-right add-schedule-button">+</div>
+                      <div class="schedule-title">行程{{ airtaxiCtl.schedules.length - $index }}<a class="fa fa-trash button-schedule-delete"></a></div>
+                      <div class="list-block schedule-content">
+                        <div class="row">
+                          <div class="item-content col-50">
+                            <div class="item-inner">
+                              <div class="item-title label date-select airtaxi-select-label">选择日期</div>
+                              <div class="item-input">
+                                <input type="date" value="2017-04-30" ng-model="schedule.date" ng-disabled="$index != 0">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item-content col-50">
+                            <div class="item-inner">
+                              <div class="item-title label datetime-select airtaxi-select-label">选择时间段</div>
+                              <div class="item-input">
+                                <select class="airtaxi-schedule" name="airtaxi-schedule" ng-model="schedule.time"  ng-disabled="$index != 0">
+                                  <option>08:00 - 09:00</option>
+                                  <option>14:30 - 15:30</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="item-content start-city-select">
+                            <div class="item-inner">
+                              <div class="item-title label airtaxi-select-label">起飞城市</div>
+                              <div class="item-input">
+                                <select ng-model="schedule.departure" ng-disabled="$index != 0">
+                                  <option>徐闻</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="arrow-bidirection">
+                            <div class="left"></div>
+                            <div class="right"></div>
+                          </div>
+                          <div class="item-content arrival-city-select col-50">
+                            <div class="item-inner">
+                              <div class="item-title label airtaxi-select-label">到达城市</div>
+                              <div class="item-input">
+                                <select ng-model="schedule.arrival" ng-disabled="$index != 0">
+                                  <option>海口港</option>
+                                  <option>海口美兰机场</option>
+                                  <option>海航大厦</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title label">选择航班</div>
+                              <div class="item-input select-flight">
+                                <select ng-model="schedule.flight" ng-disabled="$index != 0">
+                                  <option>首都航空B-7186</option>
+                                  <option>海南航空B-7898</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <a href="#" class="button button-red start-flight">立即起飞</a>
               </div>
             </div>
             <div id="air-taxi-tour" class="tab">

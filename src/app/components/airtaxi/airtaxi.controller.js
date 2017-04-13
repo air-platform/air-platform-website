@@ -24,6 +24,22 @@
           "徐闻,110.198611,20.2761111;海口港,110.162196,20.046835;" +
           "徐闻,110.198611,20.2761111;美兰,110.468596,19.944221;11,110.340278,20.1000";
 
+        controller.schedules = [
+          {
+            'date': '2017-04-30',
+            'time': '08:00 - 09:00',
+            'departure': '徐闻',
+            'arrival': '海口美兰机场',
+            'flight': '首都航空B-7186'
+          }, {
+            'date': '2017-06-03',
+            'time': '14:30 - 15:30',
+            'departure': '徐闻',
+            'arrival': '海航大厦',
+            'flight': '海南航空B-7898'
+          }
+        ]
+
         controller.mapPoints = AirTaxiUtilsService.extractPoints(response);
         AirTaxiUtilsService.drawMap("air-taxi-map", controller.mapPoints);
 
