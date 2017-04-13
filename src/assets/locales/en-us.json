@@ -21,6 +21,13 @@
     "setting":"设置",
     "out":"退出"
   },
+  "order":{
+    "center":"订单中心",
+    "all":"全部订单",
+    "ing":"进行中",
+    "done":"已完成",
+    "cancel":"已取消"
+  },
   "login":{
     "login":"登 录",
     "register":"注 册",
