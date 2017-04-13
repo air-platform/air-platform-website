@@ -18,7 +18,8 @@
     "login-register":"登录/注册",
     "order":"订单中心",
     "info":"个人信息",
-    "setting":"设置"
+    "setting":"设置",
+    "out":"退出"
   },
   "login":{
     "login":"登 录",

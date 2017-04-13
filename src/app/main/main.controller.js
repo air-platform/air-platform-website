@@ -15,20 +15,32 @@
             $scope.title = translationId;
         });
 
-        // var right =
-
-        if (iotUtil.islogin){
-
-        }
-
-        $scope.rightPanelItems = [
+        var rightPanel = [
             {title:'profile.login-register',target:'app/components/login/login.html'},
             {title:'profile.order',target:'app/components/login/login.html'},
             {title:'profile.info',target:'app/components/login/login.html'},
-            {title:'profile.setting',target:'app/components/login/login.html'}];
+            {title:'profile.setting',target:'app/components/login/login.html'},
+            {title:'profile.out',target:''}];
+        var info = {};
+
+        $scope.rightPanelItems = rightPanel;
+
+        function refresh() {
+            if (iotUtil.islogin){
+                info = iotUtil.userInfo();
+                $scope.rightPanelItems[0].title = info.nickName;
+                $scope.rightPanelItems[0].target = 'app/components/login/login.html';
+            }else{
+                info = {};
+                $scope.rightPanelItems = rightPanel;
+            }
+        }
+
+        refresh();
+
 
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
-
+            refresh();
         });
 
 

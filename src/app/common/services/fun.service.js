@@ -246,7 +246,7 @@
             htmlToPlaintext: htmlToPlaintext,
             getKeyValueFromURL: getKeyValueFromURL,
             islogin: islogin,
-            userInfomation: userInfomation,
+            userInfo: userInfomation,
         };
         return service;
 
