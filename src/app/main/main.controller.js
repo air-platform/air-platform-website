@@ -16,23 +16,23 @@
 
 
         var rightPanelItems = [
-            {title:'profile.order',target:'app/components/login/login.html'},
-            {title:'profile.setting',target:'app/components/profile/setting.html'}];
+            {title:'profile.order',target:'app/components/profile/order.html'},
+            {title:'profile.setting',target:'app/components/profile/setting.html'},
+            {title:'profile.out',target:'out'}];
         var info = {};
         var loginItemTitle = '';
 
         $translate('profile.login-register').then(function (headline) {
             loginItemTitle = headline;
-            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/profile/profile.html'};
+            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
         }, function (translationId) {
             loginItemTitle = translationId;
             $scope.rightUserItem = {title:loginItemTitle,target:'app/components/profile/profile.html'};
         });
 
+        $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
         $scope.gotoItemAction = gotoItemAction;
-        $scope.logoutAction = logoutAction;
-        $scope.islogin = false;
 
 
         refresh();
