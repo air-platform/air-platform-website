@@ -47,21 +47,26 @@
     padding: 0;
   }
 
+  .map {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+  }
+
   .air-taxi-map {
     width: 100%;
-    height: 328px;
+    height: 6.56rem;
   }
 
   .button-schedule-delete {
     float: right;
-    font-size: 16px;
+    font-size: 0.32rem;
     color: @base-red;
   }
 
   .schedule-card {
     margin-top: 1em;
     border: 1px solid @base-gray-light;
-    border-radius: 5px 5px 0 0;
 
     .add-schedule-button {
       display: none;
@@ -69,8 +74,14 @@
   }
 
   .schedule-card-list {
+    position: absolute;
+    width: 100%;
     margin: 0;
     padding: 0;
+    top: 8.32rem;
+    background-color: @base-white;
+    z-index: 10;
+
 
     li:first-child .schedule-card{
       margin-top: 0;
@@ -86,7 +97,7 @@
 
   .schedule-title {
     padding: 10px 22px;
-    color: @base-sky;
+    // color: @base-sky;
     border-bottom: 1px solid @base-gray-light;
     font-size: 0.28rem;
   }
@@ -122,7 +133,7 @@
 
   .schedule-card .row {
     width: 100%;
-    border-bottom: 1px solid @base-gray;
+    border-bottom: 1px solid @base-gray-light;
 
     .item-content {
       padding-left: 0;
@@ -160,7 +171,11 @@
       }
     }
 
-    .item-input * {
+    .inline-input {
+      display: inline-flex;
+    }
+
+    .inline-input select, .inline-input input {
       font-size: 0.28rem;
     }
 
@@ -170,23 +185,29 @@
   }
 
   .select-arrow-down {
-    position: relative;
+    position: absolute;
     font-size: 0.32rem;
-    height: 0;
-    float: right;
-    top: -2em;
+    right: 0.3rem;
+    top: 0.54rem;
   }
 
   .select-arrow-right {
     position: relative;
-    top: 1em;
-    font-size: 0.32rem;
-    height: 0;
+    line-height: 0.94rem;
+    font-size: 0.32rem !important;
     float: right;
   }
 
   .flight-input a {
+    display: inline-block;
+    width: 100%;
+    font-size: 0.28rem;
+    line-height: 0.94rem;
     color: @base-black;
+  }
+
+  .footer-button {
+    padding: 5px 22px;
   }
 
   .start-flight {
