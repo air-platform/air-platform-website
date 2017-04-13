@@ -1,7 +1,7 @@
-(function () {
+(function() {
   angular.module('airsc')
     .factory('NotificationService', NotificationService);
-
+  /** @ngInject */
   function NotificationService() {
     var service = {
       alert: new Alert()

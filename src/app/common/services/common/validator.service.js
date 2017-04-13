@@ -1,7 +1,7 @@
-(function () {
+(function() {
   angular.module('airsc')
     .factory('ValidatorService', ValidatorService);
-
+  /** @ngInject */
   function ValidatorService(REGEX) {
 
 
@@ -15,16 +15,16 @@
       checkPhone: checkPhone,
     };
 
-    function hasParams (params) {
+    function hasParams(params) {
       return params.length > 0;
     }
 
-    function checkEmail () {
+    function checkEmail() {
       //Todo
       return true;
     }
 
-    function checkPassword () {
+    function checkPassword() {
       if (validate.hasParams(arguments)) {
         validate.password = arguments[0];
       }
@@ -32,7 +32,7 @@
       return REGEX.PASSWORD.test(validate.password);
     }
 
-    function checkPhone () {
+    function checkPhone() {
       //Todo
       return REGEX.PHONE.test(validate.phone);
     }

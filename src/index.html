@@ -40,11 +40,12 @@
     <div class="content-block-title">空中社区网</div>
     <div class="list-block accordion-list">
       <ul>
-
-        <li class="accordion-item" ng-repeat="item in leftPanelItems"><a href="#" class="item-link item-content">
-          <div class="item-inner">
-            <div class="item-title">{{item.title}}</div>
-          </div></a>
+        <li class="accordion-item" ng-repeat="item in leftPanelItems">
+          <a href="#" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title">{{item.title}}</div>
+            </div>
+          </a>
           <div class="accordion-item-content">
             <div class="list-block">
               <ul>
@@ -60,7 +61,6 @@
             </div>
           </div>
         </li>
-
       </ul>
     </div>
   </div>
@@ -98,16 +98,22 @@
       <!-- Top Navbar-->
       <div class="navbar">
         <div class="navbar-inner">
-          <div class="left"><a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
+          <div class="left">
+            <a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+          </div>
           <div class="center sliding nav-title">Air Community</div>
-          <div class="right"> <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a></div>
+          <div class="right">
+            <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+          </div>
         </div>
       </div>
       <div class="pages navbar-through">
         <div data-page="index" class="page index-page">
           <div class="page-content">
             <a href="#" data-popup=".popup-search" class="open-popup">
-                <div class="index-search"><i class="fa fa-search"></i><input type="text" placeholder="大家都在搜五一飞跃海峡航线"></input></div>
+              <div class="index-search"><i class="fa fa-search"></i>
+                <input type="text" placeholder="大家都在搜五一飞跃海峡航线"></input>
+              </div>
             </a>
             <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
               <div class="swiper-wrapper">
@@ -143,7 +149,9 @@
                 </div>
                 <div class="news-text-box pull-right">
                   <ul class="news-text" auto-text>
-                    <!-- <li ng-repeat="listNew in listNews track by $index" auto-text><a href="#"></a></li> -->
+                    <li ng-repeat="news in listNews track by $index">
+                      <a href="#" ng-bind="news"></a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -159,12 +167,12 @@
               </div>
               <div class="pro-right pull-right">
                 <div class="pro-top clearfix">
-                    <div class="pro-adr">徐闻
-                        <div class="dfim-center">
-                            <div class="arrow-right"></div>
-                        </div>海口美兰机场
-                    </div>
-                    <div class="price">¥ <b>966</b> /人 起</div>
+                  <div class="pro-adr">徐闻
+                    <div class="dfim-center">
+                      <div class="arrow-right"></div>
+                    </div>海口美兰机场
+                  </div>
+                  <div class="price">¥ <b>966</b> /人 起</div>
                 </div>
                 <div class="pro-bottom">
                   <h5>固定翼飞行员一期招募</h5>
@@ -182,33 +190,30 @@
     </div>
   </div>
   <div class="popup popup-search" style="display: none;">
-      <div class="view">
-        <div class="pages">
-          <div class="page navbar-fixed">
-            <div class="navbar">
-              <div class="navbar-inner">
-                <form class="searchbar searchbar-active">
-                  <div class="searchbar-input">
-                    <input type="search" placeholder="Search" class=""><a href="#" class="close-popup">X</a>
-                    <div class="preloader preloader-white"><span class="preloader-inner"><span class="preloader-inner-gap"></span><span class="preloader-inner-left"><span class="preloader-inner-half-circle"></span></span><span class="preloader-inner-right"><span class="preloader-inner-half-circle"></span></span></span></div>
+    <div class="view">
+      <div class="pages">
+        <div class="page navbar-fixed">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <form class="searchbar searchbar-active">
+                <div class="searchbar-input">
+                  <input type="search" placeholder="Search" class=""><a href="#" class="close-popup">X</a>
+                  <div class="preloader preloader-white"><span class="preloader-inner"><span class="preloader-inner-gap"></span><span class="preloader-inner-left"><span class="preloader-inner-half-circle"></span></span><span class="preloader-inner-right"><span class="preloader-inner-half-circle"></span></span>
+                    </span>
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
-            <div class="page-content">
-              <div class="list-block">
-                <ul class="search-results"></ul>
-              </div>
+          </div>
+          <div class="page-content">
+            <div class="list-block">
+              <ul class="search-results"></ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <ul text-auto>
-        <li ng-repeat="item in itmes"></li>
-    </ul>
-
+  </div>
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uZ6QZYpe6GUT2wTjBvLrEDx8wlZaMOmu"></script>
   <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
   <!-- build:js(src) scripts/vendor.js -->
@@ -224,7 +229,5 @@
   <!-- angular templates will be automatically converted in js and inserted here -->
   <!-- endinject -->
   <!-- endbuild -->
-
-</body>
 
 </html>
