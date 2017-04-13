@@ -22,7 +22,7 @@
       transform: rotate(45deg);
       float: right;
       position: relative;
-      top: -5px;
+      top: -0.1rem;
     }
   }
 
@@ -33,7 +33,7 @@
     &::after {
       content: "";
       position: relative;
-      top: 5px;
+      top: 0.1rem;
       display: block;
       width: 6px;
       border-bottom: 2px solid @base-gray;
@@ -88,6 +88,7 @@
     padding: 10px 22px;
     color: @base-sky;
     border-bottom: 1px solid @base-gray-light;
+    font-size: 0.28rem;
   }
 
   .add-schedule-button {
@@ -161,6 +162,14 @@
     .select-flight-label {
       font-size: 0.24rem;
     }
+  }
+
+  .arrow {
+    position: relative;
+    font-size: 0.32rem;
+    height: 0;
+    float: right;
+    top: -2em;
   }
 
   .start-flight {
