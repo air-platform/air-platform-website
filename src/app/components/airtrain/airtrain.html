@@ -1,35 +1,72 @@
 <div class="navbar">
-    <div class="navbar-inner">
-        <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding">Air Training</div>
-    </div>
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">Air Training</div>
+  </div>
 </div>
 <div class="pages navbar-through">
-    <div data-page="airtrain" class="page">
-
-        <div class="page-content">
-            <div class="content-block">
-                <p>Framework7 provides very flexible forms layout, you can use it with/out icons, with/out labels, or mixed layouts.</p>
-            </div>
-            <div class="list-block">
-                <ul>
-                    <li><a href="app/components/airtrain/course.html" class="item-link">
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-f7"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title">精品课程</div>
-                            </div>
-                        </div></a></li>
-                    <li><a href="app/components/airtrain/schoollist.html" class="item-link">
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-f7"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title">航校简介</div>
-                            </div>
-                        </div></a></li>
-                </ul>
-            </div>
+  <div data-page="airtrain" class="page" ng-controller="trainController">
+    <div class="page-content">
+      <!-- 幻灯片 -->
+      <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
         </div>
-
+        <div class="swiper-pagination"></div>
+      </div>
+      <!-- 导航 -->
+      <div class="train-nav">
+        <ul class="row">
+          <li class="col-33">
+            <a href="app/components/airtrain/course.html" class="item-link">
+                <div class="train-course">
+                    <img src="./../../../assets/images/air-course.svg">
+                </div>
+                <p>精品课程</p>
+            </a>
+          </li>
+          <li class="col-33">
+            <a href="app/components/airtrain/schoollist.html" class="item-link">
+                <div class="train-brief">
+                    <img src="./../../../assets/images/air-brief.svg">
+                </div>
+                <p>航校简介</p>
+            </a>
+          </li>
+          <li class="col-33">
+            <a href="#">
+                <div class="train-consult">
+                    <img src="./../../../assets/images/air-consult.svg">
+                </div>
+                <p>我要咨询</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- 热门课程 -->
+      <div class="course-hot">
+          <div class="course-title clearfix">
+              <div class="pull-left">热门课程</div>
+              <div class="pull-right">查看更多<i class="fa fa-angle-right"></i></div>
+          </div>
+          <ul class="course-list">
+              <li ng-repeat="course in hotCourse track by $index">
+                  <a href="#" class="clearfix">
+                      <div class="list-img pull-left">
+                          <img ng-src="{{course.imgSrc}}">
+                      </div>
+                      <div class="list-info pull-left">
+                          <h4 ng-bind="course.titleText"></h4>
+                          <div ng-bind="course.school"></div>
+                          <p>报名截止：<span ng-bind="course.deadline"></span></p>
+                      </div>
+                      <div class="list-price pull-right">
+                          ¥ <span ng-bind="course.price"></span>
+                      </div>
+                  </a>
+              </li>
+          </ul>
+      </div>
     </div>
+  </div>
 </div>

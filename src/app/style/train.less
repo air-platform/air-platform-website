@@ -1,0 +1,102 @@
+.train-nav {
+  background-color: @base-white;
+  padding: .22rem 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.07);
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      text-align: center;
+      a {
+        > div {
+          width: .94rem;
+          height: .94rem;
+          text-align: center;
+          background-image: linear-gradient(-137deg, #9be3fe 0%, #74c9ea 98%);
+          border-radius: 100%;
+          margin: 0 auto;
+          padding: .2rem;
+          &.train-brief {
+            background-image: linear-gradient(-137deg, #8dede1 2%, #6bd4a9 100%);
+          }
+          &.train-consult {
+            background-image: linear-gradient(-135deg, #ffe86f 2%, #f3c251 100%);
+          }
+        }
+        > p {
+          margin: .05rem 0 0;
+          font-size: .28rem;
+          color: @base-gray-dark;
+        }
+      }
+    }
+  }
+}
+
+.course-hot {
+  background-color: @base-white;
+  margin-top: .14rem;
+  .course-title {
+    padding: 0 .2rem;
+    .text-vertical-center(.84rem);
+    border-bottom: .04rem solid rgba(0, 0, 0, 0.01);
+    .pull-left {
+      font-size: .28rem;
+      color: @base-gray-dark;
+    }
+    .pull-right {
+      font-size: .24rem;
+      color: @base-gray-dark;
+      i {
+        font-size: .36rem;
+        vertical-align: text-bottom;
+        margin-left: .12rem;
+      }
+    }
+  }
+  .course-list {
+    li {
+    	margin-left: .2rem;
+    	padding: .18rem .2rem .18rem 0;
+    	border-bottom: .02rem solid @base-border;
+      a {
+        display: block;
+        .list-img {
+          img {
+            width: 1.36rem;
+            height: 1.36rem;
+          }
+        }
+        .list-info {
+        	color: @base-gray-dark;
+        	margin-left: .26rem;
+        	height: 1.36rem;
+        	width: 4rem;
+        	position: relative;
+        	h4 {
+        		margin: 0;
+        		font-size: .28rem;
+        		font-weight: 500;
+        	}
+        	> div {
+        		font-size: .28rem;
+        		margin-top: .18rem;
+        		line-height: 1;
+        	}
+        	> p {
+        		font-size: .24rem;
+        		position: absolute;
+        		width: 100%;
+        		bottom: 0;
+        		margin: 0;
+        	}
+        }
+        .list-price {
+        	font-size: .28rem;
+        	color: @index-red;
+        }
+      }
+    }
+  }
+}
