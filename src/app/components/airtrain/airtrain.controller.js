@@ -10,7 +10,11 @@
     angular.module('airsc').controller('trainController', trainController);
 
     /** @ngInject */
-    function trainController($scope,iotUtil) {
+    function trainController($scope,constdata,iotUtil) {
+
+
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
+
     	$scope.imgSrc = [
             './../assets/images/banner0.jpg',
             './../assets/images/banner1.jpg',
