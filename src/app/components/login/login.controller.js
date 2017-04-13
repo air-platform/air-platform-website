@@ -42,7 +42,7 @@
 
                 console.log(res);
                 myApp.hideIndicator();
-                myApp.alert('登录成功！', 'Air Community', function () {
+                myApp.alert('登录成功！', function () {
                     mainView.router.back();
                 });
 
