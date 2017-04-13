@@ -29,12 +29,12 @@ Framework7.prototype.plugins.angular = function(app, params) {
     // Initialize app and store it to myApp variable for futher access to its methods
     var myApp = new Framework7({
         modalTitle: 'Air Community',
-        animateNavBackIcon: true,
-        hideNavbarOnPageScroll: true,
-        scrollTopOnNavbarClick: true,
-        pushState: true,
-        sortable: false,
-        swipeout: false,
+        // animateNavBackIcon: true,
+        // hideNavbarOnPageScroll: true,
+        // scrollTopOnNavbarClick: true,
+        // pushState: true,
+        // sortable: false,
+        // swipeout: false,
         angular: true
         // // Hide and show indicator during ajax requests
         // onAjaxStart: function (xhr) {
@@ -49,8 +49,8 @@ Framework7.prototype.plugins.angular = function(app, params) {
     var $$ = Dom7;
 
     // Add view
+    // Because we want to use dynamic navbar, we need to enable it for this view:
     var mainView = myApp.addView('.view-main', {
-        // Because we want to use dynamic navbar, we need to enable it for this view:
         dynamicNavbar: true
     });
 
