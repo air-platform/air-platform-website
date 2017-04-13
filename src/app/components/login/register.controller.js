@@ -24,7 +24,7 @@
         $scope.registerAction = registerAction;
         $scope.getAuthcode = getAuthcode;
 
-        var countDown = 60;
+        var countDown = 120;
         var timer;
 
         // 获取 f7 页面
