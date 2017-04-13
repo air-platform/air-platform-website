@@ -43,12 +43,12 @@
             $scope.authcodediabled = true;
             myApp.showIndicator();
             NetworkService.post('account/verification?mobile=' + $scope.mobile,null,function (res) {
+                myApp.hideIndicator();
                 countDown = 120;
                 timer = $interval($scope.upd_count ,1000,120);
-                myApp.showPreloader('验证码发送成功，请注意查收');
-                setTimeout(function () {
-                    myApp.hidePreloader();
-                }, 2000);
+                myApp.alert('验证码发送成功，请注意查收！', function () {
+
+                });
             },function (err) {
                 $scope.authcodediabled = false;
                 var errDesc = err.statusText;

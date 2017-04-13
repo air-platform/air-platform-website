@@ -14,7 +14,11 @@
   },
   "profile":{
     "login":"登录",
-    "register":"注册"
+    "register":"注册",
+    "login-register":"登录/注册",
+    "order":"订单中心",
+    "info":"个人信息",
+    "setting":"设置"
   },
   "login":{
     "login":"登 录",
@@ -66,6 +70,7 @@
   },
   "airtrain":{
     "school-brief":"航校简介",
-    "base-brief":"基地介绍"
+    "base-brief":"基地介绍",
+    "plane-train":"飞机培训"
   }
 }
