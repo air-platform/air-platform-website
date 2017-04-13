@@ -238,18 +238,31 @@
         .factory('iotUtil', iotUtil);
 
     /** @ngInject */
-    function iotUtil(StorageService) {
+    function iotUtil(StorageService,constdata) {
         var service = {
             uuid: uuid,
             isNull: isNull,
             pagesize: pagesize,
             htmlToPlaintext: htmlToPlaintext,
-            getKeyValueFromURL: getKeyValueFromURL
+            getKeyValueFromURL: getKeyValueFromURL,
+            islogin: islogin,
+            userInfomation: userInfomation,
         };
         return service;
 
         ////////////////////
 
+        function islogin() {
+            var token = StorageService.get(constdata.token);
+            if (token && token.length > 0){
+                return true;
+            }
+            return false;
+        }
+        function userInfomation() {
+            var info = StorageService.get(constdata.information);
+            return info;
+        }
         function uuid() {
             var s = [];
             var hexDigits = "0123456789abcdef";

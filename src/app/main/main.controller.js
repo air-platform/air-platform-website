@@ -7,7 +7,7 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope, $rootScope,$translate, NetworkService,constdata) {
+    function mainController($scope, $rootScope,$translate,iotUtil, NetworkService,constdata) {
 
         $translate('air-community').then(function (headline) {
             $scope.title = headline;
@@ -15,16 +15,26 @@
             $scope.title = translationId;
         });
 
-        $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
-            console.log(data);
-        });
+        // var right =
 
+        if (iotUtil.islogin){
+
+        }
 
         $scope.rightPanelItems = [
             {title:'profile.login-register',target:'app/components/login/login.html'},
             {title:'profile.order',target:'app/components/login/login.html'},
             {title:'profile.info',target:'app/components/login/login.html'},
             {title:'profile.setting',target:'app/components/login/login.html'}];
+
+        $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
+
+        });
+
+
+
+
+
 
 
         var page = myApp.views[0];
