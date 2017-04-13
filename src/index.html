@@ -2,213 +2,220 @@
 <!-- ng-strict-di -->
 <html lang="en" ng-app='airsc'>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="IOT,M2M,MQTT,HNA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="theme-color" content="#2196f3">
-  <title>空中社区-Air Community</title>
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
-  <!--
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="IOT,M2M,MQTT,HNA" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="theme-color" content="#2196f3">
+		<title>空中社区-Air Community</title>
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
+		<!--
     <link rel="icon" href="_/img/favicon.png">
     <link rel="icon" href="http://sstatic.net/so/favicon.ico">
     <link rel="apple-itouch-icon" href="http://sstatic.net/so/apple-touch-icon.png">
     -->
-  <!-- build:css({tmp/serve,src}) styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:css({tmp/serve,src}) styles/app.css -->
-  <!-- inject:css -->
-  <!-- css files will be automatically insert here -->
-  <!-- endinject -->
-  <!-- endbuild -->
-</head>
+		<!-- build:css({tmp/serve,src}) styles/vendor.css -->
+		<!-- bower:css -->
+		<!-- run `gulp inject` to automatically populate bower styles dependencies -->
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:css({tmp/serve,src}) styles/app.css -->
+		<!-- inject:css -->
+		<!-- css files will be automatically insert here -->
+		<!-- endinject -->
+		<!-- endbuild -->
+	</head>
 
-<body ng-controller="mainController">
-  <!-- Status bar overlay for fullscreen mode-->
-  <div class="statusbar-overlay"></div>
-  <!-- Panels overlay-->
-  <div class="panel-overlay"></div>
-  <!-- Left panel with reveal effect-->
-  <div class="panel panel-left panel-reveal layout-dark">
-    <div class="content-block-title">Left Panel</div>
-    <div class="content-block">
-      <p>This is a side panel. You can close it by clicking outsite or on this link: <a href="#" class="close-panel">close me</a>. You can put here anything, even another isolated view like in <a href="#" data-panel="right" class="open-panel">Right Panel</a></p>
-    </div>
-    <div class="content-block-title">Framework7 Kitchen Sink</div>
-    <div class="list-block">
-      <ul>
-        <li>
-          <a href="app/components/about/about.html" class="item-link close-panel">
-            <div class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner">
-                <div class="item-title">About</div>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- Right panel with cover effect-->
-  <div class="panel panel-right panel-cover">
-    <div class="content-block-title">个人信息</div>
-    <div class="list-block">
-      <ul>
-        <li ng-repeat="item in rightPanelItems">
-          <a href="{{item.target}}" class="item-link close-panel">
-            <div class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner">
-                <div class="item-title">{{item.title | translate}}</div>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- Views-->
-  <div class="views">
-    <div class="view view-main">
-      <!-- Top Navbar-->
-      <div class="navbar">
-        <div class="navbar-inner">
-          <div class="left"><a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
-          <div class="center sliding nav-title">Air Community</div>
-          <div class="right"> <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a></div>
-        </div>
-      </div>
-      <div class="pages navbar-through">
-        <div data-page="index" class="page index-page">
-          <div class="page-content">
-            <a href="#" class="open-popup">
-                <div class="index-search"><i class="fa fa-search"></i><input type="text" placeholder="大家都在搜五一飞跃海峡航线"></input></div>
-            </a>
-            <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-            <div class="content-block">
-              <div class="row index-nav">
-                <div class="col-25 bg-white text-center">
-                  <a href="app/components/airjet/airjet.html"><img src="assets/images/nav-icon.png">
-                    <br>{{'home.airjet' | translate}}</a>
-                </div>
-                <div class="col-25 bg-white text-center">
-                  <a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/nav-icon.png">
-                    <br>{{'home.airtaxi' | translate}}</a>
-                </div>
-                <div class="col-25 bg-white text-center">
-                  <a href="app/components/airtour/airtour.html"><img src="assets/images/nav-icon.png">
-                    <br>{{'home.airtour' | translate}}</a>
-                </div>
-                <div class="col-25 bg-white text-center">
-                  <a href="app/components/airtrain/airtrain.html"><img src="assets/images/nav-icon.png">
-                    <br>{{'home.airtrain' | translate}}</a>
-                </div>
-              </div>
-            </div>
-            <div class="index-news">
-              <div class="content-line"></div>
-              <div class="news-box clearfix">
-                <div class="news-img pull-left">
-                  <img src="assets/images/nav-icon.png">
-                </div>
-                <div class="news-text-box pull-right">
-                  <ul class="news-text" auto-text>
-                    <!-- <li ng-repeat="listNew in listNews track by $index" auto-text><a href="#"></a></li> -->
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <h2 class="bottom-title" ng-bind="'home.indexTitle' | translate"></h2>
-            <div class="pro-content clearfix">
-              <div class="pro-left pull-left">
-                <a href="#">
-                  <h5>鸟巢空中游览</h5>
-                  <div class="price">¥ 1588 /人</div>
-                  <span>原价 ¥ 2000 /人</span>
-                </a>
-              </div>
-              <div class="pro-right pull-right">
-                <div class="pro-top clearfix">
-                    <div class="pro-adr">徐闻
-                        <div class="dfim-center">
-                            <div class="arrow-right"></div>
-                        </div>海口美兰机场
-                    </div>
-                    <div class="price">¥ <b>966</b> /人 起</div>
-                </div>
-                <div class="pro-bottom">
-                  <h5>固定翼飞行员一期招募</h5>
-                  <span>报名立享8.8折优惠</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--&lt;!&ndash; Bottom Toolbar&ndash;&gt;-->
-      <!--<div class="toolbar">-->
-      <!--<div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>-->
-      <!--</div>-->
-    </div>
-  </div>
-  <div class="popup" style="display: none;">
-      <div class="view">
-        <div class="pages">
-          <div class="page navbar-fixed">
-            <div class="navbar">
-              <div class="navbar-inner">
-                <form class="searchbar searchbar-active">
-                  <div class="searchbar-input">
-                    <input type="search" placeholder="Search" class=""><a href="#" class="close-popup">X</a>
-                    <div class="preloader preloader-white"><span class="preloader-inner"><span class="preloader-inner-gap"></span><span class="preloader-inner-left"><span class="preloader-inner-half-circle"></span></span><span class="preloader-inner-right"><span class="preloader-inner-half-circle"></span></span></span></div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="page-content">
-              <div class="list-block">
-                <ul class="search-results"></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<body ng-controller="mainController">
+		<!-- Status bar overlay for fullscreen mode-->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+		<!-- Left panel with reveal effect-->
+		<div class="panel panel-left panel-reveal layout-dark">
+			<div class="content-block-title">Left Panel</div>
+			<div class="content-block">
+				<p>This is a side panel. You can close it by clicking outsite or on this link:
+					<a href="#" class="close-panel">close me</a>. You can put here anything, even another isolated view like in
+					<a href="#" data-panel="right" class="open-panel">Right Panel</a>
+				</p>
+			</div>
+			<div class="content-block-title">Framework7 Kitchen Sink</div>
+			<div class="list-block">
+				<ul>
+					<li>
+						<a href="app/components/about/about.html" class="item-link close-panel">
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-f7"></i></div>
+								<div class="item-inner">
+									<div class="item-title">About</div>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Right panel with cover effect-->
+		<div class="panel panel-right panel-cover">
+			<div class="content-block-title">个人信息</div>
+			<div class="list-block">
+				<ul>
+					<li ng-repeat="item in rightPanelItems">
+						<a href="{{item.target}}" class="item-link close-panel">
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-f7"></i></div>
+								<div class="item-inner">
+									<div class="item-title">{{item.title | translate}}</div>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Views-->
+		<div class="views">
+			<div class="view view-main">
+				<!-- Top Navbar-->
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+						</div>
+						<div class="center sliding nav-title">Air Community</div>
+						<div class="right">
+							<a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="pages navbar-through">
+					<div data-page="index" class="page index-page">
+						<div class="page-content">
+							<a href="#" class="open-popup">
+								<div class="index-search"><i class="fa fa-search"></i><input type="text" placeholder="大家都在搜五一飞跃海峡航线"></input>
+								</div>
+							</a>
+							<div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
+								</div>
+								<div class="swiper-pagination"></div>
+							</div>
+							<div class="content-block">
+								<div class="row index-nav">
+									<div class="col-25 bg-white text-center">
+										<a href="app/components/airjet/airjet.html"><img src="assets/images/nav-icon.png">
+											<br>{{'home.airjet' | translate}}</a>
+									</div>
+									<div class="col-25 bg-white text-center">
+										<a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/nav-icon.png">
+											<br>{{'home.airtaxi' | translate}}</a>
+									</div>
+									<div class="col-25 bg-white text-center">
+										<a href="app/components/airtour/airtour.html"><img src="assets/images/nav-icon.png">
+											<br>{{'home.airtour' | translate}}</a>
+									</div>
+									<div class="col-25 bg-white text-center">
+										<a href="app/components/airtrain/airtrain.html"><img src="assets/images/nav-icon.png">
+											<br>{{'home.airtrain' | translate}}</a>
+									</div>
+								</div>
+							</div>
+							<div class="index-news">
+								<div class="content-line"></div>
+								<div class="news-box clearfix">
+									<div class="news-img pull-left">
+										<img src="assets/images/nav-icon.png">
+									</div>
+									<div class="news-text-box pull-right">
+										<ul class="news-text" auto-text>
+											<li ng-repeat="news in listNews"><a href="#">{{news}}</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<h2 class="bottom-title" ng-bind="'home.indexTitle' | translate"></h2>
+							<div class="pro-content clearfix">
+								<div class="pro-left pull-left">
+									<a href="#">
+										<h5>鸟巢空中游览</h5>
+										<div class="price">¥ 1588 /人</div>
+										<span>原价 ¥ 2000 /人</span>
+									</a>
+								</div>
+								<div class="pro-right pull-right">
+									<div class="pro-top clearfix">
+										<div class="pro-adr">徐闻
+											<div class="dfim-center">
+												<div class="arrow-right"></div>
+											</div>海口美兰机场
+										</div>
+										<div class="price">¥ <b>966</b> /人 起</div>
+									</div>
+									<div class="pro-bottom">
+										<h5>固定翼飞行员一期招募</h5>
+										<span>报名立享8.8折优惠</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--&lt;!&ndash; Bottom Toolbar&ndash;&gt;-->
+				<!--<div class="toolbar">-->
+				<!--<div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>-->
+				<!--</div>-->
+			</div>
+		</div>
+		<div class="popup" style="display: none;">
+			<div class="view">
+				<div class="pages">
+					<div class="page navbar-fixed">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<form class="searchbar searchbar-active">
+									<div class="searchbar-input">
+										<input type="search" placeholder="Search" class="">
+										<a href="#" class="close-popup">X</a>
+										<div ng-hide="searchLoading" class="preloader preloader-white"><span class="preloader-inner"><span class="preloader-inner-gap"></span><span class="preloader-inner-left"><span class="preloader-inner-half-circle"></span></span><span class="preloader-inner-right"><span class="preloader-inner-half-circle"></span></span>
+											</span>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="list-block">
+								<ul class="search-results"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <ul text-auto>
-        <li ng-repeat="item in itmes"></li>
-    </ul>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uZ6QZYpe6GUT2wTjBvLrEDx8wlZaMOmu"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
 
-  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uZ6QZYpe6GUT2wTjBvLrEDx8wlZaMOmu"></script>
-  <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
+		<!-- build:js(src) scripts/vendor.js -->
+		<!-- bower:js -->
+		<!-- run `gulp inject` to automatically populate bower script dependencies -->
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:js({tmp/serve,tmp/partials,src}) scripts/app.js -->
+		<!-- inject:js -->
+		<!-- js files will be automatically insert here -->
+		<!-- endinject -->
+		<!-- inject:partials -->
+		<!-- angular templates will be automatically converted in js and inserted here -->
+		<!-- endinject -->
+		<!-- endbuild -->
 
-  <!-- build:js(src) scripts/vendor.js -->
-  <!-- bower:js -->
-  <!-- run `gulp inject` to automatically populate bower script dependencies -->
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:js({tmp/serve,tmp/partials,src}) scripts/app.js -->
-  <!-- inject:js -->
-  <!-- js files will be automatically insert here -->
-  <!-- endinject -->
-  <!-- inject:partials -->
-  <!-- angular templates will be automatically converted in js and inserted here -->
-  <!-- endinject -->
-  <!-- endbuild -->
-
-</body>
+	</body>
 
 </html>

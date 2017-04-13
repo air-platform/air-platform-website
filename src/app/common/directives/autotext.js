@@ -7,11 +7,12 @@
     return {
       restrict: 'A',
       link: function(scope, element) {
+        setTimeout(function() {
           var scrollIndex = 0;
           var Timer = null;
           clearInterval(Timer);
           var ul = element;
-          var li = element.children('li'); 
+          var li = element.children('li');
           var h = li.height();
           var index = 0;
           ul.css("height", h * li.length * 2);
@@ -29,6 +30,7 @@
             }
           }
           Timer = setInterval(run, 1500);
+        });
       }
     }
   }

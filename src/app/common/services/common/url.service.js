@@ -1,7 +1,7 @@
-(function () {
+(function() {
   angular.module('airsc')
     .factory('UrlService', UrlService);
-
+  /** @ngInject */
   function UrlService(URL) {
     var service = {
       getUrl: getUrl
