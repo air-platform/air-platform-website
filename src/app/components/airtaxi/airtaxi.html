@@ -6,14 +6,14 @@
         <div class="left">
           <a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a>
         </div>
-        <div class="center sliding">AirTaxi</div>
+        <div class="center sliding">Air Transportation</div>
         <div class="right">
           <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
         </div>
         <div class="subnavbar airtaxi-subnavbar">
-          <div class="buttons-row airtaxi-nav">
-            <a href="#air-taxi-cross-channel" class="button tab-link airtaxi-project active">飞跃海峡</a>
-            <a href="#air-taxi-tour" class="button tab-link airtaxi-project">观光旅游</a>
+          <div class="buttons-row air-tabs airtaxi-nav">
+            <a href="#air-taxi-cross-channel" class="tab-link airtaxi-project active"><span>飞跃海峡</span></a>
+            <a href="#mongolia-routes" class="tab-link mongolia-project"><span>内蒙航线</span></a>
           </div>
         </div>
     </div>
@@ -41,6 +41,7 @@
                               <div class="item-title label date-select airtaxi-select-label">选择日期</div>
                               <div class="item-input">
                                 <input type="date" value="2017-04-30" ng-model="schedule.date" ng-disabled="$index != 0">
+                                <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
                               </div>
                             </div>
                           </div>
@@ -52,6 +53,7 @@
                                   <option>08:00 - 09:00</option>
                                   <option>14:30 - 15:30</option>
                                 </select>
+                                <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
                               </div>
                             </div>
                           </div>
@@ -64,6 +66,7 @@
                                 <select ng-model="schedule.departure" ng-disabled="$index != 0">
                                   <option>徐闻</option>
                                 </select>
+                                <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
                               </div>
                             </div>
                           </div>
@@ -80,6 +83,7 @@
                                   <option>海口美兰机场</option>
                                   <option>海航大厦</option>
                                 </select>
+                                <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
                               </div>
                             </div>
                           </div>
@@ -87,12 +91,18 @@
                         <div class="row">
                           <div class="item-content">
                             <div class="item-inner">
-                              <div class="item-title label">选择航班</div>
+                              <div class="item-title label select-flight-label">选择航班</div>
                               <div class="item-input select-flight">
-                                <select ng-model="schedule.flight" ng-disabled="$index != 0">
+                                <!-- <select ng-model="schedule.flight" ng-disabled="$index != 0">
                                   <option>首都航空B-7186</option>
                                   <option>海南航空B-7898</option>
-                                </select>
+                                </select> -->
+                                <div class="flight-input">
+                                  <a href="app/components/airtaxi/flights.html">
+                                    {{ schedule.flight }}
+                                    <i class="fa fa-angle-right select-arrow-right" aria-hidden="true"></i>
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -104,7 +114,7 @@
                 <a href="#" class="button button-red start-flight">立即起飞</a>
               </div>
             </div>
-            <div id="air-taxi-tour" class="tab">
+            <div id="mongolia-routes" class="tab">
               <div class="content-block">
                 <p>Air Taxi Tour Page</p>
                 <p>To be developed...</p>

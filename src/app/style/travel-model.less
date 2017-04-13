@@ -1,0 +1,104 @@
+.travel-model-info{
+    font-family:PingFangSC-Regular;
+    background-color: @base-green-light;
+    color: @base-sky;
+    height: .62rem;
+    width: 100%;
+    font-size: .28rem;
+    border-bottom: .02rem solid @base-sky-dark;
+    em{
+        font-style: normal;
+        display: inline-block;
+        width: .32rem;
+        height: .32rem;
+        border: .02rem solid @base-sky;
+        text-align: center;
+        line-height: .32rem;
+        border-radius: 50%;
+        margin-right: .14rem;
+    }
+}
+.travel-model-card{
+    padding: .34rem .28rem;
+    overflow: hidden;
+    font-family:PingFangSC-Regular;
+    em{
+        font-style: normal;
+    }
+    .travel-model-img{
+        img{
+            border-radius: .16rem .16rem 0 0;
+            height: 3rem;
+        }
+    }
+    .travel-model-content{
+        padding: .32rem .16rem .36rem .2rem;
+        border-radius: 0 0 .16rem .16rem;
+        background-color: @base-white;
+        span{
+            font-size: .24rem;
+            color: @base-gray-light;
+            em{
+                font-size: .28rem;
+                color: @base-black-light;
+            }
+        }
+        .travel-model-check {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .32rem;
+
+            span{
+                font-size: .32rem;
+                em{
+                    font-size: .36rem;
+                }
+            }
+            label.label-checkbox {
+                input[type="checkbox"]:checked + .item-media{
+                    i.icon-form-checkbox{
+                        border: .02rem solid @base-sky;
+                        background:rgba(80,188,255,0.15);
+                        &:after{
+                            content:'\f00c';
+                            background: none;
+                            display: flex;
+                            display: -webkit-flex;
+                            justify-content: center;
+                            align-items: center;
+                            color:@base-sky;
+                            font-size: .18rem;
+                        }
+                    }
+                }
+            }
+            
+            i.icon{
+                width: .38rem;
+                height: .38rem;
+                border-radius: 50%;
+                border: .02rem solid @base-grey-dark;
+                background:rgba(205,205,205,0.20);
+            }
+        }
+
+        p{
+            margin: 0 0 .16rem 0;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.travel-model-submit{
+    font-family:PingFangSC-Regular;
+    margin: .06rem .34rem .4rem .36rem;
+    height: .88rem;
+    background-color: @index-red;
+    border-radius: .16rem;
+    font-size: .36rem;
+    color: @base-white;
+}

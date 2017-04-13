@@ -44,7 +44,11 @@
 
         function post(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customPOST(param,"","",requestHeader()).then(
+            var header = {};
+            if (path !== 'account/auth'){
+                header = requestHeader();
+            }
+            account.customPOST(param,"","",header).then(
                 successHandler,function (response) {
                     failedResponse(response,failedHandler,path);
                 }
