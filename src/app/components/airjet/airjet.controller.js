@@ -11,6 +11,7 @@
         var page = myApp.views[0];
         var formData = page.activePage.query;
         $scope.submit = submit;
+        $scope.addCard = addCard;
 
         $scope.imgSrc = [
             './../assets/images/banner0.jpg',
@@ -97,6 +98,14 @@
 
         function submit(formData) {
             myApp.addView('.view-main').router.loadPage('app/components/airjet/dream-detail.html')
+        };
+
+        function addCard() {
+            if(!$scope.travelPlanList || !$scope.travelPlanList.length) {
+                $scope.travelPlanList = [1];
+            } else  {
+                $scope.travelPlanList.push(Number($scope.travelPlanList[$scope.travelPlanList.length - 1]) + 1);
+            }
         };
     }
 
