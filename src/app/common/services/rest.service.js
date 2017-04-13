@@ -8,12 +8,11 @@
 
     // REST service based on Restangular  that uses setFullResponse
     /** @ngInject */
-    function RestService(Restangular, StorageService,logger) {
+    function RestService(Restangular, StorageService,logger,constdata) {
         return Restangular.withConfig(function (RestangularConfigurer) {
-            var token = StorageService.get('airspc_access_token');
+            var token = StorageService.get(constdata.token);
             if (token){
                 logger.debug(token);
-                // $http.defaults.headers.common['Authorization'] = token;
                 token = 'Bearer ' + token;
                 RestangularConfigurer.setDefaultHeaders({Authorization:token});
             }else{
@@ -29,7 +28,7 @@
         .factory('NetworkService', NetworkService);
 
     /** @ngInject */
-    function NetworkService(RestService,StorageService,logger) {
+    function NetworkService(RestService,StorageService,logger,constdata) {
 
 
         var service = {
@@ -45,7 +44,6 @@
 
         function post(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            console.log(param);
             account.customPOST(param,"","",requestHeader()).then(
                 successHandler,function (response) {
                     failedResponse(response,failedHandler,path);
@@ -94,7 +92,7 @@
         }
 
         function requestHeader() {
-            var token = StorageService.get('airspc_access_token');
+            var token = StorageService.get(constdata.token);
             if (token && token.length > 0){
                 token = 'Bearer ' + token;
                 return {"Authorization":token};
