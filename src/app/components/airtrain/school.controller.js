@@ -13,6 +13,9 @@
     function schoolController($scope,iotUtil) {
 
 
+        $scope.backAction = function () {
+            mainView.router.back();
+        }
 
 
 

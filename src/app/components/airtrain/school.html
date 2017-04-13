@@ -1,13 +1,32 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left sliding"><a href="airtrain.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="left sliding"><a href="schoollist" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
         <div class="center sliding">航校详情</div>
     </div>
 </div>
 <div class="pages navbar-through">
     <div data-page="school" class="page" ng-controller="schoolController">
         <div class="page-content">
+            <div class="buttons-row air-tabs">
+                <!-- Link to 1st tab, active -->
+                <a href="#tab1" class="tab-link active"><span>{{'airtrain.school-brief' | translate}}</span></a>
+                <!-- Link to 2nd tab -->
+                <a href="#tab2" class="tab-link"><span>{{'airtrain.base-brief' | translate}}</span></a>
+            </div>
+            <div class="tabs">
+                <!-- Tab 1, active by default -->
+                <div id="tab1" class="tab active">
+                    <div class="content-block">
 
+                    </div>
+                </div>
+                <!-- Tab 2 -->
+                <div id="tab2" class="tab">
+                    <div class="content-block">
+
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

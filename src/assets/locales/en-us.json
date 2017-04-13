@@ -53,5 +53,9 @@
     "email": "邮箱 :",
     "enter": "请输入...",
     "submit": "提交"
+  },
+  "airtrain":{
+    "school-brief":"航校简介",
+    "base-brief":"基地介绍"
   }
 }
