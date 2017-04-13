@@ -15,6 +15,13 @@
             $scope.title = translationId;
         });
 
+        $scope.rightPanelItems = [
+            {title:'profile.login-register',target:'app/components/login/login.html'},
+            {title:'profile.order',target:'app/components/login/login.html'},
+            {title:'profile.info',target:'app/components/login/login.html'},
+            {title:'profile.setting',target:'app/components/login/login.html'}];
+
+
         var page = myApp.views[0];
         var pageContainer = $$(page.container);
         var ul = pageContainer.find('.news-text');
