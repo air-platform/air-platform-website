@@ -16,8 +16,8 @@
 
 
         var rightPanelItems = [
-            {title:'profile.order',target:'app/components/profile/order.html'},
-            {title:'profile.setting',target:'app/components/profile/setting.html'},
+            {title:'profile.order',target:'app/components/order/order.html'},
+            {title:'profile.setting',target:'app/components/setting/setting.html'},
             {title:'profile.out',target:'out'}];
         var info = {};
         var loginItemTitle = '';
@@ -36,6 +36,7 @@
 
 
         refresh();
+
 
 
         function gotoItemAction(item) {
