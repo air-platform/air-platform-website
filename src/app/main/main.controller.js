@@ -15,6 +15,30 @@
         });
 
 
+        var leftPanelItems = [
+            {title:'airjet',items:[
+                {'title':'包机预定'},
+                {'title':'缘梦飞行'},
+                {'title':'卡产品'}
+                ]},
+            {title:'airtaxi',items:[
+                {'title':'空中观光'}]},
+            {title:'airtransportation',items:[
+                {'title':'海峡飞行'},
+                {'title':'内蒙航线'}
+                ]},
+            {title:'飞行培训',items:[
+                {'title':'航校信息'},
+                {'title':'预定培训'}
+                ]},
+            {title:'Air BB论坛',items:[
+                {'title':'话题讨论/发帖/留言'}
+                ]},
+            {title:'会员中心',items:[
+                {'title':'用户注册/登录'},
+                {'title':'订单查询'},
+                {'title':'积分系统'}
+                ]}];
         var rightPanelItems = [
             {title:'profile.order',target:'app/components/order/order.html'},
             {title:'profile.setting',target:'app/components/setting/setting.html'},
@@ -32,6 +56,7 @@
 
         $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
+        $scope.leftPanelItems = leftPanelItems;
         $scope.gotoItemAction = gotoItemAction;
 
 
