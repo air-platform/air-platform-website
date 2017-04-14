@@ -45,11 +45,12 @@
         map.addOverlay(curve);
         }
 
+        var citys = ["北京", "上海", "广州", "成都"];
         var autocomplete = function() {
           var autocompleteDropdownPlaceholder = myApp.autocomplete({
-            input: '#autocomplete-dropdown-placeholder',
+            input: '#city-navi-autocomplete-placeholder',
             openIn: 'dropdown',
-            dropdownPlaceholderText: 'Try to type "Apple"',
+            dropdownPlaceholderText: '请输入 "北京"',
             source: function (autocomplete, query, render) {
               var results = [];
               if (query.length === 0) {
@@ -57,14 +58,15 @@
                 return;
               }
               // Find matched items
-              for (var i = 0; i < fruits.length; i++) {
-                if (fruits[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(fruits[i]);
+              for (var i = 0; i < citys.length; i++) {
+                if (citys[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(citys[i]);
               }
               // Render items by passing array with result items
               render(results);
               }
           });
-        }
+        };
+        autocomplete();
         drawMap("airtaxi-map-view", vm.mapPoints);
         //  var map = new BMmapline
 
