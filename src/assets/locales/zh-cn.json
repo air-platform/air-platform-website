@@ -94,7 +94,7 @@
   "airtaxi": {
     "plane-select": "选择机型",
     "fixed-wing": "固定翼",
-    "helocopter": "直升机"
+    "helicopter": "直升机"
   }
 
 }
