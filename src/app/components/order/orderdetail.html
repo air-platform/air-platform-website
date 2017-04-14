@@ -8,6 +8,7 @@
     <div data-page="orderdetail" class="page" ng-controller="orderdetailController">
         <div class="page-content">
             <div class="order-detail-list">
+                <!--订单-->
                 <div class="order-detail-header">
                     <span class="order-number">订单编号 : AT0001</span>
                     <span class="order-trash"><i class="f7-icons">trash</i></span>
@@ -39,6 +40,37 @@
                         </div>
                     </div>
                 </div>
+                <!--乘客信息-->
+                <div class="order-detail-header">
+                    <span class="order-number">乘客信息</span>
+                    <span class="order-trash"><span>3&nbsp;&nbsp;</span><i class="f7-icons">persons</i></span>
+                </div>
+                <div class="order-detail-line"></div>
+                <div class="order-detail-content-person">
+                    <ul>
+                        <li class="row">
+                            <span class="order-person-name col-25">名字</span>
+                            <span class="order-person-id col-75">1234567890</span>
+                        </li>
+                        <li class="row">
+                            <span class="order-person-name col-25">名字</span>
+                            <span class="order-person-id col-75">1234567890</span>
+                        </li>
+                        <li class="row">
+                            <span class="order-person-name col-25">名字</span>
+                            <span class="order-person-id col-75">1234567890</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--总价-->
+                <div class="order-detail-header">
+                    <span class="order-number">总价</span>
+                    <span class="order-trash">
+                        <span class="order-computer">拼座 ¥ 1,800 x 人数3＝</span>
+                        <span class="order-total-price">¥ 5,400</span>
+                    </span>
+                </div>
+
             </div>
         </div>
     </div>
