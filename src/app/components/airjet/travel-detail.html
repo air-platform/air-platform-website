@@ -10,38 +10,55 @@
         <div class="page-content">
             <div class="travel-model-info block-center ">
                 <em>!</em>
-                <span>{{'airjet.model-custom-info' | translate}}</span>
+                <span>{{'airjet.order-info' | translate}}</span>
             </div>
             <div class="air-order-detail">
-                <div class="air-order-item">
+                <div class="air-order-item radius-top-bottom">
                     订单编号: 993028364001
                 </div>
-                <div class="air-order-item">
-                    机型号: 金鹿航空 BBJ-002
-                </div>
-                <div class="air-order-item">
-                    乘机时间: 2017年04月07日 周六
-                </div>
-                <div class="air-order-item">
-                    <div class="order-location-info">
-                        <div>香港</div>
-                        <div>13:00</div>
-                        <div>首都机场T2航站楼</div>
+                <div>
+                    <div class="air-order-item aoi-city-container radius-top">
+                        <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong>香港</strong></div>
+                        <div class="arrow-right"></div>
+                        <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong>北京</strong></div>
                     </div>
-                    <div class="arrow-right"></div>
-                    <div class="order-location-info">
-                        <div>北京</div>
-                        <div>16:30</div>
-                        <div>美兰机场</div>
+                    <div class="air-order-item">
+                        出发时间: 2017年04月07日 周六
+                    </div>
+                    <div class="air-order-item radius-bottom">
+                        乘机人数: 3人
                     </div>
                 </div>
-                <div class="air-order-item">
-                    乘机人数: 3人
+                <div>
+                    <div class="air-order-item aoi-city-container radius-top">
+                        <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong>北京</strong></div>
+                        <div class="arrow-right"></div>
+                        <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong>香港</strong></div>
+                    </div>
+                    <div class="air-order-item">
+                        出发时间: 2017年04月07日 周六
+                    </div>
+                    <div class="air-order-item no-padding radius-bottom">
+                        乘机人数: 3人
+                    </div>
                 </div>
-                <div class="air-order-item">
-                    备注: 无
+                <div class="air-order-item aoi-guest radius-top">
+                    备选机型
                 </div>
-                <div class="order-submit">
+                <div class="air-order-item aoi-model-info radius-bottom">
+                    <div>湾流G550</div>
+                    <div>波音747</div>
+                </div>
+                <div class="air-order-item aoi-guest radius-top">
+                    客户信息
+                </div>
+                <div class="air-order-item aoi-guest-info radius-bottom">
+                    <div>{{'airjet.name' | translate}} 王小萌</div>
+                    <div>{{'airjet.phone' | translate}} 18123625342</div>
+                    <div>{{'airjet.email' | translate}} yaya_d@qq.com</div>
+                    <div>{{'airjet.remark' | translate}} 无</div>
+                </div>
+                <div class="order-submit travel-detail-submit">
                     确认
                 </div>
             </div>
