@@ -11,6 +11,7 @@
         /* jshint validthis: true */
         var vm = this;
 
+        transUtilsService.drawMap("airtaxi-map-view", controller.mapPoints);
 
     }
 
