@@ -41,7 +41,7 @@
         ]
 
         controller.mapPoints = transUtilsService.extractPoints(response);
-        transUtilsService.drawMap("air-taxi-map", controller.mapPoints);
+        transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
 
         $scope.$watch(
           function() {
@@ -49,7 +49,7 @@
           },
           function(newValue, oldValue) {
             if( newValue != oldValue ) {
-              transUtilsService.drawMap("air-taxi-map", controller.mapPoints);
+              transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
             }
           }
         );
