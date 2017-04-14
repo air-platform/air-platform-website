@@ -23,7 +23,7 @@
                     <div class="content-block school-content order-card-container">
                         <div class="list-block cards-list">
                             <ul>
-                                <li class="card order-card" ng-repeat="item in items[0]">
+                                <li class="card order-card" ng-repeat="item in items[0] track by $index" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
                                         <span class="order-number">{{item.no}}</span>
                                         <span class="order-date">{{item.date}}</span>
