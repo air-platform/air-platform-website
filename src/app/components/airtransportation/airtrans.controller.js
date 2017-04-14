@@ -10,7 +10,7 @@
     angular.module('airsc').controller('transController', transController);
 
     /** @ngInject */
-    function transController($scope, iotUtil, NetworkService, AirTaxiUtilsService) {
+    function transController($scope, iotUtil, NetworkService, transUtilsService) {
         var controller = this;
         controller.schedules = {}
         controller.mapPoints = {}
@@ -18,7 +18,7 @@
         //// wait for backend
         // NetworkService.get("url", {}, function getMapMakers(res) {
         //   var pointsStr = res;
-        //   controller.mapPoints = AirTaxiUtilsService.extractPoints(pointsStr);
+        //   controller.mapPoints = transUtilsService.extractPoints(pointsStr);
         // }, null);
         var response = "徐闻,110.198611,20.2761111;海航大厦,110.35105,20.024108;" +
           "徐闻,110.198611,20.2761111;海口港,110.162196,20.046835;" +
@@ -40,8 +40,8 @@
           }
         ]
 
-        controller.mapPoints = AirTaxiUtilsService.extractPoints(response);
-        AirTaxiUtilsService.drawMap("air-taxi-map", controller.mapPoints);
+        controller.mapPoints = transUtilsService.extractPoints(response);
+        transUtilsService.drawMap("air-taxi-map", controller.mapPoints);
 
         $scope.$watch(
           function() {
@@ -49,7 +49,7 @@
           },
           function(newValue, oldValue) {
             if( newValue != oldValue ) {
-              AirTaxiUtilsService.drawMap("air-taxi-map", controller.mapPoints);
+              transUtilsService.drawMap("air-taxi-map", controller.mapPoints);
             }
           }
         );

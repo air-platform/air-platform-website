@@ -50,7 +50,7 @@
   .map {
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: -1;
   }
 
   .air-taxi-map {
@@ -77,8 +77,8 @@
     position: absolute;
     width: 100%;
     margin: 0;
-    padding: 0;
-    top: 8.32rem;
+    padding: 0 0 1.2rem;
+    top: 7.72rem;
     background-color: @base-white;
     z-index: 10;
 
@@ -207,7 +207,11 @@
   }
 
   .footer-button {
+    position: fixed;
     padding: 5px 22px;
+    width: 100%;
+    background-color: @base-white;
+    bottom: 0;
   }
 
   .start-flight {

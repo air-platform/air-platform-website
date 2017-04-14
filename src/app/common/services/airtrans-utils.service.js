@@ -1,14 +1,14 @@
 (function () {
     'use strict';
 
-    //AirTaxiUtilsService
+    //transUtilsService
     angular.module('airsc')
-        .factory('AirTaxiUtilsService', AirTaxiUtilsService);
+        .factory('transUtilsService', transUtilsService);
 
     //TODO: to find a better way
     if ( !window.markedOverlays ) window.markedOverlays = [];
 
-    function AirTaxiUtilsService() {
+    function transUtilsService() {
         var extractPoints = function(pointsStr) {
           var points = pointsStr.split(";")
           var allPoints = _.map(points, function(s){

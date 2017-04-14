@@ -48,22 +48,12 @@
             border-top-right-radius: .16rem;
             position: relative;
 
-            i{
-                color:rgba(0,0,0,0.25);
-                font-size: .38rem;
+            img{
+                width: .32rem;
+                height: .32rem;
                 position: absolute;
                 right: .32rem;
                 bottom: .24rem;
-            }
-            &:before{
-                position: absolute;
-                content: "";
-                background-color: @base-red-light;
-                width: .06rem;
-                height: .32rem;
-                border-radius: .03rem;
-                left: .28rem;
-                top: .24rem;
             }
         }
         .tpc-bottom{
@@ -94,6 +84,10 @@
                 }
                 .tpcbt-arrow{
                     margin-top: .44rem;
+                    img{
+                        width: .5rem;
+                        height: .5rem;
+                    }
                 }
 
                 &:after, &:before{
@@ -169,7 +163,9 @@
         border-radius: .1rem;
         font-size: .32rem;
 
-        .plus-circle{
+        img{
+            width: .38rem;
+            height: .38rem;
             margin-right: .2rem;
         }
     }
@@ -192,18 +188,11 @@
             height: .8rem;
             line-height: .8rem;
             position: relative;
-            padding-left: .78rem;
-            &:after{
-                content:"";
-                position: absolute;
-                left: .4rem;
-                top: .29rem;
-                width: .16rem;
-                height: .16rem;
-                background-color: @base-sky;
-                outline: .02rem solid @base-sky;
-                outline-offset: .04rem;
-                transform: rotate(45deg);
+            padding-left: .3rem;
+            img{
+                width: .32rem;
+                height: .32rem;
+                vertical-align: text-top;
             }
         }
         .tpbr-middle{
