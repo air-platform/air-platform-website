@@ -56,6 +56,7 @@
         $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
         $scope.leftPanelItems = leftPanelItems;
+        $scope.rightUserItem = {title:'',target:''};
         $scope.gotoItemAction = gotoItemAction;
 
 
