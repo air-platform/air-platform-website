@@ -47,21 +47,26 @@
     padding: 0;
   }
 
+  .map {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+  }
+
   .air-taxi-map {
     width: 100%;
-    height: 328px;
+    height: 6.56rem;
   }
 
   .button-schedule-delete {
     float: right;
-    font-size: 16px;
+    font-size: 0.32rem;
     color: @base-red;
   }
 
   .schedule-card {
     margin-top: 1em;
     border: 1px solid @base-gray-light;
-    border-radius: 5px 5px 0 0;
 
     .add-schedule-button {
       display: none;
@@ -69,8 +74,14 @@
   }
 
   .schedule-card-list {
+    position: absolute;
+    width: 100%;
     margin: 0;
     padding: 0;
+    top: 8.32rem;
+    background-color: @base-white;
+    z-index: 10;
+
 
     li:first-child .schedule-card{
       margin-top: 0;
@@ -86,7 +97,7 @@
 
   .schedule-title {
     padding: 10px 22px;
-    color: @base-sky;
+    // color: @base-sky;
     border-bottom: 1px solid @base-gray-light;
     font-size: 0.28rem;
   }
@@ -122,7 +133,7 @@
 
   .schedule-card .row {
     width: 100%;
-    border-bottom: 1px solid @base-gray;
+    border-bottom: 1px solid @base-gray-light;
 
     .item-content {
       padding-left: 0;
@@ -160,7 +171,11 @@
       }
     }
 
-    .item-input * {
+    .inline-input {
+      display: inline-flex;
+    }
+
+    .inline-input select, .inline-input input {
       font-size: 0.28rem;
     }
 
@@ -170,23 +185,29 @@
   }
 
   .select-arrow-down {
-    position: relative;
+    position: absolute;
     font-size: 0.32rem;
-    height: 0;
-    float: right;
-    top: -2em;
+    right: 0.3rem;
+    top: 0.54rem;
   }
 
   .select-arrow-right {
     position: relative;
-    top: 1em;
-    font-size: 0.32rem;
-    height: 0;
+    line-height: 0.94rem;
+    font-size: 0.32rem !important;
     float: right;
   }
 
   .flight-input a {
+    display: inline-block;
+    width: 100%;
+    font-size: 0.28rem;
+    line-height: 0.94rem;
     color: @base-black;
+  }
+
+  .footer-button {
+    padding: 5px 22px;
   }
 
   .start-flight {
@@ -198,5 +219,92 @@
     color: @base-white;
     font-size: 0.36rem;
     letter-spacing: 0;
+  }
+}
+
+#planes-selection {
+  .content-block {
+    padding: 0.41rem 0;
+  }
+  .list-block {
+    margin: 0;
+  }
+
+  ul::after, ul::before {
+    display: none;
+  }
+
+  .plane-type-nav {
+      margin-top: 0.32rem;
+  }
+
+  .card {
+    color: @base-gray;
+    font-size: 0.2rem;
+
+    .card-header {
+      padding: 0;
+      height: 1.36rem;
+      border-radius: 0.08rem 0.08rem 0 0;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .card-content-inner {
+      padding: 5px 15px;
+    }
+
+    .plane-price-info {
+      display: inline-block;
+      width: 100%;
+      &>span {
+        display: inline-block;
+        &.plane-name {
+          width: 2.2rem;
+        }
+      }
+    }
+
+    .card-footer {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 0 0 0.08rem 0.08rem;
+      width: 100%;
+      min-height: 0.16rem;
+    }
+
+    .plane-name {
+      font-size: 0.24rem;
+      color: @base-dark;
+    }
+    .plane-price:last-child {
+      float: right;
+    }
+    .plane-price .price-value {
+      padding-left: 0.1rem;
+      font-size: 0.36rem;
+      color: @base-red;
+    }
+    .departure-info, .plane-capacity {
+      display: inline-block;
+      min-width: 1.2rem;
+      i {
+        margin-right: 0.14rem;
+      }
+    }
+    .plane-capacity {
+      margin-left: 0.35rem;
+    }
+    .plane-notice {
+      position: relative;
+      float: right;
+      font-size: 0.16rem;
+      color: @base-dark;
+      letter-spacing: 0;
+    }
   }
 }
