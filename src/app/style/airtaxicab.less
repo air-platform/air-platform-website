@@ -1,0 +1,169 @@
+.order-detail-list .order-detail-header {
+  border-radius: 8px;
+  border-bottom: 0;
+  background-color: white;
+  margin: 10px 10px 0 10px;
+  height: 0.88rem;
+  line-height: 0.48rem;
+  font-size: 0.14rem;
+  color: @base-gray-dark;
+  .order-number {
+    float: left;
+    padding: 10px;
+  }
+  .order-trash {
+    float: right;
+    padding: 10px;
+    i {
+      font-size: 20px;
+      color: @base-gray;
+    }
+  }
+  .order-computer {
+    padding-top: 20px !important;
+    font-size: 0.1rem;
+    color: #9b9b9b;
+  }
+  .order-total-price {
+    color: @base-red;
+    font-size: 24px !important;
+  }
+}
+.order-detail-list .order-detail-line {
+  height: 1px;
+  margin: 0 15px;
+  border-bottom: dashed rgba(196, 196, 196, 0.5) 1px;//透明0.3
+}
+.order-detail-list .order-detail-content {
+  border-radius: 8px;
+  background-color: white;
+  margin: 0px 10px 10px 10px;
+  height: 3rem;
+  //display: block;
+  .order-detail-content-title {
+    height: 0.9rem;
+    .order-icon {
+      width: 0.5rem;
+      height: 0.5rem;
+      margin: 10px;
+      display: inline-block;
+    }
+    .order-flytype {
+      font-size: 0.14rem;
+      color: #4a4a4a;
+      display: inline-block;
+    }
+    .order-date {
+      line-height: 0.9rem;
+      height: 0.9rem;
+      font-size: 0.12rem;
+      padding-right: 10px;
+      color: @base-gray;
+      float: right;
+      display: inline-block;
+    }
+    .order-content-line {
+      height: 1px;
+      background-color: rgba(196, 196, 196, 0.5);
+      margin: 0 10px;
+    }
+  }
+  .order-detail-content-inner {
+    .order-from {
+      margin-top: 0.7rem;
+      text-align: center;
+      strong {
+        display: block;
+        font-size: 0.2rem;
+        color: @base-gray-dark;
+      }
+      span {
+        display: block;
+        font-size: 0.12rem;
+        color: @base-gray-light;
+      }
+    }
+    .order-core {
+      text-align: center;
+      margin-top: 0.45rem;
+      .order-time-interval {
+        font-size: 0.14rem;
+        color:#000;
+        display: block;
+      }
+      strong {
+        height: 0.1rem;
+        line-height: 0.1rem;
+      }
+      img {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+      }
+      .order-cost {
+        font-size: 0.14rem;
+        color: #9b9b9b;
+      }
+    }
+    .order-to {
+      text-align: center;
+      margin-top: 0.7rem;
+      strong {
+        display: block;
+        font-size: 0.2rem;
+        color: @base-gray-dark;
+      }
+      span {
+        display: block;
+        font-size: 0.12rem;
+        color: @base-gray-light;
+      }
+    }
+
+  }
+
+}
+.order-detail-list .order-detail-content-person {
+  border-radius: 8px;
+  background-color: white;
+  margin: 0px 10px 10px 10px;
+  height: auto;
+  ul li {
+    height: 0.7rem;
+    line-height: 0.7rem;
+    padding-left: 10px;
+    font-size: 0.12rem;
+    .order-person-name {
+      color: #000;
+    }
+    .order-person-id {
+      color: #4a4a4a;
+    }
+  }
+}
+
+.order-detail-list .order-detail-agreement {
+  font-size: 0.13rem;
+  width: 100%;
+  padding: 15px 12px;
+  height: 0.88rem;
+  .order-agree {
+
+  }
+  .order-announce {
+    color: @base-red;
+  }
+}
+.order-detail-list .order-detail-confirm {
+  .button{
+    margin: 10px;
+    border: 0;
+    color: @base-white;
+    background-color: @base-red;
+    line-height: 45px;
+    height: 45px;
+    &:hover {
+      background-color: @base-red-light;
+    }
+  }
+}

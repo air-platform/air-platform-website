@@ -1,35 +1,94 @@
+.order-card-container {
+  margin: 0;
+  .cards-list {
+    margin: 0;
+  }
+  ul {
+    margin: 0;
+    li {
+      margin: 5px 0;
+      box-shadow: none;
+    }
+  }
+}
 .order-card .card-header {
   display: block;
   padding: 10px;
+  margin: 0 !important;
 }
-.order-card .facebook-avatar {
+.order-card .order-number {
   float: left;
-  width: 80px;
-  height: 80px;
+  font-size: 0.14rem;
+  line-height: 0.5rem;
+  font-weight: 500;
+  color: @base-gray-dark;
 }
-.order-card .facebook-name {
-  margin-left: 44px;
-  font-size: 14px;
+.order-card .order-date {
+  float: right;
+  font-size: 0.12rem;
+  line-height: 0.5rem;
+  color: @base-gray-dark;
+}
+.order-card .order-avatar {
+  float: left;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.order-card .order-name {
+  margin-left: 1.5rem;
+  margin-top: 0.16rem;
+  font-size: 0.16rem;
+  color: @base-gray-dark;
   font-weight: 500;
 }
-.order-card .facebook-date {
-  margin-left: 44px;
-  font-size: 13px;
-  color: #8e8e93;
+.order-card .order-subname {
+  margin-left: 1.5rem;
+  margin-top: 0.35rem;
+  font-size: 0.12rem;
+  color: @base-gray-dark;
 }
-.order-card .card-footer {
-  background: #fafafa;
+.order-card .order-price {
+  float: right;
+  font-size: 0.12rem;
+  color: @base-gray-dark;
 }
-.order-card .card-footer a {
-  color: #81848b;
-  font-weight: 500;
-}
+
 .order-card .card-content img {
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 1.32rem;
+  height: 1.32rem;
 }
 .order-card .card-content-inner {
-  padding: 15px 10px;
-  height: 120px;
+  overflow:hidden;
+  padding: 0.2rem;
+  height: 1.72rem;
+}
+.order-card .btn-status-valuation {
+  font-size: 0.14rem;
+  height: 0.44rem;
+  line-height: 0.44rem;
+  border-color: @base-red;
+  color: @base-red;
+}
+.order-card .btn-status-valuation-done {
+  font-size: 0.14rem;
+  height: 0.44rem;
+  line-height: 0.44rem;
+  background-color: @base-gray-light;
+  border-color: @base-gray-light;
+  color: @base-white;
+}
+.order-card .btn-status-cancel {
+  font-size: 0.14rem;
+  height: 0.44rem;
+  line-height: 0.44rem;
+  border-color: @base-gray-light;
+  color: @base-gray-light;
+}
+.order-card .btn-status-reorder {
+  font-size: 0.14rem;
+  height: 0.44rem;
+  line-height: 0.44rem;
+  border-color: @base-red;
+  color: @base-red;
 }

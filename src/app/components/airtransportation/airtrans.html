@@ -1,0 +1,134 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner airtaxi-navbar">
+        <div class="left">
+          <a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a>
+        </div>
+        <div class="center sliding">Air Transportation</div>
+        <div class="right">
+          <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
+        <div class="subnavbar airtaxi-subnavbar">
+          <div class="buttons-row air-tabs airtaxi-nav">
+            <a href="#air-taxi-cross-channel" class="tab-link airtaxi-project active"><span>飞跃海峡</span></a>
+            <a href="#mongolia-routes" class="tab-link mongolia-project"><span>内蒙航线</span></a>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="pages navbar-through">
+    <!-- Page, data-page contains page name-->
+    <div data-page="airtrans" class="page with-subnavbar" ng-controller="transController as trans">
+        <!-- Scrollable page content-->
+        <div class="page-content keep-navbar-on-scroll">
+          <div class="tabs">
+            <div id="air-taxi-cross-channel" class="tab active">
+              <div class="content-block">
+                <div class="map">
+                    <div class="air-taxi-map" id="air-taxi-map"></div>
+                </div>
+                <ul class="schedule-card-list">
+                  <li ng-repeat="schedule in trans.schedules">
+                    <div class="schedule-card">
+                      <a href="#" class="pull-right add-schedule-button">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </a>
+                      <div class="schedule-title">行程{{ trans.schedules.length - $index }}<a class="fa fa-trash button-schedule-delete"></a></div>
+                      <div class="list-block schedule-content">
+                        <div class="row">
+                          <div class="item-content col-50">
+                            <div class="item-inner">
+                              <div class="item-title label date-select airtaxi-select-label">选择日期</div>
+                              <div class="item-input">
+                                <div class="inline-input">
+                                  <input type="date" value="2017-04-30" ng-model="schedule.date" ng-disabled="$index != 0">
+                                  <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item-content col-50">
+                            <div class="item-inner">
+                              <div class="item-title label datetime-select airtaxi-select-label">选择时间段</div>
+                              <div class="item-input">
+                                <div class="inline-input">
+                                  <select class="airtaxi-schedule" name="airtaxi-schedule" ng-model="schedule.time"  ng-disabled="$index != 0">
+                                    <option>08:00 - 09:00</option>
+                                    <option>14:30 - 15:30</option>
+                                  </select>
+                                  <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="item-content start-city-select">
+                            <div class="item-inner">
+                              <div class="item-title label airtaxi-select-label">起飞城市</div>
+                              <div class="item-input">
+                                <div class="inline-input">
+                                  <select ng-model="schedule.departure" ng-disabled="$index != 0">
+                                    <option>徐闻</option>
+                                  </select>
+                                  <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="arrow-bidirection">
+                            <div class="left"></div>
+                            <div class="right"></div>
+                          </div>
+                          <div class="item-content arrival-city-select col-50">
+                            <div class="item-inner">
+                              <div class="item-title label airtaxi-select-label">到达城市</div>
+                              <div class="item-input">
+                                <div class="inline-input">
+                                  <select ng-model="schedule.arrival" ng-disabled="$index != 0">
+                                    <option>海口港</option>
+                                    <option>海口美兰机场</option>
+                                    <option>海航大厦</option>
+                                  </select>
+                                  <i class="fa fa-angle-down select-arrow-down" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title label select-flight-label">选择航班</div>
+                              <div class="item-input select-flight">
+                                <div class="flight-input">
+                                  <a href="app/components/airtransportation/planes.html" ng-disabled="$index != 0">
+                                    {{ schedule.flight }}
+                                    <i class="fa fa-angle-right select-arrow-right" aria-hidden="true"></i>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <div class="footer-button">
+                    <a href="#" class="button button-red start-flight">立即起飞</a>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div id="mongolia-routes" class="tab">
+              <div class="content-block">
+                <p>Air Taxi Tour Page</p>
+                <p>To be developed...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

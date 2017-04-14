@@ -7,24 +7,14 @@
 
 <div class="pages">
     <div data-page="plane-detail" class="page" ng-controller="jetController">
-        <div class="page-content">
-            <div class="travel-model-info block-center ">
-                <em>!</em>
-                <span>{{'airjet.model-custom-info' | translate}}</span>
-            </div>
-            <div class="travel-model-card">
+        <div class="page-content plane-detail">
+            <div class="travel-model-card plane-detail-content">
                 <div class="travel-model-img">
-                    <img src="assets/images/model.png" alt="model">
+                    <img src="assets/images/travel/timg.jpeg" alt="model">
                 </div>
                 <div class="travel-model-content">
-                    <div class="travel-model-check">
-                        <span>{{'airjet.model' | translate}} <em>湾流G550</em></span>
-                        <label class="label-checkbox item-content">
-                            <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
-                            <div class="item-media">
-                                <i class="icon icon-form-checkbox fa"></i>
-                            </div>
-                        </label>
+                    <div class="plane-title">
+                        <em>金鹿XXXX公务机</em>
                     </div>
                     <p class="travel-model-guest clearfix">
                         <span class="pull-left">{{'airjet.model' | translate}} <em>湾流G550</em></span>
@@ -43,16 +33,13 @@
                     <p>
                       <span>{{'airjet.fleet' | translate}} <em>湾流G550公务机是国际顶级远程喷气式公务机代表机型之一，是人类飞行史上首架直航范围能从纽约直达东京的超远程公务飞机，也是目前国内航程最远、性能最优、客舱最宽敞、舒适性最好的豪华公务机。</em></span>  
                     </p>
-                    <p>
-                        <span class="tag">WIFI</span>
-                        <span class="tag">飞机餐</span>
-                        <span class="tag">微波炉</span>
+                    <p class="plane-tag clearfix">
+                        <em class="tag">WIFI</em>
+                        <em class="tag">飞机餐</em>
+                        <em class="tag tag-purple">微波炉</em>
                     </p>
                 </div>
             </div>
-            <a href="app/components/airjet/travel-info.html" class="item-link">
-                <div class="travel-model-submit block-center">{{'airjet.confirm' | translate}}</div>
-            </a>
         </div>
     </div>
 </div>

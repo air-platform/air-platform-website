@@ -20,7 +20,7 @@
                 {'title':'缘梦飞行'},
                 {'title':'卡产品'}
                 ]},
-            {title:'airtaxi',items:[
+            {title:'airtransportation',items:[
                 {'title':'空中观光'}]},
             {title:'airtransportation',items:[
                 {'title':'海峡飞行'},
@@ -44,20 +44,12 @@
             {title:'profile.out',target:'out'},
             {title:'个人信息',target:'app/components/profile/profile.html'}];
         var info = {};
-        var loginItemTitle = '';
-
-        $translate('profile.login-register').then(function (headline) {
-            loginItemTitle = headline;
-            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
-        }, function (translationId) {
-            loginItemTitle = translationId;
-            $scope.rightUserItem = {title:loginItemTitle,target:'app/components/profile/profile.html'};
-        });
+        var loginItemTitle = '登录/注册';
 
         $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
         $scope.leftPanelItems = leftPanelItems;
-        $scope.rightUserItem = {title:'',target:''};
+        $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
         $scope.gotoItemAction = gotoItemAction;
 
 

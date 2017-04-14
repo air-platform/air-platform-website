@@ -30,7 +30,7 @@
                     <div class="travel-plan-card" ng-repeat="item in travelPlanList track by $index">
                         <div class="tpc-top">
                             <em>{{'airjet.stroke' | translate}}<span ng-bind="item | chinanum"></span></em>
-                            <i class="fa fa-times-circle" ng-click="removeCard(item)"></i>
+                            <img src="assets/images/travel/btn_delete.svg" ng-click="removeCard(item)">
                         </div>
                         <div class="tpc-bottom">
                             <div class="tpcb-top">
@@ -54,10 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="tpcbt-arrow">
-                                    <div class="arrow-circle">
-                                        <div class="arrow-right"></div>
-                                        <div class="arrow-left"></div>
-                                    </div>
+                                    <img src="assets/images/travel/icon_swap.svg">
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
@@ -125,10 +122,7 @@
                                     </div>
                                 </div>
                                 <div class="tpcbt-arrow">
-                                    <div class="arrow-circle">
-                                        <div class="arrow-right"></div>
-                                        <div class="arrow-left"></div>
-                                    </div>
+                                    <img src="assets/images/travel/icon_swap.svg">
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
@@ -176,7 +170,7 @@
                         </div>
                     </div>
                     <div class="travel-plan-add" ng-click="addCard()">
-                        <em class="plus-circle"></em>
+                        <img src="assets/images/travel/icon_add_trip.svg">
                         <span>{{'airjet.add-trip' | translate}}</span>
                     </div>
                     
@@ -184,6 +178,7 @@
                 <div class="travel-plan-button">
                     <div class="tpb-recommend">
                         <div class="tpbr-top">
+                            <img src="assets/images/travel/icon_trip_recommend.svg">
                             <span>{{'airjet.stroke-recommend' | translate}}</span>
                         </div>
                         <div class="tpbr-middle">
@@ -222,7 +217,7 @@
                             </div>
                         </div>
                         <div class="tpbr-bottom">
-                            <div class="tpb-submit">{{'airjet.release' | translate}}</div>
+                            <a href="app/components/airjet/travel-detail.html" class="tpb-submit">{{'airjet.release' | translate}}</a>
                             <a href="app/components/airjet/travel-model.html" class="tpb-model">{{'airjet.model-custom' | translate}}</a>
                         </div>
                     </div>
