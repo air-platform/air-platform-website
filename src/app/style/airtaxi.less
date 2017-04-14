@@ -223,32 +223,81 @@
 }
 
 #planes-selection {
+  .content-block {
+    padding: 0.41rem 0;
+  }
+  .list-block {
+    margin: 0;
+  }
+
+  ul::after, ul::before {
+    display: none;
+  }
+
   .plane-type-nav {
       margin-top: 0.32rem;
   }
 
   .card {
-    border-radius: 8px;
     color: @base-gray;
     font-size: 0.2rem;
 
     .card-header {
       padding: 0;
+      height: 1.36rem;
+      border-radius: 0.08rem 0.08rem 0 0;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .card-content-inner {
+      padding: 5px 15px;
+    }
+
+    .plane-price-info {
+      display: inline-block;
+      width: 100%;
+      &>span {
+        display: inline-block;
+        &.plane-name {
+          width: 2.2rem;
+        }
+      }
+    }
+
+    .card-footer {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 0 0 0.08rem 0.08rem;
+      width: 100%;
+      min-height: 0.16rem;
     }
 
     .plane-name {
       font-size: 0.24rem;
       color: @base-dark;
     }
+    .plane-price:last-child {
+      float: right;
+    }
     .plane-price .price-value {
+      padding-left: 0.1rem;
       font-size: 0.36rem;
       color: @base-red;
     }
-    .departure-info {
-
+    .departure-info, .plane-capacity {
+      display: inline-block;
+      min-width: 1.2rem;
+      i {
+        margin-right: 0.14rem;
+      }
     }
     .plane-capacity {
-
+      margin-left: 0.35rem;
     }
     .plane-notice {
       position: relative;
