@@ -51,7 +51,7 @@
                     <div class="content-block school-content order-card-container">
                         <div class="list-block cards-list">
                             <ul>
-                                <li class="card order-card" ng-repeat="item in items[1]">
+                                <li class="card order-card" ng-repeat="item in items[1]" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
                                         <span class="order-number">{{item.no}}</span>
                                         <span class="order-date">{{item.date}}</span>
@@ -79,7 +79,7 @@
                     <div class="content-block school-content order-card-container">
                         <div class="list-block cards-list">
                             <ul>
-                                <li class="card order-card" ng-repeat="item in items[2]">
+                                <li class="card order-card" ng-repeat="item in items[2]" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
                                         <span class="order-number">{{item.no}}</span>
                                         <span class="order-date">{{item.date}}</span>
@@ -107,7 +107,7 @@
                     <div class="content-block school-content order-card-container">
                         <div class="list-block cards-list">
                             <ul>
-                                <li class="card order-card" ng-repeat="item in items[3]">
+                                <li class="card order-card" ng-repeat="item in items[3]" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
                                         <span class="order-number">{{item.no}}</span>
                                         <span class="order-date">{{item.date}}</span>
