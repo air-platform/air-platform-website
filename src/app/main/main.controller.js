@@ -41,7 +41,8 @@
         var rightPanelItems = [
             {title:'profile.order',target:'app/components/order/order.html'},
             {title:'profile.setting',target:'app/components/setting/setting.html'},
-            {title:'profile.out',target:'out'}];
+            {title:'profile.out',target:'out'},
+            {title:'个人信息',target:'app/components/profile/profile.html'}];
         var info = {};
         var loginItemTitle = '';
 
@@ -68,7 +69,7 @@
             if (item.target === 'out'){
                 logoutAction();
             }else{
-                if (iotUtil.islogin()){
+                if (true){  //iotUtil.islogin()
                     mainView.router.loadPage(item.target);
                 }else {
                     mainView.router.loadPage($scope.rightUserItem.target);
