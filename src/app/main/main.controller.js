@@ -60,11 +60,11 @@
             if (item.target === 'out'){
                 logoutAction();
             }else{
-                if (iotUtil.islogin()){
+                // if (iotUtil.islogin()){
                     mainView.router.loadPage(item.target);
-                }else {
-                    mainView.router.loadPage($scope.rightUserItem.target);
-                }
+                // }else {
+                //     mainView.router.loadPage($scope.rightUserItem.target);
+                // }
             }
         }
         function logoutAction() {
