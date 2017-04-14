@@ -10,7 +10,7 @@
     angular.module('airsc').controller('flightsController', flightsController);
 
     /** @ngInject */
-    function taxiController($scope, iotUtil, NetworkService) {
+    function flightsController($scope, iotUtil, NetworkService) {
         var controller = this;
         controller.flights = {}
     }
