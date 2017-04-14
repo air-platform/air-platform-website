@@ -28,7 +28,10 @@
             <div id="tab1" class="tab active">
                 <div class="travel-plan-content">
                     <div class="travel-plan-card" ng-repeat="item in travelPlanList track by $index">
-                        <div class="tpc-top"><em>{{'airjet.stroke' | translate}}<span ng-bind="item | chinanum"></span></em><i class="fa fa-times-circle" ng-click="removeCard(item)"></i></div>
+                        <div class="tpc-top">
+                            <em>{{'airjet.stroke' | translate}}<span ng-bind="item | chinanum"></span></em>
+                            <i class="fa fa-times-circle" ng-click="removeCard(item)"></i>
+                        </div>
                         <div class="tpc-bottom">
                             <div class="tpcb-top">
                                 <div class="tpcbt-city">
@@ -51,7 +54,10 @@
                                     </div>
                                 </div>
                                 <div class="tpcbt-arrow">
-                                    <i class="fa fa-exchange"></i>
+                                    <div class="arrow-circle">
+                                        <div class="arrow-right"></div>
+                                        <div class="arrow-left"></div>
+                                    </div>
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
@@ -87,7 +93,7 @@
                                     </label>
                                 </div>
                                 <div class="tpcbb-back" ng-show="!formData.round" ng-click="formData.round = !formData.round">
-                                    <label class="label-checkbox item-content">
+                                    <label class="label-checkbox checkbox-circle item-content">
                                         <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
                                         <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
@@ -119,7 +125,10 @@
                                     </div>
                                 </div>
                                 <div class="tpcbt-arrow">
-                                    <i class="fa fa-exchange"></i>
+                                    <div class="arrow-circle">
+                                        <div class="arrow-right"></div>
+                                        <div class="arrow-left"></div>
+                                    </div>
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
@@ -155,10 +164,10 @@
                                     </label>
                                 </div>
                                 <div class="tpcbb-back" ng-click="formData.round = !formData.round">
-                                    <label class="label-checkbox item-content">
+                                    <label class="label-checkbox checkbox-circle item-content">
                                         <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
                                         <div class="item-media">
-                                        <i class="icon icon-form-checkbox fa"></i>
+                                        <i class="icon icon-form-checkbox"></i>
                                         <em class="item-title">{{'airjet.round-trip' | translate}}</em>
                                         </div>
                                     </label>
@@ -167,7 +176,7 @@
                         </div>
                     </div>
                     <div class="travel-plan-add" ng-click="addCard()">
-                        <em>+</em>
+                        <em class="plus-circle"></em>
                         <span>{{'airjet.add-trip' | translate}}</span>
                     </div>
                     
@@ -189,12 +198,32 @@
                                     <span>起</span>
                                 </div>
                             </div>
+                            <div class="tpbrm-item">
+                                <div class="tpbrmi-left">
+                                    <span>北京</span>
+                                    <div class="arrow-right"></div>
+                                    <span>三亚</span>
+                                </div>
+                                <div class="tpbrmi-right">
+                                    <em>¥60万</em>
+                                    <span>起</span>
+                                </div>
+                            </div>
+                            <div class="tpbrm-item">
+                                <div class="tpbrmi-left">
+                                    <span>北京</span>
+                                    <div class="arrow-right"></div>
+                                    <span>三亚</span>
+                                </div>
+                                <div class="tpbrmi-right">
+                                    <em>¥60万</em>
+                                    <span>起</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="tpbr-bottom">
                             <div class="tpb-submit">{{'airjet.release' | translate}}</div>
-                            <a href="app/components/airjet/travel-model.html" class="item-link">
-                                <div class="tpb-model">{{'airjet.model-custom' | translate}}</div>
-                            </a>
+                            <a href="app/components/airjet/travel-model.html" class="tpb-model">{{'airjet.model-custom' | translate}}</a>
                         </div>
                     </div>
                 </div>

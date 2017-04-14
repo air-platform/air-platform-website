@@ -49,7 +49,9 @@
             display: -webkit-flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: .32rem;
+            border-bottom: .02rem dotted @base-grey-dark;
+            padding-bottom: .24rem;
+            // margin-bottom: .32rem;
 
             span{
                 font-size: .32rem;
@@ -57,31 +59,20 @@
                     font-size: .36rem;
                 }
             }
-            label.label-checkbox {
-                input[type="checkbox"]:checked + .item-media{
-                    i.icon-form-checkbox{
-                        border: .02rem solid @base-sky;
-                        background:rgba(80,188,255,0.15);
-                        &:after{
-                            content:'\f00c';
-                            background: none;
-                            display: flex;
-                            display: -webkit-flex;
-                            justify-content: center;
-                            align-items: center;
-                            color:@base-sky;
-                            font-size: .18rem;
-                        }
-                    }
+        }
+
+        .travel-model-prompt{
+            margin-top: .18rem;
+            height: .28rem;
+            .pull-left, .pull-right{
+                color: @base-sky;
+                font-size: .28rem;
+                em{
+                    color: @base-gray-light;
                 }
-            }
-            
-            i.icon{
-                width: .38rem;
-                height: .38rem;
-                border-radius: 50%;
-                border: .02rem solid @base-grey-dark;
-                background:rgba(205,205,205,0.20);
+                &.pull-left:first-child{
+                    margin-right: .4rem;
+                }
             }
         }
 
@@ -94,14 +85,71 @@
     }
 }
 
-.travel-model-submit{
+.travel-model-submit, .travel-plane-submit{
     font-family:PingFangSC-Regular;
-    margin: .06rem .34rem .4rem .36rem;
+    margin: .36rem .34rem .4rem .36rem;
     height: .88rem;
     background-color: @base-red-light;
     border-radius: .16rem;
     font-size: .36rem;
     color: @base-white;
+    &.travel-plane-submit{
+        margin-top: 1.12rem;
+    }
+}
+
+.travel-plane-card{
+    width: 100%;
+    height: 1.44rem;
+    padding: .24rem .28rem .22rem .32rem;
+    background-color: @base-white;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: .02rem solid @base-grey-dark;
+    .tpc-left{
+        display: flex;
+        align-items: center;
+        .checkbox-square{
+            margin-right: .28rem;
+        }
+        img{
+            width: .96rem;
+            height: .96rem;
+            border: .02rem solid @base-grey-dark;
+            margin-right: .22rem;
+        }
+        .plane-num{
+            display: flex;
+            flex-direction: column;
+        }
+        .plane-num{
+            font-size: .36rem;
+            color: @base-black-light;
+            strong{
+                font-weight: normal;
+            }
+            span{
+                font-size: .28rem;
+                color: @base-gray-light; 
+            }
+        }
+    }
+    .plane-money{
+        display: flex;
+        flex-direction: column;
+    }
+    .plane-money{
+        text-align: right;
+        font-size: .36rem;
+        color: @base-red-light;
+        em{
+            font-style: normal;
+        }
+        a{
+            font-size: .24rem;
+            color: @base-sky; 
+        }
+    }
 }
 
 .travel-info-content{
