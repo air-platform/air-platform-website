@@ -9,15 +9,15 @@
 
 <div class="pages">
     <div data-page="travel-info" class="page" ng-controller="travelInfoController">
-        <div class="page-content">
+        <div class="page-content travel-info-write">
             <div class="list-block travel-info-content">
                 <ul>
                     <li>
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title label">Name</div>
+                                <div class="item-title label">{{'airjet.name' | translate}}</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="Your name">
+                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
                                 </div>
                             </div>
                         </div>
@@ -25,15 +25,38 @@
                     <li>
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title label">E-mail</div>
+                                <div class="item-title label">{{'airjet.phone' | translate}}</div>
                                 <div class="item-input">
-                                    <input type="email" placeholder="E-mail">
+                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">{{'airjet.email' | translate}}</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">{{'airjet.remark' | translate}}</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
+            <a href="app/components/airjet/travel-detail.html">
+                <div class="travel-model-submit block-center">{{'airjet.confirm' | translate}}</div>
+            </a>
         </div>
     </div>
 </div>

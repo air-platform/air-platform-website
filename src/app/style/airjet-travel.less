@@ -78,6 +78,14 @@
 
         p{
             margin: 0 0 .16rem 0;
+            .tag{
+                float: left;
+                margin-right: .28rem;
+            }
+            &.plane-tag{
+                height: .52rem;
+                margin-top: .24rem;
+            }
             &:last-child{
                 margin-bottom: 0;
             }
@@ -152,6 +160,45 @@
     }
 }
 
+.plane-detail{
+    min-height: 100vh;
+    background-color: @base-white;
+    .plane-detail-content{
+        padding: 0;
+        
+        .travel-model-content{
+            padding-top: 0;
+            .plane-title{
+                height: .8rem;
+                color: @base-red-light;
+                font-size: .36rem;
+                line-height: .8rem;
+                text-align: left;
+                padding: 0 .32rem 0 .5rem;
+                border-top-left-radius: .16rem;
+                border-top-right-radius: .16rem;
+                border-bottom: .02rem dotted @base-grey-light;
+                position: relative;
+                margin-bottom: .28rem;
+                &:before{
+                    position: absolute;
+                    content: "";
+                    background-color: @base-red-light;
+                    width: .06rem;
+                    height: .32rem;
+                    border-radius: .03rem;
+                    left: .28rem;
+                    top: .24rem;
+                }
+            }
+        }
+        &.travel-model-card .travel-model-img img{
+            border-radius: 0;
+            height: 4.18rem;
+        }
+    }
+}
+
 .travel-info-content{
     margin: 0;
 
@@ -160,9 +207,95 @@
         .item-inner{
             padding-left: .3rem;
             height: 1.2rem;
+
+            .item-title{
+                width: .84rem;
+                font-size: .32rem;
+            }
             &:first-child{
                 border-top: none;
             }
         }
     }
+}
+
+.travel-info-write{
+    min-height: 100vh;
+    .travel-model-submit{
+        position: absolute;
+        width: calc(~"100% - 0.7rem");
+        bottom: 0;
+    }
+}
+
+
+.travel-model-info+.air-order-detail{
+    .air-order-item{
+        &.radius-top{
+            border-radius: .16rem .16rem 0 0!important;
+        }
+        &.radius-bottom{
+            border-radius: 0 0 .16rem .16rem!important;
+            border-bottom: 1px dashed @base-grey-light!important;
+        }
+        &.radius-top-bottom{
+            border-radius: .16rem!important;
+        }
+        &.aoi-guest-info, &.aoi-model-info{
+            height: auto;
+            padding: .22rem .42rem .24rem;
+            div{
+                height: .36rem;
+                margin: 0;
+                font-size: .28rem;
+                color: @base-gray-dark;
+                line-height: .36rem;
+                margin-bottom: .18rem;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        &.aoi-guest-info{
+            border: none!important;
+        }
+        &:nth-child(4){
+            padding: 0 0 0 0.42rem!important;
+            height: 0.88rem!important;
+            line-height: 0.88rem!important;
+        }
+        &.aoi-guest{
+            font-size: .32rem;
+            color: @base-black-light;
+        }
+        &.aoi-city-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 1.84rem;
+            padding: 0 .66rem;
+            .aoi-city{
+                text-align: left;
+                font-size: .24rem;
+                color: @base-gray-light;
+                display: flex;
+                flex-direction: column;
+                line-height: .34rem;
+        
+                strong{
+                    font-weight: normal;
+                    line-height: .66rem;
+                    color: @base-black-light;
+                    font-size: .48rem;
+                }
+                
+            }
+        }
+    }
+
+    .travel-detail-submit{
+        background-color: @base-red-light!important;
+        border-radius: .16rem;
+    }
+    
 }
