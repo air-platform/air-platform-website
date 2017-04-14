@@ -7,10 +7,10 @@
 (function () {
     'use strict';
 
-    angular.module('airsc').controller('taxiController', taxiController);
+    angular.module('airsc').controller('transController', transController);
 
     /** @ngInject */
-    function taxiController($scope, iotUtil, NetworkService, AirTaxiUtilsService) {
+    function transController($scope, iotUtil, NetworkService, AirTaxiUtilsService) {
         var controller = this;
         controller.schedules = {}
         controller.mapPoints = {}

@@ -20,7 +20,7 @@
                 {'title':'缘梦飞行'},
                 {'title':'卡产品'}
                 ]},
-            {title:'airtaxi',items:[
+            {title:'airtransportation',items:[
                 {'title':'空中观光'}]},
             {title:'airtransportation',items:[
                 {'title':'海峡飞行'},
