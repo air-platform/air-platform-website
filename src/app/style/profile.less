@@ -1,0 +1,117 @@
+.profile {
+  color: @base-gray-dark;
+  .list-block {
+    margin: 0;
+    .item-title {
+      font-size: .28rem;
+      color: @base-gray-light;
+    }
+    .item-input {
+      font-size: .28rem;
+      color: @base-black-light;
+      text-align: right;
+      .item-link {
+        display: inline-block;
+      }
+    }
+    .item-content {
+      min-height: .96rem;
+      &.profile-header {
+        min-height: 1.6rem;
+        img {
+          width: 1.1rem;
+          border-radius: 50%;
+        }
+      }
+      .item-inner {
+        position: relative;
+      }
+    }
+    .add-profile {
+      margin-top: .14rem;
+      .add-icon {
+        display: inline-block;
+        min-width: 1.2rem;
+        position: absolute;
+        height: 1rem;
+        line-height: 1rem;
+        top: 50%;
+        right: 35px;
+        transform: translateY(-50%);
+        z-index: 3;
+      }
+    }
+  }
+}
+
+.add-guest-box {
+  background-color: @base-white;
+  margin-bottom: .36rem;
+  .add-title {
+    height: .84rem;
+    line-height: .84rem;
+    border-bottom: .02rem solid @base-border;
+    padding: 0 .2rem;
+    font-size: .28rem;
+    color: @base-gray-dark;
+  }
+  .add-info {
+    padding: .44rem .2rem .42rem;
+    > div:first-child {
+      margin-bottom: .3rem;
+    }
+    label {
+      font-size: .28rem;
+      color: @base-gray-light;
+      display: inline-block;
+      min-width: 1.2rem;
+      text-align: right;
+    }
+    input {
+      color: @base-gray-dark;
+      height: 0.6rem;
+      background-color: #f4f4f4;
+      border: none;
+      outline: none;
+      padding: 0.08rem 0.16rem;
+      border-radius: 0.06rem;
+      width: 5.2rem;
+      font-size: 0.32rem;
+      font-weight: 300;
+    }
+  }
+}
+
+.add-guest-btn {
+	padding: 0 .2rem;
+  .add-guset {
+  	color: @base-gray-dark;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.1rem;
+    border: .02rem dashed @base-grey;
+    border-radius: .1rem;
+    font-size: .32rem;
+    .fa {
+      margin-right: .2rem;
+    }
+  }
+  .guset-submit {
+  	margin-top: .32rem;
+  	border-radius: .06rem;
+  	display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+  	width: 100%;
+  	height: .88rem;
+  	background-color: #f03f3c;
+  	border: .01rem solid #f03f3c;
+  	letter-spacing: .2rem;
+  	font-size: .36rem;
+  	padding: 0;
+  	color: @base-white;
+  }
+}
