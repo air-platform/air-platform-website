@@ -7,9 +7,24 @@
 <div class="pages navbar-through">
     <div data-page="taxi" class="page" ng-controller="taxiController">
         <div class="page-content">
-          <div class="content-block">
+          <div class="content-block fullscreen">
             <div class="map">
-                <div class="airtrans-map-view" id="airtaxi-map-view"></div>
+                <div class="airtaxi-map-view" id="airtaxi-map-view"></div>
+            </div>
+            <div class="card filter-toolbar">
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-title label">请选择城市</div>
+                    <div class="item-input">
+                      <input type="text" placeholder="北京" id="autocomplete-dropdown-placeholder">
+                    </div>
+                    <div class="city-navi-arrow">
+                      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
