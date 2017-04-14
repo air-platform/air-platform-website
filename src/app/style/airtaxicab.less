@@ -23,11 +23,58 @@
 .order-detail-list .order-detail-line {
   height: 1px;
   margin: 0 15px;
-  border-bottom: dashed @base-grey-light 1px;
+  border-bottom: dashed rgba(196, 196, 196, 0.5) 1px;//透明0.3
 }
 .order-detail-list .order-detail-content {
   border-radius: 8px;
   background-color: white;
   margin: 0px 10px 10px 10px;
-  height: 2rem;
+  height: 3rem;
+  //display: block;
+  .order-detail-content-title {
+    height: 0.9rem;
+    .order-icon {
+      width: 0.5rem;
+      height: 0.5rem;
+      margin: 10px;
+      display: inline-block;
+    }
+    .order-flytype {
+      font-size: 0.14rem;
+      color: #4a4a4a;
+      display: inline-block;
+    }
+    .order-date {
+      line-height: 0.9rem;
+      height: 0.9rem;
+      font-size: 0.12rem;
+      padding-right: 10px;
+      color: @base-gray;
+      float: right;
+      display: inline-block;
+    }
+    .order-content-line {
+      height: 1px;
+      background-color: rgba(196, 196, 196, 0.5);
+      margin: 0 10px;
+    }
+  }
+  .order-detail-content-inner {
+    .order-from {
+
+    }
+    .order-core {
+
+      img {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+      }
+    }
+    .order-to {
+
+    }
+
+  }
+
 }
