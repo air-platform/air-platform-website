@@ -20,9 +20,9 @@
                   <li class="item-content">
                     <div class="item-title label">选择城市</div>
                     <div class="item-input">
-                      <input type="text" placeholder="北京" id="city-navi-autocomplete-placeholder">
+                      <input type="text" placeholder="北京" ng-model="city" id="city-navi-autocomplete-placeholder">
                     </div>
-                    <a href="app/components/airtaxi/airtour-city.html" class="city-navi-button">
+                    <a href="app/components/airtaxi/airtour-city.html?city={{city}}" class="city-navi-button">
                       <span class="long-arrow-right"><i></i></span>
                     </a>
                   </li>

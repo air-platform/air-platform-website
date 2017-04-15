@@ -1,14 +1,44 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding color-black order-center">{{ city }}观光<span></span></div>
+        <div class="center sliding color-black order-center">北京观光<span></span></div>
+        <div class="right">
+          <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
     </div>
 </div>
 <div class="pages navbar-through">
     <div data-page="citytour" class="page" ng-controller="citytourController">
         <div class="page-content">
-          <div class="content-block">
+          <div class="city-tour-content">
 
+            <div class="tour-date-select fa">
+              <div class="label">选择出行日期</div>
+              <div class="item-content">
+               <div class="item-inner">
+                 <div class="item-input">
+                   <input type="text" placeholder="Select date" readonly id="tourcity-datepicker">
+                 </div>
+               </div>
+             </div>
+            </div>
+
+            <div class="tour-projects">
+              <ul>
+                <li class="fa project-card clearfix" ng-repeat="item in cityList track by $index">
+                    <div class="left-media pull-left">
+                      <img ng-src="{{item.pic}}" alt="city">
+                    </div>
+                    <div class="project-description pull-left">
+                      <div class="project-title" ng-bind="item.title"></div>
+                      <div class="abstract-info" ng-bind="item.info"></div>
+                    </div>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-button">
+              <a href="#" class="next-button">下一步</a>
+            </div>
           </div>
         </div>
     </div>
