@@ -73,6 +73,15 @@
           // });
         }
 
+        var today = new Date();
+        var calendarDateFormat = myApp.calendar({
+          input: '#tourcity-datepicker',
+          dateFormat: 'yyyy年m月d日',
+          disabled: {
+            to: new Date().setDate(today.getDate() - 1)
+          }
+        });
+
         $scope.$watch("controller.mapPoints", function(newValue, oldValue) {
             if( newValue != oldValue ) {
               transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
