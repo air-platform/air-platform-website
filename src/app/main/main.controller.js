@@ -16,27 +16,27 @@
 
         var leftPanelItems = [
             {title:'Air Jet',items:[
-                {'title':'包机预定'},
-                {'title':'缘梦飞行'},
-                {'title':'卡产品'}
+                {'title':'包机预定',target:''},
+                {'title':'缘梦飞行',target:''},
+                {'title':'卡产品',target:''}
                 ]},
             {title:'Air Transportation',items:[
-                {'title':'空中观光'}]},
+                {'title':'空中观光',target:''}]},
             {title:'Air Transportation',items:[
-                {'title':'海峡飞行'},
-                {'title':'内蒙航线'}
+                {'title':'海峡飞行',target:''},
+                {'title':'内蒙航线',target:''}
                 ]},
             {title:'飞行培训',items:[
-                {'title':'航校信息'},
-                {'title':'预定培训'}
+                {'title':'航校信息',target:''},
+                {'title':'预定培训',target:''}
                 ]},
             {title:'Air BB论坛',items:[
-                {'title':'话题讨论/发帖/留言'}
+                {'title':'话题讨论/发帖/留言',target:''}
                 ]},
             {title:'会员中心',items:[
-                {'title':'用户注册/登录'},
-                {'title':'订单查询'},
-                {'title':'积分系统'}
+                {'title':'用户注册/登录',target:''},
+                {'title':'订单查询',target:''},
+                {'title':'积分系统',target:''}
                 ]}];
         var rightPanelItems = [
             {title:'profile.order',target:'app/components/order/order.html',icon:'list'},
