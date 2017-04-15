@@ -41,8 +41,7 @@
         var rightPanelItems = [
             {title:'profile.order',target:'app/components/order/order.html',icon:'list'},
             {title:'profile.setting',target:'app/components/setting/setting.html',icon:'gear'},
-            {title:'profile.out',target:'out',icon:'logout'},
-            {title:'机型选择',target:'app/components/airtaxi/airtaxi-select.html',icon:'list'}];
+            {title:'profile.out',target:'out',icon:'logout'}];
         var info = {};
         var loginItemTitle = '登录/注册';
 
@@ -61,7 +60,7 @@
             if (item.target === 'out'){
                 logoutAction();
             }else{
-                if (true){  //iotUtil.islogin()
+                if (iotUtil.islogin()){  //iotUtil.islogin()
                     mainView.router.loadPage(item.target);
                 }else {
                     mainView.router.loadPage($scope.rightUserItem.target);
