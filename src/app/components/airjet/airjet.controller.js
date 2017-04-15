@@ -16,6 +16,52 @@
         $scope.removeCard = removeCard;
         $scope.datepicter = datepicter;
 
+        $scope.cardList = [{
+            name: '金鹿 FBO',
+            type_cn: '铂金卡',
+            type_en: 'Platinum Card',
+            money: 'RMB 1,000,000',
+            level: 1
+        },{
+            name: '金鹿 FBO',
+            type_cn: '钻石卡',
+            type_en: 'Diamond Card',
+            money: 'USD 1,000',
+            level: 2
+        },{
+            name: '金鹿 FBO',
+            type_cn: '尊享卡',
+            type_en: 'Honor Card',
+            money: 'RMB 5,00,000',
+            level: 3
+        },{
+            name: '金鹿 FBO',
+            type_cn: '精英卡',
+            type_en: 'Elite Card',
+            money: 'RMB 5,00,000',
+            level: 4
+        }];
+
+        $scope.hourCardList = [{
+            name: '金鹿 小时卡',
+            type: '飞翔卡',
+            description: '10小时专享按小时计费的公务机消费模式',
+            money: 'RMB 788,888',
+            level: 5
+        },{
+            name: '金鹿 小时卡',
+            type: '悠游卡',
+            description: '25小时专享按小时计费的公务机消费模式',
+            money: 'RMB 1,958,888',
+            level: 6
+        },{
+            name: '金鹿 小时卡',
+            type: '翱翔卡',
+            description: '50小时专享按小时计费的公务机消费模式',
+            money: 'RMB 3,868,888',
+            level: 7
+        }];
+
         $scope.dreamFlyList = [{
             id:'1',
             createTime: '1491541200000',

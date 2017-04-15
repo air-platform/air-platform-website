@@ -31,22 +31,6 @@
     "cancel":"已取消"
   },
   "login":{
-    "login":"登 录",
-    "register":"注 册",
-    "reset":"重 置",
-    "username":"用户名",
-    "password":"密码",
-    "login-placeholder":"请输入手机号/邮箱/用户名",
-    "username-placeholder":"请输入手机号...",
-    "authcode-placeholder":"请输入验证码...",
-    "password-placeholder":"请输入密码...",
-    "new-password-placeholder":"请输入新密码...",
-    "comfirm-placeholder":"再次输入密码...",
-    "forgot-password":"忘记密码?",
-    "go-register":"还没有账号，去注册？",
-    "not-match":"Passwords do not match!"
-  },
-  "airjet": {
     "travel-plan": "旅行计划",
     "dream-flying": "缘梦飞行",
     "card-products": "卡产品",
@@ -89,6 +73,7 @@
     "write": "请填写...",
     "order-info": "订单确认后客服会主动与您联系",
     "from": "起",
+    "buy-them": "咨询购买",
     "submit": "提交"
   },
   "airtrain":{
