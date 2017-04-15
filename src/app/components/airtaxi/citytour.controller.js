@@ -13,6 +13,7 @@
     function citytourController($scope,iotUtil) {
       var today = new Date();
       var queryData = myApp.views[0].activePage.query;
+      $scope.jumpDetail = jumpDetail;
       $scope.city = queryData.city || '北京';
       angular.element('#citytour-title').text($scope.city + '观光');
       var pickerDevice = myApp.picker({
@@ -34,7 +35,8 @@
         disabled: {
           to: new Date().setDate(today.getDate() - 1)
         },
-        onDayClick: function() {
+        onDayClick: function(item, current) {
+            console.log(arguments)
             calendarDateFormat.close();
         }
       });
@@ -55,7 +57,7 @@
     };
 
     function jumpDetail(data){
-      mainView.router.loadPage('app/components/airtaxi/airtaxi-model.html');
+      mainView.router.loadPage('app/components/airtaxi/project-details.html');
     };
 
 })();

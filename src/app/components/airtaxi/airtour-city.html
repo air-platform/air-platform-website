@@ -23,8 +23,7 @@
             </div>
 
             <div class="tour-projects">
-              <ul>
-                <li class="fa project-card clearfix" ng-repeat="item in cityList track by $index"  ng-click="jumpDetail(item)">
+                <div class="fa project-card clearfix" ng-repeat="item in cityList track by $index"  ng-click="jumpDetail(item)">
                     <div class="left-media pull-left">
                       <img ng-src="{{item.pic}}" alt="city">
                     </div>
@@ -32,11 +31,7 @@
                       <div class="project-title" ng-bind="item.title"></div>
                       <div class="abstract-info" ng-bind="item.info"></div>
                     </div>
-                </li>
-              </ul>
-            </div>
-            <div class="footer-button">
-              <a href="app/components/airtaxi/airtaxi-select.html" class="next-button">下一步</a>
+                </div>
             </div>
           </div>
         </div>

@@ -113,6 +113,9 @@ div[data-page=projectdetails] {
 
       & > ul {
         padding-top: 0.4rem;
+        &:after{
+          background: none;
+        }
       }
     }
 
@@ -190,4 +193,18 @@ div[data-page=projectdetails] {
       }
     }
   }
+
+  .footer-button{
+      padding: .16rem .16rem .14rem .22rem;
+      .next-button{
+          display: block;
+          height: .88rem;
+          line-height: .88rem;
+          font-size: .36rem;
+          text-align: center;
+          color: @base-white;
+          background-color: @base-sky;
+          border-radius: .16rem;
+      }
+    }
 }
