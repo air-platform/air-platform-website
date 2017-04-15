@@ -1,0 +1,67 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">选择机型</div>
+    <div class="right">
+      <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+    </div>
+  </div>
+</div>
+<div class="pages navbar-through">
+  <div data-page="airtaxi-select" class="page" ng-controller="airtaxiSelectController">
+    <div class="page-content">
+      <div class="subnavbar course-nav air-select-nav">
+        <div class="buttons-row">
+          <a href="#tab1" class="button tab-link active">直升机</a>
+          <a href="#tab2" class="button tab-link">固定翼</a>
+        </div>
+      </div>
+      <div class="tabs course-content air-select">
+        <div id="tab1" class="tab active">
+          <div class="course-list">
+            <ul>
+              <li ng-repeat="item in airSelectList track by $index">
+                <a href="#" class="clearfix">
+                  <div class="course-list-img pull-left">
+                    <img ng-src="{{item.imgSrc}}">
+                  </div>
+                  <div class="pull-left select-info">
+                    <h5 ng-bind="item.titleText"></h5>
+                    <div ng-bind="item.disc"></div>
+                  </div>
+                  <div class="course-list-main pull-right">
+                    <span>¥ <i ng-bind="item.price"></i> /人</span>
+                    <p>约<span ng-bind="item.time"></span>分钟</p>
+                    <div class="book-btn">立即预订</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="tab2" class="tab">
+          <div class="course-list">
+            <ul>
+              <li ng-repeat="item in airSelectList track by $index">
+                <a href="#" class="clearfix">
+                  <div class="course-list-img pull-left">
+                    <img ng-src="{{item.imgSrc}}">
+                  </div>
+                  <div class="pull-left select-info">
+                    <h5 ng-bind="item.titleText"></h5>
+                    <div ng-bind="item.disc"></div>
+                  </div>
+                  <div class="course-list-main pull-right">
+                    <span>¥ <i ng-bind="item.price"></i> /人</span>
+                    <p>约<span ng-bind="item.time"></span>分钟</p>
+                    <div class="book-btn">立即预订</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+.air-select-nav {
+	&.course-nav {
+		width: 94.2%;
+		margin: .22rem auto 0;
+		left: 2.9%;
+		box-shadow: 0 0 3px 0 rgba(137,137,137,0.50);
+		.buttons-row {
+			border-radius: 4px;
+			.button {
+				&:first-child {
+				    border-radius: 4px 0 0 4px;
+				}
+				&:last-child {
+					border-radius: 0 4px 4px 0;
+				}
+			}
+		}
+	}
+}
+
+.air-select {
+	&.course-content {
+		.course-list {
+			margin-top: 1.32rem;
+			ul {
+				li {
+					height: 1.6rem;
+					.course-list-img {
+						img {
+							width: 2.2rem;
+							height: 1.6rem;
+						}
+					}
+					.select-info {
+						padding-left: .2rem;
+						width: calc(~"100% - 2.2rem - 1.8rem - 0.2rem");
+						padding-top: .26rem;
+						h5 {
+							font-size: .28rem;
+							color: @base-black;
+							margin: 0;
+							.text-overflow();
+						}
+						> div {
+							font-size: .2rem;
+							color: @base-gray;
+							margin-top: .14rem;
+						}
+					}
+					.course-list-main {
+						padding-top: .26rem;
+						width: 1.8rem;
+						margin-left: .2rem;
+						text-align: right;
+						> span {
+							font-size: .28rem;
+							color: @base-red-light;
+							i {
+								font-style: normal;
+							}
+						}
+						p {
+							margin: 0;
+							font-size: .2rem;
+							color: @base-gray;
+						}
+						.book-btn {
+							margin-top: .1rem;
+							display: inline-block;
+							width: 1.42rem;
+							.text-vertical-center(.36rem);
+							text-align: center;
+							font-size: .24rem;
+							color: @base-white;
+							background-color: @base-sky;
+							border-radius: .4rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
