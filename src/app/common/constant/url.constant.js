@@ -4,5 +4,6 @@
       BASE: '',
       LOGIN: 'account/auth',
       PROFILE:'account/profile',
+      COURSE: 'courses'
     })
 })();

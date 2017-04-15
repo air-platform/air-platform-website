@@ -11,22 +11,11 @@
         <div class="page-content profile">
             <div class="list-block">
                 <ul>
-                    <li><a href="#" class="item-link">
+                    <li ng-repeat="guest in guestList track by $index"><a href="#" class="item-link">
                         <div class="item-content profile-header">
                             <div class="item-inner">
-                                <div class="item-title label">李明</div>
-                                <div class="item-input">
-                                    610111198104070029
-                                </div>
-                            </div>
-                        </div></a></li>
-                    <li><a href="#" class="item-link">
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">王雀斑</div>
-                                <div class="item-input">
-                                    610111198104070022
-                                </div>
+                                <div class="item-title label" ng-bind="guest.userName"></div>
+                                <div class="item-input" ng-bind="guest.card"></div>
                             </div>
                         </div></a></li>
                 </ul>
