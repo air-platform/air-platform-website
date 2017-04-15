@@ -153,7 +153,7 @@
     }
   }
   .order-detail-content-inner {
-    .order-from {
+    .order-from, .order-to {
       margin-top: 0.7rem;
       text-align: center;
       strong {
@@ -161,35 +161,26 @@
         font-size: 0.2rem;
         color: @base-gray-dark;
       }
-      span {
-        display: block;
-        font-size: 0.12rem;
-        color: @base-gray-light;
-      }
     }
     .order-core {
       text-align: center;
-      margin-top: 0.45rem;
-      .order-time-interval {
-        font-size: 0.14rem;
-        color:#000;
-        display: block;
+      margin-top: 0.65rem;
+      .dfim-center {
+        .arrow-right {
+          margin: 0;
+          display: inline-block;
+          width: 1rem;
+          vertical-align: middle;
+          &:after {
+            width: .15rem;
+            top: -0.06rem;
+          }
+        }
       }
-      strong {
-        height: 0.1rem;
-        line-height: 0.1rem;
-      }
-      .order-cost {
-        font-size: 0.14rem;
-        color: #9b9b9b;
-      }
-    }
-    .order-to {
-      text-align: center;
-      margin-top: 0.7rem;
     }
     .order-other-info {
       text-align: center;
+      font-size: 0.14rem;
       img {
         display: inline-block;
         width: 30px;
