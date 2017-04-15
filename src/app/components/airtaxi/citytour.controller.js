@@ -13,7 +13,9 @@
     function citytourController($scope,iotUtil) {
       var ctl = this;
       var today = new Date();
-      
+      var queryData = myApp.views[0].activePage.query;
+      $scope.city = queryData.city || '北京';
+      angular.element('#citytour-title').text($scope.city + '观光');
       var calendarDateFormat = myApp.calendar({
         input: '#tourcity-datepicker',
         dateFormat: 'yyyy年m月d日',

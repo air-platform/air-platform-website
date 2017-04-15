@@ -33,7 +33,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.departure">
                                                 <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -50,7 +50,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.destination">
                                                 <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -91,7 +91,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.destination">
                                                 <option value="{{'airjet.select' | translate}}">{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -108,7 +108,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.departure">
                                                 <option value="{{'airjet.select' | translate}}">{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
