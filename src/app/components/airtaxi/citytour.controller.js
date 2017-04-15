@@ -11,11 +11,23 @@
 
     /** @ngInject */
     function citytourController($scope,iotUtil) {
-      var ctl = this;
       var today = new Date();
       var queryData = myApp.views[0].activePage.query;
       $scope.city = queryData.city || '北京';
       angular.element('#citytour-title').text($scope.city + '观光');
+      var pickerDevice = myApp.picker({
+          input: '#citytour-title',
+          cols: [
+              {
+                  textAlign: 'center',
+                  values: ['北京', '桂林', '海南', '宁波'],
+                  onChange: function(item, current){
+                    angular.element('#citytour-title').text(current + '观光');
+                  }
+              }
+          ]
+      });
+
       var calendarDateFormat = myApp.calendar({
         input: '#tourcity-datepicker',
         dateFormat: 'yyyy年m月d日',
@@ -40,6 +52,10 @@
         title: '八达岭长城观光',
         info: '近距离低空俯览八达岭长城'
       }]
-    }
+    };
+
+    function jumpDetail(data){
+      mainView.router.loadPage('app/components/airtaxi/airtaxi-model.html');
+    };
 
 })();

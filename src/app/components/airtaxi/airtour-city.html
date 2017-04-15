@@ -1,7 +1,7 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
-        <div class="center sliding color-black order-center" id="citytour-title"></div>
+        <div class="center sliding color-black order-center fa" id="citytour-title"></div>
         <div class="right">
           <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
         </div>
@@ -24,7 +24,7 @@
 
             <div class="tour-projects">
               <ul>
-                <li class="fa project-card clearfix" ng-repeat="item in cityList track by $index">
+                <li class="fa project-card clearfix" ng-repeat="item in cityList track by $index"  ng-click="jumpDetail(item)">
                     <div class="left-media pull-left">
                       <img ng-src="{{item.pic}}" alt="city">
                     </div>
