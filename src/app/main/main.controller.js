@@ -15,14 +15,14 @@
         });
 
         var leftPanelItems = [
-            {title:'airjet',items:[
+            {title:'Air Jet',items:[
                 {'title':'包机预定'},
                 {'title':'缘梦飞行'},
                 {'title':'卡产品'}
                 ]},
-            {title:'airtransportation',items:[
+            {title:'Air Transportation',items:[
                 {'title':'空中观光'}]},
-            {title:'airtransportation',items:[
+            {title:'Air Transportation',items:[
                 {'title':'海峡飞行'},
                 {'title':'内蒙航线'}
                 ]},
