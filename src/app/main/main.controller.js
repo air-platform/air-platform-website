@@ -16,31 +16,32 @@
 
         var leftPanelItems = [
             {title:'Air Jet',items:[
-                {'title':'包机预定',target:''},
-                {'title':'缘梦飞行',target:''},
-                {'title':'卡产品',target:''}
+                {'title':'包机预定',target:constdata.router.airjet.home},
+                {'title':'缘梦飞行',target:constdata.router.airjet.home},
+                {'title':'卡产品',target:constdata.router.airjet.home}
+                ]},
+            {title:'Air Taxi',items:[
+                {'title':'空中观光',target:constdata.router.airtaxi.home}
                 ]},
             {title:'Air Transportation',items:[
-                {'title':'空中观光',target:''}]},
-            {title:'Air Transportation',items:[
-                {'title':'海峡飞行',target:''},
-                {'title':'内蒙航线',target:''}
+                {'title':'海峡飞行',target:constdata.router.airtrans.home},
+                {'title':'内蒙航线',target:constdata.router.airtrans.home}
                 ]},
             {title:'飞行培训',items:[
-                {'title':'航校信息',target:''},
-                {'title':'预定培训',target:''}
+                {'title':'航校信息',target:constdata.router.airtrain.home},
+                {'title':'预定培训',target:constdata.router.airtrain.home}
                 ]},
             {title:'Air BB论坛',items:[
                 {'title':'话题讨论/发帖/留言',target:''}
                 ]},
             {title:'会员中心',items:[
-                {'title':'用户注册/登录',target:''},
-                {'title':'订单查询',target:''},
+                {'title':'用户注册/登录',target:constdata.router.login.login},
+                {'title':'订单查询',target:constdata.router.order.order},
                 {'title':'积分系统',target:''}
                 ]}];
         var rightPanelItems = [
-            {title:'profile.order',target:'app/components/order/order.html',icon:'list'},
-            {title:'profile.setting',target:'app/components/setting/setting.html',icon:'gear'},
+            {title:'profile.order',target:constdata.router.order.order,icon:'list'},
+            {title:'profile.setting',target:constdata.router.set.setting,icon:'gear'},
             {title:'profile.out',target:'out',icon:'logout'}];
         var info = {};
         var loginItemTitle = '登录/注册';
@@ -48,7 +49,7 @@
         $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
         $scope.leftPanelItems = leftPanelItems;
-        $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html',icon:'person'};
+        $scope.rightUserItem = {title:loginItemTitle,target:constdata.router.login.login,icon:'person'};
         $scope.gotoItemAction = gotoItemAction;
 
 
@@ -60,7 +61,8 @@
             if (item.target === 'out'){
                 logoutAction();
             }else{
-                if (iotUtil.islogin()){  //iotUtil.islogin()
+                console.log(item);
+                if (true){  //iotUtil.islogin()
                     mainView.router.loadPage(item.target);
                 }else {
                     mainView.router.loadPage($scope.rightUserItem.target);
@@ -81,12 +83,12 @@
                 info = iotUtil.userInfo();
                 $scope.islogin = true;
                 $scope.rightUserItem.title = info.nickName;
-                $scope.rightUserItem.target = 'app/components/profile/profile.html';
+                $scope.rightUserItem.target = constdata.router.set.profile;
                 $scope.rightUserItem.icon = 'person';
             }else{
                 info = {};
                 $scope.islogin = false;
-                $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html',icon:'person'};
+                $scope.rightUserItem = {title:loginItemTitle,target:constdata.router.login.login,icon:'person'};
             }
         }
 
