@@ -8,8 +8,7 @@
 
     /** @ngInject */
     function dreamInnerController($scope,iotUtil) {
-        var page = myApp.views[0];
-        var formData = page.activePage.query;
+        var queryData = myApp.views[0].activePage.query;
         $scope.submit = submit;
         $scope.imgSrc = [
             './../assets/images/banner0.jpg',
@@ -110,9 +109,9 @@
         }];
         
 
-        if(formData.id){
+        if(queryData.id){
             $scope.dreamFlyList.forEach(function(item){
-                if(item.id === formData.id){
+                if(item.id === queryData.id){
                     $scope.dreamObj = item;
                     return;
                 }
