@@ -42,7 +42,7 @@
             {title:'profile.order',target:'app/components/order/order.html'},
             {title:'profile.setting',target:'app/components/setting/setting.html'},
             {title:'profile.out',target:'out'},
-            {title:'机型选择',target:'app/components/airtaxi/airtaxi-select.html'}];
+            {title:'个人信息',target:'app/components/profile/profile.html'}];
         var info = {};
         var loginItemTitle = '登录/注册';
 

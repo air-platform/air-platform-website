@@ -20,7 +20,8 @@
     "info":"个人信息",
     "setting":"设置",
     "out":"退出",
-    "check-input": "用户名、身份证号不能为空"
+    "check-input": "用户名、身份证号不能为空",
+    "not-set": "未设置"
   },
   "order":{
     "center":"订单中心",
