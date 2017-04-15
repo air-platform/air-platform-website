@@ -1,7 +1,10 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding color-black order-center">Air Taxi<span></span></div>
+        <div class="center sliding color-black order-center"><span>Air Taxi</span></div>
+        <div class="right">
+          <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
     </div>
 </div>
 <div class="pages navbar-through">
@@ -15,15 +18,13 @@
               <div class="list-block">
                 <ul>
                   <li class="item-content">
-                    <div class="item-title label">请选择城市</div>
+                    <div class="item-title label">选择城市</div>
                     <div class="item-input">
-                      <input type="text" placeholder="北京" id="autocomplete-dropdown-placeholder">
+                      <input type="text" placeholder="北京" id="city-navi-autocomplete-placeholder">
                     </div>
-                    <div class="city-navi-arrow">
-                      <a href="app/components/airtaxi/airtour-city.html" class="">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                      </a>
-                    </div>
+                    <a href="app/components/airtaxi/airtour-city.html" class="city-navi-button">
+                      <span class="long-arrow-right"><i></i></span>
+                    </a>
                   </li>
                 </ul>
               </div>

@@ -1,18 +1,14 @@
 <!-- We don't need full layout here, because this page will be parsed with Ajax-->
 <!-- Top Navbar-->
 <div class="navbar">
-    <div class="navbar-inner">
-        <div class="left">
-            <a href="#" data-panel="left" class="back link"> <i class="icon icon-back"></i><span>back</span></a>
-        </div>
-        <div class="sliding">Air Jet</div>
-        <div class="right">
-            <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
-        </div>
-
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">Air Jet</div>
+    <div class="right">
+        <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
     </div>
+  </div>
 </div>
-<!--<div class="page-content">-->
 <div data-page="airjet" class="page" ng-controller="jetController">
     <div class="page-content">
         <div class="buttons-row air-tabs">
@@ -27,52 +23,42 @@
             <!-- Tab 1, active by default -->
             <div id="tab1" class="tab active">
                 <div class="travel-plan-content">
-                    <div class="travel-plan-card" ng-repeat="item in travelPlanList track by $index">
+                    <div class="travel-plan-card" ng-repeat="item in travelStrokeList track by $index">
                         <div class="tpc-top">
-                            <em>{{'airjet.stroke' | translate}}<span ng-bind="item | chinanum"></span></em>
-                            <img src="assets/images/travel/btn_delete.svg" ng-click="removeCard(item)">
+                            <em>{{'airjet.stroke' | translate}}<span ng-bind="$index + 1 | chinanum"></span></em>
+                            <img src="assets/images/travel/btn_delete.svg" ng-hide="$index === 0" ng-click="removeCard($index)">
                         </div>
                         <div class="tpc-bottom">
                             <div class="tpcb-top">
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="item-link smart-select">
-                                                    <select name="fruits">
-                                                        <option value="" selected>北京</option>
-                                                        <option value="">上海</option>
-                                                        <option value="">杭州</option>
-                                                    </select>
-                                                    <div class="item-content">
-                                                        <div class="item-title">{{'airjet.select' | translate}}</div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <a href="#" class="item-link smart-select">
+                                            <select ng-model="item.departure">
+                                                <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
+                                                <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
+                                            </select>
+                                            <div class="item-content">
+                                                <div class="item-after" ng-bind="item.departure"></div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="tpcbt-arrow">
+                                <div class="tpcbt-arrow" ng-click="reversal(item, $index)">
                                     <img src="assets/images/travel/icon_swap.svg">
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="item-link smart-select">
-                                                    <select name="fruits">
-                                                        <option value="" selected>北京</option>
-                                                        <option value="">上海</option>
-                                                        <option value="">杭州</option>
-                                                    </select>
-                                                    <div class="item-content">
-                                                        <div class="item-title">{{'airjet.select' | translate}}</div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <a href="#" class="item-link smart-select">
+                                            <select ng-model="item.destination">
+                                                <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
+                                                <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
+                                            </select>
+                                            <div class="item-content">
+                                                <div class="item-after" ng-bind="item.destination"></div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -80,18 +66,18 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-focus="datepicter('datepicter', item)" class="datepicter{{item}}" placeholder="0000-00-00" ng-model="formData.time">
+                                        <input type="text" ng-focus="datepicter('datepicter', $index)" class="datepicter{{$index}}" placeholder="0000-00-00" ng-model="item.startTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
                                     <label>
                                         {{'airjet.guest-count' | translate}}
-                                        <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.guest">
+                                        <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="item.guestStart">
                                     </label>
                                 </div>
-                                <div class="tpcbb-back" ng-show="!formData.round" ng-click="formData.round = !formData.round">
+                                <div class="tpcbb-back" ng-show="!item.round" ng-click="item.round = !item.round">
                                     <label class="label-checkbox checkbox-circle item-content">
-                                        <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
+                                        <input type="checkbox" name="my-checkbox" ng-model="item.round" checked="checked">
                                         <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                         <em class="item-title">{{'airjet.round-trip' | translate}}</em>
@@ -100,47 +86,37 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tpc-bottom" ng-show="formData.round">
+                        <div class="tpc-bottom" ng-show="item.round">
                             <div class="tpcb-top">
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="item-link smart-select">
-                                                    <select name="fruits">
-                                                        <option value="" selected>北京</option>
-                                                        <option value="">上海</option>
-                                                        <option value="">杭州</option>
-                                                    </select>
-                                                    <div class="item-content">
-                                                        <div class="item-title">{{'airjet.select' | translate}}</div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <a href="#" class="item-link smart-select">
+                                            <select ng-model="item.destination">
+                                                <option value="{{'airjet.select' | translate}}">{{'airjet.select' | translate}}</option>
+                                                <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
+                                            </select>
+                                            <div class="item-content">
+                                                <div class="item-after" ng-bind="item.destination"></div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="tpcbt-arrow">
+                                <div class="tpcbt-arrow" ng-click="reversal(item, $index)">
                                     <img src="assets/images/travel/icon_swap.svg">
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="item-link smart-select">
-                                                    <select name="fruits">
-                                                        <option value="" selected>北京</option>
-                                                        <option value="">上海</option>
-                                                        <option value="">杭州</option>
-                                                    </select>
-                                                    <div class="item-content">
-                                                        <div class="item-title">{{'airjet.select' | translate}}</div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <a href="#" class="item-link smart-select">
+                                            <select ng-model="item.departure">
+                                                <option value="{{'airjet.select' | translate}}">{{'airjet.select' | translate}}</option>
+                                                <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
+                                            </select>
+                                            <div class="item-content">
+                                                <div class="item-after" ng-bind="item.departure"></div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -148,18 +124,18 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-click="datepicter('anti-datepicter', item)" class="anti-datepicter{{item}}" placeholder="0000-00-00" ng-model="formData.time">
+                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" class="anti-datepicter{{$index}}" placeholder="0000-00-00" ng-model="item.endTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
                                     <label>
                                         {{'airjet.guest-count' | translate}}
-                                        <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.guest">
+                                        <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="item.guestEnd">
                                     </label>
                                 </div>
-                                <div class="tpcbb-back" ng-click="formData.round = !formData.round">
+                                <div class="tpcbb-back" ng-click="item.round = !item.round">
                                     <label class="label-checkbox checkbox-circle item-content">
-                                        <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
+                                        <input type="checkbox" name="my-checkbox" ng-model="item.round" checked="checked">
                                         <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                         <em class="item-title">{{'airjet.round-trip' | translate}}</em>
@@ -182,52 +158,24 @@
                             <span>{{'airjet.stroke-recommend' | translate}}</span>
                         </div>
                         <div class="tpbr-middle">
-                            <div class="tpbrm-item">
+                            <div class="tpbrm-item" ng-repeat="rec in recommendList track by $index">
                                 <div class="tpbrmi-left">
-                                    <span>北京</span>
+                                    <span ng-bind="rec.departure"></span>
                                     <div class="arrow-right"></div>
-                                    <span>三亚</span>
+                                    <span ng-bind="rec.destination"></span>
                                 </div>
                                 <div class="tpbrmi-right">
-                                    <em>¥60万</em>
-                                    <span>起</span>
-                                </div>
-                            </div>
-                            <div class="tpbrm-item">
-                                <div class="tpbrmi-left">
-                                    <span>北京</span>
-                                    <div class="arrow-right"></div>
-                                    <span>三亚</span>
-                                </div>
-                                <div class="tpbrmi-right">
-                                    <em>¥60万</em>
-                                    <span>起</span>
-                                </div>
-                            </div>
-                            <div class="tpbrm-item">
-                                <div class="tpbrmi-left">
-                                    <span>北京</span>
-                                    <div class="arrow-right"></div>
-                                    <span>三亚</span>
-                                </div>
-                                <div class="tpbrmi-right">
-                                    <em>¥60万</em>
-                                    <span>起</span>
+                                    <em ng-bind="rec.money"></em>
+                                    <span>{{'airjet.from' | translate}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="tpbr-bottom">
-                            <a href="app/components/airjet/travel-detail.html" class="tpb-submit">{{'airjet.release' | translate}}</a>
-                            <a href="app/components/airjet/travel-model.html" class="tpb-model">{{'airjet.model-custom' | translate}}</a>
+                            <a ng-click="quickSubmit(travelStrokeList)" class="tpb-submit">{{'airjet.release' | translate}}</a>
+                            <a ng-click="slowSubmit(travelStrokeList)" class="tpb-model">{{'airjet.model-custom' | translate}}</a>
                         </div>
                     </div>
                 </div>
-                <!--<div class="content-block">
-                    {{'airjet.travel-plan' | translate}}
-                    <a href="app/components/airjet/tour-detail.html">详情</a>
-                    <a href="app/components/airjet/dream-detail.html">详情</a>
-                    <a href="app/components/airjet/dream-inner.html">详情</a>
-                </div>-->
             </div>
             <!-- Tab 2 -->
             <div id="tab2" class="tab">
@@ -285,7 +233,7 @@
             <!-- Tab 3 -->
             <div id="tab3" class="tab">
                 <div class="card air-card air-card-level-1">
-                    <a href="app/components/airjet/airjet-detail.html">
+                    <a href="app/components/airjet/tour-detail.html">
                         <div class="card-header">
                             <span>金鹿 FBO</span>
                             <div class="action">
