@@ -1,6 +1,6 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding color-black order-center">填写订单<span></span></div>
     </div>
 </div>
@@ -16,22 +16,29 @@
                         <div class="order-flytype">首航直升机 B-7186</div>
                         <div class="order-date">2017年5月1日</div>
                     </div>
-                    <div class="order-detail-content-inner row">
-                        <div class="order-from col-33">
+                    <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
+                        <div class="order-from col-40">
                             <strong>湛江机场</strong>
-                            <span>徐闻县</span>
                         </div>
-                        <div class="order-core col-33">
-                            <span class="order-time-interval">08:00-09:00</span>
-                            <strong>___________</strong>
-                            <div>
-                                <img src="../../../assets/images/airplane.svg">
-                                <span class="order-cost">约12:36分钟</span>
+                        <div class="order-core col-20">
+                            <div class="dfim-center">
+                                <div class="arrow-right"></div>
                             </div>
                         </div>
-                        <div class="order-to col-33">
+                        <div class="order-to col-40">
                             <strong>美兰机场</strong>
-                            <span>徐闻县</span>
+                        </div>
+                        <div class="col-40 order-other-info text-right">
+                            <img src="../../../assets/images/airplane.svg">
+                            <span class="order-cost">约12:36分钟</span>
+                        </div>
+                        <div class="col-20 order-other-info">
+                            <img src="../../../assets/images/airseat.svg">
+                            <span class="order-cost">5</span>
+                        </div>
+                        <div class="col-40 order-other-info text-left">
+                            <img src="../../../assets/images/airtime.svg">
+                            <span class="order-cost">08:00-09:00</span>
                         </div>
                     </div>
                 </div>
@@ -62,18 +69,79 @@
                             <i class="f7-icons order-icon-delete">delete_round</i>
                             <div class="order-person-inner">
                                 <div class="order-person-name">郭乐</div>
-                                <div><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
+                                <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
                             </div>
                             <i class="f7-icons order-icon-right">right</i>
                         </li>
                     </ul>
                 </div>
                 <div class="order-person-mobile">
-                    <span>联系手机</span>
+                    <span>联系手机&nbsp;&nbsp;&nbsp;</span>
                     <span>18513149993</span>
-                    <a><i class="f7-icons">compose</i>修改</a>
+                    <span class="order-edit">
+                        <a><i class="f7-icons">compose</i>修改</a>
+                    </span>
                 </div>
-
+            </div>
+            <!--价格-->
+            <div class="order-person-price">
+                <div class="order-price-title">请选择价格</div>
+                <div class="order-price-type row">
+                    <div class="col-50">
+                        <div class="order-price-icon">
+                            <i class="f7-icons">{{'circle'}}</i>
+                        </div>
+                        <div class="order-persons">
+                            <div>整机</div>
+                            <div>载客数：5</div>
+                        </div>
+                        <div class="order-price">
+                            ¥ 5,000
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <div class="order-price-icon">
+                            <i class="f7-icons">{{'check_round'}}</i>
+                        </div>
+                        <div class="order-persons">
+                            <div>整机</div>
+                            <div>载客数：5</div>
+                        </div>
+                        <div class="order-price">
+                            ¥ 5,000
+                        </div>
+                    </div>
+                </div>
+                <div class="order-price-preferential">
+                    <span class="order-title">特惠购&nbsp;&nbsp;&nbsp;</span>
+                    <span class="price-content">
+                        <i class="f7-icons icon">{{'check_round'}}</i><span>接送机</span><span class="price">￥15</span>
+                        <i class="f7-icons icon">{{'check_round'}}</i><span>接送机</span><span class="price">￥15</span>
+                    </span>
+                </div>
+            </div>
+            <!--声明-->
+            <div class="order-detail-agreement">
+                <div class="list-block">
+                    <label class="label-checkbox item-content">
+                        <input type="checkbox" name="my-checkbox" value="Books">
+                        <div class="item-media">
+                            <i class="icon icon-form-checkbox"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <span class="order-agree">我同意并阅读</span>
+                                <span class="order-announce">《首都直升机乘客安全须知》</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <!--提交-->
+            <div class="order-detail-confirm">
+                <p>
+                    <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red">确认</a>
+                </p>
             </div>
         </div>
     </div>

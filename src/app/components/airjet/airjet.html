@@ -2,7 +2,7 @@
 <!-- Top Navbar-->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
     <div class="center sliding">Air Jet</div>
     <div class="right">
         <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
@@ -33,7 +33,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.departure">
                                                 <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -50,7 +50,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.destination">
                                                 <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -66,7 +66,7 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-focus="datepicter('datepicter', $index)" class="datepicter{{$index}}" placeholder="0000-00-00" ng-model="item.startTime">
+                                        <input type="text" ng-focus="datepicter('datepicter', $index)" class="datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.startTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
@@ -91,7 +91,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.destination">
                                                 <option value="{{'airjet.select' | translate}}">{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -108,7 +108,7 @@
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
                                     <div class="tpcbt-select">
-                                        <a href="#" class="item-link smart-select">
+                                        <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search City">
                                             <select ng-model="item.departure">
                                                 <option value="{{'airjet.select' | translate}}">{{'airjet.select' | translate}}</option>
                                                 <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
@@ -124,7 +124,7 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" class="anti-datepicter{{$index}}" placeholder="0000-00-00" ng-model="item.endTime">
+                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" class="anti-datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.endTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">

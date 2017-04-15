@@ -24,29 +24,126 @@
     font-size: 16px;
   }
 }
-.order-add-person .order-person-list .order-person-content{
-  margin: 10px;
-  .order-icon-delete {
-    color: @base-red-light;
-    font-size: 17px;
-    float: left;
-    margin: 10px 10px 10px 0;
-  }
-  .order-person-inner {
-    display: inline-block;
-    .order-person-name {
-      font-size: 0.16rem;
-      color: #4a4a4a;
-    }
-    .order-person-id {
-      font-size: 0.14rem;
-      color: #4a4a4a;
-    }
-  }
-  .order-icon-right {
-    color: @base-gray;
-    font-size: 22px;
-    float: right;
+
+.order-add-person .order-person-list{
+  border-top: solid #dfdfdf 1px;
+  .order-person-content {
     margin: 10px;
+    .order-icon-delete {
+      color: @base-red-light;
+      font-size: 17px;
+      float: left;
+      margin: 10px 10px 10px 0;
+    }
+    .order-person-inner {
+      display: inline-block;
+      .order-person-name {
+        font-size: 0.16rem;
+        color: #4a4a4a;
+      }
+      .order-person-id {
+        font-size: 0.14rem;
+        color: #4a4a4a;
+      }
+    }
+    .order-icon-right {
+      color: @base-gray;
+      font-size: 22px;
+      float: right;
+      margin: 10px;
+    }
+  }
+}
+.order-add-person .order-person-mobile {
+  border-top: solid #dfdfdf 0.5px;
+  padding: 10px 20px 10px 10px;
+  span {
+    font-size: 14px;
+    color: #9b9b9b;
+  }
+  .order-edit {
+    float: right;
+  }
+  a,i {
+    color: #4a4a4a;
+    font-size: 12px;
+  }
+
+}
+.order-person-price {
+  margin-top: 10px;
+  background-color: #fff;
+  .order-price-title {
+    font-size: 0.12rem;
+    padding: 10px;
+  }
+  .order-price-type {
+    margin: 0 10px;
+    height: 0.9rem;
+    .order-price-icon{
+      display: inline-block;
+      margin: 10px 0;
+      i {
+        color: @base-red-light;
+        font-size: 17px;
+      }
+    }
+    .order-persons {
+      display: inline-block;
+      font-size: 0.1rem;
+      color: #9b9b9b;
+      text-align: right;
+    }
+    .order-price {
+      display: inline-block;
+      font-size: 0.5rem;
+      color: @base-red;
+      float: right;
+      line-height: 0.9rem;
+    }
+  }
+  .order-price-preferential {
+    border-top: solid #dfdfdf 0.5px;
+    height: 0.8rem;
+    padding: 0.2rem 0;
+    .order-title {
+      font-size: 0.12rem;
+      padding: 10px;
+    }
+    .price-content {
+      font-size: 0.12rem;
+      color: #9b9b9b;
+      .price {
+        color: @base-blue;
+      }
+      i {
+        padding: 0 10px;
+        font-size: 0.17rem;
+        color: @base-red-light;
+      }
+    }
+  }
+}
+
+.order-detail-agreement {
+  .list-block .item-inner:after{
+    height: 0;
+  }
+  font-size: 0.13rem;
+  width: 100%;
+  .list-block {
+    margin-top: 5px;
+  }
+  .order-agree {
+    font-size: 0.13rem;
+  }
+  .order-announce {
+    color: @base-red;
+    font-size: 0.13rem;
+  }
+}
+.order-detail-confirm {
+  .button{
+    margin: 0 10px 50px;
   }
 }

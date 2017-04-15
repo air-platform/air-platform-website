@@ -36,10 +36,10 @@
   <!-- Panels overlay-->
   <div class="panel-overlay"></div>
   <!-- Left panel with reveal effect-->
-  <div class="panel panel-left panel-reveal" style="background-color: #f2f2f2;">
+  <div class="panel panel-left panel-reveal panel-bg-color">
     <div class="content-block-title">空中社区网</div>
     <div class="list-block accordion-list">
-      <ul>
+      <ul class="personal-information">
         <li class="accordion-item" ng-repeat="item in leftPanelItems">
           <a href="#" class="item-link item-content">
             <div class="item-inner">
@@ -50,12 +50,14 @@
             <div class="list-block">
               <ul>
                 <li ng-repeat="jtem in item.items">
-                  <div class="item-content">
-                    <div class="item-media"><i class="icon icon-f7"></i></div>
-                    <div class="item-inner">
-                      <div class="item-title">{{jtem.title}}</div>
+                  <a href class="item-link close-panel" ng-click="gotoItemAction(jtem)">
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon"></i></div>
+                      <div class="item-inner">
+                        <div class="item-title">{{jtem.title}}</div>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -65,14 +67,14 @@
     </div>
   </div>
   <!-- Right panel with cover effect-->
-  <div class="panel panel-right panel-cover" style="background-color: #f2f2f2;">
+  <div class="panel panel-right panel-cover panel-bg-color">
     <div class="content-block-title">个人信息</div>
     <div class="list-block">
-      <ul>
+      <ul class="personal-information">
         <li>
           <a href class="item-link close-panel" ng-click="gotoItemAction(rightUserItem)">
             <div class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-media"><i class="f7-icons">person</i></div>
               <div class="item-inner">
                 <div class="item-title">{{rightUserItem.title}}</div>
               </div>
@@ -82,7 +84,7 @@
         <li ng-repeat="item in rightPanelItems track by $index" ng-hide="item.target === 'out' && !islogin">
           <a href class="item-link close-panel" ng-click="gotoItemAction(item)">
             <div class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-media"><i class="f7-icons">{{item.icon}}</i></div>
               <div class="item-inner">
                 <div class="item-title">{{item.title | translate}}</div>
               </div>
@@ -99,7 +101,7 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="left">
-            <a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+            <a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon f7-icons">bars</i></a>
           </div>
           <div class="center sliding nav-title">Air Community</div>
           <div class="right">

@@ -7,7 +7,7 @@
     height: 100%;
   }
   .item-title {
-    color: @base-gray-light;
+    color: @base-gray;
   }
 }
 
@@ -51,4 +51,160 @@
 .autocomplete-dropdown {
   left: 10px !important;
   right: 4rem !important;
+}
+
+.topbar-with-icon {
+  padding: 0 0.1rem;
+}
+
+div[data-page=projectdetails] {
+  .content-block {
+    padding: 0;
+  }
+
+  #airtaxi-details-map-view {
+    height: 6rem;
+  }
+
+  .project-card {
+    margin: 0;
+    height: 1.2rem;
+    position: absolute;
+    top: 1.1rem;
+    left: 0.2rem;
+    right: 0.2rem;
+
+    .left-media {
+      display: inline-block;
+      vertical-align: top;
+      height: 100%;
+      width: 1.86rem;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .project-name {
+      padding: 0.1rem 0.3rem 0.05rem;
+      color: @base-black;
+      font-size: 0.28rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      line-height: 0.5rem;
+      overflow: hidden;
+    }
+    .price-info {
+      width: calc(~"100% - 2rem");
+      display: inline-block;
+    }
+    .project-price {
+      padding: 0 0.3rem;
+      line-height: 0.5rem;
+      color: @base-red;
+      font-size: 0.28rem;
+    }
+  }
+
+  .project-details {
+    .list-block {
+      margin: 0;
+      padding: 0 0.3rem;
+
+      & > ul {
+        padding-top: 0.4rem;
+        &:after{
+          background: none;
+        }
+      }
+    }
+
+    span.icon {
+      display: inline-block;
+    }
+
+    .sites-info {
+      .icon {
+        border-radius: 0.06rem;
+        overflow: hidden;
+        vertical-align: middle;
+        img {
+          background-color: @base-sky;
+        }
+      }
+    }
+
+    .project-headbar {
+      padding: 0.2rem 0.4rem;
+
+      .header-item {
+        display: inline-block;
+        font-size: 0.2rem;
+        & * {
+          display: inline-block;
+        }
+      }
+      .airplane img {
+        width: 0.4rem;
+      }
+      .sites img {
+        width: 0.2rem;
+      }
+      .time .f7-icons {
+        font-size: 0.2rem;
+        color: @base-black;
+      }
+      .hero-value {
+        padding-left: 0.2rem;
+        font-size: 0.4rem;
+      }
+    }
+
+    .info-block {
+      .icon {
+        width: 0.36rem;
+      }
+      .info-title {
+        font-size: 0.28rem;
+
+        .title {
+          padding: 0.08rem;
+          vertical-align: middle;
+        }
+      }
+      .details-content {
+        font-size: 0.24rem;
+        line-height: 150%;
+      }
+    }
+
+    .sites-list {
+      padding-left: 0.5rem;
+      .site-name {
+        font-size: 0.28rem;
+        &::before {
+          content: "";
+          display: inline-block;
+          margin-right: 0.06rem;
+          height: 0.3rem;
+          border: 1px solid #D8D8D8;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .footer-button{
+      padding: .16rem .16rem .14rem .22rem;
+      .next-button{
+          display: block;
+          height: .88rem;
+          line-height: .88rem;
+          font-size: .36rem;
+          text-align: center;
+          color: @base-white;
+          background-color: @base-sky;
+          border-radius: .16rem;
+      }
+    }
 }

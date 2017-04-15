@@ -14,6 +14,37 @@
             supportTelephone:'400-666-4388',
             token:'airspc_access_token',
             information:'airspc_information',
-            notification_refresh_information:'airspc_notification_refresh_information'
+            notification_refresh_information:'airspc_notification_refresh_information',
+            router:{
+                login:{
+                  login:'app/components/login/login.html',
+                  register:'app/components/login/register.html',
+                  reset:'app/components/login/reset.html'
+                },
+                airjet:{
+                    home:'app/components/airjet/airjet.html'
+                },
+                airtaxi:{
+                    home:'app/components/airtaxi/airtaxi.html'
+                },
+                airtrans:{
+                    home:'app/components/airtransportation/airtrans.html'
+                },
+                airtour:{
+                    home:'app/components/airtour/airtour.html'
+                },
+                airtrain:{
+                    home:'app/components/airtrain/airtrain.html'
+                },
+                order:{
+                  order:'app/components/order/order.html',
+                    orderdetail:'app/components/order/orderdetail.html',
+                    orderadd:'app/components/order/orderadd.html'
+                },
+                set:{
+                    setting:'app/components/setting/setting.html',
+                    profile:'app/components/profile/profile.html'
+                }
+            }
         });
 })();
