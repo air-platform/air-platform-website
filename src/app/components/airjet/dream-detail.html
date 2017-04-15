@@ -12,35 +12,35 @@
         <div class="page-content">
             <div class="air-order-detail">
                 <div class="air-order-item">
-                    {{'airjet.order-numver'}}993028364001
+                    {{'airjet.order-numver' | translate}}{{detailData.order}}
                 </div>
                 <div class="air-order-item">
-                    机型号: 金鹿航空 BBJ-002
+                    {{'airjet.model-number' | translate}}{{detailData.model}}
                 </div>
                 <div class="air-order-item">
-                    乘机时间: 2017年04月07日 周六
+                    {{'airjet.plane-time' | translate}}{{detailData.date}}
                 </div>
                 <div class="air-order-item">
                     <div class="order-location-info">
-                        <div>香港</div>
-                        <div>13:00</div>
-                        <div>首都机场T2航站楼</div>
+                        <div ng-bind="detailData.startCity"></div>
+                        <div ng-bind="detailData.startTime"></div>
+                        <div ng-bind="detailData.startLocal"></div>
                     </div>
                     <div class="arrow-right"></div>
                     <div class="order-location-info">
-                        <div>北京</div>
-                        <div>16:30</div>
-                        <div>美兰机场</div>
+                        <div ng-bind="detailData.endCity"></div>
+                        <div ng-bind="detailData.endTime"></div>
+                        <div ng-bind="detailData.endLocal"></div>
                     </div>
                 </div>
                 <div class="air-order-item">
-                    乘机人数: 3人
+                    {{'airjet.plane-people' | translate}}{{detailData.passenger}}'人'
                 </div>
                 <div class="air-order-item">
-                    备注: 无
+                    {{'airjet.remark' | translate}} {{detailData.remark || '无'}}
                 </div>
                 <div class="order-submit">
-                    确认
+                    {{'airjet.confirms' | translate}}
                 </div>
             </div>
         </div>

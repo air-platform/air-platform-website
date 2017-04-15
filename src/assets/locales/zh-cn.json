@@ -56,6 +56,8 @@
     "destination": "到达城市",
     "select": "请选择",
     "start-time": "出发时间 :",
+    "plane-time": "乘机时间 :",
+    "plane-people": "乘机人数 :",
     "guest-count": "乘客人数 :",
     "round-trip": "该行程为往返行程",
     "add-trip": "新增行程",
@@ -68,6 +70,7 @@
     "max-range": "最大航程 :",
     "trunk": "行李箱容积 :",
     "fleet": "机队介绍 :",
+    "confirms": "确 认",
     "confirm": "确 定",
     "doom": "预  定",
     "model-number": "机型号: ",
@@ -91,6 +94,7 @@
     "from": "起",
     "buy-them": "咨询购买",
     "order-numver": "订单编号: ",
+    "click-detail": "(点击查看详情)",
     "submit": "提交"
   },
   "airtrain":{
@@ -103,5 +107,4 @@
     "fixed-wing": "固定翼",
     "helicopter": "直升机"
   }
-
 }

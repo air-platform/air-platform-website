@@ -7,15 +7,15 @@
 <div class="pages">
     <div data-page="travel-model" class="page" ng-controller="travelModelController">
         <div class="page-content">
-            <div class="travel-model-card">
+            <div class="travel-model-card" ng-repeat="model in modelList track by $index" ng-click="radioCheck(model)">
                 <div class="travel-model-img">
-                    <img src="assets/images/travel/plane01.jpg" alt="model">
+                    <img ng-src="{{model.pic}}" alt="model">
                 </div>
                 <div class="travel-model-content">
                     <div class="travel-model-check">
-                        <span><em>湾流G550</em></span>
+                        <span><em ng-bind="model.name"></em></span>
                         <label class="label-checkbox checkbox-circle item-content">
-                            <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
+                            <input type="radio" name="my-radio" ng-checked="model.name === checkModel">
                             <div class="item-media">
                                 <i class="icon icon-form-checkbox"></i>
                             </div>
@@ -24,82 +24,20 @@
                     <div class="travel-model-prompt">
                         <span class="pull-left">
                             <img src="assets/images/travel/icon_people_02.svg">
-                            <em>16</em>
+                            <em ng-bind="model.people"></em>
                         </span>
                         <span class="pull-left">
                             <img src="assets/images/travel/icon_luggage.svg">
-                            <em>6.4m³</em>
+                            <em ng-bind="model.luggage"></em>
                         </span>
                         <span class="pull-right">
                             <img src="assets/images/travel/icon_plane.svg">
-                            <em>11687km</em>
+                            <em ng-bind="model.speed"></em>
                         </span>
                     </div>
                 </div>
             </div>
-            <div class="travel-model-card">
-                <div class="travel-model-img">
-                    <img src="assets/images/travel/plane02.jpg" alt="model">
-                </div>
-                <div class="travel-model-content">
-                    <div class="travel-model-check">
-                        <span><em>湾流G550</em></span>
-                        <label class="label-checkbox checkbox-circle item-content">
-                            <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
-                            <div class="item-media">
-                                <i class="icon icon-form-checkbox"></i>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="travel-model-prompt">
-                        <span class="pull-left">
-                            <img src="assets/images/travel/icon_people_02.svg">
-                            <em>16</em>
-                        </span>
-                        <span class="pull-left">
-                            <img src="assets/images/travel/icon_luggage.svg">
-                            <em>6.4m³</em>
-                        </span>
-                        <span class="pull-right">
-                            <img src="assets/images/travel/icon_plane.svg">
-                            <em>11687km</em>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-model-card">
-                <div class="travel-model-img">
-                    <img src="assets/images/travel/plane03.jpg" alt="model">
-                </div>
-                <div class="travel-model-content">
-                    <div class="travel-model-check">
-                        <span><em>湾流G550</em></span>
-                        <label class="label-checkbox checkbox-circle item-content">
-                            <input type="checkbox" name="my-checkbox" ng-model="formData.round" checked="checked">
-                            <div class="item-media">
-                                <i class="icon icon-form-checkbox"></i>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="travel-model-prompt">
-                        <span class="pull-left">
-                            <img src="assets/images/travel/icon_people_02.svg">
-                            <em>16</em>
-                        </span>
-                        <span class="pull-left">
-                            <img src="assets/images/travel/icon_luggage.svg">
-                            <em>6.4m³</em>
-                        </span>
-                        <span class="pull-right">
-                            <img src="assets/images/travel/icon_plane.svg">
-                            <em>11687km</em>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <a href="app/components/airjet/travel-plane.html" class="item-link">
-                <div class="travel-model-submit block-center">{{'airjet.confirm' | translate}}</div>
-            </a>
+            <div class="travel-model-submit block-center" ng-click="jumpPlane()">{{'airjet.confirm' | translate}}</div>
         </div>
     </div>
 </div>

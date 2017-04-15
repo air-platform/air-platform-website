@@ -53,10 +53,10 @@
                     客户信息
                 </div>
                 <div class="air-order-item aoi-guest-info radius-bottom">
-                    <div>{{'airjet.name' | translate}} 王小萌</div>
-                    <div>{{'airjet.phone' | translate}} 18123625342</div>
-                    <div>{{'airjet.email' | translate}} yaya_d@qq.com</div>
-                    <div>{{'airjet.remark' | translate}} 无</div>
+                    <div>{{'airjet.name' | translate}} {{userInfo.name}}</div>
+                    <div>{{'airjet.phone' | translate}} {{userInfo.phone}}</div>
+                    <div>{{'airjet.email' | translate}} {{userInfo.email}}</div>
+                    <div>{{'airjet.remark' | translate}} {{userInfo.remark || '无'}}</div>
                 </div>
                 <div class="order-submit travel-detail-submit">
                     确认
