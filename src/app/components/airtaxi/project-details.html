@@ -1,0 +1,138 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="center sliding color-black order-center">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span class="topbar-with-icon">北京观光</span>
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+        <div class="right">
+          <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
+    </div>
+</div>
+<div class="pages navbar-through">
+    <div data-page="projectdetails" class="page" ng-controller="airtaxiDetailsController">
+        <div class="page-content">
+          <div class="content-block">
+            <div class="map">
+                <div class="airtaxi-details-map-view" id="airtaxi-details-map-view"></div>
+            </div>
+            <div class="card project-card">
+              <div class="left-media">
+                <img src="assets/images/airtaxi/smallview.png" alt="">
+              </div>
+              <div class="price-info">
+                <div class="project-name">
+                  鸟巢奥森望京798艺术空中观光
+                </div>
+                <div class="project-price">
+                  {{ 1000 | RMB }}起
+                </div>
+              </div>
+            </div>
+            <div class="project-details">
+              <div class="project-headbar row">
+                <div class="header-item airplane col-33">
+                  <img src="assets/images/airplane-black.svg" alt="">
+                  <span class="hero-value">{{ 45 }}</span>公里
+                </div>
+                <div class="header-item sites col-33">
+                  <img src="assets/images/airtaxi/sites.svg" alt="">
+                  <span class="hero-value">{{ 6 }}</span>个景点
+                </div>
+                <div class="header-item time col-33">
+                  <i class="f7-icons">time</i>
+                  <span class="hero-value">{{ 20 }}</span>分钟
+                </div>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <div class="info-block tour-info">
+                      <div class="info-title">
+                        <span class="icon"><img src="assets/images/airtaxi/intro.svg" alt=""></span>
+                        <span class="title">观光介绍</span>
+                      </div>
+                      <div class="info-content">
+                        <p class="details-content">
+                          远离城嚣，飞离北京上空；北京城区内（北五环）起飞；空中讲解与机长无距离交谈
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="info-block routine-info">
+                      <div class="info-title">
+                        <span class="icon"><img src="assets/images/airtaxi/routine.svg" alt=""></span>
+                        <span class="title">飞行路线</span>
+                      </div>
+                      <div class="info-content">
+                        <p class="details-content">
+                          飞行路径点1——飞行路径点2——飞行路径点3——飞行路径点4——飞行路径点5——飞行路径点6
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="info-block sites-info">
+                      <div class="info-title">
+                        <span class="icon"><img src="assets/images/airtaxi/sites-white.svg" alt=""></span>
+                        <span class="title">景点展示</span>
+                      </div>
+                      <div class="info-content">
+                        <p class="details-content">
+                          <ul class="sites-list">
+                            <li class="site-item">
+                              <div class="site-name">
+                                国家体育场（鸟巢）
+                              </div>
+                              <p class="details-content">
+                                国家体育场仍然是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。
+                              </p>
+                              <div class="site-media">
+                                <img src="assets/images/airtaxi/birdsnest.png" alt="">
+                              </div>
+                            </li>
+                          </ul>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="info-block checkin-info">
+                      <div class="info-title">
+                        <span class="icon"><img src="assets/images/airtaxi/checkin.svg" alt=""></span>
+                        <span class="title">乘机地点</span>
+                      </div>
+                      <div class="info-content">
+                        <p class="details-content">
+                          北京市延庆县营城子航空路1号
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="info-block trans-info">
+                      <div class="info-title">
+                        <span class="icon"><img src="assets/images/airtaxi/localtrans.svg" alt=""></span>
+                        <span class="title">附近交通</span>
+                      </div>
+                      <div class="info-content">
+                        <p class="details-content">
+                          铁路：附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通
+                          </br>
+                          公交路线：附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通
+                          </br>
+                          自驾路线：附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交通附近交
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
