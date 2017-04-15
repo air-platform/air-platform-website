@@ -4,17 +4,18 @@
 (function () {
     'use strict';
 
-    angular.module('airsc').controller('jetController', jetController);
+    angular.module('airsc').controller('dreamInnerController', dreamInnerController);
 
     /** @ngInject */
-    function jetController($scope, $window, iotUtil) {
-        $scope.travelStrokeList = [{ departure: '请选择', destination: '请选择' }];
-        $scope.reversal = reversal;
-        $scope.quickSubmit = quickSubmit;
-        $scope.slowSubmit = slowSubmit;
-        $scope.addCard = addCard;
-        $scope.removeCard = removeCard;
-        $scope.datepicter = datepicter;
+    function dreamInnerController($scope,iotUtil) {
+        var page = myApp.views[0];
+        var formData = page.activePage.query;
+        $scope.submit = submit;
+        $scope.imgSrc = [
+            './../assets/images/banner0.jpg',
+            './../assets/images/banner1.jpg',
+            './../assets/images/banner0.jpg'
+        ];
 
         $scope.dreamFlyList = [{
             id:'1',
@@ -107,49 +108,19 @@
             name: '杭州',
             value: 'hangzhou'
         }];
+        
 
-        function reversal(item, order) {
-            var local = item.departure;
-            $scope.travelStrokeList.map(function(opt, index){
-                if(order === index){
-                    opt.departure = opt.destination;
-                    opt.destination = local;
+        if(formData.id){
+            $scope.dreamFlyList.forEach(function(item){
+                if(item.id === formData.id){
+                    $scope.dreamObj = item;
                     return;
                 }
             })
-        };
+        }
 
-        function quickSubmit(data) {
-            console.log(data)
-            console.log($scope.travelStrokeList)
-            if($scope.travelStrokeList){
-                mainView.router.loadPage('app/components/airjet/travel-info.html');
-            }
-        };
-
-        function slowSubmit(data) {
-            console.log(data)
-            console.log($scope.travelStrokeList)
-            if($scope.travelStrokeList){
-                mainView.router.loadPage('app/components/airjet/travel-model.html');
-            }
-        };
-
-        function addCard() {
-            $scope.travelStrokeList.push({ departure: '请选择', destination: '请选择' });
-        };
-
-        function removeCard(index) {
-            $scope.travelStrokeList.splice(index, 1);
-        };
-
-        function datepicter(name, index){
-            var calendar = myApp.calendar({
-                input: '.' + name + index,
-                onDayClick: function() {
-                    calendar.close();
-                }
-            });    
+        function submit(formData) {
+            mainView.router.loadPage('app/components/airjet/dream-detail.html');
         };
     }
 

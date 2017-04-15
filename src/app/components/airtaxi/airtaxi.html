@@ -1,13 +1,35 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding color-black order-center">Air Taxi<span></span></div>
+        <div class="center sliding color-black order-center"><span>Air Taxi</span></div>
+        <div class="right">
+          <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
+        </div>
     </div>
 </div>
 <div class="pages navbar-through">
     <div data-page="taxi" class="page" ng-controller="taxiController">
         <div class="page-content">
-
+          <div class="content-block fullscreen">
+            <div class="map">
+                <div class="airtaxi-map-view" id="airtaxi-map-view"></div>
+            </div>
+            <div class="card filter-toolbar">
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-title label">选择城市</div>
+                    <div class="item-input">
+                      <input type="text" placeholder="北京" id="city-navi-autocomplete-placeholder">
+                    </div>
+                    <a href="app/components/airtaxi/airtour-city.html" class="city-navi-button">
+                      <span class="long-arrow-right"><i></i></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </div>

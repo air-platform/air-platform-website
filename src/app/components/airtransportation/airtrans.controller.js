@@ -12,7 +12,7 @@
     /** @ngInject */
     function transController($scope, iotUtil, NetworkService, transUtilsService) {
         var controller = this;
-        controller.schedules = {}
+        $scope.schedules = []
         controller.mapPoints = {}
 
         //// wait for backend
@@ -24,7 +24,7 @@
           "徐闻,110.198611,20.2761111;海口港,110.162196,20.046835;" +
           "徐闻,110.198611,20.2761111;美兰,110.468596,19.944221;11,110.340278,20.1000";
 
-        controller.schedules = [
+        $scope.schedules = [
           {
             'date': '2017-04-30',
             'time': '08:00 - 09:00',
@@ -41,15 +41,41 @@
         ]
 
         controller.mapPoints = transUtilsService.extractPoints(response);
-        transUtilsService.drawMap("air-taxi-map", controller.mapPoints);
+        transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
 
-        $scope.$watch(
-          function() {
-            return controller.mapPoints;
-          },
-          function(newValue, oldValue) {
+        controller.addSchedule = function() {
+          var schedule = {
+            'date': '2017-04-30',
+            'time': '08:00 - 09:00',
+            'departure': '徐闻',
+            'arrival': '海口美兰机场',
+            'flight': '首都航空B-7186'
+          };
+          $scope.schedules.unshift(schedule);
+        }
+
+        controller.deleteSchedule = function(schedule) {
+          $scope.schedules = _.without($scope.schedules, schedule);
+        }
+
+        controller.validateSchedules = function(schedules) {
+          return true;
+        }
+
+        controller.submitSchedules = function() {
+          var data = $scope.schedules;
+          mainView.router.loadPage('app/components/order/orderadd.html');
+          // NetworkService.post('url', data, function(response) {
+          //   mainView.router.loadPage('app/components/airjet/dream-detail.html');
+          // },
+          // function(response) {
+          //   // handle errors
+          // });
+        }
+
+        $scope.$watch("controller.mapPoints", function(newValue, oldValue) {
             if( newValue != oldValue ) {
-              transUtilsService.drawMap("air-taxi-map", controller.mapPoints);
+              transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
             }
           }
         );

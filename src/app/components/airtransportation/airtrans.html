@@ -4,7 +4,7 @@
 <div class="navbar">
     <div class="navbar-inner airtaxi-navbar">
         <div class="left">
-          <a href="#" class="back link"> <i class="icon icon-back"></i><span>back</span></a>
+          <a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a>
         </div>
         <div class="center sliding">Air Transportation</div>
         <div class="right">
@@ -27,15 +27,16 @@
             <div id="air-taxi-cross-channel" class="tab active">
               <div class="content-block">
                 <div class="map">
-                    <div class="air-taxi-map" id="air-taxi-map"></div>
+                    <div class="airtrans-map-view" id="airtrans-map-view"></div>
                 </div>
                 <ul class="schedule-card-list">
-                  <li ng-repeat="schedule in trans.schedules">
+                  <li ng-repeat="schedule in schedules">
                     <div class="schedule-card">
-                      <a href="#" class="pull-right add-schedule-button">
+                      <a href="#" class="pull-right add-schedule-button" ng-click="trans.addSchedule()">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                       </a>
-                      <div class="schedule-title">行程{{ trans.schedules.length - $index }}<a class="fa fa-trash button-schedule-delete"></a></div>
+                      <div class="schedule-title">行程{{ schedules.length - $index }}
+                        <a class="fa fa-trash button-schedule-delete" ng-click="trans.deleteSchedule(schedule)"></a></div>
                       <div class="list-block schedule-content">
                         <div class="row">
                           <div class="item-content col-50">
@@ -117,7 +118,7 @@
                     </div>
                   </li>
                   <div class="footer-button">
-                    <a href="#" class="button button-red start-flight">立即起飞</a>
+                    <a href="#" class="button button-red start-flight" ng-click="trans.submitSchedules()">立即起飞</a>
                   </div>
                 </ul>
               </div>

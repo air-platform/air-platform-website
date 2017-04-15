@@ -1,16 +1,21 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left"><a href="#" data-panel="left" class="back link"> <i class="icon icon-back"></i><span>back</span></a></div>
+        <div class="left"><a href="#" data-panel="left" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
         <div class="center sliding">GX01102</div>
     </div>
 </div>
 
 <div class="pages">
-    <div data-page="plane-detail" class="page" ng-controller="jetController">
+    <div data-page="travel-plane-detail" class="page" ng-controller="travelPlaneController">
         <div class="page-content plane-detail">
             <div class="travel-model-card plane-detail-content">
                 <div class="travel-model-img">
-                    <img src="assets/images/travel/timg.jpeg" alt="model">
+                    <div class="swiper-container swiper-init" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
                 </div>
                 <div class="travel-model-content">
                     <div class="plane-title">
