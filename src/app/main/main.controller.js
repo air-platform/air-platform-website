@@ -39,17 +39,17 @@
                 {'title':'积分系统'}
                 ]}];
         var rightPanelItems = [
-            {title:'profile.order',target:'app/components/order/order.html'},
-            {title:'profile.setting',target:'app/components/setting/setting.html'},
-            {title:'profile.out',target:'out'},
-            {title:'机型选择',target:'app/components/airtaxi/airtaxi-select.html'}];
+            {title:'profile.order',target:'app/components/order/order.html',icon:'list'},
+            {title:'profile.setting',target:'app/components/setting/setting.html',icon:'gear'},
+            {title:'profile.out',target:'out',icon:'logout'},
+            {title:'机型选择',target:'app/components/airtaxi/airtaxi-select.html',icon:'list'}];
         var info = {};
         var loginItemTitle = '登录/注册';
 
         $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
         $scope.leftPanelItems = leftPanelItems;
-        $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
+        $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html',icon:'person'};
         $scope.gotoItemAction = gotoItemAction;
 
 
@@ -83,10 +83,11 @@
                 $scope.islogin = true;
                 $scope.rightUserItem.title = info.nickName;
                 $scope.rightUserItem.target = 'app/components/profile/profile.html';
+                $scope.rightUserItem.icon = 'person';
             }else{
                 info = {};
                 $scope.islogin = false;
-                $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html'};
+                $scope.rightUserItem = {title:loginItemTitle,target:'app/components/login/login.html',icon:'person'};
             }
         }
 
