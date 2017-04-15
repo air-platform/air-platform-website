@@ -11,11 +11,9 @@
 
     /** @ngInject */
     function citytourController($scope,iotUtil) {
-      
       var ctl = this;
       var today = new Date();
       
-
       var calendarDateFormat = myApp.calendar({
         input: '#tourcity-datepicker',
         dateFormat: 'yyyy年m月d日',
