@@ -24,7 +24,7 @@
                             <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.destination"></strong></div>
                         </div>
                         <div class="air-order-item">
-                            {{'airjet.start-time' | translate}}{{plan.startTime}}
+                            {{'airjet.start-time' | translate}}{{plan.startTime | date: 'yyyy年MM月dd日 EEE' | chinaweek}}
                         </div>
                         <div class="air-order-item radius-bottom">
                             {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
@@ -37,7 +37,7 @@
                             <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.departure"></strong></div>
                         </div>
                         <div class="air-order-item">
-                            {{'airjet.start-time' | translate}}{{plan.endTime}}
+                            {{'airjet.start-time' | translate}}{{plan.endTime | date: 'yyyy年MM月dd日 EEE' | chinaweek}}
                         </div>
                         <div class="air-order-item radius-bottom">
                             {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}

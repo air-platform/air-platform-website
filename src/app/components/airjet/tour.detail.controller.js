@@ -7,9 +7,32 @@
     angular.module('airsc').controller('tourDetailController', tourDetailController);
 
     /** @ngInject */
-    function tourDetailController($scope,iotUtil) {
+    function tourDetailController($scope, NotificationService) {
+        var queryData = myApp.views[0].activePage.query;
+        $scope.tourData = {};
+        $scope.submit = submit;
+        if(queryData.tourdata) {
+            $scope.tourDetail = JSON.parse(queryData.tourdata);
+        }
 
+        function submit(data){
+            if(!data.name){
+                NotificationService.alert.success('请填写姓名', null);
+                return;
+            }
+            if(!data.phone){
+                NotificationService.alert.success('请填写电话', null);
+                return;
+            }
+            if(!data.email){
+                NotificationService.alert.success('请填写邮箱', null);
+                return;
+            }
+            if(!data.guest){
+                NotificationService.alert.success('请填写客户名称', null);
+                return;
+            }
+        }
 
     }
-
 })();

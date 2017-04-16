@@ -232,23 +232,21 @@
             </div>
             <!-- Tab 3 -->
             <div id="tab3" class="tab">
-                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList track by $index">
-                    <a href="app/components/airjet/tour-detail.html">
-                        <div class="card-header">
-                            <span ng-bind="card.name"></span>
-                            <div class="action">
-                                <span>{{'airjet.buy-them' | translate}}</span>
-                                <i class="fa fa-angle-right"></i>
-                            </div>
+                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList track by $index" ng-click="jumpTourDetail(card)">
+                    <div class="card-header">
+                        <span ng-bind="card.name"></span>
+                        <div class="action">
+                            <span>{{'airjet.buy-them' | translate}}</span>
+                            <i class="fa fa-angle-right"></i>
                         </div>
-                        <div class="card-content" ng-bind="card.type_cn"></div>
-                        <div class="card-footer">
-                            <span ng-bind="card.type_en"></span>
-                            <span ng-bind="card.money"></span>
-                        </div>
-                    </a>
+                    </div>
+                    <div class="card-content" ng-bind="card.type_cn"></div>
+                    <div class="card-footer">
+                        <span ng-bind="card.type_en"></span>
+                        <span ng-bind="card.money"></span>
+                    </div>
                 </div>
-                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in hourCardList track by $index">
+                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in hourCardList track by $index" ng-click="jumpTourDetail(card)">
                     <div class="card-header">
                         <span ng-bind="card.name"></span>
                         <div class="action">

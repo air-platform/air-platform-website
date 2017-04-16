@@ -8,6 +8,10 @@
 
     /** @ngInject */
     function dreamDetailController($scope,iotUtil) {
+        var queryData = myApp.views[0].activePage.query;
+        if(queryData.dreamdata) {
+            $scope.dreamData = JSON.parse(queryData.dreamdata);
+        }
         $scope.detailData = {
             order: 993028364001,
             model: '金鹿航空 BBJ-002',
@@ -19,7 +23,7 @@
             endTime: '16:30',
             endLocal: '美兰机场',
             passenger: '3',
-            remark: '无'
+            remark: $scope.dreamData.remark
         }
 
     }
