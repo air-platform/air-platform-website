@@ -181,19 +181,21 @@
         .filter('chinaweek', chinaweek);
     function chinaweek() {
         return function (input) {
-            var weekArr = {
-                "周一": "Mon",
-                "周二": "Tues",
-                "周三": "Wed",
-                "周四": "Thur",
-                "周五": "Fri",
-                "周六": "Sat",
-                "周日": "Sun"
-            };
-            for (var key in weekArr) {
-                if (input.indexOf(weekArr[key]) !== -1) {
-                    input = input.replace(weekArr[key], key);
-                    break;
+            if(input){
+                var weekArr = {
+                    "周一": "Mon",
+                    "周二": "Tue",
+                    "周三": "Wed",
+                    "周四": "Thu",
+                    "周五": "Fri",
+                    "周六": "Sat",
+                    "周日": "Sun"
+                };
+                for (var key in weekArr) {
+                    if (input.indexOf(weekArr[key]) !== -1) {
+                        input = input.replace(weekArr[key], key);
+                        break;
+                    }
                 }
             }
 

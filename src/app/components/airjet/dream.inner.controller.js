@@ -7,8 +7,9 @@
     angular.module('airsc').controller('dreamInnerController', dreamInnerController);
 
     /** @ngInject */
-    function dreamInnerController($scope,iotUtil) {
+    function dreamInnerController($scope, NotificationService) {
         var queryData = myApp.views[0].activePage.query;
+        $scope.formData = {};
         $scope.submit = submit;
         $scope.imgSrc = [
             './../assets/images/banner0.jpg',
@@ -118,8 +119,24 @@
             })
         }
 
-        function submit(formData) {
-            mainView.router.loadPage('app/components/airjet/dream-detail.html');
+        function submit(data) {
+            if(!data.name){
+                NotificationService.alert.success('请填写姓名', null);
+                return;
+            }
+            if(!data.phone){
+                NotificationService.alert.success('请填写电话', null);
+                return;
+            }
+            if(!data.email){
+                NotificationService.alert.success('请填写邮箱', null);
+                return;
+            }
+            if(!data.guest){
+                NotificationService.alert.success('请填写客户名称', null);
+                return;
+            }
+            mainView.router.loadPage('app/components/airjet/dream-detail.html?dreamdata=' + JSON.stringify(data));
         };
     }
 

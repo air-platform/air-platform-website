@@ -73,6 +73,7 @@
     "confirms": "确 认",
     "confirm": "确 定",
     "doom": "预  定",
+    "plane-number": "机号: ",
     "model-number": "机型号: ",
     "aircraft-number": "飞机号: ",
     "guest-number": "载客人数: ",
@@ -95,6 +96,9 @@
     "buy-them": "咨询购买",
     "order-numver": "订单编号: ",
     "click-detail": "(点击查看详情)",
+    "options": "备选机型",
+    "none": "无",
+    "person": "人",
     "submit": "提交"
   },
   "airtrain":{
