@@ -66,7 +66,7 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-focus="datepicter('datepicter', $index)" class="datepicter{{$index}}" placeholder="0000-00-00" ng-model="item.startTime">
+                                        <input type="text" ng-focus="datepicter('datepicter', $index)" class="datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.startTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
@@ -124,7 +124,7 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" class="anti-datepicter{{$index}}" placeholder="0000-00-00" ng-model="item.endTime">
+                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" class="anti-datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.endTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
@@ -232,110 +232,36 @@
             </div>
             <!-- Tab 3 -->
             <div id="tab3" class="tab">
-                <div class="card air-card air-card-level-1">
+                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList track by $index">
                     <a href="app/components/airjet/tour-detail.html">
                         <div class="card-header">
-                            <span>金鹿 FBO</span>
+                            <span ng-bind="card.name"></span>
                             <div class="action">
-                                <span>咨询购买</span>
+                                <span>{{'airjet.buy-them' | translate}}</span>
                                 <i class="fa fa-angle-right"></i>
                             </div>
                         </div>
-                        <div class="card-content">铂金卡</div>
+                        <div class="card-content" ng-bind="card.type_cn"></div>
                         <div class="card-footer">
-                            <span>Platinum Card</span>
-                            <span>RMB 1,000,000</span>
+                            <span ng-bind="card.type_en"></span>
+                            <span ng-bind="card.money"></span>
                         </div>
                     </a>
                 </div>
-                <div class="card air-card air-card-level-2">
+                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in hourCardList track by $index">
                     <div class="card-header">
-                        <span>金鹿 FBO</span>
+                        <span ng-bind="card.name"></span>
                         <div class="action">
-                            <span>咨询购买</span>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="card-content">钻石卡</div>
-                    <div class="card-footer">
-                        <span>Diamond Card</span>
-                        <span>USD 1,000</span>
-                    </div>
-                </div>
-                <div class="card air-card air-card-level-3">
-                    <div class="card-header">
-                        <span>金鹿 FBO</span>
-                        <div class="action">
-                            <span>咨询购买</span>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="card-content">尊享卡</div>
-                    <div class="card-footer">
-                        <span>Honor Card</span>
-                        <span>RMB 5,00,000</span>
-                    </div>
-                </div>
-                <div class="card air-card air-card-level-4">
-                    <div class="card-header">
-                        <span>金鹿 FBO</span>
-                        <div class="action">
-                            <span>咨询购买</span>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="card-content">精英卡</div>
-                    <div class="card-footer">
-                        <span>Elite Card</span>
-                        <span>RMB 5,00,000</span>
-                    </div>
-                </div>
-                <div class="card air-card air-card-level-5">
-                    <div class="card-header">
-                        <span>金鹿 小时卡</span>
-                        <div class="action">
-                            <span>咨询购买</span>
+                            <span>{{'airjet.buy-them' | translate}}</span>
                             <i class="fa fa-angle-right"></i>
                         </div>
                     </div>
                     <div class="card-content">
-                        飞翔卡
-                        <span>RMB 788,888</span>
+                        {{card.type}}
+                        <span ng-bind="card.money"></span>
                     </div>
                     <div class="card-footer">
-                        <span>10小时专享按小时计费的公务机消费模式</span>
-                    </div>
-                </div>
-                <div class="card air-card air-card-level-6">
-                    <div class="card-header">
-                        <span>金鹿 小时卡</span>
-                        <div class="action">
-                            <span>咨询购买</span>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        悠游卡
-                        <span>RMB 1,958,888</span>
-                    </div>
-                    <div class="card-footer">
-                        <span>25小时专享按小时计费的公务机消费模式</span>
-                    </div>
-                </div>
-                <div class="card air-card air-card-level-7">
-                    <div class="card-header">
-                        <span>金鹿 小时卡</span>
-                        <div class="action">
-                            <span>咨询购买</span>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        翱翔卡
-                        <span>RMB 3,868,888</span>
-                    </div>
-                    <div class="card-footer">
-                        <span>50小时专享按小时计费的公务机消费模式</span>
+                        <span ng-bind="card.description"></span>
                     </div>
                 </div>
             </div>

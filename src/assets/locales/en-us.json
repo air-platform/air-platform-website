@@ -20,7 +20,8 @@
     "info":"个人信息",
     "setting":"设置",
     "out":"退出",
-    "check-input": "用户名、身份证号不能为空"
+    "check-input": "用户名、身份证号不能为空",
+    "not-set": "未设置"
   },
   "order":{
     "center":"订单中心",
@@ -87,6 +88,9 @@
     "enter": "请输入...",
     "write": "请填写...",
     "order-info": "订单确认后客服会主动与您联系",
+    "from": "起",
+    "buy-them": "咨询购买",
+    "order-numver": "订单编号: ",
     "submit": "提交"
   },
   "airtrain":{

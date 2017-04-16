@@ -20,7 +20,8 @@
     "info":"个人信息",
     "setting":"设置",
     "out":"退出",
-    "check-input": "用户名、身份证号不能为空"
+    "check-input": "用户名、身份证号不能为空",
+    "not-set": "未设置"
   },
   "order":{
     "center":"订单中心",
@@ -45,7 +46,7 @@
     "go-register":"还没有账号，去注册？",
     "not-match":"Passwords do not match!"
   },
-  "airjet": {
+ "airjet": {
     "travel-plan": "旅行计划",
     "dream-flying": "缘梦飞行",
     "card-products": "卡产品",
@@ -55,6 +56,8 @@
     "destination": "到达城市",
     "select": "请选择",
     "start-time": "出发时间 :",
+    "plane-time": "乘机时间 :",
+    "plane-people": "乘机人数 :",
     "guest-count": "乘客人数 :",
     "round-trip": "该行程为往返行程",
     "add-trip": "新增行程",
@@ -67,6 +70,7 @@
     "max-range": "最大航程 :",
     "trunk": "行李箱容积 :",
     "fleet": "机队介绍 :",
+    "confirms": "确 认",
     "confirm": "确 定",
     "doom": "预  定",
     "model-number": "机型号: ",
@@ -88,6 +92,9 @@
     "write": "请填写...",
     "order-info": "订单确认后客服会主动与您联系",
     "from": "起",
+    "buy-them": "咨询购买",
+    "order-numver": "订单编号: ",
+    "click-detail": "(点击查看详情)",
     "submit": "提交"
   },
   "airtrain":{
@@ -100,5 +107,4 @@
     "fixed-wing": "固定翼",
     "helicopter": "直升机"
   }
-
 }
