@@ -248,8 +248,10 @@
         &.aoi-guest-info, &.aoi-model-info{
             height: auto;
             padding: .22rem .42rem .24rem;
+            display: flex;
+            flex-direction: column;
             div{
-                height: .36rem;
+                height: auto!important;
                 margin: 0;
                 font-size: .28rem;
                 color: @base-gray-dark;
@@ -262,11 +264,6 @@
         }
         &.aoi-guest-info{
             border: none!important;
-        }
-        &:nth-child(4){
-            padding: 0 0 0 0.42rem!important;
-            height: 0.88rem!important;
-            line-height: 0.88rem!important;
         }
         &.aoi-guest{
             font-size: .32rem;

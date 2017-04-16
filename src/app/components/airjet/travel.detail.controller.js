@@ -9,10 +9,9 @@
     /** @ngInject */
     function travelDetailController($scope,iotUtil) {
         var queryData = myApp.views[0].activePage.query;
-        if(queryData.info) {
-            $scope.userInfo = JSON.parse(queryData.info);
+        if(queryData.jetdata) {
+            $scope.detailData = JSON.parse(queryData.jetdata);
         }
-
+        
     }
-
 })();

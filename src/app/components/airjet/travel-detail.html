@@ -14,52 +14,54 @@
             </div>
             <div class="air-order-detail">
                 <div class="air-order-item radius-top-bottom">
-                    订单编号: 993028364001
+                    {{'airjet.order-numver' | translate}}{{detailData.order}}
                 </div>
-                <div>
-                    <div class="air-order-item aoi-city-container radius-top">
-                        <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong>香港</strong></div>
-                        <div class="arrow-right"></div>
-                        <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong>北京</strong></div>
+                <div ng-repeat="plan in detailData.plan track by $index">
+                    <div>
+                        <div class="air-order-item aoi-city-container radius-top">
+                            <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong ng-bind="plan.departure"></strong></div>
+                            <div class="arrow-right"></div>
+                            <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.destination"></strong></div>
+                        </div>
+                        <div class="air-order-item">
+                            {{'airjet.start-time' | translate}}{{plan.startTime}}
+                        </div>
+                        <div class="air-order-item radius-bottom">
+                            {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
+                        </div>
                     </div>
-                    <div class="air-order-item">
-                        出发时间: 2017年04月07日 周六
-                    </div>
-                    <div class="air-order-item radius-bottom">
-                        乘机人数: 3人
+                    <div ng-show="plan.round">
+                        <div class="air-order-item aoi-city-container radius-top">
+                            <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong ng-bind="plan.destination"></strong></div>
+                            <div class="arrow-right"></div>
+                            <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.departure"></strong></div>
+                        </div>
+                        <div class="air-order-item">
+                            {{'airjet.start-time' | translate}}{{plan.endTime}}
+                        </div>
+                        <div class="air-order-item radius-bottom">
+                            {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div class="air-order-item aoi-city-container radius-top">
-                        <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong>北京</strong></div>
-                        <div class="arrow-right"></div>
-                        <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong>香港</strong></div>
-                    </div>
-                    <div class="air-order-item">
-                        出发时间: 2017年04月07日 周六
-                    </div>
-                    <div class="air-order-item no-padding radius-bottom">
-                        乘机人数: 3人
-                    </div>
+                <div class="air-order-item aoi-guest radius-top" ng-show="detailData.type">
+                    {{'airjet.options' | translate}}
+                </div>
+                <div class="air-order-item aoi-model-info radius-bottom" ng-show="detailData.type" ng-class="detailData.type ? '' : 'no-padding'">
+                    <div ng-bind="detailData.type"></div>
+                    <div ng-repeat="model in detailData.plane track by $index" ng-bind="model"></div>
                 </div>
                 <div class="air-order-item aoi-guest radius-top">
-                    备选机型
-                </div>
-                <div class="air-order-item aoi-model-info radius-bottom">
-                    <div>湾流G550</div>
-                    <div>波音747</div>
-                </div>
-                <div class="air-order-item aoi-guest radius-top">
-                    客户信息
+                    {{'airjet.guest-info' | translate}}
                 </div>
                 <div class="air-order-item aoi-guest-info radius-bottom">
-                    <div>{{'airjet.name' | translate}} {{userInfo.name}}</div>
-                    <div>{{'airjet.phone' | translate}} {{userInfo.phone}}</div>
-                    <div>{{'airjet.email' | translate}} {{userInfo.email}}</div>
-                    <div>{{'airjet.remark' | translate}} {{userInfo.remark || '无'}}</div>
+                    <div>{{'airjet.name' | translate}} {{detailData.info.name}}</div>
+                    <div>{{'airjet.phone' | translate}} {{detailData.info.phone}}</div>
+                    <div>{{'airjet.email' | translate}} {{detailData.info.email}}</div>
+                    <div>{{'airjet.remark' | translate}} {{detailData.info.remark || '无'}}</div>
                 </div>
                 <div class="order-submit travel-detail-submit">
-                    确认
+                    {{'airjet.confirms' | translate}}
                 </div>
             </div>
         </div>

@@ -25,10 +25,10 @@
                 NotificationService.alert.success('请填写邮箱', null);
                 return;
             }
-            if(queryData.planearr){
-                data.quick = false;
-            }
-            mainView.router.loadPage('app/components/airjet/travel-detail.html?info=' + JSON.stringify(data));
+            var formData = JSON.parse(queryData.jetdata);
+            formData.info = data;
+            formData.order = Math.floor(Math.random () * 999999999999);
+            mainView.router.loadPage('app/components/airjet/travel-detail.html?jetdata=' + JSON.stringify(formData));
         };
         
     }
