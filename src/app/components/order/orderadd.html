@@ -121,14 +121,14 @@
             <div class="order-detail-agreement">
                 <div class="list-block">
                     <label class="label-checkbox item-content">
-                        <input type="checkbox" name="my-checkbox" value="Books">
+                        <input type="checkbox" name="my-checkbox" value="announce">
                         <div class="item-media">
                             <i class="icon icon-form-checkbox"></i>
                         </div>
                         <div class="item-inner">
                             <div class="item-title">
                                 <span class="order-agree">我同意并阅读</span>
-                                <span class="order-announce">《首都直升机乘客安全须知》</span>
+                                <span class="order-announce" ng-click="gotoAnnounceAction();$event.stopPropagation();">《首都直升机乘客安全须知》</span>
                             </div>
                         </div>
                     </label>

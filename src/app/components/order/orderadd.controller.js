@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderaddController', orderaddController);
 
     /** @ngInject */
-    function orderaddController($scope,NetworkService,$interval,iotUtil) {
+    function orderaddController($scope,NetworkService,$interval,iotUtil,constdata) {
 
 
         $scope.newPerson = {name:'',id:'',phone:''};
@@ -17,6 +17,7 @@
         $scope.closeModalAction = closeModalAction;
         $scope.deletePersonAction = deletePersonAction;
         $scope.editContactPhoneAction = editContactPhoneAction;
+        $scope.gotoAnnounceAction = gotoAnnounceAction;
 
         function addNewPersonAction() {
             myApp.popup('.popup-about');
@@ -41,6 +42,10 @@
                 }
 
             });
+        }
+        
+        function gotoAnnounceAction() {
+            mainView.router.loadPage(constdata.router.protocal.announce);
         }
 
     }
