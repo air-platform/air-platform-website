@@ -10,6 +10,14 @@
     function orderaddController($scope,NetworkService,$interval,iotUtil) {
 
 
+        $scope.addNewPersonAction = addNewPersonAction;
+        
+        
+        function addNewPersonAction() {
+            console.log('add');
+        }
+
+
     }
 
 })();
