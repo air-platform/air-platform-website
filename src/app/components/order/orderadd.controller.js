@@ -10,6 +10,7 @@
     function orderaddController($scope,NetworkService,$interval,iotUtil,constdata) {
 
 
+        $scope.agreement = true;
         $scope.newPerson = {name:'',id:'',phone:''};
         $scope.isSelecteded = false;
 
@@ -18,6 +19,7 @@
         $scope.deletePersonAction = deletePersonAction;
         $scope.editContactPhoneAction = editContactPhoneAction;
         $scope.gotoAnnounceAction = gotoAnnounceAction;
+        $scope.agreeValueChanged = agreeValueChanged;
 
         function addNewPersonAction() {
             myApp.popup('.popup-about');
@@ -46,6 +48,9 @@
         
         function gotoAnnounceAction() {
             mainView.router.loadPage(constdata.router.protocal.safe);
+        }
+        function agreeValueChanged() {
+            console.log($scope.agreement);
         }
 
     }

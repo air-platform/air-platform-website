@@ -7,146 +7,148 @@
 <div class="pages navbar-through">
     <div data-page="orderadd" class="page" ng-controller="orderaddController">
         <div class="page-content">
-            <!--订单信息-->
-            <div class="order-detail-list">
-                <!--订单-->
-                <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
-                    <div class="order-detail-content-title">
-                        <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
-                        <span class="order-flytype">首航直升机 B-7186</span>
-                        <span class="order-date">2017年5月1日</span>
+            <form role="form" name="form" class="form">
+                <!--订单信息-->
+                <div class="order-detail-list">
+                    <!--订单-->
+                    <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
+                        <div class="order-detail-content-title">
+                            <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
+                            <span class="order-flytype">首航直升机 B-7186</span>
+                            <span class="order-date">2017年5月1日</span>
+                        </div>
+                        <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
+                            <div class="order-from col-40">
+                                <strong>湛江机场</strong>
+                            </div>
+                            <div class="order-core col-20">
+                                <div class="dfim-center">
+                                    <div class="arrow-right"></div>
+                                </div>
+                            </div>
+                            <div class="order-to col-40">
+                                <strong>美兰机场</strong>
+                            </div>
+                            <div class="col-40 order-other-info text-right">
+                                <img src="../../../assets/images/airplane.svg">
+                                <span class="order-cost">约12:36分钟</span>
+                            </div>
+                            <div class="col-20 order-other-info">
+                                <img src="../../../assets/images/airseat.svg">
+                                <span class="order-cost">5</span>
+                            </div>
+                            <div class="col-40 order-other-info text-left">
+                                <img src="../../../assets/images/airtime.svg">
+                                <span class="order-cost">08:00-09:00</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
-                        <div class="order-from col-40">
-                            <strong>湛江机场</strong>
-                        </div>
-                        <div class="order-core col-20">
-                            <div class="dfim-center">
-                                <div class="arrow-right"></div>
-                            </div>
-                        </div>
-                        <div class="order-to col-40">
-                            <strong>美兰机场</strong>
-                        </div>
-                        <div class="col-40 order-other-info text-right">
-                            <img src="../../../assets/images/airplane.svg">
-                            <span class="order-cost">约12:36分钟</span>
-                        </div>
-                        <div class="col-20 order-other-info">
-                            <img src="../../../assets/images/airseat.svg">
-                            <span class="order-cost">5</span>
-                        </div>
-                        <div class="col-40 order-other-info text-left">
-                            <img src="../../../assets/images/airtime.svg">
-                            <span class="order-cost">08:00-09:00</span>
-                        </div>
+                </div>
+                <!--乘机人-->
+                <div class="order-add-person">
+                    <div class="order-title">请选择乘机人</div>
+                    <div class="order-person">
+                        <a href="#" class="button ng-scope" ng-class="{'button-active': (vm.userSay.mode == 'template' ? true:false)}">欧阳振华</a>
+                        <a href="#" class="button">欧阳振华</a>
+                        <a href="#" class="button">欧阳振华</a>
+                        <a href="#" ng-click="addNewPersonAction()" class="button btn-add open-about"><i class="f7-icons">add_round</i> &nbsp;新增</a>
                     </div>
-                </div>
-            </div>
-            <!--乘机人-->
-            <div class="order-add-person">
-                <div class="order-title">请选择乘机人</div>
-                <div class="order-person">
-                    <a href="#" class="button ng-scope" ng-class="{'button-active': (vm.userSay.mode == 'template' ? true:false)}">欧阳振华</a>
-                    <a href="#" class="button">欧阳振华</a>
-                    <a href="#" class="button">欧阳振华</a>
-                    <a href="#" ng-click="addNewPersonAction()" class="button btn-add open-about"><i class="f7-icons">add_round</i> &nbsp;新增</a>
-                </div>
-                <div class="order-person-list">
-                    <ul>
-                        <li class="order-person-content">
-                            <i class="f7-icons order-icon-delete" ng-click="deletePersonAction(1)">delete_round</i>
-                            <div class="order-person-inner">
-                                <div class="order-person-name">郭乐</div>
-                                <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
-                            </div>
-                            <i class="f7-icons order-icon-right">right</i>
-                        </li>
-                        <li class="order-person-content">
-                            <i class="f7-icons order-icon-delete">delete_round</i>
-                            <div class="order-person-inner">
-                                <div class="order-person-name">郭乐</div>
-                                <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
-                            </div>
-                            <i class="f7-icons order-icon-right">right</i>
-                        </li>
-                    </ul>
-                </div>
-                <div class="order-person-mobile">
-                    <span>联系手机&nbsp;&nbsp;&nbsp;</span>
-                    <span>18513149993</span>
-                    <span class="order-edit">
+                    <div class="order-person-list">
+                        <ul>
+                            <li class="order-person-content">
+                                <i class="f7-icons order-icon-delete" ng-click="deletePersonAction(1)">delete_round</i>
+                                <div class="order-person-inner">
+                                    <div class="order-person-name">郭乐</div>
+                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
+                                </div>
+                                <i class="f7-icons order-icon-right">right</i>
+                            </li>
+                            <li class="order-person-content">
+                                <i class="f7-icons order-icon-delete">delete_round</i>
+                                <div class="order-person-inner">
+                                    <div class="order-person-name">郭乐</div>
+                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
+                                </div>
+                                <i class="f7-icons order-icon-right">right</i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="order-person-mobile">
+                        <span>联系手机&nbsp;&nbsp;&nbsp;</span>
+                        <span>18513149993</span>
+                        <span class="order-edit">
                         <a ng-click="editContactPhoneAction()"><i class="f7-icons">compose</i>修改</a>
                     </span>
-                </div>
-            </div>
-            <!--价格-->
-            <div class="order-person-price">
-                <div class="order-price-title">请选择价格</div>
-                <div class="order-price-type row">
-                    <div class="col-50" ng-click="isSelecteded = !isSelecteded">
-                        <div class="order-price-icon">
-                            <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !isSelecteded}">{{ isSelecteded ? 'circle' : 'check_round'}}</i>
-                        </div>
-                        <div class="order-persons">
-                            <div>整机</div>
-                            <div>载客数：5</div>
-                        </div>
-                        <div class="order-price">
-                            ¥ 5,000
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="order-price-icon">
-                            <i class="f7-icons">{{'check_round'}}</i>
-                        </div>
-                        <div class="order-persons">
-                            <div>整机</div>
-                            <div>载客数：5</div>
-                        </div>
-                        <div class="order-price">
-                            ¥ 5,000
-                        </div>
                     </div>
                 </div>
-                <div class="order-price-preferential">
-                    <span class="order-title">特惠购&nbsp;&nbsp;&nbsp;</span>
-                    <span class="price-content">
-                        <i class="f7-icons icon">{{'check_round'}}</i><span>接送机</span><span class="price">￥15</span>
-                        <i class="f7-icons icon">{{'check_round'}}</i><span>接送机</span><span class="price">￥15</span>
-                    </span>
-                </div>
-            </div>
-            <!--声明-->
-            <div class="order-detail-agreement">
-                <div class="list-block">
-                    <label class="label-checkbox item-content">
-                        <input type="checkbox" name="my-checkbox" value="announce">
-                        <div class="item-media">
-                            <i class="icon icon-form-checkbox"></i>
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title">
-                                <span class="order-agree">我同意并阅读</span>
-                                <span class="order-announce" ng-click="gotoAnnounceAction();$event.stopPropagation();">《首都直升机乘客安全须知》</span>
+                <!--价格-->
+                <div class="order-person-price">
+                    <div class="order-price-title">请选择价格</div>
+                    <div class="order-price-type row">
+                        <div class="col-50" ng-click="isSelecteded = !isSelecteded">
+                            <div class="order-price-icon">
+                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !isSelecteded}">{{ isSelecteded ? 'circle' : 'check_round'}}</i>
+                            </div>
+                            <div class="order-persons">
+                                <div>整机</div>
+                                <div>载客数：5</div>
+                            </div>
+                            <div class="order-price">
+                                ¥ 5,000
                             </div>
                         </div>
-                    </label>
+                        <div class="col-50">
+                            <div class="order-price-icon">
+                                <i class="f7-icons">{{'check_round'}}</i>
+                            </div>
+                            <div class="order-persons">
+                                <div>整机</div>
+                                <div>载客数：5</div>
+                            </div>
+                            <div class="order-price">
+                                ¥ 5,000
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="order-price-preferential">-->
+                    <!--<span class="order-title">特惠购&nbsp;&nbsp;&nbsp;</span>-->
+                    <!--<span class="price-content">-->
+                    <!--<i class="f7-icons icon">{{'check_round'}}</i><span>接送机</span><span class="price">￥15</span>-->
+                    <!--<i class="f7-icons icon">{{'check_round'}}</i><span>接送机</span><span class="price">￥15</span>-->
+                    <!--</span>-->
+                    <!--</div>-->
                 </div>
-            </div>
-            <!--提交-->
-            <div class="order-detail-confirm">
-                <p>
-                    <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red">确认</a>
-                </p>
-            </div>
+                <!--声明-->
+                <div class="order-detail-agreement">
+                    <div class="list-block">
+                        <label class="label-checkbox item-content">
+                            <input type="checkbox" name="my-checkbox" />
+                            <div class="item-media">
+                                <i class="icon icon-form-checkbox"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    <span class="order-agree">我同意并阅读</span>
+                                    <span class="order-announce" ng-click="gotoAnnounceAction();$event.stopPropagation();">《首都直升机乘客安全须知》</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <!--提交-->
+                <div class="order-detail-confirm">
+                    <p>
+                        <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red" ng-disabled="form.$invalid">确认</a>
+                    </p>
+                </div>
+            </form>
         </div>
         <!-- About Popup -->
         <div class="popup popup-about">
             <div class="content-block">
                 <p class="text-center">添加乘客信息</p>
                 <div class="list-block">
-                    <form role="form" name="form" class="form-normal">
+                    <form role="form" name="formAdd" class="form-normal">
                         <ul>
                             <li>
                                 <div class="item-content">
@@ -181,7 +183,7 @@
                         </ul>
 
                         <div>
-                            <a href="#" class="button button-big active" ng-disabled='form.$invalid'>保 存</a>
+                            <a href="#" class="button button-big active" ng-disabled='formAdd.$invalid'>添 加</a>
                             <a href="#" class="color-gray button" style="margin-top: -15px;" ng-click="closeModalAction()">取 消</a>
                         </div>
 
