@@ -45,7 +45,7 @@
         }
         
         function gotoAnnounceAction() {
-            mainView.router.loadPage(constdata.router.protocal.announce);
+            mainView.router.loadPage(constdata.router.protocal.safe);
         }
 
     }
