@@ -15,21 +15,21 @@
         $scope.modelList = [{
             id: '1',
             name: 'BBJ',
-            pic: 'assets/images/travel/plane01.jpg',
+            pic: 'assets/images/travel/BBJ.png',
             people: '16',
             luggage: '6.4m³',
             speed: '11687km'
         },{
             id: '2',
             name: '湾流G450',
-            pic: 'assets/images/travel/plane02.jpg',
+            pic: 'assets/images/travel/湾流G450.png',
             people: '16',
             luggage: '6.4m³',
             speed: '11687km'
         },{
             id: '3',
             name: '湾流G550',
-            pic: 'assets/images/travel/plane03.jpg',
+            pic: 'assets/images/travel/湾流G550.png',
             people: '16',
             luggage: '6.4m³',
             speed: '11687km'
