@@ -1,4 +1,3 @@
-
 <!-- We don't need full layout here, because this page will be parsed with Ajax-->
 <!-- Top Navbar-->
 <div class="navbar">
@@ -7,76 +6,51 @@
         <div class="center sliding">咨询购买</div>
     </div>
 </div>
-<!--<div class="pages">-->
-    <!-- Page, data-page contains page name-->
-    <div data-page="airjet-detail" class="page" ng-controller="tourDetailController">
-        <!-- Scrollable page content-->
-        <div class="page-content">
-            <div class="page-content-title">
-                <div>金鹿小时卡</div>
-                <div><i class="fa fa-phone"></i>咨询客服</div>
-            </div>
-            <div class="card-info">
-                <div>悠游卡</div>
-                <div>RMB 788,888</div>
-            </div>
-            <div class="card-detail">
-                <div>
-                    公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。
-                </div>
-                <div>
-                    小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。
-                </div>
-
-                <div class="padding-content">
-                    <h5>更划算</h5>
-                    <div>10小时即可起步，准入门槛低</div>
-                    <div>小时单价远低于市场价</div>
-                    <div>国际、国内调机单位小时价格一致</div>
-                </div>
-
-                <div class="padding-content">
-                    <h5>更透明</h5>
-                    <div>仅以飞行时间结算，让客户一目了然</div>
-                    <div>不再为每次飞行前反复询价、比价、议价而烦恼</div>
-                    <div>卡内飞行小时无使用有效期，只要有余额即有效</div>
-                </div>
-
-                <div>
-                    <h5>更多元</h5>
-                    <div>10小时、25小时、50小时多卡种，满足不同需求</div>
-                    <div>一卡在手，多种机型随意选</div>
-                    <div>附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）</div>
-                    <div>不仅可以包机，还可以坐游艇，一卡多服务</div>
-                    <div>续新卡还额外赠送飞行小时，多买多得</div>
-                </div>
-            </div>
-            <form action="">
-                <div class="user-info">
-                    <div class="user-info-title">客户信息</div>
-                    <div class="form">
-                        <div class="form-group">
-                            <label>姓名 :</label>
-                            <input type="text" placeholder="请输入...">
-                        </div>
-                        <div class="form-group">
-                            <label>电话 :</label>
-                            <input type="text" placeholder="请输入...">
-                        </div>
-                        <div class="form-group">
-                            <label>邮箱 :</label>
-                            <input type="text" placeholder="请输入...">
-                        </div>
-                    </div>
-                </div>
-                <div class="company-name">
-                    <div class="form-group">
-                        <label>客户名称 :</label>
-                        <input type="text" placeholder="请输入企业或机构名称…">
-                    </div>
-                </div>
-                <div class="airjet-detail-form-footer"><input type="submit" value="提交"></div>
-            </form>
+<div data-page="airjet-detail" class="page" ng-controller="tourDetailController">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+        <div class="page-content-title">
+            <div ng-bind="tourDetail.name"></div>
+            <div><a class="link-tel" href="tel:400-666-4388"><i class="fa fa-phone"></i>{{'airjet.service' | translate}}</a></div>
         </div>
+        <div class="card-info">
+            <div ng-bind="tourDetail.type || tourDetail.type_cn"></div>
+            <div ng-bind="tourDetail.money"></div>
+        </div>
+        <div class="card-detail">
+            <div ng-bind="tourDetail.official"></div>
+            <div ng-bind="tourDetail.hour"></div>
+
+            <div class="padding-content" ng-repeat="item in tourDetail.feature track by $index">
+                <h5 ng-bind="item.name"></h5>
+                <div ng-repeat="p in item.value track by $index" ng-bind="p"></div>
+            </div>
+        </div>
+        <form action="">
+            <div class="user-info">
+                <div class="user-info-title">{{'airjet.guest-info' | translate}}</div>
+                <div class="form">
+                    <div class="form-group">
+                        <label>{{'airjet.name' | translate}}</label>
+                        <input type="text" ng-model="tourData.name" placeholder="{{'airjet.enter' | translate}}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{'airjet.phone' | translate}}</label>
+                        <input type="text" ng-model="tourData.phone" placeholder="{{'airjet.enter' | translate}}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{'airjet.email' | translate}}</label>
+                        <input type="text" ng-model="tourData.email" placeholder="{{'airjet.enter' | translate}}">
+                    </div>
+                </div>
+            </div>
+            <div class="company-name">
+                <div class="form-group">
+                    <label>{{'airjet.guest-name' | translate}}</label>
+                    <input type="text" ng-model="tourData.guest" placeholder="{{'airjet.guest-name-enter' | translate}}">
+                </div>
+            </div>
+            <div class="airjet-detail-form-footer"><input type="button" ng-click="submit(tourData)" value="{{'airjet.submit' | translate}}"></div>
+        </form>
     </div>
-<!--</div>-->
+</div>

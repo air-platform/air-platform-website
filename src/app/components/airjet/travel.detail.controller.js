@@ -8,8 +8,10 @@
 
     /** @ngInject */
     function travelDetailController($scope,iotUtil) {
-
-
+        var queryData = myApp.views[0].activePage.query;
+        if(queryData.jetdata) {
+            $scope.detailData = JSON.parse(queryData.jetdata);
+        }
+        
     }
-
 })();

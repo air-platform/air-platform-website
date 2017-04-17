@@ -7,7 +7,7 @@
     height: 100%;
   }
   .item-title {
-    color: @base-gray;
+    color: @font-grey;
   }
 }
 
@@ -18,7 +18,7 @@
   border-bottom-right-radius: 4px;
   width: 4rem;
   cursor: pointer;
-  background-color: @base-sky;
+  background-color: @bg-blue;
 }
 
 .filter-toolbar {
@@ -33,7 +33,7 @@
     height: 0;
     width: 0.8rem;
     vertical-align: middle;
-    border: 0.02rem solid @base-white;
+    border: 0.02rem solid @border-white;
     i {
       position: relative;
       float: right;
@@ -42,8 +42,8 @@
       height: 0.2rem;
       transform: rotate(-45deg);
       top: -0.1rem;
-      border-right: 0.04rem solid @base-white;
-      border-bottom: 0.04rem solid @base-white;
+      border-right: 0.04rem solid @border-white;
+      border-bottom: 0.04rem solid @border-white;
     }
   }
 }
@@ -87,7 +87,7 @@ div[data-page=projectdetails] {
     }
     .project-name {
       padding: 0.1rem 0.3rem 0.05rem;
-      color: @base-black;
+      color: @font-black;
       font-size: 0.28rem;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -101,7 +101,7 @@ div[data-page=projectdetails] {
     .project-price {
       padding: 0 0.3rem;
       line-height: 0.5rem;
-      color: @base-red;
+      color: @font-red;
       font-size: 0.28rem;
     }
   }
@@ -129,7 +129,7 @@ div[data-page=projectdetails] {
         overflow: hidden;
         vertical-align: middle;
         img {
-          background-color: @base-sky;
+          background-color: @bg-blue;
         }
       }
     }
@@ -152,7 +152,7 @@ div[data-page=projectdetails] {
       }
       .time .f7-icons {
         font-size: 0.2rem;
-        color: @base-black;
+        color: @font-black;
       }
       .hero-value {
         padding-left: 0.2rem;
@@ -187,7 +187,7 @@ div[data-page=projectdetails] {
           display: inline-block;
           margin-right: 0.06rem;
           height: 0.3rem;
-          border: 1px solid #D8D8D8;
+          border: 1px solid @border-gray;
           vertical-align: middle;
         }
       }
@@ -202,8 +202,8 @@ div[data-page=projectdetails] {
           line-height: .88rem;
           font-size: .36rem;
           text-align: center;
-          color: @base-white;
-          background-color: @base-sky;
+          color: @font-white;
+          background-color: @bg-blue;
           border-radius: .16rem;
       }
     }

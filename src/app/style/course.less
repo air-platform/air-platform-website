@@ -1,14 +1,14 @@
 .course-nav {
   &.subnavbar {
-    background-color: @base-light;
+    background-color: @bg-grey;
     height: .88rem;
     padding: 0;
     .buttons-row {
       .button {
         border-radius: 0;
         border: none;
-        color: @base-gray-dark;
-        background: @base-white;
+        color: @font-gray;
+        background-color: @bg-white;
         .text-vertical-center(.88rem);
         &:before {
           content: "";
@@ -16,15 +16,15 @@
           width: .16rem;
           height: .16rem;
           border-radius: 50%;
-          border: .04rem solid @base-gray-dark;
+          border: .04rem solid @border-gray;
           margin-right: .18rem;
-          background-color: @base-white;
+          background-color: @bg-white;
         }
         &.active {
-          background-color: @base-light;
+          background-color: @bg-grey;
           &:before {
             background-color: #ee5454;
-            border: .04rem solid #ffd2d2;
+            border: .04rem solid @border-pink;
           }
         }
       }
@@ -38,7 +38,7 @@
     padding: 0 .2rem;
     ul {
       li {
-        background-color: @base-white;
+        background-color: @bg-white;
         margin-bottom: .18rem;
         a {
           display: block;
@@ -52,7 +52,7 @@
             padding-right: .2rem;
             margin-left: .18rem;
             width: calc(~"100% - 1.36rem - 0.18rem");
-            color: @base-gray-dark;
+            color: @font-gray;
             .list-title {
               display: flex;
               justify-content: space-between;
@@ -63,7 +63,7 @@
               }
               span {
                 font-size: .28rem;
-                color: @base-red-light;
+                color: @font-red;
                 i {
                   font-style: normal;
                 }
@@ -91,14 +91,13 @@
 
 .course-detail {
   .detail-top {
-  	width: 97.1%;
-  	height: 1.32rem;
-  	background-color: @base-white;
-  	position: absolute;
-  	z-index: 3;
-  	top: .98rem;
-  	left: 1.45%;
-
+    width: 97.1%;
+    height: 1.32rem;
+    background-color: @base-white;
+    position: absolute;
+    z-index: 3;
+    top: .98rem;
+    left: 1.45%;
     .course-list-img {
       img {
         width: 1.32rem;
@@ -142,14 +141,14 @@
     }
   }
   .detail-main {
-  	padding: 0 .2rem;
-  	font-size: .28rem;
-  	color: @base-gray-dark;
-  	p {
-  		text-indent: 2em;
-  	}
-  	.course-pre {
-  		margin-top: .5rem;
-  	}
+    padding: 0 .2rem;
+    font-size: .28rem;
+    color: @base-gray-dark;
+    p {
+      text-indent: 2em;
+    }
+    .course-pre {
+      margin-top: .5rem;
+    }
   }
 }

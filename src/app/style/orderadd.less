@@ -13,24 +13,29 @@
     font-size: 0.16rem;
     display: inline-block;
     width: auto;
-    border-color: #9b9b9b;
+    border-color: @border-gray;
     color: #9b9b9b;
   }
+  .button-active {
+    border-color: @border-red;
+    color: @font-red;
+  }
   .btn-add {
-    border-color: #4E9FE4;
+    border-color: @border-blue;
     color: #4E9FE4;
   }
   i {
     font-size: 16px;
+    vertical-align: middle;
   }
 }
 
 .order-add-person .order-person-list{
-  border-top: solid #dfdfdf 1px;
+  border-top: 1px solid @border-gray;
   .order-person-content {
     margin: 10px;
     .order-icon-delete {
-      color: @base-red-light;
+      color: @font-red;
       font-size: 17px;
       float: left;
       margin: 10px 10px 10px 0;
@@ -47,7 +52,7 @@
       }
     }
     .order-icon-right {
-      color: @base-gray;
+      color: @font-grey;
       font-size: 22px;
       float: right;
       margin: 10px;
@@ -55,7 +60,7 @@
   }
 }
 .order-add-person .order-person-mobile {
-  border-top: solid #dfdfdf 0.5px;
+  border-top: 0.5px solid @border-gray;
   padding: 10px 20px 10px 10px;
   span {
     font-size: 14px;
@@ -79,13 +84,14 @@
   }
   .order-price-type {
     margin: 0 10px;
-    height: 0.9rem;
+    height: auto;
+    min-height: 0.9rem;
     .order-price-icon{
       display: inline-block;
       margin: 10px 0;
       i {
-        color: @base-red-light;
-        font-size: 17px;
+        color: @font-red;
+        font-size: 0.34rem;
       }
     }
     .order-persons {
@@ -97,29 +103,30 @@
     .order-price {
       display: inline-block;
       font-size: 0.5rem;
-      color: @base-red;
+      color: @font-red;
       float: right;
       line-height: 0.9rem;
     }
   }
   .order-price-preferential {
-    border-top: solid #dfdfdf 0.5px;
+    border-top: 0.5px solid @border-gray;
     height: 0.8rem;
     padding: 0.2rem 0;
     .order-title {
-      font-size: 0.12rem;
+      font-size: 0.24rem;
       padding: 10px;
     }
     .price-content {
-      font-size: 0.12rem;
+      font-size: 0.24rem;
       color: #9b9b9b;
+      height: 0.8rem;
       .price {
-        color: @base-blue;
+        color: @font-blue;
       }
       i {
         padding: 0 10px;
-        font-size: 0.17rem;
-        color: @base-red-light;
+        font-size: 0.34rem;
+        color: @font-red;
       }
     }
   }
@@ -138,7 +145,7 @@
     font-size: 0.13rem;
   }
   .order-announce {
-    color: @base-red;
+    color: @font-red;
     font-size: 0.13rem;
   }
 }

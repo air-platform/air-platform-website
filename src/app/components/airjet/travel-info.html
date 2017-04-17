@@ -17,7 +17,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">{{'airjet.name' | translate}}</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
+                                    <input type="text" ng-model="infoData.name" placeholder="{{'airjet.write' | translate}}">
                                 </div>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">{{'airjet.phone' | translate}}</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
+                                    <input type="text" ng-model="infoData.phone" placeholder="{{'airjet.write' | translate}}">
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">{{'airjet.email' | translate}}</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
+                                    <input type="text" ng-model="infoData.email" placeholder="{{'airjet.write' | translate}}">
                                 </div>
                             </div>
                         </div>
@@ -47,16 +47,14 @@
                             <div class="item-inner">
                                 <div class="item-title label">{{'airjet.remark' | translate}}</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="{{'airjet.write' | translate}}">
+                                    <input type="text" ng-model="infoData.remark" placeholder="{{'airjet.write' | translate}}">
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-            <a href="app/components/airjet/travel-detail.html">
-                <div class="travel-model-submit block-center">{{'airjet.confirm' | translate}}</div>
-            </a>
+            <div class="travel-model-submit block-center" ng-click="infoSubmit(infoData)">{{'airjet.confirm' | translate}}</div>
         </div>
     </div>
 </div>

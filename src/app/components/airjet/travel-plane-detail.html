@@ -1,7 +1,8 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left"><a href="#" data-panel="left" class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
-        <div class="center sliding">GX01102</div>
+        <div class="center sliding" id="plane-detail-title"></div>
+        <div class="right"></div>
     </div>
 </div>
 
@@ -19,29 +20,27 @@
                 </div>
                 <div class="travel-model-content">
                     <div class="plane-title">
-                        <em>金鹿XXXX公务机</em>
+                        <em ng-bind="planeDetail.name"></em>
                     </div>
                     <p class="travel-model-guest clearfix">
-                        <span class="pull-left">{{'airjet.model' | translate}} <em>湾流G550</em></span>
-                        <span class="pull-right">机号 : <em>GX01102</em></span>
+                        <span class="pull-left">{{'airjet.model' | translate}} <em ng-bind="planeDetail.model"></em></span>
+                        <span class="pull-right">{{'airjet.plane-number' | translate}} <em ng-bind="planeDetail.type"></em></span>
                     </p>
                     <p class="travel-model-guest clearfix">
-                        <span class="pull-left">{{'airjet.age' | translate}} <em>12.5年</em></span>
-                        <span class="pull-right">{{'airjet.capacity' | translate}} <em>13~16人</em></span>
+                        <span class="pull-left">{{'airjet.age' | translate}} <em ng-bind="planeDetail.age"></em></span>
+                        <span class="pull-right">{{'airjet.capacity' | translate}} <em ng-bind="planeDetail.max"></em></span>
                     </p>
                     <p>
-                      <span>{{'airjet.max-range' | translate}} <em>满油航程约11686公里</em></span>  
+                      <span>{{'airjet.max-range' | translate}} <em ng-bind="planeDetail.range"></em></span>  
                     </p>
                     <p>
-                      <span>{{'airjet.trunk' | translate}} <em>6.4立方米，相当于20个标准行李箱和4个标准纸箱。</em></span>  
+                      <span>{{'airjet.trunk' | translate}} <em ng-bind="planeDetail.trunk"></em></span>  
                     </p>
                     <p>
-                      <span>{{'airjet.fleet' | translate}} <em>湾流G550公务机是国际顶级远程喷气式公务机代表机型之一，是人类飞行史上首架直航范围能从纽约直达东京的超远程公务飞机，也是目前国内航程最远、性能最优、客舱最宽敞、舒适性最好的豪华公务机。</em></span>  
+                      <span>{{'airjet.fleet' | translate}} <em ng-bind="planeDetail.fleet"></em></span>  
                     </p>
                     <p class="plane-tag clearfix">
-                        <em class="tag">WIFI</em>
-                        <em class="tag">飞机餐</em>
-                        <em class="tag tag-purple">微波炉</em>
+                        <em class="tag" ng-repeat="tag in planeDetail.tags" ng-class="$index === planeDetail.tags.length - 1 ? 'tag-purple' : ''" ng-bind="tag"></em>
                     </p>
                 </div>
             </div>

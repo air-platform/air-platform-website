@@ -13,12 +13,12 @@
   .left {
     position: relative;
     top: 0.1rem;
-    border-top: 2px solid @base-gray;
+    border-top: 2px solid @border-gray;
     &::after {
       content: "";
       display: block;
       width: 6px;
-      border-top: 2px solid @base-gray;
+      border-top: 2px solid @border-gray;
       transform: rotate(45deg);
       float: right;
       position: relative;
@@ -29,14 +29,14 @@
   .right {
     position: relative;
     top: 0.1rem;
-    border-bottom: 2px solid @base-gray;
+    border-bottom: 2px solid @border-gray;
     &::after {
       content: "";
       position: relative;
       top: 0.1rem;
       display: block;
       width: 6px;
-      border-bottom: 2px solid @base-gray;
+      border-bottom: 2px solid @border-gray;
       transform: rotate(45deg);
     }
   }
@@ -61,7 +61,7 @@
   .button-schedule-delete {
     float: right;
     font-size: 0.32rem;
-    color: @base-red;
+    color: @font-red;
   }
 
   .schedule-card {
@@ -90,7 +90,7 @@
     margin: 0;
     padding: 0 0 1.2rem;
     top: 7.72rem;
-    background-color: @base-white;
+    background-color: @bg-white;
     z-index: 10;
 
 
@@ -108,7 +108,7 @@
 
   .schedule-title {
     padding: 10px 22px;
-    border-bottom: 1px solid #c8c7cc;
+    border-bottom: 1px solid @border-gray;
     font-size: 0.28rem;
   }
 
@@ -116,8 +116,8 @@
     position: relative;
     top: -0.5em;
     right: 0.5em;
-    color: @base-white;
-    background-color: @base-sky;
+    color: @font-white;
+    background-color: @bg-blue;
     border: none;
     border-radius: 1em;
     font-size: 3em;
@@ -226,24 +226,24 @@
     width: 100%;
     font-size: 0.28rem;
     line-height: 0.94rem;
-    color: @base-black;
+    color: @font-black;
   }
 
   .footer-button {
     position: fixed;
     padding: 5px 22px;
     width: 100%;
-    background-color: @base-white;
+    background-color: @bg-white;
     bottom: 0;
   }
 
   .start-flight {
     height: 0.88rem;
     line-height: 0.88rem;
-    border: 1px solid @base-red-light;
-    background-color: @base-red-light;
+    border: 1px solid @border-red;
+    background-color: @bg-red;
     border-radius: 0.16rem;
-    color: @base-white;
+    color: @font-white;
     font-size: 0.36rem;
     letter-spacing: 0;
   }
@@ -266,7 +266,7 @@
   }
 
   .card {
-    color: @base-gray;
+    color: @font-grey;
     font-size: 0.2rem;
 
     .card-header {
@@ -306,7 +306,7 @@
 
     .plane-name {
       font-size: 0.24rem;
-      color: @base-black-light;
+      color: @font-black;
     }
     .plane-price:last-child {
       float: right;
@@ -314,7 +314,7 @@
     .plane-price .price-value {
       padding-left: 0.1rem;
       font-size: 0.36rem;
-      color: @base-red;
+      color: @font-red;
     }
     .departure-info, .plane-capacity {
       display: inline-block;
@@ -330,7 +330,7 @@
       position: relative;
       float: right;
       font-size: 0.16rem;
-      color: @base-black-light;
+      color: @font-black;
       letter-spacing: 0;
     }
   }

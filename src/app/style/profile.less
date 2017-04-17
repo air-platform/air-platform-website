@@ -1,14 +1,14 @@
 .profile {
-  color: @base-gray-dark;
+  color: @font-gray;
   .list-block {
     margin: 0;
     .item-title {
       font-size: .28rem;
-      color: @base-gray;
+      color: @font-grey;
     }
     .item-input {
       font-size: .28rem;
-      color: @base-black-light;
+      color: @font-black;
       text-align: right;
       .item-link {
         display: inline-block;
@@ -17,7 +17,7 @@
         position: relative;
         input {
           font-size: .28rem;
-          color: @base-gray-dark;
+          color: @font-gray;
         }
         .save-btn {
           display: flex;
@@ -30,10 +30,10 @@
           padding: 0 .3rem;
           font-size: .28rem;
           border-radius: 3px;
-          color: @base-white;
+          color: @font-white;
           right: 0;
-          background-color: @base-red-light;
-          border: 0.01rem solid @base-red-light;
+          background-color: @bg-red;
+          border: 0.01rem solid @border-red;
         }
       }
     }
@@ -49,7 +49,7 @@
       .item-inner {
         position: relative;
         .not-set {
-          color: @base-gray;
+          color: @font-grey;
         }
       }
     }
@@ -71,15 +71,15 @@
 }
 
 .add-guest-box {
-  background-color: @base-white;
+  background-color: @bg-white;
   margin-bottom: .36rem;
   .add-title {
     height: .84rem;
     line-height: .84rem;
-    border-bottom: .02rem solid @base-light;
+    border-bottom: .02rem solid @border-gray;
     padding: 0 .2rem;
     font-size: .28rem;
-    color: @base-gray-dark;
+    color: @font-gray;
   }
   .add-info {
     padding: .44rem .2rem .42rem;
@@ -88,13 +88,13 @@
     }
     label {
       font-size: .28rem;
-      color: @base-gray;
+      color: @font-grey;
       display: inline-block;
       min-width: 1.2rem;
       text-align: right;
     }
     input {
-      color: @base-gray-dark;
+      color: @font-gray;
       height: 0.6rem;
       background-color: #f4f4f4;
       border: none;
@@ -111,13 +111,13 @@
 .add-guest-btn {
 	padding: 0 .2rem;
   .add-guset {
-  	color: @base-gray-dark;
+  	color: @font-gray;
     display: flex;
     display: -webkit-flex;
     justify-content: center;
     align-items: center;
     height: 1.1rem;
-    border: .02rem dashed @base-light;
+    border: .02rem dashed @border-gray;
     border-radius: .1rem;
     font-size: .32rem;
     .fa {
@@ -134,10 +134,10 @@
   	width: 100%;
   	height: .88rem;
   	background-color: #f03f3c;
-  	border: .01rem solid #f03f3c;
+  	border: .01rem solid @border-red;
   	letter-spacing: .2rem;
   	font-size: .36rem;
   	padding: 0;
-  	color: @base-white;
+  	color: @font-white;
   }
 }

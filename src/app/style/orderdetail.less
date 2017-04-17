@@ -1,13 +1,13 @@
 .air-order-detail {
   padding: 0.34rem;
-  color: @base-gray-dark;
+  color: @font-gray;
 
   .air-order-item {
-    background-color: @base-white;
+    background-color: @bg-white;
     .text-vertical-center(0.88rem);
     padding-left: 0.42rem;
     border-radius: 0.16rem;
-    border-bottom: 1px dashed @base-light;
+    border-bottom: 1px dashed @border-gray;
 
     &:not(:first-child) {
       border-radius: 0;
@@ -51,7 +51,7 @@
   .order-submit {
     margin-top: 0.52rem;
     text-align: center;
-    color: @base-white;
+    color: @font-white;
     font-size: 0.36rem;
     .text-vertical-center(0.88rem);
     letter-spacing: 0.16rem;
@@ -82,158 +82,175 @@
 
 //detail
 
-.order-detail-list .order-detail-header {
-  border-radius: 8px;
-  border-bottom: 0;
-  background-color: white;
-  margin: 10px 10px 0 10px;
-  height: 0.88rem;
-  line-height: 0.48rem;
-  font-size: 0.14rem;
-  color: @base-gray-dark;
-  .order-number {
-    float: left;
-    padding: 10px;
-  }
-  .order-trash {
-    float: right;
-    padding: 10px;
-    i {
-      font-size: 20px;
-      color: @base-gray;
+.order-detail-list {
+  // 头部
+  .order-detail-header {
+    border-radius: 8px;
+    border-bottom: 0;
+    background-color: white;
+    margin: 10px 10px 0 10px;
+    height: 0.88rem;
+    line-height: 0.48rem;
+    font-size: 0.14rem;
+    color: @font-gray;
+    .order-number {
+      float: left;
+      padding: 10px;
     }
-  }
-  .order-computer {
-    padding-top: 20px !important;
-    font-size: 0.1rem;
-    color: #9b9b9b;
-  }
-  .order-total-price {
-    color: @base-red;
-    font-size: 24px !important;
-  }
-}
-.order-detail-list .order-detail-line {
-  height: 1px;
-  margin: 0 15px;
-  border-bottom: dashed rgba(196, 196, 196, 0.5) 1px;//透明0.3
-}
-.order-detail-list .order-detail-content {
-  border-radius: 8px;
-  background-color: white;
-  margin: 0px 10px 10px 10px;
-  height: 3rem;
-  //display: block;
-  .order-detail-content-title {
-    height: 0.9rem;
-    .order-icon {
-      width: 0.5rem;
-      height: 0.5rem;
-      margin: 10px;
-      display: inline-block;
-    }
-    .order-flytype {
-      font-size: 0.14rem;
-      color: #4a4a4a;
-      display: inline-block;
-    }
-    .order-date {
-      line-height: 0.9rem;
-      height: 0.9rem;
-      font-size: 0.12rem;
-      padding-right: 10px;
-      color: @base-gray;
+    .order-trash {
       float: right;
+      padding: 10px;
+      i {
+        font-size: 20px;
+        color: @font-grey;
+      }
+    }
+    .order-computer {
+      padding-top: 20px !important;
+      font-size: 0.1rem;
+      color: #9b9b9b;
+    }
+    .order-total-price {
+      color: @font-red;
+      font-size: 24px !important;
+    }
+  }
+  // 线
+  .order-detail-line {
+    height: 1px;
+    margin: 0 15px;
+    border-bottom: 1px dashed @border-gray;//透明0.3
+  }
+  // 内容
+  .order-detail-content {
+    border-radius: 8px;
+    background-color: white;
+    margin: 0px 10px 10px 10px;
+    height: 3rem;
+    .order-detail-content-title {
+      height: 0.9rem;
       display: inline-block;
+      .order-icon {
+        margin-left: 10px;
+        img {
+          width: 25px;
+          height: 25px;
+        }
+      }
+      .order-flytype {
+        font-size: 0.28rem;
+        color: #4a4a4a;
+        margin-left: 10px;
+        line-height: 0.9rem;
+        height: 0.9rem;
+      }
+      .order-date {
+        line-height: 0.9rem;
+        height: 0.9rem;
+        font-size: 0.24rem;
+        margin-left: 20px;
+        color: @font-grey;
+      }
     }
     .order-content-line {
       height: 1px;
       background-color: rgba(196, 196, 196, 0.5);
       margin: 0 10px;
     }
-  }
-  .order-detail-content-inner {
-    .order-from, .order-to {
-      margin-top: 0.7rem;
-      text-align: center;
-      strong {
-        display: block;
-        font-size: 0.2rem;
-        color: @base-gray-dark;
+    .order-detail-content-inner {
+      .order-from, .order-to {
+        margin-top: 0.4rem;
+        text-align: center;
+        strong {
+          display: block;
+          font-size: 0.4rem;
+          color: @font-gray;
+        }
       }
-    }
-    .order-core {
-      text-align: center;
-      margin-top: 0.65rem;
-      .dfim-center {
-        .arrow-right {
-          margin: 0;
-          display: inline-block;
-          width: 1rem;
-          vertical-align: middle;
-          &:after {
-            width: .15rem;
-            top: -0.06rem;
+      .order-core {
+        text-align: center;
+        margin-top: 0.45rem;
+        .dfim-center {
+          .arrow-right {
+            margin: 0;
+            display: inline-block;
+            width: 1rem;
+            vertical-align: middle;
+            &:after {
+              width: .15rem;
+              top: -0.06rem;
+            }
           }
         }
       }
-    }
-    .order-other-info {
-      text-align: center;
-      font-size: 0.14rem;
-      img {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
+      .order-other-info {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 0.28rem;
+        height: 20px;
+        line-height: 20px;
+        img {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+        }
+        span {
+          display: inline-block;
+          font-size: 0.24rem;
+          color: @font-grey;
+        }
       }
-      span {
-        display: inline-block;
+
+    }
+
+  }
+  // 人
+  .order-detail-content-person {
+    border-radius: 8px;
+    background-color: white;
+    margin: 0px 10px 10px 10px;
+    height: auto;
+    ul {
+      clear: both;
+      li {
+        height: 0.7rem;
+        line-height: 0.7rem;
+        padding-left: 10px;
         font-size: 0.12rem;
-        color: @base-gray;
+        .order-person-name {
+          color: #000;
+        }
+        .order-person-id {
+          color: #4a4a4a;
+          margin-left: 20px;
+        }
       }
     }
-
   }
-
-}
-.order-detail-list .order-detail-content-person {
-  border-radius: 8px;
-  background-color: white;
-  margin: 0px 10px 10px 10px;
-  height: auto;
-  ul li {
-    height: 0.7rem;
-    line-height: 0.7rem;
-    padding-left: 10px;
-    font-size: 0.12rem;
-    .order-person-name {
-      color: #000;
+  //协议
+  .order-detail-agreement {
+    .list-block .item-inner:after{
+      height: 0;
     }
-    .order-person-id {
-      color: #4a4a4a;
+    font-size: 0.26rem;
+    overflow: auto;
+    .list-block {
+      margin-top: 5px;
+    }
+    .order-agree {
+    }
+    .order-announce {
+      color: @font-red;
     }
   }
+  //确认
+  .order-detail-confirm {
+    .button{
+      margin: 0 10px 50px;
+    }
+  }
 }
 
-.order-detail-list .order-detail-agreement {
-  .list-block .item-inner:after{
-    height: 0;
-  }
-  font-size: 0.13rem;
-  width: 100%;
-  .list-block {
-    margin-top: 5px;
-  }
-  .order-agree {
-    font-size: 0.13rem;
-  }
-  .order-announce {
-    color: @base-red;
-    font-size: 0.13rem;
-  }
-}
-.order-detail-list .order-detail-confirm {
-  .button{
-    margin: 0 10px 50px;
-  }
-}
+
+
+

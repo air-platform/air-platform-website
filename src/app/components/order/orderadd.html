@@ -12,9 +12,9 @@
                 <!--订单-->
                 <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
                     <div class="order-detail-content-title">
-                        <div class="order-icon"><img src="../../../assets/images/hnlogo.jpg"></div>
-                        <div class="order-flytype">首航直升机 B-7186</div>
-                        <div class="order-date">2017年5月1日</div>
+                        <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
+                        <span class="order-flytype">首航直升机 B-7186</span>
+                        <span class="order-date">2017年5月1日</span>
                     </div>
                     <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
                         <div class="order-from col-40">
@@ -47,18 +47,15 @@
             <div class="order-add-person">
                 <div class="order-title">请选择乘机人</div>
                 <div class="order-person">
+                    <a href="#" class="button ng-scope" ng-class="{'button-active': (vm.userSay.mode == 'template' ? true:false)}">欧阳振华</a>
                     <a href="#" class="button">欧阳振华</a>
                     <a href="#" class="button">欧阳振华</a>
-                    <a href="#" class="button">欧阳振华</a>
-                    <a href="#" class="button">欧阳振华</a>
-                    <a href="#" class="button">欧阳振华</a>
-                    <a href="#" class="button">欧阳振华</a>
-                    <a href="#" class="button btn-add"><i class="f7-icons">add_round</i> &nbsp;新增</a>
+                    <a href="#" ng-click="addNewPersonAction()" class="button btn-add open-about"><i class="f7-icons">add_round</i> &nbsp;新增</a>
                 </div>
                 <div class="order-person-list">
                     <ul>
                         <li class="order-person-content">
-                            <i class="f7-icons order-icon-delete">delete_round</i>
+                            <i class="f7-icons order-icon-delete" ng-click="deletePersonAction(1)">delete_round</i>
                             <div class="order-person-inner">
                                 <div class="order-person-name">郭乐</div>
                                 <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
@@ -79,7 +76,7 @@
                     <span>联系手机&nbsp;&nbsp;&nbsp;</span>
                     <span>18513149993</span>
                     <span class="order-edit">
-                        <a><i class="f7-icons">compose</i>修改</a>
+                        <a ng-click="editContactPhoneAction()"><i class="f7-icons">compose</i>修改</a>
                     </span>
                 </div>
             </div>
@@ -87,9 +84,9 @@
             <div class="order-person-price">
                 <div class="order-price-title">请选择价格</div>
                 <div class="order-price-type row">
-                    <div class="col-50">
+                    <div class="col-50" ng-click="isSelecteded = !isSelecteded">
                         <div class="order-price-icon">
-                            <i class="f7-icons">{{'circle'}}</i>
+                            <i class="f7-icons">{{ isSelecteded ? 'circle' : 'check_round'}}</i>
                         </div>
                         <div class="order-persons">
                             <div>整机</div>
@@ -142,6 +139,55 @@
                 <p>
                     <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red">确认</a>
                 </p>
+            </div>
+        </div>
+        <!-- About Popup -->
+        <div class="popup popup-about">
+            <div class="content-block">
+                <p class="text-center">添加乘客信息</p>
+                <div class="list-block">
+                    <form role="form" name="form" class="form-normal">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input type="text" ng-model="newPerson.name" placeholder="请输入姓名" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">身份证</div>
+                                        <div class="item-input">
+                                            <input type="text" ng-model="newPerson.id" placeholder="请输入身份证号码" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">电话号码</div>
+                                        <div class="item-input">
+                                            <input type="text" ng-model="newPerson.phone" placeholder="请输入电话号码(可选)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div>
+                            <a href="#" class="button button-big active" ng-disabled='form.$invalid'>保 存</a>
+                            <a href="#" class="color-gray button" style="margin-top: -15px;" ng-click="closeModalAction()">取 消</a>
+                        </div>
+
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>

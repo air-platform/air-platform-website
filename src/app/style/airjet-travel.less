@@ -1,17 +1,17 @@
 .travel-model-info{
     font-family:PingFangSC-Regular;
-    background-color: @base-light;
-    color: @base-sky;
+    background-color: @bg-grey;
+    color: @font-blue;
     height: .62rem;
     width: 100%;
     font-size: .28rem;
-    border-bottom: .02rem solid @base-sky-dark;
+    border-bottom: .02rem solid @border-blue;
     em{
         font-style: normal;
         display: inline-block;
         width: .32rem;
         height: .32rem;
-        border: .02rem solid @base-sky;
+        border: .02rem solid @border-blue;
         text-align: center;
         line-height: .32rem;
         border-radius: 50%;
@@ -35,13 +35,13 @@
     .travel-model-content{
         padding: .32rem .16rem .36rem .2rem;
         border-radius: 0 0 .16rem .16rem;
-        background-color: @base-white;
+        background-color: @bg-white;
         span{
             font-size: .24rem;
-            color: @base-gray;
+            color: @font-grey;
             em{
                 font-size: .28rem;
-                color: @base-black-light;
+                color: @font-black;
             }
         }
         .travel-model-check {
@@ -49,7 +49,7 @@
             display: -webkit-flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: .02rem dotted @base-gray-light;
+            border-bottom: .02rem dotted @border-gray;
             padding-bottom: .24rem;
             // margin-bottom: .32rem;
 
@@ -69,10 +69,10 @@
                 height: .36rem;
             }
             .pull-left, .pull-right{
-                color: @base-sky;
+                color: @font-blue;
                 font-size: .28rem;
                 em{
-                    color: @base-gray;
+                    color: @font-grey;
                 }
                 &.pull-left:first-child{
                     margin-right: .4rem;
@@ -101,10 +101,10 @@
     font-family:PingFangSC-Regular;
     margin: .36rem .34rem .4rem .36rem;
     height: .88rem;
-    background-color: @base-red-light;
+    background-color: @bg-red;
     border-radius: .16rem;
     font-size: .36rem;
-    color: @base-white;
+    color: @font-white;
     &.travel-plane-submit{
         margin-top: 1.12rem;
     }
@@ -114,10 +114,10 @@
     width: 100%;
     height: 1.44rem;
     padding: .24rem .28rem .22rem .32rem;
-    background-color: @base-white;
+    background-color: @bg-white;
     display: flex;
     justify-content: space-between;
-    border-bottom: .02rem solid @base-gray-light;
+    border-bottom: .02rem solid @border-gray;
     .tpc-left{
         display: flex;
         align-items: center;
@@ -127,7 +127,7 @@
         img{
             width: .96rem;
             height: .96rem;
-            border: .02rem solid @base-gray-light;
+            border: .02rem solid @border-gray;
             margin-right: .22rem;
         }
         .plane-num{
@@ -136,13 +136,13 @@
         }
         .plane-num{
             font-size: .36rem;
-            color: @base-black-light;
+            color: @font-black;
             strong{
                 font-weight: normal;
             }
             span{
                 font-size: .28rem;
-                color: @base-gray;
+                color: @font-grey;
             }
         }
     }
@@ -153,20 +153,20 @@
     .plane-money{
         text-align: right;
         font-size: .36rem;
-        color: @base-red-light;
+        color: @font-red;
         em{
             font-style: normal;
         }
         a{
             font-size: .24rem;
-            color: @base-sky; 
+            color: @font-blue; 
         }
     }
 }
 
 .plane-detail{
     min-height: 100vh;
-    background-color: @base-white;
+    background-color: @bg-white;
     .plane-detail-content{
         padding: 0;
         
@@ -174,20 +174,20 @@
             padding-top: 0;
             .plane-title{
                 height: .8rem;
-                color: @base-red-light;
+                color: @font-red;
                 font-size: .36rem;
                 line-height: .8rem;
                 text-align: left;
                 padding: 0 .32rem 0 .5rem;
                 border-top-left-radius: .16rem;
                 border-top-right-radius: .16rem;
-                border-bottom: .02rem dotted @base-light;
+                border-bottom: .02rem dotted @border-gray;
                 position: relative;
                 margin-bottom: .28rem;
                 &:before{
                     position: absolute;
                     content: "";
-                    background-color: @base-red-light;
+                    background-color: @bg-red;
                     width: .06rem;
                     height: .32rem;
                     border-radius: .03rem;
@@ -240,7 +240,7 @@
         }
         &.radius-bottom{
             border-radius: 0 0 .16rem .16rem!important;
-            border-bottom: 1px dashed @base-light!important;
+            border-bottom: 1px dashed @border-gray!important;
         }
         &.radius-top-bottom{
             border-radius: .16rem!important;
@@ -248,11 +248,13 @@
         &.aoi-guest-info, &.aoi-model-info{
             height: auto;
             padding: .22rem .42rem .24rem;
+            display: flex;
+            flex-direction: column;
             div{
-                height: .36rem;
+                height: auto!important;
                 margin: 0;
                 font-size: .28rem;
-                color: @base-gray-dark;
+                color: @font-gray;
                 line-height: .36rem;
                 margin-bottom: .18rem;
                 &:last-child{
@@ -263,14 +265,9 @@
         &.aoi-guest-info{
             border: none!important;
         }
-        &:nth-child(4){
-            padding: 0 0 0 0.42rem!important;
-            height: 0.88rem!important;
-            line-height: 0.88rem!important;
-        }
         &.aoi-guest{
             font-size: .32rem;
-            color: @base-black-light;
+            color: @font-black;
         }
         &.aoi-city-container{
             display: flex;
@@ -281,7 +278,7 @@
             .aoi-city{
                 text-align: left;
                 font-size: .24rem;
-                color: @base-gray;
+                color: @font-grey;
                 display: flex;
                 flex-direction: column;
                 line-height: .34rem;
@@ -289,7 +286,7 @@
                 strong{
                     font-weight: normal;
                     line-height: .66rem;
-                    color: @base-black-light;
+                    color: @font-black;
                     font-size: .48rem;
                 }
                 
@@ -298,7 +295,7 @@
     }
 
     .travel-detail-submit{
-        background-color: @base-red-light!important;
+        background-color: @bg-red!important;
         border-radius: .16rem;
     }
     
