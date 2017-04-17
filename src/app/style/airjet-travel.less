@@ -20,63 +20,51 @@
 }
 
 .travel-model-card{
-    padding: .34rem .28rem;
+    margin: .34rem .28rem;
     overflow: hidden;
     font-family:PingFangSC-Regular;
+    border: .06rem solid transparent;
+    border-radius: .16rem;
+    position: relative;
+
+    &.active{
+        border-color: @border-blue;
+    }
     em{
         font-style: normal;
     }
     .travel-model-img{
         img{
-            border-radius: .16rem .16rem 0 0;
             height: 3rem;
         }
     }
+    .item-media{
+        position: absolute;
+        top: .18rem;
+        right: .18rem;
+    }
     .travel-model-content{
-        padding: .32rem .16rem .36rem .2rem;
-        border-radius: 0 0 .16rem .16rem;
-        background-color: @bg-white;
-        span{
-            font-size: .24rem;
-            color: @font-grey;
-            em{
-                font-size: .28rem;
-                color: @font-black;
-            }
-        }
+        padding: .8rem .2rem .1rem;
+        position: absolute;
+        color: @font-white;
+        height: 1.66rem;
+        width: 100%;
+        bottom: 0;
+        font-size: .28rem;
+        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 26%, rgba(0,0,0,0.81) 100%);
         .travel-model-check {
-            display: flex;
-            display: -webkit-flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: .02rem dotted @border-gray;
-            padding-bottom: .24rem;
-            // margin-bottom: .32rem;
-
-            span{
-                font-size: .32rem;
-                em{
-                    font-size: .36rem;
-                }
-            }
+            font-size: .32rem;
         }
 
         .travel-model-prompt{
-            margin-top: .18rem;
-            height: .28rem;
+            // margin-top: .18rem;
+            height: auto;
             img{
-                width: .36rem;
-                height: .36rem;
+                width: .26rem;
+                height: .26rem;
             }
-            .pull-left, .pull-right{
-                color: @font-blue;
-                font-size: .28rem;
-                em{
-                    color: @font-grey;
-                }
-                &.pull-left:first-child{
-                    margin-right: .4rem;
-                }
+            .pull-left:first-child{
+                margin-right: .4rem;
             }
         }
 

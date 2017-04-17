@@ -191,82 +191,97 @@
     display: -webkit-flex;
     flex-direction: column;
     font-size: .36rem;
-    background-color: @bg-white;
-    border-top: .02rem solid @border-gray;
     .tpb-recommend{
-        .tpbr-top, .tpbr-middle, .tpbr-bottom{
+        background-color: @bg-white;
+        border-top: .02rem solid @border-gray;
+        margin-bottom: .3rem;
+        .tpbr-top, .tpbr-middle{
             border-bottom: .02rem solid @border-gray;
         }
         .tpbr-top{
             font-size: .32rem;
-            color: @font-blue;
+            color: @font-grey;
             height: .8rem;
             line-height: .8rem;
             position: relative;
             padding-left: .3rem;
+            padding-right: .34rem;
             img{
                 width: .32rem;
                 height: .32rem;
                 vertical-align: text-top;
             }
+            a{
+                color: @font-blue;
+                font-size: .24rem;
+                i{
+                    margin-left: .12rem;
+                }
+            }
         }
         .tpbr-middle{
-            padding-left: .44rem;
-            padding-right: .28rem;
+            padding-left: .3rem;
             .tpbrm-item{
-                display: flex;
-                display: -webkit-flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 1.44rem;
+                height: 1.2rem;
                 border-bottom: .02rem solid @border-gray;
-                &:last-child{
-                    border-bottom: none;
+                padding-right: .28rem;
+                .tpbrmi-top{
+                    padding-top: .18rem;
+                    display: flex;
+                    display: -webkit-flex;
+                    flex-direction: column;
+                    font-size: .24rem;
+                    color: @font-grey;
                 }
-                .tpbrmi-left{
+                .tpbrmi-bottom{
                     display: flex;
                     display: -webkit-flex;
                     justify-content: space-between;
                     align-items: center;
-                    font-size: .4rem;
-                }
-                .tpbrmi-right{
-                    font-size: .28rem;
-                    color: @font-grey;
-                    em{
-                        font-style: normal;
-                        font-size: .36rem;
-                        color: @font-red;
+                    padding-top: .1rem;
+                    height: .34rem;
+                    line-height: .34rem;
+                    .tpbrmi-left{
+                        display: flex;
+                        display: -webkit-flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: .28rem;
+                        .arrow-right{
+                            width: .65rem;
+                        }
+                    }
+                    .tpbrmi-right{
+                        font-size: .28rem;
+                        color: @font-grey;
+                        em{
+                            font-style: normal;
+                            color: @font-red;
+                        }
                     }
                 }
             }
         }
-        .tpbr-bottom{
-            display: flex;
-        }
     }
-    .tpb-submit, .tpb-model{
-        width: 3.2rem;
-        height: .88rem;
-        width: 50%;
-        color:@font-white;
-        background-color: @bg-red;
-        border: .02rem solid @border-red;
+    .tpbr-bottom{
         display: flex;
-        display: -webkit-flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        
-        &.tpb-submit:after{
-            content: " ";
-            width: .01rem;
-            height: .55rem;
-            background-color: @bg-white;
-            position: absolute;
-            top: .165rem;
-            right: 0;
-            margin-right: -.005rem;
+        justify-content: space-between;
+        padding: .22rem .36rem .6rem .38rem;
+        .tpb-submit, .tpb-model{
+            width: 3.2rem;
+            height: .88rem;
+            font-size: .36rem;
+            color:@font-white;
+            background-color: @bg-red;
+            border-radius: .06rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .tpb-model{
+            background-color: @bg-purple;
         }
     }
 }
