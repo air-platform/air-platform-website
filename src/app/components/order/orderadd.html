@@ -55,7 +55,7 @@
                 <div class="order-person-list">
                     <ul>
                         <li class="order-person-content">
-                            <i class="f7-icons order-icon-delete">delete_round</i>
+                            <i class="f7-icons order-icon-delete" ng-click="deletePersonAction(1)">delete_round</i>
                             <div class="order-person-inner">
                                 <div class="order-person-name">郭乐</div>
                                 <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
@@ -76,7 +76,7 @@
                     <span>联系手机&nbsp;&nbsp;&nbsp;</span>
                     <span>18513149993</span>
                     <span class="order-edit">
-                        <a><i class="f7-icons">compose</i>修改</a>
+                        <a ng-click="editContactPhoneAction()"><i class="f7-icons">compose</i>修改</a>
                     </span>
                 </div>
             </div>
