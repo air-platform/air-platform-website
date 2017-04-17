@@ -17,8 +17,6 @@
     		email: ''
     	}
 
-    	console.log($rootScope.userInfo);
-
     	$scope.notSet = i18n.t('profile.not-set');
     	$scope.gotoAddGuest = function () {
             mainView.router.loadPage('app/components/profile/add-guest.html');
