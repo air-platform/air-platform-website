@@ -11,7 +11,7 @@
 
 
         $scope.newPerson = {name:'',id:'',phone:''};
-        $scope.isSelecteded = true;
+        $scope.isSelecteded = false;
 
         $scope.addNewPersonAction = addNewPersonAction;
         $scope.closeModalAction = closeModalAction;
