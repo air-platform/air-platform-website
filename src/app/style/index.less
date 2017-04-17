@@ -109,7 +109,8 @@ img {
   background-color: @base-white;
   border-bottom: 0.01rem solid @base-light;
   .news-img {
-    width: .94rem;
+    width: 1.17rem;
+    line-height: 46px;
   }
   .news-box {
     padding: .28rem .2rem;
@@ -148,11 +149,56 @@ img {
   border-bottom: 0.01rem solid @base-light;
   background-color: @base-white;
   margin: .19rem 0 0 0;
+  background: url('./../../assets/images/index/pic.svg') 0 0 no-repeat;
+  background-size: cover;
 }
 
 .pro-content {
   border-bottom: 0.01rem solid @base-light;
   background-color: @base-white;
+  .pro-list {
+    padding: .26rem .2rem .2rem 0;
+    margin-left: .2rem;
+    border-bottom: 1px solid @base-light;
+    .list-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: .2rem;
+      h6 {
+        margin: 0;
+        color: @base-sky;
+        font-weight: normal;
+      }
+      p {
+        margin: 0;
+        color: @base-gray;
+      }
+    }
+    .list-bottom {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .06rem;
+      > div {
+        font-size: .28rem;
+        color: @base-black-light;
+        .arrow-right {
+            display: inline-block;
+            width: .28rem;
+            margin: .12rem;
+            vertical-align: middle;
+            &:after {
+              width: .15rem;
+              top: -0.06rem;
+            }
+          }
+      }
+      p {
+        margin: 0;
+        color: @base-red-light;
+        font-size: .28rem;
+      }
+    }
+  }
   .pro-left {
     width: 42.8%;
     padding: .5rem 0 .59rem .39rem;
@@ -190,16 +236,6 @@ img {
         color: @base-black-light;
         .dfim-center {
           display: inline-block;
-          .arrow-right {
-            display: inline-block;
-            width: .28rem;
-            margin: .12rem;
-            vertical-align: middle;
-            &:after {
-              width: .15rem;
-              top: -0.06rem;
-            }
-          }
         }
       }
       .price {

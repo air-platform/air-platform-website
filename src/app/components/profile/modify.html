@@ -1,13 +1,13 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-        <div class="center sliding">修改XXX</div>
+        <div id="modifyInfo" class="center sliding">修改信息</div>
         <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
     </div>
 </div>
 
 <div class="pages navbar-through">
-    <div data-page="profile-info" class="page" ng-controller="modifyController">
+    <div data-page="profile-modify" class="page" ng-controller="modifyController">
         <div class="page-content profile">
             <div class="list-block">
                 <ul>
@@ -15,8 +15,8 @@
                         <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-input modify">
-                                    <input type="text" ng-model="info" placeholder="请输入...">
-                                    <button class="save-btn" type="button" ng-click="saveBtn(info)">保存</button>
+                                    <input type="text" ng-model="userInfo[info]" placeholder="请输入...">
+                                    <button class="save-btn" type="button" ng-click="saveBtn()">保存</button>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,50 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">课程详情</div>
+    <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
+  </div>
+</div>
+<div class="pages navbar-through">
+  <div data-page="course-detail" class="page" ng-controller="courseDetailController">
+    <div class="page-content course-detail">
+      <div class="detail-img">
+        <img src="./../../../assets/images/banner0.jpg">
+      </div>
+      <div>
+        <div class="detail-top">
+          <div class="course-list-img pull-left">
+            <img ng-src="{{courseObj.imgSrc}}">
+          </div>
+          <div class="course-list-main pull-right">
+            <div class="list-title">
+              <h5 ng-bind="courseObj.titleText"></h5>
+              <span>¥ <i ng-bind="courseObj.price"></i></span>
+            </div>
+            <div class="list-desc">
+              <div ng-bind="courseObj.school"></div>
+              <p>报名截止：<span ng-bind="courseObj.deadline"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons-row air-tabs">
+        <a href="#tab1" class="tab-link active"><span>课程简介</span></a>
+        <a href="#tab2" class="tab-link"><span>报名条件</span></a>
+        <a href="#tab3" class="tab-link"><span>教学资源</span></a>
+      </div>
+      <div class="tabs">
+        <div id="tab1" class="tab active">
+            <div class="detail-main">
+                <p>固定翼私照课程目标是训练飞行员能够在多发飞机上，作为多人制机组的副驾驶在大型飞机公共航空运输中熟练操作。</p>
+                <div class="course-pre">学习证书：由CAAC中国民用航空局颁发的中国民航航空器驾驶员执照，终生有效。</div>
+                <div class="course-pre">学习周期：3—6个月／私照</div>
+                <div>上课地点：八达岭机场（北京）</div>
+            </div>
+        </div>
+        <div id="tab2" class="tab">222</div>
+        <div id="tab3" class="tab">333</div>
+      </div>
+    </div>
+  </div>
+</div>
