@@ -69,7 +69,7 @@
           }
 
           function addMarker(target) {
-            var copter = new BMap.Icon("assets/images/copter.png", new BMap.Size(43,24), {
+            var copter = new BMap.Icon("assets/images/helicopter.png", new BMap.Size(34,27), {
               offset: new BMap.Size(10, 25)
             });
             var data = target.cornerPoints

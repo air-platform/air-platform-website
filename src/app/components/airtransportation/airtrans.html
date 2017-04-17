@@ -10,10 +10,10 @@
             <a href="#" data-panel="right" class="link icon-only open-panel"><i class="icon icon-user"></i></a>
         </div>
         <div class="subnavbar airtaxi-subnavbar">
-            <div class="buttons-row air-tabs airtaxi-nav">
-                <a href="#air-taxi-cross-channel" class="tab-link airtaxi-project active"><span>飞跃海峡</span></a>
-                <a href="#mongolia-routes" class="tab-link mongolia-project"><span>内蒙航线</span></a>
-            </div>
+          <div class="buttons-row air-tabs airtaxi-nav">
+            <a href="#air-taxi-cross-channel" class="tab-link active"><span>飞跃海峡</span></a>
+            <a href="#mongolia-routes" class="tab-link"><span>内蒙航线</span></a>
+          </div>
         </div>
     </div>
 </div>
@@ -21,122 +21,124 @@
     <!-- Page, data-page contains page name-->
     <div data-page="airtrans" class="page with-subnavbar" ng-controller="transController as trans">
         <!-- Scrollable page content-->
-        <div class="page-content keep-navbar-on-scroll">
-            <div class="tabs">
-                <div id="air-taxi-cross-channel" class="tab active">
-                    <div class="content-block">
-                        <!-- map area -->
-                        <div class="map">
-                            <div class="airtrans-map-view" id="airtrans-map-view"></div>
-                        </div>
-                        <!-- schedule cards list -->
-                        <div class="schedule-card-list">
-                          <ul>
-                              <li ng-repeat="schedule in schedules">
-                                  <!-- schedule card starts -->
-                                  <div class="schedule-card">
-                                      <a href="#" class="pull-right add-schedule-button" ng-click="trans.addSchedule()">
-                                          <i class="f7-icons">add_round_fill</i>
-                                      </a>
-                                      <div class="schedule-title">行程{{ schedules.length - $index }}
-                                          <a class="fa fa-trash button-schedule-delete" ng-click="trans.deleteSchedule(schedule)"></a>
-                                      </div>
-                                      <div class="list-block schedule-content">
-                                        <!-- departure and arrival -->
-                                        <div class="row">
-                                            <div class="field-block">
-                                                <a href="#" class="item-link smart-select" data-open-in="picker">
-                                                    <select name="departure" ng-model="schedule.departure" ng-disabled="$index != 0">
-                                                                                                       <option value="徐闻" selected>徐闻</option>
-                                                                                                       <option value="珠海">珠海</option>
-                                                                                                     </select>
-                                                    <div class="item-content">
-                                                        <div class="item-inner">
-                                                            <div class="item-title">起飞城市</div>
-                                                            <div class="item-after smart-select-value">徐闻</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="arrow-bidirection">
-                                                <img src="assets/images/plane-direction.svg" alt="">
-                                            </div>
-                                            <div class="field-block">
-                                                <a href="#" class="item-link smart-select" data-open-in="picker">
-                                                    <select name="arrival" ng-model="schedule.arrival" ng-disabled="$index != 0">
-                                                                                                       <option value="海口港" selected>海口港</option>
-                                                                                                       <option value="海口美兰机场">海口美兰机场</option>
-                                                                                                       <option value="海航大厦">海航大厦</option>
-                                                                                                     </select>
-                                                    <div class="item-content">
-                                                        <div class="item-inner">
-                                                            <div class="item-title">到达城市</div>
-                                                            <div class="item-after smart-select-value">海口港</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                          <!-- date and time -->
-                                        <div class="row">
-                                              <div class="field-block col-50">
-                                                <div class="item-content">
-                                                    <div class="item-inner">
-                                                        <div class="item-title airtaxi-select-label">选择日期</div>
-                                                        <div class="item-after">
-                                                            <input type="text" placeholder="Select date" readonly id="airtrans-schedule-datepicker-{{ $index+1 }}" class="airtrans-schedule-dateinput" ng-model="schedule.date" ng-disabled="$index != 0">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                              </div>
-                                              <div class="field-block col-50">
-                                                <a href="#" class="item-link smart-select" data-open-in="picker">
-                                                    <select name="time" ng-model="schedule.time" ng-disabled="$index != 0">
-                                                                                                <option value="08:00 - 09:00" selected>08:00 - 09:00</option>
-                                                                                                <option value="14:30 - 15:30">14:30 - 15:30</option>
-                                                                                              </select>
-                                                    <div class="item-content">
-                                                        <div class="item-inner">
-                                                            <div class="item-title">选择时间段</div>
-                                                            <div class="item-after smart-select-value">08:00 - 09:00</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                              </div>
-                                          </div>
-                                          <!-- flight select -->
-                                        <div class="row">
-                                            <div class="field-block">
+        <div class="page-content hide-navbar-on-scroll">
+          <div class="tabs">
+            <div id="air-taxi-cross-channel" class="tab active">
+              <div class="content-block">
+                  <!-- map area -->
+                  <div class="map">
+                      <div class="airtrans-map-view" id="airtrans-map-view"></div>
+                  </div>
+                  <!-- schedule cards list -->
+                  <div class="schedule-card-list">
+                      <ul>
+                          <li ng-repeat="schedule in schedules">
+                              <!-- schedule card starts -->
+                              <div class="schedule-card">
+                                  <a href="#" class="pull-right add-schedule-button" ng-click="trans.addSchedule()">
+                                      <i class="f7-icons">add_round_fill</i>
+                                  </a>
+                                  <div class="schedule-title">行程{{ schedules.length - $index }}
+                                      <a class="fa fa-trash-o button-schedule-delete" ng-click="trans.deleteSchedule(schedule)"></a>
+                                  </div>
+                                  <div class="list-block schedule-content">
+                                      <!-- departure and arrival -->
+                                      <div class="row">
+                                          <div class="field-block departure-city col-40">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker">
+                                                <select name="departure" ng-model="schedule.departure" ng-disabled="$index != 0">
+                                                  <option value="徐闻" selected>徐闻</option>
+                                                  <option value="珠海">珠海</option>
+                                                </select>
                                               <div class="item-content">
                                                 <div class="item-inner">
-                                                    <div class="item-title select-flight-label">选择航班</div>
-                                                    <div class="item-after select-flight">
-                                                      <a href="app/components/airtransportation/planes.html" ng-disabled="$index != 0">
-                                                        {{ schedule.flight }}
-                                                        <i class="fa fa-angle-right select-arrow-right" aria-hidden="true"></i>
-                                                      </a>
-                                                    </div>
+                                                  <div class="item-title">起飞城市</div>
+                                                  <div class="item-after smart-select-value">徐闻</div>
+                                                </div>
+                                              </div>
+                                              </a>
+                                          </div>
+                                          <div class="arrow-bidirection">
+                                              <img src="assets/images/plane-direction.svg" alt="">
+                                          </div>
+                                          <div class="field-block arrival-city col-50">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker">
+                                                <select name="arrival" ng-model="schedule.arrival" ng-disabled="$index != 0">
+                                                  <option value="海口港" selected>海口港</option>
+                                                  <option value="海口美兰机场">海口美兰机场</option>
+                                                  <option value="海航大厦">海航大厦</option>
+                                                </select>
+                                                  <div class="item-content">
+                                                      <div class="item-inner">
+                                                          <div class="item-title">到达城市</div>
+                                                          <div class="item-after smart-select-value">海口港</div>
+                                                      </div>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                      <!-- date and time -->
+                                      <div class="row">
+                                          <div class="field-block col-50">
+                                            <a href="#" class="item-link">
+                                              <div class="item-content">
+                                                  <div class="item-inner">
+                                                      <div class="item-title airtaxi-select-label">选择日期</div>
+                                                      <div class="item-after">
+                                                          <input type="text" placeholder="Select date" readonly id="airtrans-schedule-datepicker-{{ $index+1 }}" class="airtrans-schedule-dateinput" ng-model="schedule.date" ng-disabled="$index != 0">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </a>
+                                          </div>
+                                          <div class="field-block col-50">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker">
+                                                  <select name="time" ng-model="schedule.time" ng-disabled="$index != 0">
+                                                                                                          <option value="08:00 - 09:00" selected>08:00 - 09:00</option>
+                                                                                                          <option value="14:30 - 15:30">14:30 - 15:30</option>
+                                                                                                        </select>
+                                                  <div class="item-content">
+                                                      <div class="item-inner">
+                                                          <div class="item-title">选择时间段</div>
+                                                          <div class="item-after smart-select-value">08:00 - 09:00</div>
+                                                      </div>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                      <!-- flight select -->
+                                      <div class="row">
+                                        <div class="field-block">
+                                          <a href="app/components/airtransportation/planes.html" class="item-link" ng-disabled="$index != 0">
+                                            <div class="item-content">
+                                              <div class="item-inner">
+                                                <div class="item-title select-flight-label">选择航班</div>
+                                                <div class="item-after select-flight">
+                                                  {{ schedule.flight }}
                                                 </div>
                                               </div>
                                             </div>
+                                          </a>
                                         </div>
                                       </div>
                                   </div>
-                                  <!-- schedule card ends -->
-                              </li>
-                          </ul>
-                        <div class="footer-button">
-                            <a href="#" class="button button-red start-flight" ng-click="trans.submitSchedules()">立即起飞</a>
-                        </div>
-                    </div>
-                </div>
-                <div id="mongolia-routes" class="tab">
-                    <div class="content-block">
-                        <p>Air Taxi Tour Page</p>
-                        <p>To be developed...</p>
-                    </div>
+                              </div>
+                              <!-- schedule card ends -->
+                          </li>
+                      </ul>
+                      <div class="footer-button">
+                          <a href="#" class="button button-red start-flight" ng-click="trans.submitSchedules()">立即起飞</a>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div id="mongolia-routes" class="tab">
+                <div class="content-block">
+                    <p>Air Taxi Tour Page</p>
+                    <p>To be developed...</p>
                 </div>
             </div>
+          </div>
         </div>
     </div>
 </div>
