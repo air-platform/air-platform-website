@@ -6,13 +6,13 @@
     </div>
 </div>
 <div class="pages navbar-through">
-    <div data-page="setting" class="page">
+    <div data-page="setting" class="page" ng-controller="settingController">
         <div class="page-content">
             <!--<div class="content-block-title">个人信息</div>-->
             <div class="list-block">
                 <ul class="personal-information">
                     <li>
-                        <a href="app/compontents/setting/password.html" class="item-link">
+                        <a href ng-click="gotoDetail()" class="item-link">
                             <div class="item-content">
                                 <!--<div class="item-media"><i class="f7-icons">person</i></div>-->
                                 <div class="item-inner">

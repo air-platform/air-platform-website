@@ -7,7 +7,7 @@
     angular.module('airsc').controller('passwordController', passwordController);
 
     /** @ngInject */
-    function settingController($scope, $rootScope, iotUtil, i18n) {
+    function passwordController($scope, $rootScope, iotUtil, i18n) {
 
 
     }

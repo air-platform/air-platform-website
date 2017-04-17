@@ -10,6 +10,11 @@
     function settingController($scope, $rootScope, iotUtil, i18n) {
 
 
+        $scope.gotoDetail = gotoDetail;
+
+        function gotoDetail() {
+            mainView.router.loadPage('app/components/setting/password.html');
+        }
     }
 
 })();
