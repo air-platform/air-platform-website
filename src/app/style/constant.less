@@ -19,14 +19,14 @@
 .arrow-right, .arrow-left{
     width: 1.12rem;
     height: .03rem;
-    background-color: @base-gray;
+    background-color: @bg-gray;
     position: relative;
     margin: .3rem .28rem;
     &:after{
         content:"";
         width: .2rem;
         height: .03rem;
-        background-color: @base-gray;
+        background-color: @bg-gray;
         position: absolute;
         right: 0;
         top: -.08rem;
@@ -46,9 +46,9 @@
   line-height: .52rem;
   border-radius: .3rem;
   border:.02rem solid @border-blue;
-  color: @base-sky-light;
+  color: @font-sky;
   &.tag-purple{
-    color: @base-purple;
+    color: @font-purple;
     border-color: @border-purple;
   }
 }
@@ -76,26 +76,28 @@
   line-height: @height;
 }
 
+/* font-color */
+@font-black: #333;
+@font-gray: #666;
+@font-grey: #999;
+@font-white: #fff;
+@font-purple: #a182da;
+@font-blue: #4e9fe4;
+@font-sky: #97c5f8;
+@font-red: #e54747;
 
-@base-black: #000;
-@base-black-light: #333;
-@base-gray-dark: #666;
-@base-gray: #999;
-@base-gray-light:  #cdcdcd;
-@base-light: #f4f4f4;
-@base-white: #fff;
-@base-purple: #a182da;
-@base-sky:   #4e9fe4;
-@base-blue:  #50bbff;
-@base-blue-dark: #94a4f5;
-@base-sky-light:#97c5f8;
-@base-sky-dark:#acd4f6;
-@base-red:   #e54747;
-@base-red-light: #ee4a4a;
+/* background-color */
+@bg-gray: #999;
+@bg-grey: #f4f4f4;
+@bg-white: #fff;
+@bg-purple: #4D6EA7;
+@bg-blue: #4e9fe4;
+@bg-sky: #97c5f8;
+@bg-red: #e54747;
 
 /* border-color */
 @border-gray: #cdcdcd;
-@border-red: #ee4a4a;
+@border-red: #e54747;
 @border-blue: #4e9fe4;
 @border-white: #fff;
 @border-pink: #ffd2d2;

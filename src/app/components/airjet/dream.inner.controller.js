@@ -99,14 +99,11 @@
         }];
 
         $scope.cityList = [{
-            name: '北京',
+            name: '北京首都',
             value: 'beijing'
         },{
-            name: '上海',
-            value: 'shanghai'
-        },{
-            name: '杭州',
-            value: 'hangzhou'
+            name: '三亚凤凰',
+            value: 'sanya'
         }];
         
 
