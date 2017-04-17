@@ -18,7 +18,7 @@
       content: "";
       display: block;
       width: 6px;
-      border-top: 2px solid @base-gray;
+      border-top: 2px solid @border-gray;
       transform: rotate(45deg);
       float: right;
       position: relative;
@@ -29,14 +29,14 @@
   .right {
     position: relative;
     top: 0.1rem;
-    border-bottom: 2px solid @base-gray;
+    border-bottom: 2px solid @border-gray;
     &::after {
       content: "";
       position: relative;
       top: 0.1rem;
       display: block;
       width: 6px;
-      border-bottom: 2px solid @base-gray;
+      border-bottom: 2px solid @border-gray;
       transform: rotate(45deg);
     }
   }
@@ -108,7 +108,7 @@
 
   .schedule-title {
     padding: 10px 22px;
-    border-bottom: 1px solid #c8c7cc;
+    border-bottom: 1px solid @border-gray;
     font-size: 0.28rem;
   }
 
@@ -240,7 +240,7 @@
   .start-flight {
     height: 0.88rem;
     line-height: 0.88rem;
-    border: 1px solid @base-red-light;
+    border: 1px solid @border-red;
     background-color: @base-red-light;
     border-radius: 0.16rem;
     color: @base-white;

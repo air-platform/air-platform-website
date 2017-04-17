@@ -45,17 +45,17 @@
   height: .52rem;
   line-height: .52rem;
   border-radius: .3rem;
-  border:.02rem solid @base-sky-light;
+  border:.02rem solid @border-blue;
   color: @base-sky-light;
   &.tag-purple{
     color: @base-purple;
-    border-color: @base-purple;
+    border-color: @border-purple;
   }
 }
 
 .triangle-top(@size) {
   display: block;
-  border: @size solid #fff;
+  border: @size solid @border-white;
   border-top: none;
   border-right-color: transparent;
   border-left-color: transparent;
@@ -92,5 +92,13 @@
 @base-sky-dark:#acd4f6;
 @base-red:   #e54747;
 @base-red-light: #ee4a4a;
+
+/* border-color */
+@border-gray: #cdcdcd;
+@border-red: #ee4a4a;
+@border-blue: #4e9fe4;
+@border-white: #fff;
+@border-pink: #ffd2d2;
+@border-purple: #a182da;
 
 @base-image-path: "../../assets/images/";
