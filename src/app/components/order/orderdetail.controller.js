@@ -7,8 +7,14 @@
     angular.module('airsc').controller('orderdetailController', orderdetailController);
 
     /** @ngInject */
-    function orderdetailController($scope,NetworkService,$interval,iotUtil) {
+    function orderdetailController($scope,NetworkService,$interval,iotUtil,constdata) {
 
+
+        $scope.gotoAnnounceAction = gotoAnnounceAction;
+
+        function gotoAnnounceAction() {
+            mainView.router.loadPage(constdata.router.protocal.announce);
+        }
 
     }
 

@@ -7,32 +7,32 @@
 <div class="pages">
     <div data-page="travel-model" class="page" ng-controller="travelModelController">
         <div class="page-content">
-            <div class="travel-model-card" ng-repeat="model in modelList track by $index" ng-click="radioCheck(model)">
+            <div class="travel-model-card" ng-repeat="model in modelList track by $index" ng-click="radioCheck(model)" ng-class="{'active' : model.name === checkModel}">
                 <div class="travel-model-img">
                     <img ng-src="{{model.pic}}" alt="model">
                 </div>
+                <label class="label-checkbox checkbox-circle item-content">
+                    <input type="radio" name="my-radio" ng-checked="model.name === checkModel">
+                    <div class="item-media">
+                        <i class="icon icon-form-checkbox"></i>
+                    </div>
+                </label>
                 <div class="travel-model-content">
                     <div class="travel-model-check">
                         <span><em ng-bind="model.name"></em></span>
-                        <label class="label-checkbox checkbox-circle item-content">
-                            <input type="radio" name="my-radio" ng-checked="model.name === checkModel">
-                            <div class="item-media">
-                                <i class="icon icon-form-checkbox"></i>
-                            </div>
-                        </label>
                     </div>
-                    <div class="travel-model-prompt">
+                    <div class="travel-model-prompt clearfix">
                         <span class="pull-left">
-                            <img src="assets/images/travel/icon_people_02.svg">
-                            <em ng-bind="model.people"></em>
+                            <img src="assets/images/travel/icon_plane.svg">
+                            <em ng-bind="model.speed"></em>
                         </span>
                         <span class="pull-left">
                             <img src="assets/images/travel/icon_luggage.svg">
                             <em ng-bind="model.luggage"></em>
                         </span>
                         <span class="pull-right">
-                            <img src="assets/images/travel/icon_plane.svg">
-                            <em ng-bind="model.speed"></em>
+                            <img src="assets/images/travel/icon_people_02.svg">
+                            <em ng-bind="model.people"></em>
                         </span>
                     </div>
                 </div>

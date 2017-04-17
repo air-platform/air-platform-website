@@ -13,7 +13,6 @@
     function planesController($scope, iotUtil, NetworkService) {
         var controller = this;
         controller.planes = [];
-        controller.planeType = '';
 
         controller.planes = [
           {
@@ -44,17 +43,22 @@
             'minPassengers': 3
           }
         ];
-        $scope.$watch(
-          function() {
-            return controller.planeType;
-          },
-          function(oldValue, newValue) {
-            if(newValue != oldValue) {
+
+        controller.selectPlane = function(plane) {
+
+        };
+
+        //// wait for backend
+        // NetworkService.get("url", {}, function(res) {
+        //   controller.planes = res;
+        // }, null);
+
+        $scope.$watch('controller.planes', function(oldValue, newValue) {
+            if (newValue != oldValue) {
               // retrieve available planes according to type
 
             }
-          }
-        );
+          });
     }
 
 })();

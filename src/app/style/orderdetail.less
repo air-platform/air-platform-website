@@ -91,7 +91,7 @@
     margin: 10px 10px 0 10px;
     height: 0.88rem;
     line-height: 0.48rem;
-    font-size: 0.14rem;
+    font-size: 0.28rem;
     color: @font-gray;
     .order-number {
       float: left;
@@ -106,8 +106,8 @@
       }
     }
     .order-computer {
-      padding-top: 20px !important;
-      font-size: 0.1rem;
+      padding-top: 18px !important;
+      font-size: 0.24rem;
       color: #9b9b9b;
     }
     .order-total-price {
@@ -216,7 +216,7 @@
         height: 0.7rem;
         line-height: 0.7rem;
         padding-left: 10px;
-        font-size: 0.12rem;
+        font-size: 0.24rem;
         .order-person-name {
           color: #000;
         }
@@ -241,6 +241,9 @@
     }
     .order-announce {
       color: @font-red;
+    }
+    label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox, label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox, .form-checkbox input[type="checkbox"]:checked ~ i{
+      background-color: @font-red;
     }
   }
   //确认

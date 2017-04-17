@@ -44,6 +44,10 @@
                 set:{
                     setting:'app/components/setting/setting.html',
                     profile:'app/components/profile/profile.html'
+                },
+                protocal:{
+                    announce:'app/components/about/protocal-announce.html',
+                    safe:'app/components/about/protocal-safe.html'
                 }
             }
         });

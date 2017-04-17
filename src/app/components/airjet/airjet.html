@@ -13,11 +13,11 @@
     <div class="page-content">
         <div class="buttons-row air-tabs">
             <!-- Link to 1st tab, active -->
-            <a href="#tab1" class="tab-link active"><span>{{'airjet.travel-plan' | translate}}</span></a>
+            <a href="#tab1" ng-click="tab2 = false" class="tab-link active"><span>{{'airjet.travel-plan' | translate}}</span></a>
             <!-- Link to 2nd tab -->
-            <a href="#tab2" class="tab-link"><span>{{'airjet.dream-flying' | translate}}</span></a>
+            <a href="#tab2" class="tab-link" ng-class="{'active': tab2}"><span>{{'airjet.dream-flying' | translate}}</span></a>
             <!-- Link to 3rd tab -->
-            <a href="#tab3" class="tab-link"><span>{{'airjet.card-products' | translate}}</span></a>
+            <a href="#tab3" ng-click="tab2 = false" class="tab-link"><span>{{'airjet.card-products' | translate}}</span></a>
         </div>
         <div class="tabs">
             <!-- Tab 1, active by default -->
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="tpcbt-arrow" ng-click="reversal(item, $index)">
-                                    <img src="assets/images/travel/icon_swap.svg">
+                                    <img src="assets/images/plane-direction.svg">
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
@@ -107,7 +107,7 @@
                                     </div>
                                 </div>
                                 <div class="tpcbt-arrow" ng-click="reversal(item, $index)">
-                                    <img src="assets/images/travel/icon_swap.svg">
+                                    <img src="assets/images/plane-direction.svg">
                                 </div>
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.destination' | translate}}</em>
@@ -137,15 +137,6 @@
                                         <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="item.guestEnd">
                                     </label>
                                 </div>
-                                <!--<div class="tpcbb-back" ng-click="item.round = !item.round">
-                                    <label class="label-checkbox checkbox-circle item-content">
-                                        <input type="checkbox" name="my-checkbox" ng-model="item.round" checked="checked">
-                                        <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                        <em class="item-title">{{'airjet.round-trip' | translate}}</em>
-                                        </div>
-                                    </label>
-                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -156,27 +147,31 @@
                     
                 </div>
                 <div class="travel-plan-button">
+                    <div class="tpbr-bottom">
+                        <a ng-click="submit(travelStrokeList, true)" class="tpb-submit">{{'airjet.release' | translate}}</a>
+                        <a ng-click="submit(travelStrokeList)" class="tpb-model">{{'airjet.model-custom' | translate}}</a>
+                    </div>
                     <div class="tpb-recommend">
-                        <div class="tpbr-top">
+                        <div class="tpbr-top clearfix">
                             <img src="assets/images/travel/icon_trip_recommend.svg">
                             <span>{{'airjet.stroke-recommend' | translate}}</span>
+                            <a href="#tab2" class="tab-link pull-right" ng-click="tab2 = true">{{'airjet.look-more' | translate}}<i class="fa fa-angle-right"></i></a>
                         </div>
                         <div class="tpbr-middle">
                             <div class="tpbrm-item" ng-repeat="rec in recommendList track by $index">
-                                <div class="tpbrmi-left">
-                                    <span ng-bind="rec.departure"></span>
-                                    <div class="arrow-right"></div>
-                                    <span ng-bind="rec.destination"></span>
-                                </div>
-                                <div class="tpbrmi-right">
-                                    <em ng-bind="rec.money"></em>
-                                    <span>{{'airjet.from' | translate}}</span>
+                                <div class="tpbrmi-top" ng-bind="rec.time"></div>
+                                <div class="tpbrmi-bottom">
+                                    <div class="tpbrmi-left">
+                                        <span ng-bind="rec.departure"></span>
+                                        <div class="arrow-right"></div>
+                                        <span ng-bind="rec.destination"></span>
+                                    </div>
+                                    <div class="tpbrmi-right">
+                                        <em ng-bind="rec.money"></em>
+                                        <span>{{'airjet.from' | translate}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tpbr-bottom">
-                            <a ng-click="submit(travelStrokeList, true)" class="tpb-submit">{{'airjet.release' | translate}}</a>
-                            <a ng-click="submit(travelStrokeList)" class="tpb-model">{{'airjet.model-custom' | translate}}</a>
                         </div>
                     </div>
                 </div>

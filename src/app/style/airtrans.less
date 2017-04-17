@@ -2,44 +2,7 @@
 
 .arrow-bidirection {
   position: relative;
-    padding: 5px;
-    top: 1em;
-    left: 1.5em;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: #eee;
-
-  .left {
-    position: relative;
-    top: 0.1rem;
-    border-top: 2px solid @border-gray;
-    &::after {
-      content: "";
-      display: block;
-      width: 6px;
-      border-top: 2px solid @border-gray;
-      transform: rotate(45deg);
-      float: right;
-      position: relative;
-      top: -0.1rem;
-    }
-  }
-
-  .right {
-    position: relative;
-    top: 0.1rem;
-    border-bottom: 2px solid @border-gray;
-    &::after {
-      content: "";
-      position: relative;
-      top: 0.1rem;
-      display: block;
-      width: 6px;
-      border-bottom: 2px solid @border-gray;
-      transform: rotate(45deg);
-    }
-  }
+  top: 0.3rem;
 }
 
 #air-taxi-cross-channel {
@@ -56,12 +19,6 @@
   .airtrans-map-view {
     width: 100%;
     height: 6.56rem;
-  }
-
-  .button-schedule-delete {
-    float: right;
-    font-size: 0.32rem;
-    color: @font-red;
   }
 
   .schedule-card {
@@ -90,10 +47,13 @@
     margin: 0;
     padding: 0 0 1.2rem;
     top: 7.72rem;
-    background-color: @bg-white;
+    background-color: #f7f7f7;
+    box-shadow: 0 -5px 5px 0 rgba(166,166,166,0.50);
     z-index: 10;
 
-
+    select[disabled="disabled"] + .item-content .item-inner .item-after{
+      color: #6d6d72;
+    }
     li:first-child .schedule-card{
       margin-top: 0;
 
@@ -132,93 +92,125 @@
     }
   }
 
-  .airtaxi-select-label {
-    width: 100% !important;
-    font-size: 0.24rem;
-  }
+    .schedule-card {
+      margin-top: 1em;
+      background-color: @base-white;
+      border-radius: 1px;
 
-  .schedule-content {
-    margin: 0 0 0 25px;
-  }
-
-  .schedule-card .row {
-    width: 100%;
-
-    .item-content {
-      padding-left: 0;
-    }
-
-    &::after {
-      content: '';
-      position: relative;
-      height: 1px;
-      width: 100%;
-      background-color: #c8c7cc;
-      display: block;
-      transform-origin: 50% 0%;
-    }
-
-    &:last-child {
-      line-height: 47px;
-      border: none;
-
-      .item-content {
-        width: 100%;
-      }
-
-      .item-inner {
-        display: inline-flex;
-      }
-
-      .item-title {
-        width: 50%;
-      }
-      &::after {
+      .add-schedule-button {
         display: none;
       }
-    }
-  }
 
-  .schedule-card .list-block .item-inner {
-    display: block;
-    border: none;
-
-    &::after {
-      display: none;
-    }
-
-    .item-input {
-      margin-left: 0;
-      &.select-flight {
-        margin-left: 15px; // caused by f7 col-xx calculation
+      &::before, &::after {
+        content: '';
+        position: relative;
+        height: 1px;
+        width: 100%;
+        background-color: #c8c7cc;
+        display: block;
+        transform-origin: 50% 0%;
       }
     }
-
-    .inline-input {
-      display: inline-flex;
-    }
-
-    .inline-input select, .inline-input input {
+    .schedule-title {
+      padding: 0.2rem 0.5rem;
+      border-bottom: 1px solid #c8c7cc;
+      color: @base-black;
       font-size: 0.28rem;
     }
+    .schedule-content {
+      margin: 0 0 0 25px;
+    }
+    .schedule-card .row {
+      width: 100%;
 
-    .select-flight-label {
-      font-size: 0.24rem;
+      .item-inner {
+        display: inline-block;
+        padding: 10px 15px 7px 0;
+        min-height: 1.1rem;
+
+        .item-title {
+          font-size: 0.24rem;
+        }
+        .item-after {
+          max-width: 100%;
+          padding-left: 0;
+          margin-left: 0;
+          color: @base-black;
+          font-size: 0.28rem;
+          input {
+            height: auto;
+            font-size: 0.28rem;
+            line-height: 1.4;
+          }
+        }
+        &::after {
+          display: none;
+        }
+      }
+
+      .item-content {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        .field-block {
+          width: 100%;
+        }
+        .item-title, .item-after {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .item-title {
+          top: 50%;
+          width: 50%;
+          transform: translateY(-100%);
+        }
+        .item-after {
+          position: relative;
+          top: 50%;
+          line-height: 1.2;
+          transform: translateY(-100%);
+          margin-left: 10px;
+          a {
+            color: @base-black;
+          }
+        }
+        &::after {
+          display: none;
+        }
+      }
+      &::after {
+        content: '';
+        position: relative;
+        height: 1px;
+        width: 100%;
+        background-color: #c8c7cc;
+        display: block;
+        transform-origin: 50% 0%;
+      }
     }
   }
 
-  .select-arrow-down {
-    position: absolute;
-    font-size: 0.32rem;
-    right: 0.3rem;
-    top: 0.54rem;
+  .add-schedule-button {
+    position: relative;
+    right: 0.4rem;
+    top: -0.4rem;
+
+    i {
+      position: relative;
+      color: #4D6EA7;
+      line-height: 85%;
+      background-color: @base-white;
+      font-size: 0.8rem;
+      border-radius: 1rem;
+    }
   }
 
-  .select-arrow-right {
+  .button-schedule-delete {
     position: relative;
-    line-height: 0.94rem;
-    font-size: 0.32rem !important;
     float: right;
+    font-size: 0.4rem;
+    color: #9b9b9b;
   }
 
   .flight-input a {
@@ -233,6 +225,8 @@
     position: fixed;
     padding: 5px 22px;
     width: 100%;
+    background-color: @base-white;
+    z-index: 20;
     background-color: @bg-white;
     bottom: 0;
   }
@@ -322,6 +316,13 @@
       i {
         margin-right: 0.14rem;
       }
+    }
+    .departure-info img {
+      width: 0.25rem;
+    }
+    .plane-capacity img {
+      width: 0.2rem;
+      vertical-align: baseline;
     }
     .plane-capacity {
       margin-left: 0.35rem;
