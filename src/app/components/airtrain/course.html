@@ -18,18 +18,18 @@
           <div class="course-list">
             <ul>
               <li ng-repeat="item in courseList track by $index">
-                <a href="#" class="clearfix">
+                <a href="app/components/airtrain/course-detail.html?id={{item.id}}" class="clearfix">
                   <div class="course-list-img pull-left">
                     <img ng-src="{{item.imgSrc}}">
                   </div>
-                  <div class="course-list-main pull-left">
-                    <div class="list-title clearfix">
-                      <h5 class="pull-left" ng-bind="item.titleText"></h5>
+                  <div class="course-list-main pull-right">
+                    <div class="list-title">
+                      <h5 ng-bind="item.titleText"></h5>
                       <span class="pull-right">¥ <i ng-bind="item.price"></i></span>
                     </div>
-                    <div class="list-desc clearfix">
-                      <div class="pull-left" ng-bind="item.school"></div>
-                      <p class="pull-right">报名截止：<span ng-bind="item.deadline"></span></p>
+                    <div class="list-desc">
+                      <div ng-bind="item.school"></div>
+                      <p>报名截止：<span ng-bind="item.deadline"></span></p>
                     </div>
                   </div>
                 </a>
@@ -41,18 +41,18 @@
           <div class="course-list">
             <ul>
               <li ng-repeat="item in courseList track by $index">
-                <a href="#" class="clearfix">
+                <a href="app/components/airtrain/course-detail.html?id={{item.id}}" class="clearfix">
                   <div class="course-list-img pull-left">
                     <img ng-src="{{item.imgSrc}}">
                   </div>
-                  <div class="course-list-main pull-left">
-                    <div class="list-title clearfix">
-                      <h5 class="pull-left" ng-bind="item.school"></h5>
-                      <span class="pull-right">¥ <i ng-bind="item.price"></i></span>
+                  <div class="course-list-main pull-right">
+                    <div class="list-title">
+                      <h5 ng-bind="item.titleText"></h5>
+                      <span>¥ <i ng-bind="item.price"></i></span>
                     </div>
-                    <div class="list-desc clearfix">
-                      <div class="pull-left" ng-bind="item.titleText"></div>
-                      <p class="pull-right">报名截止：<span ng-bind="item.deadline"></span></p>
+                    <div class="list-desc">
+                      <div ng-bind="item.school"></div>
+                      <p>报名截止：<span ng-bind="item.deadline"></span></p>
                     </div>
                   </div>
                 </a>

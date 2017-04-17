@@ -1,7 +1,7 @@
 .travel-model-info{
     font-family:PingFangSC-Regular;
-    background-color: @base-light;
-    color: @base-sky;
+    background-color: @bg-grey;
+    color: @font-blue;
     height: .62rem;
     width: 100%;
     font-size: .28rem;
@@ -11,7 +11,7 @@
         display: inline-block;
         width: .32rem;
         height: .32rem;
-        border: .02rem solid @base-sky;
+        border: .02rem solid @border-blue;
         text-align: center;
         line-height: .32rem;
         border-radius: 50%;
@@ -20,63 +20,51 @@
 }
 
 .travel-model-card{
-    padding: .34rem .28rem;
+    margin: .34rem .28rem;
     overflow: hidden;
     font-family:PingFangSC-Regular;
+    border: .06rem solid transparent;
+    border-radius: .16rem;
+    position: relative;
+
+    &.active{
+        border-color: @border-blue;
+    }
     em{
         font-style: normal;
     }
     .travel-model-img{
         img{
-            border-radius: .16rem .16rem 0 0;
             height: 3rem;
         }
     }
+    .item-media{
+        position: absolute;
+        top: .18rem;
+        right: .18rem;
+    }
     .travel-model-content{
-        padding: .32rem .16rem .36rem .2rem;
-        border-radius: 0 0 .16rem .16rem;
-        background-color: @base-white;
-        span{
-            font-size: .24rem;
-            color: @base-gray;
-            em{
-                font-size: .28rem;
-                color: @base-black-light;
-            }
-        }
+        padding: .8rem .2rem .1rem;
+        position: absolute;
+        color: @font-white;
+        height: 1.66rem;
+        width: 100%;
+        bottom: 0;
+        font-size: .28rem;
+        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 26%, rgba(0,0,0,0.81) 100%);
         .travel-model-check {
-            display: flex;
-            display: -webkit-flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: .02rem dotted @border-gray;
-            padding-bottom: .24rem;
-            // margin-bottom: .32rem;
-
-            span{
-                font-size: .32rem;
-                em{
-                    font-size: .36rem;
-                }
-            }
+            font-size: .32rem;
         }
 
         .travel-model-prompt{
-            margin-top: .18rem;
-            height: .28rem;
+            // margin-top: .18rem;
+            height: auto;
             img{
-                width: .36rem;
-                height: .36rem;
+                width: .26rem;
+                height: .26rem;
             }
-            .pull-left, .pull-right{
-                color: @base-sky;
-                font-size: .28rem;
-                em{
-                    color: @base-gray;
-                }
-                &.pull-left:first-child{
-                    margin-right: .4rem;
-                }
+            .pull-left:first-child{
+                margin-right: .4rem;
             }
         }
 
@@ -101,10 +89,10 @@
     font-family:PingFangSC-Regular;
     margin: .36rem .34rem .4rem .36rem;
     height: .88rem;
-    background-color: @base-red-light;
+    background-color: @bg-red;
     border-radius: .16rem;
     font-size: .36rem;
-    color: @base-white;
+    color: @font-white;
     &.travel-plane-submit{
         margin-top: 1.12rem;
     }
@@ -114,7 +102,7 @@
     width: 100%;
     height: 1.44rem;
     padding: .24rem .28rem .22rem .32rem;
-    background-color: @base-white;
+    background-color: @bg-white;
     display: flex;
     justify-content: space-between;
     border-bottom: .02rem solid @border-gray;
@@ -136,13 +124,13 @@
         }
         .plane-num{
             font-size: .36rem;
-            color: @base-black-light;
+            color: @font-black;
             strong{
                 font-weight: normal;
             }
             span{
                 font-size: .28rem;
-                color: @base-gray;
+                color: @font-grey;
             }
         }
     }
@@ -153,20 +141,20 @@
     .plane-money{
         text-align: right;
         font-size: .36rem;
-        color: @base-red-light;
+        color: @font-red;
         em{
             font-style: normal;
         }
         a{
             font-size: .24rem;
-            color: @base-sky; 
+            color: @font-blue; 
         }
     }
 }
 
 .plane-detail{
     min-height: 100vh;
-    background-color: @base-white;
+    background-color: @bg-white;
     .plane-detail-content{
         padding: 0;
         
@@ -174,7 +162,7 @@
             padding-top: 0;
             .plane-title{
                 height: .8rem;
-                color: @base-red-light;
+                color: @font-red;
                 font-size: .36rem;
                 line-height: .8rem;
                 text-align: left;
@@ -187,7 +175,7 @@
                 &:before{
                     position: absolute;
                     content: "";
-                    background-color: @base-red-light;
+                    background-color: @bg-red;
                     width: .06rem;
                     height: .32rem;
                     border-radius: .03rem;
@@ -254,7 +242,7 @@
                 height: auto!important;
                 margin: 0;
                 font-size: .28rem;
-                color: @base-gray-dark;
+                color: @font-gray;
                 line-height: .36rem;
                 margin-bottom: .18rem;
                 &:last-child{
@@ -267,7 +255,7 @@
         }
         &.aoi-guest{
             font-size: .32rem;
-            color: @base-black-light;
+            color: @font-black;
         }
         &.aoi-city-container{
             display: flex;
@@ -278,7 +266,7 @@
             .aoi-city{
                 text-align: left;
                 font-size: .24rem;
-                color: @base-gray;
+                color: @font-grey;
                 display: flex;
                 flex-direction: column;
                 line-height: .34rem;
@@ -286,7 +274,7 @@
                 strong{
                     font-weight: normal;
                     line-height: .66rem;
-                    color: @base-black-light;
+                    color: @font-black;
                     font-size: .48rem;
                 }
                 
@@ -295,7 +283,7 @@
     }
 
     .travel-detail-submit{
-        background-color: @base-red-light!important;
+        background-color: @bg-red!important;
         border-radius: .16rem;
     }
     

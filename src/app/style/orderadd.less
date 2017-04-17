@@ -16,6 +16,10 @@
     border-color: @border-gray;
     color: #9b9b9b;
   }
+  .button-active {
+    border-color: @border-red;
+    color: @font-red;
+  }
   .btn-add {
     border-color: @border-blue;
     color: #4E9FE4;
@@ -31,7 +35,7 @@
   .order-person-content {
     margin: 10px;
     .order-icon-delete {
-      color: @base-red-light;
+      color: @font-red;
       font-size: 17px;
       float: left;
       margin: 10px 10px 10px 0;
@@ -48,7 +52,7 @@
       }
     }
     .order-icon-right {
-      color: @base-gray;
+      color: @font-grey;
       font-size: 22px;
       float: right;
       margin: 10px;
@@ -86,7 +90,6 @@
       display: inline-block;
       margin: 10px 0;
       i {
-        color: @base-red-light;
         font-size: 0.34rem;
       }
     }
@@ -99,7 +102,7 @@
     .order-price {
       display: inline-block;
       font-size: 0.5rem;
-      color: @base-red;
+      color: @font-red;
       float: right;
       line-height: 0.9rem;
     }
@@ -117,12 +120,12 @@
       color: #9b9b9b;
       height: 0.8rem;
       .price {
-        color: @base-blue;
+        color: @font-blue;
       }
       i {
         padding: 0 10px;
         font-size: 0.34rem;
-        color: @base-red-light;
+        color: @font-gray;
       }
     }
   }
@@ -141,8 +144,11 @@
     font-size: 0.13rem;
   }
   .order-announce {
-    color: @base-red;
+    color: @font-red;
     font-size: 0.13rem;
+  }
+  label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox, label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox, .form-checkbox input[type="checkbox"]:checked ~ i{
+    background-color: @font-red;
   }
 }
 .order-detail-confirm {

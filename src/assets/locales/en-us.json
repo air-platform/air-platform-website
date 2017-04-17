@@ -7,7 +7,7 @@
     "airtour":"Air trans",
     "airtrain":"Air training",
     "airclub":"airclub",
-    "indexTitle":"一起打飞的 去看全世界"
+    "indexTitle":"一起打“飞的” 去看全世界"
   },
   "menu":{
 
@@ -99,12 +99,14 @@
     "options": "备选机型",
     "none": "无",
     "person": "人",
+    "look-more": "查看更多",
     "submit": "提交"
   },
   "airtrain":{
     "school-brief":"航校简介",
     "base-brief":"基地介绍",
-    "plane-train":"飞机培训"
+    "plane-train":"飞机培训",
+    "base-clsss":"航校课程"
   },
   "airtaxi": {
     "plane-select": "Choose a Plane",

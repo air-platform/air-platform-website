@@ -213,29 +213,30 @@
             least: { number: '3' }
         }];
 
+
         $scope.recommendList = [{
-            departure: '香港',
+            departure: '阿普雷顿（及其周边）',
+            time: '2017-05-16',
             destination: '三亚',
             money: '¥60万'
         }, {
-            departure: '三亚',
+            departure: '阿普雷顿（及其周边）',
+            time: '2017-05-16',
             destination: '北京',
             money: '¥60万'
         }, {
             departure: '香港',
             destination: '北京',
+            time: '2017-05-01',
             money: '¥60万'
         }];
 
         $scope.cityList = [{
-            name: '北京',
+            name: '北京首都',
             value: 'beijing'
-        }, {
-            name: '上海',
-            value: 'shanghai'
-        }, {
-            name: '杭州',
-            value: 'hangzhou'
+        },{
+            name: '三亚凤凰',
+            value: 'sanya'
         }];
 
         function reversal(item, order) {

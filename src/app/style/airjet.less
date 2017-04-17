@@ -2,9 +2,9 @@
     padding: 0 1rem;
     height: .88rem;
     font-size: .32rem;
-    background-color: @base-light;
+    background-color: @bg-grey;
     a{
-        color: @base-gray-dark;
+        color: @font-gray;
         display: block;
         height: 100%;
         line-height: .88rem;
@@ -17,10 +17,10 @@
         margin-top: -.05rem;
     }
     .active{
-        color: @base-red-light;
+        color: @font-red;
     }
     .active:after{
-        background-color: @base-red-light;
+        background-color: @bg-red;
     }
 }
 
@@ -33,13 +33,13 @@
     }
 
     .travel-plan-card{
-        background-color: @base-white;
+        background-color: @bg-white;
         border-radius: .16rem;
         margin-bottom: .24rem;
 
         .tpc-top{
             height: .8rem;
-            color: @base-sky;
+            color: @font-blue;
             font-size: .32rem;
             line-height: .8rem;
             text-align: left;
@@ -50,19 +50,23 @@
             &:before {
                 position: absolute;
                 content: "";
-                background-color: @base-sky;
+                background-color: @bg-blue;
                 width: .06rem;
                 height: .3rem;
                 border-radius: .03rem;
                 left: .28rem;
                 top: .24rem;
             }
-            img{
+            img, i{
+                color: @font-grey;
                 width: .32rem;
                 height: .32rem;
                 position: absolute;
                 right: .32rem;
                 bottom: .24rem;
+            }
+            &.tpct-round{
+                border-top: .02rem dashed @border-gray;
             }
         }
         .tpc-bottom{
@@ -77,10 +81,10 @@
                 .tpcbt-city{
                     text-align: left;
                     font-size: .24rem;
-                    color: @base-gray;
+                    color: @font-grey;
                     .tpcbt-select{
                         .item-after{
-                            color: @base-black-light;
+                            color: @font-black;
                             font-size: .4rem;
                         }
                     }
@@ -96,28 +100,28 @@
                 &:after, &:before{
                     content: "";
                     display: block;
-                    width: .22rem;
-                    height: .22rem;
-                    background-color: @base-light;
+                    width: .44rem;
+                    height: .44rem;
+                    background-color: @bg-grey;
                     position: absolute;
                     border-radius: 50%;
-                    right: -.11rem;
-                    bottom:-.11rem;
+                    right: -.22rem;
+                    bottom:-.22rem;
                     z-index: 99;
                 }
                 &:before{
                     right: auto;
-                    left: -.11rem;
+                    left: -.22rem;
                 }
             }
             .tpcb-bottom{
                 padding: .4rem .72rem;
                 font-size: .28rem;
-                color:@base-gray;
+                color:@font-grey;
 
                 input{
                     height: 0.6rem;
-                    background-color: @base-light;
+                    background-color: @bg-grey;
                     border: none;
                     outline: none;
                     padding: 0.08rem 0.16rem;
@@ -134,13 +138,13 @@
                     content: "\f107";
                     position: absolute;
                     font-size: .4rem;
-                    color: @base-gray;
+                    color: @font-grey;
                     right: .1rem;
                     line-height: 0.6rem;
                 }
                 .tpcbb-back{
                     font-size: .32rem;
-                    color: @base-gray-dark;
+                    color: @font-gray;
                     
                     i.icon{
                         vertical-align: middle;
@@ -153,6 +157,13 @@
             &:not(:first-child){
                 border-top: .02rem solid @border-gray;
             }
+            &.tpcb-round{
+                .tpcb-top{
+                    &:after, &:before{
+                        top: -1.02rem;
+                    }
+                }
+            }
         }
     }
 
@@ -162,7 +173,7 @@
         justify-content: center;
         align-items: center;
         height: 1.1rem;
-        background-color: @base-white;
+        background-color: @bg-white;
         border: .02rem dashed @border-gray;
         border-radius: .1rem;
         font-size: .32rem;
@@ -180,82 +191,97 @@
     display: -webkit-flex;
     flex-direction: column;
     font-size: .36rem;
-    background-color: @base-white;
-    border-top: .02rem solid @border-gray;
     .tpb-recommend{
-        .tpbr-top, .tpbr-middle, .tpbr-bottom{
+        background-color: @bg-white;
+        border-top: .02rem solid @border-gray;
+        margin-bottom: .3rem;
+        .tpbr-top, .tpbr-middle{
             border-bottom: .02rem solid @border-gray;
         }
         .tpbr-top{
             font-size: .32rem;
-            color: @base-sky;
+            color: @font-grey;
             height: .8rem;
             line-height: .8rem;
             position: relative;
             padding-left: .3rem;
+            padding-right: .34rem;
             img{
                 width: .32rem;
                 height: .32rem;
                 vertical-align: text-top;
             }
+            a{
+                color: @font-blue;
+                font-size: .24rem;
+                i{
+                    margin-left: .12rem;
+                }
+            }
         }
         .tpbr-middle{
-            padding-left: .44rem;
-            padding-right: .28rem;
+            padding-left: .3rem;
             .tpbrm-item{
-                display: flex;
-                display: -webkit-flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 1.44rem;
+                height: 1.2rem;
                 border-bottom: .02rem solid @border-gray;
-                &:last-child{
-                    border-bottom: none;
+                padding-right: .28rem;
+                .tpbrmi-top{
+                    padding-top: .18rem;
+                    display: flex;
+                    display: -webkit-flex;
+                    flex-direction: column;
+                    font-size: .24rem;
+                    color: @font-grey;
                 }
-                .tpbrmi-left{
+                .tpbrmi-bottom{
                     display: flex;
                     display: -webkit-flex;
                     justify-content: space-between;
                     align-items: center;
-                    font-size: .4rem;
-                }
-                .tpbrmi-right{
-                    font-size: .28rem;
-                    color: @base-gray;
-                    em{
-                        font-style: normal;
-                        font-size: .36rem;
-                        color: @base-red-light;
+                    padding-top: .1rem;
+                    height: .34rem;
+                    line-height: .34rem;
+                    .tpbrmi-left{
+                        display: flex;
+                        display: -webkit-flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: .28rem;
+                        .arrow-right{
+                            width: .65rem;
+                        }
+                    }
+                    .tpbrmi-right{
+                        font-size: .28rem;
+                        color: @font-grey;
+                        em{
+                            font-style: normal;
+                            color: @font-red;
+                        }
                     }
                 }
             }
         }
-        .tpbr-bottom{
-            display: flex;
-        }
     }
-    .tpb-submit, .tpb-model{
-        width: 3.2rem;
-        height: .88rem;
-        width: 50%;
-        color:@base-white;
-        background-color: @base-red-light;
-        border: .02rem solid @border-red;
+    .tpbr-bottom{
         display: flex;
-        display: -webkit-flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        
-        &.tpb-submit:after{
-            content: " ";
-            width: .01rem;
-            height: .55rem;
-            background-color: @base-white;
-            position: absolute;
-            top: .165rem;
-            right: 0;
-            margin-right: -.005rem;
+        justify-content: space-between;
+        padding: .22rem .36rem .6rem .38rem;
+        .tpb-submit, .tpb-model{
+            width: 3.2rem;
+            height: .88rem;
+            font-size: .36rem;
+            color:@font-white;
+            background-color: @bg-red;
+            border-radius: .06rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .tpb-model{
+            background-color: @bg-purple;
         }
     }
 }
@@ -268,7 +294,7 @@
     box-sizing: border-box;
     font-family:PingFangSC-Regular;
     .dream-flying-item{
-        background-color:@base-white;
+        background-color:@bg-white;
         height: 100%;
         border:.02rem solid @border-gray;
         box-sizing: border-box;
@@ -278,7 +304,7 @@
         display: -webkit-flex;
         position: relative;
         overflow: hidden;
-        color: @base-gray;
+        color: @font-grey;
         .dfi-left{
             width: calc(~"100% - 2.26rem");
             height: 100%;
@@ -344,7 +370,7 @@
             background: rgba(0, 0, 0, 0.2);
             border-top-right-radius: .16rem;
             border-bottom-right-radius: .16rem;
-            color: @base-white;
+            color: @font-white;
             text-align: left;
             .guest-count{
                 margin-bottom: .12rem;
@@ -374,10 +400,10 @@
         }
         &:first-child{
             .dfim-address{
-                color: @base-gray-dark;
+                color: @font-gray;
             }
             .dfi-right{
-                background: @base-blue-dark
+                background-color: @bg-blue;
             }
         }
         &:after{
@@ -385,7 +411,7 @@
             display: block;
             width: .5rem;
             height: .5rem;
-            background-color: @base-light;
+            background-color: @bg-grey;
             position: absolute;
             border-radius: 50%;
             right: -.25rem;

@@ -7,12 +7,21 @@
     function modifyController($scope, $rootScope, iotUtil, NetworkService, UrlService, URL) {
     	var queryData = myApp.views[0].activePage.query;
 
-    	if(queryData.param) {
-    		$scope.info = queryData.param;
-    		console.log($scope.info);
-    	}
-        $scope.saveBtn = function(info) {
-            alert(info);
+        var infoObj = {
+            nickname: '昵称',
+            name: '姓名',
+            tel: '手机号',
+            email: '邮箱'
+        }
+
+        $.each(queryData, function(index, item){
+            var headText = '修改' + infoObj[index];
+            $scope.info = index;
+            $('#modifyInfo').text(headText);
+        });
+
+        $scope.saveBtn = function() {
+            alert($rootScope.userInfo[$scope.info]);
             mainView.router.back();
         }
     }

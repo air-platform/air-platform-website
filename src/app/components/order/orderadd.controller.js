@@ -7,19 +7,50 @@
     angular.module('airsc').controller('orderaddController', orderaddController);
 
     /** @ngInject */
-    function orderaddController($scope,NetworkService,$interval,iotUtil) {
+    function orderaddController($scope,NetworkService,$interval,iotUtil,constdata) {
 
 
+        $scope.agreement = true;
         $scope.newPerson = {name:'',id:'',phone:''};
+        $scope.isSelecteded = false;
 
         $scope.addNewPersonAction = addNewPersonAction;
         $scope.closeModalAction = closeModalAction;
+        $scope.deletePersonAction = deletePersonAction;
+        $scope.editContactPhoneAction = editContactPhoneAction;
+        $scope.gotoAnnounceAction = gotoAnnounceAction;
+        $scope.agreeValueChanged = agreeValueChanged;
 
         function addNewPersonAction() {
             myApp.popup('.popup-about');
         }
+        function deletePersonAction(index) {
+            myApp.confirm('确认移除吗？', function () {
+
+            },function () {
+
+            });
+        }
         function closeModalAction() {
             myApp.closeModal('.popup-about');
+        }
+        function editContactPhoneAction() {
+            myApp.prompt('','请输入联系人手机号', function (value) {
+
+                if (value.length !== 11){
+                    myApp.alert('手机号格式不正确！');
+                }else{
+                    console.log(value);
+                }
+
+            });
+        }
+        
+        function gotoAnnounceAction() {
+            mainView.router.loadPage(constdata.router.protocal.safe);
+        }
+        function agreeValueChanged() {
+            console.log($scope.agreement);
         }
 
     }

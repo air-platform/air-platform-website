@@ -112,7 +112,7 @@
       <div class="pages navbar-through">
         <div data-page="index" class="page index-page">
           <div class="page-content">
-            <a href="#" data-popup=".popup-search" class="open-popup">
+            <a ng-if="false" href="#" data-popup=".popup-search" class="open-popup">
               <div class="index-search"><i class="fa fa-search"></i>
                 <input type="text" placeholder="大家都在搜五一飞跃海峡航线"></input>
               </div>
@@ -126,19 +126,19 @@
             <div class="content-block">
               <div class="row index-nav">
                 <div class="col-25 bg-white text-center">
-                  <a href="app/components/airjet/airjet.html"><img src="assets/images/nav-icon.png">
+                  <a href="app/components/airjet/airjet.html"><img src="assets/images/index/AirJet.svg">
                     <br>{{'home.airjet' | translate}}</a>
                 </div>
                 <div class="col-25 bg-white text-center">
-                  <a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/nav-icon.png">
+                  <a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/index/AirTaxi.svg">
                     <br>{{'home.airtaxi' | translate}}</a>
                 </div>
                 <div class="col-25 bg-white text-center">
-                  <a href="app/components/airtransportation/airtrans.html"><img src="assets/images/nav-icon.png">
+                  <a href="app/components/airtransportation/airtrans.html"><img src="assets/images/index/AirTransportation.svg">
                     <br>{{'home.airtour' | translate}}</a>
                 </div>
                 <div class="col-25 bg-white text-center">
-                  <a href="app/components/airtrain/airtrain.html"><img src="assets/images/nav-icon.png">
+                  <a href="app/components/airtrain/airtrain.html"><img src="assets/images/index/AirTranning.svg">
                     <br>{{'home.airtrain' | translate}}</a>
                 </div>
               </div>
@@ -147,7 +147,7 @@
               <div class="content-line"></div>
               <div class="news-box clearfix">
                 <div class="news-img pull-left">
-                  <img src="assets/images/nav-icon.png">
+                  <img src="assets/images/index/AIRbb.svg">
                 </div>
                 <div class="news-text-box pull-right">
                   <ul class="news-text" auto-text>
@@ -160,25 +160,34 @@
             </div>
             <h2 class="bottom-title" ng-bind="'home.indexTitle' | translate"></h2>
             <div class="pro-content clearfix">
-              <div class="pro-left pull-left">
-                <a href="#">
-                  <h5>鸟巢空中游览</h5>
-                  <div class="price">¥ 1588 /人</div>
-                  <span>原价 ¥ 2000 /人</span>
-                </a>
-              </div>
-              <div class="pro-right pull-right">
-                <div class="pro-top clearfix">
-                  <div class="pro-adr">徐闻
-                    <div class="dfim-center">
-                      <div class="arrow-right"></div>
-                    </div>海口美兰机场
-                  </div>
-                  <div class="price">¥ <b>966</b> /人 起</div>
+              <div class="pro-list">
+                <div class="list-top">
+                  <h6>[特价航线]</h6>
+                  <p>2017年5月1日</p>
                 </div>
-                <div class="pro-bottom">
-                  <h5>固定翼飞行员一期招募</h5>
-                  <span>报名立享8.8折优惠</span>
+                <div class="list-bottom">
+                  <div>徐闻湛江机场<i class="arrow-right"></i>海口美兰机场</div>
+                  <p>¥ 900 /人</p>
+                </div>
+              </div>
+              <div class="pro-list">
+                <div class="list-top">
+                  <h6>[五一观光]</h6>
+                  <p>2017年5月1日</p>
+                </div>
+                <div class="list-bottom">
+                  <div>鸟巢水立方空中游览</div>
+                  <p>¥ 1588 /人</p>
+                </div>
+              </div>
+              <div class="pro-list">
+                <div class="list-top">
+                  <h6>[飞行员招聘]</h6>
+                  <p>2017年5月1日</p>
+                </div>
+                <div class="list-bottom">
+                  <div>海南航空 固定翼私照一期学院招募</div>
+                  <p>¥ 20W 起</p>
                 </div>
               </div>
             </div>
