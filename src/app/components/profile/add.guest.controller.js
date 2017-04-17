@@ -21,7 +21,7 @@
     		var questList = $scope.questList;
     		$.each($scope.questList, function(index, quest) {
     			if(quest.userName == '' || quest.card == '') {
-    				myApp.alert(i18n.t('profile.check-input'), '添加旅客');
+    				myApp.alert(i18n.t('profile.check-input'), i18n.t('profile.addGuest'));
     			} else {
     				console.log($scope.questList);
     			}

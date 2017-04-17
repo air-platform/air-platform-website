@@ -17,6 +17,20 @@
     		email: ''
     	}
 
+        $scope.watch = watch;
+
+        var watch = $rootScope.$watch('userInfo.sex', function(newValue, oldValue) {
+            if(newValue != oldValue) {
+                alert('我变了');
+            }
+        });
+
+        $scope.$watch('$rootScope.sex', function(newValue, oldValue) {
+            if(newValue != oldValue) {
+                alert('111');
+            }
+        });
+
     	$scope.notSet = i18n.t('profile.not-set');
     	$scope.gotoAddGuest = function () {
             mainView.router.loadPage('app/components/profile/add-guest.html');

@@ -14,7 +14,7 @@
             <a href="#" class="item-link">
               <div class="item-content profile-header">
                 <div class="item-inner">
-                  <div class="item-title label">头像</div>
+                  <div class="item-title label">{{'profile.headImg' | translate}}</div>
                   <div class="item-input">
                     <img src="./../../../assets/images/nav-icon.png">
                   </div>
@@ -26,7 +26,7 @@
             <a href="app/components/profile/modify.html?nickname={{userInfo.nickname}}" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">昵称</div>
+                  <div class="item-title label">{{'profile.nickname' | translate}}</div>
                   <div class="item-input" ng-bind="userInfo.nickname"></div>
                 </div>
               </div>
@@ -36,7 +36,7 @@
             <a href="app/components/profile/modify.html?name={{userInfo.name}}" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">姓名</div>
+                  <div class="item-title label">{{'profile.username' | translate}}</div>
                   <div class="item-input" ng-if="userInfo.name != ''" ng-bind="userInfo.name"></div>
                   <div class="item-input not-set" ng-if="userInfo.name == ''" ng-bind="notSet"></div>
                 </div>
@@ -44,11 +44,15 @@
             </a>
           </li>
           <li>
-            <a href="#" class="item-link">
+            <a href="#" data-open-in="picker" class="item-link smart-select">
+              <select name="sex" ng-model="userInfo.sex">
+                <option>男</option>
+                <option>女</option>
+              </select>
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">性别</div>
-                  <div class="item-input" ng-if="userInfo.sex != ''" ng-bind="userInfo.sex"></div>
+                  <div class="item-title label">{{'profile.sex' | translate}}</div>
+                  <div class="item-after" ng-if="userInfo.sex != ''" ng-bind="userInfo.sex"></div>
                   <div class="item-input not-set" ng-if="userInfo.sex == ''" ng-bind="notSet"></div>
                 </div>
               </div>
@@ -58,7 +62,7 @@
             <a href="app/components/profile/modify.html?tel={{userInfo.tel}}" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">手机</div>
+                  <div class="item-title label">{{'profile.tel' | translate}}</div>
                   <div class="item-input" ng-bind="userInfo.tel"></div>
                 </div>
               </div>
@@ -68,7 +72,7 @@
             <a href="app/components/profile/modify.html?email={{userInfo.email}}" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">邮箱</div>
+                  <div class="item-title label">{{'profile.email' | translate}}</div>
                   <div class="item-input" ng-if="userInfo.email != ''" ng-bind="userInfo.email"></div>
                   <div class="item-input not-set" ng-if="userInfo.email == ''" ng-bind="notSet"></div>
                 </div>
@@ -81,11 +85,11 @@
             <a href="app/components/profile/guest-info.html" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">旅客信息</div>
+                  <div class="item-title label">{{'profile.guestInfo' | translate}}</div>
                   <div class="item-input">
                     <div class="add-icon" ng-click="gotoAddGuest()">
                       <i class="fa fa-plus-circle"></i>
-                      <span>新增旅客</span>
+                      <span>{{'profile.addGuest' | translate}}</span>
                     </div>
                   </div>
                 </div>

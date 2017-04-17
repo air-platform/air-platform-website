@@ -21,7 +21,17 @@
     "setting":"设置",
     "out":"退出",
     "check-input": "用户名、身份证号不能为空",
-    "not-set": "未设置"
+    "not-set": "未设置",
+    "headImg": "头像",
+    "nickname": "昵称",
+    "username": "姓名",
+    "sex": "性别",
+    "tel": "手机",
+    "telNum": "手机号",
+    "email": "邮箱",
+    "guestInfo": "旅客信息",
+    "addGuest": "新增旅客",
+    "modify": "修改"
   },
   "order":{
     "center":"订单中心",
