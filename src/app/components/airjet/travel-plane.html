@@ -15,24 +15,23 @@
             </div>
             <div class="travel-plane-card" ng-repeat="plane in planeList track by $index" ng-click="plane.selected = !plane.selected">
                 <div class="tpc-left">
-                    <div class="label-checkbox checkbox-square item-content">
-                        <input type="checkbox" ng-hide="true" ng-checked="plane.selected === true">
+                    <label class="label-checkbox checkbox-circle item-content">
+                        <input type="checkbox" ng-checked="plane.selected === true">
                         <div class="item-media">
                             <i class="icon icon-form-checkbox"></i>
                         </div>
-                    </div>
+                    </label>
                     <img ng-src="{{plane.logo}}" alt="plane">
                     <div class="plane-num">
                         <strong ng-bind="plane.name"></strong>
-                        <span>{{'airjet.aircraft-number' | translate}}{{plane.type}}</span>
+                        <a href="app/components/airjet/travel-plane-detail.html?name={{plane.name}}">{{'airjet.click-detail' | translate}}</a>
                     </div>
                 </div>
                 <div class="plane-money">
                     <em ng-bind="plane.money"></em>
-                    <a href="app/components/airjet/travel-plane-detail.html?name={{plane.name}}">{{'airjet.click-detail' | translate}}</a>
                 </div>
             </div>
-            <div class="travel-plane-submit block-center" ng-click="jumpInfo(planeList)">{{'airjet.doom' | translate}}</div>
+            <div class="travel-plane-submit block-center" ng-click="jumpInfo(planeList)">{{'airjet.next' | translate}}</div>
         </div>
     </div>
 </div>

@@ -1,43 +1,17 @@
 .checkbox-circle.label-checkbox {
     i.icon-form-checkbox{
         width: .38rem;
-        height: .38rem
+        height: .38rem;
+        height: .38rem;
+        border: none;
+        background: url(../assets/images/travel/btn_choice.svg) no-repeat;
+        background-size: 100%;
     }
     input[type="checkbox"]:checked + .item-media, input[type="radio"]:checked + .item-media{
         i.icon-form-checkbox{
-            background-color: #44BFFF;
+            background: url(../assets/images/travel/btn_choice_select.svg) no-repeat;
+            background-size: 100%;
             border: none;
-        }
-    }
-}
-
-.checkbox-square.label-checkbox {
-    i.icon-form-checkbox{
-          width: .38rem;
-          height: .38rem;
-          line-height: .38rem;
-          border-radius: .04rem;
-          border: .02rem solid @border-gray;
-          background:rgba(205,205,205,0.20);
-          font: normal normal normal 14px/1 FontAwesome;
-      }
-    input[type="checkbox"]:checked + .item-media, input[type="radio"]:checked + .item-media{
-        i.icon-form-checkbox{
-            border: .02rem solid @border-blue;
-            background:rgba(80,188,255,0.15);
-            border-radius: .04rem;
-            line-height: .38rem;
-            
-            &:after{
-                content:'\f00c';
-                background: none;
-                display: flex;
-                display: -webkit-flex;
-                justify-content: center;
-                align-items: center;
-                color:@font-blue;
-                font-size: .18rem;
-            }
         }
     }
 }
