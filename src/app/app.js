@@ -35,7 +35,9 @@ Framework7.prototype.plugins.angular = function(app, params) {
         pushState: true,
         sortable: false,
         swipeout: false,
-        angular: true
+        angular: true,
+        modalButtonOk:'确定',
+        modalButtonCancel:'取消'
         // // Hide and show indicator during ajax requests
         // onAjaxStart: function (xhr) {
         //     myApp.showIndicator();

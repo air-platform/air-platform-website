@@ -10,13 +10,17 @@
     function orderaddController($scope,NetworkService,$interval,iotUtil) {
 
 
-        $scope.addNewPersonAction = addNewPersonAction;
-        
-        
-        function addNewPersonAction() {
-            console.log('add');
-        }
+        $scope.newPerson = {name:'',id:'',phone:''};
 
+        $scope.addNewPersonAction = addNewPersonAction;
+        $scope.closeModalAction = closeModalAction;
+
+        function addNewPersonAction() {
+            myApp.popup('.popup-about');
+        }
+        function closeModalAction() {
+            myApp.closeModal('.popup-about');
+        }
 
     }
 

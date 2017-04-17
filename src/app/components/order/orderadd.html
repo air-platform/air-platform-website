@@ -50,7 +50,7 @@
                     <a href="#" class="button">欧阳振华</a>
                     <a href="#" class="button">欧阳振华</a>
                     <a href="#" class="button">欧阳振华</a>
-                    <a href="#" ng-click="addNewPersonAction()" class="button btn-add"><i class="f7-icons">add_round</i> &nbsp;新增</a>
+                    <a href="#" ng-click="addNewPersonAction()" class="button btn-add open-about"><i class="f7-icons">add_round</i> &nbsp;新增</a>
                 </div>
                 <div class="order-person-list">
                     <ul>
@@ -139,6 +139,55 @@
                 <p>
                     <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red">确认</a>
                 </p>
+            </div>
+        </div>
+        <!-- About Popup -->
+        <div class="popup popup-about">
+            <div class="content-block">
+                <p class="text-center">添加乘客信息</p>
+                <div class="list-block">
+                    <form role="form" name="form" class="form-normal">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input type="text" ng-model="newPerson.name" placeholder="请输入姓名" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">身份证</div>
+                                        <div class="item-input">
+                                            <input type="text" ng-model="newPerson.id" placeholder="请输入身份证号码" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">电话号码</div>
+                                        <div class="item-input">
+                                            <input type="text" ng-model="newPerson.phone" placeholder="请输入电话号码(可选)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div>
+                            <a href="#" class="button button-big active" ng-disabled='form.$invalid'>保 存</a>
+                            <a href="#" class="color-gray button" style="margin-top: -15px;" ng-click="closeModalAction()">取 消</a>
+                        </div>
+
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
