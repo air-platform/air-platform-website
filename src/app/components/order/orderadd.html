@@ -84,9 +84,9 @@
             <div class="order-person-price">
                 <div class="order-price-title">请选择价格</div>
                 <div class="order-price-type row">
-                    <div class="col-50">
+                    <div class="col-50" ng-click="isSelecteded = !isSelecteded">
                         <div class="order-price-icon">
-                            <i class="f7-icons">{{'circle'}}</i>
+                            <i class="f7-icons">{{ isSelecteded ? 'circle' : 'check_round'}}</i>
                         </div>
                         <div class="order-persons">
                             <div>整机</div>
