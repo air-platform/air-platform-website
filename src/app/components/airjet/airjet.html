@@ -25,7 +25,7 @@
                 <div class="travel-plan-content">
                     <div class="travel-plan-card" ng-repeat="item in travelStrokeList track by $index">
                         <div class="tpc-top">
-                            <em>{{'airjet.stroke' | translate}}<span ng-bind="$index + 1 | chinanum"></span></em>
+                            <em>{{'airjet.stroke' | translate}} <span ng-bind="$index + 1"></span></em>
                             <img src="assets/images/travel/btn_delete.svg" ng-hide="$index === 0" ng-click="removeCard($index)">
                         </div>
                         <div class="tpc-bottom">
@@ -86,7 +86,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tpc-bottom" ng-show="item.round">
+                        <div class="tpc-top tpct-round" ng-show="item.round">
+                            <em>{{'airjet.stroke' | translate}} <span ng-bind="$index + 2"></span></em>
+                            <i class="fa fa-trash-o" ng-click="item.round = !item.round"></i>
+                        </div>
+                        <div class="tpc-bottom tpcb-round" ng-show="item.round">
                             <div class="tpcb-top">
                                 <div class="tpcbt-city">
                                     <em>{{'airjet.departure' | translate}}</em>
@@ -133,7 +137,7 @@
                                         <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="item.guestEnd">
                                     </label>
                                 </div>
-                                <div class="tpcbb-back" ng-click="item.round = !item.round">
+                                <!--<div class="tpcbb-back" ng-click="item.round = !item.round">
                                     <label class="label-checkbox checkbox-circle item-content">
                                         <input type="checkbox" name="my-checkbox" ng-model="item.round" checked="checked">
                                         <div class="item-media">
@@ -141,7 +145,7 @@
                                         <em class="item-title">{{'airjet.round-trip' | translate}}</em>
                                         </div>
                                     </label>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
