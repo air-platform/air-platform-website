@@ -104,7 +104,8 @@
   "airtrain":{
     "school-brief":"航校简介",
     "base-brief":"基地介绍",
-    "plane-train":"飞机培训"
+    "plane-train":"飞机培训",
+    "base-clsss":"航校课程"
   },
   "airtaxi": {
     "plane-select": "Choose a Plane",
