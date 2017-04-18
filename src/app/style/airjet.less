@@ -306,12 +306,12 @@
         display: -webkit-flex;
         position: relative;
         overflow: hidden;
-        color: @font-grey;
+        color: @font-gray;
         .dfi-left{
             width: calc(~"100% - 2.26rem");
             height: 100%;
             box-sizing: border-box;
-            padding: .18rem .24rem;
+            padding: .2rem;
             border-top-left-radius: .16rem;
             border-bottom-left-radius: .16rem;
             display: flex;
@@ -323,23 +323,16 @@
                 height: .36rem;
                 line-height: .36rem;
                 justify-content: space-between;
-                .dreaam-flying-date{
-                    font-size: .24rem
-                }
-                .dreaam-flying-logo{
-                    img{
-                        width: 1.32rem;
-                        height: .32rem;
-                        vertical-align: top;
-                    }
-                }
+                font-size: .24rem;
+                color: @font-gray;
             }
             .dfi-middle{
-                margin: .42rem .62rem .42rem .62rem;
+                margin: .42rem 0;
                 display: flex;
                 display: -webkit-flex;
-                justify-content: space-between;
+                justify-content: space-around;
                 .dfim-address{
+                    display: block;
                     font-weight: 400;
                     font-size: .36rem;
                     font-family:PingFangSC-Medium;
@@ -348,18 +341,36 @@
                     font-size: .28rem;
                 }
                 .dfim-left{
-                    text-align: left;
+                    text-align: center;
+                }
+                .dfim-center{
+                    .arrow-right{
+                        width: .62rem;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
                 }
                 .dfim-right{
-                    text-align: right;
+                    text-align: center;
                 }
             }
             .dfi-bottom{
                 display: flex;
                 display: -webkit-flex;
-                justify-content: space-between;
-                p{
-                    font-size: .24rem;
+                font-size: .2rem;
+                color: @font-black;
+                div{
+                    &:first-child{
+                        margin-right: .36rem;
+                    }
+                    span{
+                        vertical-align: middle;
+                    }
+                    img{
+                        vertical-align: middle;
+                        width: .32rem;
+                        height: .32rem;
+                    }
                 }
             }
 
@@ -367,30 +378,29 @@
         .dfi-right{
             width: 2.26rem;
             box-sizing: border-box;
-            padding: .18rem 0 .18rem .24rem;
+            padding: .2rem 0 .2rem .2rem;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            background-color: @bg-blue;
             border-top-right-radius: .16rem;
             border-bottom-right-radius: .16rem;
             color: @font-white;
             text-align: left;
-            .guest-count{
-                margin-bottom: .12rem;
-            }
-            .plane, .guest-count{
+
+            .plane{
                 height: .28rem;
                 line-height: .28rem;
-                font-size: .24rem;
+                font-size: .2rem;
+                margin-bottom: .12rem;
             }
             .plane-money{
                 font-family:PingFangSC-Medium;
                 height: .34rem;
                 line-height: .34rem;
-                font-size: .28rem;
+                font-size: .4rem;
                 text-indent: .18rem;
             }
             .plane-item.first{
-                margin-bottom: .2rem;
+                margin-bottom: .26rem;
             }
             .plane-item.last{
                 margin-bottom: .06rem;
@@ -400,12 +410,17 @@
                 font-size: .2rem;
             }
         }
-        &:first-child{
-            .dfim-address{
-                color: @font-gray;
-            }
-            .dfi-right{
-                background-color: @bg-blue;
+        .expired{
+            background: rgba(78, 159, 228, 0.69);
+            position: relative;
+            &:before{
+                content: "";
+                position: absolute;
+                width: 1.24rem;
+                height: .96rem;
+                background: url(../assets/images/travel/icon_expired.svg) no-repeat;
+                left: -.62rem;
+                top: .82rem;
             }
         }
         &:after{

@@ -128,9 +128,9 @@
                 }
                 result = '¥' + result;
                 if (number.length >= 5) {
-                    result += '万元';
+                    result += '万';
                 } else {
-                    result += '元';
+                    result += '';
                 }
                 return result;
             }
