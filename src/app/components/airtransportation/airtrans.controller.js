@@ -12,14 +12,14 @@
     /** @ngInject */
     function transController($scope, iotUtil, NetworkService, transUtilsService) {
         var controller = this;
-        $scope.schedules = []
-        controller.mapPoints = {}
+        $scope.schedules = [];
+        controller.mapPoints = {};
+        controller.datepicker = {};
 
-        //// wait for backend
-        // NetworkService.get("url", {}, function getMapMakers(res) {
-        //   var pointsStr = res;
-        //   controller.mapPoints = transUtilsService.extractPoints(pointsStr);
-        // }, null);
+        NetworkService.get("url", {}, function getMapMakers(res) {
+          var pointsStr = res;
+          controller.mapPoints = transUtilsService.extractPoints(pointsStr);
+        }, null);
         var response = "徐闻,110.198611,20.2761111;海航大厦,110.35105,20.024108;" +
           "徐闻,110.198611,20.2761111;海口港,110.162196,20.046835;" +
           "徐闻,110.198611,20.2761111;美兰,110.468596,19.944221;11,110.340278,20.1000";
@@ -44,22 +44,27 @@
         transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
 
         controller.addSchedule = function() {
-          var schedule = {
-            'date': '2017-04-30',
-            'time': '08:00 - 09:00',
-            'departure': '徐闻',
-            'arrival': '海口美兰机场',
-            'flight': '首航直升机B-7186'
-          };
-          $scope.schedules.unshift(schedule);
+          var errors = transUtilsService.validateSchedules($scope.schedules);
+          if(errors.length > 0) {
+
+          } else {
+            var schedule = {
+              'date': '',
+              'time': '',
+              'departure': '',
+              'arrival': '',
+              'flight': ''
+            };
+            $scope.schedules.unshift(schedule);
+            controller.datepicker = {};
+            setTimeout(function() {
+              controller.datepicker = createDatePicker();
+            }, 0);
+          }
         }
 
         controller.deleteSchedule = function(schedule) {
           $scope.schedules = _.without($scope.schedules, schedule);
-        }
-
-        controller.validateSchedules = function(schedules) {
-          return true;
         }
 
         controller.submitSchedules = function() {
@@ -73,14 +78,17 @@
           // });
         }
 
-        var today = new Date();
-        var calendarDateFormat = myApp.calendar({
-          input: '.airtrans-schedule-dateinput:not(:disabled)',
-          dateFormat: 'yyyy年m月d日',
-          disabled: {
-            to: new Date().setDate(today.getDate() - 1)
-          },
-        });
+        var createDatePicker = function() {
+          var today = new Date();
+          var calendarDateFormat = myApp.calendar({
+            input: '#airtrans-schedule-datepicker-0',
+            dateFormat: 'yyyy年m月d日',
+            disabled: {
+              to: new Date().setDate(today.getDate() - 1)
+            },
+          });
+          return calendarDateFormat;
+        }
 
         $scope.$watch("controller.mapPoints", function(newValue, oldValue) {
             if( newValue != oldValue ) {
@@ -88,6 +96,9 @@
             }
           }
         );
+        setTimeout(function() {
+          controller.datepicker = createDatePicker();
+        }, 0);
 
     }
 
