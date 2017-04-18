@@ -25,7 +25,7 @@
             </div>
 
 
-            <div class="infinite-scroll infinite-scroll-top comment-container">
+            <div class="infinite-scroll infinite-scroll-top comment-container" ng-init="showMore = false">
                 <div class="comment-header">
                     <i class="f7-icons icon">chats</i>
                     <span class="comment-text">评论</span>
@@ -52,10 +52,10 @@
                     </div>
                 </div>
                 <div class="comment-more">
-                    <a href="#" class="item-link button">查看更多</a>
+                    <a href="#" class="item-link button" ng-show="!showMore" ng-click="showMore = !showMore">查看更多</a>
                 </div>
 
-                <div class="list-block">
+                <div class="list-block" ng-show="showMore">
                     <ul>
                         <li class="item-content">
                             <div class="item-inner">
