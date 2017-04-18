@@ -55,7 +55,7 @@
                     </div>
                     <div class="order-person-list" ng-show="passengers.length > 0">
                         <ul>
-                            <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected">
+                            <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected" ng-click="showPassengerAction($index)">
                                 <i class="f7-icons order-icon-delete" ng-click="selectPassengerAction($index)">delete_round</i>
                                 <div class="order-person-inner">
                                     <div class="order-person-name">{{p.name}}</div>
@@ -175,7 +175,7 @@
                         </ul>
 
                         <div>
-                            <a href="#" class="button button-big active" ng-disabled='formAdd.$invalid' ng-click="addNewPassengerAction()">添 加</a>
+                            <a href="#" class="button button-big active" ng-disabled='formAdd.$invalid' ng-click="addNewPassengerAction()">{{newPerson.isUpdate ? '更 新' : '添 加'}}</a>
                             <a href="#" class="color-gray button" style="margin-top: -15px;" ng-click="closeModalAction()">取 消</a>
                         </div>
 

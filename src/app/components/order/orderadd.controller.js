@@ -26,6 +26,7 @@
 
         $scope.selectPassengerAction = selectPassengerAction;
         $scope.addNewPassengerAction = addNewPassengerAction;
+        $scope.showPassengerAction = showPassengerAction;
         $scope.closeModalAction = closeModalAction;
         $scope.editContactPhoneAction = editContactPhoneAction;
         $scope.gotoAnnounceAction = gotoAnnounceAction;
@@ -45,18 +46,28 @@
         }
         function addNewPassengerAction() {
             myApp.showIndicator();
-            OrderServer.addPassenger($scope.newPerson,function (res) {
-                $scope.passengers.push({name:$scope.newPerson.name,mobile:$scope.newPerson.mobile,identity:$scope.newPerson.identity});
-                $scope.newPerson = {name:'',mobile:'',identity:'',isSelected:true};
+            if ($scope.newPerson.isUpdate){
+                myApp.hideIndicator();
                 closeModalAction();
-                myApp.hideIndicator();
-            },function (err) {
-                myApp.hideIndicator();
-                showErrorAlert(err);
-            });
+            }else{
+                OrderServer.addPassenger($scope.newPerson,function (res) {
+                    $scope.passengers.push({name:$scope.newPerson.name,mobile:$scope.newPerson.mobile,identity:$scope.newPerson.identity});
+                    closeModalAction();
+                    myApp.hideIndicator();
+                },function (err) {
+                    myApp.hideIndicator();
+                    showErrorAlert(err);
+                });
+            }
+        }
+        function showPassengerAction(index) {
+            $scope.newPerson = $scope.passengers[index];
+            $scope.newPerson.isUpdate = true;
+            myApp.popup('.popup-passenger');
         }
         function closeModalAction() {
             myApp.closeModal('.popup-passenger');
+            $scope.newPerson = {name:'',mobile:'',identity:'',isSelected:true};
         }
         function editContactPhoneAction() {
             myApp.prompt('','请输入联系人手机号', function (value) {
