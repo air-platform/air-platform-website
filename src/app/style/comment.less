@@ -9,7 +9,7 @@
 }
 .comment-container {
   background-color: @base-white;
-  .comment-header {
+  .comment-title {
     display: block;
     padding: 10px;
     height: 40px;
@@ -24,41 +24,44 @@
       }
     }
   }
-  .comment-content {
-    border-top: solid @border-gray 1px;
-    .inner-header {
-      height: 50px;
-      background-color: white;
-      .comment-avatar {
-        width: 30px;
-        height: 30px;
-        margin: 10px;
-        border-radius: 15px;
-        float: left;
+  .comment-core {
+    .comment-content {
+      border-top: solid @border-gray 1px;
+      .inner-header {
+        height: 50px;
+        background-color: white;
+        .comment-avatar {
+          width: 30px;
+          height: 30px;
+          margin: 10px;
+          border-radius: 15px;
+          float: left;
+        }
+        .comment-name {
+          font-size: 0.24rem;
+          padding-top: 10px;
+          .comment-date {
+            margin-right: 10px;
+            color: @font-gray;
+          }
+        }
+        .comment-star {
+          i {
+            font-size: 0.20rem;
+            color: @font-red;
+          }
+        }
       }
-      .comment-name {
+    }
+    .comment-comment {
+      .comment-inner {
         font-size: 0.24rem;
-        padding-top: 10px;
-        .comment-date {
-          margin-right: 10px;
-          color: @font-gray;
-        }
-      }
-      .comment-star {
-        i {
-          font-size: 0.20rem;
-          color: @font-red;
-        }
+        color: @font-gray;
+        padding: 5px 10px 10px 10px;
       }
     }
   }
-  .comment-comment {
-    .comment-inner {
-      font-size: 0.24rem;
-      color: @font-gray;
-      padding: 5px 10px 10px 10px;
-    }
-  }
+
   .comment-more {
     height: 60px;
     .button {

@@ -26,29 +26,31 @@
 
 
             <div class="infinite-scroll infinite-scroll-top comment-container" ng-init="showMore = false">
-                <div class="comment-header">
+                <div class="comment-title">
                     <i class="f7-icons icon">chats</i>
                     <span class="comment-text">评论</span>
                     <span class="comment-score">总评分
                         <span class="comment-number">4.7</span>
                     </span>
                 </div>
-                <div class="comment-content">
-                    <div class="inner-header">
-                        <div class="comment-avatar"><img src="" width="30" height="30"></div>
-                        <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
-                        <div class="comment-star">
-                            <i class="f7-icons icon">star_fill</i>
-                            <i class="f7-icons icon">star_fill</i>
-                            <i class="f7-icons icon">star_half</i>
-                            <i class="f7-icons icon">star</i>
-                            <i class="f7-icons icon">star</i>
+                <div class="comment-core">
+                    <div class="comment-content">
+                        <div class="inner-header">
+                            <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                            <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
+                            <div class="comment-star">
+                                <i class="f7-icons icon">star_fill</i>
+                                <i class="f7-icons icon">star_fill</i>
+                                <i class="f7-icons icon">star_half</i>
+                                <i class="f7-icons icon">star</i>
+                                <i class="f7-icons icon">star</i>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="comment-comment">
-                    <div class="comment-inner">
-                        Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
+                    <div class="comment-comment">
+                        <div class="comment-inner">
+                            Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
+                        </div>
                     </div>
                 </div>
                 <div class="comment-more" ng-show="!showMore">
@@ -57,18 +59,46 @@
 
                 <div class="comment-list" ng-show="showMore">
                     <div class="list-block">
-                        <ul>
-                            <li class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Item 1</div>
+                        <div class="comment-core">
+                            <div class="comment-content">
+                                <div class="inner-header">
+                                    <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                                    <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
+                                    <div class="comment-star">
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_half</i>
+                                        <i class="f7-icons icon">star</i>
+                                        <i class="f7-icons icon">star</i>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Item 1</div>
+                            </div>
+                            <div class="comment-comment">
+                                <div class="comment-inner">
+                                    Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
+                        <div class="comment-core">
+                            <div class="comment-content">
+                                <div class="inner-header">
+                                    <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                                    <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
+                                    <div class="comment-star">
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_half</i>
+                                        <i class="f7-icons icon">star</i>
+                                        <i class="f7-icons icon">star</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-comment">
+                                <div class="comment-inner">
+                                    Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--加载提示符-->
                     <div class="infinite-scroll-preloader" ng-show="loading">
