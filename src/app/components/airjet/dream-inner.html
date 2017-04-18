@@ -15,10 +15,15 @@
         </div>
         <div class="air-info">
             <div class="air-info-header">
-                <span ng-bind="dreamObj.createTime | date:'yyyy-MM-dd  HH:mma'"></span>
-                <span>{{'airjet.guest-number' | translate}}<em ng-bind="dreamObj.guest"></em></span>
+                <img src="assets/images/logo.png" alt="logo">
+                <em ng-bind="dreamObj.model"></em>
+                <span><em ng-bind="dreamObj.type"></em> <i class="fa fa-angle-right"></i></span>
             </div>
             <div class="air-info-content">
+                <div class="content-top">
+                    <em ng-bind="dreamObj.createTime"></em>
+                    <span>{{'airjet.guest-number' | translate}}<em ng-bind="dreamObj.guest"></em></span>
+                </div>
                 <div class="content-part">
                     <div>
                         <div class="air-location" ng-bind="dreamObj.departure"></div>
@@ -30,22 +35,17 @@
                         <div class="air-date" ng-bind="dreamObj.endTime"></div>
                     </div>
                 </div>
-                <div class="content-part">
-                    <div>
-                        <span>{{'airjet.machine' | translate}}</span>
-                        <span class="money" ng-bind="dreamObj.machine | RMB"></span>
-                    </div>
-                    <div>
-                        <span>{{'airjet.seat' | translate}}</span>
-                        <span class="money" ng-bind="dreamObj.seat | RMB"></span>
-                        <span>{{'airjet.least' | translate:dreamObj.least}}</span>
-                    </div>
-                </div>
             </div>
-            <div class="air-info-footer clearfix">
-                <img src="assets/images/logo.png" alt="logo">
-                <span>{{'airjet.model-number' | translate}}<em ng-bind="dreamObj.model"></em></span>
-                <span>{{'airjet.aircraft-number' | translate}}<em ng-bind="dreamObj.aircraft"></em></span>
+            <div class="air-info-footer">
+                <div>
+                    <span>{{'airjet.machine' | translate}}</span>
+                    <span class="money" ng-bind="dreamObj.machine | RMB"></span>
+                </div>
+                <div>
+                    <span>{{'airjet.seat' | translate}}</span>
+                    <span class="money" ng-bind="dreamObj.seat | RMB"></span>
+                    <span>{{'airjet.least' | translate:dreamObj.least}}</span>
+                </div>
             </div>
             <div class="user-info">
                 <div class="user-info-title clearfix">
@@ -72,15 +72,15 @@
             </div>
             <div class="company-name">
                 <div class="form-group">
-                    <label>{{'airjet.guest-name' | translate}}</label>
-                    <input type="text" placeholder="{{'airjet.guest-name-enter' | translate}}" ng-model="formData.guest">
+                    <label>{{'airjet.guest-count' | translate}}</label>
+                    <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.guest">
                 </div>
 
             </div>
             <div class="company-attention">
                 <div class="form-group">
                     <label>{{'airjet.remark' | translate}}</label>
-                    <textarea type="text" placeholder="{{'airjet.remark-enter' | translate}}" ng-model="formData.remark"></textarea>
+                    <textarea type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.remark"></textarea>
                 </div>
             </div>
             <div class="airjet-detail-form-footer"><input type="submit" value="{{'airjet.submit' | translate}}" ng-click="submit(formData)"></div>

@@ -9,7 +9,7 @@
 <div class="pages">
     <div data-page="travel-plane-detail" class="page" ng-controller="travelPlaneController">
         <div class="page-content plane-detail">
-            <div class="travel-model-card plane-detail-content">
+            <div class="plane-detail-content">
                 <div class="travel-model-img">
                     <div class="swiper-container swiper-init" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
                         <div class="swiper-wrapper">
@@ -19,28 +19,55 @@
                     </div>
                 </div>
                 <div class="travel-model-content">
-                    <div class="plane-title">
-                        <em ng-bind="planeDetail.name"></em>
+                    <div class="plane-title clearfix">
+                        <strong class="pull-left" ng-bind="planeDetail.name"></strong>
+                        <span class="pull-right">{{'airjet.model' | translate}} <em ng-bind="planeDetail.model"></em></span>
                     </div>
-                    <p class="travel-model-guest clearfix">
-                        <span class="pull-left">{{'airjet.model' | translate}} <em ng-bind="planeDetail.model"></em></span>
-                        <span class="pull-right">{{'airjet.plane-number' | translate}} <em ng-bind="planeDetail.type"></em></span>
-                    </p>
-                    <p class="travel-model-guest clearfix">
-                        <span class="pull-left">{{'airjet.age' | translate}} <em ng-bind="planeDetail.age"></em></span>
-                        <span class="pull-right">{{'airjet.capacity' | translate}} <em ng-bind="planeDetail.max"></em></span>
+                    <div class="plane-info">
+                        <div class="plane-info-detail">
+                            <div class="pid-top">
+                                <img src="assets/images/travel/icon_plane_black.svg" alt="plane">
+                                <em>{{'airjet.max-range' | translate}}</em>
+                            </div>
+                            <div class="pid-bottom">
+                                <em ng-bind="planeDetail.range"></em>
+                            </div>
+                        </div>
+                        <div class="plane-info-detail">
+                            <div class="pid-top">
+                                <img src="assets/images/travel/icon_luggage_black.svg" alt="luggage">
+                                <em>{{'airjet.trunk' | translate}}</em>
+                            </div>
+                            <div class="pid-bottom">
+                                <em ng-bind="planeDetail.trunk"></em>
+                            </div>
+                        </div>
+                        <div class="plane-info-detail">
+                            <div class="pid-top">
+                                <img src="assets/images/travel/icon_seat_black.svg" alt="seat">
+                                <em>{{'airjet.guest-num' | translate}}</em>
+                            </div>
+                            <div class="pid-bottom">
+                                <em ng-bind="planeDetail.max"></em>
+                            </div>
+                        </div>
+                        <div class="plane-info-detail">
+                            <div class="pid-top">
+                                <img src="assets/images/travel/icon_bed_black.svg" alt="bed">
+                                <em>{{'airjet.bed-num' | translate}}</em>
+                            </div>
+                            <div class="pid-bottom">
+                                <em ng-bind="planeDetail.bed"></em>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <strong>{{'airjet.fleet' | translate}}</strong>
+                        <em ng-bind="planeDetail.fleet"></em>
                     </p>
                     <p>
-                      <span>{{'airjet.max-range' | translate}} <em ng-bind="planeDetail.range"></em></span>  
-                    </p>
-                    <p>
-                      <span>{{'airjet.trunk' | translate}} <em ng-bind="planeDetail.trunk"></em></span>  
-                    </p>
-                    <p>
-                      <span>{{'airjet.fleet' | translate}} <em ng-bind="planeDetail.fleet"></em></span>  
-                    </p>
-                    <p class="plane-tag clearfix">
-                        <em class="tag" ng-repeat="tag in planeDetail.tags" ng-class="$index === planeDetail.tags.length - 1 ? 'tag-purple' : ''" ng-bind="tag"></em>
+                        <strong>{{'airjet.plane-device' | translate}}</strong>
+                        <em ng-bind="planeDetail.device"></em>
                     </p>
                 </div>
             </div>

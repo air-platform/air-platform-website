@@ -7,8 +7,9 @@
     angular.module('airsc').controller('dreamDetailController', dreamDetailController);
 
     /** @ngInject */
-    function dreamDetailController($scope,iotUtil) {
+    function dreamDetailController($scope, NotificationService) {
         var queryData = myApp.views[0].activePage.query;
+        $scope.submit = submit;
         if(queryData.dreamdata) {
             $scope.dreamData = JSON.parse(queryData.dreamdata);
         }
@@ -24,6 +25,13 @@
             endLocal: '美兰机场',
             passenger: '3',
             remark: $scope.dreamData.remark
+        }
+
+        function submit(data) {
+            if(data){
+                NotificationService.alert.success('订单提交成功', null);
+                mainView.router.loadPage('app/components/airjet/airjet.html')
+            }
         }
 
     }

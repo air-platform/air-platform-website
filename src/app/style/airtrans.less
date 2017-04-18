@@ -23,7 +23,6 @@
 
   .schedule-card {
     margin-top: 1em;
-    box-shadow: 0 -5px 5px 0 rgba(166,166,166,0.50);
     border-radius: 1px;
 
     .add-schedule-button {
@@ -115,12 +114,12 @@
           max-width: 100%;
           padding-left: 0;
           margin-left: 0;
+          margin-top: 0;
           color: @base-black;
           font-size: 0.28rem;
           input {
             height: auto;
             font-size: 0.28rem;
-            line-height: 1.4;
           }
         }
         &::after {
@@ -234,8 +233,23 @@
     display: none;
   }
 
-  .plane-type-nav {
-      margin-top: 0.32rem;
+  .item-content {
+    position: absolute;
+    right: 0.4rem;
+    z-index: 20;
+
+    .icon-form-checkbox {
+      background-color: @base-sky;
+    }
+  }
+
+  .plane-discription {
+    .item-media .icon {
+      display: none;
+    }
+    &.active .item-media .icon {
+      display: block;
+    }
   }
 
   .card {
@@ -314,5 +328,9 @@
       color: @font-black;
       letter-spacing: 0;
     }
+  }
+  .plane-discription.active  .card {
+    border: 0.08rem solid @base-sky;
+    border-radius: 0.2rem;
   }
 }

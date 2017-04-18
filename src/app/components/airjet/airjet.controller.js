@@ -147,86 +147,114 @@
         }];
 
         $scope.dreamFlyList = [{
-            id: '1',
-            createTime: '1491541200000',
+            id:'1',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
-            departure: '香港',
+            departure: '阿普雷顿',
+            expired:false,
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '77000',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '2',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'2',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
+            expired:true,
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '666636',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '3',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'3',
+            createTime: '2017年04月07日',
+            expired:false,
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '77000',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '4',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'4',
+            createTime: '2017年04月07日',
             startTime: '13:00',
+            expired:true,
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '44265',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '5',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'5',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
+            expired:true,
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '34320000',
             seat: '2800',
-            least: { number: '3' }
+            least:{number: '3'}
         }];
 
 
         $scope.recommendList = [{
+            id:1,
             departure: '阿普雷顿（及其周边）',
-            time: '2017-05-16',
             destination: '三亚',
-            money: '¥60万'
-        }, {
-            departure: '阿普雷顿（及其周边）',
+            model: '金鹿航空 BBJ-002',
+            startTime: '13:00',
+            endTime: '16:30',
+            people: '3人',
+            order: '993028363001',
             time: '2017-05-16',
-            destination: '北京',
             money: '¥60万'
         }, {
+            id:2,
+            departure: '阿普雷顿（及其周边）',
+            destination: '北京',
+            model: '金鹿航空 BBJ-002',
+            startTime: '13:00',
+            endTime: '16:30',
+            people: '3人',
+            order: '993028364021',
+            time: '2017-05-16',
+            money: '¥60万'
+        }, {
+            id:3,
             departure: '香港',
             destination: '北京',
+            model: '金鹿航空 BBJ-002',
+            startTime: '13:00',
+            endTime: '16:30',
+            people: '3人',
+            order: '993028364001',
             time: '2017-05-01',
             money: '¥60万'
         }];
@@ -318,6 +346,9 @@
         function datepicter(name, index) {
             var calendar = myApp.calendar({
                 input: '.' + name + index,
+                disabled: {
+                    to: new Date().setDate(new Date().getDate() - 1)
+                },
                 onDayClick: function () {
                     calendar.close();
                 }

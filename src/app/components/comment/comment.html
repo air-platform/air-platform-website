@@ -7,10 +7,13 @@
 <div class="pages navbar-through">
     <div data-page="comment" class="page" ng-controller="CommentController">
         <div class="page-content">
+
+
+            <!--详情-->
             <div class="content-block school-content order-card-container">
                 <div class="list-block cards-list">
                     <ul>
-                        <li class="card order-card" ng-repeat="item in items[0] track by $index" ng-click="gotoOrderDetail(0,$index)">
+                        <li class="card order-card" ng-repeat="item in items[0] track by $index">
                             <div class="card-header">
                                 <span class="order-number">{{item.no}}</span>
                                 <span class="order-date">{{item.date}}</span>
@@ -24,14 +27,30 @@
                                     <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <a href="#" class="link"></a>
-                                <a href="#" class="button btn-status-cancel">取消订单</a>
-                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
+            <!--评分-->
+            <div class="commentadd-star">
+                <div class="comment-title">评分</div>
+                <div class="comment-stars">
+                    <i class="f7-icons icon" ng-click="markStarAction(1)">{{starNum > 0 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(2)">{{starNum > 1 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(3)">{{starNum > 2 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(4)">{{starNum > 3 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(5)">{{starNum > 4 ? 'star_fill' : 'star'}}</i>
+                </div>
+            </div>
+            <!--评价-->
+            <div class="commentadd-comment">
+                <textarea placeholder="请写下你的评价" maxlength="1000"></textarea>
+            </div>
+            <!--提交-->
+            <div class="commentadd-submit">
+                <a href="#" class="button button-big active" ng-disabled='form.$invalid'>提 交</a>
+            </div>
+
         </div>
     </div>
 </div>

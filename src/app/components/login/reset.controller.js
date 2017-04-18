@@ -21,7 +21,7 @@
         $scope.authcodediabled = false;
 
         $scope.backAction = backAction;
-        $scope.registerAction = registerAction;
+        $scope.resetAction = resetAction;
         $scope.getAuthcode = getAuthcode;
 
         var countDown = 120;
@@ -36,12 +36,12 @@
             $scope.authcodediabled = true;
             myApp.showIndicator();
             NetworkService.post('account/verification?mobile=' + $scope.mobile,null,function (res) {
+                myApp.hideIndicator();
                 countDown = 120;
                 timer = $interval($scope.upd_count ,1000,120);
-                myApp.showPreloader('验证码发送成功，请注意查收');
-                setTimeout(function () {
-                    myApp.hidePreloader();
-                }, 2000);
+                myApp.alert('验证码发送成功，请注意查收！', function () {
+
+                });
             },function (err) {
                 $scope.authcodediabled = false;
                 var errDesc = err.statusText;
@@ -50,10 +50,10 @@
             });
         }
 
-        function registerAction() {
+        function resetAction() {
             myApp.showIndicator();
 
-            NetworkService.post('account/reset',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {
+            NetworkService.post('account/password/reset',{mobile:$scope.mobile,verificationCode:$scope.authcode,newPassword:$scope.password},function (res) {
                 myApp.hideIndicator();
                 myApp.alert('重置密码成功！', 'Air Community', function () {
                     mainView.router.back();

@@ -14,12 +14,12 @@
                     <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
                         <div class="order-detail-content-title">
                             <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
-                            <span class="order-flytype">首航直升机 B-7186</span>
-                            <span class="order-date">2017年5月1日</span>
+                            <span class="order-flytype">{{orderInfo.planeInfo.name}}</span>
+                            <span class="order-date">{{orderInfo.planeInfo.date}}</span>
                         </div>
                         <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
                             <div class="order-from col-40">
-                                <strong>湛江机场</strong>
+                                <strong>{{orderInfo.from}}</strong>
                             </div>
                             <div class="order-core col-20">
                                 <div class="dfim-center">
@@ -27,19 +27,19 @@
                                 </div>
                             </div>
                             <div class="order-to col-40">
-                                <strong>美兰机场</strong>
+                                <strong>{{orderInfo.to}}</strong>
                             </div>
                             <div class="col-40 order-other-info text-right">
                                 <img src="../../../assets/images/airplane.svg">
-                                <span class="order-cost">约12:36分钟</span>
+                                <span class="order-cost">{{orderInfo.time}}</span>
                             </div>
                             <div class="col-20 order-other-info">
                                 <img src="../../../assets/images/airseat.svg">
-                                <span class="order-cost">5</span>
+                                <span class="order-cost">{{orderInfo.seat}}</span>
                             </div>
                             <div class="col-40 order-other-info text-left">
                                 <img src="../../../assets/images/airtime.svg">
-                                <span class="order-cost">08:00-09:00</span>
+                                <span class="order-cost">{{orderInfo.interval}}</span>
                             </div>
                         </div>
                     </div>
@@ -48,34 +48,26 @@
                 <div class="order-add-person">
                     <div class="order-title">请选择乘机人</div>
                     <div class="order-person">
-                        <a href="#" class="button ng-scope" ng-class="{'button-active': (vm.userSay.mode == 'template' ? true:false)}">欧阳振华</a>
-                        <a href="#" class="button">欧阳振华</a>
-                        <a href="#" class="button">欧阳振华</a>
-                        <a href="#" ng-click="addNewPersonAction()" class="button btn-add open-about"><i class="f7-icons">add_round</i> &nbsp;新增</a>
+                        <span ng-repeat="p in passengers track by $index">
+                            <a href="#" class="button ng-scope" ng-class="{'button-active': (p.isSelected)}" ng-click="selectPassengerAction($index)">{{p.name}}</a>
+                        </span>
+                        <a href="#" data-popup=".popup-passenger" class="button btn-add open-about open-popup"><i class="f7-icons">add_round</i> &nbsp;新增</a>
                     </div>
-                    <div class="order-person-list">
+                    <div class="order-person-list" ng-show="passengers.length > 0">
                         <ul>
-                            <li class="order-person-content">
-                                <i class="f7-icons order-icon-delete" ng-click="deletePersonAction(1)">delete_round</i>
+                            <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected">
+                                <i class="f7-icons order-icon-delete" ng-click="selectPassengerAction($index)">delete_round</i>
                                 <div class="order-person-inner">
-                                    <div class="order-person-name">郭乐</div>
-                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
+                                    <div class="order-person-name">{{p.name}}</div>
+                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>{{p.identity}}</div>
                                 </div>
-                                <i class="f7-icons order-icon-right">right</i>
-                            </li>
-                            <li class="order-person-content">
-                                <i class="f7-icons order-icon-delete">delete_round</i>
-                                <div class="order-person-inner">
-                                    <div class="order-person-name">郭乐</div>
-                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>112345 17890354 2356</div>
-                                </div>
-                                <i class="f7-icons order-icon-right">right</i>
+                                <i class="f7-icons order-icon-right" ng-click="showPassengerAction($index)">right</i>
                             </li>
                         </ul>
                     </div>
                     <div class="order-person-mobile">
                         <span>联系手机&nbsp;&nbsp;&nbsp;</span>
-                        <span>18513149993</span>
+                        <span>{{contactMobile}}</span>
                         <span class="order-edit">
                         <a ng-click="editContactPhoneAction()"><i class="f7-icons">compose</i>修改</a>
                     </span>
@@ -121,8 +113,8 @@
                 <!--声明-->
                 <div class="order-detail-agreement">
                     <div class="list-block">
-                        <label class="label-checkbox item-content">
-                            <input type="checkbox" name="my-checkbox" />
+                        <label class="label-checkbox item-content" ng-click="agreeValueChanged()">
+                            <input type="checkbox" ng-bind="agreement">
                             <div class="item-media">
                                 <i class="icon icon-form-checkbox"></i>
                             </div>
@@ -138,13 +130,13 @@
                 <!--提交-->
                 <div class="order-detail-confirm">
                     <p>
-                        <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red" ng-disabled="form.$invalid">确认</a>
+                        <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red" ng-disabled="form.$invalid || !agreement">确认</a>
                     </p>
                 </div>
             </form>
         </div>
-        <!-- About Popup -->
-        <div class="popup popup-about">
+        <!-- 添加乘客信息 -->
+        <div class="popup popup-passenger">
             <div class="content-block">
                 <p class="text-center">添加乘客信息</p>
                 <div class="list-block">
@@ -165,7 +157,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">身份证</div>
                                         <div class="item-input">
-                                            <input type="text" ng-model="newPerson.id" placeholder="请输入身份证号码" required>
+                                            <input type="text" ng-model="newPerson.identity" minlength="18" maxlength="18" placeholder="请输入身份证号码" required>
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +167,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">电话号码</div>
                                         <div class="item-input">
-                                            <input type="text" ng-model="newPerson.phone" placeholder="请输入电话号码(可选)">
+                                            <input type="text" ng-model="newPerson.mobile" placeholder="请输入电话号码(可选)">
                                         </div>
                                     </div>
                                 </div>
@@ -183,8 +175,8 @@
                         </ul>
 
                         <div>
-                            <a href="#" class="button button-big active" ng-disabled='formAdd.$invalid'>添 加</a>
-                            <a href="#" class="color-gray button" style="margin-top: -15px;" ng-click="closeModalAction()">取 消</a>
+                            <a href="#" class="button button-big active" ng-disabled='formAdd.$invalid' ng-click="addNewPassengerAction()" ng-hide="newPerson.isUpdate">添 加</a>
+                            <a href="#" class="button color-gray" style="margin-top: 15px;border: 0;" ng-click="closeModalAction()">取 消</a>
                         </div>
 
 

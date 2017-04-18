@@ -71,8 +71,7 @@
             if (item.target === 'out') {
                 logoutAction();
             } else {
-                console.log(item);
-                if (true) {  //iotUtil.islogin()
+                if (iotUtil.islogin()) {
                     mainView.router.loadPage(item.target);
                 } else {
                     mainView.router.loadPage($scope.rightUserItem.target);
@@ -81,13 +80,10 @@
         }
 
         function logoutAction() {
-            $timeout(function () {
-                StorageService.clear(constdata.token);
-                StorageService.clear(constdata.information);
-                myApp.alert('退出成功！', function () {
-                    refresh();
-                });
-            }, 60);
+            StorageService.clear(constdata.token);
+            StorageService.clear(constdata.information);
+            refresh();
+            myApp.alert('退出成功！');
         }
 
         function refresh() {
@@ -96,11 +92,11 @@
                 $scope.islogin = true;
                 $scope.rightUserItem.title = info.nickName;
                 $scope.rightUserItem.target = constdata.router.set.profile;
-                $scope.rightUserItem.icon = 'person';
             } else {
                 info = {};
                 $scope.islogin = false;
-                $scope.rightUserItem = {title: loginItemTitle, target: constdata.router.login.login, icon: 'person'};
+                $scope.rightUserItem.title = loginItemTitle;
+                $scope.rightUserItem.target = constdata.router.login.login;
             }
         }
 

@@ -15,9 +15,10 @@
                 logger.debug(token);
                 token = 'Bearer ' + token;
                 RestangularConfigurer.setDefaultHeaders({Authorization:token});
-            }else{
-                // RestangularConfigurer.setDefaultHeaders({Authorization:null});
             }
+            // else {
+                // RestangularConfigurer.setDefaultHeaders({Authorization:null});
+            // }
             RestangularConfigurer.setFullResponse(true);
         });
     }

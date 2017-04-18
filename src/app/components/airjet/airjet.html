@@ -79,7 +79,7 @@
                                     <label class="label-checkbox checkbox-circle item-content">
                                         <input type="checkbox" name="my-checkbox" ng-model="item.round" checked="checked">
                                         <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
+                                        <i class="icon icon-form-checkbox checkbox-gray"></i>
                                         <em class="item-title">{{'airjet.round-trip' | translate}}</em>
                                         </div>
                                     </label>
@@ -158,7 +158,7 @@
                             <a href="#tab2" class="tab-link pull-right" ng-click="tab2 = true">{{'airjet.look-more' | translate}}<i class="fa fa-angle-right"></i></a>
                         </div>
                         <div class="tpbr-middle">
-                            <div class="tpbrm-item" ng-repeat="rec in recommendList track by $index">
+                            <a class="tpbrm-item" ng-repeat="rec in recommendList track by $index"  href="app/components/airjet/dream-inner.html?id={{rec.id}}">
                                 <div class="tpbrmi-top" ng-bind="rec.time"></div>
                                 <div class="tpbrmi-bottom">
                                     <div class="tpbrmi-left">
@@ -171,7 +171,7 @@
                                         <span>{{'airjet.from' | translate}}</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -182,10 +182,8 @@
                     <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" href="app/components/airjet/dream-inner.html?id={{item.id}}">
                         <div class="dfi-left">
                             <div class="dfi-top">
-                                <div class="dreaam-flying-date" ng-bind="item.createTime | date:'yyyy年MM月dd日 EEE' | chinaweek"></div>
-                                <div class="dreaam-flying-logo">
-                                    <img src="assets/images/logo.png" alt="logo">
-                                </div>
+                                <div class="dreaam-flying-logo" ng-bind="item.model"></div>
+                                <div class="dreaam-flying-date" ng-bind="item.createTime"></div>
                             </div>
                             <div class="dfi-middle">
                                 <div class="dfim-left">
@@ -201,21 +199,17 @@
                                 </div>
                             </div>
                             <div class="dfi-bottom">
-                                <p>
-                                    <span>{{'airjet.model-number' | translate}}</span>
-                                    <span ng-bind="item.model"></span>
-                                </p>
-                                <p>
-                                    <span>{{'airjet.aircraft-number' | translate}}</span>
-                                    <span ng-bind="item.aircraft"></span>
-                                </p>
+                                <div>
+                                    <img src="assets/images/travel/icon_plane_black.svg" alt="plane">
+                                    <span ng-bind="item.type"></span>
+                                </div>
+                                <div>
+                                    <img src="assets/images/travel/icon_seat_black.svg" alt="seat">
+                                    <span>{{'airjet.guest-num' | translate}} {{item.guest}}</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="dfi-right">
-                            <div class="guest-count">
-                                {{'airjet.guest-number' | translate}}
-                                <span ng-bind="item.guest"></span>
-                            </div>
+                        <div class="dfi-right" ng-class="item.expired ? 'expired' : ''">
                             <div class="plane-item first">
                                 <div class="plane">{{'airjet.machine' | translate}}</div>
                                 <div class="plane-money" ng-bind="item.machine | RMB"></div>

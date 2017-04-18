@@ -1,23 +1,23 @@
 .page[data-page=airjet-detail] {
-  background-color: #f4f4f4;
+  background-color: @bg-grey;
 }
 .page-content-title {
   height: 0.88rem;
   line-height: 0.88rem;
-  background-color: #7293d6;
+  background-color: @bg-blue;
   font-weight: 300;
   padding-left: 0.4rem;
 
   div, .link-tel{
     display: inline-block;
     font-size: 0.36rem;
-    color: #fff;
+    color: @font-white;
     height: 100%;
 
     &:last-child {
       float: right;
       font-size: 0.28rem;
-      background-color: #97c5f8;
+      background-color: @bg-sky;
       padding: 0 0.32rem;
 
       i {
@@ -33,11 +33,11 @@
   padding: 0 0.4rem;
   font-size: 0.36rem;
   border-bottom: 1px solid @border-gray;
-  background-color: #fff;
+  background-color: @bg-white;
 
   div {
     display: inline-block;
-    color: #7293d6;
+    color: @font-blue;
 
     &:last-child {
       float: right;
@@ -49,8 +49,8 @@
   padding: 0.32rem;
   font-size: 0.24rem;
   font-weight: 300;
-  color: #666;
-  background-color: #fff;
+  color: @font-gray;
+  background-color: @bg-white;
 
   p,
   h5 {
@@ -60,25 +60,28 @@
 
 .user-info {
   margin-top: 0.2rem;
-  background-color: #fff;
+  background-color: @bg-white;
 
   .form {
-    padding: 0.56rem;
+    padding: .5rem .56rem .5rem .3rem;
     padding-right: 0;
 
     .form-group {
+      height: .6rem;
       margin-bottom: 0.2rem;
 
       label {
+        display: inline-block;
+        width: 1.3rem;
         font-size: 0.28rem;
-        color: #999;
+        color: @font-grey;
         margin-right: 0.14rem;
-        font-weight: 300;
+        text-align: right;
       }
 
       input {
         height: 0.6rem;
-        background-color: #f4f4f4;
+        background-color: @bg-grey;
         border: none;
         outline: none;
         padding: 0.08rem 0.16rem;
@@ -94,13 +97,13 @@
 .user-info-title {
   height: 0.9rem;
   line-height: 0.9rem;
-  color: #666;
+  color: @font-gray;
   padding: 0 0 0 .4rem;
   border-bottom: 1px solid @border-gray;
   .pull-right{
     width: 2.26rem;
     height: 100%;
-    background-color: @bg-sky;
+    background-color: @bg-purple;
     text-align: center;
     color: @font-white;
     font-size: .28rem;
@@ -114,13 +117,14 @@
 .company-name {
   height: 1.16rem;
   line-height: 1.16rem;
-  color: #666;
-  background-color: #fff;
+  color: @font-gray;
+  background-color: @bg-white;
   margin-top: 0.2rem;
+  padding-left: .3rem;
 
   input {
     height: 0.6rem;
-    background-color: #f4f4f4;
+    background-color: @bg-grey;
     border: none;
     outline: none;
     padding: 0.08rem 0.16rem;
@@ -131,13 +135,11 @@
   }
 
   label {
+    display: inline-block;
     font-size: 0.28rem;
-    color: #999;
+    color: @font-grey;
+    margin-right: 0.14rem;
     font-weight: 300;
-  }
-
-  .form-group {
-    padding: 0 0.15rem;
   }
 }
 
@@ -147,8 +149,8 @@
 
   input {
     font-size: 0.36rem;
-    color: #fff;
-    background-color: #e67676;
+    color: @font-white;
+    background-color: @bg-red;
     width: 100%;
     border: none;
     outline: none;

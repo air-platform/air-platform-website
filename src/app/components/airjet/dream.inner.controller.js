@@ -12,19 +12,21 @@
         $scope.formData = {};
         $scope.submit = submit;
         $scope.imgSrc = [
-            './../assets/images/banner0.jpg',
-            './../assets/images/banner1.jpg',
-            './../assets/images/banner0.jpg'
+            './../assets/images/hotair.png',
+            './../assets/images/hotair.png',
+            './../assets/images/hotair.png'
         ];
 
         $scope.dreamFlyList = [{
             id:'1',
-            createTime: '1491541200000',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
-            departure: '香港',
+            departure: '阿普雷顿',
+            expired:false,
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '77000',
@@ -32,12 +34,14 @@
             least:{number: '3'}
         },{
             id:'2',
-            createTime: '2017年04月07日 周六',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
+            expired:true,
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '666636',
@@ -45,12 +49,14 @@
             least:{number: '3'}
         },{
             id:'3',
-            createTime: '2017年04月07日 周六',
+            createTime: '2017年04月07日',
+            expired:false,
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '77000',
@@ -58,12 +64,14 @@
             least:{number: '3'}
         },{
             id:'4',
-            createTime: '2017年04月07日 周六',
+            createTime: '2017年04月07日',
             startTime: '13:00',
+            expired:true,
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '44265',
@@ -71,12 +79,14 @@
             least:{number: '3'}
         },{
             id:'5',
-            createTime: '2017年04月07日 周六',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
+            expired:true,
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '34320000',
@@ -130,7 +140,7 @@
                 return;
             }
             if(!data.guest){
-                NotificationService.alert.success('请填写客户名称', null);
+                NotificationService.alert.success('请填写乘客人数', null);
                 return;
             }
             mainView.router.loadPage('app/components/airjet/dream-detail.html?dreamdata=' + JSON.stringify(data));

@@ -9,6 +9,15 @@
     border-radius: 0.16rem;
     border-bottom: 1px dashed @border-gray;
 
+    &:first-child{
+      i{
+        font-size: .34rem;
+        color: @font-grey;
+        margin-top: .22rem;
+        margin-right: .22rem;
+      }
+    }
+
     &:not(:first-child) {
       border-radius: 0;
     }
@@ -26,13 +35,17 @@
 
     &:nth-child(4) {
       display: flex;
+      justify-content: space-around;
       height: auto;
       line-height: initial;
-      padding: 0.6rem;
-
+      padding: .6rem .4rem;
+      .arrow-right{
+        width: .62rem;
+        margin-left: 0;
+        margin-right: 0;
+      }
       .order-location-info {
         text-align: center;
-        flex: 1;
 
         div {
           font-size: 0.28rem;
@@ -45,6 +58,28 @@
           }
         }
       }
+    }
+  }
+
+  .back-submit{
+    display: flex;
+    justify-content: space-between;
+    margin-top: .5rem;
+    a{
+        width: 3.2rem;
+        height: .88rem;
+        font-size: .36rem;
+        color:@font-white;
+        background-color: @bg-red;
+        border-radius: .06rem;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &:last-child{
+          background-color: @bg-purple;
+        }
     }
   }
 
@@ -240,10 +275,10 @@
     .order-agree {
     }
     .order-announce {
-      color: @font-red;
+      color: @font-blue;
     }
     label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox, label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox, .form-checkbox input[type="checkbox"]:checked ~ i{
-      background-color: @font-red;
+      background-color: @font-blue;
     }
   }
   //确认
