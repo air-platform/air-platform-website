@@ -234,8 +234,14 @@
     display: none;
   }
 
-  .plane-type-nav {
-      margin-top: 0.32rem;
+  .item-content {
+    position: absolute;
+    right: 0.4rem;
+    z-index: 20;
+
+    .icon-form-checkbox {
+      background-color: @base-sky;
+    }
   }
 
   .card {
@@ -314,5 +320,9 @@
       color: @font-black;
       letter-spacing: 0;
     }
+  }
+  .plane-discription.active  .card {
+    border: 0.08rem solid @base-sky;
+    border-radius: 0.2rem;
   }
 }

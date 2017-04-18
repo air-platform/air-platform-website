@@ -13,6 +13,7 @@
     function planesController($scope, iotUtil, NetworkService) {
         var controller = this;
         controller.planes = [];
+        controller.planeSelected = {};
 
         controller.planes = [
           {
@@ -44,8 +45,15 @@
           }
         ];
 
-        controller.selectPlane = function(plane) {
-
+        controller.select = function(plane, $event) {
+          $event.stopPropagation();
+          $event.preventDefault();
+          controller.planeSelected = plane;
+          setTimeout(
+            function(){
+              $($event.target).closest('li').find('label.label-checkbox input').prop("checked", true);
+            },
+          0);
         };
 
         //// wait for backend
