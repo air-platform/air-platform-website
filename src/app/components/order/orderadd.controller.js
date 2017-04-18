@@ -76,12 +76,12 @@
             mainView.router.loadPage(constdata.router.protocal.safe);
         }
         function agreeValueChanged() {
+            $scope.$apply();//需要手动刷新
             console.log($scope.agreement);
         }
         function getPassengers() {
             OrderServer.passengers(function (res) {
                 $scope.passengers = res.data;
-                console.log($scope.passengers);
             },function (err) {
                 console.log(err);
             });
