@@ -55,13 +55,13 @@
                     </div>
                     <div class="order-person-list" ng-show="passengers.length > 0">
                         <ul>
-                            <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected" ng-click="showPassengerAction($index)">
+                            <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected">
                                 <i class="f7-icons order-icon-delete" ng-click="selectPassengerAction($index)">delete_round</i>
                                 <div class="order-person-inner">
                                     <div class="order-person-name">{{p.name}}</div>
                                     <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>{{p.identity}}</div>
                                 </div>
-                                <i class="f7-icons order-icon-right">right</i>
+                                <i class="f7-icons order-icon-right" ng-click="showPassengerAction($index)">right</i>
                             </li>
                         </ul>
                     </div>
