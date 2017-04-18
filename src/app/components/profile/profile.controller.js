@@ -15,19 +15,13 @@
     		sex: '',
     		tel: '15202498406',
     		email: ''
-    	}
+    	};
 
         $scope.watch = watch;
 
         var watch = $rootScope.$watch('userInfo.sex', function(newValue, oldValue) {
-            if(newValue != oldValue) {
-                alert('我变了');
-            }
-        });
-
-        $scope.$watch('$rootScope.sex', function(newValue, oldValue) {
-            if(newValue != oldValue) {
-                alert('111');
+            if(newValue !== oldValue) {
+                console.log('我变了');
             }
         });
 
