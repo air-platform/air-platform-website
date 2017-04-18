@@ -12,16 +12,16 @@
             name: i18n.t('profile.username'),
             tel: i18n.t('profile.telNum'),
             email: i18n.t('profile.email')
-        }
+        };
 
         $.each(queryData, function(index, item){
-            var headText = i18n.t('profile.modify') + infoObj[index];
+            $scope.headText = i18n.t('profile.modify') + infoObj[index];
             $scope.info = index;
-            $('#modifyInfo').text(headText);
+            $('#modifyInfo').text($scope.headText);
         });
 
         $scope.saveBtn = function() {
-            alert($rootScope.userInfo[$scope.info]);
+            myApp.alert('修改成功', $scope.headText);
             mainView.router.back();
         }
     }

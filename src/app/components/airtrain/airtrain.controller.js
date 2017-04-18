@@ -10,7 +10,7 @@
     angular.module('airsc').controller('trainController', trainController);
 
     /** @ngInject */
-    function trainController($scope,constdata,iotUtil) {
+    function trainController($scope, constdata, iotUtil) {
 
 
         $scope.telephone = 'tel:' + constdata.supportTelephone;
@@ -22,12 +22,14 @@
         ];
 
         $scope.hotCourse = [{
+            id: '1002',
             imgSrc: './../../../assets/images/hotair.png',
             titleText: '直升机私照飞行员',
             school: '海南航空学校',
             deadline: '2017年4月30日',
             price: '36万元'
         }, {
+            id: '1003',
             imgSrc: './../../../assets/images/hotair.png',
             titleText: '固定翼飞行员1期招募',
             school: '海南航空学校',

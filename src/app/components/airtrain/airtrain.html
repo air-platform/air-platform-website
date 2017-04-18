@@ -53,7 +53,7 @@
           </div>
           <ul class="course-list">
               <li ng-repeat="course in hotCourse track by $index">
-                  <a href="#" class="clearfix">
+                  <a href="app/components/airtrain/course-detail.html?id={{course.id}}" class="clearfix">
                       <div class="list-img pull-left">
                           <img ng-src="{{course.imgSrc}}">
                       </div>
