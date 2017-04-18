@@ -14,7 +14,8 @@
             </div>
             <div class="air-order-detail">
                 <div class="air-order-item radius-top-bottom">
-                    {{'airjet.order-numver' | translate}}{{detailData.order}}
+                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.order}}</span>
+                    <i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>
                 </div>
                 <div ng-repeat="plan in detailData.plan track by $index">
                     <div>
@@ -48,7 +49,7 @@
                     {{'airjet.options' | translate}}
                 </div>
                 <div class="air-order-item aoi-model-info radius-bottom" ng-show="detailData.type" ng-class="detailData.type ? '' : 'no-padding'">
-                    <div ng-bind="detailData.type"></div>
+                    <!--<div ng-bind="detailData.type"></div>-->
                     <div ng-repeat="model in detailData.plane track by $index" ng-bind="model"></div>
                 </div>
                 <div class="air-order-item aoi-guest radius-top">

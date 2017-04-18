@@ -39,8 +39,9 @@
                 <div class="air-order-item">
                     {{'airjet.remark' | translate}} {{detailData.remark || '无'}}
                 </div>
-                <div class="order-submit">
-                    {{'airjet.confirms' | translate}}
+                <div class="back-submit">
+                    <a ng-click="submit(detailData)">{{'airjet.confirms' | translate}}</a>
+                    <a href="index.html">{{'airjet.back-home' | translate}}</a>
                 </div>
             </div>
         </div>

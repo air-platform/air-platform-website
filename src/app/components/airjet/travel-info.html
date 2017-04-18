@@ -11,50 +11,39 @@
     <div data-page="travel-info" class="page" ng-controller="travelInfoController">
         <div class="page-content travel-info-write">
             <div class="list-block travel-info-content">
-                <ul>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">{{'airjet.name' | translate}}</div>
-                                <div class="item-input">
-                                    <input type="text" ng-model="infoData.name" placeholder="{{'airjet.write' | translate}}">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">{{'airjet.phone' | translate}}</div>
-                                <div class="item-input">
-                                    <input type="text" ng-model="infoData.phone" placeholder="{{'airjet.write' | translate}}">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">{{'airjet.email' | translate}}</div>
-                                <div class="item-input">
-                                    <input type="text" ng-model="infoData.email" placeholder="{{'airjet.write' | translate}}">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">{{'airjet.remark' | translate}}</div>
-                                <div class="item-input">
-                                    <input type="text" ng-model="infoData.remark" placeholder="{{'airjet.write' | translate}}">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <div class="tic-content">
+                    <div class="ticc-title clearfix">
+                        <div class="pull-left">{{'airjet.guest-info' | translate}}</div>
+                        <a href="tel:400-666-4388" class="pull-right">
+                            <img src="assets/images/phone.png" alt="phone">
+                            <span>{{'airjet.service' | translate}}</span>
+                        </a>
+                    </div>
+                    <div class="ticc-main">
+                        <label class="ticcm-item">
+                            <span>{{'airjet.name' | translate}}</span>
+                            <input type="text" ng-model="infoData.name" placeholder="{{'airjet.enter' | translate}}">
+                        </label>
+                        <label class="ticcm-item">
+                            <span>{{'airjet.phone' | translate}}</span>
+                            <input type="text" ng-model="infoData.phone" placeholder="{{'airjet.enter' | translate}}">
+                        </label>
+                        <label class="ticcm-item">
+                            <span>{{'airjet.email' | translate}}</span>
+                            <input type="text" ng-model="infoData.email" placeholder="{{'airjet.enter' | translate}}">
+                        </label>
+                    </div>
+                </div>
+                <div class="tic-content">
+                    <div class="ticc-main">
+                        <label class="ticcm-item">
+                            <span>{{'airjet.remark' | translate}}</span>
+                            <textarea ng-model="infoData.remark" placeholder="{{'airjet.enter' | translate}}"></textarea>
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="travel-model-submit block-center" ng-click="infoSubmit(infoData)">{{'airjet.confirm' | translate}}</div>
+            <div class="travel-model-submit block-center" ng-click="infoSubmit(infoData)">{{'airjet.submit' | translate}}</div>
         </div>
     </div>
 </div>
