@@ -11,91 +11,87 @@
 
     .air-info-header {
       padding: 0 0.36rem;
-      color: #9a9090;
+      color: @font-gray;
       font-size: 0.24rem;
       border-bottom: 1px solid @border-gray;
-
-      span:last-child {
+      img{
+          width: 1.32rem;
+          height: .32rem;
+          vertical-align: text-bottom;
+          margin-right: .2rem;
+      }
+      span{
+        color: @font-blue;
         float: right;
       }
     }
 
     .air-info-content {
-      display: flex;
-      background-color: @bg-white;
-      padding: 0.5rem 0.2rem;
-
-      .content-part:nth-child(1) {
-        flex: 1;
+        background-color: @bg-white;
+        padding: .14rem .32rem .26rem;
+        height: 1.74rem;
+        width: 100%;
         display: flex;
-        line-height: initial;
-
-        & > div {
+        flex-direction: column;
+        .content-top{
+          height: .36rem;
+          line-height: .36rem;
+          display: flex;
+          justify-content: space-between;
+          font-size: .24rem;
+          margin-bottom: .32rem;
+          span{
+            font-size: .2rem;
+          }
+        }
+        .content-part{
+          display: flex;
+          justify-content: space-around;
+          font-size: 0.28rem;
+          color: @font-gray;
           text-align: center;
-          flex: 1;
-
-          .air-location {
-            font-size: 0.36rem;
+          padding: 0 .2rem;
+          .air-location{
+            font-size: .36rem;
+            line-height: .36rem;
+            margin-bottom: .04rem;
           }
-          .air-date {
-            color: #666;
-            font-weight: 300;
+          .air-date{
+            line-height: .34rem;
           }
-        }
-      }
-
-      .content-part {
-        line-height: initial;
-        font-size: 0.2rem;
-
-        & > div {
-          margin-left: 0.3rem;
-          margin-bottom: 0.25rem;
-
-          > span:not(:nth-child(2)) {
-            font-weight: 300;
-          }
-
-          .money {
-            font-size: 0.28rem;
+          .arrow-right{
+            width: .62rem;
           }
         }
-      }
     }
 
     .air-info-footer {
       padding: 0 0.36rem;
-      color: #9a9090;
-      font-size: 0.24rem;
+      color: @font-black;
+      font-size: 0.2rem;
       background-color: @bg-white;
       border-top: 1px solid @border-gray;
-
-      img{
-          width: 1.32rem;
-          height: .32rem;
-          vertical-align: middle;
-      }
-
-      span {
-        float: right;
-        &:last-child{
-          margin-right: 0.5rem;
-        }
+      display: flex;
+      justify-content: space-between;
+      .money{
+        font-size: .44rem;
+        color: @font-red;
+        vertical-align: middle;
       }
     }
   }
 }
 
 .company-attention {
-  color: #666;
-  background-color: #fff;
-  margin-top: 0.2rem;
-  padding: 0.2rem 0 0.2rem 0.7rem;
+  color: @font-gray;
+  background-color: @bg-white;
+  padding: 0 .56rem 0 .3rem;
 
   textarea {
+    display: inline-block;
     font-family: Arial;
     height: 1.6rem;
-    background-color: #f4f4f4;
+    background-color: @bg-grey;
     border: none;
     outline: none;
     padding: 0.08rem 0.16rem;
@@ -107,11 +103,14 @@
   }
 
   label {
+    line-height: .4rem;
     vertical-align: top;
-    display: inline-block;
+    float: left;
+    width: 1.3rem;
+    text-align: right;
+    margin-right: 0.14rem;
     font-size: 0.28rem;
-    color: #999;
-    font-weight: 300;
+    color: @font-grey;
   }
 
 }

@@ -140,7 +140,7 @@
                 return;
             }
             if(!data.guest){
-                NotificationService.alert.success('请填写客户名称', null);
+                NotificationService.alert.success('请填写乘客人数', null);
                 return;
             }
             mainView.router.loadPage('app/components/airjet/dream-detail.html?dreamdata=' + JSON.stringify(data));

@@ -92,7 +92,7 @@
     "guest-num": "载客人数",
     "bed-num": "床铺数量",
     "machine": "整机",
-    "seat": "座位",
+    "seat": "拼座",
     "least": "（最少{{number}}人成行）",
     "service": "咨询客服",
     "guest-info": "客户信息",
