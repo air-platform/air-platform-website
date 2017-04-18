@@ -60,13 +60,12 @@
         }
         function editContactPhoneAction() {
             myApp.prompt('','请输入联系人手机号', function (value) {
-
                 if (value.length !== 11){
                     myApp.alert('手机号格式不正确！');
                 }else{
-                    console.log(value);
+                    $scope.contactMobile = value;
+                    $scope.$apply();//需要手动刷新
                 }
-
             });
         }
 
