@@ -147,70 +147,80 @@
         }];
 
         $scope.dreamFlyList = [{
-            id: '1',
-            createTime: '1491541200000',
+            id:'1',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
-            departure: '香港',
+            departure: '阿普雷顿',
+            expired:false,
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '77000',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '2',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'2',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
+            expired:true,
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '666636',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '3',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'3',
+            createTime: '2017年04月07日',
+            expired:false,
             startTime: '13:00',
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '77000',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '4',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'4',
+            createTime: '2017年04月07日',
             startTime: '13:00',
+            expired:true,
             endTime: '16:30',
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '44265',
             seat: '1300',
-            least: { number: '3' }
-        }, {
-            id: '5',
-            createTime: '2017年04月07日 周六',
+            least:{number: '3'}
+        },{
+            id:'5',
+            createTime: '2017年04月07日',
             startTime: '13:00',
             endTime: '16:30',
+            expired:true,
             departure: '香港',
             destination: '北京',
-            model: 'G650',
+            type: '湾流G550',
+            model: '金鹿GX2812-001',
             guest: '16',
             aircraft: '00092842',
             machine: '34320000',
             seat: '2800',
-            least: { number: '3' }
+            least:{number: '3'}
         }];
 
 
