@@ -132,26 +132,23 @@
                 font-weight: normal;
             }
             a{
+                margin-top: .1rem;
                 color: @font-blue;
                 font-size: .24rem;
-                color: @font-grey;
             }
         }
     }
     .plane-money{
         display: flex;
         flex-direction: column;
+        justify-content: flex-end;
     }
     .plane-money{
         text-align: right;
-        font-size: .36rem;
+        font-size: .28rem;
         color: @font-red;
         em{
             font-style: normal;
-        }
-        a{
-            font-size: .24rem;
-            color: @font-blue; 
         }
     }
 }
@@ -159,23 +156,32 @@
 .plane-detail{
     min-height: 100vh;
     background-color: @bg-white;
+    font-family: PingFangSC-Regular;
     .plane-detail-content{
-        padding: 0;
+        .travel-model-img img{
+            height: 4.16rem;
+        }
+        em{
+            font-style: normal;
+        }
         
         .travel-model-content{
-            padding-top: 0;
             .plane-title{
-                height: .8rem;
-                color: @font-red;
-                font-size: .36rem;
-                line-height: .8rem;
-                text-align: left;
-                padding: 0 .32rem 0 .5rem;
-                border-top-left-radius: .16rem;
-                border-top-right-radius: .16rem;
+                height: .82rem;
+                line-height: .82rem;
+                margin: 0 .34rem .38rem .32rem;
                 border-bottom: .02rem dotted @border-gray;
                 position: relative;
-                margin-bottom: .28rem;
+                strong{
+                    padding-left: .18rem;
+                    font-weight: normal;
+                    color: @font-black;
+                    font-size: .36rem;
+                }
+                span{
+                    color: @font-grey;
+                    font-size: .24rem;
+                }
                 &:before{
                     position: absolute;
                     content: "";
@@ -183,35 +189,136 @@
                     width: .06rem;
                     height: .32rem;
                     border-radius: .03rem;
-                    left: .28rem;
+                    left: 0;
                     top: .24rem;
                 }
             }
-        }
-        &.travel-model-card .travel-model-img img{
-            border-radius: 0;
-            height: 4.18rem;
+            .plane-info{
+                display: flex;
+                justify-content: space-between;
+                padding-left: .32rem;
+                padding-right: .34rem;
+                height: .88rem;
+                color: @font-black;
+                margin-bottom: .34rem;
+                .plane-info-detail{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    
+                    .pid-top{
+                        em{
+                            font-size: .2rem;
+                            vertical-align: middle;
+                        }
+                        img{
+                            width: .32rem;
+                            height: .32rem;
+                            vertical-align: middle;
+                        }
+                    }
+                    .pid-bottom{
+                        text-align: center;
+                        line-height: .36rem;
+                        font-size: .36rem;
+                    }
+                }
+                
+            }
+
+            p{
+                padding: .3rem .4rem .3rem .46rem;
+                font-size: .24rem;
+                line-height: .36rem;
+                color: @font-gray;
+                strong{
+                    display: block;
+                    font-size: .28rem;
+                    line-height: .28rem;
+                    margin-bottom: .2rem;
+                    color: @font-black;
+                }
+            }
         }
     }
 }
-
-.travel-info-content{
-    margin: 0;
-
-    .item-content{
-        padding-left: 0;
-        .item-inner{
-            padding-left: .3rem;
-            height: 1.2rem;
-
-            .item-title{
-                width: .84rem;
-                font-size: .32rem;
+.travel-info-write{
+    .travel-info-content{
+        margin: 0;
+        .tic-content{
+            margin-top: .3rem;
+            background-color: @bg-white;
+            color: @font-grey;
+            font-size: .28rem;
+            &:last-child{
+                margin-top: .2rem;
             }
-            &:first-child{
-                border-top: none;
+            .ticc-title{
+                color: @font-gray;
+                height: .88rem;
+                line-height: .88rem;
+                padding-left: .36rem;
+                border-bottom: .02rem solid @border-gray;
+                height: 0.9rem;
+                .pull-right{
+                    width: 2.26rem;
+                    height: 100%;
+                    background-color: @bg-purple;
+                    text-align: center;
+                    color: @font-white;
+                    font-size: .28rem;
+                    img{
+                        width: .32rem;
+                        height: .32rem;
+                    }
+                }
+            }
+            .ticc-main{
+                padding: .42rem .56rem .5rem .76rem;
+                .ticcm-item{
+                    display: block;
+                    margin-bottom: .3rem;
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                    span{
+                        line-height: .6rem;
+                        vertical-align: top;
+                    }
+                    input, textarea{
+                        display: inline-block;
+                        width: 5.2rem;
+                        height: .6rem;
+                        line-height: .6rem;
+                        padding: .08rem .16rem;
+                        font-size: .28rem;
+                        border-radius: .06rem;
+                        background-color: @bg-grey;
+                    }
+                    textarea{
+                        height: 1.64rem;
+                    }
+                }
             }
         }
+        .item-content{
+            padding-left: 0;
+            .item-inner{
+                padding-left: .3rem;
+                height: 1.2rem;
+
+                .item-title{
+                    width: .84rem;
+                    font-size: .32rem;
+                }
+                &:first-child{
+                    border-top: none;
+                }
+            }
+        }
+    }
+    .travel-model-submit{
+        background-color: @bg-red;
     }
 }
 
@@ -266,7 +373,7 @@
             justify-content: space-between;
             align-items: center;
             height: 1.84rem;
-            padding: 0 .66rem;
+            padding: 0 .64rem;
             .aoi-city{
                 text-align: left;
                 font-size: .24rem;
@@ -279,7 +386,7 @@
                     font-weight: normal;
                     line-height: .66rem;
                     color: @font-black;
-                    font-size: .48rem;
+                    font-size: .4rem;
                 }
                 
             }

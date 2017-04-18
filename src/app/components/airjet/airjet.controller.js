@@ -215,18 +215,36 @@
 
 
         $scope.recommendList = [{
+            id:1,
             departure: '阿普雷顿（及其周边）',
-            time: '2017-05-16',
             destination: '三亚',
-            money: '¥60万'
-        }, {
-            departure: '阿普雷顿（及其周边）',
+            model: '金鹿航空 BBJ-002',
+            startTime: '13:00',
+            endTime: '16:30',
+            people: '3人',
+            order: '993028363001',
             time: '2017-05-16',
-            destination: '北京',
             money: '¥60万'
         }, {
+            id:2,
+            departure: '阿普雷顿（及其周边）',
+            destination: '北京',
+            model: '金鹿航空 BBJ-002',
+            startTime: '13:00',
+            endTime: '16:30',
+            people: '3人',
+            order: '993028364021',
+            time: '2017-05-16',
+            money: '¥60万'
+        }, {
+            id:3,
             departure: '香港',
             destination: '北京',
+            model: '金鹿航空 BBJ-002',
+            startTime: '13:00',
+            endTime: '16:30',
+            people: '3人',
+            order: '993028364001',
             time: '2017-05-01',
             money: '¥60万'
         }];
@@ -318,6 +336,9 @@
         function datepicter(name, index) {
             var calendar = myApp.calendar({
                 input: '.' + name + index,
+                disabled: {
+                    to: new Date().setDate(new Date().getDate() - 1)
+                },
                 onDayClick: function () {
                     calendar.close();
                 }
