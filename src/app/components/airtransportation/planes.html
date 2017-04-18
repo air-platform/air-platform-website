@@ -20,7 +20,14 @@
                   <div class="list-block">
                    <div class="planes-list-view">
                      <ul class="planes-list">
-                       <li class="plane-discription" ng-repeat="plane in ctl.planes" ng-click="ctl.select(plane)">
+                       <li class="plane-discription" ng-repeat="plane in ctl.planes"
+                       ng-click="ctl.select(plane, $event)" ng-class="{'active' : plane == ctl.planeSelected}">
+                         <label class="label-checkbox checkbox-circle item-content">
+                             <input type="radio" name="plane-select" ng-checked="plane === ctl.planeSelected">
+                             <div class="item-media">
+                                 <i class="icon icon-form-checkbox"></i>
+                             </div>
+                         </label>
                          <div class="card">
                            <div class="card-header">
                              <img ng-src="{{ plane.imageUrl }}" alt="">
