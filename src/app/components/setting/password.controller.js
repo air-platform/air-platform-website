@@ -7,7 +7,7 @@
     angular.module('airsc').controller('passwordController', passwordController);
 
     /** @ngInject */
-    function passwordController($scope, $rootScope, iotUtil, i18n) {
+    function passwordController($scope,NetworkService, $rootScope, iotUtil, i18n) {
 
         $scope.oldPassword = '';
         $scope.newPassword = '';
@@ -17,7 +17,9 @@
         function resetAction() {
             myApp.showIndicator();
 
-            NetworkService.post('account/password',{oldPassword:$scope.oldPassword,newPassword:$scope.newPassword},function (res) {
+            var param = {oldPassword:$scope.oldPassword,newPassword:$scope.newPassword};
+
+            NetworkService.post('account/password',param,function (res) {
                 myApp.hideIndicator();
                 myApp.alert('重置密码成功！', 'Air Community', function () {
                     mainView.router.back();
