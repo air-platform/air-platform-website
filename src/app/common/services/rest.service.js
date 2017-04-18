@@ -16,7 +16,7 @@
                 token = 'Bearer ' + token;
                 RestangularConfigurer.setDefaultHeaders({Authorization:token});
             }else{
-                RestangularConfigurer.setDefaultHeaders({Authorization:null});
+                // RestangularConfigurer.setDefaultHeaders({Authorization:null});
             }
             RestangularConfigurer.setFullResponse(true);
         });
