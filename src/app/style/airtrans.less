@@ -23,7 +23,6 @@
 
   .schedule-card {
     margin-top: 1em;
-    box-shadow: 0 -5px 5px 0 rgba(166,166,166,0.50);
     border-radius: 1px;
 
     .add-schedule-button {
@@ -241,6 +240,15 @@
 
     .icon-form-checkbox {
       background-color: @base-sky;
+    }
+  }
+
+  .plane-discription {
+    .item-media .icon {
+      display: none;
+    }
+    &.active .item-media .icon {
+      display: block;
     }
   }
 

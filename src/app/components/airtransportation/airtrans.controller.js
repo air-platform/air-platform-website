@@ -30,7 +30,7 @@
             'time': '08:00 - 09:00',
             'departure': '徐闻',
             'arrival': '海口美兰机场',
-            'flight': '首都航空B-7186'
+            'flight': '首航直升机B-7186'
           }, {
             'date': '2017-06-03',
             'time': '14:30 - 15:30',
@@ -49,7 +49,7 @@
             'time': '08:00 - 09:00',
             'departure': '徐闻',
             'arrival': '海口美兰机场',
-            'flight': '首都航空B-7186'
+            'flight': '首航直升机B-7186'
           };
           $scope.schedules.unshift(schedule);
         }
