@@ -89,14 +89,12 @@
 
         function refresh() {
             if (iotUtil.islogin()) {
-                console.log('----out islogin');
                 info = iotUtil.userInfo();
                 $scope.islogin = true;
                 $scope.rightUserItem.title = info.nickName;
                 $scope.rightUserItem.target = constdata.router.set.profile;
             } else {
                 info = {};
-                console.log('----out log');
                 $scope.islogin = false;
                 $scope.rightUserItem.title = loginItemTitle;
                 $scope.rightUserItem.target = constdata.router.login.login;
