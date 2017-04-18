@@ -52,7 +52,6 @@
 
                 StorageService.put(constdata.information,userInfo,24 * 7 * 60 * 60);//3 天过期
 
-                console.log(StorageService.get(constdata.information));
                 //通知刷新界面
                 $rootScope.$emit(constdata.notification_refresh_information,userInfo);
 
