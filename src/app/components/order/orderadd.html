@@ -113,8 +113,8 @@
                 <!--声明-->
                 <div class="order-detail-agreement">
                     <div class="list-block">
-                        <label class="label-checkbox item-content">
-                            <input type="checkbox" name="checkbox" value="{{agreement}}" ng-bind="agreement" required />
+                        <label class="label-checkbox item-content" ng-click="agreeValueChanged()">
+                            <input type="checkbox" ng-bind="agreement">
                             <div class="item-media">
                                 <i class="icon icon-form-checkbox"></i>
                             </div>
@@ -130,7 +130,7 @@
                 <!--提交-->
                 <div class="order-detail-confirm">
                     <p>
-                        <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red" ng-disabled="form.$invalid">确认</a>
+                        <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red" ng-disabled="form.$invalid || !agreement">确认</a>
                     </p>
                 </div>
             </form>

@@ -20,7 +20,7 @@
         
         
         
-        $scope.agreement = true;
+        $scope.agreement = false;
         $scope.newPerson = {name:'',mobile:'',identity:''};
         $scope.isSelecteded = false;
 
@@ -73,11 +73,11 @@
 
         
         function gotoAnnounceAction() {
+            $scope.agreement = false;
             mainView.router.loadPage(constdata.router.protocal.safe);
         }
         function agreeValueChanged() {
-            $scope.$apply();//需要手动刷新
-            console.log($scope.agreement);
+            $scope.agreement = !$scope.agreement;
         }
         function getPassengers() {
             OrderServer.passengers(function (res) {
