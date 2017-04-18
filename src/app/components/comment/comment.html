@@ -35,11 +35,11 @@
             <div class="commentadd-star">
                 <div class="comment-title">评分</div>
                 <div class="comment-stars">
-                    <i class="f7-icons icon">star_fill</i>
-                    <i class="f7-icons icon">star_fill</i>
-                    <i class="f7-icons icon">star_half</i>
-                    <i class="f7-icons icon">star</i>
-                    <i class="f7-icons icon">star</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(1)">{{starNum > 0 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(2)">{{starNum > 1 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(3)">{{starNum > 2 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(4)">{{starNum > 3 ? 'star_fill' : 'star'}}</i>
+                    <i class="f7-icons icon" ng-click="markStarAction(5)">{{starNum > 4 ? 'star_fill' : 'star'}}</i>
                 </div>
             </div>
             <!--评价-->
@@ -48,7 +48,7 @@
             </div>
             <!--提交-->
             <div class="commentadd-submit">
-                <a href="#" class="button button-big active" ng-disabled='form.$invalid'>重 置</a>
+                <a href="#" class="button button-big active" ng-disabled='form.$invalid'>提 交</a>
             </div>
 
         </div>
