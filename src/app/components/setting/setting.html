@@ -7,25 +7,25 @@
 </div>
 <div class="pages navbar-through">
     <div data-page="setting" class="page" ng-controller="settingController">
-        <!--<div class="page-content">-->
-            <!--<div class="content-block-title">个人信息</div>-->
-            <!--<div class="list-block setting-list">-->
-                <!--<ul>-->
-                    <!--<li>-->
-                        <!--<a href ng-click="gotoDetail()" class="item-link">-->
-                            <!--<div class="item-content">-->
-                                <!--&lt;!&ndash;<div class="item-media"><i class="f7-icons">person</i></div>&ndash;&gt;-->
-                                <!--<div class="item-inner">-->
-                                    <!--<div class="item-title">修改密码</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</div>-->
+        <div class="page-content">
+            <div class="content-block-title">个人信息</div>
+            <div class="list-block setting-list">
+                <ul>
+                    <li>
+                        <a href ng-click="gotoDetail()" class="item-link">
+                            <div class="item-content">
+                                <!--<div class="item-media"><i class="f7-icons">person</i></div>-->
+                                <div class="item-inner">
+                                    <div class="item-title">修改密码</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
 
-            <div class="page-content infinite-scroll infinite-scroll-top comment-container" ng-init="showMore = false">
+            <div class="infinite-scroll infinite-scroll-top comment-container" ng-init="showMore = false">
                 <div class="comment-header">
                     <i class="f7-icons icon">chats</i>
                     <span class="comment-text">评论</span>
@@ -51,8 +51,8 @@
                         Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
                     </div>
                 </div>
-                <div class="comment-more">
-                    <a href="#" class="item-link button" ng-show="!showMore" ng-click="showMore = !showMore">查看更多</a>
+                <div class="comment-more" ng-show="!showMore">
+                    <a href="#" class="item-link button" ng-click="showMore = !showMore">查看更多</a>
                 </div>
 
                 <div class="comment-list" ng-show="showMore">
@@ -79,6 +79,6 @@
 
             </div>
 
-        <!--</div>-->
+        </div>
     </div>
 </div>
