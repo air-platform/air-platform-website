@@ -1,0 +1,37 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="center sliding">评论</div>
+    </div>
+</div>
+<div class="pages navbar-through">
+    <div data-page="comment" class="page" ng-controller="CommentController">
+        <div class="page-content">
+            <div class="content-block school-content order-card-container">
+                <div class="list-block cards-list">
+                    <ul>
+                        <li class="card order-card" ng-repeat="item in items[0] track by $index" ng-click="gotoOrderDetail(0,$index)">
+                            <div class="card-header">
+                                <span class="order-number">{{item.no}}</span>
+                                <span class="order-date">{{item.date}}</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-content-inner">
+                                    <div class="order-avatar">
+                                        <img src="{{item['url']}}">
+                                    </div>
+                                    <div class="order-name">{{item.name}}</div>
+                                    <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="link"></a>
+                                <a href="#" class="button btn-status-cancel">取消订单</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
