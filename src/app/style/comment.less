@@ -81,15 +81,43 @@
   margin-top: 5px;
   height: 50px;
   background-color: @base-white;
+  .comment-title {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.36rem;
+    margin: 10px;
+  }
+  .comment-stars {
+    display: inline-block;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px;
+    i {
+      margin: 0 3px;
+      color: @base-red;
+    }
+  }
 }
 .commentadd-comment {
   margin-top: 5px;
-  height: 200px;
+  height: 180px;
   background-color: @base-white;
   textarea {
     padding: 10px;
-    height: 180px;
+    height: 160px;
     width: 100%;
     resize: none;
+    font-size: 0.36rem;
+  }
+}
+.commentadd-submit {
+  .button {
+    margin: 10px;
+    background-color: @base-red;
+    border-radius: 8px;
+    border: none;
   }
 }
