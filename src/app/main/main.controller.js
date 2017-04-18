@@ -54,8 +54,7 @@
         var rightPanelItems = [
             {title: 'profile.order', target: constdata.router.order.order, icon: 'list'},
             {title: 'profile.setting', target: constdata.router.set.setting, icon: 'gear'},
-            {title: 'profile.out', target: 'out', icon: 'logout'},
-            {title: '个人信息', target: 'app/components/profile/profile.html'}];
+            {title: 'profile.out', target: 'out', icon: 'logout'}];
         var info = {};
         var loginItemTitle = '登录/注册';
 

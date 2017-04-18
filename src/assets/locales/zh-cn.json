@@ -31,7 +31,10 @@
     "email": "邮箱",
     "guestInfo": "旅客信息",
     "addGuest": "新增旅客",
-    "modify": "修改"
+    "modify": "修改",
+    "modifySuccess": "修改成功",
+    "addGuestText": "还没有旅客，",
+    "addGuestTextTwo": "快增加旅客信息吧"
   },
   "order":{
     "center":"订单中心",

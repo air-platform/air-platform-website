@@ -1,33 +1,43 @@
 /**
  * Created by Otherplayer on 16/7/21.
  */
-(function () {
-    'use strict';
+(function() {
+  'use strict';
 
-    angular.module('airsc').controller('profileController', profileController);
+  angular.module('airsc').controller('profileController', profileController);
 
-    /** @ngInject */
-    function profileController($scope, $rootScope, iotUtil, i18n) {
-    	$rootScope.userInfo = {
-    		headerImg: './../../../assets/images/nav-icon.png',
-    		nickname: '15202498406',
-    		name: '',
-    		sex: '',
-    		tel: '15202498406',
-    		email: ''
-    	};
-
-        $scope.watch = watch;
-
-        var watch = $rootScope.$watch('userInfo.sex', function(newValue, oldValue) {
-            if(newValue !== oldValue) {
-                console.log('我变了');
-            }
-        });
-
-    	$scope.notSet = i18n.t('profile.not-set');
-    	$scope.gotoAddGuest = function () {
-            mainView.router.loadPage('app/components/profile/add-guest.html');
-        }
+  /** @ngInject */
+  function profileController($scope, $rootScope, iotUtil, i18n, NetworkService, UrlService, URL) {
+    $scope.notSet = i18n.t('profile.not-set');
+    $scope.gender = {
+      male: '男',
+      female: '女'
     }
+
+    NetworkService.get(UrlService.getUrl(URL.PROFILE), null, function(res) {
+      $rootScope.userInfo = res.data;
+
+      $scope.watch = $rootScope.$watch('userInfo.gender', function(newValue, oldValue) {
+        if (newValue != oldValue) {
+          NetworkService.put(UrlService.getUrl(URL.PROFILE), $rootScope.userInfo, function(res) {
+            if (res.status === 200) {
+              myApp.alert('修改成功', $scope.headText);
+            }
+          }, function(err) {
+            myApp.alert(err.statusText, $scope.headText);
+          });
+        }
+      });
+    }, function(err) {
+      console.log(err);
+    });
+
+    $$('.link.close-picker').on('click', function() {
+      console.log('点了');
+    });
+
+    $scope.gotoAddGuest = function() {
+      mainView.router.loadPage('app/components/profile/add-guest.html');
+    }
+  }
 })();

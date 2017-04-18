@@ -9,7 +9,7 @@
 <div class="pages navbar-through">
     <div data-page="guest-info" class="page" ng-controller="gusetInfoController">
         <div class="page-content profile">
-            <div class="list-block">
+            <div class="list-block" ng-show="noGuest">
                 <ul>
                     <li ng-repeat="guest in guestList track by $index"><a href="#" class="item-link">
                         <div class="item-content profile-header">
@@ -19,6 +19,13 @@
                             </div>
                         </div></a></li>
                 </ul>
+            </div>
+            <div class="list-block" ng-hide="noGuest">
+                <div class="no-guest">
+                    {{'profile.addGuestText' | translate}}<br>
+                    {{'profile.addGuestTextTwo' | translate}}
+                </div>
+                <a href="app/components/profile/add-guest.html" class="add-guest-link"><em class="fa fa-plus-circle"></em>新增旅客</a>
             </div>
         </div>
     </div>

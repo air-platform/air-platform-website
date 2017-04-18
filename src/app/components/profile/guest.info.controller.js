@@ -5,17 +5,15 @@
 
     /** @ngInject */
     function gusetInfoController($scope, iotUtil, NetworkService, UrlService, URL) {
-    	$scope.guestList = [{
-    		userName: '李明',
-    		card: '610111198104070029'
-    	}, {
-    		userName: '王雀斑',
-    		card: '610111193010970034'
-    	}]
 
-    	NetworkService.get(UrlService.getUrl(URL.COURSE), null,function (response) {
-    		console.log(response);
-    	}, function() {
+    	NetworkService.get(UrlService.getUrl(URL.USERPASSENGERS), null, function(res) {
+            $scope.guestList = res.data;
+            if($scope.guestList.length == 0) {
+                $scope.noGuest = false;
+            } else {
+                $scope.noGuest = true;
+            }
+    	}, function(err) {
 
     	});
     }

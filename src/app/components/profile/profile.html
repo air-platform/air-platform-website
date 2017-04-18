@@ -23,47 +23,46 @@
             </a>
           </li>
           <li>
-            <a href="app/components/profile/modify.html?nickname={{userInfo.nickname}}" class="item-link">
+            <a href="app/components/profile/modify.html?nickName={{userInfo.nickName}}" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
                   <div class="item-title label">{{'profile.nickname' | translate}}</div>
-                  <div class="item-input" ng-bind="userInfo.nickname"></div>
+                  <div class="item-input" ng-bind="userInfo.nickName"></div>
                 </div>
               </div>
             </a>
           </li>
           <li>
-            <a href="app/components/profile/modify.html?name={{userInfo.name}}" class="item-link">
+            <a href="app/components/profile/modify.html?realName={{userInfo.realName}}" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
                   <div class="item-title label">{{'profile.username' | translate}}</div>
-                  <div class="item-input" ng-if="userInfo.name != ''" ng-bind="userInfo.name"></div>
-                  <div class="item-input not-set" ng-if="userInfo.name == ''" ng-bind="notSet"></div>
+                  <div class="item-input" ng-if="userInfo.realName" ng-bind="userInfo.realName"></div>
+                  <div class="item-input not-set" ng-if="!userInfo.realName" ng-bind="notSet"></div>
                 </div>
               </div>
             </a>
           </li>
           <li>
             <a href="#" data-open-in="picker" class="item-link smart-select">
-              <select name="sex" ng-model="userInfo.sex">
-                <option>男</option>
-                <option>女</option>
+              <select name="sex" ng-model="userInfo.gender">
+                <option value="{{key}}" ng-repeat="(key, value) in gender" ng-bind="value"></option>
               </select>
               <div class="item-content">
                 <div class="item-inner">
                   <div class="item-title label">{{'profile.sex' | translate}}</div>
-                  <div class="item-after" ng-if="userInfo.sex != ''" ng-bind="userInfo.sex"></div>
-                  <div class="item-input not-set" ng-if="userInfo.sex == ''" ng-bind="notSet"></div>
+                  <div class="item-after" ng-if="userInfo.gender" ng-bind="gender[userInfo.gender]"></div>
+                  <div class="item-input not-set" ng-if="!userInfo.gender" ng-bind="notSet"></div>
                 </div>
               </div>
             </a>
           </li>
           <li>
-            <a href="app/components/profile/modify.html?tel={{userInfo.tel}}" class="item-link">
+            <a href="#" class="item-link">
               <div class="item-content">
                 <div class="item-inner">
                   <div class="item-title label">{{'profile.tel' | translate}}</div>
-                  <div class="item-input" ng-bind="userInfo.tel"></div>
+                  <div class="item-input" ng-bind="userInfo.mobile"></div>
                 </div>
               </div>
             </a>
@@ -73,8 +72,8 @@
               <div class="item-content">
                 <div class="item-inner">
                   <div class="item-title label">{{'profile.email' | translate}}</div>
-                  <div class="item-input" ng-if="userInfo.email != ''" ng-bind="userInfo.email"></div>
-                  <div class="item-input not-set" ng-if="userInfo.email == ''" ng-bind="notSet"></div>
+                  <div class="item-input" ng-if="userInfo.email" ng-bind="userInfo.email"></div>
+                  <div class="item-input not-set" ng-if="!userInfo.email" ng-bind="notSet"></div>
                 </div>
               </div>
             </a>
