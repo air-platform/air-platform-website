@@ -126,9 +126,13 @@
 
 
         
-        function gotoAnnounceAction() {
+        function gotoAnnounceAction(type) {
             $scope.agreement = false;
-            mainView.router.loadPage(constdata.router.protocal.safe);
+            if (1 === type){
+                mainView.router.loadPage(constdata.router.protocal.announce);
+            }else{
+                mainView.router.loadPage(constdata.router.protocal.safe);
+            }
         }
         function agreeValueChanged() {
             $scope.agreement = !$scope.agreement;
