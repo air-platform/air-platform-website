@@ -70,7 +70,7 @@
         controller.submitSchedules = function() {
           var data = $scope.schedules;
           mainView.router.loadPage('app/components/order/orderadd.html');
-          mainView.pageData= {
+          mainView.pageData = {
             'from': 'airtrans',
             'schedules': $scope.schedules
           };

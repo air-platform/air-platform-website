@@ -18,14 +18,15 @@
         */
         $scope.orderInfo = {
             flightId:'7f000001-5b76-17e6-815b-765f46c60002',flight:'首航直升机 B-7186',departure:'北京',arrival:'上海',capacity:5,date:'2017-5-1',time:'约12:36分钟',interval:'08:00-09:00',
-            charterAll:{price:'$2000',capacity:5},charter:{price:'￥800',capacity:3},
+            charterAll:{price:2000,capacity:5},charter:{price:800,capacity:3},
+            contactMobile:'',
             chartered:true
         };
         //乘客及联系人信息
         $scope.passengers = [];
-        $scope.contactMobile = '';
+        $scope.psgs = [];
 
-        //获取信息
+        // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
         if (pageType && pageType === 'airtrans'){//从air transportation过来
@@ -37,7 +38,7 @@
         // 获取 f7 页面
         // var page = myApp.views[myApp.views.length - 1];
         // var pageContainer = $$(page.container);
-        // console.log(page);
+        // console.log(pageData);
         
         $scope.agreement = false;
         $scope.newPerson = {name:'',mobile:'',identity:''};
@@ -93,13 +94,34 @@
                 if (value.length !== 11){
                     myApp.alert('手机号格式不正确！');
                 }else{
-                    $scope.contactMobile = value;
+                    $scope.orderInfo.contactMobile = value;
                     $scope.$apply();//需要手动刷新
                 }
             });
         }
         function gotoOrderDetailAction() {
+            //检查联系人手机号
+            //检查是否有乘机人
+            $scope.psgs = [];
+            $scope.passengers.forEach(function (p) {
+                if (p.isSelected){
+                    $scope.psgs.push(p);
+                }
+            });
+            // if ($scope.orderInfo.contactMobile.length !== 11){
+            //     showAlert('请输入联系人手机号');
+            //     return;
+            // }else if ($scope.psgs.length === 0){
+            //     showAlert('请选择乘机人');
+            //     return;
+            // }
+
             mainView.router.loadPage('app/components/order/orderdetail.html');
+            mainView.pageData = {
+                from:'orderadd',
+                info:$scope.orderInfo,
+                passengers:$scope.psgs
+            };
         }
 
 
@@ -121,7 +143,10 @@
 
         function showErrorAlert(err) {
             var errDesc = err.statusText;
-            myApp.alert(errDesc, 'Air Community');
+            showAlert(errDesc);
+        }
+        function showAlert(msg) {
+            myApp.alert(msg);
         }
 
     }

@@ -67,7 +67,7 @@
                     </div>
                     <div class="order-person-mobile">
                         <span>联系手机&nbsp;&nbsp;&nbsp;</span>
-                        <span>{{contactMobile}}</span>
+                        <span>{{orderInfo.contactMobile}}</span>
                         <span class="order-edit">
                         <a ng-click="editContactPhoneAction()"><i class="f7-icons">compose</i>修改</a>
                     </span>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="order-persons">
                                 <div>拼座</div>
-                                <div>至少{{orderInfo.charter.capacity}}人预定</div>
+                                <div>至少 {{orderInfo.charter.capacity}} 人预定</div>
                             </div>
                             <div class="order-price">
                                 {{orderInfo.charter.price}}
