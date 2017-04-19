@@ -17,26 +17,26 @@
         var leftPanelItems = [
             {
                 title: 'Air Jet', items: [
-                {'title': '包机预定', target: constdata.router.airjet.home},
-                {'title': '缘梦飞行', target: constdata.router.airjet.home},
-                {'title': '卡产品', target: constdata.router.airjet.home}
+                {'title': '包机预定', target: constdata.router.airjet.home + '?type=1'},
+                {'title': '缘梦飞行', target: constdata.router.airjet.home + '?type=2'},
+                {'title': '卡产品', target: constdata.router.airjet.home + '?type=3'}
             ]
             },
             {
                 title: 'Air Taxi', items: [
-                {'title': '空中观光', target: constdata.router.airtaxi.home}
+                {'title': '空中观光', target: constdata.router.airtaxi.home + '?type=1'}
             ]
             },
             {
                 title: 'Air Transportation', items: [
-                {'title': '海峡飞行', target: constdata.router.airtrans.home},
-                {'title': '内蒙航线', target: constdata.router.airtrans.home}
+                {'title': '海峡飞行', target: constdata.router.airtrans.home + '?type=1'},
+                {'title': '内蒙航线', target: constdata.router.airtrans.home + '?type=2'}
             ]
             },
             {
                 title: '飞行培训', items: [
-                {'title': '航校信息', target: constdata.router.airtrain.home},
-                {'title': '预定培训', target: constdata.router.airtrain.home}
+                {'title': '航校信息', target: constdata.router.airtrain.home + '?type=1'},
+                {'title': '预定培训', target: constdata.router.airtrain.home + '?type=2'}
             ]
             },
             {
