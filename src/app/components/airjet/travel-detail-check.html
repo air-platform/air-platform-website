@@ -1,17 +1,13 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left"><a href="#" data-panel="left" class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="left"><a href="app/components/airjet/airjet.html" data-panel="left" class="link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding">订单详情</div>
     </div>
 </div>
 
 <div class="pages">
     <div data-page="travel-detail" class="page" ng-controller="travelDetailController">
-        <div class="page-content">
-            <div class="travel-model-info block-center ">
-                <em>!</em>
-                <span>{{'airjet.order-info' | translate}}</span>
-            </div>
+        <div class="page-content travel-detail-check">
             <div class="air-order-detail">
                 <div class="air-order-item radius-top-bottom">
                     <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.order}}</span>
@@ -60,9 +56,6 @@
                     <div>{{'airjet.phone' | translate}} {{detailData.info.phone}}</div>
                     <div>{{'airjet.email' | translate}} {{detailData.info.email}}</div>
                     <div>{{'airjet.remark' | translate}} {{detailData.info.remark || '无'}}</div>
-                </div>
-                <div class="order-submit travel-detail-submit" ng-click="submit()">
-                    {{'airjet.confirms' | translate}}
                 </div>
             </div>
         </div>

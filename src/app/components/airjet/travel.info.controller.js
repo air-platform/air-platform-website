@@ -7,8 +7,7 @@
     angular.module('airsc').controller('travelInfoController', travelInfoController);
 
     /** @ngInject */
-    function travelInfoController($scope, NotificationService) {
-        var queryData = myApp.views[0].activePage.query;
+    function travelInfoController($scope, NotificationService, StorageService) {
         $scope.infoData = {};
         $scope.infoSubmit = infoSubmit;
 
@@ -25,10 +24,11 @@
                 NotificationService.alert.success('请填写邮箱', null);
                 return;
             }
-            var formData = JSON.parse(queryData.jetdata);
-            formData.info = data;
-            formData.order = Math.floor(Math.random () * 999999999999);
-            mainView.router.loadPage('app/components/airjet/travel-detail.html?jetdata=' + JSON.stringify(formData));
+            var transferData = StorageService.get('plan');
+            transferData.info = data;
+            transferData.order = Math.floor(Math.random () * 999999999999);
+            StorageService.put('plan', transferData);
+            mainView.router.loadPage('app/components/airjet/travel-detail.html');
         };
         
     }

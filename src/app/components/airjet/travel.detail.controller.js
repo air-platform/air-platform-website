@@ -7,12 +7,12 @@
     angular.module('airsc').controller('travelDetailController', travelDetailController);
 
     /** @ngInject */
-    function travelDetailController($scope,iotUtil) {
-        var queryData = myApp.views[0].activePage.query;
+    function travelDetailController($scope, StorageService) {
+        var transferData = StorageService.get('plan');
         $scope.removeOrder = removeOrder;
         $scope.submit = submit;
-        if(queryData.jetdata) {
-            $scope.detailData = JSON.parse(queryData.jetdata);
+        if(transferData) {
+            $scope.detailData = transferData;
         }
 
         function removeOrder(data) {

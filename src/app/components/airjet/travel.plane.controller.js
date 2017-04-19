@@ -7,12 +7,13 @@
     angular.module('airsc').controller('travelPlaneController', travelPlaneController);
 
     /** @ngInject */
-    function travelPlaneController($scope, NotificationService) {
+    function travelPlaneController($scope, NotificationService, StorageService) {
+        var transferData = StorageService.get('plan');
         var queryData = myApp.views[0].activePage.query;
-        if(queryData.jetdata){
-            angular.element('#plane-title').text(JSON.parse(queryData.jetdata).type);
+        if(transferData){
+            angular.element('#plane-title').text(transferData.type);
         }
-        if(queryData.name){
+        if(queryData && queryData.name){
             angular.element('#plane-detail-title').text(queryData.name);
         }
         $scope.jumpInfo = jumpInfo;
@@ -97,9 +98,9 @@
                     planeArr.push(item.name);
                 }
             });
-            var formData = JSON.parse(queryData.jetdata);
-            formData.plane = planeArr;
-            mainView.router.loadPage('app/components/airjet/travel-info.html?jetdata=' + JSON.stringify(formData));
+            transferData.plane = planeArr;
+            StorageService.put('plan', transferData);
+            mainView.router.loadPage('app/components/airjet/travel-info.html');
         };
 
     }
