@@ -10,6 +10,7 @@
     function orderdetailController($scope,NetworkService,$interval,iotUtil,constdata) {
 
 
+        $scope.just4Show = true;
         $scope.orderInfo = {};
         $scope.passengers = [];
 
@@ -20,6 +21,7 @@
         if (pageType && pageType === 'orderadd'){//从air transportation过来
             $scope.orderInfo = pageData.info;
             $scope.passengers = pageData.passengers;
+            $scope.just4Show = false;
         }else{
             pageData = {};
         }
