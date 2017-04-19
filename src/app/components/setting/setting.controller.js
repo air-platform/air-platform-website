@@ -21,7 +21,7 @@
 
         /** -评论- **/
         $scope.loading = false;
-        $scope.comments = [];
+        $scope.comments = [1];
         var CCPage = 1;
         // 注册'infinite'事件处理函数
         $$('.infinite-scroll').on('infinite', function () {
@@ -29,7 +29,7 @@
             $scope.loading = true;
         });
 
-        getLatestFirstComment();
+        // getLatestFirstComment();
 
         function getLatestFirstComment(productId) {
             CommentServer.getLatestComment(productId,function (res) {

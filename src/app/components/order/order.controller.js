@@ -23,6 +23,7 @@
 
         function gotoCommentAction() {
             mainView.router.loadPage('app/components/comment/comment.html');
+
         }
         function gotoOrderDetail(itemIndex,index) {
             mainView.router.loadPage('app/components/order/orderdetail.html');
