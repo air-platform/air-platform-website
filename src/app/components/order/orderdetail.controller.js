@@ -16,8 +16,9 @@
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
+        console.log(pageData);
         if (pageType && pageType === 'orderadd'){//从air transportation过来
-            $scope.orderInfo = pageData.orderInfo;
+            $scope.orderInfo = pageData.info;
             $scope.passengers = pageData.passengers;
         }else{
             pageData = {};
