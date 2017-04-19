@@ -36,13 +36,13 @@
             if ($scope.just4Show){
                 mainView.router.back();
             }else{
-                mainView.router.back({url:constdata.router.airtrans.home});
-                // OrderServer.submitOrder('',{},function (res) {
-                //     showAlert('提交定单成功',function () {
-                //     });
-                // },function (err) {
-                //     showErrorAlert(err);
-                // });
+                OrderServer.submitOrder('',{},function (res) {
+                    showAlert('提交定单成功',function () {
+                        mainView.router.back({url:constdata.router.airtrans.home});
+                    });
+                },function (err) {
+                    showErrorAlert(err);
+                });
             }
         }
 

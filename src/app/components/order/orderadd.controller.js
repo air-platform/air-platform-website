@@ -109,7 +109,7 @@
                 }
             });
             // if ($scope.orderInfo.contactMobile.length !== 11){
-            //     showAlert('请输入联系人手机号');
+            //     editContactPhoneAction();
             //     return;
             // }else if ($scope.psgs.length === 0){
             //     showAlert('请选择乘机人');
