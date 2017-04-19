@@ -77,28 +77,28 @@
                 <div class="order-person-price">
                     <div class="order-price-title">请选择价格</div>
                     <div class="order-price-type row">
-                        <div class="col-50" ng-click="orderInfo.chartered = !orderInfo.chartered">
+                        <div class="col-50" ng-click="orderInfo.chartered = true">
                             <div class="order-price-icon">
                                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : orderInfo.chartered}">{{ orderInfo.chartered ? 'check_round' : 'circle'}}</i>
                             </div>
                             <div class="order-persons">
                                 <div>整机</div>
-                                <div>载客数：5</div>
+                                <div>载客数：{{orderInfo.charterAll.capacity}}</div>
                             </div>
                             <div class="order-price">
-                                ¥ 5,000
+                                {{orderInfo.charterAll.price}}
                             </div>
                         </div>
-                        <div class="col-50" ng-click="orderInfo.chartered = !orderInfo.chartered">
+                        <div class="col-50" ng-click="orderInfo.chartered = false">
                             <div class="order-price-icon">
                                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>
                             </div>
                             <div class="order-persons">
-                                <div>整机</div>
-                                <div>载客数：5</div>
+                                <div>拼座</div>
+                                <div>至少{{orderInfo.charter.capacity}}人预定</div>
                             </div>
                             <div class="order-price">
-                                ¥ 5,000
+                                {{orderInfo.charter.price}}
                             </div>
                         </div>
                     </div>
