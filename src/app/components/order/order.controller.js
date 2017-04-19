@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderListController($scope,NetworkService,$interval,iotUtil) {
+    function orderListController($scope,OrderServer,$interval,iotUtil) {
 
 
         $scope.items = [
@@ -37,11 +37,9 @@
         }
 
         function getDatas() {
-            NetworkService.get('user/orders', null,function (response) {
-
+            OrderServer.getOrders(0,function (res) {
                 var data = response.data;
                 console.log(data.content);
-
             },function (err) {
                 myApp.hideIndicator();
                 showErrorAlert(err);

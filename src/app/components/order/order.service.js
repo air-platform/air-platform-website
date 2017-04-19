@@ -22,7 +22,8 @@
         var service = {
             passengers: passengers,
             addPassenger: addPassenger,
-            submitOrder: submitOrder
+            submitOrder: submitOrder,
+            getOrders: getOrders
         };
 
         return service;
@@ -37,6 +38,15 @@
         }
         function submitOrder(flightId,param,successHandler,failedHandler) {//name、mobile、identity
             NetworkService.post('user/ferryflight/orders/' + flightId,param,successHandler,failedHandler);
+        }
+        function getOrders(type,successHandler,failedHandler) {
+            var path = '';
+            if (1 === type){path = '/pending';
+            }else if (2 === type){path = '/finished';
+            }else if (3 === type){path = '/cancelled';
+            }else {path = '';
+            }
+            NetworkService.get('user/orders' + path,null,successHandler,failedHandler);
         }
     }
 
