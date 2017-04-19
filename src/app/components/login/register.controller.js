@@ -10,7 +10,7 @@
     angular.module('airsc').controller('registerController', registerController);
 
     /** @ngInject */
-    function registerController($scope,NetworkService,$interval,iotUtil) {
+    function registerController($scope,NetworkService,$interval,constdata) {
 
         $scope.mobile = '';
         $scope.password = '';
