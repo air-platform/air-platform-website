@@ -18,7 +18,8 @@
         */
         $scope.orderInfo = {
             flightId:'7f000001-5b76-17e6-815b-765f46c60002',flight:'首航直升机 B-7186',departure:'北京',arrival:'上海',capacity:5,date:'2017-5-1',time:'约12:36分钟',interval:'08:00-09:00',
-            charterAll:{price:'$2000',capacity:5},charter:{price:'￥800',capacity:3}
+            charterAll:{price:'$2000',capacity:5},charter:{price:'￥800',capacity:3},
+            chartered:true
         };
         //乘客及联系人信息
         $scope.passengers = [];
@@ -29,14 +30,14 @@
         var pageType = pageData.from;
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             pageData = pageData.schedules;
-
         }else{
             pageData = {};
         }
 
-        console.log(pageData);
-        
-        
+        // 获取 f7 页面
+        // var page = myApp.views[myApp.views.length - 1];
+        // var pageContainer = $$(page.container);
+        // console.log(page);
         
         $scope.agreement = false;
         $scope.newPerson = {name:'',mobile:'',identity:''};
@@ -49,7 +50,7 @@
         $scope.editContactPhoneAction = editContactPhoneAction;
         $scope.gotoAnnounceAction = gotoAnnounceAction;
         $scope.agreeValueChanged = agreeValueChanged;
-
+        $scope.gotoOrderDetailAction = gotoOrderDetailAction;
 
 
         //获取乘客信息
@@ -97,7 +98,9 @@
                 }
             });
         }
-
+        function gotoOrderDetailAction() {
+            mainView.router.loadPage('app/components/order/orderdetail.html');
+        }
 
 
         

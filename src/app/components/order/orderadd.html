@@ -77,9 +77,9 @@
                 <div class="order-person-price">
                     <div class="order-price-title">请选择价格</div>
                     <div class="order-price-type row">
-                        <div class="col-50" ng-click="isSelecteded = !isSelecteded">
+                        <div class="col-50" ng-click="orderInfo.chartered = !orderInfo.chartered">
                             <div class="order-price-icon">
-                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !isSelecteded}">{{ isSelecteded ? 'circle' : 'check_round'}}</i>
+                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : orderInfo.chartered}">{{ orderInfo.chartered ? 'check_round' : 'circle'}}</i>
                             </div>
                             <div class="order-persons">
                                 <div>整机</div>
@@ -89,9 +89,9 @@
                                 ¥ 5,000
                             </div>
                         </div>
-                        <div class="col-50">
+                        <div class="col-50" ng-click="orderInfo.chartered = !orderInfo.chartered">
                             <div class="order-price-icon">
-                                <i class="f7-icons">{{'check_round'}}</i>
+                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>
                             </div>
                             <div class="order-persons">
                                 <div>整机</div>
@@ -130,7 +130,7 @@
                 <!--提交-->
                 <div class="order-detail-confirm">
                     <p>
-                        <a href="app/components/order/orderdetail.html" class="button button-fill button-big color-red" ng-disabled="form.$invalid || !agreement">确认</a>
+                        <a href class="button button-fill button-big color-red" ng-disabled="form.$invalid || !agreement" ng-click="gotoOrderDetailAction()">确认</a>
                     </p>
                 </div>
             </form>
