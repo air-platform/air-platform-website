@@ -70,12 +70,10 @@
         controller.submitSchedules = function() {
           var data = $scope.schedules;
           mainView.router.loadPage('app/components/order/orderadd.html');
-          // NetworkService.post('url', data, function(response) {
-          //   mainView.router.loadPage('app/components/airjet/dream-detail.html');
-          // },
-          // function(response) {
-          //   // handle errors
-          // });
+          mainView.pageData= {
+            'from': 'airtrans',
+            'schedules': $scope.schedules
+          };
         }
 
         var createDatePicker = function() {
