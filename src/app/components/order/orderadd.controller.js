@@ -13,9 +13,11 @@
         //订单信息
         /*
          capacity 在airtrans里面代表座位数、airtaxi里面代表景点数
+         charterAll 包机
+         charter 拼座
         */
         $scope.orderInfo = {
-            flight:'首航直升机 B-7186',departure:'北京',arrival:'上海',capacity:5,date:'2017-5-1',time:'约12:36分钟',interval:'08:00-09:00',
+            flightId:'7f000001-5b76-17e6-815b-765f46c60002',flight:'首航直升机 B-7186',departure:'北京',arrival:'上海',capacity:5,date:'2017-5-1',time:'约12:36分钟',interval:'08:00-09:00',
             charterAll:{price:'$2000',capacity:5},charter:{price:'￥800',capacity:3}
         };
         //乘客及联系人信息
@@ -27,7 +29,6 @@
         var pageType = pageData.from;
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             pageData = pageData.schedules;
-
         }else{
             pageData = {};
         }
