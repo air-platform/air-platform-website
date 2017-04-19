@@ -38,7 +38,7 @@
         }
 
         function getDatas() {
-            OrderServer.getOrders(0,function (res) {
+            OrderServer.getOrders(0,1,function (res) {
                 var data = res.data;
                 console.log(data.content);
 
