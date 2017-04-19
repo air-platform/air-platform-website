@@ -22,6 +22,7 @@
 
         $scope.agreement = false;
 
+        $scope.gotoAnnounceAction = gotoAnnounceAction;
         $scope.backAction = backAction;
         $scope.registerAction = registerAction;
         $scope.getAuthcode = getAuthcode;
@@ -73,6 +74,10 @@
                 myApp.alert('操作失败！' + errDesc, null);
             });
             
+        }
+
+        function gotoAnnounceAction() {
+            mainView.router.loadPage(constdata.router.protocal.announce);
         }
 
 
