@@ -21,7 +21,8 @@
 
         var service = {
             passengers: passengers,
-            addPassenger: addPassenger
+            addPassenger: addPassenger,
+            submitOrder: submitOrder
         };
 
         return service;
@@ -34,7 +35,9 @@
         function addPassenger(param,successHandler,failedHandler) {//name、mobile、identity
             NetworkService.post('user/passengers',param,successHandler,failedHandler);
         }
-
+        function submitOrder(flightId,param,successHandler,failedHandler) {//name、mobile、identity
+            NetworkService.post('user/ferryflight/orders/' + flightId,param,successHandler,failedHandler);
+        }
     }
 
 

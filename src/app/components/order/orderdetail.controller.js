@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderdetailController', orderdetailController);
 
     /** @ngInject */
-    function orderdetailController($scope,NetworkService,$interval,iotUtil,constdata) {
+    function orderdetailController($scope,OrderServer,$interval,iotUtil,constdata) {
 
 
         $scope.just4Show = true;
@@ -17,7 +17,6 @@
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
-        console.log(pageData);
         if (pageType && pageType === 'orderadd'){//从air transportation过来
             $scope.orderInfo = pageData.info;
             $scope.passengers = pageData.passengers;
@@ -37,8 +36,24 @@
             if ($scope.just4Show){
                 mainView.router.back();
             }else{
-
+                mainView.router.back();
+                mainView.router.back();
+                // OrderServer.submitOrder('',{},function (res) {
+                //     showAlert('提交定单成功',function () {
+                //     });
+                // },function (err) {
+                //     showErrorAlert(err);
+                // });
             }
+        }
+
+
+        function showErrorAlert(err) {
+            var errDesc = err.statusText;
+            showAlert(errDesc);
+        }
+        function showAlert(msg) {
+            myApp.alert(msg);
         }
 
     }
