@@ -37,7 +37,7 @@
                     home:'app/components/airtrain/airtrain.html'
                 },
                 order:{
-                  order:'app/components/order/order.html',
+                    order:'app/components/order/order.html',
                     orderdetail:'app/components/order/orderdetail.html',
                     orderadd:'app/components/order/orderadd.html'
                 },
@@ -47,7 +47,8 @@
                 },
                 protocal:{
                     announce:'app/components/about/protocal-announce.html',
-                    safe:'app/components/about/protocal-safe.html'
+                    safefixedwing:'app/components/about/protocal-safe-fixedwing.html',
+                    safehelicopter:'app/components/about/protocal-safe-helicopter.html'
                 }
             }
         });
