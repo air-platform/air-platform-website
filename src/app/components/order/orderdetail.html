@@ -16,9 +16,9 @@
                 <div class="order-detail-line" ng-show="just4Show"></div>
                 <div class="order-detail-content ng-scope" ng-style='just4Show ? {"margin-top":"0"} : {"margin-top":"10px"}'>
                     <div class="order-detail-content-title">
-                        <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
+                        <span><img class="" src="../../../assets/images/hnlogo.jpg"></span>
                         <span class="order-flytype">{{orderInfo.flight}}</span>
-                        <span class="order-date">{{orderInfo.date}}</span>
+                        <span class="order-date" style="float: right;">{{orderInfo.date}}</span>
                     </div>
                     <div class="order-content-line"></div>
                     <div class="order-detail-content-inner row">
@@ -79,21 +79,12 @@
                         <span class="order-total-price">¥ {{orderInfo.charterAll.price}}</span>
                     </span>
                 </div>
-                <!--声明-->
-                <div class="order-detail-agreement" ng-hide="just4Show">
-                    <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
-                    <span class="order-agree" ng-click="agreement = !agreement">我同意并阅读</span>
-                    <span class="order-announce" ng-click="gotoAnnounceAction()">《Air Community免责声明》</span>
-                </div>
                 <!--提交-->
-                <div class="order-detail-confirm">
+                <div class="order-detail-confirm" ng-hide="just4Show">
                     <p>
-                        <a href="#" class="button button-fill button-big color-red" ng-click="confirmAction()">{{just4Show ? '确 定' : '提 交'}}</a>
+                        <a href="#" class="button button-fill button-big color-red" ng-click="confirmAction()">提 交</a>
                     </p>
                 </div>
-
-
-
             </div>
         </div>
     </div>

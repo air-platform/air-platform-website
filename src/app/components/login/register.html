@@ -61,6 +61,15 @@
                                 </div>
                             </div>
                         </li>
+
+                        <li class="item-content">
+                            <!--声明-->
+                            <div class="order-detail-agreement">
+                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
+                                <span class="order-agree" ng-click="agreement = !agreement">我同意并阅读</span>
+                                <span class="order-announce" ng-click="gotoAnnounceAction()">《Air Community免责声明》</span>
+                            </div>
+                        </li>
                         <li class="item-content">
                             <div class="item-inner login-inner">
                                 <div class="item-text">
@@ -69,14 +78,16 @@
                             </div>
                         </li>
                     </ul>
+
                 </div>
+
 
                 <div class="list-block">
                     <ul>
                         <li>
                             <div class="row">
                                 <span class="col-5"></span>
-                                <button class="col-90 login-btn register-btn" ng-click="registerAction()" ng-disabled='form.$invalid'>{{'login.register' | translate}}</button>
+                                <button class="col-90 login-btn register-btn" ng-click="registerAction()" ng-disabled='form.$invalid || !agreement'>{{'login.register' | translate}}</button>
                                 <span class="col-5"></span>
                             </div>
                         </li>

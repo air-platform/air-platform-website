@@ -2,10 +2,11 @@
     <div class="navbar-inner">
         <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding color-black order-center"><span>Air Taxi</span></div>
+        <div class="right"></div>
     </div>
 </div>
 <div class="pages navbar-through">
-    <div data-page="taxi" class="page" ng-controller="taxiController">
+    <div data-page="taxi" class="page" ng-controller="taxiController as ctl">
         <div class="page-content">
           <div class="content-block fullscreen">
             <div class="map">
@@ -19,7 +20,7 @@
                     <div class="item-input">
                       <input type="text" placeholder="北京" ng-model="city" id="city-navi-autocomplete-placeholder">
                     </div>
-                    <a href="app/components/airtaxi/airtour-city.html?city={{city}}" class="city-navi-button">
+                    <a href="#" class="city-navi-button" ng-click="ctl.next()">
                       <span class="long-arrow-right"><i></i></span>
                     </a>
                   </li>
