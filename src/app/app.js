@@ -58,7 +58,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
 
     $$(document).on('navbarInit', function (e) {
         var navbar = e.detail.navbar;
-        var page = e.detail.page
+        var page = e.detail.page;
         // console.log(navbar);
     });
 

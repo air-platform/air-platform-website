@@ -10,13 +10,29 @@
     function orderaddController($scope,OrderServer,constdata) {
 
 
-
-
         //订单信息
-        $scope.orderInfo = {planeInfo:{name:'首航直升机 B-7186',date:'2017-5-1'},from:'北京',to:'上海',seat:5,time:'约12:36分钟',interval:'08:00-09:00'};
+        /*
+         capacity 在airtrans里面代表座位数、airtaxi里面代表景点数
+        */
+        $scope.orderInfo = {
+            flight:'首航直升机 B-7186',departure:'北京',arrival:'上海',capacity:5,date:'2017-5-1',time:'约12:36分钟',interval:'08:00-09:00',
+            charterAll:{price:'$2000',capacity:5},charter:{price:'￥800',capacity:3}
+        };
         //乘客及联系人信息
         $scope.passengers = [];
         $scope.contactMobile = '';
+
+        //获取信息
+        var pageData = mainView.pageData;
+        var pageType = pageData.from;
+        if (pageType && pageType === 'airtrans'){//从air transportation过来
+            pageData = pageData.schedules;
+
+        }else{
+            pageData = {};
+        }
+
+        console.log(pageData);
         
         
         
