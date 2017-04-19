@@ -38,14 +38,15 @@
 
         function getDatas() {
             OrderServer.getOrders(0,function (res) {
-                var data = response.data;
+                var data = res.data;
                 console.log(data.content);
+
             },function (err) {
                 myApp.hideIndicator();
                 showErrorAlert(err);
             });
         }
-        // getDatas();
+        getDatas();
 
 
 
