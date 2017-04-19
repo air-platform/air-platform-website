@@ -10,12 +10,19 @@
         function taxiController($scope, iotUtil, transUtilsService) {
             /* jshint validthis: true */
             var vm = this;
+            // app/components/airtaxi/airtour-city.html?city={{city}}
+            $scope.city = "";
 
-            var response = "徐闻,110.198611,20.2761111;海航大厦,110.35105,20.024108;" +
-                "徐闻,110.198611,20.2761111;海口港,110.162196,20.046835;" +
-                "徐闻,110.198611,20.2761111;美兰,110.468596,19.944221;11,110.340278,20.1000";
-            vm.mapPoints = transUtilsService.extractPoints(response);
-
+            vm.next = function() {
+              if(_.contains(citys, $scope.city)) {
+                mainView.query = {"city": $scope.city};
+                mainView.loadPage("app/components/airtaxi/airtour-city.html");
+              } else {
+                var message = '此城市尚无相关业务!';
+                if(!$scope.city) message = "请选择城市!";
+                myApp.alert(message, '城市选择');
+              }
+            }
             var drawMap = function(target, points) {
               var map = new BMap.Map(target);
               map.disableDragging();
