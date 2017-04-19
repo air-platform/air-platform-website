@@ -23,6 +23,8 @@
             passengers: passengers,
             addPassenger: addPassenger,
             submitOrder: submitOrder,
+            cancelOrder: cancelOrder,
+            deleteOrder: deleteOrder,
             getOrders: getOrders
         };
 
@@ -38,6 +40,12 @@
         }
         function submitOrder(flightId,param,successHandler,failedHandler) {//name、mobile、identity
             NetworkService.post('user/ferryflight/orders/' + flightId,param,successHandler,failedHandler);
+        }
+        function cancelOrder(flightId,successHandler,failedHandler) {
+            NetworkService.post('user/ferryflight/orders/' + flightId,null,successHandler,failedHandler);
+        }
+        function deleteOrder(flightId,successHandler,failedHandler) {
+            NetworkService.delete('user/ferryflight/orders/' + flightId,null,successHandler,failedHandler);
         }
         function getOrders(type,page,successHandler,failedHandler) {
             var path = '';
