@@ -29,8 +29,9 @@
 
         function submit(data) {
             if(data){
-                NotificationService.alert.success('订单提交成功', null);
-                mainView.router.loadPage('app/components/airjet/airjet.html')
+                mainView.router.loadPage('app/components/airjet/order-success.html');
+            } else {
+                mainView.router.loadPage('app/components/airjet/order-fail.html')
             }
         }
 

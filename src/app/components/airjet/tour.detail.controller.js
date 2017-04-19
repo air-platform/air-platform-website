@@ -32,6 +32,11 @@
                 NotificationService.alert.success('请填写客户名称', null);
                 return;
             }
+            if(data){
+                mainView.router.loadPage('app/components/airjet/order-success.html');
+            } else {
+                mainView.router.loadPage('app/components/airjet/order-fail.html')
+            }
         }
 
     }
