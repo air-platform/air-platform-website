@@ -233,26 +233,10 @@
                             <i class="fa fa-angle-right"></i>
                         </div>
                     </div>
-                    <div class="card-content" ng-bind="card.type_cn"></div>
-                    <div class="card-footer">
-                        <span ng-bind="card.type_en"></span>
-                        <span ng-bind="card.money"></span>
-                    </div>
-                </div>
-                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in hourCardList track by $index" ng-click="jumpTourDetail(card)">
-                    <div class="card-header">
-                        <span ng-bind="card.name"></span>
-                        <div class="action">
-                            <span>{{'airjet.buy-them' | translate}}</span>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        {{card.type}}
-                        <span ng-bind="card.money"></span>
-                    </div>
+                    <div class="card-content" ng-bind="card.type"></div>
                     <div class="card-footer">
                         <span ng-bind="card.description"></span>
+                        <span ng-bind="card.money"></span>
                     </div>
                 </div>
             </div>

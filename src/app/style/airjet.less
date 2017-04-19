@@ -485,15 +485,12 @@
 
     .card-footer {
         color: @color;
-
-        span {
-            font-size: 0.24rem;
-        }
     }
 }
 
 .air-card {
-    padding: 0.34rem 0.42rem;
+    height: 2.84rem;
+    padding: .32rem 0.42rem;
     border-radius: 0.16rem;
     box-shadow: none;
     color: #fff;
@@ -502,8 +499,10 @@
         font-size: 0.12rem;
         font-weight: 300;
         padding: 0;
-        min-height: initial;
+        min-height: .28rem;
         letter-spacing: 1px;
+        height: .28rem;
+        line-height: .28rem;
 
         &:after {
             display: none;
@@ -529,8 +528,10 @@
 
     .card-content {
         font-size: 0.72rem;
-        margin-top: 0.3rem;
+        margin-top: 0.46rem;
         letter-spacing: 0.2rem;
+        height: .72rem;
+        line-height: .72rem;
 
         span {
             font-size: 0.36rem;
@@ -544,6 +545,10 @@
     .card-footer {
         padding: 0;
         color: #fff;
+        margin-top: .3rem;
+        height: .36rem;
+        line-height: .36rem;
+        min-height: .36rem;
 
         &:before {
             display: none;
@@ -562,19 +567,19 @@
     }
 
     &.air-card-level-1 {
-        background-color: #f5c684;
+        background-image: linear-gradient(-211deg, #FFC83F 0%, #ECA500 93%);
     }
 
     &.air-card-level-2 {
-        background-color: #d993cf;
+        background-image: linear-gradient(-235deg, #83AFFF 0%, #4D6EA7 100%);
     }
 
     &.air-card-level-3 {
-        background-color: #b38fd7;
+        background-image: linear-gradient(-226deg, #A5D6FF 0%, #A3D5FF 2%, #3E99D3 100%);
     }
 
     &.air-card-level-4 {
-        background-color: #8fd2d7;
+        background-image: linear-gradient(-220deg, rgba(40,208,218,0.56) 0%, #36B4AA 100%);
     }
 
     &.air-card-level-5 {
