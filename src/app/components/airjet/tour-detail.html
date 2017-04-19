@@ -10,12 +10,12 @@
     <!-- Scrollable page content-->
     <div class="page-content">
         <div class="page-content-title">
-            <div ng-bind="tourDetail.name"></div>
+            <div>{{tourDetail.vendor.name}} {{tourDetail.type}}</div>
             <div><a class="link-tel" href="tel:400-666-4388"><img src="assets/images/phone.png" alt="phone">{{'airjet.service' | translate}}</a></div>
         </div>
         <div class="card-info">
-            <div ng-bind="tourDetail.type || tourDetail.type_cn"></div>
-            <div ng-bind="tourDetail.money"></div>
+            <div ng-bind="tourDetail.name"></div>
+            <div>{{tourDetail.currencyUnit | uppercase}}&nbsp;{{tourDetail.price}}</div>
         </div>
         <div class="card-detail">
             <div ng-bind="tourDetail.official"></div>

@@ -1,34 +1,34 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left"><a href="#" data-panel="left" class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="left"><a href="app/components/airjet/airjet.html" data-panel="left" class="link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding">订单详情</div>
     </div>
 </div>
 
 <div class="pages">
     <div data-page="travel-detail" class="page" ng-controller="travelDetailController">
-        <div class="page-content">
-            <div class="travel-model-info block-center ">
+        <div class="page-content travel-detail-check">
+            <!--<div class="travel-model-info block-center ">
                 <em>!</em>
                 <span>{{'airjet.order-info' | translate}}</span>
-            </div>
+            </div>-->
             <div class="air-order-detail">
                 <div class="air-order-item radius-top-bottom">
-                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.order}}</span>
+                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.orderNo}}</span>
                     <i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>
                 </div>
-                <div ng-repeat="plan in detailData.base track by $index">
+                <div ng-repeat="plan in detailData.flightLegs track by $index">
                     <div>
                         <div class="air-order-item aoi-city-container radius-top">
                             <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong ng-bind="plan.departure"></strong></div>
                             <div class="arrow-right"></div>
-                            <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.destination"></strong></div>
+                            <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.arrival"></strong></div>
                         </div>
                         <div class="air-order-item">
-                            {{'airjet.start-time' | translate}}{{plan.startTime | date: 'yyyy年MM月dd日 EEE' | chinaweek}}
+                            {{'airjet.start-time' | translate}}{{plan.date | date: 'yyyy年MM月dd日 EEE' | chinaweek}}
                         </div>
                         <div class="air-order-item radius-bottom">
-                            {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
+                            {{'airjet.guest-count' | translate}}{{plan.passengers}}{{'airjet.person' | translate}}
                         </div>
                     </div>
                     <div ng-show="plan.round">
@@ -45,25 +45,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="air-order-item aoi-guest radius-top" ng-show="detailData.type">
+                <div class="air-order-item aoi-guest radius-top" ng-show="detailData.fleetCandidates.length">
                     {{'airjet.options' | translate}}
                 </div>
-                <div class="air-order-item aoi-model-info radius-bottom" ng-show="detailData.type" ng-class="detailData.type ? '' : 'no-padding'">
-                    <!--<div ng-bind="detailData.type"></div>-->
-                    <div ng-repeat="model in detailData.plane track by $index" ng-bind="model"></div>
+                <div class="air-order-item aoi-model-info radius-bottom" ng-show="detailData.fleetCandidates.length" ng-class="detailData.fleetCandidates.length ? '' : 'no-padding'">
+                    <div ng-repeat="model in detailData.fleetCandidates track by $index" ng-bind="model.fleet.name"></div>
                 </div>
                 <div class="air-order-item aoi-guest radius-top">
                     {{'airjet.guest-info' | translate}}
                 </div>
                 <div class="air-order-item aoi-guest-info radius-bottom">
-                    <div>{{'airjet.name' | translate}} {{detailData.info.name}}</div>
-                    <div>{{'airjet.phone' | translate}} {{detailData.info.phone}}</div>
-                    <div>{{'airjet.email' | translate}} {{detailData.info.email}}</div>
-                    <div>{{'airjet.remark' | translate}} {{detailData.info.remark || '无'}}</div>
+                    <div>{{'airjet.name' | translate}} {{detailData.contact.person}}</div>
+                    <div>{{'airjet.phone' | translate}} {{detailData.contact.mobile}}</div>
+                    <div>{{'airjet.email' | translate}} {{detailData.contact.email}}</div>
+                    <div>{{'airjet.remark' | translate}} {{detailData.note || '无'}}</div>
                 </div>
-                <div class="order-submit travel-detail-submit" ng-click="submit()">
+                <!--<div class="order-submit travel-detail-submit" ng-click="submit()">
                     {{'airjet.confirms' | translate}}
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
     angular.module('airsc').controller('travelInfoController', travelInfoController);
 
     /** @ngInject */
-    function travelInfoController($scope, NotificationService, StorageService) {
+    function travelInfoController($scope, NotificationService, StorageService, NetworkService, UrlService, URL) {
         $scope.infoData = {};
         $scope.infoSubmit = infoSubmit;
 
@@ -25,10 +25,22 @@
                 return;
             }
             var transferData = StorageService.get('plan');
-            transferData.info = data;
-            transferData.order = Math.floor(Math.random () * 999999999999);
-            StorageService.put('plan', transferData);
-            mainView.router.loadPage('app/components/airjet/travel-detail.html');
+            var params = {
+                "contact": {
+                    "person": data.name,
+                    "mobile": data.phone,
+                    "email": data.email
+                },
+                "note": data.remark,
+                "flightLegs": transferData.base,
+                "fleetCandidates": transferData.plane
+            }
+            NetworkService.post(UrlService.getUrl(URL.AIRJET_ORDER), params, function(response) {
+                var local = response.headers('location').split('/');
+                mainView.router.loadPage('app/components/airjet/order-success.html?order=' + local[local.length - 1]);
+            }, function() {
+                mainView.router.loadPage('app/components/airjet/order-fail.html')
+            });
         };
         
     }

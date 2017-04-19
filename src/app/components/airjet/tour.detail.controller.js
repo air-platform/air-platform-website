@@ -7,13 +7,19 @@
     angular.module('airsc').controller('tourDetailController', tourDetailController);
 
     /** @ngInject */
-    function tourDetailController($scope, NotificationService) {
+    function tourDetailController($scope, NotificationService, NetworkService, UrlService, URL) {
         var queryData = myApp.views[0].activePage.query;
         $scope.tourData = {};
         $scope.submit = submit;
-        if(queryData.tourdata) {
-            $scope.tourDetail = JSON.parse(queryData.tourdata);
+        if(queryData.id) {
+            getTourDetail();
         }
+
+        function getTourDetail() {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD) + '/' + queryData.id, null, function(response) {
+                $scope.tourDetail = response.data;
+            });
+        };
 
         function submit(data){
             if(!data.name){

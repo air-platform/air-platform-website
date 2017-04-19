@@ -7,82 +7,49 @@
     angular.module('airsc').controller('travelPlaneController', travelPlaneController);
 
     /** @ngInject */
-    function travelPlaneController($scope, NotificationService, StorageService) {
+    function travelPlaneController($scope, NotificationService, StorageService, NetworkService, UrlService, URL) {
+        var page = 1;
         var transferData = StorageService.get('plan');
         var queryData = myApp.views[0].activePage.query;
-        if(transferData){
-            angular.element('#plane-title').text(transferData.type);
-        }
-        if(queryData && queryData.name){
-            angular.element('#plane-detail-title').text(queryData.name);
-        }
         $scope.jumpInfo = jumpInfo;
-        $scope.imgSrc = [
-            'assets/images/travel/timg.jpeg',
-            'assets/images/travel/timg.jpeg',
-            'assets/images/travel/timg.jpeg'
-        ];
+        angular.element('.pull-to-refresh-content').on('refresh', getPlaneList);
 
-        $scope.planeList = [{
-            id: '1',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            money: '¥83万'
-        },{
-            id: '2',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            money: '¥83万'
-        },{
-            id: '3',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            money: '¥83万'
-        },{
-            id: '4',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            money: '¥83万'
-        },{
-            id: '5',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            money: '¥83万'
-        },{
-            id: '6',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            money: '¥83万'
-        }];
+        if(queryData.type){
+            angular.element('#plane-title').text(queryData.type);
+            getPlaneList();
+        }
+        if(queryData.id){
+            getPlaneDetail();
+        }
 
-        $scope.planeDetail = {
-            id: '1',
-            selected: false,
-            logo: 'assets/images/plane.png',
-            name: '金鹿公务机',
-            type: 'GX01102',
-            model:'湾流G550',
-            range:'9500km',
-            trunk:'1334kg',
-            fleet:'湾流G550公务机是国际顶级远程喷气式公务机代表机型之一，是人类飞行史上首架直航范围能从纽约直达东京的超远程公务飞机，也是目前国内航程最远、性能最优、客舱最宽敞、舒适性最好的豪华公务机。',
-            max:'18～20',
-            bed:'2个',
-            age:'12.5年',
-            device:'客舱娱乐系统包括AIRSHOW系统，3部DVD，3部磁带播放器，客舱前部右侧装有一个20寸LED显示器，客舱中部两个区右前位置和左前位置各设有一个20存LED显示器。每个座位上安置一个10寸LED显示器。机舱内共有6部卫星电话。厨房有咖啡机3台，热水杯2只，冰箱2台，冷风箱2台，烤箱2台，微波炉3台。',
-            tags: ['WIFI', '飞机餐', '微波炉'],
-            money: '¥83万'
+        function getPlaneList() {
+            var data = {
+                page: page,
+                pageSize: 10,
+                type: queryData.type
+            };
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE), data, function(response) {
+                $scope.planeList = response.data.content;
+                console.log(response.data.content)
+                if(response.data.totalPages > page){
+                    page ++;
+                }
+                myApp.pullToRefreshDone();
+            }, function(){
+                myApp.alert('数据获取失败，请重试', null);
+            });
+        };
+
+        function getPlaneDetail() {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE) + '/' + queryData.id, null, function(response) {
+                $scope.planeDetail = response.data;
+                angular.element('#plane-detail-title').text(response.data.name);
+                if(response.data.appearances) {
+                    $scope.appearances = response.data.appearances.split(';');
+                }
+            }, function(){
+                myApp.alert('数据获取失败，请重试', null);
+            });
         };
 
         function jumpInfo(data) {
@@ -95,11 +62,12 @@
             }
             data.forEach(function(item){
                 if(item.selected) {
-                    planeArr.push(item.name);
+                    planeArr.push({ fleet: item.id });
                 }
             });
             transferData.plane = planeArr;
             StorageService.put('plan', transferData);
+            console.log(transferData)
             mainView.router.loadPage('app/components/airjet/travel-info.html');
         };
 

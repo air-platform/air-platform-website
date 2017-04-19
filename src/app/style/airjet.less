@@ -566,6 +566,10 @@
         }
     }
 
+    &.air-card-level-0 {
+        background-image: linear-gradient(-220deg, rgba(40,208,218,0.56) 0%, #36B4AA 100%);
+    }
+
     &.air-card-level-1 {
         background-image: linear-gradient(-211deg, #FFC83F 0%, #ECA500 93%);
     }
@@ -593,6 +597,7 @@
     &.air-card-level-7 {
         .air-special-card(#f0844f);
     }
+
 
     &.air-card-level-1,
     &.air-card-level-2,
@@ -646,5 +651,11 @@
             background-color: @bg-purple;
             }
         }
+    }
+}
+
+.pull-to-refresh-content{
+    .pull-to-refresh-layer{
+        z-index: -1;
     }
 }
