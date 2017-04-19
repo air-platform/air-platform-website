@@ -57,7 +57,7 @@
                         <ul>
                             <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected">
                                 <i class="f7-icons order-icon-delete" ng-click="selectPassengerAction($index)">delete_round</i>
-                                <div class="order-person-inner">
+                                <div class="order-person-inner" ng-click="showPassengerAction($index)">
                                     <div class="order-person-name">{{p.name}}</div>
                                     <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>{{p.identity}}</div>
                                 </div>
@@ -79,7 +79,7 @@
                     <div class="order-price-type row">
                         <div class="col-50" ng-click="orderInfo.chartered = true">
                             <div class="order-price-icon">
-                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : orderInfo.chartered}">{{ orderInfo.chartered ? 'check_round' : 'circle'}}</i>
+                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-red' : orderInfo.chartered}">{{ orderInfo.chartered ? 'check_round' : 'circle'}}</i>
                             </div>
                             <div class="order-persons">
                                 <div>整机</div>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="col-50" ng-click="orderInfo.chartered = false">
                             <div class="order-price-icon">
-                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>
+                                <i class="f7-icons ng-scope color-gray" ng-class="{'color-red' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>
                             </div>
                             <div class="order-persons">
                                 <div>拼座</div>
@@ -112,20 +112,9 @@
                 </div>
                 <!--声明-->
                 <div class="order-detail-agreement">
-                    <div class="list-block">
-                        <label class="label-checkbox item-content" ng-click="agreeValueChanged()">
-                            <input type="checkbox" ng-bind="agreement">
-                            <div class="item-media">
-                                <i class="icon icon-form-checkbox"></i>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title">
-                                    <span class="order-agree">我同意并阅读</span>
-                                    <span class="order-announce" ng-click="gotoAnnounceAction();$event.stopPropagation();">《首都直升机乘客安全须知》</span>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
+                    <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
+                    <span class="order-agree" ng-click="agreement = !agreement">我同意并阅读</span>
+                    <span class="order-announce" ng-click="gotoAnnounceAction();$event.stopPropagation();">《首都直升机乘客安全须知》</span>
                 </div>
                 <!--提交-->
                 <div class="order-detail-confirm">

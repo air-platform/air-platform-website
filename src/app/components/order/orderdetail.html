@@ -81,20 +81,9 @@
                 </div>
                 <!--声明-->
                 <div class="order-detail-agreement" ng-hide="just4Show">
-                    <div class="list-block">
-                        <label class="label-checkbox item-content">
-                            <input type="checkbox" name="my-checkbox" value="Books">
-                            <div class="item-media">
-                                <i class="icon icon-form-checkbox"></i>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title">
-                                    <span class="order-agree">我同意并阅读</span>
-                                    <span class="order-announce" ng-click="gotoAnnounceAction()">《Air Community免责声明》</span>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
+                    <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
+                    <span class="order-agree" ng-click="agreement = !agreement">我同意并阅读</span>
+                    <span class="order-announce" ng-click="gotoAnnounceAction()">《Air Community免责声明》</span>
                 </div>
                 <!--提交-->
                 <div class="order-detail-confirm">

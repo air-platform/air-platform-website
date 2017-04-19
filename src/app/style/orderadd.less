@@ -91,6 +91,10 @@
       margin: 10px 0;
       i {
         font-size: 0.34rem;
+        font-weight: normal;
+        &:active {
+          font-weight: bold;
+        }
       }
     }
     .order-persons {
@@ -132,23 +136,23 @@
 }
 
 .order-detail-agreement {
-  .list-block .item-inner:after{
-    height: 0;
-  }
-  font-size: 0.13rem;
+
+  font-size: 0.26rem;
   width: 100%;
-  .list-block {
-    margin-top: 5px;
+  height: 40px;
+  margin: 10px;
+
+  i {
+    font-size: 18px;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 35px;
   }
   .order-agree {
-    font-size: 0.13rem;
+    margin-left: 5px;
   }
   .order-announce {
     color: @font-blue;
-    font-size: 0.13rem;
-  }
-  label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox, label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox, .form-checkbox input[type="checkbox"]:checked ~ i{
-    background-color: @font-blue;
   }
 }
 .order-detail-confirm {
