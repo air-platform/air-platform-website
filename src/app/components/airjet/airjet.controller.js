@@ -7,7 +7,7 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $window, NotificationService) {
+    function jetController($scope, $window, NotificationService, StorageService) {
         $scope.travelStrokeList = [{ departure: '请选择', destination: '请选择' }];
         $scope.reversal = reversal;
         $scope.submit = submit;
@@ -316,13 +316,11 @@
                     
                 });
                 if(valid){
-                    var formData = {
-                        plan: data
-                    };
+                    StorageService.put('plan', { base: data });
                     if (status) {
-                        mainView.router.loadPage('app/components/airjet/travel-info.html?jetdata=' + JSON.stringify(formData));
+                        mainView.router.loadPage('app/components/airjet/travel-info.html');
                     } else {
-                        mainView.router.loadPage('app/components/airjet/travel-model.html?jetdata=' + JSON.stringify(formData));
+                        mainView.router.loadPage('app/components/airjet/travel-model.html');
                     }
                 }
             }

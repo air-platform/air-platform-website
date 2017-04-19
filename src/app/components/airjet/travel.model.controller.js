@@ -7,8 +7,7 @@
     angular.module('airsc').controller('travelModelController', travelModelController);
 
     /** @ngInject */
-    function travelModelController($scope,iotUtil) {
-        var queryData = myApp.views[0].activePage.query;
+    function travelModelController($scope, StorageService) {
         $scope.modelData = {};
         $scope.radioCheck = radioCheck;
         $scope.jumpPlane = jumpPlane;
@@ -42,9 +41,10 @@
 
         function jumpPlane() {
             if($scope.checkModel){
-                var formData = JSON.parse(queryData.jetdata);
-                formData.type = $scope.checkModel;
-                mainView.router.loadPage('app/components/airjet/travel-plane.html?jetdata=' + JSON.stringify(formData));
+                var transferData = StorageService.get('plan');
+                transferData.type = $scope.checkModel;
+                StorageService.put('plan', transferData);
+                mainView.router.loadPage('app/components/airjet/travel-plane.html');
             }
         };
 
