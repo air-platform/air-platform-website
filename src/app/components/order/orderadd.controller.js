@@ -29,6 +29,7 @@
         var pageType = pageData.from;
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             pageData = pageData.schedules;
+
         }else{
             pageData = {};
         }
