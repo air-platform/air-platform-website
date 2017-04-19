@@ -607,3 +607,44 @@
     }
 
 }
+
+.order-status-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: .36rem;
+    color: @font-gray;
+    padding: .78rem .38rem .68rem;
+    line-height: .53rem;
+    text-align: center;
+    margin-top: .16rem;
+    background-color: @bg-white;
+    img{
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-bottom: .4rem;
+    }
+    .back-submit{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: .42rem;
+        a{
+            width: 3.2rem;
+            height: .88rem;
+            font-size: .36rem;
+            color:@font-white;
+            background-color: @bg-red;
+            border-radius: .06rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            &:last-child{
+            background-color: @bg-purple;
+            }
+        }
+    }
+}
