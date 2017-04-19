@@ -25,6 +25,7 @@
         function getDatas(page) {
             TrainServer.getSchools(page,function (res) {
                 var data = res.data.content;
+                console.log(data);
                 $scope.items = $scope.items.concat(data);
             },function (err) {
                 console.log(err);
