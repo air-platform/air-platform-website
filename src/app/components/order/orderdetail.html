@@ -14,7 +14,7 @@
                     <span class="order-trash"><i class="f7-icons">trash</i></span>
                 </div>
                 <div class="order-detail-line" ng-show="just4Show"></div>
-                <div class="order-detail-content">
+                <div class="order-detail-content ng-scope" ng-style='just4Show ? {"margin-top":"0"} : {"margin-top":"10px"}'>
                     <div class="order-detail-content-title">
                         <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
                         <span class="order-flytype">{{orderInfo.flight}}</span>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <!--乘客信息-->
-                <div class="order-detail-header ng-scope" ng-class="{'m-t' : !just4Show}">
+                <div class="order-detail-header">
                     <span class="order-number">乘客信息</span>
                     <span class="order-trash"><span>{{passengers.length}}&nbsp;&nbsp;</span><i class="f7-icons">persons</i></span>
                 </div>
