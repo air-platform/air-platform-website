@@ -28,9 +28,17 @@
 
 
         $scope.gotoAnnounceAction = gotoAnnounceAction;
+        $scope.confirmAction = confirmAction;
 
         function gotoAnnounceAction() {
             mainView.router.loadPage(constdata.router.protocal.announce);
+        }
+        function confirmAction() {
+            if ($scope.just4Show){
+                mainView.router.back();
+            }else{
+
+            }
         }
 
     }

@@ -4,10 +4,10 @@
 (function () {
     'use strict';
 
-    angular.module('airsc').controller('orderController', orderController);
+    angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderController($scope,NetworkService,$interval,iotUtil) {
+    function orderListController($scope,NetworkService,$interval,iotUtil) {
 
 
         $scope.items = [
@@ -47,7 +47,7 @@
                 showErrorAlert(err);
             });
         }
-        getDatas();
+        // getDatas();
 
 
 
