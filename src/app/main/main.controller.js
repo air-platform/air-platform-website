@@ -50,6 +50,13 @@
                 {'title': '订单查询', target: constdata.router.order.order}
                 // {'title': '积分系统', target: ''}
             ]
+            },
+            {
+                title: '关于', items: [
+                // {'title': '用户注册/登录', target: constdata.router.login.login},
+                {'title': '免责声明', target: constdata.router.protocal.announce}
+                // {'title': '积分系统', target: ''}
+            ]
             }];
         var rightPanelItems = [
             {title: 'profile.order', target: constdata.router.order.order, icon: 'list'},
