@@ -58,12 +58,12 @@ Framework7.prototype.plugins.angular = function(app, params) {
 
     $$(document).on('navbarInit', function (e) {
         var navbar = e.detail.navbar;
-        var page = e.detail.page
+        var page = e.detail.page;
         // console.log(navbar);
     });
 
     myApp.onPageInit('infinite-scroll', function (page) {
-
+        //注册监听上拉加载
     });
     // Now we need to run the code that will be executed only for About page.
 

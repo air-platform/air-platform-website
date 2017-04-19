@@ -14,12 +14,12 @@
                     <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
                         <div class="order-detail-content-title">
                             <span class="order-icon"><img class="" src="../../../assets/images/hnlogo.jpg"></span>
-                            <span class="order-flytype">{{orderInfo.planeInfo.name}}</span>
-                            <span class="order-date">{{orderInfo.planeInfo.date}}</span>
+                            <span class="order-flytype">{{orderInfo.flight}}</span>
+                            <span class="order-date">{{orderInfo.date}}</span>
                         </div>
                         <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
                             <div class="order-from col-40">
-                                <strong>{{orderInfo.from}}</strong>
+                                <strong>{{orderInfo.departure}}</strong>
                             </div>
                             <div class="order-core col-20">
                                 <div class="dfim-center">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="order-to col-40">
-                                <strong>{{orderInfo.to}}</strong>
+                                <strong>{{orderInfo.arrival}}</strong>
                             </div>
                             <div class="col-40 order-other-info text-right">
                                 <img src="../../../assets/images/airplane.svg">
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-20 order-other-info">
                                 <img src="../../../assets/images/airseat.svg">
-                                <span class="order-cost">{{orderInfo.seat}}</span>
+                                <span class="order-cost">{{orderInfo.capacity}}</span>
                             </div>
                             <div class="col-40 order-other-info text-left">
                                 <img src="../../../assets/images/airtime.svg">
