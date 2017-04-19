@@ -8,19 +8,24 @@
   font-weight: 300;
   padding-left: 0.4rem;
 
-  div, .link-tel{
+  div{
     display: inline-block;
     font-size: 0.36rem;
     color: @font-white;
     height: 100%;
 
     &:last-child {
+      width: 2.26rem;
       float: right;
       font-size: 0.28rem;
-      background-color: @bg-sky;
-      padding: 0 0.32rem;
-
-      i {
+      background-color: @bg-purple;
+      padding: 0 .3rem;
+      a{
+        color: @font-white;
+      }
+      img {
+        width: .32rem;
+        height: .32rem;
         margin-right: 0.1rem;
       }
     }
@@ -55,6 +60,10 @@
   p,
   h5 {
     margin: 0;
+    font-weight: normal;
+  }
+  h5{
+    color: @font-black;
   }
 }
 
