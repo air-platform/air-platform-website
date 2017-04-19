@@ -19,14 +19,25 @@
 
         $scope.gotoOrderDetail = gotoOrderDetail;
         $scope.showSelectViewAction = showSelectViewAction;
+        $scope.funAction = funAction;
         $scope.gotoCommentAction = gotoCommentAction;
 
+        function funAction(index,tabIndex) {
+            
+        }
         function gotoCommentAction() {
             mainView.router.loadPage('app/components/comment/comment.html');
-
         }
         function gotoOrderDetail(itemIndex,index) {
             mainView.router.loadPage('app/components/order/orderdetail.html');
+        }
+        function cancelOrderAction() {
+            OrderServer.cancelOrder('',function (res) {
+                var data = res.data;
+                console.log(data.content);
+            },function (err) {
+                showErrorAlert(err);
+            });
         }
         function showSelectViewAction() {
             console.log('---');
