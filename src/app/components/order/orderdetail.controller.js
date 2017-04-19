@@ -11,6 +11,7 @@
 
 
         $scope.just4Show = true;
+        $scope.agreement = false;
         $scope.orderInfo = {};
         $scope.passengers = [];
 

@@ -79,12 +79,6 @@
                         <span class="order-total-price">¥ {{orderInfo.charterAll.price}}</span>
                     </span>
                 </div>
-                <!--声明-->
-                <div class="order-detail-agreement" ng-hide="just4Show">
-                    <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
-                    <span class="order-agree" ng-click="agreement = !agreement">我同意并阅读</span>
-                    <span class="order-announce" ng-click="gotoAnnounceAction()">《Air Community免责声明》</span>
-                </div>
                 <!--提交-->
                 <div class="order-detail-confirm">
                     <p>

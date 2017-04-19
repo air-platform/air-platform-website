@@ -20,6 +20,8 @@
         $scope.authcodetip = '获取验证码';
         $scope.authcodediabled = false;
 
+        $scope.agreement = false;
+
         $scope.backAction = backAction;
         $scope.registerAction = registerAction;
         $scope.getAuthcode = getAuthcode;
