@@ -14,6 +14,18 @@
         var controller = this;
         controller.planes = [];
         controller.planeSelected = {};
+        controller.planesContext = {
+          "page": 1,
+          "pageSize": 10,
+          "totalRecords": 0,
+          "hasContent": false,
+          "totalPages": 0,
+          "records": 0,
+          "hasPreviousPage": false,
+          "isFirstPage": true,
+          "hasNextPage": false,
+          "isLastPage": true
+        };
 
         // TODO: variable cannot be accessed if refresh on this page
         var transScope = angular.element($('[data-page=airtrans]')).scope();
@@ -72,15 +84,15 @@
           });
         };
 
-        //// wait for backend
-        // NetworkService.get("url", {}, function(res) {
-        //   controller.planes = res;
-        // }, null);
+        NetworkService.get("ferryflights", {'page': controller.planesContext.page}, function(res) {
+          var data = res.data;
+          controller.planesContext = _.omit(data, 'content');
+          controller.planes = data.content;
+        }, null);
 
         $scope.$watch('controller.planes', function(oldValue, newValue) {
             if (newValue != oldValue) {
               // retrieve available planes according to type
-
             }
         });
         setTimeout(function(){
