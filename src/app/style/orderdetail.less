@@ -115,6 +115,18 @@
 }
 
 
+//三角符号
+.triangle-container {
+  height: 10px;
+  width: 100%;
+  .triangle {
+    content: "";
+    position: absolute;
+    right: 22px;
+    .triangle-top(10px);
+  }
+}
+
 //detail
 
 .order-detail-list {
@@ -123,11 +135,12 @@
     border-radius: 8px;
     border-bottom: 0;
     background-color: white;
-    margin: 10px 10px 0 10px;
+    margin: 0 10px;
     height: 0.88rem;
     line-height: 0.48rem;
     font-size: 0.28rem;
     color: @font-gray;
+
     .order-number {
       float: left;
       padding: 10px;
@@ -153,14 +166,14 @@
   // 线
   .order-detail-line {
     height: 1px;
-    margin: 0 15px;
+    margin: 0 20px;
     border-bottom: 1px dashed @border-gray;//透明0.3
   }
   // 内容
   .order-detail-content {
     border-radius: 8px;
     background-color: white;
-    margin: 0px 10px 10px 10px;
+    margin: 0 10px;
     height: 3rem;
     .order-detail-content-title {
       height: 0.9rem;
@@ -243,7 +256,7 @@
   .order-detail-content-person {
     border-radius: 8px;
     background-color: white;
-    margin: 0px 10px 10px 10px;
+    margin: 0 10px;
     height: auto;
     ul {
       clear: both;
