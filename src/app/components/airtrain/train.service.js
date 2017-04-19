@@ -20,7 +20,8 @@
     function TrainServer(NetworkService) {
 
         var service = {
-            getSchools: getSchools
+            getSchools: getSchools,
+            getSchoolInfo: getSchoolInfo
         };
 
         return service;
@@ -28,7 +29,10 @@
         ////////////
 
         function getSchools(page,successHandler,failedHandler) {
-            NetworkService.get('schools' + '?pageSize=20&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('schools' + '?pageSize=200&page=' + page,null,successHandler,failedHandler);
+        }
+        function getSchoolInfo(schoolId,page,successHandler,failedHandler) {
+            NetworkService.get('schools/' + schoolId + '?pageSize=20&page=' + page,null,successHandler,failedHandler);
         }
     }
 

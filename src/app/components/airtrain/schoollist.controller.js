@@ -14,7 +14,6 @@
 
 
         $scope.items = [];
-
         $scope.gotoSchoolInfo = gotoSchoolInfo;
 
 
@@ -22,17 +21,17 @@
             mainView.router.loadPage('app/components/airtrain/school.html');
         }
 
-        TrainServer.getSchools(1,function (res) {
-            console.log(res.data.content);
-        },function (err) {
-            console.log(err);
-        });
 
+        function getDatas(page) {
+            TrainServer.getSchools(page,function (res) {
+                var data = res.data.content;
+                $scope.items = $scope.items.concat(data);
+            },function (err) {
+                console.log(err);
+            });
+        }
 
-        $scope.items = [
-            {imgUrl:'http://lorempixel.com/1000/600/nature/3/',title:'海南航空学校有限责任公司'},
-            {imgUrl:'http://lorempixel.com/1000/600/nature/3/',title:'海南航空学校有限责任公司'},
-            {imgUrl:'http://lorempixel.com/1000/600/nature/3/',title:'海南航空学校有限责任公司'}];
+        getDatas(1);
 
     }
 

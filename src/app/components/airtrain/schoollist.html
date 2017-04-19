@@ -10,10 +10,10 @@
 
             <div ng-repeat="item in items track by $index">
                 <div class="card school-card-header-pic" ng-click="gotoSchoolInfo($index)">
-                    <div style="background-image:url({{item.imgUrl}})" valign="bottom" class="card-header color-white no-border"></div>
+                    <div style="background-image:url({{item.image}})" valign="bottom" class="card-header color-white no-border"></div>
                     <div class="card-content">
                         <div class="card-content-inner">
-                            <p><span>{{item.title}}</span></p>
+                            <p><span>{{item.name}}</span></p>
                         </div>
                     </div>
                 </div>
