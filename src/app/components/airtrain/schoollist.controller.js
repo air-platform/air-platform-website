@@ -10,7 +10,7 @@
     angular.module('airsc').controller('schoollistController', schoollistController);
 
     /** @ngInject */
-    function schoollistController($scope,iotUtil) {
+    function schoollistController($scope,TrainServer) {
 
 
         $scope.items = [];
@@ -21,6 +21,12 @@
         function gotoSchoolInfo(index) {
             mainView.router.loadPage('app/components/airtrain/school.html');
         }
+
+        TrainServer.getSchools(1,function (res) {
+            console.log(res.data.content);
+        },function (err) {
+            console.log(err);
+        });
 
 
         $scope.items = [
