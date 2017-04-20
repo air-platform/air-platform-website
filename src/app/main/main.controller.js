@@ -42,7 +42,7 @@
             },
             {
                 title: 'Air BB论坛', items: [
-                {'title': '话题讨论/发帖/留言', target: ''}
+                {'title': '话题讨论/发帖/留言', target: 'forum'}
             ]
             },
             {
@@ -87,7 +87,9 @@
         function gotoItemAction(item) {
             if (item.target === 'out') {
                 logoutAction();
-            } else {
+            }else if (item.target === 'forum'){
+                window.open('http://www.baidu.com/',"_blank");
+            }else {
                 if (iotUtil.islogin()) {
                     mainView.router.loadPage(item.target);
                 } else {
