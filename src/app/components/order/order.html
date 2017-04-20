@@ -9,13 +9,13 @@
         <div class="page-content">
             <div class="buttons-row air-tabs">
                 <!-- Link to 1st tab, active -->
-                <a href="#tab1" class="tab-link active"><span>{{'order.all' | translate}}</span></a>
+                <a href="#tab1" ng-click="tabChanged(0)" class="tab-link active"><span>{{'order.all' | translate}}</span></a>
                 <!-- Link to 2nd tab -->
-                <a href="#tab2" class="tab-link"><span>{{'order.ing' | translate}}</span></a>
+                <a href="#tab2" ng-click="tabChanged(1)" class="tab-link"><span>{{'order.ing' | translate}}</span></a>
                 <!-- Link to 2nd tab -->
-                <a href="#tab3" class="tab-link"><span>{{'order.done' | translate}}</span></a>
+                <a href="#tab3" ng-click="tabChanged(2)" class="tab-link"><span>{{'order.done' | translate}}</span></a>
                 <!-- Link to 2nd tab -->
-                <a href="#tab4" class="tab-link"><span>{{'order.cancel' | translate}}</span></a>
+                <a href="#tab4" ng-click="tabChanged(3)" class="tab-link"><span>{{'order.cancel' | translate}}</span></a>
             </div>
             <div class="tabs">
                 <!-- Tab 1, active by default -->
