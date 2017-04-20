@@ -18,14 +18,14 @@
           return allPoints;
         };
 
-        var drawMap = function(target, data, clickHandler) {
+        var drawMap = function(target, points, clickHandler) {
           // 百度地图API功能
-        	var map = new BMap.Map(target);
-        	map.centerAndZoom(new BMap.Point(data.center[0], data.center[1]), data.zoom);
-        	map.disableDoubleClickZoom();
-        	map.disableInertialDragging();
+          var map = new BMap.Map(target);
+          map.disableDragging();
+          map.disableScrollWheelZoom();
+          map.disableDoubleClickZoom();
+          map.disablePinchToZoom();
 
-          var points = data.points
         	for(var i=0;i<points.length;i+=2){
         		var pts = [new BMap.Point(points[i][1], points[i][2]),
         				new BMap.Point(points[i+1][1], points[i+1][2])];
