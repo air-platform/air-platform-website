@@ -30,14 +30,12 @@
                                     </div>
                                     <div class="card-content" ng-click="gotoOrderDetail($index,0)">
                                         <div class="card-content-inner">
-                                            <div class="order-avatar">
-                                                <img src="{{item['url']}}">
-                                            </div>
-                                            <div class="order-name">{{item.name}}</div>
-                                            <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
+                                            <div class="order-title">{{item.ferryFlight.departure + ' → ' + item.ferryFlight.arrival}}</div>
+                                            <div class="order-desc">{{'desc'}}</div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
+                                        <span>￥{{item.chartered ? item.ferryFlight.price : item.ferryFlight.seatPrice * item.passengers}}</span>
                                         <a href="#" class="link"></a>
                                         <a ng-click="funAction($index,0)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
                                         <a ng-click="funAction($index,0)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
