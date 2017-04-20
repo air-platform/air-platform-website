@@ -12,7 +12,7 @@
     /** @ngInject */
     function citytourController($scope, NotificationService) {
       var today = new Date();
-      var queryData = myApp.views[0].activePage.query;
+      var queryData = mainView.query;
       $scope.jumpDetail = jumpDetail;
       $scope.city = queryData.city || '北京';
       angular.element('#citytour-title').text($scope.city + '观光');
