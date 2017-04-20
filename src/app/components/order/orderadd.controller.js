@@ -147,7 +147,6 @@
                 passengers: $scope.psgs,
                 contact:{mobile:$scope.orderInfo.contactMobile}
             };
-            console.log(param);
             OrderServer.submitOrder(param,function (res) {
                 console.log(res);
             },function (err) {
