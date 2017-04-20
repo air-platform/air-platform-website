@@ -4,10 +4,10 @@
 (function () {
     'use strict';
 
-    angular.module('airsc').controller('travelDetailController', travelDetailController);
+    angular.module('airsc').controller('tourOrederController', tourOrederController);
 
     /** @ngInject */
-    function travelDetailController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, constdata) {
+    function tourOrederController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, constdata) {
         var queryData = myApp.views[0].activePage.query;
         var transferData = StorageService.get('plan');
         $scope.removeOrder = removeOrder;

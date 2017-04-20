@@ -46,13 +46,11 @@
                         "email": data.email
                     },
                     "note": data.remark,
-                    "jetCard": {
-                        "id": id
-                    }
+                    "jetCard": id
                 }
                 NetworkService.post(UrlService.getUrl(URL.AIRJET_CARD_ORDER), passData, function (response) {
                     var local = response.headers('location').split('/');
-                    mainView.router.loadPage('app/components/airjet/order-success.html?order=' + local[local.length - 1]);
+                    mainView.router.loadPage('app/components/airjet/order-success.html?page=tour-order&order=' + local[local.length - 1]);
                 }, function () {
                     NotificationService.alert.success('提交订单失败', null);
                 });

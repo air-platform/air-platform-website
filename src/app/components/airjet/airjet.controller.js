@@ -10,6 +10,7 @@
     function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL) {
         var cardPage = 1;
         var dreamPage = 1;
+        var queryData = myApp.views[0].activePage.query;
         $scope.travelStrokeList = [{ departure: '请选择', destination: '请选择' }];
         $scope.reversal = reversal;
         $scope.submit = submit;
@@ -17,6 +18,7 @@
         $scope.removeCard = removeCard;
         $scope.jumpTourDetail = jumpTourDetail;
         $scope.datepicter = datepicter;
+        $scope.tabActive = queryData.tabActive || 'tab1';
         angular.element('.card-tab').on('refresh', getCard);
         angular.element('.dream-tab').on('refresh', getDream);
         $timeout(function(){
