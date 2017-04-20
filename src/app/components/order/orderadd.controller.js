@@ -125,13 +125,13 @@
         }
 
 
-        
+
         function gotoAnnounceAction(type) {
             $scope.agreement = false;
             if (1 === type){
                 mainView.router.loadPage(constdata.router.protocal.announce);
             }else{
-                mainView.router.loadPage(constdata.router.protocal.safe);
+                mainView.router.loadPage(constdata.router.protocal.safehelicopter);
             }
         }
         function agreeValueChanged() {

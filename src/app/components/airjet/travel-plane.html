@@ -8,7 +8,11 @@
 
 <div class="pages">
     <div data-page="travel-plane" class="page" ng-controller="travelPlaneController">
-        <div class="page-content">
+        <div class="page-content pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+            <div class="preloader"></div>
+            <div class="pull-to-refresh-arrow"></div>
+            </div>
             <div class="travel-model-info block-center ">
                 <em>!</em>
                 <span>{{'airjet.model-custom-info' | translate}}</span>
@@ -21,14 +25,14 @@
                             <i class="icon icon-form-checkbox checkbox-blue"></i>
                         </div>
                     </div>
-                    <img ng-src="{{plane.logo}}" alt="plane">
+                    <img ng-src="{{plane.image}}" alt="plane">
                     <div class="plane-num">
                         <strong ng-bind="plane.name"></strong>
-                        <a href="app/components/airjet/travel-plane-detail.html?name={{plane.name}}">{{'airjet.click-detail' | translate}}</a>
+                        <a href="app/components/airjet/travel-plane-detail.html?id={{plane.id}}">{{'airjet.click-detail' | translate}}</a>
                     </div>
                 </div>
                 <div class="plane-money">
-                    <em ng-bind="plane.money"></em>
+                    <em ng-bind="plane.price | RMB"></em>
                 </div>
             </div>
             <div class="travel-plane-submit block-center" ng-click="jumpInfo(planeList)">{{'airjet.next' | translate}}</div>

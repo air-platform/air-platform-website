@@ -83,6 +83,13 @@
                     <textarea type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="formData.remark"></textarea>
                 </div>
             </div>
+            <div class="order-detail-agreement">
+                <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
+                <span class="order-agree" ng-click="agreement = !agreement">我已同意</span>
+                <span class="order-announce" ng-click="gotoAnnounceAction(0);$event.stopPropagation();">《安全须知》</span>
+                <span class="order-agree-and" ng-click="agreement = !agreement">与</span>
+                <span class="order-announce" ng-click="gotoAnnounceAction(1);$event.stopPropagation();">《免责声明》</span>
+            </div>
             <div class="airjet-detail-form-footer"><input type="submit" value="{{'airjet.submit' | translate}}" ng-click="submit(formData)"></div>
         </div>
     </div>

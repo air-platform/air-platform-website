@@ -7,7 +7,8 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $window, NotificationService, StorageService) {
+    function jetController($scope, $window, NotificationService, StorageService, NetworkService, UrlService, URL) {
+        var page = 1;
         $scope.travelStrokeList = [{ departure: '请选择', destination: '请选择' }];
         $scope.reversal = reversal;
         $scope.submit = submit;
@@ -15,135 +16,39 @@
         $scope.removeCard = removeCard;
         $scope.jumpTourDetail = jumpTourDetail;
         $scope.datepicter = datepicter;
+        angular.element('.pull-to-refresh-content').on('refresh', getCard);
+        getCard();
 
-        $scope.cardList = [{
-            name: '金鹿 FBO',
-            type: '铂金卡',
-            description: 'Platinum Card',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            money: 'RMB 1,000,000',
-            level: 1
-        }, {
-            name: '金鹿 FBO',
-            type: '钻石卡',
-            description: 'Diamond Card',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            money: 'USD 1,000',
-            level: 2
-        }, {
-            name: '金鹿 FBO',
-            type: '尊享卡',
-            description: 'Honor Card',
-            money: 'RMB 5,00,000',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            level: 3
-        }, {
-            name: '金鹿 FBO',
-            type: '精英卡',
-            description: 'Elite Card',
-            money: 'RMB 5,00,000',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            level: 4
-        },{
-            name: '金鹿公务机 小时卡',
-            type: '飞翔卡',
-            description: '10小时专享',
-            money: 'RMB 788,888',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            level: 5
-        }, {
-            name: '金鹿公务机 小时卡',
-            type: '悠游卡',
-            description: '25小时专享',
-            money: 'RMB 1,958,888',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            level: 6
-        }, {
-            name: '金鹿公务机 小时卡',
-            type: '翱翔卡',
-            description: '50小时专享',
-            money: 'RMB 3,868,888',
-            official: '公务机，一种新的出行方式。不再迁就航班，不再忍受延误，用效率丈量金钱， 用金钱换取时间。',
-            hour: '小时卡，一种更有价值的公务机体验。远离昂贵的购机，远离复杂的包机。用时间商定价格，用价格优化效率。',
-            feature: [{
-                name: '更划算',
-                value: ['10小时即可起步，准入门槛低', '小时单价远低于市场价', '国际、国内调机单位小时价格一致']
-            },{
-                name: '更透明',
-                value: ['仅以飞行时间结算，让客户一目了然', '不再为每次飞行前反复询价、比价、议价而烦恼', '卡内飞行小时无使用有效期，只要有余额即有效']
-            },{
-                name: '更多元',
-                value: ['10小时、25小时、50小时多卡种，满足不同需求', '一卡在手，多种机型随意选', '附赠多项免费权益（加急费、免费升机型、全球医疗救援服务）', '不仅可以包机，还可以坐游艇，一卡多服务', '续新卡还额外赠送飞行小时，多买多得']
-            }],
-            level: 7
-        }];
-
+        function getCard() {
+            var data = {
+                page: page,
+                pageSize: 10
+            };
+            var cardArr = ['金', '钻石', '尊享', '精英', '飞翔', '悠游', '翱翔']
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD), data, function(response) {
+                var result = [];
+                response.data.content.forEach(function(item) {
+                    var status = true;
+                    for(var i = 0; i < cardArr.length; i++) {
+                        if(item.name.indexOf(cardArr[i]) !== -1) {
+                            item.level = i + 1;
+                            if(result[i]) {
+                                result.push(item);
+                            } else {
+                                result[i] = item;
+                            }
+                            status = false;
+                        }
+                    }
+                    if(status) {
+                        item.level = 0;
+                        result.push(item);
+                    }
+                });
+                $scope.cardList = result;
+                myApp.pullToRefreshDone();
+            });
+        };
 
         $scope.dreamFlyList = [{
             id:'1',
@@ -278,6 +183,7 @@
         };
 
         function submit(data, status) {
+            var base = [];
             if (data) {
                 var valid = true;
                 data.map(function (item) {
@@ -301,6 +207,12 @@
                         valid = false;
                         return;
                     }
+                    base.push({
+                        "departure": item.departure,
+                        "arrival": item.destination,
+                        "date": item.startTime,
+                        "passengers": item.guestStart
+                    });
                     if (item.round) {
                         if (!item.endTime) {
                             NotificationService.alert.success('请选择返程出发时间', null);
@@ -312,11 +224,18 @@
                             valid = false;
                             return;
                         }
+                        base.push({
+                            "departure": item.destination,
+                            "arrival": item.departure,
+                            "date": item.endTime,
+                            "passengers": item.guestEnd
+                        });
                     }
                     
                 });
                 if(valid){
-                    StorageService.put('plan', { base: data });
+                    
+                    StorageService.put('plan', { base: base });
                     if (status) {
                         mainView.router.loadPage('app/components/airjet/travel-info.html');
                     } else {
@@ -335,8 +254,8 @@
         };
 
         function jumpTourDetail(data) {
-            if(data){
-                mainView.router.loadPage('app/components/airjet/tour-detail.html?tourdata=' + JSON.stringify(data))
+            if(data.id){
+                mainView.router.loadPage('app/components/airjet/tour-detail.html?id=' + data.id)
             }
         };
 

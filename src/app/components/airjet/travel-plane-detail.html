@@ -13,7 +13,7 @@
                 <div class="travel-model-img">
                     <div class="swiper-container swiper-init" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
+                            <div class="swiper-slide" ng-repeat="pic in appearances track by $index"><img ng-src="{{pic}}"></div>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="travel-model-content">
                     <div class="plane-title clearfix">
                         <strong class="pull-left" ng-bind="planeDetail.name"></strong>
-                        <span class="pull-right">{{'airjet.model' | translate}} <em ng-bind="planeDetail.model"></em></span>
+                        <span class="pull-right">{{'airjet.model' | translate}} <em ng-bind="planeDetail.aircraftType"></em></span>
                     </div>
                     <div class="plane-info">
                         <div class="plane-info-detail">
@@ -30,7 +30,7 @@
                                 <em>{{'airjet.max-range' | translate}}</em>
                             </div>
                             <div class="pid-bottom">
-                                <em ng-bind="planeDetail.range"></em>
+                                <em ng-bind="planeDetail.fullloadRange"></em>
                             </div>
                         </div>
                         <div class="plane-info-detail">
@@ -39,7 +39,7 @@
                                 <em>{{'airjet.trunk' | translate}}</em>
                             </div>
                             <div class="pid-bottom">
-                                <em ng-bind="planeDetail.trunk"></em>
+                                <em ng-bind="planeDetail.weight"></em>
                             </div>
                         </div>
                         <div class="plane-info-detail">
@@ -48,7 +48,7 @@
                                 <em>{{'airjet.guest-num' | translate}}</em>
                             </div>
                             <div class="pid-bottom">
-                                <em ng-bind="planeDetail.max"></em>
+                                <em ng-bind="planeDetail.capacity"></em>
                             </div>
                         </div>
                         <div class="plane-info-detail">
@@ -57,17 +57,17 @@
                                 <em>{{'airjet.bed-num' | translate}}</em>
                             </div>
                             <div class="pid-bottom">
-                                <em ng-bind="planeDetail.bed"></em>
+                                <em ng-bind="planeDetail.beds"></em>
                             </div>
                         </div>
                     </div>
                     <p>
                         <strong>{{'airjet.fleet' | translate}}</strong>
-                        <em ng-bind="planeDetail.fleet"></em>
+                        <em ng-bind="planeDetail.description"></em>
                     </p>
                     <p>
                         <strong>{{'airjet.plane-device' | translate}}</strong>
-                        <em ng-bind="planeDetail.device"></em>
+                        <em ng-bind="planeDetail.facilities"></em>
                     </p>
                 </div>
             </div>

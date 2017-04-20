@@ -9,6 +9,7 @@
     /** @ngInject */
     function mainController($scope, $rootScope, $translate, iotUtil, $timeout, NetworkService, constdata, StorageService) {
 
+        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
         // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
             refresh();
@@ -73,6 +74,15 @@
 
 
         refresh();
+
+        function gotoAnnounceAction(type) {
+            $scope.agreement = false;
+            if (1 === type){
+                mainView.router.loadPage(constdata.router.protocal.announce);
+            }else{
+                mainView.router.loadPage(constdata.router.protocal.safehelicopter);
+            }
+        }
 
         function gotoItemAction(item) {
             if (item.target === 'out') {

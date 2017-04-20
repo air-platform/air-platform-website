@@ -7,17 +7,36 @@
     angular.module('airsc').controller('travelDetailController', travelDetailController);
 
     /** @ngInject */
-    function travelDetailController($scope, StorageService) {
+    function travelDetailController($scope, StorageService, NetworkService, UrlService, URL) {
+        var queryData = myApp.views[0].activePage.query;
         var transferData = StorageService.get('plan');
         $scope.removeOrder = removeOrder;
         $scope.submit = submit;
-        if(transferData) {
-            $scope.detailData = transferData;
+
+        if(queryData.order) {
+            getOrder();
         }
 
+        function getOrder() {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_ORDER) +  '/' + queryData.order, null, function(response) {
+                console.log(response.data);
+                $scope.detailData = response.data;
+            }, function(){
+                myApp.alert('数据获取失败，请重试', null);
+            });
+        };
+
         function removeOrder(data) {
-            if(data.order) {
-                mainView.router.loadPage('app/components/airjet/airjet.html');
+            if(data.id) {
+                myApp.confirm('你确定要删除该订单吗?', null, function () {
+                     NetworkService.delete(UrlService.getUrl(URL.AIRJET_ORDER) +  '/' + data.id, null, function(response) {
+                        myApp.alert('订单已删除', null, function(){
+                            mainView.router.loadPage('app/components/airjet/airjet.html');
+                        });
+                    }, function(){
+                        myApp.alert('订单删除失败，请重试', null);
+                    });
+                });
             }
         }
 
