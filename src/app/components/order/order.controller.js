@@ -77,8 +77,12 @@
             OrderServer.getOrders(tabIndex,page,function (res) {
                 var data = res.data.content;
 
-                var tempData = $scope.items[tabIndex].concat(data);
-                $scope.items[tabIndex] = tempData;
+
+                if (data.length > 0){
+                    var result = addTypeForOrder(data);
+                    var tempData = $scope.items[tabIndex].concat(result);
+                    $scope.items[tabIndex] = tempData;
+                }
 
                 console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
@@ -92,6 +96,14 @@
                 updateDisplayLoadingStatus();
             });
         }
+        function addTypeForOrder(data) {
+            // ferryFlight
+            // fleetCandidates  flightLegs
+            //
+            jetCard
+            return data;
+        }
+
         function showErrorAlert(err) {
             var errDesc = err.statusText;
             NotificationService.alert.error('操作失败！' + errDesc, null);
