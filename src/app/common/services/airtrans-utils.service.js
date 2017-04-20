@@ -10,16 +10,12 @@
 
     function transUtilsService() {
         var extractPoints = function(pointsStr) {
-          var points = pointsStr.split(";")
+          var points = pointsStr.trim().replace(/\;$/, '').split(";")
           var allPoints = _.map(points, function(s){
             var a = s.split(",");
             return [a[0], parseFloat(a[1]), parseFloat(a[2])];
           });
-          return {
-            'zoom': parseInt(_.last(allPoints)[0]),
-            'center': [_.last(allPoints)[1], _.last(allPoints)[2]],
-            'points': allPoints.slice(0, allPoints.length-1)
-          };
+          return allPoints;
         };
 
         var drawMap = function(target, data, clickHandler) {
