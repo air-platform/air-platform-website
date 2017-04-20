@@ -9,39 +9,40 @@
     <!-- Page, data-page contains page name-->
     <div data-page="dream-detail" class="page" ng-controller="dreamDetailController">
         <!-- Scrollable page content-->
-        <div class="page-content">
+        <div class="page-content travel-detail-check">
             <div class="air-order-detail">
-                <div class="air-order-item">
-                    {{'airjet.order-numver' | translate}}{{detailData.order}}
+                <div class="air-order-item radius-top-bottom" ng-class="!detailData.flightLegs ? 'no-border' : ''">
+                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.orderNo}}</span>
+                    <i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>
                 </div>
                 <div class="air-order-item">
-                    {{'airjet.model-number' | translate}}{{detailData.model}}
+                    {{'airjet.model-number' | translate}}{{detailData.ferryFlight.vendor.name}} {{detailData.ferryFlight.flightNo}}
                 </div>
                 <div class="air-order-item">
-                    {{'airjet.plane-time' | translate}}{{detailData.date}}
+                    {{'airjet.plane-time' | translate}}{{detailData.ferryFlight.date | date: 'yyyy-MM-dd'}}
                 </div>
                 <div class="air-order-item air-city">
                     <div class="order-location-info">
-                        <div ng-bind="detailData.startCity"></div>
-                        <div ng-bind="detailData.startTime"></div>
-                        <!--<div ng-bind="detailData.startLocal"></div>-->
+                        <div ng-bind="detailData.ferryFlight.departure"></div>
+                        <div ng-bind="detailData.ferryFlight.startTime"></div>
                     </div>
                     <div class="arrow-right"></div>
                     <div class="order-location-info">
-                        <div ng-bind="detailData.endCity"></div>
-                        <div ng-bind="detailData.endTime"></div>
-                        <!--<div ng-bind="detailData.endLocal"></div>-->
+                        <div ng-bind="detailData.ferryFlight.arrival"></div>
+                        <div ng-bind="detailData.ferryFlight.endTime"></div>
                     </div>
                 </div>
                 <div class="air-order-item">
-                    {{'airjet.plane-people' | translate}}{{detailData.passenger}}人
+                    {{'airjet.plane-people' | translate}}{{detailData.passengers}}人
                 </div>
-                <div class="air-order-item">
-                    {{'airjet.remark' | translate}} {{detailData.remark || '无'}}
+                <div class="air-order-item aoi-guest radius-top">
+                    {{'airjet.guest-info' | translate}}
                 </div>
-                <div class="back-submit">
-                    <a ng-click="submit(detailData)">{{'airjet.confirms' | translate}}</a>
-                    <a href="index.html">{{'airjet.back-home' | translate}}</a>
+                <div class="air-order-item aoi-guest-info radius-bottom">
+                    <div>{{'airjet.name' | translate}} {{detailData.contact.person}}</div>
+                    <div>{{'airjet.phone' | translate}} {{detailData.contact.mobile}}</div>
+                    <div>{{'airjet.email' | translate}} {{detailData.contact.email}}</div>
+                    <div>{{'airjet.remark' | translate}} {{detailData.note || '无'}}</div>
                 </div>
             </div>
         </div>

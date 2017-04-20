@@ -1,6 +1,6 @@
 <div class="navbar">
     <div class="navbar-inner">
-       <div class="left"><a href="app/components/airjet/airjet.html" data-panel="left" class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+       <div class="left"><a data-panel="left" class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding">产品详情</div>
     </div>
 </div>
@@ -9,20 +9,20 @@
         <div class="swiper-container swiper-init" data-speed="400" data-autoplay="3000" data-observer="true" data-observe-parents="true"
             data-pagination=".swiper-pagination">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" ng-repeat="pic in imgSrc track by $index"><img ng-src="{{pic}}"></div>
+                <div class="swiper-slide" ng-repeat="pic in dreamImg track by $index"><img ng-src="{{pic}}"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <div class="air-info">
             <div class="air-info-header">
-                <img src="assets/images/logo.png" alt="logo">
-                <em ng-bind="dreamObj.model"></em>
-                <span><em ng-bind="dreamObj.type"></em> <i class="fa fa-angle-right"></i></span>
+                <img ng-src="{{dreamObj.vendor.avatar}}" alt="logo">
+                <em>{{dreamObj.vendor.name}} {{dreamObj.flightNo}}</em>
+                <a href="app/components/airjet/travel-plane-detail.html?flightno={{dreamObj.flightNo}}"><em ng-bind="dreamObj.aircraftType"></em> <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="air-info-content">
                 <div class="content-top">
-                    <em ng-bind="dreamObj.createTime"></em>
-                    <span>{{'airjet.guest-number' | translate}}<em ng-bind="dreamObj.guest"></em></span>
+                    <em ng-bind="dreamObj.date | date:'yyyy-MM-dd'"></em>
+                    <span>{{'airjet.guest-number' | translate}}<em ng-bind="dreamObj.seats"></em></span>
                 </div>
                 <div class="content-part">
                     <div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="arrow-right"></div>
                     <div>
-                        <div class="air-location" ng-bind="dreamObj.destination"></div>
+                        <div class="air-location" ng-bind="dreamObj.arrival"></div>
                         <div class="air-date" ng-bind="dreamObj.endTime"></div>
                     </div>
                 </div>
@@ -39,11 +39,11 @@
             <div class="air-info-footer">
                 <div>
                     <span>{{'airjet.machine' | translate}}</span>
-                    <span class="money" ng-bind="dreamObj.machine | RMB"></span>
+                    <span class="money" ng-bind="dreamObj.price | RMB"></span>
                 </div>
                 <div>
                     <span>{{'airjet.seat' | translate}}</span>
-                    <span class="money" ng-bind="dreamObj.seat | RMB"></span>
+                    <span class="money" ng-bind="dreamObj.seatPrice | RMB"></span>
                     <span>{{'airjet.least' | translate:dreamObj.least}}</span>
                 </div>
             </div>
@@ -86,11 +86,11 @@
             <div class="order-detail-agreement">
                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
                 <span class="order-agree" ng-click="agreement = !agreement">我已同意</span>
-                <span class="order-announce" ng-click="gotoAnnounceAction(0);$event.stopPropagation();">《安全须知》</span>
+                <span class="order-announce" ng-click="gotoAnnounceAction(0);$event.stopPropagation();">《乘客安全须知》</span>
                 <span class="order-agree-and" ng-click="agreement = !agreement">与</span>
                 <span class="order-announce" ng-click="gotoAnnounceAction(1);$event.stopPropagation();">《免责声明》</span>
             </div>
-            <div class="airjet-detail-form-footer"><input type="submit" value="{{'airjet.submit' | translate}}" ng-click="submit(formData)"></div>
+            <div class="airjet-detail-form-footer"><input type="submit" ng-disabled="!agreement" value="{{'airjet.submit' | translate}}" ng-click="submit(formData)"></div>
         </div>
     </div>
 </div>

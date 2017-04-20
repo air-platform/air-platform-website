@@ -1,84 +1,106 @@
-.order-product-list {
-  background-color: white;
-  padding: 10px;
-  .order-product {
-    .order-product-header {
-      .product-index {
-        background-color: @bg-gray;
-        color: @font-white;
-        font-size: 0.24rem;
-        border-radius: 2px;
-        width: 15px;
-        height: 15px;
-        line-height: 15px;
-        vertical-align: middle;
-        display: inline-block;
-      }
-      .product-date {
-        color: @font-gray;
-        font-size: 0.24rem;
-      }
-      .product-time-cost {
-        color: @font-gray;
-        font-size: 0.2rem;
-      }
-      img {
-        margin-left: 10px;
-        width: 20px;
-        height: 20px;
-      }
-    }
-    .order-product-content {
-      .order-from, .order-to {
-        margin-top: 0.2rem;
-        text-align: center;
-        strong {
-          display: block;
-          font-size: 0.4rem;
-          color: @font-gray;
-        }
-      }
-      .order-core {
-        text-align: center;
-        margin-top: 0.3rem;
-        .dfim-center {
-          .arrow-right {
-            margin: 0;
-            display: inline-block;
-            width: 1rem;
-            vertical-align: middle;
-            &:after {
-              width: .15rem;
-              top: -0.06rem;
-            }
-          }
-        }
-      }
-    }
-    .order-product-footer {
-
-      height: 40px;
-      line-height: 40px;
-      .product-desc {
-        color: @font-gray;
-        font-size: 0.2rem;
-      }
-      .product-price {
-        color: @font-red;
-        font-size: 0.4rem;
-      }
-      .product-select {
-        i {
-          float: right;
-          font-size: 18px;
-          vertical-align: middle;
-          height: 40px;
-          line-height: 38px;
-        }
-      }
-    }
-  }
-}
+//.order-product-list {
+//  background-color: white;
+//  .order-product {
+//    padding: 10px;
+//    .order-product-header {
+//      .product-index {
+//        background-color: @bg-gray;
+//        color: @font-white;
+//        font-size: 0.24rem;
+//        border-radius: 2px;
+//        width: 15px;
+//        height: 15px;
+//        line-height: 15px;
+//        vertical-align: middle;
+//        display: inline-block;
+//      }
+//      .product-date {
+//        color: @font-gray;
+//        font-size: 0.20rem;
+//      }
+//      img {
+//        width: 20px;
+//        height: 20px;
+//        margin-left: 20px;
+//      }
+//      .product-time-cost {
+//        color: @font-gray;
+//        font-size: 0.2rem;
+//      }
+//
+//    }
+//    .order-product-content {
+//      .order-from, .order-to {
+//        margin-top: 0.2rem;
+//        text-align: center;
+//        strong {
+//          display: block;
+//          font-size: 0.4rem;
+//          color: @font-gray;
+//        }
+//      }
+//      .order-core {
+//        text-align: center;
+//        margin-top: 0.3rem;
+//        .dfim-center {
+//          .arrow-right {
+//            margin: 0;
+//            display: inline-block;
+//            width: 1rem;
+//            vertical-align: middle;
+//            &:after {
+//              width: .15rem;
+//              top: -0.06rem;
+//            }
+//          }
+//        }
+//      }
+//    }
+//    .order-product-footer {
+//
+//      height: 40px;
+//      line-height: 40px;
+//      .product-desc {
+//        color: @font-gray;
+//        font-size: 0.2rem;
+//      }
+//      .product-price {
+//        color: @font-red;
+//        font-size: 0.36rem;
+//      }
+//      .product-select {
+//        i {
+//          float: right;
+//          font-size: 16px;
+//          vertical-align: middle;
+//          height: 40px;
+//          line-height: 40px;
+//        }
+//      }
+//    }
+//  }
+//  .order-additional {
+//    height: 40px;
+//    line-height: 40px;
+//    background-color: #E7F4FF;
+//    padding: 0 10px;
+//    color: #4E9FE4;
+//    font-size: 0.2rem;
+//    .product-journey {
+//      float: right;
+//    }
+//    .product-journey-select {
+//      margin-left: 10px;
+//      font-size: 0.26rem;
+//      i {
+//        font-size: 14px;
+//        vertical-align: middle;
+//        height: 40px;
+//        line-height: 38px;
+//      }
+//    }
+//  }
+//}
 
 
 .order-add-person {
@@ -188,7 +210,7 @@
     }
     .order-price {
       display: inline-block;
-      font-size: 0.5rem;
+      font-size: 0.36rem;
       color: @font-red;
       float: right;
       line-height: 0.9rem;
@@ -215,6 +237,23 @@
         color: @font-gray;
       }
     }
+  }
+}
+.order-person-total-price {
+  margin: 10px 0;
+  height: 40px;
+  line-height: 40px;
+  background-color: @base-white;
+  .order-desc {
+    margin-left: 40px;
+    font-size: 0.28rem;
+    color: @base-black-light;
+  }
+  .order-cost {
+    float: right;
+    margin-right: 40px;
+    font-size: 0.48rem;
+    color: @font-red;
   }
 }
 

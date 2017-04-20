@@ -22,7 +22,11 @@
                   reset:'app/components/login/reset.html'
                 },
                 airjet:{
-                    home:'app/components/airjet/airjet.html'
+                    home:'app/components/airjet/airjet.html',
+                    travel:'app/components/airjet/airjet.html?tabActive=tab1',
+                    dream:'app/components/airjet/airjet.html?tabActive=tab2',
+                    card:'app/components/airjet/airjet.html?tabActive=tab3',
+                    ordersuccess:'app/components/airjet/order-success.html'
                 },
                 airtaxi:{
                     home:'app/components/airtaxi/airtaxi.html'

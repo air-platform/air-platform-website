@@ -52,18 +52,20 @@
 
 .card-detail {
   padding: 0.32rem;
-  font-size: 0.24rem;
+  font-size: 0.28rem;
   font-weight: 300;
   color: @font-gray;
   background-color: @bg-white;
-
-  p,
-  h5 {
+  font-family: PingFangSC-Regular;
+  p{
+    margin: 0;
+    font-size: .28rem;
+  }
+  h3{
     margin: 0;
     font-weight: normal;
-  }
-  h5{
     color: @font-black;
+    margin-top: .28rem;
   }
 }
 
@@ -124,14 +126,15 @@
 }
 
 .company-name {
-  height: 1.16rem;
-  line-height: 1.16rem;
   color: @font-gray;
   background-color: @bg-white;
   margin-top: 0.2rem;
-  padding-left: .3rem;
+  padding: .3rem .56rem .3rem .3rem;
+  .form-group{
+    display: flex;
+  }
 
-  input {
+  input, textarea {
     height: 0.6rem;
     background-color: @bg-grey;
     border: none;
@@ -142,13 +145,20 @@
     font-size: 0.32rem;
     font-weight: 300;
   }
+  textarea{
+      font-family: Arial;
+      height: 1.64rem;
+  }
 
   label {
+    vertical-align: top;
+    line-height: .28rem;
     display: inline-block;
+    width: 1.3rem;
     font-size: 0.28rem;
-    color: @font-grey;
+    color: #999;
     margin-right: 0.14rem;
-    font-weight: 300;
+    text-align: right;
   }
 }
 

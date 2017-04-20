@@ -1,0 +1,36 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"><a data-panel="left" class="link back"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="center sliding">订单详情</div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="travel-detail" class="page" ng-controller="tourOrederController">
+        <div class="page-content travel-detail-check">
+            <div class="air-order-detail">
+                <div class="air-order-item radius-top-bottom no-border">
+                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.orderNo}}</span>
+                    <i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>
+                </div>
+                <div class="air-order-item aoi-card radius-top">
+                    <div>{{detailData.vendor.name}} {{detailData.type}}</div>
+                    <div ng-bind="detailData.summary"></div>
+                </div>
+                <div class="air-order-item aoi-card-info radius-bottom">
+                    <div ng-bind="detailData.name"></div>
+                    <div>{{detailData.currencyUnit | uppercase}}&nbsp;{{detailData.price}}</div>
+                </div>
+                <div class="air-order-item aoi-guest radius-top">
+                    {{'airjet.guest-info' | translate}}
+                </div>
+                <div class="air-order-item aoi-guest-info radius-bottom">
+                    <div>{{'airjet.name' | translate}} {{detailData.contact.person}}</div>
+                    <div>{{'airjet.phone' | translate}} {{detailData.contact.mobile}}</div>
+                    <div>{{'airjet.email' | translate}} {{detailData.contact.email}}</div>
+                    <div>{{'airjet.remark' | translate}} {{detailData.note || '无'}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

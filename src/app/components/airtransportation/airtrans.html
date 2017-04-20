@@ -35,10 +35,10 @@
                           <li ng-repeat="schedule in schedules">
                               <!-- schedule card starts -->
                               <div class="schedule-card">
-                                  <a href="#" class="pull-right add-schedule-button" ng-click="trans.addSchedule()">
+                                  <a href="#" class="pull-right add-schedule-button" ng-click="trans.addSchedule()" ng-hide="true">
                                       <i class="f7-icons">add_round_fill</i>
                                   </a>
-                                  <div class="schedule-title">行程{{ schedules.length - $index }}
+                                  <div class="schedule-title" ng-hide="true">行程{{ schedules.length - $index }}
                                       <a class="fa fa-trash-o button-schedule-delete" ng-click="trans.deleteSchedule(schedule)"></a>
                                   </div>
                                   <div class="list-block schedule-content">
@@ -113,7 +113,7 @@
                                       <!-- flight select -->
                                       <div class="row">
                                         <div class="field-block">
-                                          <a href="app/components/airtransportation/planes.html?planeModel={{ schedule.flight }}" class="item-link" ng-disabled="$index != 0">
+                                          <a href="#" class="item-link" ng-disabled="$index != 0" ng-click="trans.selectFlight(schedule)">
                                             <div class="item-content">
                                               <div class="item-inner">
                                                 <div class="item-title select-flight-label">选择航班</div>
