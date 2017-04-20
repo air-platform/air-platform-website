@@ -33,7 +33,7 @@
             var item = $scope.items[tabIndex][index];
 
             if (item.status === 'pending'){//取消订单
-                cancelOrderAction(item.id);
+                cancelOrderAction(item.id,index,tabIndex);
             }else if (item.status === 'paid'){//评价
                 gotoCommentAction(item.id);
             }else if (item.status === 'cancelled'){//再次下单
@@ -52,13 +52,19 @@
         function gotoOrderDetail(index,tabIndex) {
             mainView.router.loadPage('app/components/order/orderdetail.html');
         }
-        function cancelOrderAction(orderId) {
-            OrderServer.cancelOrder(orderId,function (res) {
-                var data = res.data;
-                console.log(data.content);
-            },function (err) {
-                showErrorAlert(err);
-            });
+        function cancelOrderAction(orderId,index,tabIndex) {
+            myApp.confirm('订单取消后无法恢复', '确定取消订单吗',
+                function () {
+                    OrderServer.cancelOrder(orderId,function (res) {
+                        myApp.alert('取消成功',function () {
+                            $scope.items[tabIndex][index].status = 'cancelled';
+                            $scope.$apply();
+                        });
+                    },function (err) {
+                        showErrorAlert(err);
+                    });
+                }
+            );
         }
 
 
