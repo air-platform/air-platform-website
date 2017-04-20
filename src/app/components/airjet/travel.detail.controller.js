@@ -7,19 +7,20 @@
     angular.module('airsc').controller('travelDetailController', travelDetailController);
 
     /** @ngInject */
-    function travelDetailController($scope, StorageService, NetworkService, UrlService, URL) {
+    function travelDetailController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL) {
         var queryData = myApp.views[0].activePage.query;
         var transferData = StorageService.get('plan');
         $scope.removeOrder = removeOrder;
         $scope.submit = submit;
 
         if(queryData.order) {
-            getOrder();
+            $timeout(function(){
+                getOrder();
+            }, 200);
         }
 
         function getOrder() {
             NetworkService.get(UrlService.getUrl(URL.AIRJET_ORDER) +  '/' + queryData.order, null, function(response) {
-                console.log(response.data);
                 $scope.detailData = response.data;
             }, function(){
                 myApp.alert('数据获取失败，请重试', null);
@@ -44,7 +45,7 @@
             if(data){
                 mainView.router.loadPage('app/components/airjet/order-success.html');
             } else {
-                mainView.router.loadPage('app/components/airjet/order-fail.html')
+                NotificationService.alert.success('提交订单失败', null);
             }
         }
     }

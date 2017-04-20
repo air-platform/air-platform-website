@@ -156,15 +156,15 @@
                         </div>
                         <div class="tpbr-middle">
                             <a class="tpbrm-item" ng-repeat="rec in recommendList track by $index"  href="app/components/airjet/dream-inner.html?id={{rec.id}}">
-                                <div class="tpbrmi-top" ng-bind="rec.time"></div>
+                                <div class="tpbrmi-top" ng-bind="rec.date | date: 'yyyy-MM-dd'"></div>
                                 <div class="tpbrmi-bottom">
                                     <div class="tpbrmi-left">
                                         <span ng-bind="rec.departure"></span>
                                         <div class="arrow-right"></div>
-                                        <span ng-bind="rec.destination"></span>
+                                        <span ng-bind="rec.arrival"></span>
                                     </div>
                                     <div class="tpbrmi-right">
-                                        <em ng-bind="rec.money"></em>
+                                        <em ng-bind="rec.price | RMB"></em>
                                         <span>{{'airjet.from' | translate}}</span>
                                     </div>
                                 </div>
@@ -174,13 +174,17 @@
                 </div>
             </div>
             <!-- Tab 2 -->
-            <div id="tab2" class="tab">
+            <div id="tab2" class="tab pull-to-refresh-content dream-tab">
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                </div>
                 <div class="dream-flying-content">
                     <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" href="app/components/airjet/dream-inner.html?id={{item.id}}">
                         <div class="dfi-left">
                             <div class="dfi-top">
-                                <div class="dreaam-flying-logo" ng-bind="item.model"></div>
-                                <div class="dreaam-flying-date" ng-bind="item.createTime"></div>
+                                <div class="dreaam-flying-logo">{{item.vendor.name}} {{item.flightNo}}</div>
+                                <div class="dreaam-flying-date" ng-bind="item.date"></div>
                             </div>
                             <div class="dfi-middle">
                                 <div class="dfim-left">
@@ -191,29 +195,29 @@
                                     <div class="arrow-right"></div>
                                 </div>
                                 <div class="dfim-right">
-                                    <strong class="dfim-address" ng-bind="item.destination"></strong>
+                                    <strong class="dfim-address" ng-bind="item.arrival"></strong>
                                     <span class="dfim-time" ng-bind="item.endTime"></span>
                                 </div>
                             </div>
                             <div class="dfi-bottom">
                                 <div>
                                     <img src="assets/images/travel/icon_plane_black.svg" alt="plane">
-                                    <span ng-bind="item.type"></span>
+                                    <span ng-bind="item.aircraftType"></span>
                                 </div>
                                 <div>
                                     <img src="assets/images/travel/icon_seat_black.svg" alt="seat">
-                                    <span>{{'airjet.guest-num' | translate}} {{item.guest}}</span>
+                                    <span>{{'airjet.guest-num' | translate}} {{item.seats}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="dfi-right" ng-class="item.expired ? 'expired' : ''">
                             <div class="plane-item first">
                                 <div class="plane">{{'airjet.machine' | translate}}</div>
-                                <div class="plane-money" ng-bind="item.machine | RMB"></div>
+                                <div class="plane-money" ng-bind="item.price | RMB"></div>
                             </div>
                             <div class="plane-item last">
                                 <div class="plane">{{'airjet.seat' | translate}}</div>
-                                <div class="plane-money" ng-bind="item.seat | RMB"></div>
+                                <div class="plane-money" ng-bind="item.seatPrice | RMB"></div>
                             </div>
                             <div class="plane-require">{{'airjet.least' | translate:item.least}}</div>
                         </div>
@@ -221,7 +225,7 @@
                 </div>
             </div>
             <!-- Tab 3 -->
-            <div id="tab3" class="tab pull-to-refresh-content">
+            <div id="tab3" class="tab pull-to-refresh-content card-tab">
                 <div class="pull-to-refresh-layer">
                     <div class="preloader"></div>
                     <div class="pull-to-refresh-arrow"></div>

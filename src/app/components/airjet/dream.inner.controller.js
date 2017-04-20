@@ -7,124 +7,29 @@
     angular.module('airsc').controller('dreamInnerController', dreamInnerController);
 
     /** @ngInject */
-    function dreamInnerController($scope, NotificationService) {
+    function dreamInnerController($scope, $timeout, NotificationService, NetworkService, UrlService, URL) {
         var queryData = myApp.views[0].activePage.query;
         $scope.formData = {};
         $scope.submit = submit;
-        $scope.imgSrc = [
-            './../assets/images/hotair.png',
-            './../assets/images/hotair.png',
-            './../assets/images/hotair.png'
-        ];
-
-        $scope.dreamFlyList = [{
-            id:'1',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            endTime: '16:30',
-            departure: '阿普雷顿',
-            expired:false,
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '77000',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'2',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            endTime: '16:30',
-            departure: '香港',
-            expired:true,
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '666636',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'3',
-            createTime: '2017年04月07日',
-            expired:false,
-            startTime: '13:00',
-            endTime: '16:30',
-            departure: '香港',
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '77000',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'4',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            expired:true,
-            endTime: '16:30',
-            departure: '香港',
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '44265',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'5',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            endTime: '16:30',
-            expired:true,
-            departure: '香港',
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '34320000',
-            seat: '2800',
-            least:{number: '3'}
-        }];
-
-        $scope.recommendList = [{
-            departure: '香港',
-            destination: '三亚',
-            money: '¥60万'
-        },{
-            departure: '三亚',
-            destination: '北京',
-            money: '¥60万'
-        },{
-            departure: '香港',
-            destination: '北京',
-            money: '¥60万'
-        }];
-
-        $scope.cityList = [{
-            name: '北京首都',
-            value: 'beijing'
-        },{
-            name: '三亚凤凰',
-            value: 'sanya'
-        }];
-        
-
-        if(queryData.id){
-            $scope.dreamFlyList.forEach(function(item){
-                if(item.id === queryData.id){
-                    $scope.dreamObj = item;
-                    return;
-                }
-            })
+        if(queryData.id) {
+            $timeout(function(){
+                getDreamDetail();
+            },200)
         }
+
+        function getDreamDetail() {
+             NetworkService.get(UrlService.getUrl(URL.AIRJET_DREAM) + '/' + queryData.id, null, function(response) {
+                $scope.dreamObj = response.data;
+                $scope.dreamImg = response.data.image.split(';');
+                if($scope.dreamObj.timeSlot){
+                    $scope.dreamObj.startTime = $scope.dreamObj.timeSlot.split('-')[0];
+                    $scope.dreamObj.endTime = $scope.dreamObj.timeSlot.split('-')[1];
+                }
+                if($scope.dreamObj.minPassengers){
+                    $scope.dreamObj.least = { number: $scope.dreamObj.minPassengers }
+                }
+            });
+        };
 
         function submit(data) {
             if(!data.name){
@@ -143,7 +48,27 @@
                 NotificationService.alert.success('请填写乘客人数', null);
                 return;
             }
-            mainView.router.loadPage('app/components/airjet/dream-detail.html?dreamdata=' + JSON.stringify(data));
+            if(data.guest < $scope.dreamObj.minPassengers){
+                NotificationService.alert.success('乘客人数至少大于等于' +　$scope.dreamObj.minPassengers, null);
+                return;
+            }
+            var passData = {
+                "passengers": data.guest,
+                "contact": {
+                    "person": data.name,
+                    "mobile": data.phone,
+                    "email": data.email
+                },
+                "note": data.remark,
+                "ferryFlight": $scope.dreamObj.id
+            };
+
+            NetworkService.post(UrlService.getUrl(URL.AIRJET_DREAM_ORDER), passData, function(response) {
+                var local = response.headers('location').split('/');
+                mainView.router.loadPage('app/components/airjet/order-success.html?page=dream-detail&order=' + local[local.length - 1]);
+            }, function() {
+                NotificationService.alert.success('提交订单失败', null);
+            });
         };
     }
 

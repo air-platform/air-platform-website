@@ -39,7 +39,7 @@
                 var local = response.headers('location').split('/');
                 mainView.router.loadPage('app/components/airjet/order-success.html?order=' + local[local.length - 1]);
             }, function() {
-                mainView.router.loadPage('app/components/airjet/order-fail.html')
+                NotificationService.alert.success('提交订单失败', null);
             });
         };
         

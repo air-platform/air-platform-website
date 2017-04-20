@@ -7,7 +7,7 @@
     angular.module('airsc').controller('travelPlaneController', travelPlaneController);
 
     /** @ngInject */
-    function travelPlaneController($scope, NotificationService, StorageService, NetworkService, UrlService, URL) {
+    function travelPlaneController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL) {
         var page = 1;
         var transferData = StorageService.get('plan');
         var queryData = myApp.views[0].activePage.query;
@@ -16,10 +16,14 @@
 
         if(queryData.type){
             angular.element('#plane-title').text(queryData.type);
-            getPlaneList();
+            $timeout(function(){
+                getPlaneList();
+            },200);
         }
-        if(queryData.id){
-            getPlaneDetail();
+        if(queryData.id || queryData.flightno){
+            $timeout(function(){
+                getPlaneDetail();
+            },200);
         }
 
         function getPlaneList() {
@@ -30,7 +34,6 @@
             };
             NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE), data, function(response) {
                 $scope.planeList = response.data.content;
-                console.log(response.data.content)
                 if(response.data.totalPages > page){
                     page ++;
                 }
@@ -41,7 +44,7 @@
         };
 
         function getPlaneDetail() {
-            NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE) + '/' + queryData.id, null, function(response) {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE) + '/' + (queryData.id || ('flightno=' + queryData.flightno)), null, function(response) {
                 $scope.planeDetail = response.data;
                 angular.element('#plane-detail-title').text(response.data.name);
                 if(response.data.appearances) {
@@ -53,7 +56,7 @@
         };
 
         function jumpInfo(data) {
-            var planeArr = [];
+            $scope.planeArr = [];
             if(data.every(function(item){
                 return item.selected === false;
             })){
@@ -62,12 +65,11 @@
             }
             data.forEach(function(item){
                 if(item.selected) {
-                    planeArr.push({ fleet: item.id });
+                    $scope.planeArr.push({ fleet: item.id });
                 }
             });
-            transferData.plane = planeArr;
+            transferData.plane = $scope.planeArr;
             StorageService.put('plan', transferData);
-            console.log(transferData)
             mainView.router.loadPage('app/components/airjet/travel-info.html');
         };
 

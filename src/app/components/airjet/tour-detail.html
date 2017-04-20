@@ -18,13 +18,7 @@
             <div>{{tourDetail.currencyUnit | uppercase}}&nbsp;{{tourDetail.price}}</div>
         </div>
         <div class="card-detail">
-            <!--<div ng-bind="tourDetail.official"></div>
-            <div ng-bind="tourDetail.hour"></div>-->
-
-            <div class="padding-content">
-                <!--<h5 ng-bind="item.name"></h5>-->
-                <div ng-repeat="p in goodPoint track by $index"ng-bind="p"></div>
-            </div>
+             <p markdown-to-html="tourDetail.description"></p>
         </div>
         <form>
             <div class="user-info">
@@ -44,20 +38,24 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="company-name">
+            <div class="company-name">
                 <div class="form-group">
+                    <label>{{'airjet.remark' | translate}}</label>
+                    <textarea ng-model="tourData.remark" placeholder="{{'airjet.enter' | translate}}"></textarea>
+                </div>
+                <!--<div class="form-group">
                     <label>{{'airjet.guest-name' | translate}}</label>
                     <input type="text" ng-model="tourData.guest" placeholder="{{'airjet.guest-name-enter' | translate}}">
-                </div>
-            </div>-->
+                </div>-->
+            </div>
             <div class="order-detail-agreement">
                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
                 <span class="order-agree" ng-click="agreement = !agreement">我已同意</span>
-                <span class="order-announce" ng-click="gotoAnnounceAction(0);$event.stopPropagation();">《安全须知》</span>
+                <span class="order-announce" ng-click="gotoAnnounceAction(0);$event.stopPropagation();">《乘客安全须知》</span>
                 <span class="order-agree-and" ng-click="agreement = !agreement">与</span>
                 <span class="order-announce" ng-click="gotoAnnounceAction(1);$event.stopPropagation();">《免责声明》</span>
             </div>
-            <div class="airjet-detail-form-footer"><input type="button" ng-click="submit(tourData)" value="{{'airjet.submit' | translate}}"></div>
+            <div class="airjet-detail-form-footer"><input type="button" ng-disabled="!agreement" ng-click="submit(tourData, tourDetail.id)" value="{{'airjet.submit' | translate}}"></div>
         </form>
     </div>
 </div>
