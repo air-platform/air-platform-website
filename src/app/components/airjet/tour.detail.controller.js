@@ -55,7 +55,7 @@
                     NotificationService.alert.success('提交订单失败', null);
                 });
             }
-        }
+        };
 
     }
 })();
