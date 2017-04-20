@@ -25,8 +25,8 @@
                             <ul>
                                 <li class="card order-card" ng-repeat="item in items[0] track by $index" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
-                                        <span class="order-number">{{item.no}}</span>
-                                        <span class="order-date">{{item.date}}</span>
+                                        <span class="order-number">订单编号:{{item.orderNo}}</span>
+                                        <span class="order-date">{{item.creationDate | date:'yyyy-MM-dd~HH:mm'}}</span>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-content-inner">
@@ -39,7 +39,10 @@
                                     </div>
                                     <div class="card-footer">
                                         <a href="#" class="link"></a>
-                                        <a href="#" class="button btn-status-cancel" ng-click="funAction($index,1)">取消订单</a>
+                                        <a ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel" ng-click="funAction($index,0)">取消订单</a>
+                                        <a ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation" ng-click="gotoCommentAction()">评价</a>
+                                        <a ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
                                     </div>
                                 </li>
                             </ul>
@@ -53,8 +56,8 @@
                             <ul>
                                 <li class="card order-card" ng-repeat="item in items[1]" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
-                                        <span class="order-number">{{item.no}}</span>
-                                        <span class="order-date">{{item.date}}</span>
+                                        <span class="order-number">{{item.orderNo}}</span>
+                                        <span class="order-date">{{item.creationDate}}</span>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-content-inner">
@@ -67,7 +70,10 @@
                                     </div>
                                     <div class="card-footer">
                                         <a href="#" class="link"></a>
-                                        <a href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel" ng-click="funAction($index,0)">取消订单</a>
+                                        <a ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation" ng-click="gotoCommentAction()">评价</a>
+                                        <a ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
                                     </div>
                                 </li>
                             </ul>
@@ -81,8 +87,8 @@
                             <ul>
                                 <li class="card order-card" ng-repeat="item in items[2]" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
-                                        <span class="order-number">{{item.no}}</span>
-                                        <span class="order-date">{{item.date}}</span>
+                                        <span class="order-number">{{item.orderNo}}</span>
+                                        <span class="order-date">{{item.creationDate}}</span>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-content-inner">
@@ -95,7 +101,10 @@
                                     </div>
                                     <div class="card-footer">
                                         <a href="#" class="link"></a>
-                                        <a href="#" class="button btn-status-valuation" ng-click="gotoCommentAction()">评价</a>
+                                        <a ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel" ng-click="funAction($index,0)">取消订单</a>
+                                        <a ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation" ng-click="gotoCommentAction()">评价</a>
+                                        <a ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
                                     </div>
                                 </li>
                             </ul>
@@ -109,8 +118,8 @@
                             <ul>
                                 <li class="card order-card" ng-repeat="item in items[3]" ng-click="gotoOrderDetail(0,$index)">
                                     <div class="card-header">
-                                        <span class="order-number">{{item.no}}</span>
-                                        <span class="order-date">{{item.date}}</span>
+                                        <span class="order-number">{{item.orderNo}}</span>
+                                        <span class="order-date">{{item.creationDate}}</span>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-content-inner">
@@ -123,7 +132,10 @@
                                     </div>
                                     <div class="card-footer">
                                         <a href="#" class="link"></a>
-                                        <a href="#" class="button btn-status-reorder">再次下单</a>
+                                        <a ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel" ng-click="funAction($index,0)">取消订单</a>
+                                        <a ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation" ng-click="gotoCommentAction()">评价</a>
+                                        <a ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
                                     </div>
                                 </li>
                             </ul>
