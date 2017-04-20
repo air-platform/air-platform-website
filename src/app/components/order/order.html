@@ -42,7 +42,7 @@
                                         <a ng-click="funAction($index,0)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
                                         <a ng-click="funAction($index,0)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,0)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
-                                        <a ng-click="funAction($index,0)" ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
+                                        <a ng-click="funAction($index,0)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
                                 </li>
                             </ul>
@@ -73,7 +73,7 @@
                                         <a ng-click="funAction($index,1)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
                                         <a ng-click="funAction($index,1)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,1)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
-                                        <a ng-click="funAction($index,1)" ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
+                                        <a ng-click="funAction($index,1)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
                                 </li>
                             </ul>
@@ -104,7 +104,7 @@
                                         <a ng-click="funAction($index,2)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
                                         <a ng-click="funAction($index,2)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,2)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
-                                        <a ng-click="funAction($index,2)" ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
+                                        <a ng-click="funAction($index,2)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
                                 </li>
                             </ul>
@@ -135,7 +135,7 @@
                                         <a ng-click="funAction($index,3)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
                                         <a ng-click="funAction($index,3)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,3)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
-                                        <a ng-click="funAction($index,3)" ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">再次下单</a>
+                                        <a ng-click="funAction($index,3)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
                                 </li>
                             </ul>
