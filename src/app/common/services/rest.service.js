@@ -71,7 +71,7 @@
         }
         function del(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            account.customDELETE("","",requestHeader()).then(successHandler,function (response) {
+            account.customDELETE(param,param,requestHeader()).then(successHandler,function (response) {
                 console.log('delete failed');
                 failedResponse(response,failedHandler,path);
             });
