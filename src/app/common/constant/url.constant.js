@@ -9,6 +9,7 @@
       USERPASSENGERS: 'user/passengers',
       USEREMAIL: 'account/email',
       TOPICS: 'topics',
+      ORDER: 'user/orders',
       AIRJET_TYPE: 'airjets',
       AIRJET_PLANE: 'fleets',
       AIRJET_ORDER: 'user/chater/orders',
