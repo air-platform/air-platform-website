@@ -5,7 +5,8 @@
 
   /** @ngInject */
   function gusetInfoController($scope, iotUtil, NetworkService, UrlService, URL) {
-
+    $scope.noGuest = true;
+    myApp.showIndicator();
     NetworkService.get(UrlService.getUrl(URL.USERPASSENGERS), null, function(res) {
       $scope.guestList = res.data;
       if ($scope.guestList.length == 0) {
@@ -13,8 +14,9 @@
       } else {
         $scope.noGuest = true;
       }
+      myApp.hideIndicator();
     }, function(err) {
-
+      myApp.hideIndicator();
     });
 
     $scope.delGuest = function(guest) {
@@ -23,7 +25,7 @@
           myApp.alert('删除成功', null);
           mainView.router.back();
         }, function(err) {
-            myApp.alert('删除失败，' + err.statusText, null);
+          myApp.alert('删除失败，' + err.statusText, null);
         });
       });
     }

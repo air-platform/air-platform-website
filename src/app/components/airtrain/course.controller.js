@@ -11,35 +11,21 @@
 
   /** @ngInject */
   function courseController($scope, iotUtil, i18n, NetworkService, UrlService, URL) {
+    myApp.showIndicator();
 
-    NetworkService.get(UrlService.getUrl(URL.COURSE), null, function(res) {
-        console.log(res);
+    NetworkService.get(UrlService.getUrl(URL.COURSE + '?airType=直升机'), null, function(res) {
+      $scope.courseCopterList = res.data.content;
+      myApp.hideIndicator();
     }, function(err) {
-      console.log(err);
+      myApp.hideIndicator();
     });
 
-    $scope.courseList = [{
-      id: '1001',
-      imgSrc: './../../../assets/images/hotair.png',
-      titleText: '直升机私照飞行员',
-      school: '海南航空学校',
-      deadline: '2017年4月30日',
-      price: '36万元'
-    }, {
-      id: '1002',
-      imgSrc: './../../../assets/images/hotair.png',
-      titleText: '固定翼飞行员1期招募',
-      school: '海南航空学校',
-      deadline: '2017年10月25日',
-      price: '88.6万元'
-    }, {
-      id: '1003',
-      imgSrc: './../../../assets/images/hotair.png',
-      titleText: '固定翼单发商照(不含仪表)',
-      school: '海南航空学校',
-      deadline: '2017年10月25日',
-      price: '120万元'
-    }];
+    NetworkService.get(UrlService.getUrl(URL.COURSE + '?airType=固定翼'), null, function(res) {
+      $scope.courseFixedList = res.data.content;
+      myApp.hideIndicator();
+    }, function(err) {
+      myApp.hideIndicator();
+    });
   }
 
 })();
