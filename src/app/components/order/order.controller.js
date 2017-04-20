@@ -27,8 +27,16 @@
 
         function funAction(index,tabIndex) {
             var item = $scope.items[tabIndex][index];
+            if (item.status === 'pending'){//取消订单
+                cancelOrderAction(item.id);
+            }else if (item.status === 'paid'){//评价
+                gotoCommentAction(item.id);
+            }else if (item.status === 'cancelled'){//再次下单
+
+            }
+                //do nothing
         }
-        function gotoCommentAction() {
+        function gotoCommentAction(orderId) {
             mainView.router.loadPage('app/components/comment/comment.html');
         }
         function gotoOrderDetail(index,tabIndex) {
@@ -51,11 +59,11 @@
             NotificationService.alert.error('操作失败！' + errDesc, null);
         }
 
-        function getDatas(page,tabIndex) {
+        function getDatas(tabIndex,page) {
             OrderServer.getOrders(tabIndex,page,function (res) {
-                var data = res.data;
+                var data = res.data.content;
                 console.log(data);
-                var tempData = $scope.items[tabIndex].concat(data.content);
+                var tempData = $scope.items[tabIndex].concat(data);
                 $scope.items[tabIndex] = tempData;
 
             },function (err) {
@@ -63,12 +71,8 @@
                 showErrorAlert(err);
             });
         }
-        getDatas(1,0);
+        getDatas(0,1);
 
-
-        // status
-
-        // pending
     }
 
 })();
