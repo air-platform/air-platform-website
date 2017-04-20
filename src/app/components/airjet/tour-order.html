@@ -11,15 +11,14 @@
             <div class="air-order-detail">
                 <div class="air-order-item radius-top-bottom no-border">
                     <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.orderNo}}</span>
-                    <i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>
                 </div>
                 <div class="air-order-item aoi-card radius-top">
-                    <div>{{detailData.vendor.name}} {{detailData.type}}</div>
-                    <div ng-bind="detailData.summary"></div>
+                    <div>{{detailData.jetCard.vendor.name}} {{detailData.jetCard.type}}</div>
+                    <div ng-bind="detailData.jetCard.summary"></div>
                 </div>
                 <div class="air-order-item aoi-card-info radius-bottom">
-                    <div ng-bind="detailData.name"></div>
-                    <div>{{detailData.currencyUnit | uppercase}}&nbsp;{{detailData.price}}</div>
+                    <div ng-bind="detailData.jetCard.name"></div>
+                    <div>{{detailData.jetCard.currencyUnit | uppercase}}&nbsp;{{detailData.jetCard.price}}</div>
                 </div>
                 <div class="air-order-item aoi-guest radius-top">
                     {{'airjet.guest-info' | translate}}

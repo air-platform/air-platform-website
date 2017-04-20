@@ -20,7 +20,7 @@
         function getDreamDetail() {
              NetworkService.get(UrlService.getUrl(URL.AIRJET_DREAM) + '/' + queryData.id, null, function(response) {
                 $scope.dreamObj = response.data;
-                $scope.dreamImg = response.data.image.split(';');
+                $scope.dreamImg = response.data.appearances.split(';');
                 if($scope.dreamObj.timeSlot){
                     $scope.dreamObj.startTime = $scope.dreamObj.timeSlot.split('-')[0];
                     $scope.dreamObj.endTime = $scope.dreamObj.timeSlot.split('-')[1];

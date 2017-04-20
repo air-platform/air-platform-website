@@ -55,15 +55,15 @@
               <li ng-repeat="course in hotCourse track by $index">
                   <a href="app/components/airtrain/course-detail.html?id={{course.id}}" class="clearfix">
                       <div class="list-img pull-left">
-                          <img ng-src="{{course.imgSrc}}">
+                          <img ng-src="{{course.image}}">
                       </div>
                       <div class="list-info pull-left">
-                          <h4 ng-bind="course.titleText"></h4>
-                          <div ng-bind="course.school"></div>
-                          <p>报名截止：<span ng-bind="course.deadline"></span></p>
+                          <h4 ng-bind="course.name"></h4>
+                          <div ng-bind="course.school.name"></div>
+                          <p>报名截止：<span ng-bind="course.endDate"></span></p>
                       </div>
                       <div class="list-price pull-right">
-                          ¥ <span ng-bind="course.price"></span>
+                          <span ng-bind="course.price | RMB"></span>
                       </div>
                   </a>
               </li>
