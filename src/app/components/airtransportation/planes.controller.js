@@ -12,8 +12,7 @@
     /** @ngInject */
     function planesController($scope, iotUtil, NetworkService) {
         var controller = this;
-        controller.planes = [];
-        controller.planeSelected = {};
+
         controller.planesContext = {
           "page": 1,
           "pageSize": 10,
@@ -29,36 +28,9 @@
 
         // TODO: variable cannot be accessed if refresh on this page
         var transScope = angular.element($('[data-page=airtrans]')).scope();
-
-        controller.planes = [
-          {
-            'name': '首航直升机B-7186',
-            'imageUrl': 'assets/images/b-7186.png',
-            'rentFee': 5000,
-            'ticketFee': 1000,
-            'delay': '15min',
-            'seats': 5,
-            'minPassengers': 3
-          },
-          {
-            'name': '首航直升机B-7438',
-            'imageUrl': 'assets/images/b-7438.png',
-            'rentFee': 5000,
-            'ticketFee': 1000,
-            'delay': '15min',
-            'seats': 5,
-            'minPassengers': 3
-          },
-          {
-            'name': '首航直升机B-7441',
-            'imageUrl': 'assets/images/b-7441.png',
-            'rentFee': 5000,
-            'ticketFee': 1000,
-            'delay': '15min',
-            'seats': 5,
-            'minPassengers': 3
-          }
-        ];
+        mainView.pageData = mainView.pageData || {};
+        controller.aircrafts = mainView.pageData.aircrafts;
+        controller.planeModel = mainView.pageData.planeModel;
 
         controller.select = function(plane, $event) {
           $event.stopPropagation();
@@ -67,31 +39,27 @@
           setTimeout(
             function(){
               $($event.target).closest('li').find('label.label-checkbox input').prop("checked", true);
-              transScope.schedules[0].flight = plane.name;
+              transScope.schedules[0].flight = plane.name + "-" + plane.flightNo;
             },
           0);
         };
 
         controller.init = function() {
-          var planeModel = transScope.schedules[0].flight;
-          controller.planeSelected = _.find(controller.planes, function(plane) {
-            return plane.name == planeModel;
-          });
+          if(controller.planeModel) {
+            var dash = _.indexOf(controller.planeModel, '-')
+            var flightNo = controller.planeModel.substring(0, dash);
+            var planeName = controller.planeModel.substring(dash+1);
+            controller.planeSelected = _.where(controller.aircrafts, {name: planeName, flightNo: flightNo})
+            controller.planeSelected = controller.planeSelected.length>0?controller.planeSelected[0]:null;
+          }
           $.each($("#planes-selection").find("li"), function(i, el) {
-            if($(el).find(".plane-name").text() == planeModel) {
+            if($(el).find(".plane-name").text() == controller.planeModel) {
               $(el).trigger('click');
             }
           });
         };
 
-        NetworkService.get("transports", {'page': controller.planesContext.page}, function(res) {
-          var data = res.data;
-          console.log(data.content);
-          controller.planesContext = _.omit(data, 'content');
-          controller.planes = data.content;
-        }, null);
-
-        $scope.$watch('controller.planes', function(oldValue, newValue) {
+        $scope.$watch('controller.aircrafts', function(oldValue, newValue) {
             if (newValue != oldValue) {
               // retrieve available planes according to type
             }

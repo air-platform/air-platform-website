@@ -30,6 +30,15 @@
             hasMore = data.hasNextPage;
             page = data.page;
             controller.transports = controller.transports.concat(data.content);
+            $scope.routes = parseRoutes(controller.transports);
+            controller.mapPoints = _.flatten(_.map(controller.transports, function(transport) {
+              return [[transport.flightRoute.departure,
+                      transport.flightRoute.departureLongitude,
+                      transport.flightRoute.departureLatitude],
+                      [transport.flightRoute.arrival,
+                      transport.flightRoute.arrivalLongitude,
+                      transport.flightRoute.arrivalLatitude]]
+            }), true);
           }, function(res) {
             NotificationService.alert.error(res.statusText, null);
             hasMore = false;
@@ -39,10 +48,6 @@
             "page": page
           };
         }
-
-        var response = "徐闻,110.198611,20.2761111;海航大厦,110.35105,20.024108;" +
-          "徐闻,110.198611,20.2761111;海口港,110.162196,20.046835;" +
-          "徐闻,110.198611,20.2761111;美兰,110.468596,19.944221";
 
         $scope.schedules = [
           {
@@ -54,14 +59,19 @@
           }
         ];
 
-        controller.mapPoints = transUtilsService.extractPoints(response);
         transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
 
         controller.selectFlight = function(schedule) {
           var goto = "app/components/airtransportation/planes.html"
           mainView.pageData = mainView.pageData || {};
           mainView.pageData.planeModel = schedule.flight
-          mainView.pageData.aircrafts = [];
+          mainView.pageData.aircrafts = _.uniq(
+            _.flatten(
+            _.pluck(_.where($scope.routes,
+            {departure: $scope.schedules[0].departure,
+            arrival: $scope.schedules[0].arrival}), 'flights')
+            )
+          );
           mainView.router.loadPage(goto);
         }
 
@@ -101,29 +111,20 @@
             NotificationService.alert.error(errors[_.keys(errors)[0]], null);
             return;
           }
-          mainView.router.loadPage('app/components/order/orderadd.html');
+          var dash = _.indexOf(data[0].flight, '-');
+          var aircrafts = _.find($scope.routes, function(route) {
+            return route.departure == data[0].departure && route.arrival == data[0].arrival;
+          });
+          var planeModel = _.find(aircrafts, function(plane) {
+            return plane.name == data[0].flight.substring(0, dash) &&
+                plane.flightNo == data[0].flight.substring(dash+1);
+          });
           mainView.pageData = {
             'from': 'airtrans',
             'schedules': data[0],
-            'planeModel': {
-                      "aircraftType": "G550",
-                      "arrival": "沈阳",
-                      "creationDate": "2017-04-20T03:03:31.000+0000",
-                      "currencyUnit": "rmb",
-                      "date": "2017-03-04",
-                      "departure": "深圳",
-                      "description": "",
-                      "flightNo": "B-8100",
-                      "id": "7f000101-5b89-1d93-815b-895096df0010",
-                      "image": "http://ool5ftqf4.bkt.clouddn.com/Dream_G450_20170403_2.png;http://ool5ftqf4.bkt.clouddn.com/Dream_G450_20170403_1.png;http://ool5ftqf4.bkt.clouddn.com/Dream_G450_20170403_3.png",
-                      "minPassengers": 3,
-                      "name": "湾流G550",
-                      "price": 150000,
-                      "seatPrice": 18000,
-                      "seats": 18,
-                      "timeSlot": "9:00-20:00"
-                    }
+            'planeModel': planeModel
           };
+          mainView.router.loadPage('app/components/order/orderadd.html');
         }
 
         controller.timeSlots = function() {
@@ -132,11 +133,20 @@
           });
         };
 
+        controller.arrivals = function(routes, departure) {
+            return _.uniq(_.pluck(_.where(routes, {departure: departure}), 'arrival'));
+        }
+
+        controller.departures = function(routes) {
+          return _.uniq(_.pluck(routes, 'departure'));
+        }
+
         var parseRoutes = function(transports) {
           return _.map(transports, function(transport){
             return {
               'departure': transport.flightRoute.departure,
               'arrival': transport.flightRoute.arrival,
+              'flights': transport.aircraftItems
             }
           });
         }

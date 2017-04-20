@@ -21,7 +21,7 @@
                    <div class="planes-list-view">
                      <ul class="planes-list">
                        <li class="placeholder plane-discription">没有可用的航班信息</li>
-                       <li class="plane-discription" ng-repeat="plane in ctl.planes"
+                       <li class="plane-discription" ng-repeat="plane in ctl.aircrafts"
                        ng-click="ctl.select(plane, $event)" ng-class="{'active' : plane == ctl.planeSelected}">
                          <label class="label-checkbox checkbox-circle item-content">
                              <input type="radio" name="plane-select" ng-checked="plane === ctl.planeSelected">
