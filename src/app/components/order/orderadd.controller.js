@@ -17,7 +17,7 @@
          charter 拼座
         */
         $scope.orderInfo = {
-            flightId:'7f000001-5b76-17e6-815b-765f46c60002',flight:'首航直升机 B-7186',departure:'北京',arrival:'上海',capacity:5,date:'2017-5-1',time:'约12:36分钟',interval:'08:00-09:00',
+            flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'约12:36分钟',interval:'08:00-09:00',
             charterAll:{price:2000,capacity:5},charter:{price:800,capacity:3},
             contactMobile:'',
             chartered:true
@@ -30,7 +30,21 @@
         var pageData = mainView.pageData;
         var pageType = pageData.from;
         if (pageType && pageType === 'airtrans'){//从air transportation过来
-            pageData = pageData.schedules;
+            var planeModel = pageData.planeModel;
+            var schedules = pageData.schedules;
+            $scope.orderInfo.flightId = planeModel.id;
+            $scope.orderInfo.flight = planeModel.name + ' ' + planeModel.flightNo;
+            $scope.orderInfo.charter.capacity = planeModel.minPassengers;
+            $scope.orderInfo.charter.price = planeModel.seatPrice;
+            $scope.orderInfo.charter.capacity = planeModel.seats;
+            $scope.orderInfo.charterAll.price = planeModel.price;
+            $scope.orderInfo.capacity = planeModel.seats;
+
+            $scope.orderInfo.departure = schedules.departure;
+            $scope.orderInfo.arrival = schedules.arrival;
+            $scope.orderInfo.interval = schedules.time;
+            $scope.orderInfo.date = schedules.date;
+
             console.log(pageData);
         }else{
             pageData = {};
@@ -60,10 +74,14 @@
 
 
 
-
-
         function selectPassengerAction(index) {
             $scope.passengers[index].isSelected = !$scope.passengers[index].isSelected;
+            $scope.psgs = [];
+            $scope.passengers.forEach(function (p) {
+                if (p.isSelected){
+                    $scope.psgs.push(p);
+                }
+            });
         }
         function addNewPassengerAction() {
             myApp.showIndicator();
