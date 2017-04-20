@@ -31,8 +31,13 @@
     "email": "邮箱",
     "guestInfo": "旅客信息",
     "addGuest": "新增旅客",
+    "addSucess": "添加成功！",
+    "addFailed": "添加失败！",
     "modify": "修改",
+    "delete": "删除",
     "modifySuccess": "修改成功",
+    "modifySuccessEmail": "修改成功，请查看邮件并验证",
+    "modifyFailed": "修改失败",
     "addGuestText": "还没有旅客，",
     "addGuestTextTwo": "快增加旅客信息吧"
   },

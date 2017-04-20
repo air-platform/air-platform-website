@@ -152,7 +152,7 @@
                 <div class="news-text-box pull-right">
                   <ul class="news-text" auto-text>
                     <li ng-repeat="news in listNews track by $index">
-                      <a href="#" ng-bind="news"></a>
+                      <a href="{{news.url}}" class="external" ng-bind="news.title"></a>
                     </li>
                   </ul>
                 </div>

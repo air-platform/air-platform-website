@@ -7,7 +7,7 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope, $rootScope, $translate, iotUtil, $timeout, NetworkService, constdata, StorageService) {
+    function mainController($scope, $rootScope, $translate, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
         $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
         // 订阅登录通知->刷新界面
@@ -125,11 +125,11 @@
             './../assets/images/banner0.jpg'
         ];
 
-        $scope.listNews = [
-            '#最美航线大PK#',
-            '#【原创】请问徐闻zhih到海口的直升机多长时间一班#',
-            '#【原创】飞机飞到哪里去啊#'
-        ];
+        NetworkService.get(UrlService.getUrl(URL.TOPICS), null, function(res) {
+            $scope.listNews = res.data;
+        }, function(err) {
+
+        });
 
         function test() {
             NetworkService.get('account/auth', null, function (res) {

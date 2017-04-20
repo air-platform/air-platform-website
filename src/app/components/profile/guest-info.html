@@ -10,13 +10,17 @@
         <div class="page-content profile">
             <div class="list-block" ng-show="noGuest">
                 <ul>
-                    <li ng-repeat="guest in guestList track by $index"><a href="#" class="item-link">
-                        <div class="item-content profile-header">
+                    <li class="swipeout" ng-repeat="guest in guestList track by $index">
+                        <div class="swipeout-content item-content profile-header">
                             <div class="item-inner">
-                                <div class="item-title label" ng-bind="guest.userName"></div>
-                                <div class="item-input" ng-bind="guest.card"></div>
+                                <div class="item-title label" ng-bind="guest.name"></div>
+                                <div class="item-input" ng-bind="guest.identity"></div>
                             </div>
-                        </div></a></li>
+                        </div>
+                        <div class="swipeout-actions-right">
+                            <a href="#" ng-click="delGuest(guest)" class="bg-red" style="">{{'profile.delete' | translate}}</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="list-block" ng-hide="noGuest">
