@@ -27,10 +27,11 @@
                 getDatas(tabIndex,1);
             }
 
-            refreshLoadingStatus();
+            updateDisplayLoadingStatus();
         }
         function funAction(index,tabIndex) {
             var item = $scope.items[tabIndex][index];
+
             if (item.status === 'pending'){//取消订单
                 cancelOrderAction(item.id);
             }else if (item.status === 'paid'){//评价
@@ -38,7 +39,6 @@
             }else if (item.status === 'cancelled'){//再次下单
 
             }
-            //do nothing
         }
 
 
@@ -66,7 +66,7 @@
         function getDatas(tabIndex,page) {
 
             loadings[tabIndex] = true;
-            refreshLoadingStatus();
+            updateDisplayLoadingStatus();
 
             OrderServer.getOrders(tabIndex,page,function (res) {
                 var data = res.data.content;
@@ -76,22 +76,21 @@
 
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
-                refreshLoadingStatus();
+                updateDisplayLoadingStatus();
 
             },function (err) {
                 console.log(err);
 
                 loadings[tabIndex] = false;
-                refreshLoadingStatus();
+                updateDisplayLoadingStatus();
             });
         }
         function showErrorAlert(err) {
             var errDesc = err.statusText;
             NotificationService.alert.error('操作失败！' + errDesc, null);
         }
-        function refreshLoadingStatus() {
+        function updateDisplayLoadingStatus() {
             $scope.loading = loadings[tabIndexNow];
-            console.log('==========' + $scope.loading);
         }
 
 
