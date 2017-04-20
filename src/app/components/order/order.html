@@ -23,12 +23,12 @@
                     <div class="content-block school-content order-card-container">
                         <div class="list-block cards-list">
                             <ul>
-                                <li class="card order-card" ng-repeat="item in items[0] track by $index" ng-click="gotoOrderDetail(0,$index)">
-                                    <div class="card-header">
+                                <li class="card order-card" ng-repeat="item in items[0] track by $index">
+                                    <div class="card-header" ng-click="gotoOrderDetail(0,$index)">
                                         <span class="order-number">订单编号:{{item.orderNo}}</span>
                                         <span class="order-date">{{item.creationDate | date:'yyyy-MM-dd~HH:mm'}}</span>
                                     </div>
-                                    <div class="card-content">
+                                    <div class="card-content" ng-click="gotoOrderDetail(0,$index)">
                                         <div class="card-content-inner">
                                             <div class="order-avatar">
                                                 <img src="{{item['url']}}">
