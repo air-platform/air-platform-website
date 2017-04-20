@@ -7,8 +7,9 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $window, NotificationService, StorageService, NetworkService, UrlService, URL) {
-        var page = 1;
+    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL) {
+        var cardPage = 1;
+        var dreamPage = 1;
         $scope.travelStrokeList = [{ departure: '请选择', destination: '请选择' }];
         $scope.reversal = reversal;
         $scope.submit = submit;
@@ -16,12 +17,25 @@
         $scope.removeCard = removeCard;
         $scope.jumpTourDetail = jumpTourDetail;
         $scope.datepicter = datepicter;
-        angular.element('.pull-to-refresh-content').on('refresh', getCard);
-        getCard();
+        angular.element('.card-tab').on('refresh', getCard);
+        angular.element('.dream-tab').on('refresh', getDream);
+        $timeout(function(){
+            getCard();
+            getDream();
+            getRecommended();
+        },200);
+
+        $scope.cityList = [{
+            name: '北京首都',
+            value: 'beijing'
+        },{
+            name: '三亚凤凰',
+            value: 'sanya'
+        }];
 
         function getCard() {
             var data = {
-                page: page,
+                page: cardPage,
                 pageSize: 10
             };
             var cardArr = ['金', '钻石', '尊享', '精英', '飞翔', '悠游', '翱翔']
@@ -46,130 +60,41 @@
                     }
                 });
                 $scope.cardList = result;
+                if(response.data.totalPages > cardPage){
+                    cardPage ++;
+                }
                 myApp.pullToRefreshDone();
             });
         };
 
-        $scope.dreamFlyList = [{
-            id:'1',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            endTime: '16:30',
-            departure: '阿普雷顿',
-            expired:false,
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '77000',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'2',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            endTime: '16:30',
-            departure: '香港',
-            expired:true,
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '666636',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'3',
-            createTime: '2017年04月07日',
-            expired:false,
-            startTime: '13:00',
-            endTime: '16:30',
-            departure: '香港',
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '77000',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'4',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            expired:true,
-            endTime: '16:30',
-            departure: '香港',
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '44265',
-            seat: '1300',
-            least:{number: '3'}
-        },{
-            id:'5',
-            createTime: '2017年04月07日',
-            startTime: '13:00',
-            endTime: '16:30',
-            expired:true,
-            departure: '香港',
-            destination: '北京',
-            type: '湾流G550',
-            model: '金鹿GX2812-001',
-            guest: '16',
-            aircraft: '00092842',
-            machine: '34320000',
-            seat: '2800',
-            least:{number: '3'}
-        }];
+        function getDream() {
+            var data = {
+                page: dreamPage,
+                pageSize: 10
+            };
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_DREAM), null, function(response) {
+                response.data.content.map(function(item) {
+                    if(item.timeSlot){
+                        item.startTime = item.timeSlot.split('-')[0];
+                        item.endTime = item.timeSlot.split('-')[1];
+                    }
+                    if(item.minPassengers){
+                        item.least = { number: item.minPassengers }
+                    }
+                })
+                $scope.dreamFlyList = response.data.content;
+                if(response.data.totalPages > dreamPage){
+                    dreamPage ++;
+                }
+                myApp.pullToRefreshDone();
+            });
+        };
 
-
-        $scope.recommendList = [{
-            id:1,
-            departure: '阿普雷顿（及其周边）',
-            destination: '三亚',
-            model: '金鹿航空 BBJ-002',
-            startTime: '13:00',
-            endTime: '16:30',
-            people: '3人',
-            order: '993028363001',
-            time: '2017-05-16',
-            money: '¥60万'
-        }, {
-            id:2,
-            departure: '阿普雷顿（及其周边）',
-            destination: '北京',
-            model: '金鹿航空 BBJ-002',
-            startTime: '13:00',
-            endTime: '16:30',
-            people: '3人',
-            order: '993028364021',
-            time: '2017-05-16',
-            money: '¥60万'
-        }, {
-            id:3,
-            departure: '香港',
-            destination: '北京',
-            model: '金鹿航空 BBJ-002',
-            startTime: '13:00',
-            endTime: '16:30',
-            people: '3人',
-            order: '993028364001',
-            time: '2017-05-01',
-            money: '¥60万'
-        }];
-
-        $scope.cityList = [{
-            name: '北京首都',
-            value: 'beijing'
-        },{
-            name: '三亚凤凰',
-            value: 'sanya'
-        }];
+        function getRecommended() {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_RECOMMENDED), null, function(response) {
+                $scope.recommendList = response.data;
+            });
+        };
 
         function reversal(item, order) {
             var local = item.departure;
@@ -234,7 +159,6 @@
                     
                 });
                 if(valid){
-                    
                     StorageService.put('plan', { base: base });
                     if (status) {
                         mainView.router.loadPage('app/components/airjet/travel-info.html');

@@ -1,6 +1,6 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left"></div>
+        <div class="left"><a class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding">订单成功</div>
         <div class="right"></div>
     </div>
@@ -12,7 +12,7 @@
             <div>{{'airjet.order-submit' | translate}}</div>
             <div>{{'airjet.service-later' | translate}}</div>
             <div class="back-submit">
-                <a href="app/components/airjet/travel-detail.html?order={{order}}">{{'airjet.look-order' | translate}}</a>
+                <a ng-click="jumpOrder()">{{'airjet.look-order' | translate}}</a>
                 <a href="index.html">{{'airjet.back-home' | translate}}</a>
             </div>
         </div>

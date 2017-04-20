@@ -8,14 +8,18 @@
 <div class="pages">
     <div data-page="travel-detail" class="page" ng-controller="travelDetailController">
         <div class="page-content travel-detail-check">
-            <!--<div class="travel-model-info block-center ">
-                <em>!</em>
-                <span>{{'airjet.order-info' | translate}}</span>
-            </div>-->
             <div class="air-order-detail">
-                <div class="air-order-item radius-top-bottom">
+                <div class="air-order-item radius-top-bottom" ng-class="!detailData.flightLegs ? 'no-border' : ''">
                     <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.orderNo}}</span>
                     <i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>
+                </div>
+                <div class="air-order-item aoi-card radius-top" ng-hide="detailData.flightLegs">
+                    <div>{{detailData.vendor.name}} {{detailData.type}}</div>
+                    <div ng-bind="detailData.summary"></div>
+                </div>
+                <div class="air-order-item aoi-card-info radius-bottom" ng-hide="detailData.flightLegs">
+                    <div ng-bind="detailData.name"></div>
+                    <div>{{detailData.currencyUnit | uppercase}}&nbsp;{{detailData.price}}</div>
                 </div>
                 <div ng-repeat="plan in detailData.flightLegs track by $index">
                     <div>
@@ -25,7 +29,7 @@
                             <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.arrival"></strong></div>
                         </div>
                         <div class="air-order-item">
-                            {{'airjet.start-time' | translate}}{{plan.date | date: 'yyyy年MM月dd日 EEE' | chinaweek}}
+                            {{'airjet.start-time' | translate}}{{plan.date | date: 'yyyy-MM-dd' | chinaweek}}
                         </div>
                         <div class="air-order-item radius-bottom">
                             {{'airjet.guest-count' | translate}}{{plan.passengers}}{{'airjet.person' | translate}}
@@ -38,7 +42,7 @@
                             <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.departure"></strong></div>
                         </div>
                         <div class="air-order-item">
-                            {{'airjet.start-time' | translate}}{{plan.endTime | date: 'yyyy年MM月dd日 EEE' | chinaweek}}
+                            {{'airjet.start-time' | translate}}{{plan.endTime | date: 'yyyy-MM-dd' | chinaweek}}
                         </div>
                         <div class="air-order-item radius-bottom">
                             {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
@@ -60,9 +64,6 @@
                     <div>{{'airjet.email' | translate}} {{detailData.contact.email}}</div>
                     <div>{{'airjet.remark' | translate}} {{detailData.note || '无'}}</div>
                 </div>
-                <!--<div class="order-submit travel-detail-submit" ng-click="submit()">
-                    {{'airjet.confirms' | translate}}
-                </div>-->
             </div>
         </div>
     </div>

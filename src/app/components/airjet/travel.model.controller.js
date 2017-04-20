@@ -7,11 +7,13 @@
     angular.module('airsc').controller('travelModelController', travelModelController);
 
     /** @ngInject */
-    function travelModelController($scope, StorageService, NetworkService, UrlService, URL) {
+    function travelModelController($scope, $timeout, StorageService, NetworkService, UrlService, URL) {
         $scope.modelData = {};
         $scope.radioCheck = radioCheck;
         $scope.jumpPlane = jumpPlane;
-        getModel();
+        $timeout(function(){
+            getModel();
+        },300);
 
         function getModel() {
             NetworkService.get(UrlService.getUrl(URL.AIRJET_TYPE), null, function(response) {

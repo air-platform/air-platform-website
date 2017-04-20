@@ -111,7 +111,7 @@
             if (number) {
                 var result = '';
                 var num = Number(number).toFixed(1).split('.');
-                if (number.length >= 5) {
+                if ((number + '').length >= 5) {
                     num = (Number(number) / 10000).toFixed(1).split('.');
                 }
                 var int = num[0];
@@ -127,7 +127,7 @@
                     result += '.' + float;
                 }
                 result = '¥' + result;
-                if (number.length >= 5) {
+                if ((number + '').length >= 5) {
                     result += '万';
                 } else {
                     result += '';
