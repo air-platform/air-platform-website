@@ -80,6 +80,7 @@
                 var tempData = $scope.items[tabIndex].concat(data);
                 $scope.items[tabIndex] = tempData;
 
+                console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
