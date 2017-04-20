@@ -1,3 +1,86 @@
+.order-product-list {
+  background-color: white;
+  padding: 10px;
+  .order-product {
+    .order-product-header {
+      .product-index {
+        background-color: @bg-gray;
+        color: @font-white;
+        font-size: 0.24rem;
+        border-radius: 2px;
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+      .product-date {
+        color: @font-gray;
+        font-size: 0.24rem;
+      }
+      .product-time-cost {
+        color: @font-gray;
+        font-size: 0.2rem;
+      }
+      img {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .order-product-content {
+      .order-from, .order-to {
+        margin-top: 0.2rem;
+        text-align: center;
+        strong {
+          display: block;
+          font-size: 0.4rem;
+          color: @font-gray;
+        }
+      }
+      .order-core {
+        text-align: center;
+        margin-top: 0.3rem;
+        .dfim-center {
+          .arrow-right {
+            margin: 0;
+            display: inline-block;
+            width: 1rem;
+            vertical-align: middle;
+            &:after {
+              width: .15rem;
+              top: -0.06rem;
+            }
+          }
+        }
+      }
+    }
+    .order-product-footer {
+
+      height: 40px;
+      line-height: 40px;
+      .product-desc {
+        color: @font-gray;
+        font-size: 0.2rem;
+      }
+      .product-price {
+        color: @font-red;
+        font-size: 0.4rem;
+      }
+      .product-select {
+        i {
+          float: right;
+          font-size: 18px;
+          vertical-align: middle;
+          height: 40px;
+          line-height: 38px;
+        }
+      }
+    }
+  }
+}
+
+
 .order-add-person {
   background-color: #fff;
   margin-top: 10px;

@@ -9,17 +9,17 @@
         <div class="page-content">
             <form role="form" name="form" class="form">
                 <!--订单信息-->
-                <div class="order-detail-list">
-                    <!--订单-->
-                    <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
-                        <div class="order-detail-content-title">
-                            <span><img class="" src="../../../assets/images/hnlogo.jpg"></span>
-                            <span class="order-flytype">{{orderInfo.flight}}</span>
-                            <span class="order-date">{{orderInfo.date}}</span>
+                <div class="order-product-list">
+                    <div class="order-product">
+                        <div class="order-product-header">
+                            <span class="product-index">1</span>
+                            <span class="product-date">2017-12-21 08:00-09:00</span>
+                            <span><img src="../../../assets/images/airplane.svg"></span>
+                            <span class="product-time-cost">约15分钟</span>
                         </div>
-                        <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
+                        <div class="order-product-content row">
                             <div class="order-from col-40">
-                                <strong>{{orderInfo.departure}}</strong>
+                                <strong>北京</strong>
                             </div>
                             <div class="order-core col-20">
                                 <div class="dfim-center">
@@ -27,23 +27,61 @@
                                 </div>
                             </div>
                             <div class="order-to col-40">
-                                <strong>{{orderInfo.arrival}}</strong>
+                                <strong>不秀</strong>
                             </div>
-                            <div class="col-40 order-other-info text-right">
-                                <img src="../../../assets/images/airplane.svg">
-                                <span class="order-cost">{{orderInfo.time}}</span>
+                        </div>
+                        <div class="order-product-footer row">
+                            <div class="col-50">
+                                <span class="product-desc">整机</span>
+                                <span class="product-price">￥1,000,000</span>
+                                <span class="product-select">
+                                    <i class="f7-icons ng-scope color-gray">check_round</i>
+                                </span>
                             </div>
-                            <div class="col-20 order-other-info">
-                                <img src="../../../assets/images/airseat.svg">
-                                <span class="order-cost">{{orderInfo.capacity}}</span>
-                            </div>
-                            <div class="col-40 order-other-info text-left">
-                                <img src="../../../assets/images/airtime.svg">
-                                <span class="order-cost">{{orderInfo.interval}}</span>
+                            <div class="col-50">
+                                <span class="product-desc">整机</span>
+                                <span class="product-price">￥1,000,000</span>
+                                <span class="product-select">
+                                    <i class="f7-icons ng-scope color-gray">check_round</i>
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!--<div class="order-detail-list">-->
+                    <!--<div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">-->
+                        <!--<div class="order-detail-content-title">-->
+                            <!--<span><img class="" src="../../../assets/images/hnlogo.jpg"></span>-->
+                            <!--<span class="order-flytype">{{orderInfo.flight}}</span>-->
+                            <!--<span class="order-date">{{orderInfo.date}}</span>-->
+                        <!--</div>-->
+                        <!--<div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">-->
+                            <!--<div class="order-from col-40">-->
+                                <!--<strong>{{orderInfo.departure}}</strong>-->
+                            <!--</div>-->
+                            <!--<div class="order-core col-20">-->
+                                <!--<div class="dfim-center">-->
+                                    <!--<div class="arrow-right"></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="order-to col-40">-->
+                                <!--<strong>{{orderInfo.arrival}}</strong>-->
+                            <!--</div>-->
+                            <!--<div class="col-40 order-other-info text-right">-->
+                                <!--<img src="../../../assets/images/airplane.svg">-->
+                                <!--<span class="order-cost">{{orderInfo.time}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="col-20 order-other-info">-->
+                                <!--<img src="../../../assets/images/airseat.svg">-->
+                                <!--<span class="order-cost">{{orderInfo.capacity}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="col-40 order-other-info text-left">-->
+                                <!--<img src="../../../assets/images/airtime.svg">-->
+                                <!--<span class="order-cost">{{orderInfo.interval}}</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!--乘机人-->
                 <div class="order-add-person">
                     <div class="order-title">请选择乘机人</div>
