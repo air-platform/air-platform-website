@@ -7,8 +7,9 @@
     angular.module('airsc').controller('dreamDetailController', dreamDetailController);
 
     /** @ngInject */
-    function dreamDetailController($scope, $timeout, NotificationService, NetworkService, UrlService, URL) {
+    function dreamDetailController($scope, $timeout, NotificationService, NetworkService, UrlService, URL, constdata) {
         var queryData = myApp.views[0].activePage.query;
+        $scope.removeOrder = removeOrder;
         if(queryData.order) {
             $timeout(function(){
                 getDreamOrder();
@@ -24,6 +25,20 @@
                 }
             });
         };
+
+        function removeOrder(data) {
+            if(data.id) {
+                myApp.confirm('你确定要删除该订单吗?', null, function () {
+                     NetworkService.delete(UrlService.getUrl(URL.AIRJET_DREAM_ORDER) +  '/' + data.id, null, function(response) {
+                        myApp.alert('订单已删除', null, function(){
+                            mainView.router.loadPage(constdata.router.airjet.dream);
+                        });
+                    }, function(){
+                        myApp.alert('订单删除失败，请重试', null);
+                    });
+                });
+            }
+        }
 
     }
 
