@@ -12,9 +12,8 @@
         $scope.items = [[],[],[],[]];
 
         $scope.tabChanged = tabChanged;
-        $scope.gotoOrderDetail = gotoOrderDetail;
-        $scope.showSelectViewAction = showSelectViewAction;
         $scope.funAction = funAction;
+        $scope.gotoOrderDetail = gotoOrderDetail;
         $scope.gotoCommentAction = gotoCommentAction;
 
         function tabChanged(tabIndex) {
@@ -34,6 +33,12 @@
             }
             //do nothing
         }
+
+
+
+
+
+
         function gotoCommentAction(orderId) {
             mainView.router.loadPage('app/components/comment/comment.html');
         }
@@ -48,14 +53,8 @@
                 showErrorAlert(err);
             });
         }
-        function showSelectViewAction() {
-            console.log('---');
-        }
 
-        function showErrorAlert(err) {
-            var errDesc = err.statusText;
-            NotificationService.alert.error('操作失败！' + errDesc, null);
-        }
+
 
         function getDatas(tabIndex,page) {
             OrderServer.getOrders(tabIndex,page,function (res) {
@@ -69,7 +68,10 @@
                 showErrorAlert(err);
             });
         }
-
+        function showErrorAlert(err) {
+            var errDesc = err.statusText;
+            NotificationService.alert.error('操作失败！' + errDesc, null);
+        }
 
         tabChanged(0);
 

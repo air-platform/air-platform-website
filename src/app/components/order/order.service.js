@@ -42,7 +42,7 @@
             NetworkService.post('user/ferryflight/orders/' + flightId,param,successHandler,failedHandler);
         }
         function cancelOrder(flightId,successHandler,failedHandler) {
-            NetworkService.post('user/ferryflight/orders/' + flightId,null,successHandler,failedHandler);
+            NetworkService.post('user/ferryflight/orders/' + flightId + '/cancel',null,successHandler,failedHandler);
         }
         function deleteOrder(flightId,successHandler,failedHandler) {
             NetworkService.delete('user/ferryflight/orders/' + flightId,null,successHandler,failedHandler);
