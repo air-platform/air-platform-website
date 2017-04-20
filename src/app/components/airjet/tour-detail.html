@@ -18,15 +18,15 @@
             <div>{{tourDetail.currencyUnit | uppercase}}&nbsp;{{tourDetail.price}}</div>
         </div>
         <div class="card-detail">
-            <div ng-bind="tourDetail.official"></div>
-            <div ng-bind="tourDetail.hour"></div>
+            <!--<div ng-bind="tourDetail.official"></div>
+            <div ng-bind="tourDetail.hour"></div>-->
 
-            <div class="padding-content" ng-repeat="item in tourDetail.feature track by $index">
-                <h5 ng-bind="item.name"></h5>
-                <div ng-repeat="p in item.value track by $index" ng-bind="p"></div>
+            <div class="padding-content">
+                <!--<h5 ng-bind="item.name"></h5>-->
+                <div ng-repeat="p in goodPoint track by $index"ng-bind="p"></div>
             </div>
         </div>
-        <form action="">
+        <form>
             <div class="user-info">
                 <div class="user-info-title">{{'airjet.guest-info' | translate}}</div>
                 <div class="form">
@@ -44,12 +44,12 @@
                     </div>
                 </div>
             </div>
-            <div class="company-name">
+            <!--<div class="company-name">
                 <div class="form-group">
                     <label>{{'airjet.guest-name' | translate}}</label>
                     <input type="text" ng-model="tourData.guest" placeholder="{{'airjet.guest-name-enter' | translate}}">
                 </div>
-            </div>
+            </div>-->
             <div class="airjet-detail-form-footer"><input type="button" ng-click="submit(tourData)" value="{{'airjet.submit' | translate}}"></div>
         </form>
     </div>

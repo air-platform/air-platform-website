@@ -18,6 +18,8 @@
         function getTourDetail() {
             NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD) + '/' + queryData.id, null, function(response) {
                 $scope.tourDetail = response.data;
+                $scope.goodPoint = response.data.description.split('\n')
+                console.log($scope.goodPoint)
             });
         };
 
