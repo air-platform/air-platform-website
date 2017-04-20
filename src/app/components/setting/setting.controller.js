@@ -27,6 +27,7 @@
         $$('.infinite-scroll').on('infinite', function () {
             if ($scope.loading)return;
             $scope.loading = true;
+            console.log('comment');
         });
 
         // getLatestFirstComment();

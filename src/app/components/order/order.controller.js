@@ -73,6 +73,22 @@
             NotificationService.alert.error('操作失败！' + errDesc, null);
         }
 
+
+
+        // 注册'infinite'事件处理函数
+        $scope.loading = false;
+        $$('.infinite-scroll').on('infinite', function () {
+            if ($scope.loading)return;
+            $scope.loading = true;
+            console.log('order');
+        });
+
+
+
+
+
+
+
         tabChanged(0);
 
     }
