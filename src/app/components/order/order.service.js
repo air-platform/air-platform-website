@@ -42,10 +42,10 @@
             NetworkService.post('user/ferryflight/orders/' + flightId,param,successHandler,failedHandler);
         }
         function cancelOrder(flightId,successHandler,failedHandler) {
-            NetworkService.post('user/ferryflight/orders/' + flightId,null,successHandler,failedHandler);
+            NetworkService.post('user/orders/' + flightId + '/cancel',null,successHandler,failedHandler);
         }
         function deleteOrder(flightId,successHandler,failedHandler) {
-            NetworkService.delete('user/ferryflight/orders/' + flightId,null,successHandler,failedHandler);
+            NetworkService.delete('user/orders/' + flightId,null,successHandler,failedHandler);
         }
         function getOrders(type,page,successHandler,failedHandler) {
             var path = '';
@@ -54,7 +54,7 @@
             }else if (3 === type){path = '/cancelled';
             }else {path = '';
             }
-            NetworkService.get('user/orders' + path  + '?pageSize=20&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('user/orders' + path  + '?pageSize=5&page=' + page,null,successHandler,failedHandler);
         }
     }
 

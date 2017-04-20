@@ -85,7 +85,7 @@
               to: new Date().setDate(today.getDate() - 1)
             },
             onDayClick: function(p) {
-              $(".schedule-title, .airtaxi-navbar").click();
+              calendarDateFormat.close();
             }
           });
           return calendarDateFormat;

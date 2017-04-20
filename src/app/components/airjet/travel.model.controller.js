@@ -7,44 +7,28 @@
     angular.module('airsc').controller('travelModelController', travelModelController);
 
     /** @ngInject */
-    function travelModelController($scope, StorageService) {
+    function travelModelController($scope, StorageService, NetworkService, UrlService, URL) {
         $scope.modelData = {};
         $scope.radioCheck = radioCheck;
         $scope.jumpPlane = jumpPlane;
-        $scope.modelList = [{
-            id: '1',
-            name: 'BBJ',
-            pic: 'assets/images/travel/BBJ.png',
-            people: '16',
-            luggage: '6.4m³',
-            speed: '11687km'
-        },{
-            id: '2',
-            name: '湾流G450',
-            pic: 'assets/images/travel/湾流G450.png',
-            people: '16',
-            luggage: '6.4m³',
-            speed: '11687km'
-        },{
-            id: '3',
-            name: '湾流G550',
-            pic: 'assets/images/travel/湾流G550.png',
-            people: '16',
-            luggage: '6.4m³',
-            speed: '11687km'
-        }];
-        $scope.checkModel = $scope.modelList[0].name;
+        getModel();
+
+        function getModel() {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_TYPE), null, function(response) {
+                $scope.modelList = response.data;
+                $scope.checkModel = $scope.modelList[0].type;
+            }, function(){
+                myApp.alert('数据获取失败，请重试', null);
+            });
+        };
 
         function radioCheck(model) {
-            $scope.checkModel = model.name;
+            $scope.checkModel = model.type;
         };
 
         function jumpPlane() {
             if($scope.checkModel){
-                var transferData = StorageService.get('plan');
-                transferData.type = $scope.checkModel;
-                StorageService.put('plan', transferData);
-                mainView.router.loadPage('app/components/airjet/travel-plane.html');
+                mainView.router.loadPage('app/components/airjet/travel-plane.html?type=' + $scope.checkModel);
             }
         };
 

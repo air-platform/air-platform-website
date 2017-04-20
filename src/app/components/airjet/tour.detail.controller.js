@@ -7,13 +7,21 @@
     angular.module('airsc').controller('tourDetailController', tourDetailController);
 
     /** @ngInject */
-    function tourDetailController($scope, NotificationService) {
+    function tourDetailController($scope, NotificationService, NetworkService, UrlService, URL) {
         var queryData = myApp.views[0].activePage.query;
         $scope.tourData = {};
         $scope.submit = submit;
-        if(queryData.tourdata) {
-            $scope.tourDetail = JSON.parse(queryData.tourdata);
+        if(queryData.id) {
+            getTourDetail();
         }
+
+        function getTourDetail() {
+            NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD) + '/' + queryData.id, null, function(response) {
+                $scope.tourDetail = response.data;
+                $scope.goodPoint = response.data.description.split('\n')
+                console.log($scope.goodPoint)
+            });
+        };
 
         function submit(data){
             if(!data.name){
@@ -33,6 +41,11 @@
                 return;
             }
             if(data){
+                NetworkService.post(UrlService.getUrl(URL.AIRJET_CARD_ORDER), null, function(response) {
+                    $scope.tourDetail = response.data;
+                    $scope.goodPoint = response.data.description.split('\n')
+                    console.log($scope.goodPoint)
+                });
                 mainView.router.loadPage('app/components/airjet/order-success.html');
             } else {
                 mainView.router.loadPage('app/components/airjet/order-fail.html')

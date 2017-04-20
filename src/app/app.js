@@ -32,7 +32,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
         // animateNavBackIcon: true,
         // hideNavbarOnPageScroll: true,
         // scrollTopOnNavbarClick: true,
-        // pushState: true,
+        pushState: true,
         // sortable: false,
         // swipeout: false,
         angular: true,
@@ -64,6 +64,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
 
     myApp.onPageInit('infinite-scroll', function (page) {
         //注册监听上拉加载
+        console.log('----infinite-scroll');
     });
     // Now we need to run the code that will be executed only for About page.
 

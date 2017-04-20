@@ -10,6 +10,7 @@
         return config;
       },
       responseError: function(res) {
+        console.log(res)
         // myApp.hideIndicator();
         switch (res.status.code) {
           case STATUS.HTTP.UNAUTHORIZED:

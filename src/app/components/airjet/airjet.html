@@ -221,19 +221,23 @@
                 </div>
             </div>
             <!-- Tab 3 -->
-            <div id="tab3" class="tab">
+            <div id="tab3" class="tab pull-to-refresh-content">
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                </div>
                 <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList track by $index" ng-click="jumpTourDetail(card)">
                     <div class="card-header">
-                        <span ng-bind="card.name"></span>
+                        <span>{{card.vendor.name}}&nbsp;&nbsp;{{card.type}}</span>
                         <div class="action">
                             <span>{{'airjet.buy-them' | translate}}</span>
                             <i class="fa fa-angle-right"></i>
                         </div>
                     </div>
-                    <div class="card-content" ng-bind="card.type"></div>
+                    <div class="card-content" ng-bind="card.name"></div>
                     <div class="card-footer">
-                        <span ng-bind="card.description"></span>
-                        <span ng-bind="card.money"></span>
+                        <span ng-bind="card.summary"></span>
+                        <span>{{card.currencyUnit | uppercase}}&nbsp;{{card.price}}</span>
                     </div>
                 </div>
             </div>

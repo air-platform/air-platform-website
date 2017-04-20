@@ -9,6 +9,7 @@
     /** @ngInject */
     function mainController($scope, $rootScope, $translate, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
+        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
         // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
             refresh();
@@ -41,7 +42,7 @@
             },
             {
                 title: 'Air BB论坛', items: [
-                {'title': '话题讨论/发帖/留言', target: ''}
+                {'title': '话题讨论/发帖/留言', target: 'forum'}
             ]
             },
             {
@@ -74,10 +75,21 @@
 
         refresh();
 
+        function gotoAnnounceAction(type) {
+            $scope.agreement = false;
+            if (1 === type){
+                mainView.router.loadPage(constdata.router.protocal.announce);
+            }else{
+                mainView.router.loadPage(constdata.router.protocal.safehelicopter);
+            }
+        }
+
         function gotoItemAction(item) {
             if (item.target === 'out') {
                 logoutAction();
-            } else {
+            }else if (item.target === 'forum'){
+                window.open('http://www.baidu.com/',"_blank");
+            }else {
                 if (iotUtil.islogin()) {
                     mainView.router.loadPage(item.target);
                 } else {

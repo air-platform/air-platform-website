@@ -8,13 +8,9 @@
 
     /** @ngInject */
     function orderController($scope,iotUtil) {
-        $scope.jump = jump;
-
-
-        function jump(data) {
-            if(data.order) {
-                mainView.router.loadPage('app/components/airjet/travel-detail.html');
-            }
+        var queryData = myApp.views[0].activePage.query;
+        if(queryData.order) {
+            $scope.order = queryData.order;
         }
     }
 })();
