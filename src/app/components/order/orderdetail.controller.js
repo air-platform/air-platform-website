@@ -22,8 +22,19 @@
             $scope.orderInfo = pageData.info;
             $scope.passengers = pageData.passengers;
             $scope.just4Show = false;
-        }else{
-            pageData = {};
+        }else if (pageType && pageType === 'orderdetail'){
+            // console.log(pageData.data);
+            var data = pageData.data;
+            $scope.orderInfo = {
+                orderNo: data.orderNo,
+                flight: data.ferryFlight.name,
+                date: data.ferryFlight.date,
+                departure:data.ferryFlight.departure,
+                arrival:data.ferryFlight.arrival,
+                time:data.ferryFlight.time,//creationDate
+                capacity:data.ferryFlight.seats,
+                interval:data.ferryFlight.timeSlot
+            };
         }
 
 

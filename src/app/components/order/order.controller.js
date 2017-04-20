@@ -51,6 +51,10 @@
         }
         function gotoOrderDetail(index,tabIndex) {
             mainView.router.loadPage('app/components/order/orderdetail.html');
+            mainView.pageData = {
+                'from': 'orderdetail',
+                'data': $scope.items[tabIndex][index]
+            };
         }
         function cancelOrderAction(orderId,index,tabIndex) {
             myApp.confirm('订单取消后无法恢复', '确定取消订单吗',
@@ -99,8 +103,7 @@
         function addTypeForOrder(data) {
             // ferryFlight
             // fleetCandidates  flightLegs
-            //
-            jetCard
+            // jetCard
             return data;
         }
 
