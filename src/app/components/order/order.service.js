@@ -54,7 +54,7 @@
             }else if (3 === type){path = '/cancelled';
             }else {path = '';
             }
-            NetworkService.get('user/orders' + path  + '?pageSize=200&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('user/orders' + path  + '?pageSize=5&page=' + page,null,successHandler,failedHandler);
         }
     }
 

@@ -63,9 +63,12 @@
                 var tempData = $scope.items[tabIndex].concat(data);
                 $scope.items[tabIndex] = tempData;
 
+                // $scope.loading = false;
+                console.log('stop loading...');
             },function (err) {
                 myApp.hideIndicator();
                 showErrorAlert(err);
+                $scope.loading = false;
             });
         }
         function showErrorAlert(err) {
@@ -80,14 +83,9 @@
         $$('.infinite-scroll').on('infinite', function () {
             if ($scope.loading)return;
             $scope.loading = true;
-            console.log('order');
+            console.log('loading....');
+            getDatas(0,1);
         });
-
-
-
-
-
-
 
         tabChanged(0);
 
