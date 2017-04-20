@@ -82,17 +82,17 @@
             errors.arrayLength = "行程不能为空！";
             return errors;
           }
-          if(!schedules[0].date) {
-            errors.date = "日期不能为空！";
-          }
-          if(!schedules[0].time) {
-            errors.time = "时段不能为空！";
-          }
           if(!schedules[0].departure) {
             errors.departure = "出发地不能为空！";
           }
           if(!schedules[0].arrival) {
             errors.arrival = "到达地不能为空！";
+          }
+          if(!schedules[0].date) {
+            errors.date = "日期不能为空！";
+          }
+          if(!schedules[0].time) {
+            errors.time = "时段不能为空！";
           }
           if(!schedules[0].flight) {
             errors.flight = "航班信息不能为空！";

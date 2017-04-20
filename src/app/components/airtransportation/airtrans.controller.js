@@ -13,7 +13,9 @@
     function transController($scope, iotUtil, NetworkService, transUtilsService, NotificationService) {
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
+        var ROUTES_FAMILY = "飞越海峡";
         $scope.schedules = [];
+        $scope.routes = [];
         controller.mapPoints = {};
         controller.datepicker = {};
         controller.transports = [];
@@ -21,7 +23,9 @@
         var loadTransports = function(page) {
           var hasMore = true;
           var page = 1;
-          NetworkService.get("transports", {page: page}, function getMapMakers(res) {
+          NetworkService.get("transports",
+          {page: page, family: ROUTES_FAMILY},
+          function getMapMakers(res) {
             var data = res.data;
             hasMore = data.hasNextPage;
             page = data.page;
@@ -42,11 +46,11 @@
 
         $scope.schedules = [
           {
-            'date': '2017-04-30',
-            'time': '08:00 - 09:00',
-            'departure': '徐闻',
-            'arrival': '海口美兰机场',
-            'flight': '首航直升机B-7186'
+            'date': '',
+            'time': '',
+            'departure': '',
+            'arrival': '',
+            'flight': ''
           }
         ];
 
@@ -92,6 +96,11 @@
 
         controller.submitSchedules = function() {
           var data = $scope.schedules;
+          var errors = transUtilsService.validateSchedules(data);
+          if(_.keys(errors).length != 0) {
+            NotificationService.alert.error(errors[_.keys(errors)[0]], null);
+            return;
+          }
           mainView.router.loadPage('app/components/order/orderadd.html');
           mainView.pageData = {
             'from': 'airtrans',
@@ -117,6 +126,21 @@
           };
         }
 
+        controller.timeSlots = function() {
+          return _.map(_.range(8,18), function(hour) {
+            return (hour>9?hour:("0"+hour)) + ":00-" + (hour+1>9?hour+1:"0"+(hour+1))+":00"
+          });
+        };
+
+        var parseRoutes = function(transports) {
+          return _.map(transports, function(transport){
+            return {
+              'departure': transport.flightRoute.departure,
+              'arrival': transport.flightRoute.arrival,
+            }
+          });
+        }
+
         var createDatePicker = function() {
           var today = new Date();
           var calendarDateFormat = myApp.calendar({
@@ -137,6 +161,7 @@
         //   hasMore = loadTransports(1);
         // }
         loadTransports(1);
+
         $scope.$watch("controller.mapPoints", function(newValue, oldValue) {
             if( newValue != oldValue ) {
               transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
