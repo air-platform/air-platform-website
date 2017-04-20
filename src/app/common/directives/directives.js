@@ -30,7 +30,7 @@
             }
           }
           Timer = setInterval(run, 1500);
-        });
+        }, 2000);
       }
     }
   }

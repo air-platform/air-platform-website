@@ -32,10 +32,6 @@
       console.log(err);
     });
 
-    $$('.link.close-picker').on('click', function() {
-      console.log('点了');
-    });
-
     $scope.gotoAddGuest = function() {
       mainView.router.loadPage('app/components/profile/add-guest.html');
     }

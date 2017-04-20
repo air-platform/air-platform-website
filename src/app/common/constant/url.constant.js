@@ -6,6 +6,7 @@
       PROFILE:'account/profile',
       COURSE: 'courses',
       USERPASSENGERS: 'user/passengers',
-      USEREMAIL: 'account/email'
+      USEREMAIL: 'account/email',
+      TOPICS: 'topics',
     })
 })();

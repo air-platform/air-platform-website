@@ -20,20 +20,20 @@
     });
 
     $scope.saveBtn = function() {
-      if ($rootScope.userInfo.email && $scope.info === 'email') {
+      if ($rootScope.userInfo.email && $scope.info === 'email' && queryData.email !== $rootScope.userInfo.email) {
         NetworkService.post(UrlService.getUrl(URL.USEREMAIL), {email: $rootScope.userInfo.email}, function(res) {
-          myApp.alert('修改成功', $scope.headText);
+          myApp.alert(i18n.t('profile.modifySuccessEmail'), $scope.headText);
           mainView.router.back();
         }, function(err) {
-          myApp.alert('修改失败', $scope.headText);
+          myApp.alert(i18n.t('profile.modifyFailed'), $scope.headText);
           mainView.router.back();
         });
       } else if ($rootScope.userInfo[$scope.info] && $rootScope.userInfo[$scope.info] === $scope.info) {
         NetworkService.put(UrlService.getUrl(URL.PROFILE), $rootScope.userInfo, function(res) {
-          myApp.alert('修改成功', $scope.headText);
+          myApp.alert(i18n.t('profile.modifySuccess'), $scope.headText);
           mainView.router.back();
         }, function(err) {
-          myApp.alert('修改失败', $scope.headText);
+          myApp.alert(i18n.t('profile.modifyFailed'), $scope.headText);
           mainView.router.back();
         });
       } else {

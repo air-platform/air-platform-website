@@ -8,25 +8,25 @@
 <div class="pages navbar-through">
     <div data-page="add-guest" class="page" ng-controller="addGuestController">
         <div class="page-content">
-            <div class="add-guest-box" ng-repeat="quest in questList track by $index">
-                <div class="add-title">旅客{{$index + 1 | chinanum}}</div>
+            <div class="add-guest-box">
+                <div class="add-title">{{'profile.addGuest' | translate}}</div>
                 <div class="add-info">
                     <div>
                         <label for="name">姓名：</label>
-                        <input type="text" ng-model="quest.userName" id="name">
+                        <input type="text" ng-model="quest.name" id="name">
                     </div>
                     <div>
                         <label for="card">身份证：</label>
-                        <input type="text" ng-model="quest.card" id="card">
+                        <input type="text" ng-model="quest.identity" id="card">
                     </div>
                 </div>
             </div>
             <div class="add-guest-btn">
-                <div class="add-guset" ng-click="addGuest()" role="button" tabindex="0">
+                <!-- <div class="add-guset" ng-click="addGuest()" role="button" tabindex="0">
                     <em class="fa fa-plus-circle"></em>
                     <span class="ng-binding">继续增加</span>
-                </div>
-                <a href="#" class="guset-submit alert-check" type="button">提交</a>
+                </div> -->
+                <a href="#" class="guset-submit alert-check" type="button">确认</a>
             </div>
         </div>
     </div>
