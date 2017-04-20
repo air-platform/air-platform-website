@@ -9,18 +9,25 @@
     /** @ngInject */
     function orderListController($scope,OrderServer,NotificationService) {
 
+        var loadings = [false,false,false,false];
+        var loadingPages = [1,1,1,1];
+        var tabIndexNow = 0;
+        $scope.loading = false;
         $scope.items = [[],[],[],[]];
 
         $scope.tabChanged = tabChanged;
         $scope.funAction = funAction;
         $scope.gotoOrderDetail = gotoOrderDetail;
-        $scope.gotoCommentAction = gotoCommentAction;
 
         function tabChanged(tabIndex) {
             var tempData = $scope.items[tabIndex];
+            tabIndexNow = tabIndex;
+
             if (0 === tempData.length){
                 getDatas(tabIndex,1);
             }
+
+            refreshLoadingStatus();
         }
         function funAction(index,tabIndex) {
             var item = $scope.items[tabIndex][index];
@@ -57,37 +64,48 @@
 
 
         function getDatas(tabIndex,page) {
+
+            loadings[tabIndex] = true;
+            refreshLoadingStatus();
+
             OrderServer.getOrders(tabIndex,page,function (res) {
                 var data = res.data.content;
-                console.log(data);
+
                 var tempData = $scope.items[tabIndex].concat(data);
                 $scope.items[tabIndex] = tempData;
 
-                // $scope.loading = false;
-                console.log('stop loading...');
+                loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
+                loadings[tabIndex] = false;
+                refreshLoadingStatus();
+
             },function (err) {
-                myApp.hideIndicator();
-                showErrorAlert(err);
-                $scope.loading = false;
+                console.log(err);
+
+                loadings[tabIndex] = false;
+                refreshLoadingStatus();
             });
         }
         function showErrorAlert(err) {
             var errDesc = err.statusText;
             NotificationService.alert.error('操作失败！' + errDesc, null);
         }
+        function refreshLoadingStatus() {
+            $scope.loading = loadings[tabIndexNow];
+            console.log('==========' + $scope.loading);
+        }
 
 
 
         // 注册'infinite'事件处理函数
-        $scope.loading = false;
         $$('.infinite-scroll').on('infinite', function () {
-            if ($scope.loading)return;
-            $scope.loading = true;
-            console.log('loading....');
-            getDatas(0,1);
+            if ($scope.loading){
+                return;
+            }
+            getDatas(tabIndexNow,loadingPages[tabIndexNow]);
         });
 
         tabChanged(0);
+
 
     }
 
