@@ -41,6 +41,11 @@
                 return;
             }
             if(data){
+                NetworkService.post(UrlService.getUrl(URL.AIRJET_CARD_ORDER), null, function(response) {
+                    $scope.tourDetail = response.data;
+                    $scope.goodPoint = response.data.description.split('\n')
+                    console.log($scope.goodPoint)
+                });
                 mainView.router.loadPage('app/components/airjet/order-success.html');
             } else {
                 mainView.router.loadPage('app/components/airjet/order-fail.html')
