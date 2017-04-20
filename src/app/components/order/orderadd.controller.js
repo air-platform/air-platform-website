@@ -18,7 +18,7 @@
         */
         $scope.orderInfo = {
             flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'约12:36分钟',interval:'08:00-09:00',
-            charterAll:{price:2000,capacity:5},charter:{price:800,capacity:3},
+            charterAll:{price:0,capacity:0},charter:{price:0,capacity:0},
             contactMobile:'',
             chartered:true
         };
@@ -36,8 +36,8 @@
             $scope.orderInfo.flight = planeModel.name + ' ' + planeModel.flightNo;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
-            $scope.orderInfo.charter.capacity = planeModel.seats;
             $scope.orderInfo.charterAll.price = planeModel.price;
+            $scope.orderInfo.charterAll.capacity = planeModel.seats;
             $scope.orderInfo.capacity = planeModel.seats;
 
             $scope.orderInfo.departure = schedules.departure;
@@ -46,8 +46,6 @@
             $scope.orderInfo.date = schedules.date;
 
             console.log(pageData);
-        }else{
-            pageData = {};
         }
 
         // 获取 f7 页面
@@ -66,7 +64,7 @@
         $scope.editContactPhoneAction = editContactPhoneAction;
         $scope.gotoAnnounceAction = gotoAnnounceAction;
         $scope.agreeValueChanged = agreeValueChanged;
-        $scope.gotoOrderDetailAction = gotoOrderDetailAction;
+        $scope.submitOrderAction = submitOrderAction;
 
 
         //获取乘客信息
@@ -75,11 +73,16 @@
 
 
         function selectPassengerAction(index) {
+            if ($scope.psgs.length >= $scope.orderInfo.capacity){
+                myApp.alert('本次航班只能乘坐' + $scope.orderInfo.capacity + '人');
+                return;
+            }
             $scope.passengers[index].isSelected = !$scope.passengers[index].isSelected;
+
             $scope.psgs = [];
             $scope.passengers.forEach(function (p) {
                 if (p.isSelected){
-                    $scope.psgs.push(p);
+                    $scope.psgs.push(p.identity);
                 }
             });
         }
@@ -118,29 +121,46 @@
                 }
             });
         }
-        function gotoOrderDetailAction() {
+        function submitOrderAction() {
             //检查联系人手机号
             //检查是否有乘机人
             $scope.psgs = [];
             $scope.passengers.forEach(function (p) {
                 if (p.isSelected){
-                    $scope.psgs.push(p);
+                    $scope.psgs.push(p.identity);
                 }
             });
-            // if ($scope.orderInfo.contactMobile.length !== 11){
-            //     editContactPhoneAction();
-            //     return;
-            // }else if ($scope.psgs.length === 0){
-            //     showAlert('请选择乘机人');
-            //     return;
-            // }
 
-            mainView.router.loadPage('app/components/order/orderdetail.html');
-            mainView.pageData = {
-                from:'orderadd',
-                info:$scope.orderInfo,
-                passengers:$scope.psgs
+            if ($scope.orderInfo.contactMobile.length !== 11){
+                editContactPhoneAction();
+                return;
+            }else if ($scope.psgs.length === 0){
+                showAlert('请选择乘机人');
+                return;
+            }
+
+            var param = {
+                airTransport:$scope.orderInfo.flightId,
+                chartered: $scope.orderInfo.chartered,
+                date: $scope.orderInfo.date,
+                timeSlot: $scope.orderInfo.interval,
+                passengers: $scope.psgs,
+                contact:{mobile:$scope.orderInfo.contactMobile}
             };
+            console.log(param);
+            OrderServer.submitOrder(param,function (res) {
+                console.log(res);
+            },function (err) {
+                showErrorAlert(err);
+            });
+
+
+            // mainView.router.loadPage('app/components/order/orderdetail.html');
+            // mainView.pageData = {
+            //     from:'orderadd',
+            //     info:$scope.orderInfo,
+            //     passengers:$scope.psgs
+            // };
         }
 
 

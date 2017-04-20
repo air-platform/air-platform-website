@@ -38,8 +38,8 @@
         function addPassenger(param,successHandler,failedHandler) {//name、mobile、identity
             NetworkService.post('user/passengers',param,successHandler,failedHandler);
         }
-        function submitOrder(flightId,param,successHandler,failedHandler) {//name、mobile、identity
-            NetworkService.post('user/ferryflight/orders/' + flightId,param,successHandler,failedHandler);
+        function submitOrder(param,successHandler,failedHandler) {//name、mobile、identity
+            NetworkService.post('user/airtransport/orders/',param,successHandler,failedHandler);
         }
         function cancelOrder(flightId,successHandler,failedHandler) {
             NetworkService.post('user/orders/' + flightId + '/cancel',null,successHandler,failedHandler);

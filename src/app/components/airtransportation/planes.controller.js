@@ -84,8 +84,9 @@
           });
         };
 
-        NetworkService.get("ferryflights", {'page': controller.planesContext.page}, function(res) {
+        NetworkService.get("transports", {'page': controller.planesContext.page}, function(res) {
           var data = res.data;
+          console.log(data.content);
           controller.planesContext = _.omit(data, 'content');
           controller.planes = data.content;
         }, null);
