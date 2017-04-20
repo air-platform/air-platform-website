@@ -25,11 +25,11 @@
             <div class="tour-projects">
                 <div class="fa project-card clearfix" ng-repeat="item in sitesList track by $index"  ng-click="jumpDetail(item)">
                     <div class="left-media pull-left">
-                      <img ng-src="{{item.pic}}" alt="city">
+                      <img ng-src="{{item.image}}" alt="city">
                     </div>
                     <div class="project-description pull-left">
-                      <div class="project-title" ng-bind="item.title"></div>
-                      <div class="abstract-info" ng-bind="item.info"></div>
+                      <div class="project-title" ng-bind="item.name"></div>
+                      <div class="abstract-info" ng-bind="item.description"></div>
                     </div>
                 </div>
             </div>

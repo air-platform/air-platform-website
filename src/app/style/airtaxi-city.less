@@ -64,9 +64,17 @@
                 margin-bottom: .14rem;
             }
             .abstract-info{
+                display: block;
+                display: -webkit-box;
+                position: absolute;
+                max-width: 50%;
                 font-size: .2rem;
                 line-height: .24rem;
                 color: @font-grey;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             &.fa:before {
                 content: "\f105";
@@ -98,5 +106,5 @@
     }
     &.fa:before{
         content: '\f041';
-    } 
+    }
 }
