@@ -85,7 +85,6 @@
             OrderServer.getOrders(tabIndex,page,function (res) {
                 var data = res.data.content;
 
-
                 if (data.length > 0){
                     var result = dealOrderData(data);
                     var tempData = $scope.items[tabIndex].concat(result);
@@ -113,8 +112,9 @@
                     d.showSubtitle = '';
                     d.price = d.chartered ? d.ferryFlight.price : d.ferryFlight.seatPrice * d.passengers;
                 }else if (type === 'fleet') {
-                    d.showTitle = 'fleet';
-                    d.showSubtitle = 'fleet';
+                    d.showTitle = d.flightLegs[0].departure + ' → ' + d.flightLegs[0].arrival;
+                    d.showSubtitle = d.fleetCandidates[0].fleet.name;
+                    d.price = d.fleetCandidates[0].fleet.price;
                     console.log(d);
                 }else if (type === 'jetcard') {
                     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;

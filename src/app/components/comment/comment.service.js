@@ -33,10 +33,10 @@
             NetworkService.post('comments?order=' + orderId,param,successHandler,failedHandler);
         }
         function getComments(productId,page,successHandler,failedHandler) {
-            NetworkService.get('comments?product=' + productId + '?pageSize=20&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('comments?product=' + productId + '&pageSize=20&page=' + page,null,successHandler,failedHandler);
         }
         function getLatestComment(productId,successHandler,failedHandler) {
-            NetworkService.get('comments?product=' + productId + '?page=1&pageSize=1',null,successHandler,failedHandler);
+            NetworkService.get('comments?product=' + productId + '&page=1&pageSize=1',null,successHandler,failedHandler);
         }
     }
 
