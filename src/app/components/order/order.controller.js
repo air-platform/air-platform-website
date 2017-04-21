@@ -34,21 +34,20 @@
 
             if (item.status === 'pending'){//取消订单
                 cancelOrderAction(item.id,index,tabIndex);
-            }else if (item.status === 'paid'){//评价
-                gotoCommentAction(item.id);
-            }else if (item.status === 'cancelled'){//再次下单
+            }else if (item.status === 'paid'){
 
+            }else if (item.status === 'finished'){
+                gotoCommentAction(item.id,item);
             }
         }
 
+        function gotoCommentAction(orderId,item) {
+            mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
 
-        function gotoCommentAction(orderId) {
-            mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId);
         }
         function gotoOrderDetail(index,tabIndex) {
 
             var item = $scope.items[tabIndex][index];
-
 
             var type = item.type;
             if (type === 'ferryflight') {
