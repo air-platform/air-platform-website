@@ -84,7 +84,6 @@
                     $scope.items[tabIndex] = tempData;
                 }
 
-                console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
@@ -114,6 +113,7 @@
                     console.log('unknown');
                     console.log(d);
                 }
+                console.log(d);
                 result.push(d);
             });
 

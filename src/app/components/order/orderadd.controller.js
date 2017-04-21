@@ -46,6 +46,8 @@
             $scope.orderInfo.date = schedules.date;
 
             console.log(pageData);
+        }else{
+            console.log(pageData);
         }
 
         // 获取 f7 页面
