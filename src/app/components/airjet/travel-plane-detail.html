@@ -82,36 +82,13 @@
                         <span class="comment-number">{{score}}</span>
                     </span>
                 </div>
-                <div class="comment-core">
-                    <div class="comment-content">
-                        <div class="inner-header">
-                            <div class="comment-avatar"><img ng-src="comments[0].avatar" width="30" height="30"></div>
-                            <div class="comment-name">{{comments[0].name}} <span class="pull-right comment-date">{{comments[0].date | date:'yyyy-MM-dd'}}</span></div>
-                            <div class="comment-star">
-                                <i class="f7-icons icon">star_fill</i>
-                                <i class="f7-icons icon">star_fill</i>
-                                <i class="f7-icons icon">star_half</i>
-                                <i class="f7-icons icon">star</i>
-                                <i class="f7-icons icon">star</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-comment">
-                        <div class="comment-inner">
-                            {{comments[0].content}}
-                        </div>
-                    </div>
-                </div>
-                <div class="comment-more" ng-show="!showMore">
-                    <a href="#" class="item-link button" ng-click="showMoreCommentAction()">查看更多</a>
-                </div>
-                <div class="comment-list" ng-show="showMore">
+                <div class="comment-list">
                     <div class="list-block" ng-repeat="comment in comments">
                         <div class="comment-core">
                             <div class="comment-content">
                                 <div class="inner-header">
-                                    <div class="comment-avatar"><img ng-src="comment.avatar" width="30" height="30"></div>
-                                    <div class="comment-name">{{comment.name}} <span class="pull-right comment-date">{{comment.date | date:'yyyy-MM-dd'}}</span></div>
+                                    <div class="comment-avatar"><img ng-src="comment.owner.avatar" width="30" height="30"></div>
+                                    <div class="comment-name">{{comment.owner.nickName}} <span class="pull-right comment-date">{{comment.date | date:'yyyy-MM-dd'}}</span></div>
                                     <div class="comment-star">
                                         <i class="f7-icons icon">star_fill</i>
                                         <i class="f7-icons icon">star_fill</i>
@@ -127,6 +104,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="comment-more" ng-show="!showMore">
+                        <a href="#" class="item-link button" ng-click="showMoreCommentAction()">查看更多</a>
                     </div>
                     <!--加载提示符-->
                     <div class="infinite-scroll-preloader" ng-show="loading">
