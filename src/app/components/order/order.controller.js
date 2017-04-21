@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderListController($scope,OrderServer,NotificationService) {
+    function orderListController($scope,OrderServer,NotificationService,$timeout) {
 
         var loadings = [false,false,false,false];
         var loadingPages = [1,1,1,1];
@@ -135,7 +135,9 @@
             NotificationService.alert.error('操作失败！' + errDesc, null);
         }
         function updateDisplayLoadingStatus() {
-            $scope.loading = loadings[tabIndexNow];
+            $timeout(function () {
+                $scope.loading = loadings[tabIndexNow];
+            },500);
         }
 
 
