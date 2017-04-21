@@ -9,7 +9,7 @@
         <div class="page-content">
             <div class="order-detail-list">
                 <!--订单-->
-                <div class="order-detail-header" ng-show="just4Show">
+                <div class="order-detail-header" ng-show="just4Show" style="margin-top: 10px;">
                     <span class="order-number">订单编号 : {{orderInfo.orderNo}}</span>
                     <span class="order-trash"><i class="f7-icons">trash</i></span>
                 </div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="order-detail-header">
                     <span class="order-number">乘客信息</span>
-                    <span class="order-trash"><span>{{passengers.length}}&nbsp;&nbsp;</span><i class="f7-icons">persons</i></span>
+                    <!--<span class="order-trash"><span>{{passengers.length}}&nbsp;&nbsp;</span><i class="f7-icons">persons</i></span>-->
                 </div>
                 <div class="order-detail-line"></div>
                 <div class="order-detail-content-person">
@@ -68,15 +68,11 @@
                 <div class="triangle-container">
                     <span class="triangle"></span>
                 </div>
+
                 <div class="order-detail-header">
                     <span class="order-number">总价</span>
-                    <span class="order-trash" ng-hide="orderInfo.chartered">
-                        <span class="order-computer">拼座 ¥ {{orderInfo.charter.price}} x 人数 {{passengers.length}}＝</span>
-                        <span class="order-total-price">¥ {{orderInfo.charter.price * passengers.length}}</span>
-                    </span>
-                    <span class="order-trash" ng-show="orderInfo.chartered">
-                        <span class="order-computer">包机 =</span>
-                        <span class="order-total-price">¥ {{orderInfo.charterAll.price}}</span>
+                    <span class="order-trash">
+                        <span class="order-total-price">¥ {{orderInfo.price.toFixed(2)}}</span>
                     </span>
                 </div>
                 <!--提交-->
