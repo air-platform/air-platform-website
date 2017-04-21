@@ -1,0 +1,66 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+    <div class="center sliding">我要报名</div>
+  </div>
+</div>
+<div class="pages navbar-through">
+  <div data-page="course-enter" class="page" ng-controller="enteredController">
+    <div class="page-content entered">
+      <div class="list-block">
+        <div class="enter-check">
+          <div class="title">飞行执照</div>
+          <label class="label-checkbox checkbox-circle item-content">
+            <input type="radio" name="license-radio" value="私照" ng-model="enterObj.license">
+            <div class="item-media">
+              <i class="icon icon-form-checkbox"></i> 私照
+            </div>
+          </label>
+          <label class="label-checkbox checkbox-circle item-content">
+            <input type="radio" name="license-radio" value="商照" ng-model="enterObj.license">
+            <div class="item-media">
+              <i class="icon icon-form-checkbox"></i> 商照
+            </div>
+          </label>
+        </div>
+        <div class="enter-check">
+          <div class="title">培训地点</div>
+          <label class="label-checkbox checkbox-circle item-content">
+            <input type="radio" name="location-radio">
+            <div class="item-media">
+              <i class="icon icon-form-checkbox"></i> 北京
+            </div>
+          </label>
+          <label class="label-checkbox checkbox-circle item-content">
+            <input type="radio" name="location-radio">
+            <div class="item-media">
+              <i class="icon icon-form-checkbox"></i> 宜昌
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="list-block">
+        <div class="user-info">
+          <div class="user-info-title">{{'airjet.guest-info' | translate}}</div>
+          <div class="form">
+            <div class="form-group">
+              <label>姓名：</label>
+              <input type="text" ng-model="tourData.name" placeholder="{{'airjet.enter' | translate}}">
+            </div>
+            <div class="form-group">
+              <label>身份证：</label>
+              <input type="text" ng-model="tourData.phone" placeholder="{{'airjet.enter' | translate}}">
+            </div>
+            <div class="form-textare">
+              <label>飞行经历：</label>
+              <textarea ng-model="tourData.remark" placeholder="{{'airjet.enter' | translate}}"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="detail-btn">
+            <button type="button" ng-click="enterBtn()">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
