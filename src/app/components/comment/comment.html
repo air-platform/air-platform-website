@@ -13,18 +13,15 @@
             <div class="content-block school-content order-card-container">
                 <div class="list-block cards-list">
                     <ul>
-                        <li class="card order-card" ng-repeat="item in items[0] track by $index">
+                        <li class="card order-card">
                             <div class="card-header">
-                                <span class="order-number">{{item.no}}</span>
-                                <span class="order-date">{{item.date}}</span>
+                                <span class="order-number">{{orderInfo.orderNo}}</span>
+                                <span class="order-date">{{orderInfo.date | date:'yyyy-MM-dd HH:mm'}}</span>
                             </div>
                             <div class="card-content">
                                 <div class="card-content-inner">
-                                    <div class="order-avatar">
-                                        <img src="{{item['url']}}">
-                                    </div>
-                                    <div class="order-name">{{item.name}}</div>
-                                    <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
+                                    <div class="order-title">{{orderInfo.title}}</div>
+                                    <div class="order-desc">{{orderInfo.subtitle}}<span class="order-price">{{orderInfo.price.toFixed(2)}}</span></div>
                                 </div>
                             </div>
                         </li>
@@ -42,14 +39,17 @@
                     <i class="f7-icons icon" ng-click="markStarAction(5)">{{starNum > 4 ? 'star_fill' : 'star'}}</i>
                 </div>
             </div>
-            <!--评价-->
-            <div class="commentadd-comment">
-                <textarea placeholder="请写下你的评价" maxlength="1000"></textarea>
-            </div>
-            <!--提交-->
-            <div class="commentadd-submit">
-                <a href="#" class="button button-big active" ng-disabled='form.$invalid'>提 交</a>
-            </div>
+
+            <form role="form" name="form" class="">
+                <!--评价-->
+                <div class="commentadd-comment">
+                    <textarea placeholder="请写下你的评价" maxlength="1000" ng-model="content" required></textarea>
+                </div>
+                <!--提交-->
+                <div class="commentadd-submit">
+                    <a href="#" class="button button-big active" ng-disabled='form.$invalid || starNum == 0' ng-click="submitComment()">提 交</a>
+                </div>
+            </form>
 
         </div>
     </div>

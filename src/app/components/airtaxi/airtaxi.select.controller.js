@@ -24,5 +24,17 @@
             time: '40',
             price: '3000'
         }];
+    	
+    	
+    	
+    	$scope.gotoOrderAction = gotoOrderAction;
+    	
+    	function gotoOrderAction() {
+            mainView.pageData = {
+                'from': 'airtaxi'
+            };
+            mainView.router.loadPage('app/components/order/orderadd.html');
+        }
+    	
     }
 })();

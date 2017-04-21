@@ -18,7 +18,8 @@
 
 
         function gotoSchoolInfo(index) {
-            mainView.router.loadPage('app/components/airtrain/school.html');
+            var item = $scope.items[index];
+            mainView.router.loadPage('app/components/airtrain/school.html?schoolId=' + item.id);
         }
 
 

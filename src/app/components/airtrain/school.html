@@ -18,21 +18,23 @@
             <div class="tabs">
                 <!-- Tab 1, active by default -->
                 <div id="tab1" class="tab active">
-                    <div class="content-block school-content">
-                        <div style="background-image:url({{items[0].imgUrl}})" class="color-white no-border school-brief-image"></div>
-                        <p>{{items[0].content}}</p>
+                    <div class="content-block">
+                        <!--<div style="background-image:url({{school.image}})" class="color-white no-border school-brief-image"></div>-->
+                        <p marked="school.description"></p>
                     </div>
                 </div>
                 <!-- Tab 2 -->
                 <div id="tab2" class="tab">
-                    <div class="content-block school-content">
-                        <div style="background-image:url({{items[1].imgUrl}})" class="color-white no-border school-brief-image"></div>
-                        <div ng-repeat="content in items[1].contents">
-                            <div class="p-title-container">
-                                <span class="p-title">{{content.title}}</span>
-                            </div>
-                            <p>{{content.content}}</p>
-                        </div>
+                    <div class="content-block">
+                        <p marked="school.baseDesc"></p>
+                        <!--//school-content-->
+                        <!--<div style="background-image:url({{items[1].imgUrl}})" class="color-white no-border school-brief-image"></div>-->
+                        <!--<div>-->
+                            <!--<div class="p-title-container">-->
+                                <!--<span class="p-title">{{school.baseDesc}}</span>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<p>{{content.content}}</p>&ndash;&gt;-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <!-- Tab 2 -->

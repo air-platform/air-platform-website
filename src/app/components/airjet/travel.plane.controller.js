@@ -7,7 +7,7 @@
     angular.module('airsc').controller('travelPlaneController', travelPlaneController);
 
     /** @ngInject */
-    function travelPlaneController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL) {
+    function travelPlaneController($scope, $timeout, NotificationService,CommentServer,StorageService, NetworkService, UrlService, URL) {
         var page = 1;
         var transferData = StorageService.get('plan');
         var queryData = myApp.views[0].activePage.query;
@@ -50,6 +50,12 @@
                 if(response.data.appearances) {
                     $scope.appearances = response.data.appearances.split(';');
                 }
+
+                /** 获取评论 **/
+                $scope.score = $scope.planeDetail.score;
+                $scope.productId = $scope.planeDetail.id;
+                getLatestFirstComment();
+
             }, function(){
                 myApp.alert('数据获取失败，请重试', null);
             });
@@ -72,6 +78,61 @@
             StorageService.put('plan', transferData);
             mainView.router.loadPage('app/components/airjet/travel-info.html');
         };
+
+
+
+
+
+
+        /** -评论- **/
+        $scope.loading = false;
+        $scope.score = 5;
+        $scope.comments = [1];
+        var CCPage = 1;
+        // 注册'infinite'事件处理函数
+        $$('.infinite-scroll').on('infinite', function () {
+            if ($scope.loading)return;
+            $scope.loading = true;
+            getComments(CCPage);
+
+        });
+
+        function getLatestFirstComment() {
+            CommentServer.getLatestComment($scope.productId,function (res) {
+                console.log(res.data.content);
+
+                var cs = res.data.content;
+                if (cs.length > 0){
+                    $scope.comments = cs;
+                }
+
+            });
+        }
+        function getComments(page) {
+            CommentServer.getComments($scope.productId,page,function (res) {
+                var data = res.data.content;
+                if (data && data.length > 0){
+                    //delete first
+                    CCPage = CCPage + 1;
+                    if (1 === page){
+                        data.pop();
+                    }
+                }
+                $scope.comments = $scope.comments.concat(data);
+                $timeout(function () {
+                    $scope.loading = false;
+                },500);
+            },function (err) {
+                $timeout(function () {
+                    $scope.loading = false;
+                },500);
+            });
+        }
+
+        /** -end- **/
+
+
+
 
     }
 })();

@@ -31,8 +31,8 @@
         function getSchools(page,successHandler,failedHandler) {
             NetworkService.get('schools' + '?pageSize=200&page=' + page,null,successHandler,failedHandler);
         }
-        function getSchoolInfo(schoolId,page,successHandler,failedHandler) {
-            NetworkService.get('schools/' + schoolId + '?pageSize=20&page=' + page,null,successHandler,failedHandler);
+        function getSchoolInfo(schoolId,successHandler,failedHandler) {
+            NetworkService.get('schools/' + schoolId,null,successHandler,failedHandler);
         }
     }
 

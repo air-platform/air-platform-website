@@ -29,12 +29,12 @@ Framework7.prototype.plugins.angular = function(app, params) {
     // Initialize app and store it to myApp variable for futher access to its methods
     var myApp = new Framework7({
         modalTitle: 'Air Community',
-        // animateNavBackIcon: true,
-        // hideNavbarOnPageScroll: true,
-        // scrollTopOnNavbarClick: true,
-        // pushState: true,
-        // sortable: false,
-        // swipeout: false,
+        animateNavBackIcon: true,
+        hideNavbarOnPageScroll: true,
+        scrollTopOnNavbarClick: true,
+        pushState: true,
+        sortable: false,
+        swipeout: false,
         angular: true,
         modalButtonOk:'确定',
         modalButtonCancel:'取消'

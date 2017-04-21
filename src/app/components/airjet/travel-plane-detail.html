@@ -8,69 +8,156 @@
 
 <div class="pages">
     <div data-page="travel-plane-detail" class="page" ng-controller="travelPlaneController">
-        <div class="page-content plane-detail">
-            <div class="plane-detail-content">
-                <div class="travel-model-img">
-                    <div class="swiper-container swiper-init" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" ng-repeat="pic in appearances track by $index"><img ng-src="{{pic}}"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-                <div class="travel-model-content">
-                    <div class="plane-title clearfix">
-                        <strong class="pull-left" ng-bind="planeDetail.name"></strong>
-                        <span class="pull-right">{{'airjet.model' | translate}} <em ng-bind="planeDetail.aircraftType"></em></span>
-                    </div>
-                    <div class="plane-info">
-                        <div class="plane-info-detail">
-                            <div class="pid-top">
-                                <img src="assets/images/travel/icon_plane_black.svg" alt="plane">
-                                <em>{{'airjet.max-range' | translate}}</em>
+        <div class="page-content">
+            <div class="plane-detail">
+                <div class="plane-detail-content">
+                    <div class="travel-model-img">
+                        <div class="swiper-container swiper-init" data-observer="true" data-observe-parents="true" data-pagination=".swiper-pagination">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" ng-repeat="pic in appearances track by $index"><img ng-src="{{pic}}"></div>
                             </div>
-                            <div class="pid-bottom">
-                                <em ng-bind="planeDetail.fullloadRange"></em>
-                            </div>
-                        </div>
-                        <div class="plane-info-detail">
-                            <div class="pid-top">
-                                <img src="assets/images/travel/icon_luggage_black.svg" alt="luggage">
-                                <em>{{'airjet.trunk' | translate}}</em>
-                            </div>
-                            <div class="pid-bottom">
-                                <em ng-bind="planeDetail.weight"></em>
-                            </div>
-                        </div>
-                        <div class="plane-info-detail">
-                            <div class="pid-top">
-                                <img src="assets/images/travel/icon_seat_black.svg" alt="seat">
-                                <em>{{'airjet.guest-num' | translate}}</em>
-                            </div>
-                            <div class="pid-bottom">
-                                <em ng-bind="planeDetail.capacity"></em>
-                            </div>
-                        </div>
-                        <div class="plane-info-detail">
-                            <div class="pid-top">
-                                <img src="assets/images/travel/icon_bed_black.svg" alt="bed">
-                                <em>{{'airjet.bed-num' | translate}}</em>
-                            </div>
-                            <div class="pid-bottom">
-                                <em ng-bind="planeDetail.beds"></em>
-                            </div>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
-                    <p>
-                        <strong>{{'airjet.fleet' | translate}}</strong>
-                        <em ng-bind="planeDetail.description"></em>
-                    </p>
-                    <p>
-                        <strong>{{'airjet.plane-device' | translate}}</strong>
-                        <em ng-bind="planeDetail.facilities"></em>
-                    </p>
+                    <div class="travel-model-content">
+                        <div class="plane-title clearfix">
+                            <strong class="pull-left" ng-bind="planeDetail.name"></strong>
+                            <span class="pull-right">{{'airjet.model' | translate}} <em ng-bind="planeDetail.aircraftType"></em></span>
+                        </div>
+                        <div class="plane-info">
+                            <div class="plane-info-detail">
+                                <div class="pid-top">
+                                    <img src="assets/images/travel/icon_plane_black.svg" alt="plane">
+                                    <em>{{'airjet.max-range' | translate}}</em>
+                                </div>
+                                <div class="pid-bottom">
+                                    <em ng-bind="planeDetail.fullloadRange"></em>
+                                </div>
+                            </div>
+                            <div class="plane-info-detail">
+                                <div class="pid-top">
+                                    <img src="assets/images/travel/icon_luggage_black.svg" alt="luggage">
+                                    <em>{{'airjet.trunk' | translate}}</em>
+                                </div>
+                                <div class="pid-bottom">
+                                    <em ng-bind="planeDetail.weight"></em>
+                                </div>
+                            </div>
+                            <div class="plane-info-detail">
+                                <div class="pid-top">
+                                    <img src="assets/images/travel/icon_seat_black.svg" alt="seat">
+                                    <em>{{'airjet.guest-num' | translate}}</em>
+                                </div>
+                                <div class="pid-bottom">
+                                    <em ng-bind="planeDetail.capacity"></em>
+                                </div>
+                            </div>
+                            <div class="plane-info-detail">
+                                <div class="pid-top">
+                                    <img src="assets/images/travel/icon_bed_black.svg" alt="bed">
+                                    <em>{{'airjet.bed-num' | translate}}</em>
+                                </div>
+                                <div class="pid-bottom">
+                                    <em ng-bind="planeDetail.beds"></em>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <strong>{{'airjet.fleet' | translate}}</strong>
+                            <em ng-bind="planeDetail.description"></em>
+                        </p>
+                        <p>
+                            <strong>{{'airjet.plane-device' | translate}}</strong>
+                            <em ng-bind="planeDetail.facilities"></em>
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <div class="infinite-scroll infinite-scroll-top comment-container" ng-init="showMore = false" ng-show="comments.length > 0">
+                <div class="comment-title">
+                    <i class="f7-icons icon">chats</i>
+                    <span class="comment-text">评论</span>
+                    <span class="comment-score">总评分
+                        <span class="comment-number">{{score}}</span>
+                    </span>
+                </div>
+                <div class="comment-core">
+                    <div class="comment-content">
+                        <div class="inner-header">
+                            <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                            <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
+                            <div class="comment-star">
+                                <i class="f7-icons icon">star_fill</i>
+                                <i class="f7-icons icon">star_fill</i>
+                                <i class="f7-icons icon">star_half</i>
+                                <i class="f7-icons icon">star</i>
+                                <i class="f7-icons icon">star</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-comment">
+                        <div class="comment-inner">
+                            Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-more" ng-show="!showMore">
+                    <a href="#" class="item-link button" ng-click="showMore = !showMore">查看更多</a>
+                </div>
+
+                <div class="comment-list" ng-show="showMore">
+                    <div class="list-block">
+                        <div class="comment-core">
+                            <div class="comment-content">
+                                <div class="inner-header">
+                                    <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                                    <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
+                                    <div class="comment-star">
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_half</i>
+                                        <i class="f7-icons icon">star</i>
+                                        <i class="f7-icons icon">star</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-comment">
+                                <div class="comment-inner">
+                                    Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-core">
+                            <div class="comment-content">
+                                <div class="inner-header">
+                                    <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                                    <div class="comment-name">小明 <span class="pull-right comment-date">2017-4-18</span></div>
+                                    <div class="comment-star">
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_fill</i>
+                                        <i class="f7-icons icon">star_half</i>
+                                        <i class="f7-icons icon">star</i>
+                                        <i class="f7-icons icon">star</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-comment">
+                                <div class="comment-inner">
+                                    Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique r
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--加载提示符-->
+                    <div class="infinite-scroll-preloader" ng-show="loading">
+                        <div class="preloader"></div>
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
     </div>
 </div>

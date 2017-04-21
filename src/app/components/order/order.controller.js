@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderListController($scope,OrderServer,NotificationService) {
+    function orderListController($scope,OrderServer,NotificationService,$timeout) {
 
         var loadings = [false,false,false,false];
         var loadingPages = [1,1,1,1];
@@ -34,27 +34,32 @@
 
             if (item.status === 'pending'){//取消订单
                 cancelOrderAction(item.id,index,tabIndex);
-            }else if (item.status === 'paid'){//评价
-                gotoCommentAction(item.id);
-            }else if (item.status === 'cancelled'){//再次下单
+            }else if (item.status === 'paid'){
 
+            }else if (item.status === 'finished'){
+                gotoCommentAction(item.id,item);
             }
         }
 
+        function gotoCommentAction(orderId,item) {
+            mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
 
-
-
-
-
-        function gotoCommentAction(orderId) {
-            mainView.router.loadPage('app/components/comment/comment.html');
         }
         function gotoOrderDetail(index,tabIndex) {
-            mainView.router.loadPage('app/components/order/orderdetail.html');
-            mainView.pageData = {
-                'from': 'orderdetail',
-                'data': $scope.items[tabIndex][index]
-            };
+
+            var item = $scope.items[tabIndex][index];
+
+            var type = item.type;
+            if (type === 'ferryflight') {
+                mainView.router.loadPage('app/components/airjet/dream-detail.html?order=' + item.id);
+            }else if (type === 'fleet') {
+
+            }else if (type === 'jetcard') {
+                mainView.router.loadPage('app/components/airjet/tour-order.html?order=' + item.id);
+            }else {
+                mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
+            }
+
         }
         function cancelOrderAction(orderId,index,tabIndex) {
             myApp.confirm('订单取消后无法恢复', '确定取消订单吗',
@@ -72,7 +77,6 @@
         }
 
 
-
         function getDatas(tabIndex,page) {
 
             loadings[tabIndex] = true;
@@ -83,12 +87,11 @@
 
 
                 if (data.length > 0){
-                    var result = addTypeForOrder(data);
+                    var result = dealOrderData(data);
                     var tempData = $scope.items[tabIndex].concat(result);
                     $scope.items[tabIndex] = tempData;
                 }
 
-                console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
@@ -100,11 +103,31 @@
                 updateDisplayLoadingStatus();
             });
         }
-        function addTypeForOrder(data) {
-            // ferryFlight
-            // fleetCandidates  flightLegs
-            // jetCard
-            return data;
+        function dealOrderData(data) {
+
+            var result = [];
+            data.forEach(function (d) {
+                var type = d.type;
+                if (type === 'ferryflight') {
+                    d.showTitle = d.ferryFlight.departure + ' → ' + d.ferryFlight.arrival;
+                    d.showSubtitle = '';
+                    d.price = d.chartered ? d.ferryFlight.price : d.ferryFlight.seatPrice * d.passengers;
+                }else if (type === 'fleet') {
+                    d.showTitle = 'fleet';
+                    d.showSubtitle = 'fleet';
+                    console.log(d);
+                }else if (type === 'jetcard') {
+                    d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
+                    d.showSubtitle = d.jetCard.description;
+                    d.price = d.jetCard.price;
+                }else {
+                    console.log('unknown');
+                    console.log(d);
+                }
+                result.push(d);
+            });
+
+            return result;
         }
 
         function showErrorAlert(err) {
@@ -112,7 +135,9 @@
             NotificationService.alert.error('操作失败！' + errDesc, null);
         }
         function updateDisplayLoadingStatus() {
-            $scope.loading = loadings[tabIndexNow];
+            $timeout(function () {
+                $scope.loading = loadings[tabIndexNow];
+            },500);
         }
 
 
