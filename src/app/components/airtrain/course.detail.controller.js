@@ -13,6 +13,10 @@
       NetworkService.get(UrlService.getUrl(URL.COURSE + '/' + queryData.id), null, function(res) {
         $scope.courseObj = res.data;
         myApp.hideIndicator();
+        $scope.enterObj = angular.toJson({
+          id: $scope.courseObj.id,
+          airType: $scope.courseObj.airType
+        });
       }, function(err) {
         myApp.hideIndicator();
       });
