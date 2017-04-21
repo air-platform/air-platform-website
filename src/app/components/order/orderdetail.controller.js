@@ -27,6 +27,7 @@
             var data = pageData.data;
             $scope.orderInfo = {
                 orderNo: data.orderNo,
+                creationDate:data.creationDate,
                 flight: data.ferryFlight.name,
                 date: data.ferryFlight.date,
                 departure:data.ferryFlight.departure,
