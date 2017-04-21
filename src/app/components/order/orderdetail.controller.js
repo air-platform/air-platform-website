@@ -28,24 +28,6 @@
         }
 
 
-        $scope.confirmAction = confirmAction;
-
-
-        function confirmAction() {
-            if ($scope.just4Show){
-                mainView.router.back();
-            }else{
-                OrderServer.submitOrder('',{},function (res) {
-                    showAlert('提交定单成功',function () {
-                        mainView.router.back({url:constdata.router.airtrans.home});
-                    });
-                },function (err) {
-                    showErrorAlert(err);
-                });
-            }
-        }
-
-
         function getOrder(orderId) {
             OrderServer.getOrder(orderId,function (res) {
                 console.log(res.data);

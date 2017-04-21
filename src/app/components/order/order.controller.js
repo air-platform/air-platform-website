@@ -42,12 +42,8 @@
         }
 
 
-
-
-
-
         function gotoCommentAction(orderId) {
-            mainView.router.loadPage('app/components/comment/comment.html');
+            mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId);
         }
         function gotoOrderDetail(index,tabIndex) {
             mainView.router.loadPage('app/components/order/orderdetail.html');
@@ -101,10 +97,28 @@
             });
         }
         function addTypeForOrder(data) {
-            // ferryFlight
-            // fleetCandidates  flightLegs
-            // jetCard
-            return data;
+
+            var result = [];
+            data.forEach(function (d) {
+                var type = d.type;
+                if (type === 'ferryflight') {
+                    d.showTitle = d.ferryFlight.departure + ' → ' + d.ferryFlight.arrival;
+                    d.showSubtitle = '';
+                }else if (type === 'fleet') {
+                    d.showTitle = 'fleet';
+                    d.showSubtitle = 'fleet';
+                }else if (type === 'jetcard') {
+                    d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
+                    d.showSubtitle = d.jetCard.description;
+                }else {
+                    console.log('unknown');
+                    console.log(d);
+                }
+                result.push(d);
+            });
+
+
+            return result;
         }
 
         function showErrorAlert(err) {
