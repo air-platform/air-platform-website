@@ -52,7 +52,7 @@
 
             var type = item.type;
             if (type === 'ferryflight') {
-                mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
+                mainView.router.loadPage('app/components/airjet/dream-detail.html?order=' + item.id);
             }else if (type === 'fleet') {
 
             }else if (type === 'jetcard') {
@@ -60,8 +60,6 @@
             }else {
                 mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
             }
-
-
 
         }
         function cancelOrderAction(orderId,index,tabIndex) {
