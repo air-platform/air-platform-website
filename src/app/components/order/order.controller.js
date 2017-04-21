@@ -33,8 +33,8 @@
             var item = $scope.items[tabIndex][index];
 
             if (item.status === 'pending'){//取消订单
-                gotoCommentAction(item.id,item);
-                // cancelOrderAction(item.id,index,tabIndex);
+                // gotoCommentAction(item.id,item);
+                cancelOrderAction(item.id,index,tabIndex);
             }else if (item.status === 'paid'){
 
             }else if (item.status === 'finished'){
