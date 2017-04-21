@@ -88,13 +88,21 @@
         $scope.loading = false;
         $scope.score = 5;
         $scope.comments = [];
+        $scope.showMore = false;
+        $scope.showMoreCommentAction = showMoreCommentAction;
         var CCPage = 1;
         // 注册'infinite'事件处理函数
         $$('.infinite-scroll').on('infinite', function () {
+            console.log('---');
             if ($scope.loading)return;
             $scope.loading = true;
             getComments(CCPage);
         });
+
+        function showMoreCommentAction() {
+            $scope.showMore = !$scope.showMore;
+            getComments(1);
+        }
 
         function getLatestFirstComment() {
             CommentServer.getLatestComment($scope.productId,function (res) {
@@ -113,11 +121,14 @@
                 if (data && data.length > 0){
                     //delete first
                     CCPage = CCPage + 1;
-                    if (1 === page){
-                        data.pop();
+                    var result = data;
+                    if (result.length > 0){
+                        if (1 === page){
+                            $scope.comments.shift();
+                        }
+                        $scope.comments = $scope.comments.concat(result);
                     }
                 }
-                $scope.comments = $scope.comments.concat(data);
                 $timeout(function () {
                     $scope.loading = false;
                 },500);

@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="infinite-scroll infinite-scroll-top comment-container" ng-init="showMore = false" ng-show="comments.length > 0">
+            <div class="infinite-scroll infinite-scroll-top comment-container" ng-show="comments.length > 0">
                 <div class="comment-title">
                     <i class="f7-icons icon">chats</i>
                     <span class="comment-text">评论</span>
@@ -85,7 +85,7 @@
                 <div class="comment-core">
                     <div class="comment-content">
                         <div class="inner-header">
-                            <div class="comment-avatar"><img src="" width="30" height="30"></div>
+                            <div class="comment-avatar"><img ng-src="comments[0].avatar" width="30" height="30"></div>
                             <div class="comment-name">{{comments[0].name}} <span class="pull-right comment-date">{{comments[0].date | date:'yyyy-MM-dd'}}</span></div>
                             <div class="comment-star">
                                 <i class="f7-icons icon">star_fill</i>
@@ -103,9 +103,8 @@
                     </div>
                 </div>
                 <div class="comment-more" ng-show="!showMore">
-                    <a href="#" class="item-link button" ng-click="showMore = !showMore">查看更多</a>
+                    <a href="#" class="item-link button" ng-click="showMoreCommentAction()">查看更多</a>
                 </div>
-
                 <div class="comment-list" ng-show="showMore">
                     <div class="list-block" ng-repeat="comment in comments">
                         <div class="comment-core">
