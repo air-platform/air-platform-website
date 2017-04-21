@@ -78,7 +78,6 @@
         }
 
 
-
         function getDatas(tabIndex,page) {
 
             loadings[tabIndex] = true;

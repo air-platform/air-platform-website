@@ -59,17 +59,15 @@
                                     </div>
                                     <div class="card-content" ng-click="gotoOrderDetail($index,1)">
                                         <div class="card-content-inner">
-                                            <div class="order-avatar">
-                                                <img src="{{item['url']}}">
-                                            </div>
-                                            <div class="order-name">{{item.name}}</div>
-                                            <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
+                                            <div class="order-title">{{item.showTitle}}</div>
+                                            <div class="order-desc">{{item.showSubtitle}}</div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
+                                        <span class="order-price">￥{{item.price.toFixed(2)}}</span>
                                         <a href="#" class="link"></a>
                                         <a ng-click="funAction($index,1)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
-                                        <a ng-click="funAction($index,1)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-click="funAction($index,1)" ng-show="item.status === 'finished' && item.commented" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,1)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
                                         <a ng-click="funAction($index,1)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
@@ -90,17 +88,15 @@
                                     </div>
                                     <div class="card-content" ng-click="gotoOrderDetail($index,2)">
                                         <div class="card-content-inner">
-                                            <div class="order-avatar">
-                                                <img src="{{item['url']}}">
-                                            </div>
-                                            <div class="order-name">{{item.name}}</div>
-                                            <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
+                                            <div class="order-title">{{item.showTitle}}</div>
+                                            <div class="order-desc">{{item.showSubtitle}}</div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
+                                        <span class="order-price">￥{{item.price.toFixed(2)}}</span>
                                         <a href="#" class="link"></a>
                                         <a ng-click="funAction($index,2)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
-                                        <a ng-click="funAction($index,2)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-click="funAction($index,2)" ng-show="item.status === 'finished' && item.commented" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,2)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
                                         <a ng-click="funAction($index,2)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
@@ -121,17 +117,15 @@
                                     </div>
                                     <div class="card-content" ng-click="gotoOrderDetail($index,3)">
                                         <div class="card-content-inner">
-                                            <div class="order-avatar">
-                                                <img src="{{item['url']}}">
-                                            </div>
-                                            <div class="order-name">{{item.name}}</div>
-                                            <div class="order-subname">{{item.subname}}<span class="order-price">{{item.price}}</span></div>
+                                            <div class="order-title">{{item.showTitle}}</div>
+                                            <div class="order-desc">{{item.showSubtitle}}</div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
+                                        <span class="order-price">￥{{item.price.toFixed(2)}}</span>
                                         <a href="#" class="link"></a>
                                         <a ng-click="funAction($index,3)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
-                                        <a ng-click="funAction($index,3)" ng-show="item.status === 'finished'" href="#" class="button btn-status-valuation-done">已评价</a>
+                                        <a ng-click="funAction($index,3)" ng-show="item.status === 'finished' && item.commented" href="#" class="button btn-status-valuation-done">已评价</a>
                                         <a ng-click="funAction($index,3)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">评价</a>
                                         <a ng-click="funAction($index,3)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                     </div>
