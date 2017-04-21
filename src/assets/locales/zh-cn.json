@@ -20,7 +20,7 @@
     "info":"个人信息",
     "setting":"设置",
     "out":"退出",
-    "check-input": "用户名、身份证号不能为空",
+    "check-input": "姓名、身份证号不能为空",
     "not-set": "未设置",
     "headImg": "头像",
     "nickname": "昵称",
@@ -135,7 +135,8 @@
     "school-brief":"航校简介",
     "base-brief":"基地介绍",
     "plane-train":"飞机培训",
-    "base-clsss":"航校课程"
+    "base-clsss":"航校课程",
+    "exper": "请输入您的飞行经历，审核更容易通过哦！"
   },
   "airtaxi": {
     "plane-select": "选择机型",
