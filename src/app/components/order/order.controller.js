@@ -117,7 +117,6 @@
                 result.push(d);
             });
 
-
             return result;
         }
 
