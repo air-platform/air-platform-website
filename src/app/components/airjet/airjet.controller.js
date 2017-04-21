@@ -27,13 +27,7 @@
             getRecommended();
         },200);
 
-        $scope.cityList = [{
-            name: '北京首都',
-            value: 'beijing'
-        },{
-            name: '三亚凤凰',
-            value: 'sanya'
-        }];
+        $scope.cityList = [{"country":"中国","code4":"ZSNJ","code3":"NKG","airport":"禄口","name":"南京"},{"country":"中国","code4":"ZBAA","code3":"PEK","airport":"首都国际机场","name":"北京"},{"country":"中国","code4":"ZBTJ","code3":"TSN","airport":"滨海","name":"天津"},{"country":"中国","code4":"ZSSZ","code3":"NULL","airport":"光福","name":"苏州"},{"country":"中国","code4":"ZYTL","code3":"DLC","airport":"周水子","name":"大连"},{"country":"中国","code4":"ZYTX","code3":"SHE","airport":"桃仙","name":"沈阳"},{"country":"中国","code4":"ZLXY","code3":"XIY","airport":"咸阳","name":"西安"},{"country":"中国","code4":"ZSSL","code3":"NULL","airport":"龙华","name":"上海"},{"country":"中国","code4":"ZSAM","code3":"XMN","airport":"高崎","name":"厦门"},{"country":"中国","code4":"ZSHC","code3":"HGH","airport":"萧山","name":"杭州"},{"country":"中国","code4":"ZSJN","code3":"TNA","airport":"遥墙","name":"济南"},{"country":"中国","code4":"ZSNB","code3":"NGB","airport":"栎社","name":"宁波"},{"country":"中国","code4":"ZSQD","code3":"TAO","airport":"流亭","name":"青岛"},{"country":"中国","code4":"ZUCK","code3":"CKG","airport":"江北","name":"重庆"},{"country":"中国","code4":"ZUUU","code3":"CTU","airport":"双流","name":"成都"},{"country":"中国","code4":"ZGSZ","code3":"SZX","airport":"宝安","name":"深圳"},{"country":"中国","code4":"ZHHH","code3":"WUH","airport":"天河","name":"武汉"},{"country":"中国","code4":"RCTP","code3":"TPE","airport":"桃园国际","name":"台北"},{"country":"中国","code4":"ZJSY","code3":"SYX","airport":"凤凰","name":"三亚"},{"country":"中国","code4":"VHHH","code3":"HKG","airport":"香港","name":"香港"},{"country":"美国","code4":"KCAE","code3":"CAE","airport":"哥伦比亚大都会机场","name":"哥伦比亚"},{"country":"美国","code4":"KMDW","code3":"MDW","airport":"芝加哥米德韦","name":"芝加哥"},{"country":"美国","code4":"KJFK","code3":"JFK","airport":"肯尼迪","name":"纽约"},{"country":"日本","code4":"RJNT","code3":"TOY","airport":"富山","name":"富山"},{"country":"巴西","code4":"SBSP","code3":"CGH","airport":"孔戈尼亚斯","name":"圣保罗"},{"country":"法国","code4":"NTAA","code3":"PPT","airport":"法阿","name":"塔希提岛"},{"country":"意大利","code4":"LIRP","code3":"PSA","airport":"圣基斯托","name":"比萨"},{"country":"俄罗斯","code4":"UIUU","code3":"UUD","airport":"贝加尔国际机场","name":"乌兰乌德"},{"country":"韩国","code4":"RKSS","code3":"GMP","airport":"首尔 金浦","name":"首尔 金浦"},{"country":"英国","code4":"EGCC","code3":"MAN","airport":"曼彻斯特","name":"曼彻斯特"},{"country":"加拿大","code4":"CYQB","code3":"YQB","airport":"魁北克/勒萨热国际机场","name":"魁北克"},{"country":"圣卢西亚","code4":"TLPL","code3":"UVF","airport":"黑瓦诺拉国际机场","name":"圣卢西亚"}];
 
         function getCard() {
             var data = {

@@ -48,13 +48,12 @@
                                               <a href="#" class="item-link smart-select" data-open-in="picker">
                                                 <select name="departure" ng-model="schedule.departure" ng-disabled="$index != 0">
                                                   <option value="" selected>选择出发地</option>
-                                                  <option value="徐闻">徐闻</option>
-                                                  <option value="珠海">珠海</option>
+                                                  <option value="{{ city }}" ng-repeat="city in trans.departures(routes)">{{ city }}</option>
                                                 </select>
                                               <div class="item-content">
                                                 <div class="item-inner">
                                                   <div class="item-title">起飞城市</div>
-                                                  <div class="item-after smart-select-value">{{schedule.departure}}</div>
+                                                  <div class="item-after smart-select-value">{{ schedule.departure || "选择出发地"}}</div>
                                                 </div>
                                               </div>
                                               </a>
@@ -66,14 +65,12 @@
                                               <a href="#" class="item-link smart-select" data-open-in="picker">
                                                 <select name="arrival" ng-model="schedule.arrival" ng-disabled="$index != 0">
                                                   <option value="" selected>选择到达地</option>
-                                                  <option value="海口港">海口港</option>
-                                                  <option value="海口美兰机场">海口美兰机场</option>
-                                                  <option value="海航大厦">海航大厦</option>
+                                                  <option value="{{ city }}" ng-repeat="city in trans.arrivals(routes, schedule.departure)">{{ city }}</option>
                                                 </select>
                                                   <div class="item-content">
                                                       <div class="item-inner">
                                                           <div class="item-title">到达城市</div>
-                                                          <div class="item-after smart-select-value">{{schedule.arrival}}</div>
+                                                          <div class="item-after smart-select-value">{{ schedule.arrival || "选择到达地" }}</div>
                                                       </div>
                                                   </div>
                                               </a>
@@ -96,15 +93,15 @@
                                           </div>
                                           <div class="field-block col-50">
                                               <a href="#" class="item-link smart-select" data-open-in="picker">
-                                                  <select name="time" ng-model="schedule.time" ng-disabled="$index != 0">
+                                                  <select name="time" ng-model="schedule.time"
+                                                          ng-options="slot for slot in trans.timeSlots()"
+                                                          ng-disabled="$index != 0">
                                                     <option value="" selected>选择时间段</option>
-                                                    <option value="08:00 - 09:00">08:00 - 09:00</option>
-                                                    <option value="14:30 - 15:30">14:30 - 15:30</option>
                                                   </select>
                                                   <div class="item-content">
                                                       <div class="item-inner">
                                                           <div class="item-title">选择时间段</div>
-                                                          <div class="item-after smart-select-value">{{schedule.time}}</div>
+                                                          <div class="item-after smart-select-value">{{schedule.time || "选择时间段"}}</div>
                                                       </div>
                                                   </div>
                                               </a>
@@ -118,7 +115,7 @@
                                               <div class="item-inner">
                                                 <div class="item-title select-flight-label">选择航班</div>
                                                 <div class="item-after select-flight">
-                                                  {{ schedule.flight }}
+                                                  {{ schedule.flight || "选择航班" }}
                                                 </div>
                                               </div>
                                             </div>

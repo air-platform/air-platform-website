@@ -10,7 +10,7 @@
     myApp.showIndicator();
 
     if (queryData.id) {
-      NetworkService.get(UrlService.getUrl(URL.COURSE), queryData.id, function(res) {
+      NetworkService.get(UrlService.getUrl(URL.COURSE + '/' + queryData.id), null, function(res) {
         $scope.courseObj = res.data;
         myApp.hideIndicator();
       }, function(err) {

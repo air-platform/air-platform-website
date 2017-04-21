@@ -41,6 +41,8 @@
           mainView.pageData = mainView.pageData || {};
           vm.site = mainView.pageData.site;
           vm.mapPoints = transUtilsService.extractPoints(vm.site.tourPoint);
+          vm.city = mainView.pageData.city;
+          angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
           drawMap("airtaxi-details-map-view", vm.mapPoints);
         }
         init();
