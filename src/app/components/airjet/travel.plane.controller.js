@@ -53,7 +53,8 @@
 
                 // 获取评论
                 $scope.score = $scope.planeDetail.score;
-                getLatestFirstComment($scope.planeDetail.id);
+                $scope.productId = $scope.planeDetail.id;
+                getLatestFirstComment();
 
             }, function(){
                 myApp.alert('数据获取失败，请重试', null);
@@ -85,19 +86,19 @@
 
         /** -评论- **/
         $scope.loading = false;
-        //$scope.score = 0;
-        $scope.comments = [];
+        $scope.score = 5;
+        $scope.comments = [1];
         var CCPage = 1;
         // 注册'infinite'事件处理函数
         $$('.infinite-scroll').on('infinite', function () {
             if ($scope.loading)return;
             $scope.loading = true;
-            console.log('comment');
+            getComments(CCPage);
+
         });
 
-
-        function getLatestFirstComment(productId) {
-            CommentServer.getLatestComment(productId,function (res) {
+        function getLatestFirstComment() {
+            CommentServer.getLatestComment($scope.productId,function (res) {
                 console.log(res.data.content);
 
                 var cs = res.data.content;
@@ -107,14 +108,17 @@
 
             });
         }
-        function getComments(productId,cp) {
-            CommentServer.getComments(productId,cp,function (res) {
+        function getComments(page) {
+            CommentServer.getComments($scope.productId,page,function (res) {
                 var data = res.data.content;
                 if (data && data.length > 0){
                     //delete first
-                    data.pop();
+                    CCPage = CCPage + 1;
+                    if (1 === page){
+                        data.pop();
+                    }
                 }
-                $scope.comments.concat(data);
+                $scope.comments = $scope.comments.concat(data);
                 $scope.loading = false;
             },function (err) {
                 $scope.loading = false;
