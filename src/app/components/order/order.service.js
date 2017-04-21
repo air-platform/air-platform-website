@@ -25,7 +25,8 @@
             submitOrder: submitOrder,
             cancelOrder: cancelOrder,
             deleteOrder: deleteOrder,
-            getOrders: getOrders
+            getOrders: getOrders,
+            getOrder: getOrder
         };
 
         return service;
@@ -55,6 +56,9 @@
             }else {path = '';
             }
             NetworkService.get('user/orders' + path  + '?pageSize=5&page=' + page,null,successHandler,failedHandler);
+        }
+        function getOrder(orderId,successHandler,failedHandler) {
+            NetworkService.get('user/orders/' + orderId,null,successHandler,failedHandler);
         }
     }
 
