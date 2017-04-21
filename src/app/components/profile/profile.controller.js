@@ -13,9 +13,11 @@
       male: '男',
       female: '女'
     }
+    myApp.showIndicator();
 
     NetworkService.get(UrlService.getUrl(URL.PROFILE), null, function(res) {
       $rootScope.userInfo = res.data;
+      myApp.hideIndicator();
 
       $scope.watch = $rootScope.$watch('userInfo.gender', function(newValue, oldValue) {
         if (newValue != oldValue) {
@@ -29,7 +31,7 @@
         }
       });
     }, function(err) {
-      console.log(err);
+      myApp.hideIndicator();
     });
 
     $scope.gotoAddGuest = function() {

@@ -5,6 +5,7 @@
       LOGIN: 'account/auth',
       PROFILE:'account/profile',
       COURSE: 'courses',
+      COURSEENTER: 'user/course/enrollments',
       HOTCOURSE: 'courses/hot',
       USERPASSENGERS: 'user/passengers',
       USEREMAIL: 'account/email',

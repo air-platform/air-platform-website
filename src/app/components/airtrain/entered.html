@@ -10,13 +10,13 @@
       <div class="list-block">
         <div class="enter-check">
           <div class="title">飞行执照</div>
-          <label class="label-checkbox checkbox-circle item-content">
+          <label class="label-checkbox checkbox-circle item-content" ng-click="enterObj.license = '私照'">
             <input type="radio" name="license-radio" value="私照" ng-model="enterObj.license">
             <div class="item-media">
               <i class="icon icon-form-checkbox"></i> 私照
             </div>
           </label>
-          <label class="label-checkbox checkbox-circle item-content">
+          <label class="label-checkbox checkbox-circle item-content" ng-click="enterObj.license = '商照'">
             <input type="radio" name="license-radio" value="商照" ng-model="enterObj.license">
             <div class="item-media">
               <i class="icon icon-form-checkbox"></i> 商照
@@ -25,14 +25,14 @@
         </div>
         <div class="enter-check">
           <div class="title">培训地点</div>
-          <label class="label-checkbox checkbox-circle item-content">
-            <input type="radio" name="location-radio">
+          <label class="label-checkbox checkbox-circle item-content" ng-click="enterObj.location = '北京'">
+            <input type="radio" name="location-radio" value="北京" ng-model="enterObj.location">
             <div class="item-media">
               <i class="icon icon-form-checkbox"></i> 北京
             </div>
           </label>
-          <label class="label-checkbox checkbox-circle item-content">
-            <input type="radio" name="location-radio">
+          <label class="label-checkbox checkbox-circle item-content" ng-click="enterObj.location = '宜昌'">
+            <input type="radio" name="location-radio" value="宜昌" ng-model="enterObj.location">
             <div class="item-media">
               <i class="icon icon-form-checkbox"></i> 宜昌
             </div>
@@ -45,15 +45,15 @@
           <div class="form">
             <div class="form-group">
               <label>姓名：</label>
-              <input type="text" ng-model="tourData.name" placeholder="{{'airjet.enter' | translate}}">
+              <input type="text" ng-model="enterObj.person" placeholder="{{'airjet.enter' | translate}}">
             </div>
             <div class="form-group">
               <label>身份证：</label>
-              <input type="text" ng-model="tourData.phone" placeholder="{{'airjet.enter' | translate}}">
+              <input type="text" ng-model="enterObj.identity" placeholder="{{'airjet.enter' | translate}}">
             </div>
             <div class="form-textare">
               <label>飞行经历：</label>
-              <textarea ng-model="tourData.remark" placeholder="{{'airjet.enter' | translate}}"></textarea>
+              <textarea ng-model="enterObj.exper" placeholder="{{'airtrain.exper' | translate}}"></textarea>
             </div>
           </div>
         </div>
