@@ -33,7 +33,8 @@
             var item = $scope.items[tabIndex][index];
 
             if (item.status === 'pending'){//取消订单
-                cancelOrderAction(item.id,index,tabIndex);
+                gotoCommentAction(item.id,item);
+                // cancelOrderAction(item.id,index,tabIndex);
             }else if (item.status === 'paid'){
 
             }else if (item.status === 'finished'){
@@ -43,7 +44,6 @@
 
         function gotoCommentAction(orderId,item) {
             mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
-
         }
         function gotoOrderDetail(index,tabIndex) {
 
