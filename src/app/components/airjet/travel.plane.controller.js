@@ -51,7 +51,7 @@
                     $scope.appearances = response.data.appearances.split(';');
                 }
 
-                // 获取评论
+                /** 获取评论 **/
                 $scope.score = $scope.planeDetail.score;
                 $scope.productId = $scope.planeDetail.id;
                 getLatestFirstComment();
