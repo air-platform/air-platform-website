@@ -46,11 +46,36 @@
             mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId);
         }
         function gotoOrderDetail(index,tabIndex) {
+
+            var item = $scope.items[tabIndex][index];
+
+            // app/components/airjet/tour-order.html?order=7f000101-5b8e-1f7b-815b-8ec507050011
+
+            // var type = d.type;
+            // if (type === 'ferryflight') {
+            //     d.showTitle = d.ferryFlight.departure + ' → ' + d.ferryFlight.arrival;
+            //     d.showSubtitle = '';
+            //     d.price = d.chartered ? d.ferryFlight.price : d.ferryFlight.seatPrice * d.passengers;
+            // }else if (type === 'fleet') {
+            //     d.showTitle = 'fleet';
+            //     d.showSubtitle = 'fleet';
+            //     console.log(d);
+            // }else if (type === 'jetcard') {
+            //     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
+            //     d.showSubtitle = d.jetCard.description;
+            //     d.price = d.jetCard.price;
+            // }else {
+            //     console.log('unknown');
+            //     console.log(d);
+            // }
             mainView.router.loadPage('app/components/order/orderdetail.html');
             mainView.pageData = {
                 'from': 'orderdetail',
                 'data': $scope.items[tabIndex][index]
             };
+
+
+
         }
         function cancelOrderAction(orderId,index,tabIndex) {
             myApp.confirm('订单取消后无法恢复', '确定取消订单吗',
@@ -79,7 +104,7 @@
 
 
                 if (data.length > 0){
-                    var result = addTypeForOrder(data);
+                    var result = dealOrderData(data);
                     var tempData = $scope.items[tabIndex].concat(result);
                     $scope.items[tabIndex] = tempData;
                 }
@@ -95,7 +120,7 @@
                 updateDisplayLoadingStatus();
             });
         }
-        function addTypeForOrder(data) {
+        function dealOrderData(data) {
 
             var result = [];
             data.forEach(function (d) {
