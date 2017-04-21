@@ -30,7 +30,7 @@
             console.log('comment');
         });
 
-        // getLatestFirstComment();
+        getLatestFirstComment();
 
         function getLatestFirstComment(productId) {
             CommentServer.getLatestComment(productId,function (res) {
