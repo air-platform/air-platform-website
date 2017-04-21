@@ -49,30 +49,17 @@
 
             var item = $scope.items[tabIndex][index];
 
-            // app/components/airjet/tour-order.html?order=7f000101-5b8e-1f7b-815b-8ec507050011
 
-            // var type = d.type;
-            // if (type === 'ferryflight') {
-            //     d.showTitle = d.ferryFlight.departure + ' → ' + d.ferryFlight.arrival;
-            //     d.showSubtitle = '';
-            //     d.price = d.chartered ? d.ferryFlight.price : d.ferryFlight.seatPrice * d.passengers;
-            // }else if (type === 'fleet') {
-            //     d.showTitle = 'fleet';
-            //     d.showSubtitle = 'fleet';
-            //     console.log(d);
-            // }else if (type === 'jetcard') {
-            //     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
-            //     d.showSubtitle = d.jetCard.description;
-            //     d.price = d.jetCard.price;
-            // }else {
-            //     console.log('unknown');
-            //     console.log(d);
-            // }
-            mainView.router.loadPage('app/components/order/orderdetail.html');
-            mainView.pageData = {
-                'from': 'orderdetail',
-                'data': $scope.items[tabIndex][index]
-            };
+            var type = item.type;
+            if (type === 'ferryflight') {
+                mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
+            }else if (type === 'fleet') {
+
+            }else if (type === 'jetcard') {
+                mainView.router.loadPage('app/components/airjet/tour-order.html?order=' + item.id);
+            }else {
+                mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
+            }
 
 
 

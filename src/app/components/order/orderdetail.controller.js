@@ -8,25 +8,14 @@
 
     /** @ngInject */
     function orderdetailController($scope,OrderServer,$interval,iotUtil,constdata) {
-
+        var orderId = myApp.views[0].activePage.query.order;
 
         $scope.just4Show = true;
         $scope.agreement = false;
         $scope.orderInfo = {};
         $scope.passengers = [];
 
-        // 从上个页面获取信息
-        var pageData = mainView.pageData;
-        var pageType = pageData.from;
-        if (pageType && pageType === 'orderadd'){//从air transportation过来
-            $scope.orderInfo = pageData.info;
-            $scope.passengers = pageData.passengers;
-            $scope.just4Show = false;
-        }else if (pageType && pageType === 'orderdetail'){
-            var data = pageData.data;
-            getOrder(data.id);
-        }
-
+        getOrder(orderId);
 
         function getOrder(orderId) {
             OrderServer.getOrder(orderId,function (res) {
