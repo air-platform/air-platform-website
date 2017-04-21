@@ -119,9 +119,13 @@
                     }
                 }
                 $scope.comments = $scope.comments.concat(data);
-                $scope.loading = false;
+                $timeout(function () {
+                    $scope.loading = false;
+                },500);
             },function (err) {
-                $scope.loading = false;
+                $timeout(function () {
+                    $scope.loading = false;
+                },500);
             });
         }
 
