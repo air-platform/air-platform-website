@@ -103,17 +103,19 @@
                 if (type === 'ferryflight') {
                     d.showTitle = d.ferryFlight.departure + ' → ' + d.ferryFlight.arrival;
                     d.showSubtitle = '';
+                    d.price = d.chartered ? d.ferryFlight.price : d.ferryFlight.seatPrice * d.passengers;
                 }else if (type === 'fleet') {
                     d.showTitle = 'fleet';
                     d.showSubtitle = 'fleet';
+                    console.log(d);
                 }else if (type === 'jetcard') {
                     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
                     d.showSubtitle = d.jetCard.description;
+                    d.price = d.jetCard.price;
                 }else {
                     console.log('unknown');
                     console.log(d);
                 }
-                console.log(d);
                 result.push(d);
             });
 
