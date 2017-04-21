@@ -63,7 +63,7 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-focus="datepicter('datepicter', $index)" class="datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.startTime">
+                                        <input type="text" ng-click="datepicter('datepicter', $index)" ng-readonly="true" class="datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.startTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
@@ -125,7 +125,7 @@
                                 <div class="tpcbb-time fa">
                                     <label>
                                         {{'airjet.start-time' | translate}}
-                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" class="anti-datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.endTime">
+                                        <input type="text" ng-click="datepicter('anti-datepicter', $index)" ng-readonly="true"  class="anti-datepicter{{$index}}" placeholder="yyyy-mm-dd" ng-model="item.endTime">
                                     </label>
                                 </div>
                                 <div class="tpcbb-guest">
