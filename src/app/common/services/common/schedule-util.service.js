@@ -31,11 +31,12 @@
             return errors;
         };
 
-        var timeSlots = function(from, to, step, interval=step) {
-          return _.map(_.range(from, to, step), function(hour) {
-            return (hour>9?hour:("0"+hour)) + ":00-" +
-                   (hour+interval>9?hour+interval:"0"+(hour+interval))+":00";
-          });
+        var timeSlots = function(from, to, step, interval) {
+            if(!interval) interval = step;
+            return _.map(_.range(from, to, step), function(hour) {
+                return (hour>9?hour:("0"+hour)) + ":00-" +
+                       (hour+interval>9?hour+interval:"0"+(hour+interval))+":00";
+            });
         };
 
         var arrivals = function(routes, departure) {
