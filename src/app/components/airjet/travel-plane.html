@@ -28,7 +28,7 @@
                     <img ng-src="{{plane.image}}" alt="plane">
                     <div class="plane-num">
                         <strong ng-bind="plane.name"></strong>
-                        <a href="app/components/airjet/travel-plane-detail.html?id={{plane.id}}">{{'airjet.click-detail' | translate}}</a>
+                        <a ng-click="jumpPlaneDetail(plane.id);$event.stopPropagation();">{{'airjet.click-detail' | translate}}</a>
                     </div>
                 </div>
                 <div class="plane-money">

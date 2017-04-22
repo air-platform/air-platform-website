@@ -12,6 +12,7 @@
         var transferData = StorageService.get('plan');
         var queryData = myApp.views[0].activePage.query;
         $scope.jumpInfo = jumpInfo;
+        $scope.jumpPlaneDetail = jumpPlaneDetail;
         angular.element('.pull-to-refresh-content').on('refresh', getPlaneList);
 
         if(queryData.type){
@@ -77,6 +78,10 @@
             transferData.plane = $scope.planeArr;
             StorageService.put('plan', transferData);
             mainView.router.loadPage('app/components/airjet/travel-info.html');
+        };
+
+        function jumpPlaneDetail(id){
+            mainView.router.loadPage('app/components/airjet/travel-plane-detail.html?id=' + id);
         };
 
 
