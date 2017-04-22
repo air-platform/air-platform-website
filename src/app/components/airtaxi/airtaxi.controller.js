@@ -33,7 +33,7 @@
               var markerPoints = [];
               _.each(points, function(pt){
                 var point = new BMap.Point(pt[0], pt[1]);
-                var icon = new BMap.Icon("assets/images/airtaxi/map-marker.png",
+                var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
                   new BMap.Size(40, 40));
                 var marker = new BMap.Marker(point, {icon: icon});
                 var label = new BMap.Label(pt[2], {
@@ -45,7 +45,7 @@
                   backgroundColor :"0.3",
                   border :"0",
                 });
-                marker.setOffset(new BMap.Size(-5, -10));
+                marker.setOffset(new BMap.Size(-5, -20));
                 marker.setLabel(label);
                 map.addOverlay(marker);
                 marker.addEventListener("click", function(e){
