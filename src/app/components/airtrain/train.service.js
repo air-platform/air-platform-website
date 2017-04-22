@@ -36,7 +36,7 @@
             NetworkService.get('schools/' + schoolId,null,successHandler,failedHandler);
         }
         function getSchoolCourses(schoolId,page,successHandler,failedHandler) {
-            NetworkService.get('courses/school?id=' + schoolId + '?pageSize='+constdata.page.size + '&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('courses/school?id=' + schoolId + '&pageSize='+constdata.page.size + '&page=' + page,null,successHandler,failedHandler);
         }
 
     }
