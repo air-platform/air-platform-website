@@ -18,6 +18,7 @@
         $scope.tabChanged = tabChanged;
         $scope.funAction = funAction;
         $scope.gotoOrderDetail = gotoOrderDetail;
+        $scope.deleteOrderAction = deleteOrderAction;
 
         function tabChanged(tabIndex) {
             var tempData = $scope.items[tabIndex];
@@ -40,6 +41,21 @@
             }else if (item.status === 'finished' && !item.commented){
                 gotoCommentAction(item.id,item);
             }
+        }
+        function deleteOrderAction(index,tabIndex) {
+            var item = $scope.items[tabIndex][index];
+            myApp.confirm('确定删除订单吗',
+                function () {
+                    OrderServer.deleteOrder(item.id,function (res) {
+                        myApp.alert('删除成功',function () {
+                            $scope.items[tabIndex].splice(index,1);
+                            $scope.$apply();
+                        });
+                    },function (err) {
+                        showErrorAlert(err);
+                    });
+                }
+            );
         }
 
         function gotoCommentAction(orderId,item) {
