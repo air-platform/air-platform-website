@@ -10,7 +10,8 @@
     angular.module('airsc').controller('citytourController', citytourController);
 
     /** @ngInject */
-    function citytourController($scope, NotificationService, NetworkService) {
+    function citytourController($scope, mapUtilsService, NotificationService, NetworkService) {
+      var controller = this;
       var citys = ['北京', '桂林', '海南', '宁波'];
       var today = new Date();
 
@@ -21,8 +22,22 @@
         angular.element('#citytour-title').text($scope.city + '观光');
         $scope.tourdate = convertDate(today);
         $scope.sitesList = [];
+        $scope.routes = [];
+        $scope.schedules = [
+          {
+            'date': '',
+            'time': '',
+            'departure': '',
+            'arrival': '',
+            'flight': ''
+          }
+        ];
+
+        controller.taxiRoutes = [];
+        controller.mapPoints = [];
+
       }
-      var loadData = function(page) {
+      var loadTourList = function(page) {
         NetworkService.get("tours", {city: $scope.city, page: page}, function(res) {
           var data = res.data;
           $scope.sitesList = $scope.sitesList || [];
@@ -31,6 +46,31 @@
           NotificationService.alert.error(res.statusText, null);
         });
       }
+      var loadMapData = function(page) {
+        NetworkService.get("taxis", {city: $scope.city, page: page}, function(res) {
+          var data = res.data;
+          controller.taxiRoutes = controller.taxiRoutes.concat(data.content);
+          controller.mapPoints = parseMapPoints(controller.taxiRoutes);
+          $scope.routes = parseRoutes(controller.taxiRoutes);
+        }, function(res) {
+          NotificationService.alert.error(res.statusText, null);
+        });
+      }
+
+      controller.timeSlots = function() {
+        return _.map(_.range(9,17,2), function(hour) {
+          return (hour>9?hour:("0"+hour)) + ":00-" + (hour+2>9?hour+2:"0"+(hour+2))+":00"
+        });
+      };
+
+      controller.arrivals = function(routes, departure) {
+          return _.uniq(_.pluck(_.where(routes, {departure: departure}), 'arrival'));
+      }
+
+      controller.departures = function(routes) {
+        return _.uniq(_.pluck(routes, 'departure'));
+      }
+
       var pickerDevice = myApp.picker({
           input: '#citytour-title',
           cols: [
@@ -48,6 +88,26 @@
           }
       });
 
+      var parseMapPoints = function(taxiRoutes) {
+        var points = [];
+        _.map(taxiRoutes, function(route) {
+          var departureLocs = _.map(route.departLoc.split(','), function(num){return parseFloat(num);})
+          var arrivalLocs = _.map(route.arrivalLoc.split(','), function(num){return parseFloat(num);})
+          points.push([route.departure, departureLocs[0], departureLocs[1]]);
+          points.push([route.arrival, arrivalLocs[0], arrivalLocs[1]]);
+        });
+        return points;
+      };
+
+      var parseRoutes = function(taxiRoutes) {
+        return _.map(taxiRoutes, function(route) {
+          return {
+            'departure': route.departure,
+            'arrival': route.arrival,
+            'flights': route.aircraftItems
+          };
+        });
+      };
       var calendarDateFormat = myApp.calendar({
         input: '#tourcity-datepicker',
         dateFormat: 'yyyy-mm-dd',
@@ -86,7 +146,22 @@
       $scope.$watch(function() {
         return angular.element('#citytour-title').text().replace("观光", "");
       }, function(oldValue, newValue) {
-        if(newValue) loadData(1);
+        loadTourList(1);
+        loadMapData(1);
+        if(newValue != oldValue) {
+          loadTourList(1);
+          if(newValue == '海南') {
+            loadMapData(1);
+          }
+        }
+      });
+      $scope.$watch(function() {
+        return controller.mapPoints;
+      }, function(oldValue, newValue) {
+        mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints);
+        if(newValue != oldValue) {
+          mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints);
+        }
       });
       init();
     };

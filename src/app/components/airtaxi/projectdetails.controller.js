@@ -7,7 +7,7 @@
     angular.module('airsc').controller('airtaxiDetailsController', airtaxiDetailsController);
 
     /** @ngInject */
-    function airtaxiDetailsController($scope,CommentServer,$timeout,transUtilsService,NetworkService) {
+    function airtaxiDetailsController($scope,CommentServer,$timeout,mapUtilsService,NetworkService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -40,7 +40,7 @@
         var init = function() {
           mainView.pageData = mainView.pageData || {};
           vm.site = mainView.pageData.site;
-          vm.mapPoints = transUtilsService.extractPoints(vm.site.tourPoint);
+          vm.mapPoints = mapUtilsService.extractPoints(vm.site.tourPoint);
           vm.city = mainView.pageData.city;
           angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
           drawMap("airtaxi-details-map-view", vm.mapPoints);

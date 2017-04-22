@@ -10,7 +10,8 @@
     angular.module('airsc').controller('transController', transController);
 
     /** @ngInject */
-    function transController($scope, iotUtil, NetworkService, transUtilsService, NotificationService) {
+    function transController($scope, iotUtil, NetworkService, mapUtilsService,
+            NotificationService, scheduleUtilsService) {
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
         var ROUTES_FAMILY = "飞越海峡";
@@ -78,7 +79,7 @@
         //     NotificationService.alert.error("已达到单订单上限行程数量！", null);
         //     return;
         //   };
-        //   var errors = transUtilsService.validateSchedules($scope.schedules);
+        //   var errors = scheduleUtilsService.validateSchedules($scope.schedules);
         //   if(_.keys(errors).length > 0) {
         //     NotificationService.alert.error(errors[_.keys[0]], null);
         //     return;
@@ -104,7 +105,7 @@
 
         controller.submitSchedules = function() {
           var data = $scope.schedules;
-          var errors = transUtilsService.validateSchedules(data);
+          var errors = scheduleUtilsService.validateSchedules(data);
           if(_.keys(errors).length != 0) {
             NotificationService.alert.error(errors[_.keys(errors)[0]], null);
             return;
@@ -173,7 +174,7 @@
         }, function(newValue, oldValue) {
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
-                transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
+                mapUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
               }
             }
           }
