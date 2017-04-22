@@ -18,7 +18,8 @@
             return allPoints;
         };
 
-        var drawMap = function(target, points, clickHandler) {
+        var drawMap = function(target, points, config) {
+            if(!config) config = {};
             // 百度地图API功能
             var map = new BMap.Map(target);
             map.disableDragging();
@@ -27,8 +28,14 @@
             map.disablePinchToZoom();
             var routes = parseSingleRoutes(points); // return array of arrays
             var markerPoints = parseMarkers(points); // return array of BMap.Point
-            drawCurves(routes);
             map.setViewport(markerPoints);
+
+            if(config.markers) { // add point markers
+              addMarkers(markerPoints);
+            }
+            if(config.curves) { // draw curve routes
+              drawCurves(routes);
+            }
 
             function parseSingleRoutes(points) {
               var routes = [];
@@ -55,6 +62,30 @@
               });
             }
 
+            function addMarkers(markerPoints) {
+              _.each(markerPoints, function(pt){
+                var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
+                  new BMap.Size(20, 20));
+                var marker = new BMap.Marker(pt, {icon: icon});
+                // var label = new BMap.Label(pt[2], {
+                //     offset: new BMap.Size(40, 20)
+                // });
+                // label.setStyle({
+                //   color : "#50bbff",
+                //   fontSize : "14px",
+                //   backgroundColor :"0.3",
+                //   border :"0",
+                // });
+                marker.setOffset(new BMap.Size(0, -20));
+                marker.setZIndex(100);
+                // marker.setLabel(label);
+                map.addOverlay(marker);
+                marker.addEventListener("click", function(e){
+                  var point = e.currentTarget.point;
+                });
+              });
+            }
+
             function drawCurves(routes) {
               for (var i = 0; i < routes.length; i++) {
                   var pt1 = new BMap.Point(routes[i][0][1], routes[i][0][2]);
@@ -75,13 +106,12 @@
                 curve.addEventListener("click", function(e) {
                     while (window.markedOverlays.length > 0) map.removeOverlay(window.markedOverlays.pop());
                     window.markedOverlays.push(selectRouting(e.target));
-                    window.markedOverlays.push(addMarker(e.target));
+                    window.markedOverlays.push(addCurveMarker(e.target));
                     $('body').trigger("airtrans.selectRoute", e.target);
                 });
             }
 
             function selectRouting(target) {
-                target.w.strokeColor = "red";
                 var data = target.cornerPoints
                 var points = [new BMap.Point(data[0].lng, data[0].lat),
                     new BMap.Point(data[1].lng, data[1].lat)
@@ -104,7 +134,7 @@
                 return [center[0] + delta, center[1] - delta / r];
             }
 
-            function addMarker(target) {
+            function addCurveMarker(target) {
                 var copter = new BMap.Icon("assets/images/helicopter.png", new BMap.Size(34, 27), {
                     offset: new BMap.Size(10, 25)
                 });

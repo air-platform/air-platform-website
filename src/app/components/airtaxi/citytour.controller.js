@@ -22,6 +22,7 @@
         $scope.city = queryData.city || citys[0];
         angular.element('#citytour-title').text($scope.city + '观光');
         $scope.tourdate = convertDate(today);
+        controller.mapPoints = controller.mapPoints || [];
         $scope.sitesList = [];
         $scope.routes = [];
         $scope.schedules = [
@@ -35,7 +36,6 @@
         ];
 
         controller.taxiRoutes = [];
-        controller.mapPoints = [];
 
         setTimeout(function(){
           controller.datepicker = createDatePicker();
@@ -197,9 +197,10 @@
 
       $scope.$watch(function() {
         return angular.element('#citytour-title').text().replace("观光", "");
-      }, function(oldValue, newValue) {
+      }, function(newValue, oldValue) {
         loadTourList(1);
         loadMapData(1);
+        // TODO: fix watching
         if(newValue != oldValue) {
           loadTourList(1);
           if(newValue == '海南') {
@@ -207,14 +208,14 @@
           }
         }
       });
-      $scope.$watch(function() {
+      init();
+
+      $scope.$watch(function(){
         return controller.mapPoints;
-      }, function(oldValue, newValue) {
-        mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints);
-        if(newValue != oldValue) {
-          mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints);
+      }, function(newValue, oldValue) {
+        if(newValue != oldValue && !_.isEmpty(newValue)) {
+          mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints, {markers: true});
         }
       });
-      init();
     };
 })();

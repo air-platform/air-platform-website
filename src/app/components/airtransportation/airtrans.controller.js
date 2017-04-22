@@ -172,7 +172,7 @@
         }, function(newValue, oldValue) {
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
-                mapUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
+                mapUtilsService.drawMap("airtrans-map-view", controller.mapPoints, {curves: true});
               }
             }
           }

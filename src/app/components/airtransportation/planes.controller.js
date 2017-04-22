@@ -76,11 +76,6 @@
           });
         };
 
-        $scope.$watch('controller.aircrafts', function(oldValue, newValue) {
-            if (newValue != oldValue) {
-              // retrieve available planes according to type
-            }
-        });
         setTimeout(function(){
           controller.init();
         }, 0);
