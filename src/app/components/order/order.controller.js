@@ -69,8 +69,9 @@
                     OrderServer.cancelOrder(orderId,function (res) {
                         //TODO:更新其它里面的对应订单
                         myApp.alert('取消成功',function () {
-                            $scope.items[tabIndex][index].status = 'cancelled';
-                            $scope.$apply();
+                            // $scope.items[tabIndex][index].status = 'cancelled';
+                            // $scope.$apply();
+                            updateStatus(orderId,'cancelled');
                         });
                     },function (err) {
                         showErrorAlert(err);
@@ -85,6 +86,7 @@
                 myApp.alert('删除成功',function () {
                     $scope.items[tabIndex].splice(index,1);
                     $scope.$apply();
+                    // deleteOrderWithId(item.id);
                 });
             });
             // myApp.confirm('确定删除订单吗',
@@ -98,7 +100,12 @@
                 orders.forEach(function (order,index) {
                     if (order.id === orderId){
                         if (order.id === orderId){
-                            $scope.items[tabIndex][index].status = status;
+                            if (status === 'commented'){
+                                $scope.items[tabIndex][index].commented = true;
+                            }else{
+                                $scope.items[tabIndex][index].status = status;
+                            }
+                            $scope.$apply();
                         }
                     }
                 });
