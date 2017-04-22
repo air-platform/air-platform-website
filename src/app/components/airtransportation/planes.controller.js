@@ -39,18 +39,17 @@
           setTimeout(
             function(){
               $($event.target).closest('li').find('label.label-checkbox input').prop("checked", true);
-              transScope.schedules[0].flight = plane.name + "-" + plane.flightNo;
+              transScope.schedules[0].flight = plane.aircraft.name;
             },
           0);
         };
 
         controller.init = function() {
           if(controller.planeModel) {
-            var dash = _.indexOf(controller.planeModel, '-')
-            var flightNo = controller.planeModel.substring(0, dash);
-            var planeName = controller.planeModel.substring(dash+1);
-            controller.planeSelected = _.where(controller.aircrafts, {name: planeName, flightNo: flightNo})
-            controller.planeSelected = controller.planeSelected.length>0?controller.planeSelected[0]:null;
+            var planeName = controller.planeModel;
+            controller.planeSelected = _.find(controller.aircrafts, function(item) {
+              return item.aircraft.name == planeName;
+            });
           }
           $.each($("#planes-selection").find("li"), function(i, el) {
             if($(el).find(".plane-name").text() == controller.planeModel) {
