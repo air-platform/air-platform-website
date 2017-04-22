@@ -31,21 +31,21 @@
                          </label>
                          <div class="card">
                            <div class="card-header">
-                             <img ng-src="{{ plane.image.split(';')[0] }}" alt="">
+                             <img ng-src="{{ plane.aircraft.image }}" alt="">
                            </div>
                            <div class="card-content">
                              <div class="card-content-inner">
                                <div class="plane-price-info row">
-                                 <span class="plane-name">{{ plane.name + "-" + plane.flightNo }}</span>
+                                 <span class="plane-name">{{ plane.aircraft.name }}</span>
                                  <span class="plane-price">整机<span class="price-value">{{ plane.price | RMB }}</span></span>
                                  <span class="plane-price">拼座<span class="price-value">{{ plane.seatPrice | RMB }}</span></span>
                                </div>
                              </div>
                            </div>
                            <div class="card-footer">
-                             <span class="departure-info"><img src="assets/images/airplane.svg" alt=""> ~{{ plane.delay }}</span>
-                             <span class="plane-capacity"><img src="assets/images/airseat.svg" alt=""> {{ plane.seats }}</span>
-                             <span class="plane-notice">(至少 {{ plane.minPassengers }} 人预定)</span>
+                             <span class="departure-info"><img src="assets/images/airplane.svg" alt=""> ~{{ 15 }}</span>
+                             <span class="plane-capacity"><img src="assets/images/airseat.svg" alt=""> {{ plane.aircraft.seats }}</span>
+                             <span class="plane-notice">(至少 {{ plane.aircraft.minPassengers }} 人预定)</span>
                            </div>
                          </div>
                        </li>
