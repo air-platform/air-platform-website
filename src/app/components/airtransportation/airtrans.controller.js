@@ -109,13 +109,11 @@
             NotificationService.alert.error(errors[_.keys(errors)[0]], null);
             return;
           }
-          var dash = _.indexOf(data[0].flight, '-');
-          var aircrafts = _.find($scope.routes, function(route) {
+          var route = _.find($scope.routes, function(route) {
             return route.departure == data[0].departure && route.arrival == data[0].arrival;
           });
-          var planeModel = _.find(aircrafts, function(plane) {
-            return plane.name == data[0].flight.substring(0, dash) &&
-                plane.flightNo == data[0].flight.substring(dash+1);
+          var planeModel = _.find(route.flights, function(plane) {
+            return plane.aircraft.name == data[0].flight;
           });
           mainView.pageData = {
             'from': 'airtrans',

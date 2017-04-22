@@ -44,6 +44,13 @@
           0);
         };
 
+        controller.getEstimationTime = function(plane) {
+          var transport = _.find(transScope.trans.transports, function(transport){
+            return _.isEqual(transport.aircraftItems, controller.aircrafts);
+          });
+          return transport.timeEstimation;
+        };
+
         controller.init = function() {
           if(controller.planeModel) {
             var planeName = controller.planeModel;
