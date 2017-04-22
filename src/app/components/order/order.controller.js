@@ -34,7 +34,7 @@
             var item = $scope.items[tabIndex][index];
 
             if (item.status === 'pending'){//取消订单
-                cancelOrderAction(item.id,index,tabIndex);
+                cancelOrderAction(item.id);
             }else if (item.status === 'paid'){
 
             }else if (item.status === 'finished' && !item.commented){
@@ -63,11 +63,10 @@
             }
 
         }
-        function cancelOrderAction(orderId,index,tabIndex) {
+        function cancelOrderAction(orderId) {
             myApp.confirm('订单取消后无法恢复', '确定取消订单吗',
                 function () {
                     OrderServer.cancelOrder(orderId,function (res) {
-                        //TODO:更新其它里面的对应订单
                         myApp.alert('取消成功',function () {
                             // $scope.items[tabIndex][index].status = 'cancelled';
                             // $scope.$apply();
@@ -83,8 +82,6 @@
             var item = $scope.items[tabIndex][index];
             OrderServer.deleteOrder(item.id,function (res) {
                 myApp.alert('删除成功',function () {
-                    // $scope.items[tabIndex].splice(index,1);
-                    // $scope.$apply();
                     deleteOrderWithId(item.id);
                 });
             });
