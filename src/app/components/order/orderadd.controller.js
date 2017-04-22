@@ -33,7 +33,7 @@
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
-            $scope.orderInfo.flightId = planeModel.id;
+            $scope.orderInfo.flightId = planeModel.product;
             $scope.orderInfo.flight = planeModel.aircraft.name + ' ' + planeModel.aircraft.flightNo;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
@@ -44,7 +44,10 @@
             $scope.orderInfo.departure = schedules.departure;
             $scope.orderInfo.arrival = schedules.arrival;
             $scope.orderInfo.interval = schedules.time;
-            $scope.orderInfo.date = schedules.date;
+            var date = schedules.date.replace('年','-');
+            date = date.replace('月','-');
+            date = date.replace('日','');
+            $scope.orderInfo.date = date;
 
             console.log(pageData);
         }else{
