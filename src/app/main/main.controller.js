@@ -15,6 +15,8 @@
             refresh();
         });
 
+        $scope.airbbLink = constdata.ipCurrent + '/airbb';
+
         var leftPanelItems = [
             {
                 title: 'Air Jet', items: [
