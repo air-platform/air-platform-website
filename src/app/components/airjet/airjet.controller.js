@@ -77,6 +77,9 @@
                     if(item.minPassengers){
                         item.least = { number: item.minPassengers }
                     }
+                    if(new Date(item.date).getTime() - new Date().getTime() < 0){
+                        item.expired = true;
+                    }
                 })
                 $scope.dreamFlyList = response.data.content;
                 if(response.data.totalPages > dreamPage){
