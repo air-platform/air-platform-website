@@ -44,18 +44,17 @@
         }
         function deleteOrderAction(index,tabIndex) {
             var item = $scope.items[tabIndex][index];
-            myApp.confirm('确定删除订单吗',
-                function () {
-                    OrderServer.deleteOrder(item.id,function (res) {
-                        myApp.alert('删除成功',function () {
-                            $scope.items[tabIndex].splice(index,1);
-                            $scope.$apply();
-                        });
-                    },function (err) {
-                        showErrorAlert(err);
-                    });
-                }
-            );
+            OrderServer.deleteOrder(item.id,function (res) {
+                myApp.alert('删除成功',function () {
+                    $scope.items[tabIndex].splice(index,1);
+                    $scope.$apply();
+                });
+            });
+            // myApp.confirm('确定删除订单吗',
+            //     function () {
+            //
+            //     }
+            // );
         }
 
         function gotoCommentAction(orderId,item) {

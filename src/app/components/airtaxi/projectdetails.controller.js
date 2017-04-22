@@ -46,6 +46,16 @@
           drawMap("airtaxi-details-map-view", vm.mapPoints);
         }
         init();
+
+
+
+
+
+
+
+
+
+
     }
 
 })();
