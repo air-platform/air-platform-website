@@ -34,7 +34,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
         scrollTopOnNavbarClick: true,
         // pushState: true,
         sortable: false,
-        swipeout: false,
+        // swipeout: false,
         angular: true,
         modalButtonOk:'确定',
         modalButtonCancel:'取消'
