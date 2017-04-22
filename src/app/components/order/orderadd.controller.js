@@ -34,7 +34,7 @@
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
-            $scope.orderInfo.flight = planeModel.aircraft.name + ' ' + planeModel.aircraft.flightNo;
+            $scope.orderInfo.flight = planeModel.aircraft.name;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
             $scope.orderInfo.charterAll.price = planeModel.price;
