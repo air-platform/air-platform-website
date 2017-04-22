@@ -13,7 +13,15 @@
         // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
             if (data.action === 'logout'){
-                pleaseReComeIn();
+                if (iotUtil.islogin()){
+                    myApp.alert('登录过期，请重新登录',function () {
+                        pleaseReComeIn();
+                    });
+                }else{
+                    myApp.alert('请先登录',function () {
+                        pleaseReComeIn();
+                    });
+                }
             }else{
                 refresh();
             }
