@@ -7,7 +7,7 @@
     angular.module('airsc').controller('tourDetailController', tourDetailController);
 
     /** @ngInject */
-    function tourDetailController($scope, $timeout, NotificationService, NetworkService, UrlService, URL) {
+    function tourDetailController($scope, $timeout, NotificationService, NetworkService, UrlService, URL, REGEX) {
         var queryData = myApp.views[0].activePage.query;
         $scope.tourData = {};
         $scope.submit = submit;
@@ -30,11 +30,19 @@
                 return;
             }
             if (!data.phone) {
-                NotificationService.alert.success('请填写电话', null);
+                NotificationService.alert.success('请填写手机号', null);
+                return;
+            }
+            if(!REGEX.PHONE.test(data.phone)) {
+                NotificationService.alert.success('手机号不正确', null);
                 return;
             }
             if (!data.email) {
                 NotificationService.alert.success('请填写邮箱', null);
+                return;
+            }
+            if(!REGEX.EMAIL.test(data.email)) {
+                NotificationService.alert.success('邮箱格式不正确', null);
                 return;
             }
  
