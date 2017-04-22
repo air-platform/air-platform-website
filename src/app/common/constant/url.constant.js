@@ -11,6 +11,7 @@
       USEREMAIL: 'account/email',
       TOPICS: 'topics',
       ORDER: 'user/orders',
+      AIRJET_CITY: 'airports?page=1&pageSize=10000',
       AIRJET_TYPE: 'airjets',
       AIRJET_PLANE: 'fleets',
       AIRJET_ORDER: 'user/chater/orders',
