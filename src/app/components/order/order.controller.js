@@ -53,7 +53,7 @@
             if (type === 'ferryflight') {
                 mainView.router.loadPage('app/components/airjet/dream-detail.html?order=' + item.id);
             }else if (type === 'fleet') {
-
+                mainView.router.loadPage('app/components/airjet/travel-detail.html?order=' + item.id);
             }else if (type === 'jetcard') {
                 mainView.router.loadPage('app/components/airjet/tour-order.html?order=' + item.id);
             }else {

@@ -93,7 +93,6 @@
         var CCPage = 1;
         // 注册'infinite'事件处理函数
         $$('.infinite-scroll').on('infinite', function () {
-            console.log('---');
             if ($scope.loading)return;
             $scope.loading = true;
             getComments(CCPage);
@@ -108,7 +107,6 @@
             CommentServer.getLatestComment($scope.productId,function (res) {
 
                 var cs = res.data.content;
-                console.log(cs);
                 if (cs.length > 0){
                     $scope.comments = cs;
                 }
