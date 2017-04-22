@@ -59,7 +59,7 @@
             }else if (type === 'course'){
                 mainView.router.loadPage(constdata.router.order.detail.course + '?order=' + item.id);
             }else if (type === 'airtransport'){
-                mainView.router.loadPage(constdata.router.order.detail.course + '?order=' + item.id);
+                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id);
             }else {
                 myApp.alert('未知的订单类型','出错了');
             }
