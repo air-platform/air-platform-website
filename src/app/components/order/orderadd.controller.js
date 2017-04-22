@@ -34,12 +34,12 @@
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.id;
-            $scope.orderInfo.flight = planeModel.name + ' ' + planeModel.flightNo;
+            $scope.orderInfo.flight = planeModel.aircraft.name + ' ' + planeModel.aircraft.flightNo;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
             $scope.orderInfo.charterAll.price = planeModel.price;
-            $scope.orderInfo.charterAll.capacity = planeModel.seats;
-            $scope.orderInfo.capacity = planeModel.seats;
+            $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
+            $scope.orderInfo.capacity = planeModel.aircraft.seats;
 
             $scope.orderInfo.departure = schedules.departure;
             $scope.orderInfo.arrival = schedules.arrival;
@@ -150,6 +150,7 @@
                 passengers: $scope.psgs,
                 contact:{mobile:$scope.orderInfo.contactMobile}
             };
+
             OrderServer.submitOrder(param,function (res) {
                 console.log(res);
                 var local = res.headers('location').split('/');
