@@ -73,6 +73,41 @@
         return scheduleUtilsService.departures(routes);
       }
 
+      controller.submitSchedules = function() {
+        var data = $scope.schedules;
+        var errors = scheduleUtilsService.validateSchedules(data);
+        if(_.keys(errors).length != 0) {
+          NotificationService.alert.error(errors[_.keys(errors)[0]], null);
+          return;
+        }
+        var route = _.find($scope.routes, function(route) {
+          return route.departure == data[0].departure && route.arrival == data[0].arrival;
+        });
+        var planeModel = _.find(route.flights, function(plane) {
+          return plane.aircraft.name == data[0].flight;
+        });
+        mainView.pageData = {
+          'from': 'airtrans',
+          'schedules': data[0],
+          'planeModel': planeModel
+        };
+        mainView.router.loadPage('app/components/order/orderadd.html');
+      }
+
+      controller.selectFlight = function(schedule) {
+        var goto = "app/components/airtransportation/planes.html"
+        mainView.pageData = mainView.pageData || {};
+        mainView.pageData.planeModel = schedule.flight
+        mainView.pageData.aircrafts = _.uniq(
+          _.flatten(
+          _.pluck(_.where($scope.routes,
+          {departure: $scope.schedules[0].departure,
+          arrival: $scope.schedules[0].arrival}), 'flights')
+          )
+        );
+        mainView.router.loadPage(goto);
+      }
+
       var pickerDevice = myApp.picker({
           input: '#citytour-title',
           cols: [

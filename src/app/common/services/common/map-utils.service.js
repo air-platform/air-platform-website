@@ -25,32 +25,51 @@
             map.disableScrollWheelZoom();
             map.disableDoubleClickZoom();
             map.disablePinchToZoom();
-            var routes = [];
-            var markerPoints = []
-            for (var i = 0; i < points.length; i += 2) {
-                var route = [points[i], points[i + 1]];
-                if(_.find(routes, function(r) {
-                    return _.isEqual(r, route) || _.isEqual(r, [route[1], route[0]])
-                  }) == null) {
-                  routes.push(route);
-                }
-            }
-            for (var i = 0; i < routes.length; i++) {
-                var pt1 = new BMap.Point(routes[i][0][1], routes[i][0][2]);
-                var pt2 = new BMap.Point(routes[i][1][1], routes[i][1][2]);
-                var route = pt1.lng<pt2.lng?[pt1, pt2]:[pt2, pt1];
-                markerPoints.push(pt1);
-                markerPoints.push(pt2);
-                var curve = new BMapLib.CurveLine(route, {
-                    strokeColor: "gray",
-                    strokeWeight: 5,
-                    strokeOpacity: 0.5
-                });
-                var content = routes[i][0][0];
-                map.addOverlay(curve);
-                addClickHandler(curve, i);
-            }
+            var routes = parseSingleRoutes(points); // return array of arrays
+            var markerPoints = parseMarkers(points); // return array of BMap.Point
+            drawCurves(routes);
             map.setViewport(markerPoints);
+
+            function parseSingleRoutes(points) {
+              var routes = [];
+              for (var i = 0; i < points.length; i += 2) {
+                  var route = [points[i], points[i + 1]];
+                  if(_.find(routes, function(r) {
+                      return _.isEqual(r, route) || _.isEqual(r, [route[1], route[0]])
+                    }) == null) {
+                    routes.push(route);
+                  }
+              }
+              return routes;
+            }
+
+            function parseMarkers(points) {
+              var locs = [];
+              for (var i = 0; i < points.length; i++) {
+                if(_.find(locs, function(pt) { return _.isEqual(pt, points[i]); }) == null) {
+                  locs.push(points[i]);
+                }
+              }
+              return _.map(locs, function(loc){
+                return new BMap.Point(loc[1], loc[2]);
+              });
+            }
+
+            function drawCurves(routes) {
+              for (var i = 0; i < routes.length; i++) {
+                  var pt1 = new BMap.Point(routes[i][0][1], routes[i][0][2]);
+                  var pt2 = new BMap.Point(routes[i][1][1], routes[i][1][2]);
+                  var route = pt1.lng<pt2.lng?[pt1, pt2]:[pt2, pt1];
+                  var curve = new BMapLib.CurveLine(route, {
+                      strokeColor: "gray",
+                      strokeWeight: 5,
+                      strokeOpacity: 0.5
+                  });
+                  var content = routes[i][0][0];
+                  map.addOverlay(curve);
+                  addClickHandler(curve, i);
+              }
+            }
 
             function addClickHandler(curve) {
                 curve.addEventListener("click", function(e) {
