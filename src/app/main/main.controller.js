@@ -21,8 +21,8 @@
             {
                 title: 'Air Jet', items: [
                 {'title': '包机预定', target: constdata.router.airjet.home + '?type=1'},
-                {'title': '缘梦飞行', target: constdata.router.airjet.home + '?type=2'},
-                {'title': '卡产品', target: constdata.router.airjet.home + '?type=3'}
+                {'title': '缘梦飞行', target: constdata.router.airjet.home + '?tabActive=tab2'},
+                {'title': '卡产品', target: constdata.router.airjet.home + '?tabActive=tab3'}
             ]
             },
             {

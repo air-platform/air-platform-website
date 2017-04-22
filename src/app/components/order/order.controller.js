@@ -140,7 +140,6 @@
                     d.showTitle = d.course.name;
                     d.showSubtitle = d.course.location;
                     d.price = d.course.price;
-                    console.log(d);
                 }else {
                     console.log('unknown');
                     console.log(d);
