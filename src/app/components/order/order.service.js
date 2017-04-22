@@ -45,8 +45,8 @@
         function cancelOrder(flightId,successHandler,failedHandler) {
             NetworkService.post('user/orders/' + flightId + '/cancel',null,successHandler,failedHandler);
         }
-        function deleteOrder(flightId,successHandler,failedHandler) {
-            NetworkService.delete('user/orders/' + flightId,null,successHandler,failedHandler);
+        function deleteOrder(orderId,successHandler,failedHandler) {
+            NetworkService.delete('user/orders/' + orderId,null,successHandler,failedHandler);
         }
         function getOrders(type,page,successHandler,failedHandler) {
             var path = '';

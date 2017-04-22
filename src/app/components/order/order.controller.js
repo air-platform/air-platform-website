@@ -37,7 +37,7 @@
                 cancelOrderAction(item.id,index,tabIndex);
             }else if (item.status === 'paid'){
 
-            }else if (item.status === 'finished'){
+            }else if (item.status === 'finished' && !item.commented){
                 gotoCommentAction(item.id,item);
             }
         }
@@ -115,7 +115,6 @@
                     d.showTitle = d.flightLegs[0].departure + ' → ' + d.flightLegs[0].arrival;
                     d.showSubtitle = d.fleetCandidates[0].fleet.name;
                     d.price = d.fleetCandidates[0].fleet.price;
-                    console.log(d);
                 }else if (type === 'jetcard') {
                     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
                     d.showSubtitle = d.jetCard.description;
