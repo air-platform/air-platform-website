@@ -1,0 +1,20 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"><a data-panel="left" class="link back"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="center sliding">订单详情</div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="ordercoursedetail" class="page" ng-controller="OrderCourseDetailController">
+        <div class="page-content travel-detail-check">
+            <div class="air-order-detail">
+                <div class="air-order-item radius-top-bottom">
+                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{order.orderNo}}</span>
+                    <!--<i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

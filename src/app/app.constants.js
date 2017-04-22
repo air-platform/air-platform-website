@@ -43,8 +43,15 @@
                 },
                 order:{
                     order:'app/components/order/order.html',
-                    orderdetail:'app/components/order/orderdetail.html',
-                    orderadd:'app/components/order/orderadd.html'
+                    orderadd:'app/components/order/orderadd.html',
+                    detail:{
+                        taxi:'app/components/order/orderdetail.html',
+                        transportation:'app/components/order/orderdetail.html',
+                        ferryflight:'app/components/airjet/dream-detail.html',
+                        fleet:'app/components/airjet/travel-detail.html',
+                        jetcard:'app/components/airjet/tour-order.html',
+                        course:'app/components/order/ordercoursedetail.html'
+                    }
                 },
                 set:{
                     setting:'app/components/setting/setting.html',
