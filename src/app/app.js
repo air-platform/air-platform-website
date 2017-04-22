@@ -37,7 +37,8 @@ Framework7.prototype.plugins.angular = function(app, params) {
         // swipeout: true,
         angular: true,
         modalButtonOk:'确定',
-        modalButtonCancel:'取消'
+        modalButtonCancel:'取消',
+        smartSelectBackOnSelect: true
         // // Hide and show indicator during ajax requests
         // onAjaxStart: function (xhr) {
         //     myApp.showIndicator();
