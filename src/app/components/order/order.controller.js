@@ -172,7 +172,7 @@
                     d.showSubtitle = d.airTransport.family;
                     d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.airTransport.passengers.length);
                 }else {
-                    d.showTitle = '';
+                    d.showTitle = 'unknown';
                     d.showSubtitle = '';
                     d.price = 0;
                     console.log('unknown');
