@@ -56,6 +56,7 @@
                   $scope.$apply(function(){
                     $scope.city = citySelected.name;
                     $('#city-navi-autocomplete-placeholder').val($scope.city);
+                    vm.next();
                   });
                 });
                 markerPoints.push(point);
