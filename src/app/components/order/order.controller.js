@@ -71,6 +71,8 @@
                 mainView.router.loadPage('app/components/airjet/travel-detail.html?order=' + item.id);
             }else if (type === 'jetcard') {
                 mainView.router.loadPage('app/components/airjet/tour-order.html?order=' + item.id);
+            }else if (type === 'course'){
+
             }else {
                 mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
             }
@@ -134,6 +136,10 @@
                     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
                     d.showSubtitle = d.jetCard.description;
                     d.price = d.jetCard.price;
+                }else if (type === 'course'){
+                    d.showTitle = d.course.name;
+                    d.showSubtitle = d.course.location;
+                    d.price = d.course.price;
                 }else {
                     console.log('unknown');
                     console.log(d);

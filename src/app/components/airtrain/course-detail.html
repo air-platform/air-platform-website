@@ -50,6 +50,55 @@
                         <p ng-bind="courseObj.description"></p>
                     </div>
                 </div>
+
+
+
+                <!--评论-->
+                <div class="infinite-scroll infinite-scroll-top comment-container" ng-show="comments.length > 0">
+                    <div class="comment-title">
+                        <i class="f7-icons icon">chats</i>
+                        <span class="comment-text">评论</span>
+                        <span class="comment-score">总评分
+                        <span class="comment-number">{{score}}</span>
+                    </span>
+                    </div>
+                    <div class="comment-list">
+                        <div class="list-block" ng-repeat="comment in comments">
+                            <div class="comment-core">
+                                <div class="comment-content">
+                                    <div class="inner-header">
+                                        <div class="comment-avatar"><img src="{{comment.owner.avatar}}" width="30" height="30"></div>
+                                        <div class="comment-name">{{comment.owner.name}} <span class="pull-right comment-date">{{comment.date | date:'yyyy-MM-dd'}}</span></div>
+                                        <div class="comment-star">
+                                            <i class="f7-icons icon">{{comment.rate > 0 ? 'star_fill' : 'star'}}</i>
+                                            <i class="f7-icons icon">{{comment.rate > 1 ? 'star_fill' : 'star'}}</i>
+                                            <i class="f7-icons icon">{{comment.rate > 2 ? 'star_fill' : 'star'}}</i>
+                                            <i class="f7-icons icon">{{comment.rate > 3 ? 'star_fill' : 'star'}}</i>
+                                            <i class="f7-icons icon">{{comment.rate > 4 ? 'star_fill' : 'star'}}</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-comment">
+                                    <div class="comment-inner">
+                                        {{comment.content}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-more" ng-show="!showMore">
+                            <a href="#" class="item-link button" ng-click="showMoreCommentAction()">查看更多</a>
+                        </div>
+                        <!--加载提示符-->
+                        <div class="infinite-scroll-preloader" ng-show="loading">
+                            <div class="preloader"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
             </div>
             <a href="app/components/airtrain/entered.html?param={{enterObj}}" class="detail-btn">我要报名</a>
         </div>
