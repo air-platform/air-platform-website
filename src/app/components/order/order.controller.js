@@ -58,8 +58,10 @@
                 mainView.router.loadPage(constdata.router.order.detail.jetcard + '?order=' + item.id);
             }else if (type === 'course'){
                 mainView.router.loadPage(constdata.router.order.detail.course + '?order=' + item.id);
+            }else if (type === 'transportation'){
+                mainView.router.loadPage(constdata.router.order.detail.course + '?order=' + item.id);
             }else {
-                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id);
+                myApp.alert('未知的订单类型','出错了');
             }
 
         }
@@ -170,6 +172,9 @@
                     d.showSubtitle = d.airTransport.family;
                     d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.airTransport.passengers.length);
                 }else {
+                    d.showTitle = '';
+                    d.showSubtitle = '';
+                    d.price = 0;
                     console.log('unknown');
                     console.log(d);
                 }
