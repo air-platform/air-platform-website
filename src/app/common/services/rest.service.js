@@ -29,7 +29,7 @@
         .factory('NetworkService', NetworkService);
 
     /** @ngInject */
-    function NetworkService(RestService,StorageService,logger,constdata) {
+    function NetworkService(RestService,StorageService,logger,$rootScope,constdata) {
 
 
         var service = {
@@ -91,8 +91,12 @@
                 newResponse.statusText = '服务器连接错误';
             }
 
-            if (failedHandler){
-                failedHandler(newResponse);
+            if (response.status === 401){//token过期，或者未登录
+                $rootScope.$emit(constdata.notification_refresh_information,{action:'logout'});
+            }else{
+                if (failedHandler){
+                    failedHandler(newResponse);
+                }
             }
         }
 

@@ -12,7 +12,19 @@
         $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
         // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
-            refresh();
+            if (data.action === 'logout'){
+                if (iotUtil.islogin()){
+                    myApp.alert('登录过期，请重新登录',function () {
+                        pleaseReComeIn();
+                    });
+                }else{
+                    myApp.alert('请先登录',function () {
+                        pleaseReComeIn();
+                    });
+                }
+            }else{
+                refresh();
+            }
         });
 
         $scope.airbbLink = constdata.ipCurrent + '/airbb';
@@ -105,6 +117,12 @@
             StorageService.clear(constdata.information);
             refresh();
             myApp.alert('退出成功！');
+        }
+        function pleaseReComeIn() {
+            StorageService.clear(constdata.token);
+            StorageService.clear(constdata.information);
+            refresh();
+            mainView.router.loadPage(constdata.router.login.login);
         }
 
         function refresh() {
