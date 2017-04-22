@@ -7,7 +7,7 @@
     angular.module('airsc').controller('travelInfoController', travelInfoController);
 
     /** @ngInject */
-    function travelInfoController($scope, NotificationService, StorageService, NetworkService, UrlService, URL) {
+    function travelInfoController($scope, NotificationService, StorageService, NetworkService, UrlService, URL, REGEX) {
         $scope.infoData = {};
         $scope.infoSubmit = infoSubmit;
 
@@ -17,11 +17,19 @@
                 return;
             }
             if(!data.phone){
-                NotificationService.alert.success('请填写电话', null);
+                NotificationService.alert.success('请填写手机号', null);
+                return;
+            }
+            if(!REGEX.PHONE.test(data.phone)) {
+                NotificationService.alert.success('手机号不正确', null);
                 return;
             }
             if(!data.email){
                 NotificationService.alert.success('请填写邮箱', null);
+                return;
+            }
+            if(!REGEX.EMAIL.test(data.email)) {
+                NotificationService.alert.success('邮箱格式不正确', null);
                 return;
             }
             var transferData = StorageService.get('plan');
