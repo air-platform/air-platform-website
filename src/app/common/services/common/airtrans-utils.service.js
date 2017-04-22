@@ -1,14 +1,14 @@
 (function() {
     'use strict';
 
-    //transUtilsService
+    //mapUtilsService
     angular.module('airsc')
-        .factory('transUtilsService', transUtilsService);
+        .factory('mapUtilsService', mapUtilsService);
 
     //TODO: to find a better way
     if (!window.markedOverlays) window.markedOverlays = [];
 
-    function transUtilsService() {
+    function mapUtilsService() {
         var extractPoints = function(pointsStr) {
             var points = pointsStr.trim().replace(/\;$/, '').split(";")
             var allPoints = _.map(points, function(s) {
@@ -25,6 +25,7 @@
             map.disableScrollWheelZoom();
             map.disableDoubleClickZoom();
             map.disablePinchToZoom();
+            map.centerAndZoom(new BMap.Point(110.341725, 20.0367797), 15);
             var routes = [];
             var markerPoints = []
             for (var i = 0; i < points.length; i += 2) {
