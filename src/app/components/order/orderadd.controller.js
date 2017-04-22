@@ -158,7 +158,6 @@
                 console.log(res);
                 var local = res.headers('location').split('/');
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);
-
             },function (err) {
                 showErrorAlert(err);
             });

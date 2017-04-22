@@ -18,7 +18,7 @@
         }
 
         function jumpOrder() {
-            mainView.router.loadPage('app/components/order/orderdetail.html?order=' + queryData.order);
+            mainView.router.loadPage('app/components/order/orderdetail.html?order=' + queryData.orderId);
         };
     }
 })();
