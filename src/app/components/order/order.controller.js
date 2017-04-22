@@ -58,7 +58,7 @@
         }
 
         function gotoCommentAction(orderId,item) {
-            mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
+            mainView.router.loadPage(constdata.router.comment.add + '?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
         }
         function gotoOrderDetail(index,tabIndex) {
 

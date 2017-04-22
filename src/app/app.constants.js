@@ -53,6 +53,9 @@
                         course:'app/components/order/ordercoursedetail.html'
                     }
                 },
+                comment:{
+                    add:'app/components/comment/comment.html'
+                },
                 set:{
                     setting:'app/components/setting/setting.html',
                     profile:'app/components/profile/profile.html'
