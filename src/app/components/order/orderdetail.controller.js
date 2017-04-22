@@ -34,14 +34,14 @@
                 $scope.orderInfo = {
                     orderNo: data.orderNo,
                     creationDate:data.creationDate,
-                    flight: data.ferryFlight.name,
-                    date: data.ferryFlight.date,
-                    departure:data.ferryFlight.departure,
-                    arrival:data.ferryFlight.arrival,
-                    time:data.ferryFlight.time,//creationDate
-                    capacity:data.ferryFlight.seats,
-                    interval:data.ferryFlight.timeSlot,
-                    price:price,
+                    flight: data.airTransport.name,
+                    date: data.airTransport.date,
+                    departure:data.airTransport.flightRoute.departure,
+                    arrival:data.airTransport.flightRoute.arrival,
+                    // time:data.airTransport.aircraftItems[0].aircraft.time,//creationDate
+                    // capacity:data.ferryFlight.seats,
+                    // interval:data.ferryFlight.timeSlot,
+                    // price:price,
                     type:data.type
                 };//ferryflight
 

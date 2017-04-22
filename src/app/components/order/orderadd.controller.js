@@ -33,18 +33,21 @@
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
-            $scope.orderInfo.flightId = planeModel.id;
-            $scope.orderInfo.flight = planeModel.name + ' ' + planeModel.flightNo;
+            $scope.orderInfo.flightId = planeModel.product;
+            $scope.orderInfo.flight = planeModel.aircraft.name + ' ' + planeModel.aircraft.flightNo;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
             $scope.orderInfo.charterAll.price = planeModel.price;
-            $scope.orderInfo.charterAll.capacity = planeModel.seats;
-            $scope.orderInfo.capacity = planeModel.seats;
+            $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
+            $scope.orderInfo.capacity = planeModel.aircraft.seats;
 
             $scope.orderInfo.departure = schedules.departure;
             $scope.orderInfo.arrival = schedules.arrival;
             $scope.orderInfo.interval = schedules.time;
-            $scope.orderInfo.date = schedules.date;
+            var date = schedules.date.replace('年','-');
+            date = date.replace('月','-');
+            date = date.replace('日','');
+            $scope.orderInfo.date = date;
 
             console.log(pageData);
         }else{
@@ -150,11 +153,11 @@
                 passengers: $scope.psgs,
                 contact:{mobile:$scope.orderInfo.contactMobile}
             };
+
             OrderServer.submitOrder(param,function (res) {
                 console.log(res);
                 var local = res.headers('location').split('/');
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);
-
             },function (err) {
                 showErrorAlert(err);
             });
