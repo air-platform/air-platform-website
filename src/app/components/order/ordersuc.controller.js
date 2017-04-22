@@ -14,7 +14,7 @@
         if(queryData.page && queryData.page.indexOf('taxi') !== -1) {
             angular.element('#airtaxi-back').attr('href', constdata.router.airtaxi.home);
         } else {
-            angular.element('#airtaxi-back').attr('href', constdata.router.airtrans.airtrans);
+            angular.element('#airtaxi-back').attr('href', constdata.router.airtrans.home);
         }
 
         function jumpOrder() {
