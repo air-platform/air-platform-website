@@ -10,7 +10,7 @@
     angular.module('airsc').controller('schoollistController', schoollistController);
 
     /** @ngInject */
-    function schoollistController($scope,TrainServer) {
+    function schoollistController($scope,TrainServer,NotificationService) {
 
 
         $scope.items = [];
@@ -26,11 +26,15 @@
         function getDatas(page) {
             TrainServer.getSchools(page,function (res) {
                 var data = res.data.content;
-                console.log(data);
                 $scope.items = $scope.items.concat(data);
             },function (err) {
-                console.log(err);
+                showErrorAlert(err);
             });
+        }
+
+        function showErrorAlert(err) {
+            var errDesc = err.statusText;
+            NotificationService.alert.error('获取数据失败！' + errDesc, null);
         }
 
         getDatas(1);

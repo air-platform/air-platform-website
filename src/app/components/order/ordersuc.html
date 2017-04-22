@@ -1,0 +1,20 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"><a id="airtaxi-back" class="link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="center sliding">订单成功</div>
+        <div class="right"></div>
+    </div>
+</div>
+<div data-page="ordersuc" class="page" ng-controller="ordersucController">
+    <div class="page-content">
+        <div class="order-status-content">
+            <img src="assets/images/travel/icon_success.svg" alt="success">
+            <div>{{'airjet.order-submit' | translate}}</div>
+            <div>{{'airjet.service-later' | translate}}</div>
+            <div class="back-submit">
+                <a ng-click="jumpOrder()">{{'airjet.look-order' | translate}}</a>
+                <a href="index.html">{{'airjet.back-home' | translate}}</a>
+            </div>
+        </div>
+    </div>
+</div>

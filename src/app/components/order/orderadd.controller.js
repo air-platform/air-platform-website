@@ -29,6 +29,7 @@
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
+        console.log(pageData);
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
@@ -151,6 +152,9 @@
             };
             OrderServer.submitOrder(param,function (res) {
                 console.log(res);
+                var local = res.headers('location').split('/');
+                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);
+
             },function (err) {
                 showErrorAlert(err);
             });

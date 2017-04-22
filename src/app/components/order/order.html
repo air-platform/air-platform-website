@@ -23,25 +23,30 @@
                     <div class="content-block school-content order-card-container">
                         <div class="list-block cards-list">
                             <ul>
-                                <li class="card order-card" ng-repeat="item in items[0] track by $index">
-                                    <div class="card-header" ng-click="gotoOrderDetail($index,0)">
-                                        <span class="order-number">订单编号:{{item.orderNo}}</span>
-                                        <span class="order-date">{{item.creationDate | date:'yyyy-MM-dd~HH:mm'}}</span>
-                                    </div>
-                                    <div class="card-content" ng-click="gotoOrderDetail($index,0)">
-                                        <div class="card-content-inner">
-                                            <div class="order-title">{{item.showTitle}}</div>
-                                            <div class="order-desc">{{item.showSubtitle}}</div>
+                                <li class="swipeout card order-card" ng-repeat="item in items[0] track by $index">
+                                    <div class="swipeout-content">
+                                        <div class="card-header" ng-click="gotoOrderDetail($index,0)">
+                                            <span class="order-number">订单编号:{{item.orderNo}}</span>
+                                            <span class="order-date">{{item.creationDate | date:'yyyy-MM-dd~HH:mm'}}</span>
+                                        </div>
+                                        <div class="card-content" ng-click="gotoOrderDetail($index,0)">
+                                            <div class="card-content-inner">
+                                                <div class="order-title">{{item.showTitle}}</div>
+                                                <div class="order-desc">{{item.showSubtitle}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <span class="order-price">￥{{item.price.toFixed(2)}}</span>
+                                            <a href="#" class="link"></a>
+                                            <a ng-click="funAction($index,0)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
+                                            <a ng-click="funAction($index,0)" ng-show="item.status === 'finished' && item.commented" href="#" class="button btn-status-valuation-done">已评价</a>
+                                            <a ng-click="funAction($index,0)" ng-show="item.status === 'finished' && !item.commented" href="#" class="button btn-status-valuation">评价</a>
+                                            <a ng-click="funAction($index,0)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">已付款</a>
+                                            <a ng-click="funAction($index,0)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <span class="order-price">￥{{item.price.toFixed(2)}}</span>
-                                        <a href="#" class="link"></a>
-                                        <a ng-click="funAction($index,0)" ng-show="item.status === 'pending'" href="#" class="button btn-status-cancel">取消订单</a>
-                                        <a ng-click="funAction($index,0)" ng-show="item.status === 'finished' && item.commented" href="#" class="button btn-status-valuation-done">已评价</a>
-                                        <a ng-click="funAction($index,0)" ng-show="item.status === 'finished' && !item.commented" href="#" class="button btn-status-valuation">评价</a>
-                                        <a ng-click="funAction($index,0)" ng-show="item.status === 'paid'" href="#" class="button btn-status-valuation">已付款</a>
-                                        <a ng-click="funAction($index,0)" disabled ng-show="item.status === 'cancelled'" href="#" class="button btn-status-reorder">已取消</a>
+                                    <div class="swipeout-actions-right">
+                                        <a href="#" class="swipeout-delete" ng-click="deleteOrderAction($index,0)">删除</a>
                                     </div>
                                 </li>
                             </ul>

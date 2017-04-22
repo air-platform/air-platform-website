@@ -18,6 +18,7 @@
         $scope.tabChanged = tabChanged;
         $scope.funAction = funAction;
         $scope.gotoOrderDetail = gotoOrderDetail;
+        $scope.deleteOrderAction = deleteOrderAction;
 
         function tabChanged(tabIndex) {
             var tempData = $scope.items[tabIndex];
@@ -37,9 +38,23 @@
                 cancelOrderAction(item.id,index,tabIndex);
             }else if (item.status === 'paid'){
 
-            }else if (item.status === 'finished'){
+            }else if (item.status === 'finished' && !item.commented){
                 gotoCommentAction(item.id,item);
             }
+        }
+        function deleteOrderAction(index,tabIndex) {
+            var item = $scope.items[tabIndex][index];
+            OrderServer.deleteOrder(item.id,function (res) {
+                myApp.alert('删除成功',function () {
+                    $scope.items[tabIndex].splice(index,1);
+                    $scope.$apply();
+                });
+            });
+            // myApp.confirm('确定删除订单吗',
+            //     function () {
+            //
+            //     }
+            // );
         }
 
         function gotoCommentAction(orderId,item) {
@@ -56,6 +71,8 @@
                 mainView.router.loadPage('app/components/airjet/travel-detail.html?order=' + item.id);
             }else if (type === 'jetcard') {
                 mainView.router.loadPage('app/components/airjet/tour-order.html?order=' + item.id);
+            }else if (type === 'course'){
+
             }else {
                 mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
             }
@@ -115,11 +132,14 @@
                     d.showTitle = d.flightLegs[0].departure + ' → ' + d.flightLegs[0].arrival;
                     d.showSubtitle = d.fleetCandidates[0].fleet.name;
                     d.price = d.fleetCandidates[0].fleet.price;
-                    console.log(d);
                 }else if (type === 'jetcard') {
                     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
                     d.showSubtitle = d.jetCard.description;
                     d.price = d.jetCard.price;
+                }else if (type === 'course'){
+                    d.showTitle = d.course.name;
+                    d.showSubtitle = d.course.location;
+                    d.price = d.course.price;
                 }else {
                     console.log('unknown');
                     console.log(d);

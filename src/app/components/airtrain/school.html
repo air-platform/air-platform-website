@@ -40,7 +40,25 @@
                 <!-- Tab 2 -->
                 <div id="tab3" class="tab">
                     <div class="content-block school-content">
-
+                        <div class="course-hot">
+                            <ul class="course-list">
+                                <li ng-repeat="course in courses track by $index">
+                                    <a href="app/components/airtrain/course-detail.html?id={{course.id}}" class="clearfix">
+                                        <div class="list-img pull-left">
+                                            <img ng-src="{{course.image}}">
+                                        </div>
+                                        <div class="list-info pull-left">
+                                            <h4 ng-bind="course.name"></h4>
+                                            <div ng-bind="course.school.name"></div>
+                                            <div>报名截止：<span ng-bind="course.endDate"></span></div>
+                                        </div>
+                                        <div class="list-price pull-right">
+                                            <span ng-bind="course.price | RMB"></span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

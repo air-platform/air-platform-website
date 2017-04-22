@@ -16,7 +16,7 @@
         var ROUTES_FAMILY = "飞越海峡";
         $scope.schedules = [];
         $scope.routes = [];
-        controller.mapPoints = {};
+        controller.mapPoints = [];
         controller.datepicker = {};
         controller.transports = [];
 
@@ -58,8 +58,6 @@
             'flight': ''
           }
         ];
-
-        transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
 
         controller.selectFlight = function(schedule) {
           var goto = "app/components/airtransportation/planes.html"
@@ -172,12 +170,32 @@
         // }
         loadTransports(1);
 
-        $scope.$watch("controller.mapPoints", function(newValue, oldValue) {
+        $scope.$watch(function() {
+          return controller.mapPoints;
+        }, function(newValue, oldValue) {
             if( newValue != oldValue ) {
-              transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
+              if(controller.mapPoints.length > 0) {
+                transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
+              }
             }
           }
         );
+        $('body').on('airtrans.selectRoute', function(e, data) {
+          var curve = data;
+          var points = curve.cornerPoints;
+          controller.transports;
+          var selectedRoute = _.find(controller.transports, function(transport) {
+            var route = transport.flightRoute;
+            return route.departureLongitude == points[0].lng &&
+                   route.departureLatitude == points[0].lat &&
+                   route.arrivalLongitude == points[1].lng &&
+                   route.arrivalLatitude == points[1].lat;
+          });
+          $scope.$apply(function(){
+            $scope.schedules[0].departure = selectedRoute.flightRoute.departure;
+            $scope.schedules[0].arrival = selectedRoute.flightRoute.arrival;
+          });
+        });
         setTimeout(function() {
           controller.datepicker = createDatePicker();
         }, 0);
