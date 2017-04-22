@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderListController($scope,OrderServer,NotificationService,$timeout) {
+    function orderListController($scope,OrderServer,NotificationService,$timeout,constdata) {
 
         var loadings = [false,false,false,false];
         var loadingPages = [1,1,1,1];
@@ -58,7 +58,7 @@
         }
 
         function gotoCommentAction(orderId,item) {
-            mainView.router.loadPage('app/components/comment/comment.html?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
+            mainView.router.loadPage(constdata.router.comment.add + '?orderId=' + orderId + '&date=' + item.creationDate + '&title=' + item.showTitle + '&subtitle=' + item.showSubtitle + '&price=' + item.price + '&orderNo=' + item.orderNo);
         }
         function gotoOrderDetail(index,tabIndex) {
 
@@ -66,15 +66,15 @@
 
             var type = item.type;
             if (type === 'ferryflight') {
-                mainView.router.loadPage('app/components/airjet/dream-detail.html?order=' + item.id);
+                mainView.router.loadPage(constdata.router.order.detail.ferryflight + '?order=' + item.id);
             }else if (type === 'fleet') {
-                mainView.router.loadPage('app/components/airjet/travel-detail.html?order=' + item.id);
+                mainView.router.loadPage(constdata.router.order.detail.fleet + '?order=' + item.id);
             }else if (type === 'jetcard') {
-                mainView.router.loadPage('app/components/airjet/tour-order.html?order=' + item.id);
+                mainView.router.loadPage(constdata.router.order.detail.jetcard + '?order=' + item.id);
             }else if (type === 'course'){
-
+                mainView.router.loadPage(constdata.router.order.detail.course + '?order=' + item.id);
             }else {
-                mainView.router.loadPage('app/components/order/orderdetail.html?order=' + item.id);
+                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id);
             }
 
         }
@@ -140,6 +140,7 @@
                     d.showTitle = d.course.name;
                     d.showSubtitle = d.course.location;
                     d.price = d.course.price;
+                    console.log(d);
                 }else {
                     console.log('unknown');
                     console.log(d);

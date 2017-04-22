@@ -1,0 +1,31 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"><a data-panel="left" class="link back"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div class="center sliding">订单详情</div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="ordercoursedetail" class="page" ng-controller="OrderCourseDetailController">
+        <div class="page-content order-course-detail">
+
+            <div class="course-detail-header">{{'airjet.order-numver' | translate}}{{order.orderNo}}</div>
+            <div class="course-detail-line"></div>
+            <div class="course-detail-content">
+                <div class="content-item"><span class="content-title">姓名：</span>{{order.person}}</div>
+                <div class="content-item"><span class="content-title">身份证：</span>{{order.identity}}</div>
+                <div class="content-item"><span class="content-title">学习类型：</span>{{order.course.airType}}</div>
+                <div class="content-item"><span class="content-title">驾驶证类型：</span>{{order.course.license}}</div>
+                <div class="content-item"><span class="content-title">价格：</span>￥{{order.course.price.toFixed(2)}}</div>
+            </div>
+            <div class="course-detail-line"></div>
+            <div class="course-detail-content">
+                <div class="content-item"><span class="content-title">航校名称：</span>{{order.course.school.name}}</div>
+                <div class="content-item"><span class="content-title">地址：</span>{{order.course.school.address}}</div>
+                <div class="content-item"><span class="content-title">联系方式：</span><a>{{order.course.school.contact}}</a></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
