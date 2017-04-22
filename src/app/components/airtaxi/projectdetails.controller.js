@@ -45,15 +45,14 @@
           angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
           drawMap("airtaxi-details-map-view", vm.mapPoints);
 
-          console.log(mainView.pageData);
+            /** 获取评论 **/
+            $scope.score = vm.site.score;
+            $scope.productId = vm.site.id;
+            getLatestFirstComment();
+
+
         }
         init();
-
-
-        /** 获取评论 **/
-        $scope.score = 0;
-        $scope.productId = '--';
-        getLatestFirstComment();
 
 
 
