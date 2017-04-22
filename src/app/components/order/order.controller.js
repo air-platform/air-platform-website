@@ -82,11 +82,10 @@
         function deleteOrderAction(index,tabIndex) {
             var item = $scope.items[tabIndex][index];
             OrderServer.deleteOrder(item.id,function (res) {
-                //TODO:删除其它tab1,tab2，tab3里面的对应订单
                 myApp.alert('删除成功',function () {
-                    $scope.items[tabIndex].splice(index,1);
-                    $scope.$apply();
-                    // deleteOrderWithId(item.id);
+                    // $scope.items[tabIndex].splice(index,1);
+                    // $scope.$apply();
+                    deleteOrderWithId(item.id);
                 });
             });
             // myApp.confirm('确定删除订单吗',
@@ -112,9 +111,16 @@
             });
         }
         function deleteOrderWithId(orderId) {
-
+            $scope.items.forEach(function (item,tabIndex) {
+                for (var i = 0; i < item.length; i++){
+                    if (item[i].id === orderId){
+                        $scope.items[tabIndex].splice(i,1);
+                        $scope.$apply();
+                        break;
+                    }
+                }
+            });
         }
-
 
         function getDatas(tabIndex,page) {
 
@@ -193,7 +199,6 @@
         });
 
         tabChanged(0);
-
 
     }
 
