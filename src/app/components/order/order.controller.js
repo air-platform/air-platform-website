@@ -165,10 +165,11 @@
                     d.showTitle = d.course.name;
                     d.showSubtitle = d.course.location;
                     d.price = d.course.price;
-                }else {
+                }else if (type === 'airtransportation'){
                     d.showTitle = d.airTransport.flightRoute.departure + ' → ' + d.airTransport.flightRoute.arrival;
                     d.showSubtitle = d.airTransport.family;
                     d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.airTransport.passengers.length);
+                }else {
                     console.log('unknown');
                     console.log(d);
                 }
