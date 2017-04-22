@@ -7,14 +7,15 @@
 
 <div class="pages">
     <div data-page="ordercoursedetail" class="page" ng-controller="OrderCourseDetailController">
-        <div class="page-content travel-detail-check">
-            <div class="air-order-detail">
-                <div class="air-order-item radius-top-bottom">
-                    <span class="pull-left">{{'airjet.order-numver' | translate}}{{order.orderNo}}</span>
-                    <!--<i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>-->
-                </div>
-
-            </div>
+        <div class="page-content">
+            <div>{{'airjet.order-numver' | translate}}{{order.orderNo}}</div>
+            <div>{{order.course.airType}}</div>
+            <div>{{order.course.license}}</div>
+            <div>{{order.course.price}}</div>
+            <div>{{order.course.school.name}}</div>
+            <div>{{order.course.school.address}}</div>
+            <div>{{order.course.school.contact}}</div>
         </div>
+
     </div>
 </div>

@@ -15,21 +15,11 @@
         getOrder(queryData.order);
 
 
-        // course
-        // license
-        //     :
-        //     "固定翼单发商照（不含仪表）"
-        // location
-        //     :
-        //     "三峡机场"
-        // name
-        //     :
-        //     "固定翼单发商照（不含仪表）"
-
         function getOrder(orderId) {
             OrderServer.getOrder(orderId,function (res) {
-                console.log(res.data);
+                // console.log(res.data.course);
                 $scope.order = res.data;
+                console.log($scope.order);
 
             },function (err) {
                 showErrorAlert(err);
