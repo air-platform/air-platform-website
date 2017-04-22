@@ -17,11 +17,12 @@
         .factory('TrainServer', TrainServer);
 
     /** @ngInject */
-    function TrainServer(NetworkService) {
+    function TrainServer(NetworkService,constdata) {
 
         var service = {
             getSchools: getSchools,
-            getSchoolInfo: getSchoolInfo
+            getSchoolInfo: getSchoolInfo,
+            getSchoolCourses: getSchoolCourses
         };
 
         return service;
@@ -29,11 +30,15 @@
         ////////////
 
         function getSchools(page,successHandler,failedHandler) {
-            NetworkService.get('schools' + '?pageSize=200&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('schools' + '?pageSize='+constdata.page.size+'&page=' + page,null,successHandler,failedHandler);
         }
         function getSchoolInfo(schoolId,successHandler,failedHandler) {
             NetworkService.get('schools/' + schoolId,null,successHandler,failedHandler);
         }
+        function getSchoolCourses(schoolId,page,successHandler,failedHandler) {
+            NetworkService.get('courses/school?id=' + schoolId + '?pageSize='+constdata.page.size + '&page=' + page,null,successHandler,failedHandler);
+        }
+
     }
 
 

@@ -29,6 +29,7 @@
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
+        console.log(pageData);
         if (pageType && pageType === 'airtrans'){//从air transportation过来
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
