@@ -17,7 +17,7 @@
         .factory('OrderServer', OrderServer);
 
     /** @ngInject */
-    function OrderServer(NetworkService) {
+    function OrderServer(NetworkService,constdata) {
 
         var service = {
             passengers: passengers,
@@ -55,7 +55,7 @@
             }else if (3 === type){path = '/cancelled';
             }else {path = '';
             }
-            NetworkService.get('user/orders' + path  + '?pageSize=5&page=' + page,null,successHandler,failedHandler);
+            NetworkService.get('user/orders' + path  + '?pageSize=' + constdata.page.size + '&page=' + page,null,successHandler,failedHandler);
         }
         function getOrder(orderId,successHandler,failedHandler) {
             NetworkService.get('user/orders/' + orderId,null,successHandler,failedHandler);
