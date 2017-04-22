@@ -125,17 +125,15 @@
         }
 
         controller.timeSlots = function() {
-          return _.map(_.range(9,17,2), function(hour) {
-            return (hour>9?hour:("0"+hour)) + ":00-" + (hour+2>9?hour+2:"0"+(hour+2))+":00"
-          });
+          return scheduleUtilsService.timeSlots(9, 17, 2);
         };
 
         controller.arrivals = function(routes, departure) {
-            return _.uniq(_.pluck(_.where(routes, {departure: departure}), 'arrival'));
+          return scheduleUtilsService.arrivals(routes, departure);
         }
 
         controller.departures = function(routes) {
-          return _.uniq(_.pluck(routes, 'departure'));
+          return scheduleUtilsService.departures(routes);
         }
 
         var parseRoutes = function(transports) {

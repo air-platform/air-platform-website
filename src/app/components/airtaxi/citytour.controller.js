@@ -10,7 +10,8 @@
     angular.module('airsc').controller('citytourController', citytourController);
 
     /** @ngInject */
-    function citytourController($scope, mapUtilsService, NotificationService, NetworkService) {
+    function citytourController($scope, mapUtilsService, NotificationService,
+        NetworkService, scheduleUtilsService) {
       var controller = this;
       var citys = ['北京', '桂林', '海南', '宁波'];
       var today = new Date();
@@ -36,6 +37,9 @@
         controller.taxiRoutes = [];
         controller.mapPoints = [];
 
+        setTimeout(function(){
+          controller.datepicker = createDatePicker();
+        }, 0);
       }
       var loadTourList = function(page) {
         NetworkService.get("tours", {city: $scope.city, page: page}, function(res) {
@@ -58,17 +62,15 @@
       }
 
       controller.timeSlots = function() {
-        return _.map(_.range(9,17,2), function(hour) {
-          return (hour>9?hour:("0"+hour)) + ":00-" + (hour+2>9?hour+2:"0"+(hour+2))+":00"
-        });
+        return scheduleUtilsService.timeSlots(9, 17, 1);
       };
 
       controller.arrivals = function(routes, departure) {
-          return _.uniq(_.pluck(_.where(routes, {departure: departure}), 'arrival'));
+        return scheduleUtilsService.arrivals(routes, departure);
       }
 
       controller.departures = function(routes) {
-        return _.uniq(_.pluck(routes, 'departure'));
+        return scheduleUtilsService.departures(routes);
       }
 
       var pickerDevice = myApp.picker({
@@ -142,6 +144,21 @@
         mainView.pageData.city = $scope.city;
         mainView.router.loadPage('app/components/airtaxi/project-details.html?date=' + $scope.tourdate);
       };
+
+      var createDatePicker = function() {
+        var today = new Date();
+        var calendarDateFormat = myApp.calendar({
+          input: '#airtrans-schedule-datepicker-0',
+          dateFormat: 'yyyy年m月d日',
+          disabled: {
+            to: new Date().setDate(today.getDate() - 1)
+          },
+          onDayClick: function(p) {
+            calendarDateFormat.close();
+          }
+        });
+        return calendarDateFormat;
+      }
 
       $scope.$watch(function() {
         return angular.element('#citytour-title').text().replace("观光", "");
