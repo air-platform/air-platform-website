@@ -25,7 +25,6 @@
             map.disableScrollWheelZoom();
             map.disableDoubleClickZoom();
             map.disablePinchToZoom();
-            map.centerAndZoom(new BMap.Point(110.341725, 20.0367797), 15);
             var routes = [];
             var markerPoints = []
             for (var i = 0; i < points.length; i += 2) {
@@ -100,34 +99,9 @@
             }
         };
 
-        var validateSchedules = function(schedules) {
-            var errors = {};
-            if (schedules.length == 0) {
-                errors.arrayLength = "行程不能为空！";
-                return errors;
-            }
-            if (!schedules[0].departure) {
-                errors.departure = "出发地不能为空！";
-            }
-            if (!schedules[0].arrival) {
-                errors.arrival = "到达地不能为空！";
-            }
-            if (!schedules[0].date) {
-                errors.date = "日期不能为空！";
-            }
-            if (!schedules[0].time) {
-                errors.time = "时段不能为空！";
-            }
-            if (!schedules[0].flight) {
-                errors.flight = "航班信息不能为空！";
-            }
-            return errors;
-        };
-
         return {
             'drawMap': drawMap,
-            'extractPoints': extractPoints,
-            'validateSchedules': validateSchedules
+            'extractPoints': extractPoints
         };
     }
 })();
