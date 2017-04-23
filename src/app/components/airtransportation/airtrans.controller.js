@@ -14,18 +14,24 @@
             NotificationService, scheduleUtilsService) {
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
-        var ROUTES_FAMILY = "飞越海峡";
+        var ROUTES_FAMILIES = {'air-taxi-cross-channel': '飞越海峡', 'mongolia-routes': '内蒙航线'};
         $scope.schedules = [];
         $scope.routes = [];
         controller.mapPoints = [];
         controller.datepicker = {};
         controller.transports = [];
+        $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
+        setTimeout(function() {
+          $('.airtrans-schedule-dateinput').each(function() {
+            return createDatePicker(this);
+          });
+        }, 1);
 
-        var loadTransports = function(page) {
+        var loadTransports = function(page, family) {
           var hasMore = true;
           var page = 1;
           NetworkService.get("transports",
-          {page: page, family: ROUTES_FAMILY},
+          {page: page, family: family},
           function getMapMakers(res) {
             var data = res.data;
             hasMore = data.hasNextPage;
@@ -146,11 +152,11 @@
           });
         }
 
-        var createDatePicker = function() {
+        var createDatePicker = function(input) {
           var today = new Date();
           var calendarDateFormat = myApp.calendar({
-            input: '#airtrans-schedule-datepicker-0',
-            dateFormat: 'yyyy年m月d日',
+            input: input,
+            dateFormat: 'yyyy-mm-dd',
             disabled: {
               to: new Date().setDate(today.getDate() - 1)
             },
@@ -161,18 +167,29 @@
           return calendarDateFormat;
         }
 
-        // var hasMore = loadTransports(1)
-        // while(hasMore) {
-        //   hasMore = loadTransports(1);
-        // }
-        loadTransports(1);
+        $scope.$watch('family', function() {
+          if($scope.family) {
+            controller.transports = [];
+            loadTransports(1, $scope.family);
+            $scope.schedules = [
+              {
+                'date': '',
+                'time': '',
+                'departure': '',
+                'arrival': '',
+                'flight': ''
+              }
+            ];
+          }
+        });
 
         $scope.$watch(function() {
           return controller.mapPoints;
         }, function(newValue, oldValue) {
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
-                mapUtilsService.drawMap("airtrans-map-view", controller.mapPoints, {curves: true});
+                var mapviewid = ($scope.family == "飞越海峡")?'airtrans-map-view-channel' : 'airtrans-map-view-mongolia';
+                mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true});
               }
             }
           }
@@ -193,10 +210,17 @@
             $scope.schedules[0].arrival = selectedRoute.flightRoute.arrival;
           });
         });
-        setTimeout(function() {
-          controller.datepicker = createDatePicker();
-        }, 0);
 
+        $$('.page[data-page=airtrans] .tab').on('tab:show', function(e) {
+          $scope.$apply(function() {
+            $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
+          });
+          setTimeout(function() {
+            $('.airtrans-schedule-dateinput').each(function() {
+              return createDatePicker(this);
+            });
+          }, 1);
+        });
     }
 
 })();
