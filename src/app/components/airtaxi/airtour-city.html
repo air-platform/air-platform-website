@@ -3,19 +3,13 @@
         <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding color-black order-center fa" id="citytour-title"></div>
         <div class="right"></div>
-        <div class="subnavbar tourview-subnavbar" ng-hide="true">
-          <div class="buttons-row air-tabs tourview-nav">
-            <a href="#island-mapview-order" class="tab-link active"><span>海岛行</span></a>
-            <a href="#tour-project-list" class="tab-link"><span>海岛观光</span></a>
-          </div>
-        </div>
     </div>
 </div>
 <div class="pages navbar-through">
     <div data-page="citytour" class="page" ng-controller="citytourController as ctl">
-        <div class="page-content">
+        <div class="page-content" ng-class="city=='海南'?'with-mapview':''">
           <div class="tabs">
-            <div id="tour-project-list" class="tab" ng-class="active">
+            <div id="tour-project-list" class="tab active">
               <div class="content-block">
                 <div class="city-tour-content">
                   <div class="tour-date-select fa">
@@ -45,7 +39,7 @@
                 </div>
               </div>
             </div>
-            <div id="island-mapview-order" class="tab active" ng-class="active">
+            <div id="island-mapview-order" class="tab">
               <div class="content-block">
                   <!-- map area -->
                   <div class="map">
