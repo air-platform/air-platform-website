@@ -22,6 +22,16 @@
         controller.datepicker = {};
         controller.transports = [];
         controller.map = {};
+        if(queryData.tabActive === 'tab1'){
+          $scope.tabActive = 'tab1';
+          myApp.showTab('#air-taxi-cross-channel');
+        }
+
+        if(queryData.tabActive === 'tab2'){
+          $scope.tabActive = 'tab2';
+          myApp.showTab('#mongolia-routes');
+        }
+
         $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
         $timeout(function() {
           $('.airtrans-schedule-dateinput').each(function() {

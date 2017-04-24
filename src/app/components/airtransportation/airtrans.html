@@ -9,21 +9,23 @@
         <div class="right">
             <a href="#" data-panel="right" class="link icon-only open-panel"><i class="icon icon-user"></i></a>
         </div>
-        <div class="subnavbar airtaxi-subnavbar">
-          <div class="buttons-row air-tabs airtaxi-nav">
-            <a href="#air-taxi-cross-channel" class="tab-link active"><span>飞越海峡</span></a>
-            <a href="#mongolia-routes" class="tab-link"><span>内蒙航线</span></a>
-          </div>
-        </div>
+
     </div>
 </div>
 <div class="pages navbar-through">
+
     <!-- Page, data-page contains page name-->
     <div data-page="airtrans" class="page with-subnavbar" ng-controller="transController as trans">
+        <div class="subnavbar airtaxi-subnavbar">
+            <div class="buttons-row air-tabs airtaxi-nav">
+                <a href="#air-taxi-cross-channel" class="tab-link" ng-class="{'active': tabActive === 'tab1'}"><span>飞越海峡</span></a>
+                <a href="#mongolia-routes" class="tab-link" ng-class="{'active': tabActive === 'tab2'}"><span>内蒙航线</span></a>
+            </div>
+        </div>
         <!-- Scrollable page content-->
         <div class="page-content hide-navbar-on-scroll">
           <div class="tabs">
-            <div id="air-taxi-cross-channel" class="tab active">
+            <div id="air-taxi-cross-channel" class="tab" ng-class="{'active': tabActive === 'tab1'}">
               <div class="content-block">
                   <!-- map area -->
                   <div class="map">
@@ -130,7 +132,7 @@
                   </div>
               </div>
             </div>
-            <div id="mongolia-routes" class="tab">
+            <div id="mongolia-routes" class="tab" ng-class="{'active': tabActive === 'tab2'}">
                 <div class="content-block">
                   <!-- map area -->
                   <div class="map">
