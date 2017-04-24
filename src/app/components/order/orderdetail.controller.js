@@ -16,6 +16,7 @@
         $scope.agreement = false;
         $scope.orderInfo = {};
         $scope.passengers = [];
+        $scope.istour = false;
 
         getOrder(orderId);
 
@@ -24,23 +25,28 @@
                 console.log(res.data);
                 var data = res.data;
 
-                var price = data.chartered ? data.aircraftItem.price : (data.aircraftItem.seatPrice * data.passengers.length);
 
                 if ($scope.type === 'airtour'){
+                    var tourPoints = data.airTour.tourPoint.split(';');
+                    var price = data.chartered ? data.aircraftItem.price : (data.aircraftItem.seatPrice * data.passengers.length);
+                    $scope.istour = true;
                     $scope.orderInfo = {
                         orderNo: data.orderNo,
                         creationDate:data.creationDate,
                         flight: data.aircraftItem.aircraft.name,
                         date: data.airTour.date,
-                        // departure:data.airTour.flightRoute.departure,
+                        departure:data.airTour.name,
                         // arrival:data.airTour.flightRoute.arrival,
                         // time:data.airTour.timeEstimation,
-                        capacity:data.aircraftItem.aircraft.seats,
+                        time:data.airTour.tourDistance + '公里',
+                        capacity:tourPoints.length + '景点',//tourPoint
                         interval:data.timeSlot,
                         price:price,
                         seatPrice:data.aircraftItem.seatPrice,
                         type:data.type
                     };
+                }else{
+                    $scope.istour = false;
                 }
 
 
