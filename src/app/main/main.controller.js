@@ -140,7 +140,6 @@
         }
 
         $scope.imgSrc = [
-            'assets/images/index/banner.png',
             'assets/images/index/banner.png'
         ];
 

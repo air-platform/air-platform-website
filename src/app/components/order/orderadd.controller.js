@@ -165,7 +165,7 @@
             $scope.psgs = [];
             $scope.passengers.forEach(function (p) {
                 if (p.isSelected){
-                    $scope.psgs.push(p.identity);
+                    $scope.psgs.push(p.id);
                 }
             });
 
@@ -222,6 +222,7 @@
         function getPassengers() {
             OrderServer.passengers(function (res) {
                 $scope.passengers = res.data;
+                console.log(res.data);
             },function (err) {
                 console.log(err);
             });
