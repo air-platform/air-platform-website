@@ -47,8 +47,8 @@
             {
                 title: '空中快车',
                 subtitle: 'Air Transportation', items: [
-                {'title': '海峡飞行', target: constdata.router.airtrans.home + '?type=1'},
-                {'title': '内蒙航线', target: constdata.router.airtrans.home + '?tabActive=tab'}
+                {'title': '海峡飞行', target: constdata.router.airtrans.home + '?type=1&tabActive=tab1'},
+                {'title': '内蒙航线', target: constdata.router.airtrans.home + '?tabActive=tab2'}
             ]
             },
             {
