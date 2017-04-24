@@ -43,6 +43,14 @@
         }, 200);
         if(StorageService.get('travel')){
             $scope.travelStrokeList = StorageService.get('travel');
+            $scope.travelStrokeList.forEach(function(item){
+                if(item.date){
+                    item.startTime = item.date;
+                }
+                if(item.passengers){
+                    item.guestStart = item.passengers;
+                }
+            });
         }
         if(queryData.index && queryData.name){
             $scope.currentCity = $scope.travelStrokeList[queryData.index][queryData.name];
@@ -286,6 +294,7 @@
                 mainView.router.loadPage('app/components/airjet/tour-detail.html?id=' + data.id)
             }
         };
+
         function jumpCity(index, name) {
             if (angular.isNumber(index) && name) {
                 mainView.router.load({url:'app/components/airjet/travel-city.html?index=' + index + '&name=' + name, pushState: false})
@@ -304,5 +313,5 @@
             });
         };
     }
-
+    
 })();
