@@ -34,10 +34,9 @@
                         orderNo: data.orderNo,
                         creationDate:data.creationDate,
                         flight: data.aircraftItem.aircraft.name,
-                        date: data.airTour.date,
+                        date: data.date,
                         departure:data.airTour.name,
                         // arrival:data.airTour.flightRoute.arrival,
-                        // time:data.airTour.timeEstimation,
                         time:data.airTour.tourDistance + '公里',
                         capacity:tourPoints.length + '景点',//tourPoint
                         interval:data.timeSlot,
