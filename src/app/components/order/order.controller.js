@@ -7,7 +7,16 @@
     angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderListController($scope,OrderServer,NotificationService,$timeout,constdata,iotUtil) {
+    function orderListController($rootScope,$scope,OrderServer,NotificationService,$timeout,constdata,iotUtil) {
+
+        // 订阅状态通知->刷新界面
+        $rootScope.$on(constdata.notification_refresh_order_status, function (evt, data) {
+            console.log(data);
+            if (data.type === 'comment'){
+                updateStatus(data.orderId,'commented');
+            }
+        });
+
 
         var loadings = [false,false,false,false];
         var loadingPages = [1,1,1,1];
@@ -137,7 +146,7 @@
                     $scope.items[tabIndex] = tempData;
                 }
 
-                console.log(data);
+                // console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();

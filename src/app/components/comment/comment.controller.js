@@ -7,7 +7,7 @@
     angular.module('airsc').controller('CommentController', CommentController);
 
     /** @ngInject */
-    function CommentController($scope, CommentServer) {
+    function CommentController($scope, CommentServer,$rootScope,constdata) {
 
         $scope.orderInfo = {};
 
@@ -34,11 +34,16 @@
 
 
         function submitComment() {
+
             myApp.showIndicator();
             var param = {rate:$scope.starNum,date:'2017-04-21',content:$scope.content};
             CommentServer.submitComment(orderId,param,function (res) {
                 myApp.hideIndicator();
+
+                $rootScope.$emit(constdata.notification_refresh_order_status,query);
+
                 myApp.alert('评论成功',function () {
+                    $rootScope.$emit(constdata.notification_refresh_order_status,{type:'comment',orderId:orderId});
                     mainView.router.back();
                 });
             },function (err) {
