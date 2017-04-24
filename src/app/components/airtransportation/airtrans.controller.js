@@ -253,6 +253,20 @@
               if(controller.mapPoints.length > 0) {
                 var mapviewid = ($scope.family == "飞越海峡")?'airtrans-map-view-channel' : 'airtrans-map-view-mongolia';
                 controller.map = mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true, markers: true});
+                  if (queryData.departure != null){
+                      mapUtilsService.removeMarkedCurve(controller.map);
+                      if($scope.schedules[0].departure && $scope.schedules[0].arrival) {
+                          if(!_.contains(controller.arrivals($scope.routes, $scope.schedules[0].departure), $scope.schedules[0].arrival)) {
+                              $timeout(function() {
+                                  $scope.schedules[0].arrival= '';
+                              });
+                          }
+                          var points = controller.curvePoints(controller.transports, $scope.schedules[0]);
+                          if (!_.isEmpty(points)) {
+                              mapUtilsService.markCurve(controller.map, points);
+                          }
+                      }
+                  }
               }
             }
           }
