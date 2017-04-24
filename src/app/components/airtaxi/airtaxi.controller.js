@@ -12,6 +12,7 @@
             var vm = this;
             // app/components/airtaxi/airtour-city.html?city={{city}}
             $scope.city = "";
+            vm.autocomplete = {};
 
             vm.next = function() {
               if(_.contains(citys, $scope.city)) {
@@ -95,18 +96,33 @@
                     input: '#city-navi-autocomplete-placeholder',
                     openIn: 'dropdown',
                     source: function(autocomplete, query, render) {
-                        var results = [];
-                        // Find matched items
-                        for (var i = 0; i < citys.length; i++) {
-                            if (citys[i].toLowerCase().indexOf(query.toLowerCase()) >= 0)
-                              results.push(citys[i]);
-                        }
+                    // close filtering
+                        var results = citys;
+                        // var results = [];
+                        // // Find matched items
+                        // for (var i = 0; i < citys.length; i++) {
+                        //     if (citys[i].toLowerCase().indexOf(query.toLowerCase()) >= 0)
+                        //       results.push(citys[i]);
+                        // }
                         // Render items by passing array with result items
                         render(results);
+                    },
+                    onChange: vm.next,
+                    onOpen: function(e) {
+                      $('.city-navi-button .f7-icons').text('chevron_up');
+                    },
+                    onClose: function(e) {
+                      $('.city-navi-button .f7-icons').text('chevron_down');
                     }
                 });
+                return autocompleteDropdownPlaceholder;
             };
-            autocomplete();
+            vm.autocomplete = autocomplete();
+
+            vm.toggleSelect = function() {
+              vm.autocomplete;
+            }
+
             var points = _.map(citylist, function(city) {
               return [city.longitude, city.latitude, city.name];
             })
