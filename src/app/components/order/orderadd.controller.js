@@ -166,7 +166,7 @@
                 date: $scope.orderInfo.date,
                 timeSlot: $scope.orderInfo.interval,
                 passengers: $scope.psgs,
-                contact:{mobile:$scope.orderInfo.contactMobile},
+                contact:{mobile:$scope.orderInfo.contactMobile}
 
             };
 
