@@ -44,6 +44,9 @@
                         seatPrice:data.aircraftItem.seatPrice,
                         type:data.type
                     };
+
+                    $scope.passengers = data.passengers;
+
                 }else{
                     $scope.istour = false;
                     var price = data.chartered ? data.airTransport.aircraftItems[0].price : (data.airTransport.aircraftItems[0].seatPrice * data.passengers.length);
@@ -61,6 +64,8 @@
                         seatPrice:data.airTransport.aircraftItems[0].seatPrice,
                         type:data.type
                     };
+
+                    $scope.passengers = data.passengers;//passenger identity
                 }
 
 
