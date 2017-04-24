@@ -18,6 +18,9 @@
             angular.element('#airjet-back').attr('href', constdata.router.airjet.travel)
         }
 
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
+
+
         function jumpOrder() {
             var page = queryData.page || 'travel-detail';
             mainView.router.loadPage('app/components/airjet/' + page + '.html?order=' + queryData.order);
