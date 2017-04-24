@@ -84,6 +84,7 @@
                             // $scope.items[tabIndex][index].status = 'cancelled';
                             // $scope.$apply();
                             updateStatus(orderId,'cancelled');
+                            //TODO:放到已取消里面
                         });
                     },function (err) {
                         showErrorAlert(err);
