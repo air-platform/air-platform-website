@@ -51,7 +51,7 @@
                         orderNo: data.orderNo,
                         creationDate:data.creationDate,
                         flight: data.airTransport.aircraftItems[0].aircraft.name,
-                        date: data.airTransport.date,
+                        date: data.date,
                         departure:data.airTransport.flightRoute.departure,
                         arrival:data.airTransport.flightRoute.arrival,
                         time:data.airTransport.timeEstimation,
