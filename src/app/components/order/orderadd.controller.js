@@ -36,6 +36,7 @@
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
+            $scope.orderInfo.aircraftItemId = planeModel.aircraft.id;
             $scope.orderInfo.flight = planeModel.aircraft.name;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
@@ -56,6 +57,7 @@
             var site = pageData.site;
             var tourPoints = site.tourPoint.split(';');
             $scope.orderInfo.flightId = site.aircraftItems[0].product;
+            $scope.orderInfo.aircraftItemId = site.aircraftItems[0].id;
             $scope.orderInfo.flight = site.aircraftItems[0].aircraft.name;
             $scope.orderInfo.charter.capacity = site.aircraftItems[0].aircraft.minPassengers;
             $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
@@ -67,6 +69,7 @@
             $scope.orderInfo.time = site.tourTime;
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
+
         }
 
         // 获取 f7 页面
@@ -166,8 +169,8 @@
                 date: $scope.orderInfo.date,
                 timeSlot: $scope.orderInfo.interval,
                 passengers: $scope.psgs,
-                contact:{mobile:$scope.orderInfo.contactMobile}
-
+                contact:{mobile:$scope.orderInfo.contactMobile},
+                aircraftItem:''
             };
 
             OrderServer.submitOrder(param,function (res) {
