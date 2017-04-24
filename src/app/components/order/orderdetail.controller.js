@@ -10,7 +10,6 @@
     function orderdetailController($scope,OrderServer,$interval,iotUtil,constdata) {
         var query = myApp.views[0].activePage.query;
         var orderId = query.order;
-        $scope.type = query.type;
 
         $scope.just4Show = true;
         $scope.agreement = false;
