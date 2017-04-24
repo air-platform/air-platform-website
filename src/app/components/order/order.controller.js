@@ -147,7 +147,7 @@
                     $scope.items[tabIndex] = tempData;
                 }
 
-                // console.log(data);
+                console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
@@ -191,9 +191,7 @@
                 }else if (type === 'airtransport'){
                     d.showTitle = d.airTransport.flightRoute.departure + ' → ' + d.airTransport.flightRoute.arrival;
                     d.showSubtitle = d.airTransport.family;
-                    if (d.airTransport.aircraftItems && d.airTransport.aircraftItems.length !== 0){
-                        d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.passengerNum);
-                    }
+                    d.price = d.chartered ? d.aircraftItem.price : (d.aircraftItem.seatPrice * d.passengers.length);
                 }else if (type === 'airtour'){
                     d.showTitle = d.airTour.name;
                     d.showSubtitle = d.airTour.description;
@@ -201,7 +199,7 @@
                 }else if (type === 'airtaxi'){
                     d.showTitle = d.airTaxi.departure + ' → ' + d.airTaxi.arrival;
                     d.showSubtitle = d.airTaxi.name;
-                    d.price = d.airTaxi.chartered ? d.aircraftItem.price : (d.aircraftItem.seatPrice * d.passengers.length);
+                    d.price = d.chartered ? d.aircraftItem.price : (d.aircraftItem.seatPrice * d.passengers.length);
                 }else {
                     d.showTitle = 'unknown';
                     d.showSubtitle = '';
