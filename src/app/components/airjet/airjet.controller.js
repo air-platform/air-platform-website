@@ -125,7 +125,7 @@
                 page: cardPage,
                 pageSize: 10
             };
-            var cardArr = ['金', '钻石', '尊享', '精英', '飞翔', '悠游', '翱翔']
+            var cardArr = ['金', '尊享', '精英', '飞翔', '悠游', '翱翔']
             NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD), data, function (response) {
                 var result = [];
                 response.data.content.forEach(function (item) {
