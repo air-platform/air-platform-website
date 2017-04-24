@@ -60,8 +60,7 @@
 
         var init = function() {
           mainView.pageData = mainView.pageData || {};
-          if (queryData != null){
-              console.log("$$$$$$$$ " + queryData.tourId);
+          if (queryData.tourId != null){
               loadTourData(queryData.tourId);
           }else{
               vm.site = mainView.pageData.site;
