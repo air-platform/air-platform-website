@@ -26,7 +26,7 @@
                 var data = res.data;
 
 
-                if ($scope.type === 'airtour'){
+                if (data.type === 'airtour'){
                     var tourPoints = data.airTour.tourPoint.split(';');
                     var price = data.chartered ? data.aircraftItem.price : (data.aircraftItem.seatPrice * data.passengers.length);
                     $scope.istour = true;
@@ -47,7 +47,26 @@
 
                     $scope.passengers = data.passengers;
 
-                }else{
+                }else if (data.type === 'airtaxi'){
+                    $scope.istour = false;
+                    var price = data.chartered ? data.airTaxi.aircraftItems[0].price : (data.airTaxi.aircraftItems[0].seatPrice * data.passengers.length);
+                    $scope.orderInfo = {
+                        orderNo: data.orderNo,
+                        creationDate:data.creationDate,
+                        flight: data.airTaxi.aircraftItems[0].aircraft.name,
+                        date: data.date,
+                        departure:data.airTaxi.departure,
+                        arrival:data.airTaxi.arrival,
+                        time:data.airTaxi.timeEstimation,
+                        capacity:data.airTaxi.aircraftItems[0].aircraft.seats,
+                        interval:data.timeSlot,
+                        price:price,
+                        seatPrice:data.airTaxi.aircraftItems[0].seatPrice,
+                        type:data.type
+                    };
+
+                    $scope.passengers = data.passengers;//passenger identity
+                }else {
                     $scope.istour = false;
                     var price = data.chartered ? data.airTransport.aircraftItems[0].price : (data.airTransport.aircraftItems[0].seatPrice * data.passengers.length);
                     $scope.orderInfo = {
