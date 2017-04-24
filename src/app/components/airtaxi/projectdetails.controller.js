@@ -10,6 +10,7 @@
     function airtaxiDetailsController($scope,CommentServer,$timeout,mapUtilsService,NetworkService) {
         /* jshint validthis: true */
         var vm = this;
+        var queryData = myApp.views[0].activePage.query;
 
         var drawMap = function(target, points) {
             var map = new BMap.Map(target);
@@ -37,18 +38,44 @@
             });
             map.addOverlay(curve);
         }
+
+        var loadTourData = function(id) {
+            NetworkService.get("tours/" + id,null, function(res) {
+                console.log(res);
+                vm.site = res.data;
+                vm.city = res.data.city;
+                vm.mapPoints = mapUtilsService.extractPoints(vm.site.tourPoint);
+                angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
+                drawMap("airtaxi-details-map-view", vm.mapPoints);
+                /** 获取评论 **/
+                $scope.score = vm.site.score;
+                $scope.productId = vm.site.id;
+                getLatestFirstComment();
+            }, function(res) {
+                NotificationService.alert.error(res.statusText, null);
+            });
+        }
+
+
+
         var init = function() {
           mainView.pageData = mainView.pageData || {};
-          vm.site = mainView.pageData.site;
-          vm.mapPoints = mapUtilsService.extractPoints(vm.site.tourPoint);
-          vm.city = mainView.pageData.city;
-          angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
-          drawMap("airtaxi-details-map-view", vm.mapPoints);
+          if (queryData != null){
+              console.log("$$$$$$$$ " + queryData.tourId);
+              loadTourData(queryData.tourId);
+          }else{
+              vm.site = mainView.pageData.site;
+              vm.city = mainView.pageData.city;
+              vm.mapPoints = mapUtilsService.extractPoints(vm.site.tourPoint);
+              angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
+              drawMap("airtaxi-details-map-view", vm.mapPoints);
 
-            /** 获取评论 **/
-            $scope.score = vm.site.score;
-            $scope.productId = vm.site.id;
-            getLatestFirstComment();
+              /** 获取评论 **/
+              $scope.score = vm.site.score;
+              $scope.productId = vm.site.id;
+              getLatestFirstComment();
+          }
+
 
 
         }
