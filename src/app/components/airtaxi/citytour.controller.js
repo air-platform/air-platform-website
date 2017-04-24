@@ -10,7 +10,7 @@
   angular.module('airsc').controller('citytourController', citytourController);
 
   /** @ngInject */
-  function citytourController($scope, mapUtilsService, NotificationService,
+  function citytourController($scope, $timeout, mapUtilsService, NotificationService,
     NetworkService, scheduleUtilsService) {
     var controller = this;
     var citys = ['北京', '桂林', '海南', '宁波'];
@@ -33,6 +33,7 @@
       }];
       controller.mapPoints = controller.mapPoints || [];
       controller.taxiRoutes = [];
+      controller.map = {};
 
       setTimeout(function() {
         controller.datepicker = createDatePicker();
@@ -111,6 +112,21 @@
         )
       );
       mainView.router.loadPage(goto);
+    }
+
+    controller.curvePoints = function(transports, flight) {
+      var route = _.find(transports, function(transport){
+          return transport.departure == flight.departure &&
+                 transport.arrival == flight.arrival;
+      });
+      if(route) {
+        var departure = _.map(route.departLoc.split(','), function(num){ return parseFloat(num); });
+        var arrival = _.map(route.arrivalLoc.split(','), function(num){ return parseFloat(num); });
+        return [[route.departure, departure[0], departure[1]],
+                [route.arrival, arrival[0], arrival[1]]];
+      } else {
+        return [];
+      }
     }
 
     // TODO: dynamic loading
@@ -215,12 +231,33 @@
       }
     });
 
+    $scope.$watch('schedules', function(newValue, oldValue){
+      function routesEqual(flight1, flight2) {
+        return flight1.departure == flight2.departure &&
+              flight1.arrival == flight2.arrival;
+      }
+      if(!routesEqual(newValue[0], oldValue[0])) {
+        mapUtilsService.removeMarkedCurve(controller.map);
+        if(newValue[0].departure && newValue[0].arrival) {
+          if(!_.contains(controller.arrivals($scope.routes, newValue[0].departure), newValue[0].arrival)) {
+            $timeout(function() {
+              $scope.schedules[0].arrival= '';
+            });
+          }
+          var points = controller.curvePoints(controller.taxiRoutes, $scope.schedules[0]);
+          if (!_.isEmpty(points)) {
+            mapUtilsService.markCurve(controller.map, points);
+          }
+        }
+      }
+    }, true);
+
     $scope.$watch(function() {
       return controller.mapPoints;
     }, function(newValue, oldValue) {
       if (newValue != oldValue && !_.isEmpty(newValue)) {
-        mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints, {
-          markers: true
+        controller.map = mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints, {
+          markers: true, curves: true
         });
       }
     });
