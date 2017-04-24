@@ -23,7 +23,7 @@
                         <div class="air-order-item">
                             {{'airjet.start-time' | translate}}{{plan.date | date: 'yyyy-MM-dd' | chinaweek}}
                         </div>
-                        <div class="air-order-item radius-bottom">
+                        <div class="air-order-item" ng-class="plan.round ? '' : 'guest-num'">
                             {{'airjet.guest-count' | translate}}{{plan.passengers}}{{'airjet.person' | translate}}
                         </div>
                     </div>
@@ -36,16 +36,22 @@
                         <div class="air-order-item">
                             {{'airjet.start-time' | translate}}{{plan.endTime | date: 'yyyy-MM-dd' | chinaweek}}
                         </div>
-                        <div class="air-order-item radius-bottom">
+                        <div class="air-order-item">
                             {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
                         </div>
                     </div>
                 </div>
+                <div class="triangle-container">
+                    <span class="triangle"></span>
+                </div>
                 <div class="air-order-item aoi-guest radius-top" ng-show="detailData.fleetCandidates.length">
                     {{'airjet.options' | translate}}
                 </div>
-                <div class="air-order-item aoi-model-info radius-bottom" ng-show="detailData.fleetCandidates.length" ng-class="detailData.fleetCandidates.length ? '' : 'no-padding'">
+                <div class="air-order-item aoi-model-info" ng-show="detailData.fleetCandidates.length" ng-class="detailData.fleetCandidates.length ? '' : 'no-padding'">
                     <div ng-repeat="model in detailData.fleetCandidates track by $index" ng-bind="model.fleet.name"></div>
+                </div>
+                <div class="triangle-container">
+                    <span class="triangle"></span>
                 </div>
                 <div class="air-order-item aoi-guest radius-top">
                     {{'airjet.guest-info' | translate}}

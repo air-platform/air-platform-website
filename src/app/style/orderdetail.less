@@ -1,7 +1,14 @@
 .air-order-detail {
   padding: 0.34rem;
   color: @font-gray;
-
+  .triangle-container {
+    .triangle {
+      right: .88rem;
+    }
+  }
+  .guest-num{
+    margin-bottom: .1rem;
+  }
   .air-order-item {
     background-color: @bg-white;
     .text-vertical-center(0.88rem);
@@ -39,6 +46,9 @@
       height: auto;
       line-height: initial;
       padding: .6rem .4rem;
+      border: none;
+      margin-bottom: .1rem;
+      border-radius: 0 0 .16rem .16rem!important;
       .arrow-right{
         width: .62rem;
         margin-left: 0;
@@ -74,7 +84,7 @@
       font-size: .36rem;
       height: 1.4rem;
       line-height: 1.4rem;
-      margin-bottom: .2rem;
+      margin-bottom: .1rem;
       border: none!important;
     }
     &.air-order-item.radius-top-bottom.no-border{

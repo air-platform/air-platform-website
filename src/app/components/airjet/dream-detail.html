@@ -11,7 +11,7 @@
         <!-- Scrollable page content-->
         <div class="page-content travel-detail-check">
             <div class="air-order-detail">
-                <div class="air-order-item radius-top-bottom" ng-class="!detailData.flightLegs ? 'no-border' : ''">
+                <div class="air-order-item radius-top-bottom">
                     <span class="pull-left">{{'airjet.order-numver' | translate}}{{detailData.orderNo}}</span>
                     <!--<i class="fa fa-trash-o pull-right" ng-click="removeOrder(detailData)"></i>-->
                 </div>
@@ -20,6 +20,9 @@
                 </div>
                 <div class="air-order-item">
                     {{'airjet.plane-time' | translate}}{{detailData.ferryFlight.date | date: 'yyyy-MM-dd'}}
+                </div>
+                <div class="air-order-item">
+                    {{'airjet.plane-people' | translate}}{{detailData.passengers}}人
                 </div>
                 <div class="air-order-item air-city">
                     <div class="order-location-info">
@@ -32,13 +35,13 @@
                         <div ng-bind="detailData.ferryFlight.endTime"></div>
                     </div>
                 </div>
-                <div class="air-order-item">
-                    {{'airjet.plane-people' | translate}}{{detailData.passengers}}人
+                <div class="triangle-container">
+                    <span class="triangle"></span>
                 </div>
-                <div class="air-order-item aoi-guest radius-top">
+                <div class="air-order-item aoi-guest radius-top-bottom">
                     {{'airjet.guest-info' | translate}}
                 </div>
-                <div class="air-order-item aoi-guest-info radius-bottom">
+                <div class="air-order-item aoi-guest-info radius-top-bottom">
                     <div>{{'airjet.name' | translate}} {{detailData.contact.person}}</div>
                     <div>{{'airjet.phone' | translate}} {{detailData.contact.mobile}}</div>
                     <div>{{'airjet.email' | translate}} {{detailData.contact.email}}</div>
