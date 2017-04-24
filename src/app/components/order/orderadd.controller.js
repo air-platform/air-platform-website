@@ -31,7 +31,7 @@
         var pageData = mainView.pageData;
         var pageType = pageData.type;
         console.log(pageData);
-        if (pageType && pageType === 'transportation'){//从air transportation过来
+        if (pageType && (pageType === 'transportation' || pageType === 'airtaxi')){//从air transportation过来
             $scope.istour = false;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
