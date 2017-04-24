@@ -7,9 +7,14 @@
     angular.module('airsc').controller('tourDetailController', tourDetailController);
 
     /** @ngInject */
-    function tourDetailController($scope, $timeout, NotificationService, NetworkService, UrlService, URL, REGEX) {
+    function tourDetailController($scope, $timeout, StorageService, constdata, NotificationService, NetworkService, UrlService, URL, REGEX) {
         var queryData = myApp.views[0].activePage.query;
         $scope.tourData = {};
+
+        var information = StorageService.get(constdata.information);
+        $scope.tourData = {name:information.realName,phone:information.mobile,email:information.email};
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
+
         $scope.submit = submit;
         if (queryData.id) {
             $timeout(function(){
