@@ -16,6 +16,7 @@
             token:'airspc_access_token',
             information:'airspc_information',
             notification_refresh_information:'airspc_notification_refresh_information',
+            notification_refresh_order_status:'notification_refresh_order_status',
             account_list:'aircommunity.account.list',
             page:{size:20},
             router:{

@@ -104,7 +104,7 @@
                 <div class="order-add-person">
                     <div class="order-title">请选择乘机人</div>
                     <div class="order-person">
-                        <span ng-repeat="p in passengers track by $index">
+                        <span class="order-person-item" ng-repeat="p in passengers track by $index">
                             <a href="#" class="button ng-scope" ng-class="{'button-active': (p.isSelected)}" ng-click="selectPassengerAction($index)">{{p.name}}</a>
                         </span>
                         <a href="#" data-popup=".popup-passenger" class="button btn-add open-about open-popup"><i class="f7-icons">add_round</i> &nbsp;新增</a>
@@ -217,9 +217,9 @@
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">电话号码</div>
+                                        <div class="item-title label">手机号</div>
                                         <div class="item-input">
-                                            <input type="text" ng-model="newPerson.mobile" placeholder="请输入电话号码">
+                                            <input type="text" ng-model="newPerson.mobile" placeholder="请输入手机号码">
                                         </div>
                                     </div>
                                 </div>

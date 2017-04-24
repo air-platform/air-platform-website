@@ -96,7 +96,7 @@
 
 
         function selectPassengerAction(index) {
-            if ($scope.psgs.length >= $scope.orderInfo.capacity){
+            if (!$scope.passengers[index].isSelected && $scope.psgs.length >= $scope.orderInfo.capacity){
                 myApp.alert('本次航班只能乘坐' + $scope.orderInfo.capacity + '人');
                 return;
             }
@@ -191,8 +191,9 @@
 
             OrderServer.submitOrder(param,pageType,function (res) {
                 // console.log(res);
-                // var local = res.headers('location').split('/');
-                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'orderId=' + $scope.orderInfo.flightId);
+                var local = res.headers('location').split('/');
+                var nOrderId = local[local.length - 1];
+                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + nOrderId);
             },function (err) {
                 showErrorAlert(err);
             });
