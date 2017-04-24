@@ -13,7 +13,7 @@
         var cityPage = 1;
         var loading = false;
         var queryData = myApp.views[0].activePage.query;
-        $scope.travelStrokeList = [{ departure: '请选择', destination: '请选择' }];
+        $scope.travelStrokeList = [{ departure: '请选择', arrival: '请选择' }];
         $scope.cityShow = 20;
         $scope.citySearch = '';
         $scope.citySelect = citySelect;
@@ -84,7 +84,7 @@
         function citySelect(item) {
             if(queryData.index && queryData.name){
                 if(!$scope.travelStrokeList[queryData.index]) {
-                    $scope.travelStrokeList[queryData.index] = { departure: '请选择', destination: '请选择' };
+                    $scope.travelStrokeList[queryData.index] = { departure: '请选择', arrival: '请选择' };
                 }
                 $scope.travelStrokeList[queryData.index][queryData.name] = item.city;
             }
@@ -180,8 +180,8 @@
             var local = item.departure;
             $scope.travelStrokeList.map(function (opt, index) {
                 if (order === index) {
-                    opt.departure = opt.destination;
-                    opt.destination = local;
+                    opt.departure = opt.arrival;
+                    opt.arrival = local;
                     return;
                 }
             });
@@ -198,7 +198,7 @@
                         valid = false;
                         return;
                     }
-                    if (item.destination === '请选择') {
+                    if (item.arrival === '请选择') {
                         NotificationService.alert.success('请选择到达城市', null);
                         valid = false;
                         return;
@@ -215,7 +215,7 @@
                     }
                     base.push({
                         "departure": item.departure,
-                        "arrival": item.destination,
+                        "arrival": item.arrival,
                         "date": item.startTime,
                         "passengers": item.guestStart
                     });
@@ -231,7 +231,7 @@
                             return;
                         }
                         base.push({
-                            "departure": item.destination,
+                            "departure": item.arrival,
                             "arrival": item.departure,
                             "date": item.endTime,
                             "passengers": item.guestEnd
@@ -252,7 +252,7 @@
         };
 
         function addCard() {
-            $scope.travelStrokeList.push({ departure: '请选择', destination: '请选择' });
+            $scope.travelStrokeList.push({ departure: '请选择', arrival: '请选择' });
             StorageService.put('travel', $scope.travelStrokeList);
         };
 
