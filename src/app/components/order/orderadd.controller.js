@@ -110,6 +110,21 @@
             });
         }
         function addNewPassengerAction() {
+
+
+            //判断手机号、id、姓名
+
+            if (!$scope.newPerson.name || $scope.newPerson.name.length === 0){
+                myApp.alert('请输入姓名');
+                return;
+            }else if (!$scope.newPerson.identity || $scope.newPerson.identity.length !== 18){
+                myApp.alert('身份证号不正确');
+                return;
+            }else if (!$scope.newPerson.mobile || $scope.newPerson.mobile.length !== 11){
+                myApp.alert('手机号码不正确');
+                return;
+            }
+
             myApp.showIndicator();
             if ($scope.newPerson.isUpdate){
                 myApp.hideIndicator();
