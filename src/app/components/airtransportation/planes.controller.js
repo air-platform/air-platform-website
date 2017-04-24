@@ -14,70 +14,71 @@
         var controller = this;
 
         controller.planesContext = {
-          "page": 1,
-          "pageSize": 10,
-          "totalRecords": 0,
-          "hasContent": false,
-          "totalPages": 0,
-          "records": 0,
-          "hasPreviousPage": false,
-          "isFirstPage": true,
-          "hasNextPage": false,
-          "isLastPage": true
+            "page": 1,
+            "pageSize": 10,
+            "totalRecords": 0,
+            "hasContent": false,
+            "totalPages": 0,
+            "records": 0,
+            "hasPreviousPage": false,
+            "isFirstPage": true,
+            "hasNextPage": false,
+            "isLastPage": true
         };
 
         // TODO: variable cannot be accessed if refresh on this page
         var prevScope = angular.element($('[data-page=airtrans]')).scope() ||
-                         angular.element($('[data-page=citytour]')).scope();
+            angular.element($('[data-page=citytour]')).scope();
         mainView.pageData = mainView.pageData || {};
         controller.aircrafts = mainView.pageData.aircrafts;
         controller.planeModel = mainView.pageData.planeModel;
 
-        controller.select = function(plane, $event) {
-          $event.stopPropagation();
-          $event.preventDefault();
-          controller.planeSelected = plane;
-          setTimeout(
-            function(){
-              $($event.target).closest('li').find('label.label-checkbox input').prop("checked", true);
-              prevScope.schedules[0].flight = plane.aircraft.name;
-            },
-          0);
+        controller.select = function (plane, $event) {
+            $event.stopPropagation();
+            $event.preventDefault();
+            controller.planeSelected = plane;
+            setTimeout(
+                function () {
+                    $($event.target).closest('li').find('label.label-checkbox input').prop("checked", true);
+                    prevScope.schedules[0].flight = plane.aircraft.name;
+                    mainView.router.back();
+                },
+                0);
         };
 
-        controller.getEstimationTime = function(plane) {
-          // TODO: refactoring
-          if(prevScope.trans) {
-            var transport = _.find(prevScope.trans.transports, function(transport){
-              return _.isEqual(transport.aircraftItems, controller.aircrafts);
-            });
-            return transport.timeEstimation;
-          }
-          if(prevScope.ctl) {
-            var transport = _.find(prevScope.ctl.taxiRoutes, function(transport) {
-              return _.isEqual(transport.aircraftItems, controller.aircrafts);
-            });
-            return transport.duration;
-          }
-          return 0;
-        };
-
-        controller.init = function() {
-          if(controller.planeModel) {
-            var planeName = controller.planeModel;
-            controller.planeSelected = _.find(controller.aircrafts, function(item) {
-              return item.aircraft.name == planeName;
-            });
-          }
-          $.each($("#planes-selection").find("li"), function(i, el) {
-            if($(el).find(".plane-name").text() == controller.planeModel) {
-              $(el).trigger('click');
+        controller.getEstimationTime = function (plane) {
+            // TODO: refactoring
+            if (prevScope.trans) {
+                var transport = _.find(prevScope.trans.transports, function (transport) {
+                    return _.isEqual(transport.aircraftItems, controller.aircrafts);
+                });
+                return transport.timeEstimation;
             }
-          });
+            if (prevScope.ctl) {
+                var transport = _.find(prevScope.ctl.taxiRoutes, function (transport) {
+                    return _.isEqual(transport.aircraftItems, controller.aircrafts);
+                });
+                return transport.duration;
+            }
+            return 0;
         };
 
-        setTimeout(function(){
-          controller.init();
+        controller.init = function () {
+            if (controller.planeModel) {
+                var planeName = controller.planeModel;
+                controller.planeSelected = _.find(controller.aircrafts, function (item) {
+                    return item.aircraft.name == planeName;
+                });
+            }
+            $.each($("#planes-selection").find("li"), function (i, el) {
+                if ($(el).find(".plane-name").text() == controller.planeModel) {
+                    $(el).trigger('click');
+                }
+            });
+        };
+
+        setTimeout(function () {
+            controller.init();
         }, 0);
     }
 

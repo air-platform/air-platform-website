@@ -39,8 +39,14 @@
         function addPassenger(param,successHandler,failedHandler) {//name、mobile、identity
             NetworkService.post('user/passengers',param,successHandler,failedHandler);
         }
-        function submitOrder(param,successHandler,failedHandler) {//name、mobile、identity
-            NetworkService.post('user/airtransport/orders/',param,successHandler,failedHandler);
+        function submitOrder(param,type,successHandler,failedHandler) {//name、mobile、identity
+            if (type === 'transportation'){
+                NetworkService.post('user/airtransport/orders/',param,successHandler,failedHandler);
+            }else if (type === 'airtour') {
+                NetworkService.post('user/airtour/orders/',param,successHandler,failedHandler);
+            }else {
+                NetworkService.post('user/airtaxi/orders/',param,successHandler,failedHandler);
+            }
         }
         function cancelOrder(flightId,successHandler,failedHandler) {
             NetworkService.post('user/orders/' + flightId + '/cancel',null,successHandler,failedHandler);

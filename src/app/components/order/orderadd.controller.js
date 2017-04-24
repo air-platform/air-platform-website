@@ -25,14 +25,14 @@
         //乘客及联系人信息
         $scope.passengers = [];
         $scope.psgs = [];
-        $scope.istransportation = true;
+        $scope.istour = false;
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
-        var pageType = pageData.from;
+        var pageType = pageData.type;
         console.log(pageData);
-        if (pageType && pageType === 'airtrans'){//从air transportation过来
-            $scope.istransportation = true;
+        if (pageType && (pageType === 'transportation' || pageType === 'airtaxi')){//从air transportation过来
+            $scope.istour = false;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
@@ -52,8 +52,8 @@
             date = date.replace('日','');
             $scope.orderInfo.date = date;
 
-        }else if (pageType && pageType === 'airtaxi'){
-            $scope.istransportation = false;
+        }else {
+            $scope.istour = true;
             var site = pageData.site;
             var tourPoints = site.tourPoint.split(';');
             $scope.orderInfo.flightId = site.aircraftItems[0].product;
@@ -63,13 +63,12 @@
             $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
             $scope.orderInfo.charterAll.price = site.aircraftItems[0].price;
             // $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
-            $scope.orderInfo.capacity = tourPoints.length;//tourPoint
+            $scope.orderInfo.capacity = tourPoints.length + '景点';//tourPoint
             // $scope.orderInfo.flight = site.name;
-            $scope.orderInfo.interval = site.tourDistance;
-            $scope.orderInfo.time = site.tourTime;
+            $scope.orderInfo.interval = site.tourTime + '分钟';
+            $scope.orderInfo.time = site.tourDistance + '公里';
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
-
         }
 
         // 获取 f7 页面
@@ -111,6 +110,21 @@
             });
         }
         function addNewPassengerAction() {
+
+
+            //判断手机号、id、姓名
+
+            if (!$scope.newPerson.name || $scope.newPerson.name.length === 0){
+                myApp.alert('请输入姓名');
+                return;
+            }else if (!$scope.newPerson.identity || $scope.newPerson.identity.length !== 18){
+                myApp.alert('身份证号不正确');
+                return;
+            }else if (!$scope.newPerson.mobile || $scope.newPerson.mobile.length !== 11){
+                myApp.alert('手机号码不正确');
+                return;
+            }
+
             myApp.showIndicator();
             if ($scope.newPerson.isUpdate){
                 myApp.hideIndicator();
@@ -165,6 +179,8 @@
 
             var param = {
                 airTransport:$scope.orderInfo.flightId,
+                airTaxi:$scope.orderInfo.flightId,
+                airTour:$scope.orderInfo.flightId,
                 chartered: $scope.orderInfo.chartered,
                 date: $scope.orderInfo.date,
                 timeSlot: $scope.orderInfo.interval,
@@ -173,7 +189,7 @@
                 aircraftItem:$scope.orderInfo.aircraftItemId
             };
 
-            OrderServer.submitOrder(param,function (res) {
+            OrderServer.submitOrder(param,pageType,function (res) {
                 console.log(res);
                 var local = res.headers('location').split('/');
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);

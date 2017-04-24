@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderListController', orderListController);
 
     /** @ngInject */
-    function orderListController($scope,OrderServer,NotificationService,$timeout,constdata) {
+    function orderListController($scope,OrderServer,NotificationService,$timeout,constdata,iotUtil) {
 
         var loadings = [false,false,false,false];
         var loadingPages = [1,1,1,1];
@@ -133,6 +133,7 @@
                     $scope.items[tabIndex] = tempData;
                 }
 
+                console.log(data);
                 loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
@@ -142,6 +143,8 @@
 
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
+
+                showErrorAlert(err);
             });
         }
         function dealOrderData(data) {
@@ -154,9 +157,15 @@
                     d.showSubtitle = '';
                     d.price = d.chartered ? d.ferryFlight.price : d.ferryFlight.seatPrice * d.passengers;
                 }else if (type === 'fleet') {
-                    d.showTitle = d.flightLegs[0].departure + ' → ' + d.flightLegs[0].arrival;
-                    d.showSubtitle = d.fleetCandidates[0].fleet.name;
-                    d.price = d.fleetCandidates[0].fleet.price;
+                    if (d.flightLegs && d.flightLegs.length !== 0){
+                        d.showTitle = d.flightLegs[0].departure + ' → ' + d.flightLegs[0].arrival;
+                    }
+                    if (d.fleetCandidates && d.fleetCandidates.length !== 0){
+                        d.showSubtitle = d.fleetCandidates[0].fleet.name;
+                        d.price = d.fleetCandidates[0].fleet.price;
+                    }else{
+                        d.price = 0;
+                    }
                 }else if (type === 'jetcard') {
                     d.showTitle = d.jetCard.name + ' ' + d.jetCard.summary;
                     d.showSubtitle = d.jetCard.description;
@@ -166,10 +175,11 @@
                     d.showSubtitle = d.course.location;
                     d.price = d.course.price;
                 }else if (type === 'airtransport'){
-                    console.log(d);
                     d.showTitle = d.airTransport.flightRoute.departure + ' → ' + d.airTransport.flightRoute.arrival;
                     d.showSubtitle = d.airTransport.family;
-                    d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.passengerNum);
+                    if (d.airTransport.aircraftItems && d.airTransport.aircraftItems.length !== 0){
+                        d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.passengerNum);
+                    }
                 }else {
                     d.showTitle = 'unknown';
                     d.showSubtitle = '';
@@ -190,6 +200,7 @@
         function updateDisplayLoadingStatus() {
             $timeout(function () {
                 $scope.loading = loadings[tabIndexNow];
+                $scope.$apply();
             },500);
         }
 
