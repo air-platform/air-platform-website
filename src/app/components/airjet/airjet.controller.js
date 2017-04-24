@@ -297,6 +297,7 @@
 
         function jumpCity(index, name) {
             if (angular.isNumber(index) && name) {
+                StorageService.put('travel', $scope.travelStrokeList);
                 mainView.router.load({url:'app/components/airjet/travel-city.html?index=' + index + '&name=' + name, pushState: false})
             }
         };
