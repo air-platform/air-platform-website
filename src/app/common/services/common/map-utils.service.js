@@ -7,6 +7,7 @@
 
     //TODO: to find a better way
     if (!window.markedOverlays) window.markedOverlays = [];
+    if (!window.mapDrawPointRoutes) window.mapDrawPointRoutes = [];
 
     function mapUtilsService() {
         var extractPoints = function(pointsStr) {
@@ -27,6 +28,7 @@
             map.disableDoubleClickZoom();
             map.disablePinchToZoom();
             var routes = parseSingleRoutes(points); // return array of arrays
+            window.mapDrawPointRoutes = routes;
             var markerPoints = parseMarkers(points); // return array of BMap.Point
             map.setViewport(markerPoints);
 
@@ -34,7 +36,7 @@
               addMarkers(markerPoints);
             }
             if(config.curves) { // draw curve routes
-              drawCurves(routes);
+              drawCurves(map, routes);
             }
 
             function parseSingleRoutes(points) {
@@ -48,18 +50,6 @@
                   }
               }
               return routes;
-            }
-
-            function parseMarkers(points) {
-              var locs = [];
-              for (var i = 0; i < points.length; i++) {
-                if(_.find(locs, function(pt) { return _.isEqual(pt, points[i]); }) == null) {
-                  locs.push(points[i]);
-                }
-              }
-              return _.map(locs, function(loc){
-                return new BMap.Point(loc[1], loc[2]);
-              });
             }
 
             function addMarkers(markerPoints) {
@@ -86,27 +76,11 @@
               });
             }
 
-            function drawCurves(routes) {
-              for (var i = 0; i < routes.length; i++) {
-                  var pt1 = new BMap.Point(routes[i][0][1], routes[i][0][2]);
-                  var pt2 = new BMap.Point(routes[i][1][1], routes[i][1][2]);
-                  var route = pt1.lng<pt2.lng?[pt1, pt2]:[pt2, pt1];
-                  var curve = new BMapLib.CurveLine(route, {
-                      strokeColor: "gray",
-                      strokeWeight: 5,
-                      strokeOpacity: 0.5
-                  });
-                  var content = routes[i][0][0];
-                  map.addOverlay(curve);
-                  addClickHandler(curve, i);
-              }
-            }
-
             function addClickHandler(curve) {
                 curve.addEventListener("click", function(e) {
                     while (window.markedOverlays.length > 0) map.removeOverlay(window.markedOverlays.pop());
                     window.markedOverlays.push(selectRouting(e.target));
-                    window.markedOverlays.push(addCurveMarker(e.target));
+                    window.markedOverlays.push(addCurveMarker(map, e.target));
                     $('body').trigger("airtrans.selectRoute", e.target);
                 });
             }
@@ -125,31 +99,88 @@
                 return curve;
             }
 
-            function getOverlayOffset(pointA, pointB) {
-                var delta = 0.07
-                var center = [(pointA[0] + pointB[0]) / 2.0, (pointA[1] + pointB[1]) / 2.0];
-                if (Math.abs(pointB[1] - pointA[1]) < 0.000001) return [center[0], center[1] + delta];
-                if (Math.abs(pointB[0] - pointA[0]) < 0.000001) return [center[0] + delta, center[1]];
-                var r = (pointB[1] - pointA[1]) / (pointB[0] - pointA[0]);
-                return [center[0] + delta, center[1] - delta / r];
-            }
-
-            function addCurveMarker(target) {
-                var copter = new BMap.Icon("assets/images/helicopter.png", new BMap.Size(34, 27), {
-                    offset: new BMap.Size(10, 25)
-                });
-                var data = target.cornerPoints
-                var point = getOverlayOffset([data[0].lng, data[0].lat], [data[1].lng, data[1].lat]);
-                var marker = new BMap.Marker(new BMap.Point(point[0], point[1]), {
-                    icon: copter
-                });
-                map.addOverlay(marker);
-                return marker;
-            }
+            return map;
         };
 
+        function drawCurves(map, routes) {
+          for (var i = 0; i < routes.length; i++) {
+              var pt1 = new BMap.Point(routes[i][0][1], routes[i][0][2]);
+              var pt2 = new BMap.Point(routes[i][1][1], routes[i][1][2]);
+              var route = pt1.lng<pt2.lng?[pt1, pt2]:[pt2, pt1];
+              var curve = new BMapLib.CurveLine(route, {
+                  strokeColor: "gray",
+                  strokeWeight: 5,
+                  strokeOpacity: 0.5
+              });
+              var content = routes[i][0][0];
+              map.addOverlay(curve);
+              // addClickHandler(curve, i);
+          }
+        }
+
+        function parseMarkers(points) {
+          var locs = [];
+          for (var i = 0; i < points.length; i++) {
+            if(_.find(locs, function(pt) { return _.isEqual(pt, points[i]); }) == null) {
+              locs.push(points[i]);
+            }
+          }
+          return _.map(locs, function(loc){
+            return new BMap.Point(loc[1], loc[2]);
+          });
+        }
+
+        function getOverlayOffset(pointA, pointB) {
+            var delta = 0.07
+            var center = [(pointA[0] + pointB[0]) / 2.0, (pointA[1] + pointB[1]) / 2.0];
+            if (Math.abs(pointB[1] - pointA[1]) < 0.000001) return [center[0], center[1] + delta];
+            if (Math.abs(pointB[0] - pointA[0]) < 0.000001) return [center[0] + delta, center[1]];
+            var r = (pointB[1] - pointA[1]) / (pointB[0] - pointA[0]);
+            return [center[0] + delta, center[1] - delta / r];
+        }
+
+        var markCurve = function(map, points) {
+          var pt1 = new BMap.Point(points[0][1], points[0][2]);
+          var pt2 = new BMap.Point(points[1][1], points[1][2]);
+          var route = pt1.lng<pt2.lng?[pt1, pt2]:[pt2, pt1];
+          var curve = new BMapLib.CurveLine(route, {
+              strokeColor: "red",
+              strokeWeight: 5,
+              strokeOpacity: 0.5
+          });
+          map.addOverlay(curve);
+          var icon = addCurveMarker(map, curve);
+          window.markedOverlays.push(curve);
+          window.markedOverlays.push(icon);
+        };
+
+        var addCurveMarker = function(map, target) {
+          var copter = new BMap.Icon("assets/images/helicopter.png", new BMap.Size(34, 27), {
+              offset: new BMap.Size(10, 25)
+          });
+          var data = target.cornerPoints
+          var point = getOverlayOffset([data[0].lng, data[0].lat], [data[1].lng, data[1].lat]);
+          var marker = new BMap.Marker(new BMap.Point(point[0], point[1]), {
+              icon: copter
+          });
+          map.addOverlay(marker);
+          return marker;
+        }
+
+        var removeMarkedCurve = function(map) {
+          // TODO: Baidu map bug?: delete all overlays
+          var curves = _.filter(map.getOverlays(), function(overlay) {
+            return !!overlay.cornerPoints;
+          });
+          while (window.markedOverlays.length > 0)
+            map.removeOverlay(window.markedOverlays.pop());
+          while(curves.length > 0) map.removeOverlay(curves.pop());
+          drawCurves(map, window.mapDrawPointRoutes);
+        }
         return {
             'drawMap': drawMap,
+            'markCurve': markCurve,
+            'removeMarkedCurve': removeMarkedCurve,
             'extractPoints': extractPoints
         };
     }

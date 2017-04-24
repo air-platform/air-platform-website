@@ -10,7 +10,7 @@
     angular.module('airsc').controller('transController', transController);
 
     /** @ngInject */
-    function transController($scope, iotUtil, NetworkService, mapUtilsService,
+    function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
             NotificationService, scheduleUtilsService) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
@@ -21,12 +21,13 @@
         controller.mapPoints = [];
         controller.datepicker = {};
         controller.transports = [];
+        controller.map = {};
         $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
-        setTimeout(function() {
+        $timeout(function() {
           $('.airtrans-schedule-dateinput').each(function() {
             return createDatePicker(this);
           });
-        }, 1);
+        });
 
         var loadTransports = function(page, family) {
           var hasMore = true;
@@ -114,9 +115,9 @@
         //     };
         //     $scope.schedules.unshift(schedule);
         //     controller.datepicker = {};
-        //     setTimeout(function() {
+        //     $timeout(function() {
         //       controller.datepicker = createDatePicker();
-        //     }, 0);
+        //     });
         //   }
         // }
 
@@ -156,6 +157,19 @@
 
         controller.departures = function(routes) {
           return scheduleUtilsService.departures(routes);
+        }
+
+        controller.curvePoints = function(transports, flight) {
+          var route = _.find(transports, function(transport){
+              return transport.flightRoute.departure == flight.departure &&
+                     transport.flightRoute.arrival == flight.arrival;
+          });
+          if(route) {
+            return [[route.flightRoute.departure, route.flightRoute.departureLongitude, route.flightRoute.departureLatitude],
+                    [route.flightRoute.arrival, route.flightRoute.arrivalLongitude, route.flightRoute.arrivalLatitude]];
+          } else {
+            return [];
+          }
         }
 
         var parseRoutes = function(transports) {
@@ -212,13 +226,34 @@
           }
         });
 
+        $scope.$watch('schedules', function(newValue, oldValue){
+          function routesEqual(flight1, flight2) {
+            return flight1.departure == flight2.departure &&
+                  flight1.arrival == flight2.arrival;
+          }
+          if(!routesEqual(newValue[0], oldValue[0])) {
+            mapUtilsService.removeMarkedCurve(controller.map);
+            if(newValue[0].departure && newValue[0].arrival) {
+              if(!_.contains(controller.arrivals($scope.routes, newValue[0].departure), newValue[0].arrival)) {
+                $timeout(function() {
+                  $scope.schedules[0].arrival= '';
+                });
+              }
+              var points = controller.curvePoints(controller.transports, $scope.schedules[0]);
+              if (!_.isEmpty(points)) {
+                mapUtilsService.markCurve(controller.map, points);
+              }
+            }
+          }
+        }, true);
+
         $scope.$watch(function() {
           return controller.mapPoints;
         }, function(newValue, oldValue) {
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
                 var mapviewid = ($scope.family == "飞越海峡")?'airtrans-map-view-channel' : 'airtrans-map-view-mongolia';
-                mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true});
+                controller.map = mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true, markers: true});
               }
             }
           }
@@ -244,11 +279,11 @@
           $scope.$apply(function() {
             $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
           });
-          setTimeout(function() {
+          $timeout(function() {
             $('.airtrans-schedule-dateinput').each(function() {
               return createDatePicker(this);
             });
-          }, 1);
+          });
         });
     }
 
