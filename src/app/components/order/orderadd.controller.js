@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderaddController', orderaddController);
 
     /** @ngInject */
-    function orderaddController($scope,OrderServer,constdata) {
+    function orderaddController($scope,OrderServer,constdata,StorageService) {
 
 
         //订单信息
@@ -16,10 +16,13 @@
          charterAll 包机
          charter 拼座
         */
+
+        var information = StorageService.get(constdata.information);
+
         $scope.orderInfo = {
             flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'',interval:'',
             charterAll:{price:0,capacity:0},charter:{price:0,capacity:0},
-            contactMobile:'',
+            contactMobile:information.mobile,
             chartered:true
         };
         //乘客及联系人信息

@@ -106,7 +106,7 @@
             NetworkService.get(UrlService.getUrl(URL.PROFILE), null,function (response) {
 
                 var data = response.data;
-                var userInfo = {nickName:data.nickName,avatar:data.avatar,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
+                var userInfo = {nickName:data.nickName,mobile:data.mobile,avatar:data.avatar,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
 
                 StorageService.put(constdata.information,userInfo,24 * 7 * 60 * 60);//3 天过期
 
