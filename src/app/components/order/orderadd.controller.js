@@ -50,24 +50,19 @@
             $scope.orderInfo.date = date;
 
         }else if (pageType && pageType === 'airtaxi'){
-            console.log(pageData);
             var site = pageData.site;
-            $scope.orderInfo.flightId = site.aircraftItems[0].aircraft.product;
+            var tourPoints = site.tourPoint.split(';');
+            $scope.orderInfo.flightId = site.aircraftItems[0].product;
             $scope.orderInfo.flight = site.aircraftItems[0].aircraft.name;
             $scope.orderInfo.charter.capacity = site.aircraftItems[0].aircraft.minPassengers;
             $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
             $scope.orderInfo.charterAll.price = site.aircraftItems[0].price;
             // $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
-            $scope.orderInfo.capacity = site.tourDistance;
+            $scope.orderInfo.capacity = tourPoints.length;//tourPoint
             // $scope.orderInfo.flight = site.name;
-
-            // $scope.orderInfo.departure = schedules.departure;
-            // $scope.orderInfo.arrival = schedules.arrival;
-            $scope.orderInfo.interval = site.tourTime;
-            // var date = schedules.date.replace('年','-');
-            // date = date.replace('月','-');
-            // date = date.replace('日','');
-            // $scope.orderInfo.date = date;
+            $scope.orderInfo.interval = site.tourDistance;
+            $scope.orderInfo.time = site.tourTime;
+            $scope.orderInfo.date = pageData.tourdate;
         }
 
         // 获取 f7 页面
