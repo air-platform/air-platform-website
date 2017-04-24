@@ -7,9 +7,15 @@
     angular.module('airsc').controller('dreamInnerController', dreamInnerController);
 
     /** @ngInject */
-    function dreamInnerController($scope, $timeout, NotificationService, NetworkService, UrlService, URL, REGEX) {
+    function dreamInnerController($scope, $timeout, NotificationService,StorageService, NetworkService,constdata, UrlService, URL, REGEX) {
         var queryData = myApp.views[0].activePage.query;
         $scope.formData = {};
+
+
+        var information = StorageService.get(constdata.information);
+        $scope.formData = {name:information.realName,phone:information.mobile,email:information.email};
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
+
         $scope.submit = submit;
         if(queryData.id) {
             $timeout(function(){
