@@ -16,9 +16,10 @@
                 token = 'Bearer ' + token;
                 RestangularConfigurer.setDefaultHeaders({Authorization:token});
             }
-            // else {
+            else {
+                console.log('-----Set Authorization Null');
                 // RestangularConfigurer.setDefaultHeaders({Authorization:null});
-            // }
+            }
             RestangularConfigurer.setFullResponse(true);
         });
     }
@@ -45,11 +46,11 @@
 
         function post(path,param,successHandler,failedHandler) {
             var account = RestService.one(path);
-            var header = {};
-            if (path !== 'account/auth'){
-                header = requestHeader();
-            }
-            account.customPOST(param,"","",header).then(
+            // var header = {};
+            // if (path !== 'account/auth'){
+            //     header = requestHeader();
+            // }
+            account.customPOST(param,"","",requestHeader()).then(
                 successHandler,function (response) {
                     failedResponse(response,failedHandler,path);
                 }

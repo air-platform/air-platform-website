@@ -17,7 +17,7 @@
          charter 拼座
         */
         $scope.orderInfo = {
-            flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'约12:36分钟',interval:'08:00-09:00',
+            flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'',interval:'',
             charterAll:{price:0,capacity:0},charter:{price:0,capacity:0},
             contactMobile:'',
             chartered:true
@@ -25,15 +25,18 @@
         //乘客及联系人信息
         $scope.passengers = [];
         $scope.psgs = [];
+        $scope.istransportation = true;
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
         console.log(pageData);
         if (pageType && pageType === 'airtrans'){//从air transportation过来
+            $scope.istransportation = true;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
+            $scope.orderInfo.aircraftItemId = planeModel.aircraft.id;
             $scope.orderInfo.flight = planeModel.aircraft.name;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
@@ -49,9 +52,24 @@
             date = date.replace('日','');
             $scope.orderInfo.date = date;
 
-            console.log(pageData);
-        }else{
-            console.log(pageData);
+        }else if (pageType && pageType === 'airtaxi'){
+            $scope.istransportation = false;
+            var site = pageData.site;
+            var tourPoints = site.tourPoint.split(';');
+            $scope.orderInfo.flightId = site.aircraftItems[0].product;
+            $scope.orderInfo.aircraftItemId = site.aircraftItems[0].id;
+            $scope.orderInfo.flight = site.aircraftItems[0].aircraft.name;
+            $scope.orderInfo.charter.capacity = site.aircraftItems[0].aircraft.minPassengers;
+            $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
+            $scope.orderInfo.charterAll.price = site.aircraftItems[0].price;
+            // $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
+            $scope.orderInfo.capacity = tourPoints.length;//tourPoint
+            // $scope.orderInfo.flight = site.name;
+            $scope.orderInfo.interval = site.tourDistance;
+            $scope.orderInfo.time = site.tourTime;
+            $scope.orderInfo.date = pageData.tourdate;
+            $scope.orderInfo.departure = site.name;
+
         }
 
         // 获取 f7 页面
@@ -151,7 +169,8 @@
                 date: $scope.orderInfo.date,
                 timeSlot: $scope.orderInfo.interval,
                 passengers: $scope.psgs,
-                contact:{mobile:$scope.orderInfo.contactMobile}
+                contact:{mobile:$scope.orderInfo.contactMobile},
+                aircraftItem:$scope.orderInfo.aircraftItemId
             };
 
             OrderServer.submitOrder(param,function (res) {

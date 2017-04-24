@@ -35,8 +35,6 @@
 
             if (item.status === 'pending'){//取消订单
                 cancelOrderAction(item.id);
-            }else if (item.status === 'paid'){
-
             }else if (item.status === 'finished' && !item.commented){
                 gotoCommentAction(item.id,item);
             }

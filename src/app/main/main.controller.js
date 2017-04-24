@@ -102,7 +102,7 @@
             if (item.target === 'out') {
                 logoutAction();
             }else if (item.target === 'forum'){
-                window.open('http://www.baidu.com/',"_blank");
+                window.open('http://10.70.80.92/airbb',"_blank");
             }else {
                 if (iotUtil.islogin()) {
                     mainView.router.loadPage(item.target);
