@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="theme-color" content="#2196f3">
-  <title>空中社区-Air Community</title>
+  <title>空中社区 - Air Community</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
   <!--
@@ -103,7 +103,7 @@
           <div class="left">
             <a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon f7-icons">bars</i></a>
           </div>
-          <div class="center sliding nav-title">Air Community</div>
+          <div class="center sliding nav-title">空中社区 - Air Community</div>
           <div class="right">
             <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
           </div>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-25 bg-white text-center">
                   <a href="app/components/airtrain/airtrain.html"><img src="assets/images/index/AirTranning.svg">
-                    <br>{{'home.airtourZH' | translate}}<br>{{'home.airtrain' | translate}}</a>
+                    <br>{{'home.airtrainZH' | translate}}<br>{{'home.airtrain' | translate}}</a>
                 </div>
               </div>
             </div>
@@ -147,12 +147,12 @@
               <div class="content-line"></div>
               <div class="news-box clearfix">
                 <div class="news-img pull-left">
-                  <img src="assets/images/index/AIRbb.svg">
+                  <img src="assets/images/index/AirQuest.svg">
                 </div>
                 <div class="news-text-box pull-right">
                   <ul class="news-text" auto-text>
                     <li ng-repeat="news in listNews track by $index">
-                      <a href="{{airbbLink}}" class="external" ng-bind="news.title"></a>
+                      <a href="{{airbbLink}}" class="external">#{{news.title}}#</a>
                     </li>
                   </ul>
                 </div>
