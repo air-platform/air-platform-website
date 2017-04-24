@@ -15,10 +15,10 @@
         var drawMap = function(target, points) {
             // MapService.mapPromise().then(function () {
                 var map = new BMap.Map(target);
-                map.disableDragging();
-                map.disableScrollWheelZoom();
-                map.disableDoubleClickZoom();
-                map.disablePinchToZoom();
+                // map.disableDragging();
+                // map.disableScrollWheelZoom();
+                // map.disableDoubleClickZoom();
+                // map.disablePinchToZoom();
                 _.each(points, function (pt) {
                     var marker = new BMap.Marker(new BMap.Point(pt[1], pt[2]));
                     var label = new BMap.Label(pt[0]);

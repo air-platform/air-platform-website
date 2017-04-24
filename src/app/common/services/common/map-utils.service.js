@@ -24,10 +24,10 @@
         if (!config) config = {};
         // 百度地图API功能
         var map = new BMap.Map(target);
-        map.disableDragging();
-        map.disableScrollWheelZoom();
-        map.disableDoubleClickZoom();
-        map.disablePinchToZoom();
+        // map.disableDragging();
+        // map.disableScrollWheelZoom();
+        // map.disableDoubleClickZoom();
+        // map.disablePinchToZoom();
         var routes = parseSingleRoutes(points); // return array of arrays
         window.mapDrawPointRoutes = routes;
         var markerPoints = parseMarkers(points); // return array of BMap.Point
