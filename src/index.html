@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="theme-color" content="#2196f3">
-  <title>空中社区-Air Community</title>
+  <title>空中社区 - Air Community</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=0.1.0" />
   <!--
@@ -103,7 +103,7 @@
           <div class="left">
             <a href="#" data-panel="left" class="link icon-only open-panel"> <i class="icon f7-icons">bars</i></a>
           </div>
-          <div class="center sliding nav-title">Air Community</div>
+          <div class="center sliding nav-title">空中社区 - Air Community</div>
           <div class="right">
             <a href="#" data-panel="right" class="link icon-only open-panel"> <i class="icon icon-user"></i></a>
           </div>
@@ -127,19 +127,19 @@
               <div class="row index-nav">
                 <div class="col-25 bg-white text-center">
                   <a href="app/components/airjet/airjet.html"><img src="assets/images/index/AirJet.svg">
-                    <br>{{'home.airjet' | translate}}</a>
+                    <br>{{'home.airjetZH' | translate}}<br>{{'home.airjet' | translate}}</a>
                 </div>
                 <div class="col-25 bg-white text-center">
                   <a href="app/components/airtaxi/airtaxi.html"><img src="assets/images/index/AirTaxi.svg">
-                    <br>{{'home.airtaxi' | translate}}</a>
+                    <br>{{'home.airtaxiZH' | translate}}<br>{{'home.airtaxi' | translate}}</a>
                 </div>
                 <div class="col-25 bg-white text-center word-break">
                   <a href="app/components/airtransportation/airtrans.html"><img src="assets/images/index/AirTransportation.svg">
-                    <br>{{'home.airtour' | translate}}</a>
+                    <br>{{'home.airtourZH' | translate}}<br>{{'home.airtour' | translate}}</a>
                 </div>
                 <div class="col-25 bg-white text-center">
                   <a href="app/components/airtrain/airtrain.html"><img src="assets/images/index/AirTranning.svg">
-                    <br>{{'home.airtrain' | translate}}</a>
+                    <br>{{'home.airtrainZH' | translate}}<br>{{'home.airtrain' | translate}}</a>
                 </div>
               </div>
             </div>
@@ -147,33 +147,35 @@
               <div class="content-line"></div>
               <div class="news-box clearfix">
                 <div class="news-img pull-left">
-                  <img src="assets/images/index/AIRbb.svg">
+                  <img src="assets/images/index/AirQuest.svg">
                 </div>
                 <div class="news-text-box pull-right">
                   <ul class="news-text" auto-text>
                     <li ng-repeat="news in listNews track by $index">
-                      <a href="{{airbbLink}}" class="external" ng-bind="news.title"></a>
+                      <a href="{{airbbLink}}" class="external">#{{news.title}}#</a>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <h2 class="bottom-title" ng-bind="'home.indexTitle' | translate"></h2>
+            <h2 class="bottom-title">{{'home.indexTitle' | translate}}<i></i>{{'home.indexTitleLow' | translate}}</h2>
             <div class="pro-content clearfix">
+                <a href="app/components/airtransportation/airtrans.html?departure=徐闻,美兰机场">
               <div class="pro-list">
                 <div class="list-top">
                   <h6>[特价航线]</h6>
-                  <p>2017年5月1日</p>
+                  <p>2017-5-1</p>
                 </div>
                 <div class="list-bottom">
                   <div>徐闻湛江机场<i class="arrow-right"></i>海口美兰机场</div>
                   <p>¥ 900 /人</p>
                 </div>
               </div>
+                </a>
               <div class="pro-list">
                 <div class="list-top">
                   <h6>[五一观光]</h6>
-                  <p>2017年5月1日</p>
+                  <p>2017-5-1</p>
                 </div>
                 <div class="list-bottom">
                   <div>鸟巢水立方空中游览</div>
@@ -183,7 +185,7 @@
               <div class="pro-list">
                 <div class="list-top">
                   <h6>[飞行员招聘]</h6>
-                  <p>2017年5月1日</p>
+                  <p>2017-5-1</p>
                 </div>
                 <div class="list-bottom">
                   <div>海南航空 固定翼私照一期学院招募</div>

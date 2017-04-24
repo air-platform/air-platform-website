@@ -14,10 +14,6 @@ img {
   vertical-align: middle;
 }
 
-.row .col-25 {
-  padding: 0 .15rem;
-}
-
 .word-break {
   word-break: break-all;
 }
@@ -76,7 +72,7 @@ img {
       color: @font-black;
     }
     img {
-      padding-bottom: 0.2rem;
+      padding: 0 .15rem 0.2rem;
     }
   }
 }
@@ -155,7 +151,7 @@ img {
   font-size: .28rem;
   height: 1.02rem;
   line-height: 1.02rem;
-  color: @font-black;
+  color: @bg-purple;
   text-align: center;
   border-top: 0.01rem solid @border-gray;
   border-bottom: 0.01rem solid @border-gray;
@@ -163,6 +159,10 @@ img {
   margin: .19rem 0 0 0;
   background: url('./../../assets/images/index/pic.svg') 0 0 no-repeat;
   background-size: cover;
+  i {
+    display: inline-block;
+    width: 1em;
+  }
 }
 
 .pro-content {
@@ -180,6 +180,7 @@ img {
         margin: 0;
         color: @base-sky;
         font-weight: normal;
+        font-size: .24rem;
       }
       p {
         margin: 0;

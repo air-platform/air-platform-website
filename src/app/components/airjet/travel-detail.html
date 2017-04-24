@@ -41,14 +41,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="triangle-container">
+                <div class="triangle-container" ng-show="detailData.fleetCandidates.length">
                     <span class="triangle"></span>
                 </div>
                 <div class="air-order-item aoi-guest radius-top" ng-show="detailData.fleetCandidates.length">
                     {{'airjet.options' | translate}}
                 </div>
                 <div class="air-order-item aoi-model-info" ng-show="detailData.fleetCandidates.length" ng-class="detailData.fleetCandidates.length ? '' : 'no-padding'">
-                    <div ng-repeat="model in detailData.fleetCandidates track by $index" ng-bind="model.fleet.name"></div>
+                    <div ng-repeat="model in detailData.fleetCandidates track by $index" class="clearfix">
+                        <span class="pull-left">{{model.vendor.name}} {{model.fleet.flightNo}}</span>
+                        <span class="pull-right">{{'airjet.model' | translate}} {{model.fleet.aircraftType}}</span>
+                    </div>
                 </div>
                 <div class="triangle-container">
                     <span class="triangle"></span>

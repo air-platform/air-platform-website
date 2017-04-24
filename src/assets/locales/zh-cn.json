@@ -1,13 +1,18 @@
 {
-  "air-community":"Air Community",
+  "air-community":"空中社区 - Air Community",
   "about":"关于",
   "home":{
     "airjet":"Air Jet",
+    "airjetZH":"空中专车",
     "airtaxi":"Air Taxi",
-    "airtour":"Air Transportation",
+    "airtaxiZH":"空中出租",
+    "airtour":"Air Trans",
+    "airtourZH":"空中快车",
     "airtrain":"Air Training",
+    "airtrainZH":"飞行培训",
     "airclub":"airclub",
-    "indexTitle":"一起打“飞的” 去看全世界"
+    "indexTitle":"一起打“飞的”",
+    "indexTitleLow": "去看全世界"
   },
   "menu":{
 
@@ -136,6 +141,9 @@
     "base-brief":"基地介绍",
     "plane-train":"飞机培训",
     "base-clsss":"航校课程",
+    "selectionType":"机型选择",
+    "license":"飞行执照",
+    "location":"培训地点",
     "exper": "请输入您的飞行经历，审核更容易通过哦！"
   },
   "airtaxi": {

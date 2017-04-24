@@ -17,7 +17,7 @@
             <div class="air-info-header">
                 <img ng-src="{{dreamObj.vendor.avatar}}" alt="logo">
                 <em>{{dreamObj.vendor.name}} {{dreamObj.flightNo}}</em>
-                <a href="app/components/airjet/travel-plane-detail.html?flightno={{dreamObj.flightNo}}"><em ng-bind="dreamObj.aircraftType"></em> <i class="fa fa-angle-right"></i></a>
+                <a href="app/components/airjet/travel-plane-detail.html?flightno={{dreamObj.flightNo}}">{{'airjet.model' | translate}} <em ng-bind="dreamObj.aircraftType"></em> <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="air-info-content">
                 <div class="content-top">
