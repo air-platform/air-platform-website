@@ -190,9 +190,9 @@
             };
 
             OrderServer.submitOrder(param,pageType,function (res) {
-                console.log(res);
-                var local = res.headers('location').split('/');
-                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);
+                // console.log(res);
+                // var local = res.headers('location').split('/');
+                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'orderId=' + $scope.orderInfo.flightId);
             },function (err) {
                 showErrorAlert(err);
             });
