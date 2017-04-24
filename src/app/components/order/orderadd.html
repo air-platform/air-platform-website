@@ -70,15 +70,18 @@
                             <span class="order-date">{{orderInfo.date}}</span>
                         </div>
                         <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
-                            <div class="order-from col-40" ng-hide="istour">
+                            <!--<div class="order-information col-100"  ng-hide="istour">-->
+
+                            <!--</div>-->
+                            <div class="order-from" ng-hide="istour">
                                 <strong>{{orderInfo.departure}}</strong>
                             </div>
-                            <div class="order-core col-20" ng-hide="istour">
+                            <div class="order-core" ng-hide="istour">
                                 <div class="dfim-center">
                                     <div class="arrow-right"></div>
                                 </div>
                             </div>
-                            <div class="order-to col-40" ng-hide="istour">
+                            <div class="order-to" ng-hide="istour">
                                 <strong>{{orderInfo.arrival}}</strong>
                             </div>
                             <div class="order-description col-100" ng-show="istour">
