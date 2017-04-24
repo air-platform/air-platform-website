@@ -7,7 +7,7 @@
     angular.module('airsc').controller('airtaxiDetailsController', airtaxiDetailsController);
 
     /** @ngInject */
-    function airtaxiDetailsController($scope,CommentServer,$timeout,mapUtilsService,NetworkService) {
+    function airtaxiDetailsController($scope,CommentServer,$timeout,mapUtilsService,NetworkService,NotificationService) {
         /* jshint validthis: true */
         var vm = this;
         var queryData = myApp.views[0].activePage.query;
