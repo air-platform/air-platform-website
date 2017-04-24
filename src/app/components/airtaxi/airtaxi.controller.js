@@ -7,7 +7,7 @@
         angular.module('airsc').controller('taxiController', taxiController);
 
         /** @ngInject */
-        function taxiController($scope, iotUtil, mapUtilsService) {
+        function taxiController($scope, iotUtil, mapUtilsService, MapService) {
             /* jshint validthis: true */
             var vm = this;
             // app/components/airtaxi/airtour-city.html?city={{city}}
@@ -24,44 +24,47 @@
               }
             }
             var drawMap = function(target, points) {
-              var map = new BMap.Map(target);
-              map.disableDragging();
-              map.disableScrollWheelZoom();
-              map.disableDoubleClickZoom();
-              map.disablePinchToZoom();
+              MapService.mapPromise().then(function () {
+                var map = new BMap.Map(target);
+                map.disableDragging();
+                map.disableScrollWheelZoom();
+                map.disableDoubleClickZoom();
+                map.disablePinchToZoom();
 
-              var markerPoints = [];
-              _.each(points, function(pt){
-                var point = new BMap.Point(pt[0], pt[1]);
-                var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
-                  new BMap.Size(40, 40));
-                var marker = new BMap.Marker(point, {icon: icon});
-                var label = new BMap.Label(pt[2], {
+                var markerPoints = [];
+                _.each(points, function(pt){
+                  var point = new BMap.Point(pt[0], pt[1]);
+                  var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
+                    new BMap.Size(40, 40));
+                  var marker = new BMap.Marker(point, {icon: icon});
+                  var label = new BMap.Label(pt[2], {
                     offset: new BMap.Size(40, 20)
-                });
-                label.setStyle({
-                  color : "#50bbff",
-                  fontSize : "14px",
-                  backgroundColor :"0.3",
-                  border :"0",
-                });
-                marker.setOffset(new BMap.Size(-5, -20));
-                marker.setLabel(label);
-                map.addOverlay(marker);
-                marker.addEventListener("click", function(e){
-                  var point = e.currentTarget.point;
-                  var citySelected = _.find(citylist, function(city) {
-                    return city.longitude == point.lng && city.latitude == point.lat;
                   });
-                  $scope.$apply(function(){
-                    $scope.city = citySelected.name;
-                    $('#city-navi-autocomplete-placeholder').val($scope.city);
-                    vm.next();
+                  label.setStyle({
+                    color : "#50bbff",
+                    fontSize : "14px",
+                    backgroundColor :"0.3",
+                    border :"0",
                   });
+                  marker.setOffset(new BMap.Size(-5, -20));
+                  marker.setLabel(label);
+                  map.addOverlay(marker);
+                  marker.addEventListener("click", function(e){
+                    var point = e.currentTarget.point;
+                    var citySelected = _.find(citylist, function(city) {
+                      return city.longitude == point.lng && city.latitude == point.lat;
+                    });
+                    $scope.$apply(function(){
+                      $scope.city = citySelected.name;
+                      $('#city-navi-autocomplete-placeholder').val($scope.city);
+                      vm.next();
+                    });
+                  });
+                  markerPoints.push(point);
                 });
-                markerPoints.push(point);
+                map.setViewport(markerPoints);
               });
-              map.setViewport(markerPoints);
+
             }
             var citylist = [{
                     'name': '北京',

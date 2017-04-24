@@ -233,6 +233,9 @@
           }
           if(!routesEqual(newValue[0], oldValue[0])) {
             mapUtilsService.removeMarkedCurve(controller.map);
+            $timeout(function() {
+              $scope.schedules[0].flight = '';
+            });
             if(newValue[0].departure && newValue[0].arrival) {
               if(!_.contains(controller.arrivals($scope.routes, newValue[0].departure), newValue[0].arrival)) {
                 $timeout(function() {
