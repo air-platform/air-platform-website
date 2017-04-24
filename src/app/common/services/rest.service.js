@@ -105,7 +105,6 @@
             var token = StorageService.get(constdata.token);
             if (token && token.length > 0){
                 token = 'Bearer ' + token;
-                console.log(token);
                 return {"Authorization":token};
             }
             return {};
