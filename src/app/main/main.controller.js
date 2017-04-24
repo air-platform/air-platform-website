@@ -48,7 +48,7 @@
                 title: '空中快车',
                 subtitle: 'Air Transportation', items: [
                 {'title': '海峡飞行', target: constdata.router.airtrans.home + '?type=1'},
-                {'title': '内蒙航线', target: constdata.router.airtrans.home + '?tabActive=tab2'}
+                {'title': '内蒙航线', target: constdata.router.airtrans.home + '?tabActive=tab'}
             ]
             },
             {
@@ -68,7 +68,7 @@
                 title: '会员中心',
                 subtitle: '', items: [
                 // {'title': '用户注册/登录', target: constdata.router.login.login},
-                {'title': '订单查询', target: constdata.router.order.order}
+                {'title': '订单查询', target: constdata.router.order.order,needLogin:true}
                 // {'title': '积分系统', target: ''}
             ]
             },
@@ -80,16 +80,16 @@
             ]
             }];
         var rightPanelItems = [
-            {title: 'profile.order', target: constdata.router.order.order, icon: 'list'},
-            {title: 'profile.setting', target: constdata.router.set.setting, icon: 'gear'},
-            {title: 'profile.out', target: 'out', icon: 'logout'}];
+            {needLogin:true,title: 'profile.order', target: constdata.router.order.order, icon: 'list'},
+            {needLogin:true,title: 'profile.setting', target: constdata.router.set.setting, icon: 'gear'},
+            {needLogin:true,title: 'profile.out', target: 'out', icon: 'logout'}];
         var info = {};
         var loginItemTitle = '登录/注册';
 
         $scope.islogin = false;
         $scope.rightPanelItems = rightPanelItems;
         $scope.leftPanelItems = leftPanelItems;
-        $scope.rightUserItem = {title: loginItemTitle, target: constdata.router.login.login, icon: 'person'};
+        $scope.rightUserItem = {needLogin:true,title: loginItemTitle, target: constdata.router.login.login, icon: 'person'};
         $scope.gotoItemAction = gotoItemAction;
 
 
@@ -110,10 +110,10 @@
             }else if (item.target === 'forum'){
                 window.open('http://10.70.80.92/airbb',"_blank");
             }else {
-                if (iotUtil.islogin()) {
-                    mainView.router.loadPage(item.target);
-                } else {
+                if (item.needLogin && !iotUtil.islogin()) {
                     mainView.router.loadPage($scope.rightUserItem.target);
+                } else {
+                    mainView.router.loadPage(item.target);
                 }
             }
         }
