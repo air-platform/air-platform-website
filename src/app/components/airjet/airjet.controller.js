@@ -44,6 +44,9 @@
         if(StorageService.get('travel')){
             $scope.travelStrokeList = StorageService.get('travel');
         }
+        if(queryData.index && queryData.name){
+            $scope.currentCity = $scope.travelStrokeList[queryData.index][queryData.name];
+        }
 
         function search(newValue, oldValue) {
             $scope.cityShow = 20;
