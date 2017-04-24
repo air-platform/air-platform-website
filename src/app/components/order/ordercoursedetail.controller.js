@@ -19,7 +19,7 @@
             OrderServer.getOrder(orderId,function (res) {
                 // console.log(res.data.course);
                 $scope.order = res.data;
-                console.log($scope.order);
+                // console.log($scope.order);
 
             },function (err) {
                 showErrorAlert(err);
