@@ -31,7 +31,7 @@
         var pageData = mainView.pageData;
         var pageType = pageData.type;
         console.log(pageData);
-        if (pageType && pageType === 'transportation'){//从air transportation过来
+        if (pageType && (pageType === 'transportation' || pageType === 'airtaxi')){//从air transportation过来
             $scope.istour = false;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
@@ -63,10 +63,10 @@
             $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
             $scope.orderInfo.charterAll.price = site.aircraftItems[0].price;
             // $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
-            $scope.orderInfo.capacity = tourPoints.length;//tourPoint
+            $scope.orderInfo.capacity = tourPoints.length + '景点';//tourPoint
             // $scope.orderInfo.flight = site.name;
-            $scope.orderInfo.interval = site.tourDistance;
-            $scope.orderInfo.time = site.tourTime;
+            $scope.orderInfo.interval = site.tourTime + '分钟';
+            $scope.orderInfo.time = site.tourDistance + '公里';
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
         }
@@ -110,6 +110,21 @@
             });
         }
         function addNewPassengerAction() {
+
+
+            //判断手机号、id、姓名
+
+            if (!$scope.newPerson.name || $scope.newPerson.name.length === 0){
+                myApp.alert('请输入姓名');
+                return;
+            }else if (!$scope.newPerson.identity || $scope.newPerson.identity.length !== 18){
+                myApp.alert('身份证号不正确');
+                return;
+            }else if (!$scope.newPerson.mobile || $scope.newPerson.mobile.length !== 11){
+                myApp.alert('手机号码不正确');
+                return;
+            }
+
             myApp.showIndicator();
             if ($scope.newPerson.isUpdate){
                 myApp.hideIndicator();

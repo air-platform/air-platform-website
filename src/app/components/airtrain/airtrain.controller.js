@@ -13,11 +13,10 @@
   function trainController($scope, constdata, iotUtil, NetworkService, UrlService, URL) {
 
 
-    $scope.telephone = 'tel://' + constdata.supportTelephone;
+    $scope.telephone = 'tel:' + constdata.supportTelephone;
 
     $scope.imgSrc = [
-      'assets/images/index/banner.png',
-      'assets/images/index/banner.png'
+      'assets/images/training/AirTrannning-banner.png'
     ];
     
     myApp.showIndicator();

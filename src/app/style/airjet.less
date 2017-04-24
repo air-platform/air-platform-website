@@ -144,9 +144,11 @@
                 }
                 .tpcbb-back{
                     font-size: .32rem;
-                    color: @font-gray;
+                    color: @font-blue;
                     
-                    i.icon{
+                    img{
+                        width: .4rem;
+                        height: .4rem;
                         vertical-align: middle;
                     }
                     em{
@@ -496,7 +498,7 @@
     color: #fff;
 
     .card-header {
-        font-size: 0.12rem;
+        font-size: 0.28rem;
         font-weight: 300;
         padding: 0;
         min-height: .28rem;
@@ -613,6 +615,10 @@
 
 }
 
+.order-page{
+    background-color: @bg-white;
+}
+
 .order-status-content{
     display: flex;
     flex-direction: column;
@@ -650,6 +656,20 @@
             &:last-child{
             background-color: @bg-purple;
             }
+        }
+    }
+    .back-home{
+        width: 100%;
+        margin-top: .4rem;
+        a{
+            display: block;
+            height: 1rem;
+            line-height: 1rem;
+            font-size: .36rem;
+            color:@font-gray;
+            border: .02rem solid @border-gray;
+            border-radius: .06rem;
+            position: relative;
         }
     }
 }

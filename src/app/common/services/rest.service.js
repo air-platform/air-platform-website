@@ -10,16 +10,16 @@
     /** @ngInject */
     function RestService(Restangular, StorageService,logger,constdata) {
         return Restangular.withConfig(function (RestangularConfigurer) {
-            var token = StorageService.get(constdata.token);
-            if (token){
-                logger.debug(token);
-                token = 'Bearer ' + token;
-                RestangularConfigurer.setDefaultHeaders({Authorization:token});
-            }
-            else {
-                console.log('-----Set Authorization Null');
-                // RestangularConfigurer.setDefaultHeaders({Authorization:null});
-            }
+            // var token = StorageService.get(constdata.token);
+            // if (token){
+            //     logger.debug(token);
+            //     token = 'Bearer ' + token;
+            //     RestangularConfigurer.setDefaultHeaders({Authorization:token});
+            // }
+            // else {
+            //     console.log('-----Set Authorization Null');
+            //     // RestangularConfigurer.setDefaultHeaders({Authorization:null});
+            // }
             RestangularConfigurer.setFullResponse(true);
         });
     }
@@ -105,6 +105,7 @@
             var token = StorageService.get(constdata.token);
             if (token && token.length > 0){
                 token = 'Bearer ' + token;
+                console.log(token);
                 return {"Authorization":token};
             }
             return {};

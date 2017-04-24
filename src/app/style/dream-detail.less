@@ -13,7 +13,7 @@
       padding: 0 0.36rem;
       color: @font-gray;
       font-size: 0.24rem;
-      border-bottom: 1px solid @border-gray;
+      border-bottom: 1px dashed @border-gray;
       img{
           width: 1.32rem;
           height: .32rem;
@@ -70,9 +70,14 @@
       color: @font-black;
       font-size: 0.2rem;
       background-color: @bg-white;
-      border-top: 1px solid @border-gray;
+      border-top: 1px dashed @border-gray;
+      border-bottom: 1px solid @border-gray;
       display: flex;
       justify-content: space-between;
+      div{
+        display: flex;
+        align-items: baseline;
+      }
       .money{
         font-size: .44rem;
         color: @font-red;
@@ -86,6 +91,7 @@
   color: @font-gray;
   background-color: @bg-white;
   padding: 0 .56rem 0 .3rem;
+  border-bottom: 1px solid @border-gray;
 
   textarea {
     display: inline-block;

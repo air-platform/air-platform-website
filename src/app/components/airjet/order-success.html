@@ -6,13 +6,16 @@
     </div>
 </div>
 <div data-page="order-success" class="page" ng-controller="orderController">
-    <div class="page-content">
+    <div class="page-content order-page">
         <div class="order-status-content">
             <img src="assets/images/travel/icon_success.svg" alt="success">
             <div>{{'airjet.order-submit' | translate}}</div>
             <div>{{'airjet.service-later' | translate}}</div>
             <div class="back-submit">
                 <a ng-click="jumpOrder()">{{'airjet.look-order' | translate}}</a>
+                <a href="tel:400-666-4388">{{'airjet.service' | translate}}</a>
+            </div>
+            <div class="back-home">
                 <a href="index.html">{{'airjet.back-home' | translate}}</a>
             </div>
         </div>

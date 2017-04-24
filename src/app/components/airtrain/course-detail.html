@@ -1,7 +1,6 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <div class="left sliding"><a href="" class="back link"><i class="icon icon-back"></i><span>Back</span></a>
-        </div>
+        <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
         <div class="center sliding">课程详情</div>
         <!--<div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>-->
     </div>
@@ -9,10 +8,7 @@
 <div class="pages navbar-through">
     <div data-page="course-detail" class="page" ng-controller="courseDetailController">
         <div class="page-content course-detail">
-            <div class="detail-img">
-                <img src="./../../../assets/images/banner0.jpg">
-            </div>
-            <div>
+        <div>
                 <div class="detail-top">
                     <div class="course-list-img pull-left">
                         <img ng-src="{{courseObj.image}}">
@@ -24,10 +20,13 @@
                         </div>
                         <div class="list-desc">
                             <div ng-bind="courseObj.school.name"></div>
-                            <p>报名截止：<span ng-bind="courseObj.endDate"></span></p>
+                            <p>截止：<span ng-bind="courseObj.endDate"></span></p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="detail-img">
+                <img src="assets/images/training/course-banner.png">
             </div>
             <div class="buttons-row air-tabs">
                 <a href="#tabBrief" class="tab-link active"><span>课程简介</span></a>

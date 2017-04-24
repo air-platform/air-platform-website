@@ -1,6 +1,12 @@
-<div data-page="smart-select-radio-travel" ng-controller="travelCityController" data-select-name="" class="page smart-select-page navbar-through ng-scope page-on-center">
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+    <div class="center sliding">City List</div>
+  </div>
+</div>
+<div data-page="smart-select-radio-travel" ng-controller="jetController" data-select-name="" class="page smart-select-page navbar-through ng-scope page-on-center">
     <form class="searchbar searchbar-init ng-pristine ng-valid" data-search-list=".smart-select-list-travel" data-search-in=".item-title">
-        <div class="searchbar-input"><input type="search" placeholder="Search City" ng-model="search">
+        <div class="searchbar-input"><input type="search" placeholder="Search City" ng-model="citySearch">
             <a href="#" class="searchbar-clear"></a>
         </div><a href="#" class="searchbar-cancel">Cancel</a></form>
     <div class="searchbar-overlay"></div>
@@ -8,7 +14,7 @@
         <div class="list-block  smart-select-list-travel">
             <ul>
                 <li ng-hide="true"><label class="label-radio item-content"><input type="radio" name="radio-travel" value="请选择" checked=""><div class="item-inner"><div class="item-title">请选择</div></div></label></li>
-                <li ng-repeat="item in searchList || cityList" ng-if="$index < page" ng-click="select(item)">
+                <li ng-repeat="item in searchList || cityList" ng-if="$index < cityShow" ng-click="citySelect(item)">
                     <label class="label-radio item-content">
                         <input type="radio" name="radio-travel" value="{{item.city}}">
                         <div class="item-inner"><div class="item-title"><span>{{item.city}} - {{item.name}}</span></div></div>

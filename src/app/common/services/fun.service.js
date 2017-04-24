@@ -469,7 +469,9 @@ Array.prototype.remove = function (val) {
 Array.prototype.clone = function () {
     return this.slice(0);
 };
-
+Array.prototype.isEmpty = function (val) {
+    if (!val) return true;
+};
 
 // /*
 //  用途：检查输入字符串是否只由英文字母和数字和文字组成

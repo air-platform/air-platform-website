@@ -32,6 +32,10 @@
                 NotificationService.alert.success('邮箱格式不正确', null);
                 return;
             }
+            if(!$scope.agreement){
+                NotificationService.alert.success('请您先阅读并同意Air Community免责条款', null);
+                return;
+            }
             var transferData = StorageService.get('plan');
             var params = {
                 "contact": {

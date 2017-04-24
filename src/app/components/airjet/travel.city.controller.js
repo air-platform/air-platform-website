@@ -8,19 +8,19 @@
 
     /** @ngInject */
     function travelCityController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, constdata) {
-        var current = 1;
+        var cityPage = 1;
         var loading = false;
-        $scope.page = 20;
-        $scope.search = '';
-        $scope.select = select;
+        $scope.cityShow = 20;
+        $scope.citySearch = '';
+        $scope.citySelect = citySelect;
         $timeout(function(){
             getCity();
         }, 200);
         angular.element('.infinite-scroll').on('infinite', infinite);
-        $scope.$watch('search', search);
+        $scope.$watch('citySearch', search);
 
         function search(newValue, oldValue){
-            $scope.page = 20;
+            $scope.cityShow = 20;
             if(newValue !== oldValue) {
                 $scope.searchList = [];
                 $scope.cityList.forEach(function(item){
@@ -34,7 +34,7 @@
             }
             if ($scope.searchList) {
                 $scope.totalRecords = $scope.searchList.length;
-                if ($scope.page >= $scope.totalRecords) {
+                if ($scope.cityShow >= $scope.totalRecords) {
                     myApp.detachInfiniteScroll(angular.element('.infinite-scroll'));
                     angular.element('.infinite-scroll-preloader').remove();
                 }
@@ -46,17 +46,17 @@
             loading = true;
             $timeout(function () {
                 loading = false;
-                if ($scope.page >= $scope.totalRecords) {
+                if ($scope.cityShow >= $scope.totalRecords) {
                     myApp.detachInfiniteScroll(angular.element('.infinite-scroll'));
                     angular.element('.infinite-scroll-preloader').remove();
                     return;
                 }
-                current ++;
-                $scope.page = 20 * current;
+                cityPage ++;
+                $scope.cityShow = 20 * cityPage;
             }, 1000);
         }
 
-        function select(item){
+        function citySelect(item){
             localStorage.city = item.city;
             mainView.router.back();
         };
