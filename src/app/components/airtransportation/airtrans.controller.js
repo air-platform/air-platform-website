@@ -12,6 +12,7 @@
     /** @ngInject */
     function transController($scope, iotUtil, NetworkService, mapUtilsService,
             NotificationService, scheduleUtilsService) {
+        var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
         var ROUTES_FAMILIES = {'air-taxi-cross-channel': '飞越海峡', 'mongolia-routes': '内蒙航线'};
@@ -56,18 +57,32 @@
           };
         }
 
-        $scope.schedules = [
-          {
-            'date': '',
-            'time': '',
-            'departure': '',
-            'arrival': '',
-            'flight': ''
-          }
-        ];
+        if (queryData.departure != null){
+            var param = queryData.departure.split(',');
+            $scope.schedules = [
+                {
+                    'date': '',
+                    'time': '',
+                    'departure': param[0],
+                    'arrival': param[1],
+                    'flight': ''
+                }
+            ];
+        }else{
+            $scope.schedules = [
+                {
+                    'date': '',
+                    'time': '',
+                    'departure': '',
+                    'arrival': '',
+                    'flight': ''
+                }
+            ];
+        }
+
 
         controller.selectFlight = function(schedule) {
-          var goto = "app/components/airtransportation/planes.html"
+          var goto = "app/components/airtransportation/planes.html";
           mainView.pageData = mainView.pageData || {};
           mainView.pageData.planeModel = schedule.flight
           mainView.pageData.aircrafts = _.uniq(
@@ -172,15 +187,28 @@
           if($scope.family) {
             controller.transports = [];
             loadTransports(1, $scope.family);
-            $scope.schedules = [
-              {
-                'date': '',
-                'time': '',
-                'departure': '',
-                'arrival': '',
-                'flight': ''
+              if (queryData.departure != null){
+                  var param = queryData.departure.split(',');
+                  $scope.schedules = [
+                      {
+                          'date': '',
+                          'time': '',
+                          'departure': param[0],
+                          'arrival': param[1],
+                          'flight': ''
+                      }
+                  ];
+              }else{
+                  $scope.schedules = [
+                      {
+                          'date': '',
+                          'time': '',
+                          'departure': '',
+                          'arrival': '',
+                          'flight': ''
+                      }
+                  ];
               }
-            ];
           }
         });
 
