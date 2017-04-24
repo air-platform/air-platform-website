@@ -31,36 +31,42 @@
 
         var leftPanelItems = [
             {
-                title: 'Air Jet', items: [
+                title: '空中专车',
+                subtitle:'Air Jet', items: [
                 {'title': '包机预定', target: constdata.router.airjet.home + '?type=1'},
                 {'title': '缘梦飞行', target: constdata.router.airjet.home + '?tabActive=tab2'},
                 {'title': '卡产品', target: constdata.router.airjet.home + '?tabActive=tab3'}
             ]
             },
             {
-                title: 'Air Taxi', items: [
+                title: '空中出租',
+                subtitle:'Air Taxi', items: [
                 {'title': '空中观光', target: constdata.router.airtaxi.home + '?type=1'}
             ]
             },
             {
-                title: 'Air Transportation', items: [
+                title: '空中快车',
+                subtitle: 'Air Transportation', items: [
                 {'title': '海峡飞行', target: constdata.router.airtrans.home + '?type=1'},
                 {'title': '内蒙航线', target: constdata.router.airtrans.home + '?type=2'}
             ]
             },
             {
-                title: '飞行培训', items: [
+                title: '飞行培训',
+                subtitle: 'Air Training', items: [
                 {'title': '航校信息', target: constdata.router.airtrain.home + '?type=1'},
                 {'title': '预定培训', target: constdata.router.airtrain.home + '?type=2'}
             ]
             },
             {
-                title: 'Air Quest', items: [
+                title: 'Air Quest',
+                subtitle: '', items: [
                 {'title': '话题讨论/发帖/留言', target: 'forum'}
             ]
             },
             {
-                title: '会员中心', items: [
+                title: '会员中心',
+                subtitle: '', items: [
                 // {'title': '用户注册/登录', target: constdata.router.login.login},
                 {'title': '订单查询', target: constdata.router.order.order}
                 // {'title': '积分系统', target: ''}
