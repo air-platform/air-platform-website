@@ -123,7 +123,8 @@
             return plane.aircraft.name == data[0].flight;
           });
           mainView.pageData = {
-            'from': 'airtrans',
+            'from': 'transportation',
+            'type': 'transportation',
             'schedules': data[0],
             'planeModel': planeModel
           };

@@ -4,7 +4,7 @@
   angular.module('airsc').controller('addGuestController', addGuestController);
 
   /** @ngInject */
-  function addGuestController($scope, iotUtil, i18n, NetworkService, UrlService, URL, NotificationService) {
+  function addGuestController($scope, iotUtil, i18n, NetworkService, UrlService, URL, NotificationService, REGEX) {
     $scope.quest = {
       name: '',
       identity: '',
@@ -21,6 +21,11 @@
     $$('.alert-check').on('click', function() {
       if ($scope.quest.name === '' || $scope.quest.identity === '') {
         NotificationService.alert.success(i18n.t('profile.check-input'), i18n.t('profile.addGuest'));
+        return;
+      }
+
+      if(!REGEX.IDCARD.test($scope.quest.identity)) {
+        myApp.alert('身份证格式不正确！', null);
         return;
       }
 

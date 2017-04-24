@@ -142,6 +142,8 @@
 
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
+
+                showErrorAlert(err);
             });
         }
         function dealOrderData(data) {
@@ -190,6 +192,7 @@
         function updateDisplayLoadingStatus() {
             $timeout(function () {
                 $scope.loading = loadings[tabIndexNow];
+                $scope.$apply();
             },500);
         }
 
