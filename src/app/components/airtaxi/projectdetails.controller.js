@@ -7,36 +7,38 @@
     angular.module('airsc').controller('airtaxiDetailsController', airtaxiDetailsController);
 
     /** @ngInject */
-    function airtaxiDetailsController($scope,CommentServer,$timeout,mapUtilsService,NetworkService,NotificationService) {
+    function airtaxiDetailsController($scope,CommentServer,$timeout,mapUtilsService,NetworkService,NotificationService, MapService) {
         /* jshint validthis: true */
         var vm = this;
         var queryData = myApp.views[0].activePage.query;
 
         var drawMap = function(target, points) {
-            var map = new BMap.Map(target);
-            map.disableDragging();
-            map.disableScrollWheelZoom();
-            map.disableDoubleClickZoom();
-            map.disablePinchToZoom();
-            _.each(points, function(pt) {
-              var marker = new BMap.Marker(new BMap.Point(pt[1], pt[2]));
-              var label = new BMap.Label(pt[0]);
-              label.setOffset(new BMap.Size(15, -15));
-              marker.setLabel(label);
-              marker.disableDragging();
-              map.addOverlay(marker);
-            });
-            var markers = _.map(points, function(pt){
-              return new BMap.Point(pt[1], pt[2]);
-            });
-            map.setViewport(markers);
-            //创建弧线对象
-            var curve = new BMapLib.CurveLine(markers, {
-                strokeColor: "red",
-                strokeWeight: 3,
-                strokeOpacity: 0.5
-            });
-            map.addOverlay(curve);
+            MapService.mapPromise().then(function () {
+                var map = new BMap.Map(target);
+                map.disableDragging();
+                map.disableScrollWheelZoom();
+                map.disableDoubleClickZoom();
+                map.disablePinchToZoom();
+                _.each(points, function (pt) {
+                    var marker = new BMap.Marker(new BMap.Point(pt[1], pt[2]));
+                    var label = new BMap.Label(pt[0]);
+                    label.setOffset(new BMap.Size(15, -15));
+                    marker.setLabel(label);
+                    marker.disableDragging();
+                    map.addOverlay(marker);
+                });
+                var markers = _.map(points, function (pt) {
+                    return new BMap.Point(pt[1], pt[2]);
+                });
+                map.setViewport(markers);
+                //创建弧线对象
+                var curve = new BMapLib.CurveLine(markers, {
+                    strokeColor: "red",
+                    strokeWeight: 3,
+                    strokeOpacity: 0.5
+                });
+                map.addOverlay(curve);
+            })
         }
 
         var loadTourData = function(id) {

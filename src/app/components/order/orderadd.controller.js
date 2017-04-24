@@ -36,7 +36,7 @@
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
-            $scope.orderInfo.aircraftItemId = planeModel.aircraft.id;
+            $scope.orderInfo.aircraftItemId = planeModel.id;
             $scope.orderInfo.flight = planeModel.aircraft.name;
             $scope.orderInfo.charter.capacity = planeModel.minPassengers;
             $scope.orderInfo.charter.price = planeModel.seatPrice;
@@ -165,7 +165,7 @@
             $scope.psgs = [];
             $scope.passengers.forEach(function (p) {
                 if (p.isSelected){
-                    $scope.psgs.push(p.id);
+                    $scope.psgs.push({passenger:p.id});
                 }
             });
 

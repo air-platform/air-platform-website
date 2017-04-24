@@ -57,7 +57,11 @@
             }else if (type === 'course'){
                 mainView.router.loadPage(constdata.router.order.detail.course + '?order=' + item.id);
             }else if (type === 'airtransport'){
-                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id);
+                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id + '&type=airtransport');
+            }else if (type === 'airtour'){
+                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id + '&type=airtour');
+            }else if (type === 'airtaxi'){
+                mainView.router.loadPage(constdata.router.order.detail.transportation + '?order=' + item.id + '&type=airtaxi');
             }else {
                 myApp.alert('未知的订单类型','出错了');
             }
@@ -180,6 +184,12 @@
                     if (d.airTransport.aircraftItems && d.airTransport.aircraftItems.length !== 0){
                         d.price = d.airTransport.chartered ? d.airTransport.aircraftItems[0].price : (d.airTransport.aircraftItems[0].seatPrice * d.passengerNum);
                     }
+                }else if (type === 'airtour'){
+                    d.showTitle = d.airTour.name;
+                    d.showSubtitle = d.airTour.description;
+                    d.price = d.chartered ? d.aircraftItem.price : (d.aircraftItem.seatPrice * d.passengers.length);
+                }else if (type === 'airtaxi'){
+                    console.log(d);
                 }else {
                     d.showTitle = 'unknown';
                     d.showSubtitle = '';

@@ -122,6 +122,22 @@
           input {
             height: auto;
             font-size: 0.28rem;
+
+            &::-webkit-input-placeholder { /* WebKit browsers */
+              color: @base-black;
+            }
+
+            &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+              color: @base-black;
+            }
+
+            &::-moz-placeholder { /* Mozilla Firefox 19+ */
+              color: @base-black;
+            }
+
+            &:-ms-input-placeholder { /* Internet Explorer 10+ */
+              color: @base-black;
+            }
           }
         }
         &::after {
