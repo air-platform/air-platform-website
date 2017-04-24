@@ -51,6 +51,7 @@
             date = date.replace('月','-');
             date = date.replace('日','');
             $scope.orderInfo.date = date;
+            // $scope.orderInfo.time = timeEstimation
 
         }else {
             $scope.istour = true;
