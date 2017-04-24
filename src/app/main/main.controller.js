@@ -55,7 +55,7 @@
                 title: '飞行培训',
                 subtitle: 'Air Training', items: [
                 {'title': '航校信息', target: constdata.router.airtrain.home + '?type=1'},
-                {'title': '预定培训', target: constdata.router.airtrain.home + '?type=2'}
+                {'title': '预定培训', target: constdata.router.airtrain.home + '?type=schoollist'}
             ]
             },
             {
