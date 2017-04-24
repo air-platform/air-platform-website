@@ -142,6 +142,8 @@
 
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
+
+                showErrorAlert(err);
             });
         }
         function dealOrderData(data) {
