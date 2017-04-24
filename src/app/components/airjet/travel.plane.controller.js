@@ -19,12 +19,12 @@
             angular.element('#plane-title').text(queryData.type);
             $timeout(function(){
                 getPlaneList();
-            },200);
+            },500);
         }
         if(queryData.id || queryData.flightno){
             $timeout(function(){
                 getPlaneDetail();
-            },200);
+            },500);
         }
 
         function getPlaneList() {

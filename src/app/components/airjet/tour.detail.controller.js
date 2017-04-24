@@ -14,7 +14,7 @@
         if (queryData.id) {
             $timeout(function(){
                 getTourDetail();
-            }, 200);
+            }, 500);
         }
 
         function getTourDetail() {

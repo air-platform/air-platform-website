@@ -15,7 +15,7 @@
         $scope.citySelect = citySelect;
         $timeout(function(){
             getCity();
-        }, 200);
+        }, 500);
         angular.element('.infinite-scroll').on('infinite', infinite);
         $scope.$watch('citySearch', search);
 

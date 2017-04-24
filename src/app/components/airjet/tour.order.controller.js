@@ -14,7 +14,7 @@
         if(queryData.order) {
             $timeout(function(){
                 getOrder();
-            }, 200);
+            }, 500);
         }
 
         function getOrder() {
