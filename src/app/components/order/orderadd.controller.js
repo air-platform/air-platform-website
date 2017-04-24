@@ -63,10 +63,10 @@
             $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
             $scope.orderInfo.charterAll.price = site.aircraftItems[0].price;
             // $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
-            $scope.orderInfo.capacity = tourPoints.length;//tourPoint
+            $scope.orderInfo.capacity = tourPoints.length + '景点';//tourPoint
             // $scope.orderInfo.flight = site.name;
-            $scope.orderInfo.interval = site.tourDistance;
-            $scope.orderInfo.time = site.tourTime;
+            $scope.orderInfo.interval = site.tourTime + '分钟';
+            $scope.orderInfo.time = site.tourDistance + '公里';
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
         }

@@ -89,7 +89,8 @@
                                 <span class="order-cost">{{orderInfo.time}}</span>
                             </div>
                             <div class="col-20 order-other-info">
-                                <img src="../../../assets/images/airseat.svg">
+                                <img src="../../../assets/images/airseat.svg" ng-hide="istour">
+                                <img src="../../../assets/images/airsite.svg" style="width: 15px;height: 15px;" ng-show="istour">
                                 <span class="order-cost">{{orderInfo.capacity}}</span>
                             </div>
                             <div class="col-40 order-other-info text-left">
