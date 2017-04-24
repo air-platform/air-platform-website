@@ -288,18 +288,17 @@
 
     .card-header {
       padding: 0;
-      height: 1.36rem;
+      height: 2rem;
       border-radius: 0.08rem 0.08rem 0 0;
       overflow: hidden;
 
       img {
         width: 100%;
-        height: 100%;
       }
     }
 
     .card-content-inner {
-      padding: 5px 15px;
+      padding: 0.2rem 0.2rem;
     }
 
     .plane-price-info {
@@ -308,10 +307,9 @@
       &>span {
         display: inline-block;
         &.plane-name {
-          font-size: 0.24rem;
+          font-size: 0.28rem;
           color: @font-black;
           width: auto;
-          max-width: 3rem;
           vertical-align: middle;
         }
         &.plane-price {
@@ -326,14 +324,38 @@
           color: @font-red;
         }
       }
+
+      .view-detail {
+        float: right;
+        color: #4E9FE4;
+      }
     }
 
     .card-footer {
       display: inline-block;
-      padding: 5px 15px;
+      padding: 0 0.2rem 0.2rem;
       border-radius: 0 0 0.08rem 0.08rem;
       width: 100%;
       min-height: 0.16rem;
+
+      &:before {
+        display: none;
+      }
+
+      > span {
+        font-size: 0.24rem;
+        color: #9B9B9B;
+
+        .price-value {
+          color: #E54747;
+          font-size: 0.4rem;
+          margin-left: 0.2rem;
+        }
+
+        &:last-child {
+          float: right;
+        }
+      }
     }
 
     .departure-info, .plane-capacity {
@@ -356,15 +378,17 @@
     }
     .plane-notice {
       position: relative;
-      float: right;
+      //float: right;
       font-size: 0.16rem;
-      color: @font-black;
+      color: #9B9B9B;
+      margin-left: 0.2rem;
       letter-spacing: 0;
       line-height: 2;
     }
   }
   .plane-discription.active  .card {
-    border: 0.08rem solid @base-sky;
+    border: 0.02rem solid @base-sky;
     border-radius: 0.2rem;
+    overflow: hidden;
   }
 }
