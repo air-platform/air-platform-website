@@ -191,8 +191,9 @@
 
             OrderServer.submitOrder(param,pageType,function (res) {
                 // console.log(res);
-                // var local = res.headers('location').split('/');
-                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + $scope.orderInfo.flightId);
+                var local = res.headers('location').split('/');
+                var nOrderId = local[local.length - 1];
+                mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + nOrderId);
             },function (err) {
                 showErrorAlert(err);
             });
