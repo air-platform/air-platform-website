@@ -44,6 +44,8 @@
                 "fleetCandidates": transferData.plane
             }
             NetworkService.post(UrlService.getUrl(URL.AIRJET_ORDER), params, function(response) {
+                StorageService.remove('plan');
+                StorageService.remove('travel');
                 var local = response.headers('location').split('/');
                 mainView.router.loadPage('app/components/airjet/order-success.html?order=' + local[local.length - 1]);
             }, function() {
