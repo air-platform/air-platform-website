@@ -7,7 +7,7 @@
     angular.module('airsc').controller('orderdetailController', orderdetailController);
 
     /** @ngInject */
-    function orderdetailController($scope,OrderServer,$interval,iotUtil,constdata) {
+    function orderdetailController($scope,OrderServer,$interval,constdata) {
         var query = myApp.views[0].activePage.query;
         var orderId = query.order;
 
@@ -16,6 +16,10 @@
         $scope.orderInfo = {};
         $scope.passengers = [];
         $scope.istour = false;
+
+
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
+
 
         getOrder(orderId);
 
