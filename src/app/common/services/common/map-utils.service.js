@@ -56,7 +56,7 @@
         function addMarkers(markerPoints) {
           _.each(markerPoints, function (pt) {
             var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
-              new BMap.Size(20, 20));
+              new BMap.Size(20, 30));
             var marker = new BMap.Marker(pt, {icon: icon});
             // var label = new BMap.Label(pt[2], {
             //     offset: new BMap.Size(40, 20)
