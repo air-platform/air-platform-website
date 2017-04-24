@@ -92,6 +92,7 @@
       mainView.pageData = {
         'from': 'airtrans',
         'schedules': data[0],
+        'type': 'airtaxi',
         'planeModel': planeModel
       };
       mainView.router.loadPage('app/components/order/orderadd.html');
