@@ -60,10 +60,10 @@
                       <div class="list-info pull-left">
                           <h4 ng-bind="course.name"></h4>
                           <div ng-bind="course.school.name"></div>
-                          <p>报名截止：<span ng-bind="course.endDate"></span></p>
                       </div>
                       <div class="list-price pull-right">
                           <span ng-bind="course.price | RMB"></span>
+                          <p>截止：<span ng-bind="course.endDate"></span></p>
                       </div>
                   </a>
               </li>
