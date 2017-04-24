@@ -25,12 +25,14 @@
         //乘客及联系人信息
         $scope.passengers = [];
         $scope.psgs = [];
+        $scope.istransportation = true;
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
         console.log(pageData);
         if (pageType && pageType === 'airtrans'){//从air transportation过来
+            $scope.istransportation = true;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
@@ -50,6 +52,7 @@
             $scope.orderInfo.date = date;
 
         }else if (pageType && pageType === 'airtaxi'){
+            $scope.istransportation = false;
             var site = pageData.site;
             var tourPoints = site.tourPoint.split(';');
             $scope.orderInfo.flightId = site.aircraftItems[0].product;
@@ -63,6 +66,7 @@
             $scope.orderInfo.interval = site.tourDistance;
             $scope.orderInfo.time = site.tourTime;
             $scope.orderInfo.date = pageData.tourdate;
+            $scope.orderInfo.departure = site.name;
         }
 
         // 获取 f7 页面
@@ -162,7 +166,8 @@
                 date: $scope.orderInfo.date,
                 timeSlot: $scope.orderInfo.interval,
                 passengers: $scope.psgs,
-                contact:{mobile:$scope.orderInfo.contactMobile}
+                contact:{mobile:$scope.orderInfo.contactMobile},
+
             };
 
             OrderServer.submitOrder(param,function (res) {
