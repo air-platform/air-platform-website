@@ -52,15 +52,15 @@
                     </div>
                 </div>
                 <!--乘客信息-->
-                <div class="triangle-container">
+                <div class="triangle-container" ng-hide="passengers.length == 0">
                     <span class="triangle"></span>
                 </div>
-                <div class="order-detail-header">
+                <div class="order-detail-header" ng-hide="passengers.length == 0">
                     <span class="order-number">乘客信息</span>
                     <!--<span class="order-trash"><span>{{passengers.length}}&nbsp;&nbsp;</span><i class="f7-icons">persons</i></span>-->
                 </div>
-                <div class="order-detail-line"></div>
-                <div class="order-detail-content-person">
+                <div class="order-detail-line" ng-hide="passengers.length == 0"></div>
+                <div class="order-detail-content-person" ng-hide="passengers.length == 0">
                     <ul>
                         <li ng-repeat="p in passengers">
                             <span class="order-person-name col-25">{{p.passenger.name}}</span>

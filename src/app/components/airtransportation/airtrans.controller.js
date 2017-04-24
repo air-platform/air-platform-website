@@ -58,6 +58,16 @@
           };
         }
 
+        $scope.schedules = [
+            {
+                'date': '',
+                'time': '',
+                'departure': '',
+                'arrival': '',
+                'flight': ''
+            }
+        ];
+
         if (queryData.departure != null){
             var param = queryData.departure.split(',');
             $scope.schedules = [
@@ -66,16 +76,6 @@
                     'time': '',
                     'departure': param[0],
                     'arrival': param[1],
-                    'flight': ''
-                }
-            ];
-        }else{
-            $scope.schedules = [
-                {
-                    'date': '',
-                    'time': '',
-                    'departure': '',
-                    'arrival': '',
                     'flight': ''
                 }
             ];
@@ -200,6 +200,15 @@
         $scope.$watch('family', function() {
           if($scope.family) {
             controller.transports = [];
+              $scope.schedules = [
+                  {
+                      'date': '',
+                      'time': '',
+                      'departure': '',
+                      'arrival': '',
+                      'flight': ''
+                  }
+              ];
             loadTransports(1, $scope.family);
               if (queryData.departure != null){
                   var param = queryData.departure.split(',');
@@ -209,16 +218,6 @@
                           'time': '',
                           'departure': param[0],
                           'arrival': param[1],
-                          'flight': ''
-                      }
-                  ];
-              }else{
-                  $scope.schedules = [
-                      {
-                          'date': '',
-                          'time': '',
-                          'departure': '',
-                          'arrival': '',
                           'flight': ''
                       }
                   ];
@@ -233,9 +232,6 @@
           }
           if(!routesEqual(newValue[0], oldValue[0])) {
             mapUtilsService.removeMarkedCurve(controller.map);
-            $timeout(function() {
-              $scope.schedules[0].flight = '';
-            });
             if(newValue[0].departure && newValue[0].arrival) {
               if(!_.contains(controller.arrivals($scope.routes, newValue[0].departure), newValue[0].arrival)) {
                 $timeout(function() {
