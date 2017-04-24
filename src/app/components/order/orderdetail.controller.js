@@ -22,9 +22,7 @@
 
         function getOrder(orderId) {
             OrderServer.getOrder(orderId,function (res) {
-                console.log(res.data);
                 var data = res.data;
-
 
                 if (data.type === 'airtour'){
                     var tourPoints = data.airTour.tourPoint.split(';');

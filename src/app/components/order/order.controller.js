@@ -189,7 +189,9 @@
                     d.showSubtitle = d.airTour.description;
                     d.price = d.chartered ? d.aircraftItem.price : (d.aircraftItem.seatPrice * d.passengers.length);
                 }else if (type === 'airtaxi'){
-                    console.log(d);
+                    d.showTitle = d.airTaxi.name;
+                    d.showSubtitle = d.airTaxi.departure + ' → ' + d.airTaxi.arrival;
+                    d.price = d.airTaxi.chartered ? d.aircraftItem.price : (d.aircraftItem.seatPrice * d.passengers.length);
                 }else {
                     d.showTitle = 'unknown';
                     d.showSubtitle = '';
