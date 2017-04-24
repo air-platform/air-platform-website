@@ -124,6 +124,7 @@
           });
           mainView.pageData = {
             'from': 'transportation',
+            'type': 'transportation',
             'schedules': data[0],
             'planeModel': planeModel
           };

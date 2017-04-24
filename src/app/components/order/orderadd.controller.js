@@ -29,7 +29,7 @@
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
-        var pageType = pageData.from;
+        var pageType = pageData.type;
         console.log(pageData);
         if (pageType && pageType === 'transportation'){//从air transportation过来
             $scope.istour = false;
@@ -174,7 +174,7 @@
                 aircraftItem:$scope.orderInfo.aircraftItemId
             };
 
-            OrderServer.submitOrder(param,'tour',function (res) {
+            OrderServer.submitOrder(param,pageType,function (res) {
                 console.log(res);
                 var local = res.headers('location').split('/');
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);

@@ -42,7 +42,7 @@
         function submitOrder(param,type,successHandler,failedHandler) {//name、mobile、identity
             if (type === 'transportation'){
                 NetworkService.post('user/airtransport/orders/',param,successHandler,failedHandler);
-            }else if (type === 'tour') {
+            }else if (type === 'airtour') {
                 NetworkService.post('user/airtour/orders/',param,successHandler,failedHandler);
             }else {
                 NetworkService.post('user/airtaxi/orders/',param,successHandler,failedHandler);
