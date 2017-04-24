@@ -25,14 +25,14 @@
         //乘客及联系人信息
         $scope.passengers = [];
         $scope.psgs = [];
-        $scope.istransportation = true;
+        $scope.istour = false;
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
         var pageType = pageData.from;
         console.log(pageData);
-        if (pageType && pageType === 'airtrans'){//从air transportation过来
-            $scope.istransportation = true;
+        if (pageType && pageType === 'transportation'){//从air transportation过来
+            $scope.istour = false;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
             $scope.orderInfo.flightId = planeModel.product;
@@ -52,8 +52,8 @@
             date = date.replace('日','');
             $scope.orderInfo.date = date;
 
-        }else if (pageType && pageType === 'airtaxi'){
-            $scope.istransportation = false;
+        }else {
+            $scope.istour = true;
             var site = pageData.site;
             var tourPoints = site.tourPoint.split(';');
             $scope.orderInfo.flightId = site.aircraftItems[0].product;
@@ -69,7 +69,6 @@
             $scope.orderInfo.time = site.tourTime;
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
-
         }
 
         // 获取 f7 页面
@@ -165,6 +164,8 @@
 
             var param = {
                 airTransport:$scope.orderInfo.flightId,
+                airTaxi:$scope.orderInfo.flightId,
+                airTour:$scope.orderInfo.flightId,
                 chartered: $scope.orderInfo.chartered,
                 date: $scope.orderInfo.date,
                 timeSlot: $scope.orderInfo.interval,
@@ -173,7 +174,7 @@
                 aircraftItem:$scope.orderInfo.aircraftItemId
             };
 
-            OrderServer.submitOrder(param,function (res) {
+            OrderServer.submitOrder(param,'tour',function (res) {
                 console.log(res);
                 var local = res.headers('location').split('/');
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + local[local.length - 1]);
