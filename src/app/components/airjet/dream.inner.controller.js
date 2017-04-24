@@ -60,6 +60,10 @@
                 NotificationService.alert.success('乘客人数至少大于等于' +　$scope.dreamObj.minPassengers, null);
                 return;
             }
+            if(!$scope.agreement){
+                NotificationService.alert.success('请您先阅读并同意Air Community免责条款', null);
+                return;
+            }
             var passData = {
                 "passengers": data.guest,
                 "contact": {

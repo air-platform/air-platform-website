@@ -47,7 +47,7 @@
         function getPlaneDetail() {
             NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE) + '/' + (queryData.id || ('query/flightno/' + queryData.flightno)), null, function(response) {
                 $scope.planeDetail = response.data;
-                angular.element('#plane-detail-title').text(response.data.name);
+                angular.element('#plane-detail-title').text(response.data.vendor.name + ' ' + response.data.flightNo);
                 if(response.data.appearances) {
                     $scope.appearances = response.data.appearances.split(';');
                 }
