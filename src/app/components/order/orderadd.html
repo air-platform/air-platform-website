@@ -105,7 +105,7 @@
                     <div class="order-title">请选择乘机人</div>
                     <div class="order-person">
                         <span class="order-person-item" ng-repeat="p in passengers track by $index">
-                            <a href="#" class="button ng-scope" ng-class="{'button-active': (p.isSelected)}" ng-click="selectPassengerAction($index)">{{p.name}}</a>
+                            <a href="#" class="button ng-scope" ng-class="{'button-active': (p.isSelected)}" ng-click="selectPassengerAction($index)"><i class="f7-icons" ng-show="p.isSelected">check_round</i>{{p.name}}</a>
                         </span>
                         <a href="#" data-popup=".popup-passenger" class="button btn-add open-about open-popup"><i class="f7-icons">add_round</i> &nbsp;新增</a>
                     </div>
@@ -121,24 +121,24 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="order-person-mobile">
+                    <div class="order-person-mobile" ng-click="editContactPhoneAction()">
                         <span>联系手机&nbsp;&nbsp;&nbsp;</span>
                         <span>{{orderInfo.contactMobile}}</span>
                         <span class="order-edit">
-                        <a ng-click="editContactPhoneAction()"><i class="f7-icons">compose</i>修改</a>
+                        <a><i class="f7-icons">compose</i>修改</a>
                     </span>
                     </div>
                 </div>
                 <!--价格-->
                 <div class="order-person-price">
-                    <div class="order-price-title">请选择价格</div>
+                    <div class="order-price-title">请选择价格<span class="order-price-subtitle">（拼座价格3人起预订）</span></div>
                     <div class="order-price-type row">
                         <div class="col-50" ng-click="orderInfo.chartered = true">
                             <div class="order-price-icon">
                                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-red' : orderInfo.chartered}">{{ orderInfo.chartered ? 'check_round' : 'circle'}}</i>
                             </div>
                             <div class="order-persons">
-                                <div>整机</div>
+                                <div style="margin-left: 10px;">整机</div>
                                 <!--<div>整机{{orderInfo.charterAll.capacity}}</div>-->
                             </div>
                             <div class="order-price">
@@ -150,7 +150,7 @@
                                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-red' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>
                             </div>
                             <div class="order-persons">
-                                <div>拼座</div>
+                                <div style="margin-left: 10px;">拼座</div>
                                 <!--<div>至少 {{orderInfo.charter.capacity}} 人预定</div>-->
                             </div>
                             <div class="order-price">

@@ -33,12 +33,12 @@
         angular.element('.infinite-scroll').on('infinite', cityInfinite);
         $scope.$watch('citySearch', search);
         $timeout(function () {
-            if(mainView.activePage.name === 'airjet') {
+            if(mainView.activePage.name === 'smart-select-radio-travel') {
+                getCity();
+            } else {
                 getCard();
                 getDream();
                 getRecommended();
-            } else {
-                getCity();
             }
         }, 200);
         if(StorageService.get('travel')){
@@ -297,6 +297,7 @@
 
         function jumpCity(index, name) {
             if (angular.isNumber(index) && name) {
+                StorageService.put('travel', $scope.travelStrokeList);
                 mainView.router.load({url:'app/components/airjet/travel-city.html?index=' + index + '&name=' + name, pushState: false})
             }
         };
