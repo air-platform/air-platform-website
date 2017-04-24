@@ -192,6 +192,7 @@
         function updateDisplayLoadingStatus() {
             $timeout(function () {
                 $scope.loading = loadings[tabIndexNow];
+                $scope.$apply();
             },500);
         }
 
