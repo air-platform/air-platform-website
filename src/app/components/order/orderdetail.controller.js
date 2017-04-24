@@ -22,6 +22,7 @@
         function getOrder(orderId) {
             OrderServer.getOrder(orderId,function (res) {
                 var data = res.data;
+                console.log(data);
 
                 if (data.type === 'airtour'){
                     var tourPoints = data.airTour.tourPoint.split(';');
@@ -50,15 +51,15 @@
                     $scope.orderInfo = {
                         orderNo: data.orderNo,
                         creationDate:data.creationDate,
-                        flight: data.airTaxi.aircraftItems[0].aircraft.name,
+                        flight: data.aircraftItem.aircraft.name,
                         date: data.date,
                         departure:data.airTaxi.departure,
                         arrival:data.airTaxi.arrival,
-                        time:data.airTaxi.timeEstimation,
-                        capacity:data.airTaxi.aircraftItems[0].aircraft.seats,
+                        time:data.airTaxi.duration + '分钟',
+                        capacity:data.aircraftItem.aircraft.seats,
                         interval:data.timeSlot,
                         price:price,
-                        seatPrice:data.airTaxi.aircraftItems[0].seatPrice,
+                        seatPrice:data.aircraftItem.aircraft.seatPrice,
                         type:data.type
                     };
 
@@ -73,7 +74,7 @@
                         date: data.date,
                         departure:data.airTransport.flightRoute.departure,
                         arrival:data.airTransport.flightRoute.arrival,
-                        time:data.airTransport.timeEstimation,
+                        time:data.airTransport.duration + '分钟',
                         capacity:data.airTransport.aircraftItems[0].aircraft.seats,
                         interval:data.timeSlot,
                         price:price,
