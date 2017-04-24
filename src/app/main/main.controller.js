@@ -55,7 +55,7 @@
             ]
             },
             {
-                title: 'Air BB论坛', items: [
+                title: 'Air Quest', items: [
                 {'title': '话题讨论/发帖/留言', target: 'forum'}
             ]
             },
