@@ -20,7 +20,7 @@
     };
 
     var drawMap = function(target, points, config) {
-      MapService.mapPromise().then(function () {
+      // MapService.mapPromise().then(function () {
         if (!config) config = {};
         // 百度地图API功能
         var map = new BMap.Map(target);
@@ -101,7 +101,7 @@
         }
 
         return map;
-      })
+      // })
     };
 
     function drawCurves(map, routes) {

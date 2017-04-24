@@ -13,7 +13,7 @@
         var queryData = myApp.views[0].activePage.query;
 
         var drawMap = function(target, points) {
-            MapService.mapPromise().then(function () {
+            // MapService.mapPromise().then(function () {
                 var map = new BMap.Map(target);
                 map.disableDragging();
                 map.disableScrollWheelZoom();
@@ -38,7 +38,7 @@
                     strokeOpacity: 0.5
                 });
                 map.addOverlay(curve);
-            })
+            // })
         }
 
         var loadTourData = function(id) {

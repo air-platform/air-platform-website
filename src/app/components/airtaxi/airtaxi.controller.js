@@ -24,7 +24,7 @@
               }
             }
             var drawMap = function(target, points) {
-              MapService.mapPromise().then(function () {
+              // MapService.mapPromise().then(function () {
                 var map = new BMap.Map(target);
                 map.disableDragging();
                 map.disableScrollWheelZoom();
@@ -63,7 +63,7 @@
                   markerPoints.push(point);
                 });
                 map.setViewport(markerPoints);
-              });
+              // });
 
             }
             var citylist = [{
