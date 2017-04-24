@@ -2,7 +2,7 @@
 <!-- Top Navbar-->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+    <div class="left sliding"><a href="index.html" class="link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
     <div class="center sliding">Air Jet</div>
   </div>
 </div>
@@ -163,7 +163,7 @@
                     <div class="preloader"></div>
                 </div>
                 <div class="dream-flying-content">
-                    <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" href="app/components/airjet/dream-inner.html?id={{item.id}}">
+                    <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" ng-click="jumpDream(item)">
                         <div class="dfi-left">
                             <div class="dfi-top">
                                 <div class="dreaam-flying-logo">{{item.vendor.name}} {{item.flightNo}}</div>

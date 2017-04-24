@@ -21,6 +21,7 @@
         $scope.submit = submit;
         $scope.addCard = addCard;
         $scope.removeCard = removeCard;
+        $scope.jumpDream = jumpDream;
         $scope.jumpTourDetail = jumpTourDetail;
         $scope.datepicter = datepicter;
         $scope.tabActive = queryData.tabActive || 'tab1';
@@ -119,7 +120,7 @@
                         if (item.name.indexOf(cardArr[i]) !== -1) {
                             item.level = i + 1;
                             if (result[i]) {
-                                result.push(item);
+                                result.splice(i, 0, item);
                             } else {
                                 result[i] = item;
                             }
@@ -128,7 +129,11 @@
                     }
                     if (status) {
                         item.level = 0;
-                        result.push(item);
+                        if(result[3]){
+                            result.splice(4, 0, item);
+                        } else {
+                            result[3] = item;
+                        }
                     }
                 });
                 $scope.cardList = result;
@@ -235,6 +240,7 @@
 
                 });
                 if (valid) {
+                    StorageService.put('travel', base);
                     StorageService.put('plan', { base: base });
                     if (status) {
                         mainView.router.loadPage('app/components/airjet/travel-info.html');
@@ -253,6 +259,12 @@
         function removeCard(index) {
             $scope.travelStrokeList.splice(index, 1);
             StorageService.put('travel', $scope.travelStrokeList);
+        };
+
+        function jumpDream(data) {
+            if (data.id && !data.expired) {
+                mainView.router.loadPage('app/components/airjet/dream-inner.html?id=' + data.id)
+            }
         };
 
         function jumpTourDetail(data) {
