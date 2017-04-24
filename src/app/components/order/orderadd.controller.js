@@ -96,7 +96,7 @@
 
 
         function selectPassengerAction(index) {
-            if ($scope.psgs.length >= $scope.orderInfo.capacity){
+            if (!$scope.passengers[index].isSelected && $scope.psgs.length >= $scope.orderInfo.capacity){
                 myApp.alert('本次航班只能乘坐' + $scope.orderInfo.capacity + '人');
                 return;
             }
