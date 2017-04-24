@@ -17,7 +17,7 @@
          charter 拼座
         */
         $scope.orderInfo = {
-            flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'约12:36分钟',interval:'08:00-09:00',
+            flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'',interval:'',
             charterAll:{price:0,capacity:0},charter:{price:0,capacity:0},
             contactMobile:'',
             chartered:true
@@ -49,9 +49,25 @@
             date = date.replace('日','');
             $scope.orderInfo.date = date;
 
+        }else if (pageType && pageType === 'airtaxi'){
             console.log(pageData);
-        }else{
-            console.log(pageData);
+            var site = pageData.site;
+            $scope.orderInfo.flightId = site.aircraftItems[0].aircraft.product;
+            $scope.orderInfo.flight = site.aircraftItems[0].aircraft.name;
+            $scope.orderInfo.charter.capacity = site.aircraftItems[0].aircraft.minPassengers;
+            $scope.orderInfo.charter.price = site.aircraftItems[0].seatPrice;
+            $scope.orderInfo.charterAll.price = site.aircraftItems[0].price;
+            // $scope.orderInfo.charterAll.capacity = planeModel.aircraft.seats;
+            $scope.orderInfo.capacity = site.tourDistance;
+            // $scope.orderInfo.flight = site.name;
+
+            // $scope.orderInfo.departure = schedules.departure;
+            // $scope.orderInfo.arrival = schedules.arrival;
+            $scope.orderInfo.interval = site.tourTime;
+            // var date = schedules.date.replace('年','-');
+            // date = date.replace('月','-');
+            // date = date.replace('日','');
+            // $scope.orderInfo.date = date;
         }
 
         // 获取 f7 页面

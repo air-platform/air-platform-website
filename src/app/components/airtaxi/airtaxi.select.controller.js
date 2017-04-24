@@ -28,6 +28,7 @@
     	function gotoOrderAction() {
         // no mainView.pageData.schedules for circle tour
         mainView.pageData.planeModel = controller.planeModel;
+        mainView.pageData.from = 'airtaxi';
         mainView.router.loadPage('app/components/order/orderadd.html');
       }
 
