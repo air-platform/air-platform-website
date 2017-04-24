@@ -1,110 +1,352 @@
-.city-tour-content{
-    padding: .16rem .16rem .14rem .22rem;
-    position: relative;
-    font-family: PingFangSC-Regular;
 
-    .tour-date-select{
-        height: .96rem;
-        background-color: @bg-white;
-        display: flex;
-        line-height: .96rem;
-        color: @font-grey;
-        font-size: .28rem;
-        padding: 0 0 0 .42rem;
-        margin-bottom: .18rem;
-        border-radius: .08rem;
-        .label{
-            margin-right: .2rem;
-        }
-        input{
-            width: 4.82rem;
-            height: .96rem;
-            font-size: .32rem;
-            color: @font-black;
-            border: none;
-            outline: none;
-            padding: .2rem .26rem;
-        }
-        &.fa:before {
-            content: "\f107";
-            position: absolute;
-            font-size: .48rem;
-            color: @font-grey;
-            right: .42rem;
-            height: .96rem;
-            line-height: .96rem;
-            z-index: 22;
-        }
-    }
-
-    .tour-projects{
-        .project-card{
-            width: 100%;
-            height: 1.44rem;
-            background-color: @bg-white;
-            margin-bottom: .16rem;
-            border-radius: .04rem;
-            position: relative;
-            .left-media{
-                border-radius: .04rem .04rem 0 0;
-                img{
-                    width: 2.2rem;
-                    height: 1.44rem;
-                }
-            }
-            .project-description{
-                height: 1.44rem;
-                padding: .24rem 0 .24rem .34rem;
-            }
-            .project-title{
-                font-family: PingFangSC-Medium;
-                color: @font-black;
-                font-size: .28rem;
-                line-height: .34rem;
-                margin-bottom: .14rem;
-            }
-            .abstract-info{
-                display: block;
-                display: -webkit-box;
-                position: absolute;
-                max-width: 50%;
-                font-size: .2rem;
-                line-height: .24rem;
-                color: @font-grey;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            &.fa:before {
-                content: "\f105";
-                position: absolute;
-                font-size: .48rem;
-                color: @font-grey;
-                right: .58rem;
-                height: 1.44rem;
-                line-height: 1.44rem;
-                z-index: 22;
-            }
-        }
-    }
+.navbar-through .page-content.with-mapview {
+    padding-top: 1.76rem;
 }
 
-.order-center{
-    span{
-        vertical-align: middle;
+#citytour-title {
+  font-family: inherit;
+}
+
+#tour-project-list {
+  .content-block {
+    padding: 0
+  }
+
+  .city-tour-content{
+      padding: .16rem .16rem .14rem .22rem;
+      position: relative;
+      font-family: PingFangSC-Regular;
+
+      .tour-date-select{
+          height: .96rem;
+          background-color: @bg-white;
+          display: flex;
+          line-height: .96rem;
+          color: @font-grey;
+          font-size: .28rem;
+          padding: 0 0 0 .42rem;
+          margin-bottom: .18rem;
+          border-radius: .08rem;
+          .label{
+              margin-right: .2rem;
+          }
+          input{
+              width: 4.82rem;
+              height: .96rem;
+              font-size: .32rem;
+              color: @font-black;
+              border: none;
+              outline: none;
+              padding: .2rem .26rem;
+          }
+          &.fa:before {
+              content: "\f107";
+              position: absolute;
+              font-size: .48rem;
+              color: @font-grey;
+              right: .42rem;
+              height: .96rem;
+              line-height: .96rem;
+              z-index: 22;
+          }
+      }
+
+      .tour-projects{
+          .project-card{
+              width: 100%;
+              height: 1.44rem;
+              background-color: @bg-white;
+              margin-bottom: .16rem;
+              border-radius: .04rem;
+              position: relative;
+              .left-media{
+                  border-radius: .04rem .04rem 0 0;
+                  img{
+                      width: 2.2rem;
+                      height: 1.44rem;
+                  }
+              }
+              .project-description{
+                  height: 1.44rem;
+                  padding: .24rem 0 .24rem .34rem;
+              }
+              .project-title{
+                  font-family: PingFangSC-Medium;
+                  color: @font-black;
+                  font-size: .28rem;
+                  line-height: .34rem;
+                  margin-bottom: .14rem;
+              }
+              .abstract-info{
+                  display: block;
+                  display: -webkit-box;
+                  position: absolute;
+                  max-width: 50%;
+                  font-size: .2rem;
+                  line-height: .24rem;
+                  color: @font-grey;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+              }
+              &.fa:before {
+                  content: "\f105";
+                  position: absolute;
+                  font-size: .48rem;
+                  color: @font-grey;
+                  right: .58rem;
+                  height: 1.44rem;
+                  line-height: 1.44rem;
+                  z-index: 22;
+              }
+          }
+      }
+  }
+
+  .order-center{
+      span{
+          vertical-align: middle;
+      }
+      &.fa:after, &.fa:before{
+          font-size: .4rem;
+          color: @font-grey;
+          margin: 0 .14rem;
+          vertical-align: middle;
+      }
+      &.fa:after{
+          content: '\f107';
+          font-size: .48rem;
+      }
+      &.fa:before{
+          content: '\f041';
+      }
+  }
+}
+
+#island-mapview-order {
+  .content-block {
+    padding: 0;
+  }
+
+  .map {
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+
+  .airtrans-map-view {
+    width: 100%;
+    // height: 6.56rem;
+    height: 8rem;
+  }
+
+  .arrow-bidirection {
+    position: relative;
+    cursor: pointer;
+    top: 0.3rem;
+  }
+
+  .schedule-card {
+    margin-top: 1em;
+    border-radius: 1px;
+
+    .add-schedule-button {
+      display: none;
     }
-    &.fa:after, &.fa:before{
-        font-size: .4rem;
-        color: @font-grey;
-        margin: 0 .14rem;
-        vertical-align: middle;
+
+    &::before, &::after {
+      content: '';
+      position: relative;
+      height: 1px;
+      width: 100%;
+      background-color: #c8c7cc;
+      display: block;
+      transform-origin: 50% 0%;
     }
-    &.fa:after{
-        content: '\f107';
-        font-size: .48rem;
+  }
+
+  .schedule-card-list {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 1.2rem;
+    top: 8.72rem;
+    background-color: #f7f7f7;
+    box-shadow: 0 -5px 5px 0 rgba(166,166,166,0.50);
+    z-index: 10;
+
+    select[disabled="disabled"] + .item-content .item-inner .item-after{
+      color: #6d6d72;
     }
-    &.fa:before{
-        content: '\f041';
+    li:first-child .schedule-card{
+      margin-top: 0;
+
+      .add-schedule-button {
+        display: block;
+      }
+      .button-schedule-delete {
+        display: none;
+      }
     }
+  }
+
+  .schedule-title {
+    padding: 10px 22px;
+    border-bottom: 1px solid @border-gray;
+    font-size: 0.28rem;
+  }
+
+    .schedule-card {
+      margin-top: 1em;
+      background-color: @base-white;
+      border-radius: 1px;
+
+      .add-schedule-button {
+        display: none;
+      }
+
+      &::before, &::after {
+        content: '';
+        position: relative;
+        height: 1px;
+        width: 100%;
+        background-color: #c8c7cc;
+        display: block;
+        transform-origin: 50% 0%;
+      }
+    }
+    .schedule-title {
+      padding: 0.2rem 0.5rem;
+      border-bottom: 1px solid #c8c7cc;
+      color: @base-black;
+      font-size: 0.28rem;
+    }
+    .schedule-content {
+      margin: 0 0 0 25px;
+    }
+    .schedule-card .row {
+      width: 100%;
+
+      .item-inner {
+        display: inline-block;
+        padding: 10px 15px 7px 0;
+        min-height: 1.1rem;
+
+        .item-title {
+          font-size: 0.24rem;
+        }
+        .item-after {
+          max-width: 100%;
+          padding-left: 0;
+          margin-left: 0;
+          margin-top: 0;
+          color: @base-black;
+          font-size: 0.28rem;
+          input {
+            height: auto;
+            font-size: 0.28rem;
+          }
+        }
+        &::after {
+          display: none;
+        }
+      }
+
+      .item-content {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        .field-block {
+          width: 100%;
+        }
+        .item-title, .item-after {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .item-title {
+          top: 50%;
+          width: 50%;
+          transform: translateY(-100%);
+        }
+        .item-after {
+          position: relative;
+          top: 50%;
+          max-width: 45%;
+          line-height: 1.2;
+          transform: translateY(-100%);
+          margin-left: 10px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          a {
+            color: @base-black;
+          }
+        }
+        &::after {
+          display: none;
+        }
+      }
+      &::after {
+        content: '';
+        position: relative;
+        height: 1px;
+        width: 100%;
+        background-color: #c8c7cc;
+        display: block;
+        transform-origin: 50% 0%;
+      }
+    }
+
+  .add-schedule-button {
+    position: relative;
+    right: 0.4rem;
+    top: -0.4rem;
+
+    i {
+      position: relative;
+      color: #4D6EA7;
+      line-height: 85%;
+      background-color: @base-white;
+      font-size: 0.8rem;
+      border-radius: 1rem;
+    }
+  }
+
+  .button-schedule-delete {
+    position: relative;
+    float: right;
+    font-size: 0.4rem;
+    color: #9b9b9b;
+  }
+
+  .flight-input a {
+    display: inline-block;
+    width: 100%;
+    font-size: 0.28rem;
+    line-height: 0.94rem;
+    color: @font-black;
+  }
+
+  .footer-button {
+    position: fixed;
+    padding: 5px 22px;
+    width: 100%;
+    background-color: @base-white;
+    z-index: 20;
+    background-color: @bg-white;
+    bottom: 0;
+  }
+
+  .start-flight {
+    height: 0.88rem;
+    line-height: 0.88rem;
+    border: 1px solid @border-red;
+    background-color: @bg-red;
+    border-radius: 0.16rem;
+    color: @font-white;
+    font-size: 0.36rem;
+    letter-spacing: 0;
+  }
 }

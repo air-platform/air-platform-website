@@ -10,21 +10,28 @@
     angular.module('airsc').controller('transController', transController);
 
     /** @ngInject */
-    function transController($scope, iotUtil, NetworkService, transUtilsService, NotificationService) {
+    function transController($scope, iotUtil, NetworkService, mapUtilsService,
+            NotificationService, scheduleUtilsService) {
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
-        var ROUTES_FAMILY = "飞越海峡";
+        var ROUTES_FAMILIES = {'air-taxi-cross-channel': '飞越海峡', 'mongolia-routes': '内蒙航线'};
         $scope.schedules = [];
         $scope.routes = [];
         controller.mapPoints = [];
         controller.datepicker = {};
         controller.transports = [];
+        $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
+        setTimeout(function() {
+          $('.airtrans-schedule-dateinput').each(function() {
+            return createDatePicker(this);
+          });
+        }, 1);
 
-        var loadTransports = function(page) {
+        var loadTransports = function(page, family) {
           var hasMore = true;
           var page = 1;
           NetworkService.get("transports",
-          {page: page, family: ROUTES_FAMILY},
+          {page: page, family: family},
           function getMapMakers(res) {
             var data = res.data;
             hasMore = data.hasNextPage;
@@ -78,7 +85,7 @@
         //     NotificationService.alert.error("已达到单订单上限行程数量！", null);
         //     return;
         //   };
-        //   var errors = transUtilsService.validateSchedules($scope.schedules);
+        //   var errors = scheduleUtilsService.validateSchedules($scope.schedules);
         //   if(_.keys(errors).length > 0) {
         //     NotificationService.alert.error(errors[_.keys[0]], null);
         //     return;
@@ -104,7 +111,7 @@
 
         controller.submitSchedules = function() {
           var data = $scope.schedules;
-          var errors = transUtilsService.validateSchedules(data);
+          var errors = scheduleUtilsService.validateSchedules(data);
           if(_.keys(errors).length != 0) {
             NotificationService.alert.error(errors[_.keys(errors)[0]], null);
             return;
@@ -124,17 +131,15 @@
         }
 
         controller.timeSlots = function() {
-          return _.map(_.range(9,17,2), function(hour) {
-            return (hour>9?hour:("0"+hour)) + ":00-" + (hour+2>9?hour+2:"0"+(hour+2))+":00"
-          });
+          return scheduleUtilsService.timeSlots(9, 17, 2);
         };
 
         controller.arrivals = function(routes, departure) {
-            return _.uniq(_.pluck(_.where(routes, {departure: departure}), 'arrival'));
+          return scheduleUtilsService.arrivals(routes, departure);
         }
 
         controller.departures = function(routes) {
-          return _.uniq(_.pluck(routes, 'departure'));
+          return scheduleUtilsService.departures(routes);
         }
 
         var parseRoutes = function(transports) {
@@ -147,11 +152,11 @@
           });
         }
 
-        var createDatePicker = function() {
+        var createDatePicker = function(input) {
           var today = new Date();
           var calendarDateFormat = myApp.calendar({
-            input: '#airtrans-schedule-datepicker-0',
-            dateFormat: 'yyyy年m月d日',
+            input: input,
+            dateFormat: 'yyyy-mm-dd',
             disabled: {
               to: new Date().setDate(today.getDate() - 1)
             },
@@ -162,18 +167,29 @@
           return calendarDateFormat;
         }
 
-        // var hasMore = loadTransports(1)
-        // while(hasMore) {
-        //   hasMore = loadTransports(1);
-        // }
-        loadTransports(1);
+        $scope.$watch('family', function() {
+          if($scope.family) {
+            controller.transports = [];
+            loadTransports(1, $scope.family);
+            $scope.schedules = [
+              {
+                'date': '',
+                'time': '',
+                'departure': '',
+                'arrival': '',
+                'flight': ''
+              }
+            ];
+          }
+        });
 
         $scope.$watch(function() {
           return controller.mapPoints;
         }, function(newValue, oldValue) {
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
-                transUtilsService.drawMap("airtrans-map-view", controller.mapPoints);
+                var mapviewid = ($scope.family == "飞越海峡")?'airtrans-map-view-channel' : 'airtrans-map-view-mongolia';
+                mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true});
               }
             }
           }
@@ -194,10 +210,17 @@
             $scope.schedules[0].arrival = selectedRoute.flightRoute.arrival;
           });
         });
-        setTimeout(function() {
-          controller.datepicker = createDatePicker();
-        }, 0);
 
+        $$('.page[data-page=airtrans] .tab').on('tab:show', function(e) {
+          $scope.$apply(function() {
+            $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
+          });
+          setTimeout(function() {
+            $('.airtrans-schedule-dateinput').each(function() {
+              return createDatePicker(this);
+            });
+          }, 1);
+        });
     }
 
 })();

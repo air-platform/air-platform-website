@@ -7,7 +7,7 @@
         angular.module('airsc').controller('taxiController', taxiController);
 
         /** @ngInject */
-        function taxiController($scope, iotUtil, transUtilsService) {
+        function taxiController($scope, iotUtil, mapUtilsService) {
             /* jshint validthis: true */
             var vm = this;
             // app/components/airtaxi/airtour-city.html?city={{city}}

@@ -27,7 +27,8 @@
         };
 
         // TODO: variable cannot be accessed if refresh on this page
-        var transScope = angular.element($('[data-page=airtrans]')).scope();
+        var prevScope = angular.element($('[data-page=airtrans]')).scope() ||
+                         angular.element($('[data-page=citytour]')).scope();
         mainView.pageData = mainView.pageData || {};
         controller.aircrafts = mainView.pageData.aircrafts;
         controller.planeModel = mainView.pageData.planeModel;
@@ -39,16 +40,26 @@
           setTimeout(
             function(){
               $($event.target).closest('li').find('label.label-checkbox input').prop("checked", true);
-              transScope.schedules[0].flight = plane.aircraft.name;
+              prevScope.schedules[0].flight = plane.aircraft.name;
             },
           0);
         };
 
         controller.getEstimationTime = function(plane) {
-          var transport = _.find(transScope.trans.transports, function(transport){
-            return _.isEqual(transport.aircraftItems, controller.aircrafts);
-          });
-          return transport.timeEstimation;
+          // TODO: refactoring
+          if(prevScope.trans) {
+            var transport = _.find(prevScope.trans.transports, function(transport){
+              return _.isEqual(transport.aircraftItems, controller.aircrafts);
+            });
+            return transport.timeEstimation;
+          }
+          if(prevScope.ctl) {
+            var transport = _.find(prevScope.ctl.taxiRoutes, function(transport) {
+              return _.isEqual(transport.aircraftItems, controller.aircrafts);
+            });
+            return transport.duration;
+          }
+          return 0;
         };
 
         controller.init = function() {
@@ -65,11 +76,6 @@
           });
         };
 
-        $scope.$watch('controller.aircrafts', function(oldValue, newValue) {
-            if (newValue != oldValue) {
-              // retrieve available planes according to type
-            }
-        });
         setTimeout(function(){
           controller.init();
         }, 0);

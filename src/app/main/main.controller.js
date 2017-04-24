@@ -7,7 +7,7 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope, $rootScope, $translate, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
+    function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
         $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
         // 订阅登录通知->刷新界面
@@ -147,8 +147,13 @@
         NetworkService.get(UrlService.getUrl(URL.TOPICS), null, function(res) {
             $scope.listNews = res.data;
         }, function(err) {
-
+            showErrorAlert(err);
         });
+
+        function showErrorAlert(err) {
+            var errDesc = err.statusText;
+            NotificationService.alert.error('操作失败！' + errDesc, null);
+        }
 
         function test() {
             NetworkService.get('account/auth', null, function (res) {
