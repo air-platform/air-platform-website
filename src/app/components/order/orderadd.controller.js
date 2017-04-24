@@ -165,7 +165,7 @@
             $scope.psgs = [];
             $scope.passengers.forEach(function (p) {
                 if (p.isSelected){
-                    $scope.psgs.push(p.id);
+                    $scope.psgs.push({passenger:p.id});
                 }
             });
 
