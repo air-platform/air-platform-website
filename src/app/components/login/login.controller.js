@@ -21,6 +21,51 @@
         $scope.gotoRegister = gotoRegister;
         $scope.gotoResetPassword = gotoResetPassword;
 
+
+        var fruits = ['18513149993','abcdefg','acdefg','ad','advgsadf','aeds','adsfawe'];
+
+        var autocompleteDropdownSimple = myApp.autocomplete({
+            input: '#autocomplete-dropdown',
+            openIn: 'dropdown',
+            dropdownTemplate: '<div class="autocomplete-dropdown" style="box-shadow: none;border: none;"> ' +
+                                    '<div class="autocomplete-dropdown-inner" style="margin-left: 0;"> ' +
+                                        '<div class="list-block" style="margin: 0;"> ' +
+                                            '<ul style="margin: 0 80px 0 0;"></ul> ' +
+                                        '</div> ' +
+                                    '</div>' +
+                                    '{{#if preloader}} ' +
+                                    '<div class="autocomplete-preloader preloader {{#if preloaderColor}}preloader-{{preloaderColor}}{{/if}}">' +
+                                        '{{#if material}}{{materialPreloaderHtml}}{{/if}} ' +
+                                    '</div>' +
+                                        '{{/if}} ' +
+                                '</div>',
+            dropdownItemTemplate:'<li style="height: 40px;"> ' +
+            '<label class="{{#unless placeholder}}label-radio{{/unless}} item-content" data-value="{{value}}"> ' +
+            '<div class="item-inner"> ' +
+            '<div class="item-title">{{text}}</div> ' +
+            '</div> ' +
+            '</label> ' +
+            '</li>',
+            source: function (autocomplete, query, render) {
+                var results = [];
+                if (query.length === 0) {
+                    render(results);
+                    return;
+                }
+                // Find matched items
+                for (var i = 0; i < fruits.length; i++) {
+                    if (fruits[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(fruits[i]);
+                }
+                // Render items by passing array with result items
+                render(results);
+            }
+        });
+
+
+
+
+
+
         function cancelAction() {
             mainView.router.back();
         }
