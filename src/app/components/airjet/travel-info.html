@@ -3,7 +3,7 @@
         <div class="left">
             <a href="#" data-panel="left" class="back link"> &nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a>
         </div>
-        <div class="center sliding">填写客户信息</div>
+        <div class="center sliding">填写联系人信息</div>
     </div>
 </div>
 
@@ -46,11 +46,9 @@
             <div class="order-detail-agreement">
                 <i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : agreement}" ng-click="agreement = !agreement">{{ agreement ? 'check_round' : 'circle'}}</i>
                 <span class="order-agree" ng-click="agreement = !agreement">我已同意</span>
-                <span class="order-announce" ng-click="gotoAnnounceAction(0);$event.stopPropagation();">《乘客安全须知》</span>
-                <span class="order-agree-and" ng-click="agreement = !agreement">与</span>
-                <span class="order-announce" ng-click="gotoAnnounceAction(1);$event.stopPropagation();">《免责声明》</span>
+                <span class="order-announce" ng-click="gotoAnnounceAction(1);$event.stopPropagation();">《Air Community免责条款》</span>
             </div>
-            <div class="travel-model-submit block-center" ng-disabled="!agreement" ng-click="infoSubmit(infoData)">{{'airjet.submit' | translate}}</div>
+            <div class="travel-model-submit block-center" ng-click="infoSubmit(infoData)">{{'airjet.submit' | translate}}</div>
         </div>
     </div>
 </div>

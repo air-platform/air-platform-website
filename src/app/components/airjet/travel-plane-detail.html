@@ -21,7 +21,7 @@
                     </div>
                     <div class="travel-model-content">
                         <div class="plane-title clearfix">
-                            <strong class="pull-left" ng-bind="planeDetail.name"></strong>
+                            <strong class="pull-left">{{planeDetail.vendor.name}} {{planeDetail.flightNo}}</strong>
                             <span class="pull-right">{{'airjet.model' | translate}} <em ng-bind="planeDetail.aircraftType"></em></span>
                         </div>
                         <div class="plane-info">
