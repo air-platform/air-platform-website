@@ -22,7 +22,12 @@
         $scope.gotoResetPassword = gotoResetPassword;
 
 
-        var fruits = ['18513149993','abcdefg','acdefg','ad','advgsadf','aeds','adsfawe'];
+
+
+        var fruits = StorageService.get(constdata.account_list);
+        if (!fruits){
+            fruits = [];
+        }
 
         var autocompleteDropdownSimple = myApp.autocomplete({
             input: '#autocomplete-dropdown',
@@ -72,6 +77,14 @@
 
         function signinAction() {
             // console.log(ValidatorService.validate.checkPassword.call(null, $scope.credential), 'password');
+
+            var isExist = fruits.indexOf($scope.principal);
+            if (isExist === -1){
+                fruits.push($scope.principal);
+            }
+            StorageService.put(constdata.account_list,fruits,24 * 30 * 60 * 60);
+
+
             myApp.showIndicator();
             NetworkService.post(UrlService.getUrl(URL.LOGIN), {principal:$scope.principal,credential:$scope.credential},function (response) {
 
@@ -100,10 +113,13 @@
                 //通知刷新界面
                 $rootScope.$emit(constdata.notification_refresh_information,userInfo);
 
-                myApp.hideIndicator();
-                myApp.alert('登录成功！', function () {
+                // myApp.alert('登录成功！', function () {
+                //     mainView.router.back();
+                // });
+                $timeout(function () {
+                    myApp.hideIndicator();
                     mainView.router.back();
-                });
+                },500);
 
             },function (err) {
                 myApp.hideIndicator();

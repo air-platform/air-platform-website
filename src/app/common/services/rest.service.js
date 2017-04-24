@@ -92,7 +92,7 @@
                 newResponse.statusText = '服务器连接错误';
             }
 
-            if (response.status === 401){//token过期，或者未登录
+            if (response.status === 401 && path !== 'account/auth'){//token过期，或者未登录
                 $rootScope.$emit(constdata.notification_refresh_information,{action:'logout'});
             }else{
                 if (failedHandler){
