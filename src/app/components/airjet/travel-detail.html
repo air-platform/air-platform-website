@@ -23,21 +23,8 @@
                         <div class="air-order-item">
                             {{'airjet.start-time' | translate}}{{plan.date | date: 'yyyy-MM-dd' | chinaweek}}
                         </div>
-                        <div class="air-order-item" ng-class="plan.round ? '' : 'guest-num'">
+                        <div class="air-order-item" ng-class="$index === detailData.flightLegs.length - 1 ? 'guest-num' : ''">
                             {{'airjet.guest-count' | translate}}{{plan.passengers}}{{'airjet.person' | translate}}
-                        </div>
-                    </div>
-                    <div ng-show="plan.round">
-                        <div class="air-order-item aoi-city-container radius-top">
-                            <div class="aoi-city"><span>{{'airjet.departure' | translate}}</span><strong ng-bind="plan.destination"></strong></div>
-                            <div class="arrow-right"></div>
-                            <div class="aoi-city"><span>{{'airjet.destination' | translate}}</span><strong ng-bind="plan.departure"></strong></div>
-                        </div>
-                        <div class="air-order-item">
-                            {{'airjet.start-time' | translate}}{{plan.endTime | date: 'yyyy-MM-dd' | chinaweek}}
-                        </div>
-                        <div class="air-order-item">
-                            {{'airjet.guest-count' | translate}}{{plan.guestStart}}{{'airjet.person' | translate}}
                         </div>
                     </div>
                 </div>
