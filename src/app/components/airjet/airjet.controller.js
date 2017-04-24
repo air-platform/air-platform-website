@@ -133,22 +133,19 @@
                     for (var i = 0; i < cardArr.length; i++) {
                         if (item.name.indexOf(cardArr[i]) !== -1) {
                             item.level = i + 1;
-                            if (result[i]) {
-                                result.splice(i, 0, item);
-                            } else {
-                                result[i] = item;
-                            }
+                            result.push(item)
                             status = false;
                         }
                     }
                     if (status) {
                         item.level = 0;
-                        if(result[3]){
-                            result.splice(4, 0, item);
-                        } else {
-                            result[3] = item;
-                        }
+                        result.push(item)
                     }
+                });
+                result.reverse(function (){
+                    return function(a,b){
+                        return a.level - b.level;
+                    };
                 });
                 $scope.cardList = result;
                 if (response.data.totalPages > cardPage) {
