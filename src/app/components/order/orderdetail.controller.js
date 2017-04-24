@@ -8,7 +8,9 @@
 
     /** @ngInject */
     function orderdetailController($scope,OrderServer,$interval,iotUtil,constdata) {
-        var orderId = myApp.views[0].activePage.query.order;
+        var query = myApp.views[0].activePage.query;
+        var orderId = query.order;
+        $scope.type = query.type;
 
         $scope.just4Show = true;
         $scope.agreement = false;
@@ -22,23 +24,26 @@
                 console.log(res.data);
                 var data = res.data;
 
-                var price = data.chartered ? data.airTransport.aircraftItems[0].price : (data.airTransport.aircraftItems[0].seatPrice * data.passengers.length);
+                var price = data.chartered ? data.aircraftItem.price : (data.aircraftItem.seatPrice * data.passengers.length);
+
+                if ($scope.type === 'airtour'){
+                    $scope.orderInfo = {
+                        orderNo: data.orderNo,
+                        creationDate:data.creationDate,
+                        flight: data.aircraftItem.aircraft.name,
+                        date: data.airTour.date,
+                        // departure:data.airTour.flightRoute.departure,
+                        // arrival:data.airTour.flightRoute.arrival,
+                        // time:data.airTour.timeEstimation,
+                        capacity:data.aircraftItem.aircraft.seats,
+                        interval:data.timeSlot,
+                        price:price,
+                        seatPrice:data.aircraftItem.seatPrice,
+                        type:data.type
+                    };
+                }
 
 
-                $scope.orderInfo = {
-                    orderNo: data.orderNo,
-                    creationDate:data.creationDate,
-                    flight: data.airTransport.aircraftItems[0].aircraft.name,
-                    date: data.airTransport.date,
-                    departure:data.airTransport.flightRoute.departure,
-                    arrival:data.airTransport.flightRoute.arrival,
-                    time:data.airTransport.timeEstimation,
-                    capacity:data.airTransport.aircraftItems[0].aircraft.seats,
-                    interval:data.timeSlot,
-                    price:price,
-                    seatPrice:data.airTransport.aircraftItems[0].seatPrice,
-                    type:data.type
-                };
 
             },function (err) {
                 showErrorAlert(err);
