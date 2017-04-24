@@ -5,6 +5,7 @@
 
     /** @ngInject */
     function airtaxiSelectController($scope, iotUtil) {
+
       var controller = this;
       mainView.pageData = mainView.pageData || {};
       controller.site = mainView.pageData.site;

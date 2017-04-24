@@ -7,9 +7,13 @@
     angular.module('airsc').controller('travelInfoController', travelInfoController);
 
     /** @ngInject */
-    function travelInfoController($scope, NotificationService, StorageService, NetworkService, UrlService, URL, REGEX) {
+    function travelInfoController($scope,constdata, NotificationService, StorageService, NetworkService, UrlService, URL, REGEX) {
         $scope.infoData = {};
         $scope.infoSubmit = infoSubmit;
+
+        var information = StorageService.get(constdata.information);
+        $scope.infoData = {name:information.realName,phone:information.mobile,email:information.email};
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
 
         function infoSubmit(data) {
             if(!data.name){
