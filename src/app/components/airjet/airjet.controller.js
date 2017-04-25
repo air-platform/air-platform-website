@@ -7,7 +7,7 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL) {
+    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT) {
         var cardPage = 1;
         var dreamPage = 1;
         var cityPage = 1;
@@ -105,23 +105,24 @@
         };
 
         function getCity() {
-            $scope.hotList = [{"country":"中国","code4":"ZSNJ","code3":"NKG","name":"禄口","city":"南京"},{"country":"中国","code4":"ZBAA","code3":"PEK","name":"首都国际机场","city":"北京"},{"country":"中国","code4":"ZBTJ","code3":"TSN","name":"滨海","city":"天津"},{"country":"中国","code4":"ZSSZ","code3":"NULL","name":"光福","city":"苏州"},{"country":"中国","code4":"ZYTL","code3":"DLC","name":"周水子","city":"大连"},{"country":"中国","code4":"ZYTX","code3":"SHE","name":"桃仙","city":"沈阳"},{"country":"中国","code4":"ZLXY","code3":"XIY","name":"咸阳","city":"西安"},{"country":"中国","code4":"ZSSL","code3":"NULL","name":"龙华","city":"上海"},{"country":"中国","code4":"ZSAM","code3":"XMN","name":"高崎","city":"厦门"},{"country":"中国","code4":"ZSHC","code3":"HGH","name":"萧山","city":"杭州"},{"country":"中国","code4":"ZSJN","code3":"TNA","name":"遥墙","city":"济南"},{"country":"中国","code4":"ZSNB","code3":"NGB","name":"栎社","city":"宁波"},{"country":"中国","code4":"ZSQD","code3":"TAO","name":"流亭","city":"青岛"},{"country":"中国","code4":"ZUCK","code3":"CKG","name":"江北","city":"重庆"},{"country":"中国","code4":"ZUUU","code3":"CTU","name":"双流","city":"成都"},{"country":"中国","code4":"ZGSZ","code3":"SZX","name":"宝安","city":"深圳"},{"country":"中国","code4":"ZHHH","code3":"WUH","name":"天河","city":"武汉"},{"country":"中国","code4":"RCTP","code3":"TPE","name":"桃园国际","city":"台北"},{"country":"中国","code4":"ZJSY","code3":"SYX","name":"凤凰","city":"三亚"},{"country":"中国","code4":"VHHH","code3":"HKG","name":"香港","city":"香港"},{"country":"美国","code4":"KCAE","code3":"CAE","name":"哥伦比亚大都会机场","city":"哥伦比亚"},{"country":"美国","code4":"KMDW","code3":"MDW","name":"芝加哥米德韦","city":"芝加哥"},{"country":"美国","code4":"KJFK","code3":"JFK","name":"肯尼迪","city":"纽约"},{"country":"日本","code4":"RJNT","code3":"TOY","name":"富山","city":"富山"},{"country":"巴西","code4":"SBSP","code3":"CGH","name":"孔戈尼亚斯","city":"圣保罗"},{"country":"法国","code4":"NTAA","code3":"PPT","name":"法阿","city":"塔希提岛"},{"country":"意大利","code4":"LIRP","code3":"PSA","name":"圣基斯托","city":"比萨"},{"country":"俄罗斯","code4":"UIUU","code3":"UUD","name":"贝加尔国际机场","city":"乌兰乌德"},{"country":"韩国","code4":"RKSS","code3":"GMP","name":"首尔 金浦","city":"首尔 金浦"},{"country":"英国","code4":"EGCC","code3":"MAN","name":"曼彻斯特","city":"曼彻斯特"},{"country":"加拿大","code4":"CYQB","code3":"YQB","name":"魁北克/勒萨热国际机场","city":"魁北克"},{"country":"圣卢西亚","code4":"TLPL","code3":"UVF","name":"黑瓦诺拉国际机场","city":"圣卢西亚"}];
+            $scope.hotList = CITYHOT;
             $scope.hotList.map(function (item) {
                 if (item.name.indexOf('机场') === -1) {
                     return item.name += '机场';
                 }
             });
             $scope.totalRecords = $scope.hotList.length;
-            NetworkService.get(UrlService.getUrl(URL.AIRJET_CITY), null, function (response) {
-                $scope.cityList = response.data.content;
+            // NetworkService.get(UrlService.getUrl(URL.AIRJET_CITY), null, function (response) {
+                // $scope.cityList = response.data.content;
+                $scope.cityList = CITYLIST;
                 $scope.cityList.map(function (item) {
                     if (item.name.indexOf('机场') === -1) {
                         return item.name += '机场';
                     }
                 });
-            }, function () {
-                myApp.alert('数据获取失败，请重试', null);
-            });
+            // }, function () {
+            //     myApp.alert('数据获取失败，请重试', null);
+            // });
         };
 
         function getCard() {
@@ -131,7 +132,7 @@
                 page: cardPage,
                 pageSize: 10
             };
-            var cardArr = ['金', '尊享', '精英', '飞翔', '悠游', '翱翔']
+            var cardArr = ['金', '尊享', '精英', '飞翔', '悠', '翱翔'];
             NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD), data, function (response) {
                 var result = [];
                 response.data.content.forEach(function (item) {
