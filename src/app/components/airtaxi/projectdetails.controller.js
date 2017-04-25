@@ -139,11 +139,15 @@
         }
 
         /** -end- **/
+        function renderFooter() {
+            var footerBtn = document.createElement('div');
+            footerBtn.classList.add('footer-button');
+            footerBtn.innerHTML = '<a class="next-button" href="app/components/airtaxi/airtaxi-select.html"">下一步</a>';
+            return footerBtn;
+        }
 
 
-
-
-
+        $('.projectDetails').parent().append(renderFooter());
 
     }
 
