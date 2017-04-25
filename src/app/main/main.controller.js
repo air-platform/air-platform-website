@@ -33,7 +33,7 @@
             }
         });
 
-        $scope.airbbLink = constdata.ipCurrent + 'airbb';
+        $scope.airbbLink = constdata.ipCurrent;
 
         var leftPanelItems = [
             {
