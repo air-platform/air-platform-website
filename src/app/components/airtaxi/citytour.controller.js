@@ -272,7 +272,7 @@
     }, function(newValue, oldValue) {
       if (newValue != oldValue && !_.isEmpty(newValue)) {
         controller.map = mapUtilsService.drawMap('airtaxi-island-mapview', controller.mapPoints, {
-          markers: true, curves: true
+          markers: true, curves: true, labels: true
         });
       }
     });
