@@ -220,22 +220,22 @@
             if (data) {
                 var valid = true;
                 data.map(function (item) {
-                    if (item.departure === '请选择') {
+                    if (item.departure === '请选择' && valid) {
                         NotificationService.alert.success('请选择出发城市', null);
                         valid = false;
                         return;
                     }
-                    if (item.arrival === '请选择') {
+                    if (item.arrival === '请选择' && valid) {
                         NotificationService.alert.success('请选择到达城市', null);
                         valid = false;
                         return;
                     }
-                    if (!item.startTime) {
+                    if (!item.startTime && valid) {
                         NotificationService.alert.success('请选择出发时间', null);
                         valid = false;
                         return;
                     }
-                    if (!item.guestStart) {
+                    if (!item.guestStart && valid) {
                         NotificationService.alert.success('请填写乘客人数', null);
                         valid = false;
                         return;
@@ -247,12 +247,12 @@
                         "passengers": item.guestStart
                     });
                     if (item.round) {
-                        if (!item.endTime) {
+                        if (!item.endTime && valid) {
                             NotificationService.alert.success('请选择返程出发时间', null);
                             valid = false;
                             return;
                         }
-                        if (!item.guestEnd) {
+                        if (!item.guestEnd && valid) {
                             NotificationService.alert.success('请填写返程乘客人数', null);
                             valid = false;
                             return;
