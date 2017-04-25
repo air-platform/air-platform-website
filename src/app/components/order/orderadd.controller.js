@@ -18,7 +18,10 @@
         */
 
         var information = StorageService.get(constdata.information);
-
+        if (information && information !== 'undefined'){
+            $scope.infoData = {name:information.realName,phone:information.mobile,email:information.email};
+        }
+        
         $scope.orderInfo = {
             flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'',interval:'',
             charterAll:{price:0,capacity:0},charter:{price:0,capacity:0},
