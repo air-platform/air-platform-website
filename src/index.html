@@ -29,9 +29,31 @@
   <!-- endinject -->
   <!-- endbuild -->
   <style>[ng-cloak] {display: none;}</style>
-</head>
+  <style>
+    .page-loading {
+      display: none;
+      position: absolute;
+      z-index: 22222;
+      height: 100%;
+      width: 100%;
+      background-color: #fff;
+    }
 
+    .page-loading img {
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -60px;
+      margin-top: -60px;
+    }
+  </style>
+</head>
 <body ng-controller="mainController" ng-cloak>
+  <div class="page-loading">
+    <img src="assets/images/loading.gif">
+  </div>
   <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
   <!-- Panels overlay-->
