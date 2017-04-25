@@ -120,7 +120,11 @@
             vm.autocomplete = autocomplete();
 
             vm.toggleSelect = function() {
-              vm.autocomplete;
+              if(vm.autocomplete.opened)
+                vm.autocomplete.close();
+              else {
+                vm.autocomplete.open();
+              }
             }
 
             var points = _.map(citylist, function(city) {
