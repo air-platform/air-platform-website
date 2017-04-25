@@ -107,7 +107,7 @@
 
     /** @ngInject */
     function rmb() {
-        return function (number) {
+        return function (number, unit) {
             if (number) {
                 var result = '';
                 var num = Number(number).toFixed(1).split('.');
@@ -126,7 +126,7 @@
                 if (Number(float) !== 0) {
                     result += '.' + float;
                 }
-                result = '¥' + result;
+                result = unit || '¥' + result;
                 if ((number + '').length >= 5) {
                     result += '万';
                 } else {

@@ -37,6 +37,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
         // pushState: true,
         // sortable: false,
         // swipeout: true,
+        cache:true,
         angular: true,
         modalButtonOk:'确定',
         modalButtonCancel:'取消',
@@ -70,13 +71,13 @@ Framework7.prototype.plugins.angular = function(app, params) {
         console.log('----infinite-scroll');
     });
 
-    // myApp.onPageBeforeInit('*', function () {
-    //     document.querySelector('.page-loading').style.display = 'block';
-    // });
-    //
-    // myApp.onPageAfterAnimation('*', function () {
-    //     document.querySelector('.page-loading').style.display = 'none';
-    // });
+    myApp.onPageAfterAnimation('*', function () {
+        document.querySelector('.page-loading').style.display = 'none';
+    });
+
+    myApp.onPageBeforeAnimation('*', function () {
+        document.querySelector('.page-loading').style.display = 'block';
+    });
 
 // })();
 
