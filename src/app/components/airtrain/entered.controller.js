@@ -8,14 +8,15 @@
     var queryData = myApp.views[0].activePage.query;
 
     $scope.enterObj = angular.fromJson(queryData.param);
-    $scope.enterObj.license = '私照';
-    $scope.enterObj.location = '北京';
+    // $scope.enterObj.license = '私照';
+    // $scope.enterObj.location = '北京';
+      console.log($scope.enterObj);
     $scope.enterObj.course = $scope.enterObj.id;
 
     delete $scope.enterObj.id;
 
-    $scope.licenses = ['私照', '商照'];
-    $scope.place = ['北京', '宜昌', '安阳'];
+    $scope.licenses = [$scope.enterObj.license];
+    $scope.place = [$scope.enterObj.location];
 
     $scope.licenseClick = function(index) {
         $scope.enterObj.license = $scope.licenses[index];
