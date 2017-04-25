@@ -74,6 +74,7 @@
 
         }else {
             $scope.istour = true;
+            var model = pageData.planeModel;
             var site = pageData.site;
             var tourPoints = site.tourPoint.split(';');
             $scope.orderInfo.flightId = site.aircraftItems[0].product;
@@ -90,7 +91,7 @@
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
             $scope.orderInfo.icon = site.vendor.avatar;
-            $scope.orderInfo.aircraftType = null;
+            $scope.orderInfo.aircraftType = model.aircraft.category;
         }
 
         // 获取 f7 页面
