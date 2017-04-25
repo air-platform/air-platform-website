@@ -19,6 +19,7 @@
         $scope.cityShow = 20;
         $scope.citySearch = '';
         $scope.citySelect = citySelect;
+        $scope.roundChange = roundChange;
         $scope.reversal = reversal;
         $scope.submit = submit;
         $scope.addCard = addCard;
@@ -43,14 +44,6 @@
         }, 500);
         if(StorageService.get('travel')){
             $scope.travelStrokeList = StorageService.get('travel');
-            $scope.travelStrokeList.forEach(function(item){
-                if(item.date){
-                    item.startTime = item.date;
-                }
-                if(item.passengers){
-                    item.guestStart = item.passengers;
-                }
-            });
         }
         if(queryData.index && queryData.name){
             $scope.currentCity = $scope.travelStrokeList[queryData.index][queryData.name];
@@ -139,20 +132,18 @@
                     var status = true;
                     for (var i = 0; i < cardArr.length; i++) {
                         if (item.name.indexOf(cardArr[i]) !== -1) {
-                            item.level = i + 1;
-                            result.push(item)
+                            if(i < 3){
+                                item.level = i;
+                            } else {
+                                item.level = i + 1;
+                            }
                             status = false;
                         }
                     }
                     if (status) {
-                        item.level = 0;
-                        result.push(item)
+                        item.level = 3;
                     }
-                });
-                result.reverse(function (){
-                    return function(a,b){
-                        return a.level - b.level;
-                    };
+                    result.push(item);
                 });
                 $scope.cardList = result;
                 if (response.data.totalPages > cardPage) {
@@ -205,6 +196,11 @@
                     }
                 });
             });
+        };
+
+        function roundChange(index){
+            $scope.travelStrokeList[index].round = !$scope.travelStrokeList[index].round;
+            StorageService.put('travel', $scope.travelStrokeList);
         };
 
         function reversal(item, order) {
@@ -271,7 +267,7 @@
 
                 });
                 if (valid) {
-                    StorageService.put('travel', base);
+                    StorageService.put('travel', $scope.travelStrokeList);
                     StorageService.put('plan', { base: base });
                     if (status) {
                         mainView.router.loadPage('app/components/airjet/travel-info.html');

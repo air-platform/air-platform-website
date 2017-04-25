@@ -69,7 +69,7 @@
                                         <input type="text" placeholder="{{'airjet.enter' | translate}}" ng-model="item.guestStart">
                                     </label>
                                 </div>
-                                <div class="tpcbb-back" ng-show="!item.round" ng-click="item.round = true">
+                                <div class="tpcbb-back" ng-show="!item.round" ng-click="roundChange($index);">
                                     <img src="assets/images/travel/icon_add_blue.svg" alt="add">
                                     <em class="item-title">{{'airjet.round-trip' | translate}}</em>
                                 </div>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="tpc-top tpct-round" ng-show="item.round">
                             <em>{{'airjet.stroke' | translate}} <span ng-bind="$index + 1"></span> 返程</em>
-                            <i class="fa fa-trash-o" ng-click="item.round = false"></i>
+                            <i class="fa fa-trash-o" ng-click="roundChange($index);"></i>
                         </div>
                         <div class="tpc-bottom tpcb-round" ng-show="item.round">
                             <div class="tpcb-top">
@@ -125,7 +125,6 @@
                         <img src="assets/images/travel/icon_addfile.svg">
                         <span>{{'airjet.add-trip' | translate}}</span>
                     </div>
-
                 </div>
                 <div class="travel-plan-button">
                     <div class="tpbr-bottom">
@@ -209,7 +208,7 @@
             </div>
             <!-- Tab 3 -->
             <div id="tab3" class="tab infinite-scroll dream-infinite" ng-class="{'active': tabActive === 'tab3'}">
-                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList track by $index" ng-click="jumpTourDetail(card)">
+                <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList | orderBy: 'level' track by $index" ng-click="jumpTourDetail(card)">
                     <div class="card-header">
                         <span>{{card.vendor.name}}&nbsp;&nbsp;{{card.type}}</span>
                         <div class="action">
@@ -220,7 +219,7 @@
                     <div class="card-content" ng-bind="card.name"></div>
                     <div class="card-footer">
                         <span ng-bind="card.summary"></span>
-                        <span>{{card.currencyUnit | uppercase}}&nbsp;{{card.price}}</span>
+                        <span>{{card.currencyUnit | uppercase}}&nbsp;{{card.price | currency:'':0}}</span>
                     </div>
                 </div>
                 <div class="infinite-scroll-preloader card-infinite-preloader">
