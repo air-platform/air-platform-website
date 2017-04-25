@@ -28,9 +28,10 @@
   <!-- css files will be automatically insert here -->
   <!-- endinject -->
   <!-- endbuild -->
+  <style>[ng-cloak] {display: none;}</style>
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="mainController" ng-cloak>
   <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
   <!-- Panels overlay-->
@@ -95,7 +96,7 @@
     </div>
   </div>
   <!-- Views-->
-  <div class="views">
+  <div class="views" ng-cloak>
     <div class="view view-main">
       <!-- Top Navbar-->
       <div class="navbar">
