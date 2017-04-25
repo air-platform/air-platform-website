@@ -283,7 +283,7 @@
 
     $('body').on('citytour.addMapView', function(e) {
       angular.element('#citytour-title').text('Air Taxi');
-      $('.navbar-inner').append($('<div class="subnavbar tourview-subnavbar">' +
+      $('.navbar-tour').append($('<div class="subnavbar tourview-subnavbar">' +
         '<div class="buttons-row air-tabs tourview-nav">' +
         '<a href="#island-mapview-order" class="tab-link active"><span>海岛行</span></a>' +
         '<a href="#tour-project-list" class="tab-link"><span>海岛观光</span></a>' +
