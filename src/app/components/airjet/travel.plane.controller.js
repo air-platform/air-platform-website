@@ -91,7 +91,6 @@
 
         /** -评论- **/
         $scope.loading = false;
-        $scope.score = 5;
         $scope.comments = [];
         $scope.showMore = false;
         $scope.showMoreCommentAction = showMoreCommentAction;

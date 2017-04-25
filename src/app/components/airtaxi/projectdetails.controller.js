@@ -71,12 +71,12 @@
               angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
               drawMap("airtaxi-details-map-view", vm.mapPoints);
 
+              console.log(vm.site);
               /** 获取评论 **/
               $scope.score = vm.site.score;
               $scope.productId = vm.site.id;
               getLatestFirstComment();
           }
-
 
 
         }
@@ -88,7 +88,6 @@
 
         /** -评论- **/
         $scope.loading = false;
-        $scope.score = 0;
         $scope.comments = [];
         $scope.showMore = false;
         $scope.showMoreCommentAction = showMoreCommentAction;

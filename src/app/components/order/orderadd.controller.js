@@ -55,6 +55,7 @@
             date = date.replace('日','');
             $scope.orderInfo.date = date;
             $scope.orderInfo.icon = planeModel.aircraft.vendor.avatar;
+            $scope.orderInfo.aircraftType = planeModel.aircraft.category;
             // $scope.orderInfo.time = timeEstimation
 
         }else {
@@ -75,6 +76,7 @@
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
             $scope.orderInfo.icon = site.vendor.avatar;
+            $scope.orderInfo.aircraftType = null;
         }
 
         // 获取 f7 页面
@@ -220,7 +222,11 @@
             if (1 === type){
                 mainView.router.loadPage(constdata.router.protocal.announce);
             }else{
-                mainView.router.loadPage(constdata.router.protocal.safehelicopter);
+                if ($scope.orderInfo.aircraftType && $scope.orderInfo.aircraftType === '直升机'){
+                    mainView.router.loadPage(constdata.router.protocal.safehelicopter);
+                }else{
+                    mainView.router.loadPage(constdata.router.protocal.safefixedwing);
+                }
             }
         }
         function agreeValueChanged() {
