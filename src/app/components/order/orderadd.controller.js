@@ -54,6 +54,7 @@
             date = date.replace('月','-');
             date = date.replace('日','');
             $scope.orderInfo.date = date;
+            $scope.orderInfo.icon = planeModel.aircraft.vendor.avatar;
             // $scope.orderInfo.time = timeEstimation
 
         }else {
@@ -73,6 +74,7 @@
             $scope.orderInfo.time = site.tourDistance + '公里';
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
+            $scope.orderInfo.icon = site.vendor.avatar;
         }
 
         // 获取 f7 页面
