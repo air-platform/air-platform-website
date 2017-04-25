@@ -7,7 +7,7 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT) {
+    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT, DATEPICKER) {
         var cardPage = 1;
         var dreamPage = 1;
         var cityPage = 1;
@@ -313,6 +313,8 @@
                 disabled: {
                     to: new Date().setDate(new Date().getDate() - 1)
                 },
+                monthNames: DATEPICKER.monthNames,
+                dayNamesShort: DATEPICKER.dayNamesShort,
                 onDayClick: function () {
                     calendar.close();
                 }

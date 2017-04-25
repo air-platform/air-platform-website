@@ -11,7 +11,7 @@
 
     /** @ngInject */
     function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
-            NotificationService, scheduleUtilsService,$rootScope,constdata) {
+            NotificationService, scheduleUtilsService,$rootScope,constdata, DATEPICKER) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
@@ -48,6 +48,8 @@
             var data = res.data;
             hasMore = data.hasNextPage;
             page = data.page;
+            // TODO: quick fix...
+            if(page == 1) controller.transports = [];
             controller.transports = controller.transports.concat(data.content);
             console.log(controller.transports);
             $scope.routes = parseRoutes(controller.transports);
@@ -213,6 +215,8 @@
           var calendarDateFormat = myApp.calendar({
             input: input,
             dateFormat: 'yyyy-mm-dd',
+            monthNames: DATEPICKER.monthNames,
+            dayNamesShort: DATEPICKER.dayNamesShort,
             disabled: {
               to: new Date().setDate(today.getDate() - 1)
             },
@@ -224,8 +228,13 @@
         }
 
         $scope.$watch('family', function() {
-          if($scope.family) {
-            controller.transports = [];
+          $timeout(function() {
+            if($scope.family) {
+              controller.map = {};
+              controller.datepicker = {};
+              controller.transports = [];
+              controller.mapPoints = [];
+              $scope.routes = [];
               $scope.schedules = [
                   {
                       'date': '',
@@ -235,20 +244,21 @@
                       'flight': ''
                   }
               ];
-            loadTransports(1, $scope.family);
-              if (queryData.departure != null){
-                  var param = queryData.departure.split(',');
-                  $scope.schedules = [
-                      {
-                          'date': '',
-                          'time': '',
-                          'departure': param[0],
-                          'arrival': param[1],
-                          'flight': ''
-                      }
-                  ];
-              }
-          }
+              loadTransports(1, $scope.family);
+                if (queryData.departure != null){
+                    var param = queryData.departure.split(',');
+                    $scope.schedules = [
+                        {
+                            'date': '',
+                            'time': '',
+                            'departure': param[0],
+                            'arrival': param[1],
+                            'flight': ''
+                        }
+                    ];
+                }
+            }
+          });
         });
 
         $scope.$watch('schedules', function(newValue, oldValue){
