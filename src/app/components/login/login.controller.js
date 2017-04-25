@@ -109,7 +109,7 @@
                 console.log(data);
                 var userInfo = {nickName:data.nickName,mobile:data.mobile,avatar:data.avatar,email:data.email,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
 
-                StorageService.put(constdata.information,userInfo,24 * 7 * 60 * 60);//3 天过期
+                StorageService.put(constdata.information,userInfo,24 * 7 * 60 * 60);//7 天过期
 
                 //通知刷新界面
                 $rootScope.$emit(constdata.notification_refresh_information,userInfo);

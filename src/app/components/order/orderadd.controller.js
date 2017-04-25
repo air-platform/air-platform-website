@@ -32,8 +32,15 @@
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
+
+        if (!pageData || pageData === 'undefined'){
+            pageData = StorageService.get('temporderadddata');
+        }else{
+            StorageService.put('temporderadddata',pageData, 5 * 60);
+        }
+
         var pageType = pageData.type;
-        console.log(pageData);
+
         if (pageType && (pageType === 'transportation' || pageType === 'airtaxi')){//从air transportation过来
             $scope.istour = false;
             var planeModel = pageData.planeModel;
