@@ -95,7 +95,10 @@
 
 
             },function (err) {
-                showErrorAlert(err);
+                var errDesc = err.statusText;
+                myApp.alert(errDesc,function () {
+                    mainView.router.back();
+                });
             });
         }
         function showErrorAlert(err) {
