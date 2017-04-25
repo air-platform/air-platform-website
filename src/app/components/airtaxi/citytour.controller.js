@@ -11,7 +11,7 @@
 
   /** @ngInject */
   function citytourController($scope, $timeout, mapUtilsService, NotificationService,
-    NetworkService, scheduleUtilsService,iotUtil,$rootScope,constdata) {
+    NetworkService, scheduleUtilsService,iotUtil,$rootScope,constdata, DATEPICKER) {
     var controller = this;
     var citys = ['北京', '桂林', '海南', '宁波'];
     var today = new Date();
@@ -189,6 +189,8 @@
     var calendarDateFormat = myApp.calendar({
       input: '#tourcity-datepicker',
       dateFormat: 'yyyy-mm-dd',
+      monthNames: DATEPICKER.monthNames,
+      dayNamesShort: DATEPICKER.dayNamesShort,
       disabled: {
         to: new Date().setDate(today.getDate() - 1)
       },
@@ -226,6 +228,8 @@
       var calendarDateFormat = myApp.calendar({
         input: '#airtrans-schedule-datepicker-0',
         dateFormat: 'yyyy年m月d日',
+        monthNames: DATEPICKER.monthNames,
+        dayNamesShort: DATEPICKER.dayNamesShort,
         disabled: {
           to: new Date().setDate(today.getDate() - 1)
         },

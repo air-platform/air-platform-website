@@ -11,7 +11,7 @@
 
     /** @ngInject */
     function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
-            NotificationService, scheduleUtilsService,$rootScope,constdata) {
+            NotificationService, scheduleUtilsService,$rootScope,constdata, DATEPICKER) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
@@ -213,6 +213,8 @@
           var calendarDateFormat = myApp.calendar({
             input: input,
             dateFormat: 'yyyy-mm-dd',
+            monthNames: DATEPICKER.monthNames,
+            dayNamesShort: DATEPICKER.dayNamesShort,
             disabled: {
               to: new Date().setDate(today.getDate() - 1)
             },
