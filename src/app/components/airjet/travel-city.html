@@ -14,7 +14,7 @@
         <div class="list-block smart-select-list-travel">
             <ul>
                 <li ng-hide="true"><label class="label-radio item-content"><input type="radio" name="radio-travel" value="请选择" checked=""><div class="item-inner"><div class="item-title">请选择</div></div></label></li>
-                <li ng-repeat="item in searchList || cityList" ng-if="$index < cityShow" ng-click="citySelect(item)">
+                <li ng-repeat="item in searchList || hotList" ng-if="$index < cityShow" ng-click="citySelect(item)">
                     <label class="label-radio item-content">
                         <input type="radio" name="radio-travel" value="{{item.city}}" ng-checked="item.city === currentCity">
                         <div class="item-inner"><div class="item-title"><span>{{item.city}} - {{item.name}}</span></div></div>
