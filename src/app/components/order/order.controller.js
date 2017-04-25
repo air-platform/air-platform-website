@@ -125,8 +125,9 @@
             $scope.items.forEach(function (item,tabIndex) {
                 for (var i = 0; i < item.length; i++){
                     if (item[i].id === orderId){
+                        console.log(orderId);
                         $scope.items[tabIndex].splice(i,1);
-                        $scope.$apply();
+                        // $scope.$apply();
                         break;
                     }
                 }
