@@ -51,6 +51,7 @@
             $scope.istour = false;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
+            var route = pageData.route;
             $scope.orderInfo.flightId = planeModel.product;
             $scope.orderInfo.aircraftItemId = planeModel.id;
             $scope.orderInfo.flight = planeModel.aircraft.name;
@@ -69,7 +70,7 @@
             $scope.orderInfo.date = date;
             $scope.orderInfo.icon = planeModel.aircraft.vendor.avatar;
             $scope.orderInfo.aircraftType = planeModel.aircraft.category;
-            // $scope.orderInfo.time = timeEstimation
+            $scope.orderInfo.time = route.timeEstimation;
 
         }else {
             $scope.istour = true;
