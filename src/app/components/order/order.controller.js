@@ -135,6 +135,13 @@
 
         function getDatas(tabIndex,page) {
 
+
+            if (loadingPages[tabIndex] === -1){
+                loadings[tabIndex] = false;
+                updateDisplayLoadingStatus();
+                return;
+            }
+
             loadings[tabIndex] = true;
             updateDisplayLoadingStatus();
 
@@ -152,6 +159,8 @@
                 //数量超过分页数量的时候，才需要
                 if (data.length >= constdata.page.size){
                     loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
+                }else{
+                    loadingPages[tabIndex] = -1;
                 }
 
                 loadings[tabIndex] = false;
