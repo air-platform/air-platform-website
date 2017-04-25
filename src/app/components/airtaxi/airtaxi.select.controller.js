@@ -4,7 +4,7 @@
     angular.module('airsc').controller('airtaxiSelectController', airtaxiSelectController);
 
     /** @ngInject */
-    function airtaxiSelectController($scope, iotUtil) {
+    function airtaxiSelectController($scope, iotUtil,$rootScope,constdata) {
 
       var controller = this;
       mainView.pageData = mainView.pageData || {};
@@ -27,11 +27,17 @@
       }
 
     	function gotoOrderAction() {
-        // no mainView.pageData.schedules for circle tour
-        mainView.pageData.planeModel = controller.planeModel;
-        mainView.pageData.from = 'airtaxi';
-        mainView.pageData.type = 'airtour';
-        mainView.router.loadPage('app/components/order/orderadd.html');
+
+        if (iotUtil.islogin()){
+            // no mainView.pageData.schedules for circle tour
+            mainView.pageData.planeModel = controller.planeModel;
+            mainView.pageData.from = 'airtaxi';
+            mainView.pageData.type = 'airtour';
+            mainView.router.loadPage('app/components/order/orderadd.html');
+        }else{
+            $rootScope.$emit(constdata.notification_refresh_information,{action:'login'});
+        }
+
       }
 
       $('.air-select .tab').on('tab:show', function(e) {

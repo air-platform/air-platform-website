@@ -22,7 +22,11 @@
                         pleaseReComeIn();
                     });
                 }
-            }else{
+            }else if(data.action === 'login'){
+                myApp.alert('请先登录',function () {
+                    pleaseReComeIn();
+                });
+            } else{
                 refresh();
             }
         });

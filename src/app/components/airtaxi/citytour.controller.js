@@ -11,7 +11,7 @@
 
   /** @ngInject */
   function citytourController($scope, $timeout, mapUtilsService, NotificationService,
-    NetworkService, scheduleUtilsService) {
+    NetworkService, scheduleUtilsService,iotUtil,$rootScope,constdata) {
     var controller = this;
     var citys = ['北京', '桂林', '海南', '宁波'];
     var today = new Date();
@@ -78,6 +78,9 @@
     }
 
     controller.submitSchedules = function() {
+
+
+
       var data = $scope.schedules;
       var errors = scheduleUtilsService.validateSchedules(data);
       if (_.keys(errors).length != 0) {
@@ -90,6 +93,15 @@
       var planeModel = _.find(route.flights, function(plane) {
         return plane.aircraft.name == data[0].flight;
       });
+
+
+      //先登录
+
+        if (!iotUtil.islogin()){
+            $rootScope.$emit(constdata.notification_refresh_information,{action:'login'});
+            return;
+        }
+
       mainView.pageData = {
         'from': 'airtrans',
         'schedules': data[0],

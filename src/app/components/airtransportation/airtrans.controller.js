@@ -11,7 +11,7 @@
 
     /** @ngInject */
     function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
-            NotificationService, scheduleUtilsService) {
+            NotificationService, scheduleUtilsService,$rootScope,constdata) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
@@ -148,6 +148,15 @@
           var planeModel = _.find(route.flights, function(plane) {
             return plane.aircraft.name == data[0].flight;
           });
+
+
+            //先登录
+
+            if (!iotUtil.islogin()){
+                $rootScope.$emit(constdata.notification_refresh_information,{action:'login'});
+                return;
+            }
+
           mainView.pageData = {
             'from': 'transportation',
             'type': 'transportation',
