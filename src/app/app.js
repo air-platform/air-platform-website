@@ -70,13 +70,13 @@ Framework7.prototype.plugins.angular = function(app, params) {
         console.log('----infinite-scroll');
     });
 
-    myApp.onPageBeforeInit('*', function () {
-        document.querySelector('.page-loading').style.display = 'block';
-    });
-
-    myApp.onPageAfterAnimation('*', function () {
-        document.querySelector('.page-loading').style.display = 'none';
-    });
+    // myApp.onPageBeforeInit('*', function () {
+    //     document.querySelector('.page-loading').style.display = 'block';
+    // });
+    //
+    // myApp.onPageAfterAnimation('*', function () {
+    //     document.querySelector('.page-loading').style.display = 'none';
+    // });
 
 // })();
 
