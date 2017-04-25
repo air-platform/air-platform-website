@@ -47,18 +47,20 @@
                         <div class="order-description col-100" ng-show="istour">
                             <strong>{{orderInfo.departure}}</strong>
                         </div>
-                        <div class="col-40 order-other-info text-right">
-                            <img src="../../../assets/images/airplane.svg">
-                            <span class="order-cost">{{orderInfo.time}}</span>
-                        </div>
-                        <div class="col-20 order-other-info">
-                            <img src="../../../assets/images/airseat.svg" ng-hide="istour">
-                            <img src="../../../assets/images/airsite.svg" style="width: 15px;height: 15px;" ng-show="istour">
-                            <span class="order-cost">{{orderInfo.capacity}}</span>
-                        </div>
-                        <div class="col-40 order-other-info text-left">
-                            <img src="../../../assets/images/airtime.svg">
-                            <span class="order-cost">{{orderInfo.interval}}</span>
+                        <div class="order-information col-100 row">
+                            <div class="col-40 order-other-info text-right">
+                                <img src="../../../assets/images/airplane.svg">
+                                <span class="order-cost">{{orderInfo.time}}</span>
+                            </div>
+                            <div class="col-20 order-other-info">
+                                <img src="../../../assets/images/airseat.svg" ng-hide="istour">
+                                <img src="../../../assets/images/airsite.svg" style="width: 15px;height: 15px;" ng-show="istour">
+                                <span class="order-cost">{{orderInfo.capacity}}</span>
+                            </div>
+                            <div class="col-40 order-other-info text-left">
+                                <img src="../../../assets/images/airtime.svg">
+                                <span class="order-cost">{{orderInfo.interval}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

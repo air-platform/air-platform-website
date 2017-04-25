@@ -27,6 +27,7 @@
             OrderServer.getOrder(orderId,function (res) {
                 var data = res.data;
 
+                console.log(data);
                 if (data.type === 'airtour'){
                     var tourPoints = data.airTour.tourPoint.split(';');
                     var price = data.chartered ? data.aircraftItem.price : (data.aircraftItem.seatPrice * data.passengers.length);
@@ -77,7 +78,7 @@
                         date: data.date,
                         departure:data.airTransport.flightRoute.departure,
                         arrival:data.airTransport.flightRoute.arrival,
-                        time:data.airTransport.duration + '分钟',
+                        time:data.airTransport.timeEstimation + '分钟',
                         capacity:data.airTransport.aircraftItems[0].aircraft.seats,
                         interval:data.timeSlot,
                         price:price,
