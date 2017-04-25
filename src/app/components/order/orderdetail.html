@@ -23,31 +23,23 @@
                     </div>
                     <div class="order-content-line"></div>
                     <div class="order-detail-content-inner row">
-                        <!--<div class="order-from col-40" ng-hide="istour">-->
-                            <!--<strong>{{orderInfo.departure}}</strong>-->
-                        <!--</div>-->
-                        <!--<div class="order-core col-20" ng-hide="istour">-->
-                            <!--<div class="dfim-center">-->
-                                <!--<div class="arrow-right"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="order-to col-40" ng-hide="istour">-->
-                            <!--<strong>{{orderInfo.arrival}}</strong>-->
-                        <!--</div>-->
-                        <div class="order-from" ng-hide="istour">
+
+                        <div class="order-from col-40" ng-hide="istour">
                             <strong>{{orderInfo.departure}}</strong>
                         </div>
-                        <div class="order-core" ng-hide="istour">
+                        <div class="order-core col-20" ng-hide="istour">
                             <div class="dfim-center">
                                 <div class="arrow-right"></div>
                             </div>
                         </div>
-                        <div class="order-to" ng-hide="istour">
+                        <div class="order-to col-40" ng-hide="istour">
                             <strong>{{orderInfo.arrival}}</strong>
                         </div>
+
                         <div class="order-description col-100" ng-show="istour">
                             <strong>{{orderInfo.departure}}</strong>
                         </div>
+
                         <div class="order-information col-100 row">
                             <div class="col-40 order-other-info text-right">
                                 <img src="../../../assets/images/airplane.svg">
