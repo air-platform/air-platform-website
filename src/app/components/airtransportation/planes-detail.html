@@ -1,0 +1,71 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding"><a href="#" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+        <div id="modifyInfo" class="center sliding">查看详情</div>
+    </div>
+</div>
+
+<div class="pages navbar-through">
+    <div data-page="planes-detail" class="page" ng-controller="modifyController">
+        <div class="page-content palnes-detail">
+            <div class="list-block">
+                <div class="detail-img"><img src="assets/images/index/banner.jpg"></div>
+                <div class="detail-title">
+                    <h2>首航直升机B-7186</h2>
+                    <div class="title-icon clearfix">
+                        <div class="pull-left">
+                            <img src="assets/images/travel/icon_plane_black.svg"> 飞行时间
+                            <p>15<span>min</span></p>
+                        </div>
+                        <div class="pull-left">
+                            <img src="assets/images/travel/icon_seat_black.svg"> 载客人数
+                            <p>5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--评论-->
+          <div class="infinite-scroll infinite-scroll-top comment-container" style="margin-bottom: 60px;">
+            <div class="comment-title">
+              <i class="f7-icons icon">chats</i>
+              <span class="comment-text">评论</span>
+              <span class="comment-score">总评分
+                        <span class="comment-number">{{score}}</span>
+                    </span>
+            </div>
+            <div class="comment-none" ng-show="comments.length == 0">暂无评论</div>
+            <div class="comment-list" ng-show="comments.length > 0">
+              <div class="list-block" ng-repeat="comment in comments">
+                <div class="comment-core">
+                  <div class="comment-content">
+                    <div class="inner-header">
+                      <div class="comment-avatar"><img src="{{comment.owner.avatar}}" width="30" height="30"></div>
+                      <div class="comment-name">{{comment.owner.name}} <span class="pull-right comment-date">{{comment.date | date:'yyyy-MM-dd'}}</span></div>
+                      <div class="comment-star">
+                        <i class="f7-icons icon">{{comment.rate > 0 ? 'star_fill' : 'star'}}</i>
+                        <i class="f7-icons icon">{{comment.rate > 1 ? 'star_fill' : 'star'}}</i>
+                        <i class="f7-icons icon">{{comment.rate > 2 ? 'star_fill' : 'star'}}</i>
+                        <i class="f7-icons icon">{{comment.rate > 3 ? 'star_fill' : 'star'}}</i>
+                        <i class="f7-icons icon">{{comment.rate > 4 ? 'star_fill' : 'star'}}</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comment-comment">
+                    <div class="comment-inner">
+                      {{comment.content}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="comment-more" ng-show="!showMore">
+                <a href="#" class="item-link button" ng-click="showMoreCommentAction()">查看更多</a>
+              </div>
+              <!--加载提示符-->
+              <div class="infinite-scroll-preloader" ng-show="loading">
+                <div class="preloader"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

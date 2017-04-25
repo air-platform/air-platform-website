@@ -31,6 +31,7 @@
             angular.element($('[data-page=citytour]')).scope();
         mainView.pageData = mainView.pageData || {};
         controller.aircrafts = mainView.pageData.aircrafts;
+        console.log(controller.aircrafts);
         controller.planeModel = mainView.pageData.planeModel;
 
         controller.select = function (plane, $event) {
