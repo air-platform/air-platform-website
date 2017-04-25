@@ -197,8 +197,13 @@
         };
 
         function getRecommended() {
+            $scope.recommendList = [];
             NetworkService.get(UrlService.getUrl(URL.AIRJET_RECOMMENDED), null, function (response) {
-                $scope.recommendList = response.data;
+                response.data.forEach(function(item) {
+                    if(new Date(item.date).getTime() - new Date().getTime() > 0) {
+                        $scope.recommendList.push(item);
+                    }
+                });
             });
         };
 
