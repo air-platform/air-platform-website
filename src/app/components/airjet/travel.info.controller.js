@@ -12,7 +12,7 @@
         $scope.infoSubmit = infoSubmit;
 
         var information = StorageService.get(constdata.information);
-        if (information && information !== 'undefined'){
+        if (information){
             $scope.infoData = {name:information.realName,phone:information.mobile,email:information.email};
         }
         $scope.telephone = 'tel:' + constdata.supportTelephone;
