@@ -9,7 +9,6 @@
       var controller = this;
       mainView.pageData = mainView.pageData || {};
       controller.site = mainView.pageData.site;
-      controller.planeModel = {};
       controller.planes = mainView.pageData.site.aircraftItems;
       var PLANE_TYPE = {
         'helicopters': '直升机',
@@ -22,15 +21,11 @@
         return controller.site.tourTime;
       };
 
-      $scope.selectFlight = function(flight) {
-        controller.planeModel = flight;
-      }
-
-    	function gotoOrderAction() {
+    	function gotoOrderAction(item) {
 
         if (iotUtil.islogin()){
             // no mainView.pageData.schedules for circle tour
-            mainView.pageData.planeModel = controller.planeModel;
+            mainView.pageData.planeModel = item;
             mainView.pageData.from = 'airtaxi';
             mainView.pageData.type = 'airtour';
             mainView.router.loadPage('app/components/order/orderadd.html');
