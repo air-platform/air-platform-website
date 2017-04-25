@@ -41,7 +41,7 @@
                 getDream();
                 getRecommended();
             }
-        }, 500);
+        }, 300);
         if(StorageService.get('travel')){
             $scope.travelStrokeList = StorageService.get('travel');
         }

@@ -13,7 +13,7 @@
         $scope.jumpPlane = jumpPlane;
         $timeout(function(){
             getModel();
-        },500);
+        },300);
 
         function getModel() {
             NetworkService.get(UrlService.getUrl(URL.AIRJET_TYPE), null, function(response) {

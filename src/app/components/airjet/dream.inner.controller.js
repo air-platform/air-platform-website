@@ -20,7 +20,7 @@
         if(queryData.id) {
             $timeout(function(){
                 getDreamDetail();
-            },500)
+            },300)
         }
 
         function getDreamDetail() {

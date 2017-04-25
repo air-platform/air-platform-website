@@ -13,7 +13,7 @@
         if(queryData.order) {
             $timeout(function(){
                 getDreamOrder();
-            },500);
+            },300);
         }
 
         function getDreamOrder() {
