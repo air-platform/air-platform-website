@@ -17,15 +17,17 @@
          charter 拼座
         */
 
+        var mobile = '';
         var information = StorageService.get(constdata.information);
         if (information && information !== 'undefined'){
             $scope.infoData = {name:information.realName,phone:information.mobile,email:information.email};
+            mobile = information.mobile;
         }
-        
+
         $scope.orderInfo = {
             flightId:'',flight:'',departure:'',arrival:'',capacity:0,date:'',time:'',interval:'',
             charterAll:{price:0,capacity:0},charter:{price:0,capacity:0},
-            contactMobile:information.mobile,
+            contactMobile:mobile,
             chartered:true
         };
         //乘客及联系人信息
@@ -35,6 +37,7 @@
 
         // 从上个页面获取信息
         var pageData = mainView.pageData;
+        console.log(pageData);
 
         if (!pageData || pageData === 'undefined'){
             pageData = StorageService.get('temporderadddata');
