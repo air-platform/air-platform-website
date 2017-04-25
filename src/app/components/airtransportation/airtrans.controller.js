@@ -245,7 +245,7 @@
                   }
               ];
               loadTransports(1, $scope.family);
-                if (queryData.departure != null){
+                if (queryData.departure != null &&  $scope.family == '飞越海峡'){
                     var param = queryData.departure.split(',');
                     $scope.schedules = [
                         {
@@ -253,6 +253,18 @@
                             'time': '',
                             'departure': param[0],
                             'arrival': param[1],
+                            'flight': ''
+                        }
+                    ];
+                }
+
+                if (queryData.departure != null &&  $scope.family == '内蒙航线'){
+                    $scope.schedules = [
+                        {
+                            'date': '',
+                            'time': '',
+                            'departure': '',
+                            'arrival': '',
                             'flight': ''
                         }
                     ];
