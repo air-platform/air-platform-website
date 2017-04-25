@@ -177,10 +177,12 @@
 
     var parseRoutes = function(taxiRoutes) {
       return _.map(taxiRoutes, function(route) {
+        console.log(route);
         return {
           'departure': route.departure,
           'arrival': route.arrival,
-          'flights': route.aircraftItems
+          'flights': route.aircraftItems,
+          'timeEstimation':route.duration
         };
       });
     };
