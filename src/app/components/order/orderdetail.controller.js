@@ -44,7 +44,8 @@
                         interval:data.timeSlot,
                         price:price,
                         seatPrice:data.aircraftItem.seatPrice,
-                        type:data.type
+                        type:data.type,
+                        icon:data.aircraftItem.aircraft.vendor.avatar
                     };
 
                     $scope.passengers = data.passengers;
@@ -64,7 +65,8 @@
                         interval:data.timeSlot,
                         price:price,
                         seatPrice:data.aircraftItem.aircraft.seatPrice,
-                        type:data.type
+                        type:data.type,
+                        icon:data.aircraftItem.aircraft.vendor.avatar
                     };
 
                     $scope.passengers = data.passengers;//passenger identity
@@ -83,7 +85,8 @@
                         interval:data.timeSlot,
                         price:price,
                         seatPrice:data.airTransport.aircraftItems[0].seatPrice,
-                        type:data.type
+                        type:data.type,
+                        icon:data.airTransport.vendor.avatar
                     };
 
                     $scope.passengers = data.passengers;//passenger identity
