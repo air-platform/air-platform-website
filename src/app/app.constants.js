@@ -11,7 +11,7 @@
             logLevel: 111111,//控制log显示的级别（0不显示,1显示）,从左到右每位分别代表[error,warn,info,debug,log]
             apiHost_ONLINE:'http://10.73.206.33:8080/api/v1/',
             apiHost_OFFLINE:'http://10.70.80.92/api/v1/',
-            ipCurrent: 'http://10.70.80.92',
+            ipCurrent: 'http://10.70.80.92/',
             supportTelephone:'400-666-4388',
             token:'airspc_access_token',
             information:'airspc_information',

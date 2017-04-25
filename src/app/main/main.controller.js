@@ -31,7 +31,7 @@
             }
         });
 
-        $scope.airbbLink = constdata.ipCurrent + '/airbb';
+        $scope.airbbLink = constdata.ipCurrent + 'airbb';
 
         var leftPanelItems = [
             {
@@ -112,7 +112,7 @@
             if (item.target === 'out') {
                 logoutAction();
             }else if (item.target === 'forum'){
-                window.open('http://10.70.80.92/airbb',"_blank");
+                window.open($scope.airbbLink,"_blank");
             }else {
                 if (item.needLogin && !iotUtil.islogin()) {
                     mainView.router.loadPage($scope.rightUserItem.target);
