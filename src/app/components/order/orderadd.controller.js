@@ -177,6 +177,11 @@
                 }
             });
 
+            if(angular.isUndefined($scope.orderInfo.contactMobile)){
+                showAlert('请填写联系人手机');
+                return;
+            }
+
             if ($scope.orderInfo.contactMobile.length !== 11){
                 editContactPhoneAction();
                 return;

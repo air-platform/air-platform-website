@@ -36,7 +36,7 @@
                     home:'app/components/airtaxi/airtaxi.html'
                 },
                 airtrans:{
-                    home:'app/components/airtransportation/airtrans.html&tabActive=tab1'
+                    home:'app/components/airtransportation/airtrans.html'
                 },
                 airtour:{
                     home:'app/components/airtour/airtour.html'
