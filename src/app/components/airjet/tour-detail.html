@@ -18,7 +18,7 @@
             <div>{{tourDetail.currencyUnit | uppercase}}&nbsp;{{tourDetail.price}}</div>
         </div>
         <div class="card-detail">
-             <p markdown-to-html="tourDetail.description"></p>
+             <p markdown-to-html="tourDetail.description || ''"></p>
         </div>
         <form>
             <div class="user-info">

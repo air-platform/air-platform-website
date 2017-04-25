@@ -23,7 +23,7 @@
                     <div class="travel-plan-card" ng-repeat="item in travelStrokeList track by $index">
                         <div class="tpc-top">
                             <em>{{'airjet.stroke' | translate}} <span ng-bind="$index + 1"></span></em>
-                            <img src="assets/images/travel/btn_delete.svg" ng-hide="$index === 0" ng-click="removeCard($index)">
+                            <i class="fa fa-trash-o" ng-hide="$index === 0" ng-click="removeCard($index)"></i>
                         </div>
                         <div class="tpc-bottom">
                             <div class="tpcb-top">
