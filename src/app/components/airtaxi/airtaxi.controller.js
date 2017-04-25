@@ -42,10 +42,8 @@
                     offset: new BMap.Size(40, 20)
                   });
                   label.setStyle({
-                    color : "#50bbff",
                     fontSize : "14px",
-                    backgroundColor :"0.3",
-                    border :"0",
+                    height: "23px"
                   });
                   marker.setOffset(new BMap.Size(-5, -20));
                   marker.setLabel(label);

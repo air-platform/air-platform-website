@@ -274,7 +274,7 @@
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
                 var mapviewid = ($scope.family == "飞越海峡")?'airtrans-map-view-channel' : 'airtrans-map-view-mongolia';
-                controller.map = mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true, markers: true});
+                controller.map = mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true, markers: true, labels: true});
                   if (queryData.departure != null){
                       mapUtilsService.removeMarkedCurve(controller.map);
                       if($scope.schedules[0].departure && $scope.schedules[0].arrival) {

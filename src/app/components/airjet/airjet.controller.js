@@ -317,6 +317,7 @@
                     calendar.close();
                 }
             });
+            calendar.open();
         };
     }
     
