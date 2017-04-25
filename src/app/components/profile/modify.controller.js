@@ -4,7 +4,7 @@
   angular.module('airsc').controller('modifyController', modifyController);
 
   /** @ngInject */
-  function modifyController($scope, $rootScope, i18n, iotUtil, NetworkService, UrlService, URL) {
+  function modifyController($scope, $rootScope, i18n, StorageService,constdata, NetworkService, UrlService, URL) {
     var queryData = myApp.views[0].activePage.query;
 
     var infoObj = {
@@ -23,6 +23,13 @@
       if ($rootScope.userInfo.email && $scope.info === 'email' && queryData.email !== $rootScope.userInfo.email) {
         NetworkService.post(UrlService.getUrl(URL.USEREMAIL), {email: $rootScope.userInfo.email}, function(res) {
           myApp.alert(i18n.t('profile.modifySuccessEmail'), $scope.headText);
+
+          //更新本地用户信息
+            var information = StorageService.get(constdata.information);
+            information.email = $rootScope.userInfo.email;
+            StorageService.put(constdata.information,information,24 * 30 * 60 * 60);
+
+
           mainView.router.back();
         }, function(err) {
           myApp.alert(i18n.t('profile.modifyFailed'), $scope.headText);

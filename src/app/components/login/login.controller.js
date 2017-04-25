@@ -107,7 +107,7 @@
 
                 var data = response.data;
                 console.log(data);
-                var userInfo = {nickName:data.nickName,mobile:data.mobile,avatar:data.avatar,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
+                var userInfo = {nickName:data.nickName,mobile:data.mobile,avatar:data.avatar,email:data.email,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
 
                 StorageService.put(constdata.information,userInfo,24 * 7 * 60 * 60);//3 天过期
 
