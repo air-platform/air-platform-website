@@ -148,7 +148,12 @@
                 }
 
                 console.log(data);
-                loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
+
+                //数量超过分页数量的时候，才需要
+                if (data.length >= constdata.page.size){
+                    loadingPages[tabIndex] = loadingPages[tabIndex] + 1;
+                }
+
                 loadings[tabIndex] = false;
                 updateDisplayLoadingStatus();
 
