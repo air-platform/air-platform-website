@@ -7,10 +7,12 @@
     angular.module('airsc').controller('OrderCourseDetailController', OrderCourseDetailController);
 
     /** @ngInject */
-    function OrderCourseDetailController($scope, OrderServer) {
+    function OrderCourseDetailController($scope, OrderServer,constdata) {
         var queryData = myApp.views[0].activePage.query;
 
         $scope.order = {};
+
+        $scope.telephone = 'tel:' + constdata.supportTelephone;
 
         getOrder(queryData.order);
 
