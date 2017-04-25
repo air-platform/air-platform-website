@@ -11,10 +11,18 @@
 
         $scope.oldPassword = '';
         $scope.newPassword = '';
+        $scope.confirmPassword = '';
         $scope.resetAction = resetAction;
 
 
         function resetAction() {
+
+            if ($scope.confirmPassword !== $scope.newPassword){
+                myApp.alert('新密码与旧密码不匹配');
+                return;
+            }
+
+
             myApp.showIndicator();
 
             var param = {oldPassword:$scope.oldPassword,newPassword:$scope.newPassword};
