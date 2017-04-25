@@ -42,7 +42,7 @@
         if (!pageData || pageData === 'undefined'){
             pageData = StorageService.get('temporderadddata');
         }else{
-            StorageService.put('temporderadddata',pageData, 5 * 60);
+            StorageService.put('temporderadddata',pageData, 10 * 60);
         }
 
         var pageType = pageData.type;
