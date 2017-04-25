@@ -1,6 +1,6 @@
 {
   "name": "airsc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "angular-cookies": "^1.6.4",
     "gulp-jshint-html-reporter": "^0.1.3",
