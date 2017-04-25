@@ -10,6 +10,8 @@
     function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
         $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
+        $scope.gotoAirbbLinkAction = gotoAirbbLinkAction;
+
         // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
             if (data.action === 'logout'){
@@ -31,7 +33,7 @@
             }
         });
 
-        $scope.airbbLink = constdata.ipCurrent + '/airbb';
+        $scope.airbbLink = constdata.ipCurrent;
 
         var leftPanelItems = [
             {
@@ -107,12 +109,15 @@
                 mainView.router.loadPage(constdata.router.protocal.safehelicopter);
             }
         }
+        function gotoAirbbLinkAction() {
+            window.open($scope.airbbLink,'_parent');
+        }
 
         function gotoItemAction(item) {
             if (item.target === 'out') {
                 logoutAction();
             }else if (item.target === 'forum'){
-                window.open('http://10.70.80.92/airbb',"_blank");
+                window.open($scope.airbbLink,"_parent");
             }else {
                 if (item.needLogin && !iotUtil.islogin()) {
                     mainView.router.loadPage($scope.rightUserItem.target);
@@ -150,7 +155,9 @@
         }
 
         $scope.imgSrc = [
-            'assets/images/index/banner.jpg'
+            'assets/images/index/banner1.jpeg',
+            'assets/images/index/banner2.jpg',
+            'assets/images/index/banner3.jpg'
         ];
 
         NetworkService.get(UrlService.getUrl(URL.TOPICS), null, function(res) {

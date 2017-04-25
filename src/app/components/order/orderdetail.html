@@ -18,14 +18,14 @@
                     <div class="order-detail-content-title">
                         <!--<span><img class="" src="../../../assets/images/hnlogo.jpg"></span>-->
                         <span><img class="" ng-src="{{orderInfo.icon}}"></span>
-                        <span class="order-flytype">{{orderInfo.flight}}</span>
-                        <span class="order-date">{{orderInfo.date}}</span>
+                        <span class="order-flytype" ng-bind="orderInfo.flight"></span>
+                        <span class="order-date" ng-bind="orderInfo.date"></span>
                     </div>
                     <div class="order-content-line"></div>
                     <div class="order-detail-content-inner row">
 
                         <div class="order-from col-40" ng-hide="istour">
-                            <strong>{{orderInfo.departure}}</strong>
+                            <strong ng-bind="orderInfo.departure"></strong>
                         </div>
                         <div class="order-core col-20" ng-hide="istour">
                             <div class="dfim-center">
@@ -33,26 +33,26 @@
                             </div>
                         </div>
                         <div class="order-to col-40" ng-hide="istour">
-                            <strong>{{orderInfo.arrival}}</strong>
+                            <strong ng-bind="orderInfo.arrival"></strong>
                         </div>
 
                         <div class="order-description col-100" ng-show="istour">
-                            <strong>{{orderInfo.departure}}</strong>
+                            <strong ng-bind="orderInfo.departure"></strong>
                         </div>
 
                         <div class="order-information col-100 row">
                             <div class="col-40 order-other-info text-right">
                                 <img src="../../../assets/images/airplane.svg">
-                                <span class="order-cost">{{orderInfo.time}}</span>
+                                <span class="order-cost" ng-bind="orderInfo.time"></span>
                             </div>
                             <div class="col-20 order-other-info">
                                 <img src="../../../assets/images/airseat.svg" ng-hide="istour">
                                 <img src="../../../assets/images/airsite.svg" style="width: 15px;height: 15px;" ng-show="istour">
-                                <span class="order-cost">{{orderInfo.capacity}}</span>
+                                <span class="order-cost" ng-bind="orderInfo.capacity"></span>
                             </div>
                             <div class="col-40 order-other-info text-left">
                                 <img src="../../../assets/images/airtime.svg">
-                                <span class="order-cost">{{orderInfo.interval}}</span>
+                                <span class="order-cost" ng-bind="orderInfo.interval"></span>
                             </div>
                         </div>
                     </div>
@@ -69,8 +69,8 @@
                 <div class="order-detail-content-person" ng-hide="passengers.length == 0">
                     <ul>
                         <li ng-repeat="p in passengers">
-                            <span class="order-person-name col-25">{{p.passenger.name}}</span>
-                            <span class="order-person-id col-75">{{p.passenger.identity}}</span>
+                            <span class="order-person-name col-25" ng-bind="p.passenger.name"></span>
+                            <span class="order-person-id col-75" ng-bind="p.passenger.identity"></span>
                         </li>
                     </ul>
                 </div>

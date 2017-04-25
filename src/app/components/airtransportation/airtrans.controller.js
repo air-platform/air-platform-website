@@ -49,6 +49,7 @@
             hasMore = data.hasNextPage;
             page = data.page;
             controller.transports = controller.transports.concat(data.content);
+            console.log(controller.transports);
             $scope.routes = parseRoutes(controller.transports);
             controller.mapPoints = _.flatten(_.map(controller.transports, function(transport) {
               return [[transport.flightRoute.departure,
@@ -197,7 +198,8 @@
             return {
               'departure': transport.flightRoute.departure,
               'arrival': transport.flightRoute.arrival,
-              'flights': transport.aircraftItems
+              'flights': transport.aircraftItems,
+              'timeEstimation':transport.timeEstimation
             }
           });
         }

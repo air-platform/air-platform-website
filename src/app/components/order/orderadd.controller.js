@@ -42,7 +42,7 @@
         if (!pageData || pageData === 'undefined'){
             pageData = StorageService.get('temporderadddata');
         }else{
-            StorageService.put('temporderadddata',pageData, 5 * 60);
+            StorageService.put('temporderadddata',pageData, 10 * 60);
         }
 
         var pageType = pageData.type;
@@ -51,6 +51,7 @@
             $scope.istour = false;
             var planeModel = pageData.planeModel;
             var schedules = pageData.schedules;
+            var route = pageData.route;
             $scope.orderInfo.flightId = planeModel.product;
             $scope.orderInfo.aircraftItemId = planeModel.id;
             $scope.orderInfo.flight = planeModel.aircraft.name;
@@ -69,10 +70,11 @@
             $scope.orderInfo.date = date;
             $scope.orderInfo.icon = planeModel.aircraft.vendor.avatar;
             $scope.orderInfo.aircraftType = planeModel.aircraft.category;
-            // $scope.orderInfo.time = timeEstimation
+            $scope.orderInfo.time = route.timeEstimation;
 
         }else {
             $scope.istour = true;
+            var model = pageData.planeModel;
             var site = pageData.site;
             var tourPoints = site.tourPoint.split(';');
             $scope.orderInfo.flightId = site.aircraftItems[0].product;
@@ -89,7 +91,7 @@
             $scope.orderInfo.date = pageData.tourdate;
             $scope.orderInfo.departure = site.name;
             $scope.orderInfo.icon = site.vendor.avatar;
-            $scope.orderInfo.aircraftType = null;
+            $scope.orderInfo.aircraftType = model.aircraft.category;
         }
 
         // 获取 f7 页面

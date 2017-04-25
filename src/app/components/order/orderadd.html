@@ -8,66 +8,12 @@
     <div data-page="orderadd" class="page" ng-controller="orderaddController">
         <div class="page-content">
             <form role="form" name="form" class="form">
-                <!--&lt;!&ndash;订单信息&ndash;&gt;-->
-                <!--<div class="order-product-list">-->
-                    <!--<div class="order-product">-->
-                        <!--<div class="order-product-header">-->
-                            <!--&lt;!&ndash;<span class="product-index">1</span>&ndash;&gt;-->
-                            <!--<span class="product-date">2017-12-21 08:00-09:00</span>-->
-                            <!--<span><img src="../../../assets/images/airplane.svg"></span>-->
-                            <!--<span class="product-time-cost">约15分钟</span>-->
-                        <!--</div>-->
-                        <!--<div class="order-product-content row">-->
-                            <!--<div class="order-from col-40">-->
-                                <!--<strong>北京</strong>-->
-                            <!--</div>-->
-                            <!--<div class="order-core col-20">-->
-                                <!--<div class="dfim-center">-->
-                                    <!--<div class="arrow-right"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="order-to col-40">-->
-                                <!--<strong>不秀</strong>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="order-product-footer row">-->
-                            <!--<div class="col-50" ng-click="orderInfo.chartered = true">-->
-                                <!--<span class="product-desc">整机</span>-->
-                                <!--<span class="product-price">￥1,000,000</span>-->
-                                <!--<span class="product-select">-->
-                                    <!--<i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>-->
-                                <!--</span>-->
-                            <!--</div>-->
-                            <!--<div class="col-50" ng-click="orderInfo.chartered = false">-->
-                                <!--<span class="product-desc">拼座</span>-->
-                                <!--<span class="product-price">￥1,000</span>-->
-                                <!--<span class="product-select">-->
-                                    <!--<i class="f7-icons ng-scope color-gray" ng-class="{'color-blue' : !orderInfo.chartered}">{{ orderInfo.chartered ? 'circle' : 'check_round'}}</i>-->
-                                <!--</span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="order-additional">-->
-                        <!--<span>拼座至少3人成行</span>-->
-                        <!--<span class="product-journey">-->
-                                    <!--<span class="product-journey-select">-->
-                                    <!--3 <i class="f7-icons ng-scope color-blue">check_round</i>-->
-                                <!--</span>-->
-                                <!--<span class="product-journey-select">-->
-                                    <!--4 <i class="f7-icons ng-scope color-blue">check_round</i>-->
-                                <!--</span>-->
-                                <!--<span class="product-journey-select">-->
-                                    <!--5 <i class="f7-icons ng-scope color-blue">check_round</i>-->
-                                <!--</span>-->
-                        <!--</span>-->
-                    <!--</div>-->
-                <!--</div>-->
                 <div class="order-detail-list">
                     <div class="order-detail-content" style="margin: 0; border: 0;border-radius: 0;">
                         <div class="order-detail-content-title">
                             <span><img class="" ng-src="{{orderInfo.icon}}"></span>
-                            <span class="order-flytype">{{orderInfo.flight}}</span>
-                            <span class="order-date">{{orderInfo.date}}</span>
+                            <span class="order-flytype" ng-bind="orderInfo.flight"></span>
+                            <span class="order-date" ng-bind="orderInfo.date"></span>
                         </div>
                         <div class="order-detail-content-inner row" style="margin-top: 0;padding-top: 0;">
                             <!--<div class="order-information col-100"  ng-hide="istour">-->
@@ -75,7 +21,7 @@
                             <!--</div>-->
 
                             <div class="order-from col-40" ng-hide="istour">
-                                <strong>{{orderInfo.departure}}</strong>
+                                <strong ng-bind="orderInfo.departure"></strong>
                             </div>
                             <div class="order-core col-20" ng-hide="istour">
                                 <div class="dfim-center">
@@ -83,26 +29,26 @@
                                 </div>
                             </div>
                             <div class="order-to col-40" ng-hide="istour">
-                                <strong>{{orderInfo.arrival}}</strong>
+                                <strong ng-bind="orderInfo.arrival"></strong>
                             </div>
                             <div class="order-description col-100" ng-show="istour">
-                                <strong>{{orderInfo.departure}}</strong>
+                                <strong ng-bind="orderInfo.departure"></strong>
                             </div>
 
 
                             <div class="order-information col-100 row">
                                 <div class="col-40 order-other-info text-right">
                                     <img src="../../../assets/images/airplane.svg">
-                                    <span class="order-cost">{{orderInfo.time}}</span>
+                                    <span class="order-cost" ng-bind="orderInfo.time"></span>
                                 </div>
                                 <div class="col-20 order-other-info">
                                     <img src="../../../assets/images/airseat.svg" ng-hide="istour">
                                     <img src="../../../assets/images/airsite.svg" style="width: 15px;height: 15px;" ng-show="istour">
-                                    <span class="order-cost">{{orderInfo.capacity}}</span>
+                                    <span class="order-cost" ng-bind="orderInfo.capacity"></span>
                                 </div>
                                 <div class="col-40 order-other-info text-left">
                                     <img src="../../../assets/images/airtime.svg">
-                                    <span class="order-cost">{{orderInfo.interval}}</span>
+                                    <span class="order-cost" ng-bind="orderInfo.interval"></span>
                                 </div>
                             </div>
                             <!--<div class="col-40 order-other-info text-right">-->
@@ -138,8 +84,8 @@
                             <li class="order-person-content"  ng-repeat="p in passengers track by $index" ng-show="p.isSelected">
                                 <i class="f7-icons order-icon-delete" ng-click="selectPassengerAction($index)">delete_round</i>
                                 <div class="order-person-inner" ng-click="showPassengerAction($index)">
-                                    <div class="order-person-name">{{p.name}}</div>
-                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span>{{p.identity}}</div>
+                                    <div class="order-person-name" ng-bind="p.name"></div>
+                                    <div class="order-person-id"><span>身份证&nbsp;&nbsp;</span><span ng-bind="p.identity"></span></div>
                                 </div>
                                 <i class="f7-icons order-icon-right" ng-click="showPassengerAction($index)">right</i>
                             </li>
@@ -147,7 +93,7 @@
                     </div>
                     <div class="order-person-mobile" ng-click="editContactPhoneAction()">
                         <span>联系手机&nbsp;&nbsp;&nbsp;</span>
-                        <span>{{orderInfo.contactMobile}}</span>
+                        <span ng-bind="orderInfo.contactMobile"></span>
                         <span class="order-edit">
                         <a><i class="f7-icons">compose</i>修改</a>
                     </span>
@@ -166,7 +112,7 @@
                                 <!--<div>整机{{orderInfo.charterAll.capacity}}</div>-->
                             </div>
                             <div class="order-price">
-                                ￥{{orderInfo.charterAll.price}}
+                                ￥<span ng-bind="orderInfo.charterAll.price"></span>
                             </div>
                         </div>
                         <div class="col-50" ng-click="orderInfo.chartered = false">
@@ -178,7 +124,7 @@
                                 <!--<div>至少 {{orderInfo.charter.capacity}} 人预定</div>-->
                             </div>
                             <div class="order-price">
-                                ￥{{orderInfo.charter.price}}
+                                ￥<span ng-bind="orderInfo.charter.price"></span>
                             </div>
                         </div>
                     </div>

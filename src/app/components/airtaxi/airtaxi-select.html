@@ -18,7 +18,7 @@
           <div class="course-list">
             <ul>
               <li class="placeholder plane-discription">无可用机型信息</li>
-              <li ng-repeat="item in airSelectList track by $index" ng-click="selectFlight(item)">
+              <li ng-repeat="item in airSelectList track by $index">
                 <a href="#" class="clearfix">
                   <div class="course-list-img pull-left">
                     <img ng-src="{{item.aircraft.image}}">
@@ -30,7 +30,7 @@
                   <div class="course-list-main pull-right">
                     <span>¥ <i ng-bind="item.seatPrice"></i> /人</span>
                     <p>约<span ng-bind="getDuration(item)"></span>分钟</p>
-                    <div class="book-btn" ng-click="gotoOrderAction()">立即预订</div>
+                    <div class="book-btn" ng-click="gotoOrderAction(item)">立即预订</div>
                   </div>
                 </a>
               </li>
@@ -41,7 +41,7 @@
           <div class="course-list">
             <ul>
               <li class="placeholder plane-discription">无可用机型信息</li>
-              <li ng-repeat="item in airSelectList track by $index" ng-click="selectFlight(item)">
+              <li ng-repeat="item in airSelectList track by $index">
                 <a href="#" class="clearfix">
                   <div class="course-list-img pull-left">
                     <img ng-src="{{item.aircraft.image}}">
@@ -53,7 +53,7 @@
                   <div class="course-list-main pull-right">
                     <span>¥ <i ng-bind="item.seatPrice"></i> /人</span>
                     <p>约<span ng-bind="getDuration(item)"></span>分钟</p>
-                    <div class="book-btn" ng-click="gotoOrderAction()">立即预订</div>
+                    <div class="book-btn" ng-click="gotoOrderAction(item)">立即预订</div>
                   </div>
                 </a>
               </li>

@@ -34,7 +34,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
         // animateNavBackIcon: true,
         // hideNavbarOnPageScroll: true,
         // scrollTopOnNavbarClick: true,
-        pushState: true,
+        // pushState: true,
         // sortable: false,
         // swipeout: true,
         angular: true,
@@ -69,6 +69,14 @@ Framework7.prototype.plugins.angular = function(app, params) {
         //注册监听上拉加载
         console.log('----infinite-scroll');
     });
+
+    // myApp.onPageBeforeInit('*', function () {
+    //     document.querySelector('.page-loading').style.display = 'block';
+    // });
+    //
+    // myApp.onPageAfterAnimation('*', function () {
+    //     document.querySelector('.page-loading').style.display = 'none';
+    // });
 
 // })();
 
