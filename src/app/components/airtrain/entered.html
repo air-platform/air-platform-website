@@ -9,40 +9,48 @@
     <div class="page-content entered">
       <div class="list-block">
         <div class="enter-check">
-          <div class="title">{{'airtrain.selectionType' | translate}}:</div>
-          <div class="enter-radio">
-            <label class="label-checkbox checkbox-circle item-content">
-              <!--<input type="radio" name="modelType" value="{{enterObj.airType}}" ng-model="enterObj.airType"></input>-->
-              <div class="item-media">
-                <!--<i class="icon icon-form-checkbox"></i> -->
-                {{enterObj.airType}}
-              </div>
-            </label>
-          </div>
+          <!--<div class="title">{{'airtrain.selectionType' | translate}}:</div>-->
+          <!--<div class="enter-radio">-->
+            <!--<label class="label-checkbox checkbox-circle item-content">-->
+              <!--&lt;!&ndash;<input type="radio" name="modelType" value="{{enterObj.airType}}" ng-model="enterObj.airType"></input>&ndash;&gt;-->
+              <!--<div class="item-media">-->
+                <!--&lt;!&ndash;<i class="icon icon-form-checkbox"></i> &ndash;&gt;-->
+                <!--{{enterObj.airType}}-->
+              <!--</div>-->
+            <!--</label>-->
+          <!--</div>-->
+
+          <div class="enter-title" style="width: 80px;">{{'airtrain.selectionType' | translate}}: </div>
+          <div class="enter-detail" style="margin-left: 0;width:240px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{enterObj.airType}}</div>
         </div>
         <div class="enter-check">
-          <div class="title">{{'airtrain.license' | translate}}: </div>
-          <div class="enter-radio" ng-repeat="item in licenses track by $index">
-            <label class="label-checkbox checkbox-circle item-content" ng-click="licenseClick($index)">
-              <!--<input type="radio" name="licenseRadio" value="{{item}}" ng-model="enterObj.license">-->
-              <div class="item-media">
-                <!--<i class="icon icon-form-checkbox"></i>-->
-                {{item}}
-              </div>
-            </label>
-          </div>
+          <div class="enter-title" style="width: 80px;">{{'airtrain.license' | translate}}: </div>
+          <div class="enter-detail" style="margin-left: 0;width:240px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{licenses[0]}}</div>
+          <!--<div class="enter-radio" ng-repeat="item in licenses track by $index">-->
+            <!--<span style="width: 300px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{item}}</span>-->
+            <!--&lt;!&ndash;<label class="label-checkbox checkbox-circle item-content" ng-click="licenseClick($index)">&ndash;&gt;-->
+              <!--&lt;!&ndash;&lt;!&ndash;<input type="radio" name="licenseRadio" value="{{item}}" ng-model="enterObj.license">&ndash;&gt;&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="item-media" style="width: 300px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<i class="icon icon-form-checkbox"></i>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;{{item}}&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</label>&ndash;&gt;-->
+          <!--</div>-->
         </div>
         <div class="enter-check">
-          <div class="title">{{'airtrain.location' | translate}}:</div>
-          <div class="enter-radio" ng-repeat="item in place track by $index">
-            <label class="label-checkbox checkbox-circle item-content" ng-click="locationClick($index)">
-              <!--<input type="radio" name="locationRadio" value="{{item}}" ng-model="enterObj.location">-->
-              <div class="item-media">
-                <!--<i class="icon icon-form-checkbox"></i> -->
-                {{item}}
-              </div>
-            </label>
-          </div>
+          <div class="enter-title" style="width: 80px;">{{'airtrain.location' | translate}}: </div>
+          <div class="enter-detail" style="margin-left: 0;width:240px;">{{place[0]}}</div>
+
+          <!--<div class="title">{{'airtrain.location' | translate}}:</div>-->
+          <!--<div class="enter-radio" ng-repeat="item in place track by $index">-->
+            <!--<label class="label-checkbox checkbox-circle item-content" ng-click="locationClick($index)">-->
+              <!--&lt;!&ndash;<input type="radio" name="locationRadio" value="{{item}}" ng-model="enterObj.location">&ndash;&gt;-->
+              <!--<div class="item-media">-->
+                <!--&lt;!&ndash;<i class="icon icon-form-checkbox"></i> &ndash;&gt;-->
+                <!--{{item}}-->
+              <!--</div>-->
+            <!--</label>-->
+          <!--</div>-->
         </div>
       </div>
       <div class="list-block">
