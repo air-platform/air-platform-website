@@ -218,7 +218,7 @@
 
 
         function gotoAnnounceAction(type) {
-            $scope.agreement = false;
+            // $scope.agreement = false;
             if (1 === type){
                 mainView.router.loadPage(constdata.router.protocal.announce);
             }else{
