@@ -152,6 +152,7 @@
             'from': 'transportation',
             'type': 'transportation',
             'schedules': data[0],
+            'route': route,
             'planeModel': planeModel
           };
           mainView.router.loadPage('app/components/order/orderadd.html');

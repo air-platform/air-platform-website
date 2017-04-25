@@ -94,6 +94,7 @@
         'from': 'airtrans',
         'schedules': data[0],
         'type': 'airtaxi',
+        'route': route,
         'planeModel': planeModel
       };
       mainView.router.loadPage('app/components/order/orderadd.html');
