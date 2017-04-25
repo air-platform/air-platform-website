@@ -15,8 +15,8 @@
         $scope.jumpPlaneDetail = jumpPlaneDetail;
         angular.element('.pull-to-refresh-content').on('refresh', getPlaneList);
 
-        if (queryData.type || StorageService.get('planeType')) {
-            angular.element('#plane-title').text(queryData.type || StorageService.get('planeType'));
+        if (queryData.type || transferData.planeType) {
+            angular.element('#plane-title').text(queryData.type || transferData.planeType);
             $timeout(function () {
                 getPlaneList();
             }, 300);
@@ -31,7 +31,7 @@
             var data = {
                 page: page,
                 pageSize: 10,
-                type: queryData.type || StorageService.get('planeType')
+                type: queryData.type || transferData.planeType
             };
             NetworkService.get(UrlService.getUrl(URL.AIRJET_PLANE), data, function (response) {
                 $scope.planeList = response.data.content;
@@ -86,9 +86,6 @@
             });
             transferData.plane = $scope.planeArr;
             StorageService.put('plan', transferData);
-            if(!StorageService.get('planeType')){
-                StorageService.put('planeType', queryData.type);
-            }
             mainView.router.loadPage('app/components/airjet/travel-info.html');
         };
 
