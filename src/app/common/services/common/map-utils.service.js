@@ -30,11 +30,11 @@
         // map.disablePinchToZoom();
         var routes = parseSingleRoutes(points); // return array of arrays
         window.mapDrawPointRoutes = routes;
-        var markerPoints = parseMarkers(points); // return array of BMap.Point
-        map.setViewport(markerPoints);
+        var markerPoints = parseMarkers(points); // return array of ["label", BMap.Point]
+        map.setViewport(_.map(markerPoints, function(p) { return p[1]; }));
 
         if (config.markers) { // add point markers
-          addMarkers(markerPoints);
+          addMarkers(markerPoints, config.labels);
         }
         if (config.curves) { // draw curve routes
           drawCurves(map, routes);
@@ -53,23 +53,23 @@
           return routes;
         }
 
-        function addMarkers(markerPoints) {
+        function addMarkers(markerPoints, withLabels) {
           _.each(markerPoints, function (pt) {
             var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
               new BMap.Size(20, 30));
-            var marker = new BMap.Marker(pt, {icon: icon});
-            // var label = new BMap.Label(pt[2], {
-            //     offset: new BMap.Size(40, 20)
-            // });
-            // label.setStyle({
-            //   color : "#50bbff",
-            //   fontSize : "14px",
-            //   backgroundColor :"0.3",
-            //   border :"0",
-            // });
+            var marker = new BMap.Marker(pt[1], {icon: icon});
+            if(withLabels) {
+              var label = new BMap.Label(pt[0], {
+                  offset: new BMap.Size(20, 5)
+              });
+              label.setStyle({
+                fontSize : "12px",
+                height: "18px"
+              });
+              marker.setLabel(label);
+            }
             marker.setOffset(new BMap.Size(0, -20));
             marker.setZIndex(100);
-            // marker.setLabel(label);
             map.addOverlay(marker);
             marker.addEventListener("click", function (e) {
               var point = e.currentTarget.point;
@@ -128,7 +128,7 @@
         }
       }
       return _.map(locs, function(loc){
-        return new BMap.Point(loc[1], loc[2]);
+        return [loc[0], new BMap.Point(loc[1], loc[2])];
       });
     }
 
