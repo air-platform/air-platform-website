@@ -10,6 +10,8 @@
     function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
         $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
+        $scope.gotoAirbbLinkAction = gotoAirbbLinkAction;
+
         // 订阅登录通知->刷新界面
         $rootScope.$on(constdata.notification_refresh_information, function (evt, data) {
             if (data.action === 'logout'){
@@ -107,12 +109,15 @@
                 mainView.router.loadPage(constdata.router.protocal.safehelicopter);
             }
         }
+        function gotoAirbbLinkAction() {
+            window.open($scope.airbbLink,'_parent');
+        }
 
         function gotoItemAction(item) {
             if (item.target === 'out') {
                 logoutAction();
             }else if (item.target === 'forum'){
-                window.open($scope.airbbLink,"_blank");
+                window.open($scope.airbbLink,"_parent");
             }else {
                 if (item.needLogin && !iotUtil.islogin()) {
                     mainView.router.loadPage($scope.rightUserItem.target);
