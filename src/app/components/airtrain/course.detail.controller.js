@@ -4,7 +4,7 @@
   angular.module('airsc').controller('courseDetailController', courseDetailController);
 
   /** @ngInject */
-  function courseDetailController($scope, CommentServer, $timeout, NetworkService, UrlService, URL) {
+  function courseDetailController($scope, CommentServer, $timeout, NetworkService, $compile, UrlService, URL) {
     var queryData = myApp.views[0].activePage.query;
 
     myApp.showIndicator();
@@ -12,6 +12,7 @@
     if (queryData.id) {
       NetworkService.get(UrlService.getUrl(URL.COURSE + '/' + queryData.id), null, function(res) {
         $scope.courseObj = res.data;
+        $('.courseDetails').parent().append(renderFooter());
         myApp.hideIndicator();
         $scope.enterObj = angular.toJson({
           id: $scope.courseObj.id,
@@ -90,7 +91,12 @@
 
       /** -end- **/
 
-
+      function renderFooter() {
+            var footerBtn = document.createElement('div');
+            footerBtn.classList.add('footer-button');
+            footerBtn.innerHTML = '<a href="app/components/airtrain/entered.html?param={{enterObj}}" class="detail-btn">我要报名</a>';
+            return $compile(footerBtn)($scope);
+        }
 
 
   }

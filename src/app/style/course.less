@@ -153,17 +153,23 @@
       margin-top: .5rem;
     }
   }
-  .detail-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 1rem;
-    background: @base-red-light;
-    font-size: .36rem;
-    color: @base-white;
+}
+
+div[data-page=course-detail] {
+  .footer-button {
     position: fixed;
     bottom: 0;
+    width: 100%;
+    .detail-btn {
+      display: block;
+      text-align: center;
+      width: 100%;
+      height: 1rem;
+      line-height: 1rem;
+      background: @base-red-light;
+      font-size: .36rem;
+      color: @base-white;
+    }
   }
 }
 
@@ -234,7 +240,6 @@
   }
 }
 
-
 //order course detail
 .order-course-detail {
   margin: 10px;
@@ -257,7 +262,7 @@
     font-size: 0.28rem;
     background-color: @bg-white;
     border-radius: 8px;
-    .content-item{
+    .content-item {
       min-height: 30px;
       line-height: 30px;
       color: @font-gray;
