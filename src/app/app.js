@@ -34,7 +34,7 @@ Framework7.prototype.plugins.angular = function(app, params) {
         // animateNavBackIcon: true,
         // hideNavbarOnPageScroll: true,
         // scrollTopOnNavbarClick: true,
-        pushState: true,
+        // pushState: true,
         // sortable: false,
         // swipeout: true,
         cache:true,
