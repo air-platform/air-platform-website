@@ -19,7 +19,7 @@
 
         var mobile = '';
         var information = StorageService.get(constdata.information);
-        if (information && information !== 'undefined'){
+        if (information){
             $scope.infoData = {name:information.realName,phone:information.mobile,email:information.email};
             mobile = information.mobile;
         }

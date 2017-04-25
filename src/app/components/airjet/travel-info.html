@@ -48,7 +48,7 @@
                 <span class="order-agree" ng-click="agreement = !agreement">我已同意</span>
                 <span class="order-announce" ng-click="gotoAnnounceAction(1);$event.stopPropagation();">《Air Community免责条款》</span>
             </div>
-            <div class="travel-model-submit block-center" ng-click="infoSubmit(infoData)">{{'airjet.submit' | translate}}</div>
+            <div class="travel-model-submit block-center" ng-disabled="!agreement" ng-click="infoSubmit(infoData)">{{'airjet.submit' | translate}}</div>
         </div>
     </div>
 </div>
