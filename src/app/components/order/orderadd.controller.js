@@ -71,6 +71,7 @@
             $scope.orderInfo.icon = planeModel.aircraft.vendor.avatar;
             $scope.orderInfo.aircraftType = planeModel.aircraft.category;
             $scope.orderInfo.time = route.timeEstimation;
+            $scope.orderInfo.minPassengers = planeModel.aircraft.minPassengers;
 
         }else {
             $scope.istour = true;
@@ -92,6 +93,7 @@
             $scope.orderInfo.departure = site.name;
             $scope.orderInfo.icon = site.vendor.avatar;
             $scope.orderInfo.aircraftType = model.aircraft.category;
+            $scope.orderInfo.minPassengers = model.aircraft.minPassengers;
         }
 
         // 获取 f7 页面
