@@ -47,6 +47,11 @@
                 0);
         };
 
+        controller.gotoDetails = function(plane) {
+          mainView.router.loadPage("app/components/airtransportation/planes-detail.html");
+          mainView.pageData.plane = plane;
+          mainView.pageData.timeEstimation = controller.getEstimationTime(plane);
+        }
         controller.getEstimationTime = function (plane) {
             // TODO: refactoring
             if (prevScope.trans) {

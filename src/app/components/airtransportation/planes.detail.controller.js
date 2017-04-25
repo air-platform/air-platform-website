@@ -5,7 +5,11 @@
 
   /** @ngInject */
   function planesDetailController($scope, $rootScope, i18n, StorageService,constdata, NetworkService, UrlService, URL) {
-      
+        var controller = this;
+        var pageData = mainView.pageData || {};
+        $scope.plane = pageData.plane;
+        $scope.timeEstimation = pageData.timeEstimation;
+        controller.route = mainView.pageData.route;
 
       /** -评论- **/
         $scope.loading = false;

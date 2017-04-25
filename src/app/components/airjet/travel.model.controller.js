@@ -8,6 +8,7 @@
 
     /** @ngInject */
     function travelModelController($scope, $timeout, StorageService, NetworkService, UrlService, URL) {
+        var transferData = StorageService.get('plan');
         $scope.modelData = {};
         $scope.radioCheck = radioCheck;
         $scope.jumpPlane = jumpPlane;
@@ -18,7 +19,7 @@
         function getModel() {
             NetworkService.get(UrlService.getUrl(URL.AIRJET_TYPE), null, function(response) {
                 $scope.modelList = response.data;
-                $scope.checkModel = $scope.modelList[0].type;
+                $scope.checkModel = transferData.planeType || $scope.modelList[0].type;
             }, function(){
                 myApp.alert('数据获取失败，请重试', null);
             });
@@ -30,6 +31,8 @@
 
         function jumpPlane() {
             if($scope.checkModel){
+                transferData.planeType = $scope.checkModel;
+                StorageService.put('plan', transferData);
                 mainView.router.loadPage('app/components/airjet/travel-plane.html?type=' + $scope.checkModel);
             }
         };
