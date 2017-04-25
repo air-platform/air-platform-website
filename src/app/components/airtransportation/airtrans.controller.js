@@ -96,7 +96,11 @@
         controller.selectFlight = function(schedule) {
           var goto = "app/components/airtransportation/planes.html";
           mainView.pageData = mainView.pageData || {};
-          mainView.pageData.planeModel = schedule.flight
+          mainView.pageData.planeModel = schedule.flight;
+          mainView.pageData.route = _.where($scope.routes,
+          {departure: $scope.schedules[0].departure,
+          arrival: $scope.schedules[0].arrival}
+          );
           mainView.pageData.aircrafts = _.uniq(
             _.flatten(
             _.pluck(_.where($scope.routes,

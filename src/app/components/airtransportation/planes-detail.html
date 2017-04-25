@@ -6,20 +6,20 @@
 </div>
 
 <div class="pages navbar-through">
-    <div data-page="planes-detail" class="page" ng-controller="modifyController">
+    <div data-page="planes-detail" class="page" ng-controller="planesDetailController as ctl">
         <div class="page-content palnes-detail">
             <div class="list-block">
-                <div class="detail-img"><img src="assets/images/index/banner.jpg"></div>
+                <div class="detail-img"><img ng-src="{{ plane.aircraft.image }}"></div>
                 <div class="detail-title">
-                    <h2>首航直升机B-7186</h2>
+                    <h2>{{ plane.aircraft.name }}</h2>
                     <div class="title-icon clearfix">
                         <div class="pull-left">
                             <img src="assets/images/travel/icon_plane_black.svg"> 飞行时间
-                            <p>15<span>min</span></p>
+                            <p>{{ timeEstimation }}<span>min</span></p>
                         </div>
                         <div class="pull-left">
                             <img src="assets/images/travel/icon_seat_black.svg"> 载客人数
-                            <p>5</p>
+                            <p>{{ plane.aircraft.seats }}</p>
                         </div>
                     </div>
                 </div>
