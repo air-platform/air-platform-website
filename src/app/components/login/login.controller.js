@@ -20,6 +20,17 @@
         $scope.signinAction = signinAction;
         $scope.gotoRegister = gotoRegister;
         $scope.gotoResetPassword = gotoResetPassword;
+        $scope.handleInputClick = handleInputClick;
+        
+        
+        function handleInputClick(e) {
+            $scope.userActive='active';
+            $scope.userFocus='focus';
+
+            $timeout(function () {
+                e.target.scrollIntoView(true);
+            })
+        }
 
 
 
