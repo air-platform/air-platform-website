@@ -29,16 +29,17 @@
     $scope.enterBtn = function() {
 
 
-      if(!$scope.enterObj.person && !$scope.enterObj.identity) {
+      if(!$scope.enterObj.contact.person && !$scope.enterObj.contact.identity) {
         myApp.alert(i18n.t('profile.check-input'), null);
         return;
       }
 
-        if(!REGEX.PHONE.test($scope.enterObj.mobile)) {
+        if(!REGEX.PHONE.test($scope.enterObj.contact.mobile)) {
             myApp.alert('电话号码格式不正确！', null);
             return;
         }
-      if(!REGEX.IDCARD.test($scope.enterObj.identity)) {
+
+      if(!REGEX.IDCARD.test($scope.enterObj.contact.identity)) {
         myApp.alert('身份证格式不正确！', null);
         return;
       }
@@ -48,7 +49,8 @@
           return;
       }
 
-      NetworkService.post(UrlService.getUrl(URL.COURSEENTER), {contact:{person:$scope.enterObj.person,identity:$scope.enterObj.identity,mobile:$scope.enterObj.mobile}}, function(res) {
+
+      NetworkService.post(UrlService.getUrl(URL.COURSEENTER), $scope.enterObj, function(res) {
         myApp.alert('报名成功！', null);
         mainView.router.back();
       }, function(err) {
