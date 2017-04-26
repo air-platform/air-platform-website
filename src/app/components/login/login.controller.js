@@ -81,10 +81,12 @@
 
             var isExist = fruits.indexOf($scope.principal);
             if (isExist === -1){
-                fruits.push($scope.principal);
                 fruits.splice(0,0,$scope.principal);
             }else {
                 fruits.splice(0,1,$scope.principal);
+            }
+            if (fruits.length > 5){
+                fruits.splice(5,fruits.length - 5);
             }
             StorageService.put(constdata.account_list,fruits,24 * 30 * 60 * 60);
 
