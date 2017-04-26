@@ -149,6 +149,18 @@
                 myApp.alert('手机号码不正确');
                 return;
             }
+            var isSamePeople = false;
+            for (var i = 0; i < $scope.passengers.length; i++){
+                var ps = $scope.passengers[i];
+                if (ps.identity === $scope.newPerson.identity){
+                    isSamePeople = true;
+                    break;
+                }
+            }
+            if (isSamePeople){
+                myApp.alert('此身份证号已经添加过了');
+                return;
+            }
 
             myApp.showIndicator();
             if ($scope.newPerson.isUpdate){
@@ -157,6 +169,7 @@
             }else{
                 OrderServer.addPassenger($scope.newPerson,function (res) {
                     $scope.passengers.push({name:$scope.newPerson.name,mobile:$scope.newPerson.mobile,identity:$scope.newPerson.identity});
+                    console.log(res);
                     closeModalAction();
                     myApp.hideIndicator();
                 },function (err) {
