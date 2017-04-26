@@ -65,7 +65,7 @@
             ]
             },
             {
-                title: '空中社区',
+                title: '空中论坛',
                 subtitle: 'Air Quest', items: [
                 {'title': '话题讨论/发帖/留言', target: 'forum'}
             ]
