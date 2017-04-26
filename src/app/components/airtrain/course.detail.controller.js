@@ -12,11 +12,14 @@
     if (queryData.id) {
       NetworkService.get(UrlService.getUrl(URL.COURSE + '/' + queryData.id), null, function(res) {
         $scope.courseObj = res.data;
+        console.log($scope.courseObj);
         $('.courseDetails').parent().append(renderFooter());
         myApp.hideIndicator();
         $scope.enterObj = angular.toJson({
           id: $scope.courseObj.id,
-          airType: $scope.courseObj.airType
+          airType: $scope.courseObj.airType,
+          license: $scope.courseObj.license,
+          location:$scope.courseObj.location
         });
 
           /** 获取评论 **/
