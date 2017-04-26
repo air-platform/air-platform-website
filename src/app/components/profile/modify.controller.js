@@ -41,6 +41,23 @@
 
         NetworkService.put(UrlService.getUrl(URL.PROFILE), $rootScope.userInfo, function(res) {
           myApp.alert(i18n.t('profile.modifySuccess'), $scope.headText);
+
+
+            //更新本地用户信息
+
+            if ($scope.info === 'nickName'){
+                var information = StorageService.get(constdata.information);
+                information.nickName = $rootScope.userInfo[$scope.info];
+                StorageService.put(constdata.information,information,24 * 30 * 60 * 60);
+                //刷新用户信息
+                $rootScope.$emit(constdata.notification_refresh_information,{action:'refresh'});
+            }else if ($scope.info === 'realName'){
+                var information = StorageService.get(constdata.information);
+                information.realName = $rootScope.userInfo[$scope.info];
+                StorageService.put(constdata.information,information,24 * 30 * 60 * 60);
+            }
+
+
           mainView.router.back();
         }, function(err) {
           myApp.alert(i18n.t('profile.modifyFailed'), $scope.headText);
