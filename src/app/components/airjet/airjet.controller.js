@@ -7,7 +7,7 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT, DATEPICKER) {
+    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT, DATEPICKER, REGEX) {
         var cardPage = 1;
         var dreamPage = 1;
         var cityPage = 1;
@@ -284,6 +284,11 @@
                         valid = false;
                         return;
                     }
+                    if(!REGEX.NUMBER.test(item.guestStart)){
+                        NotificationService.alert.success('请填写数字', null);
+                        valid = false;
+                        return;
+                    }
                     base.push({
                         "departure": item.departure,
                         "arrival": item.arrival,
@@ -298,6 +303,11 @@
                         }
                         if (!item.guestEnd && valid) {
                             NotificationService.alert.success('请填写返程乘客人数', null);
+                            valid = false;
+                            return;
+                        }
+                        if(!REGEX.NUMBER.test(item.guestEnd)){
+                            NotificationService.alert.success('请填写数字', null);
                             valid = false;
                             return;
                         }
