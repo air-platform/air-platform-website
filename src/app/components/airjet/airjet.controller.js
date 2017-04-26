@@ -15,6 +15,7 @@
         var cityLoading = false;
         var cardLoading = false;
         var queryData = myApp.views[0].activePage.query;
+        var visited = StorageService.get('dreamVisited');
         $scope.travelStrokeList = [{ departure: '请选择', arrival: '请选择' }];
         $scope.cityShow = 20;
         $scope.citySearch = '';
@@ -29,17 +30,16 @@
         $scope.jumpTourDetail = jumpTourDetail;
         $scope.jumpCity = jumpCity;
         $scope.datepicter = datepicter;
-        angular.element('.card-infinite').on('infinite', getCard);
-        angular.element('.dream-infinite').on('infinite', getDream);
-        angular.element('.infinite-scroll').on('infinite', cityInfinite);
         $scope.$watch('citySearch', search);
         $timeout(function () {
             if(mainView.activePage.name === 'smart-select-radio-travel') {
                 getCity();
+                angular.element('.city-infinite').on('infinite', cityInfinite);
             } else {
-                getCard();
-                getDream();
                 getRecommended();
+                if(queryData.tabActive || StorageService.get('airjetTab')){
+                    tabSwitch(queryData.tabActive || StorageService.get('airjetTab'));
+                }
             }
         }, 300);
         if(StorageService.get('travel')){
@@ -48,16 +48,11 @@
         if(queryData.index && queryData.name){
             $scope.currentCity = $scope.travelStrokeList[queryData.index][queryData.name];
         }
-        if(queryData.tabActive) {
-            tabSwitch(queryData.tabActive);
-        }
-        if(StorageService.get('airjetTab')){
-            tabSwitch(StorageService.get('airjetTab'));
-        }
+        
 
         function search(newValue, oldValue) {
             $scope.cityShow = 20;
-            angular.element('.infinite-scroll-preloader').show();
+            angular.element('.city-scroll-preloader').show();
             if (newValue !== oldValue) {
                 $scope.searchList = [];
                 $scope.cityList.forEach(function (item) {
@@ -125,11 +120,16 @@
         };
 
         function getCard() {
-            if (cityLoading) return;
-            cityLoading = true;
+            angular.element('.airjet-infinite-preloader').show();
+            if ($scope.cardEnd){
+                angular.element('.airjet-infinite-preloader').hide();
+                return;
+            }
+            if (cardLoading) return;
+            cardLoading = true;
             var data = {
-                page: cardPage,
-                pageSize: 10
+                page: 1,
+                pageSize: 10 * cardPage
             };
             var cardArr = ['金', '尊享', '精英', '飞翔', '悠', '翱翔'];
             NetworkService.get(UrlService.getUrl(URL.AIRJET_CARD), data, function (response) {
@@ -152,24 +152,30 @@
                     result.push(item);
                 });
                 $scope.cardList = result;
-                if (response.data.totalPages > cardPage) {
+                if(response.data.totalRecords > cardPage * 10) {
                     cardPage++;
                 } else {
-                    myApp.detachInfiniteScroll(angular.element('.card-infinite'));
-                    angular.element('.card-infinite-preloader').remove();
+                    $scope.cardEnd = true;
+                    angular.element('.airjet-infinite-preloader').hide();
                 }
-                cityLoading = false;
+                cardLoading = false;
             });
         };
 
         function getDream() {
+            angular.element('.airjet-infinite-preloader').show();
+            if ($scope.dreamEnd){
+                angular.element('.airjet-infinite-preloader').hide();
+                return;
+            }
             if (dreamLoading) return;
             dreamLoading = true;
             var data = {
-                page: dreamPage,
-                pageSize: 10
+                page: 1,
+                pageSize: 10 *　dreamPage
             };
             NetworkService.get(UrlService.getUrl(URL.AIRJET_DREAM), null, function (response) {
+                var result = [];
                 response.data.content.map(function (item) {
                     if (item.timeSlot) {
                         item.startTime = item.timeSlot.split('-')[0];
@@ -178,16 +184,19 @@
                     if (item.minPassengers) {
                         item.least = { number: item.minPassengers }
                     }
+                    if(visited && visited.indexOf(item.id) !== -1) {
+                        item.visited = true;
+                    }
                     if (new Date(item.date).getTime() - new Date().getTime() < 0) {
                         item.expired = true;
                     }
-                })
+                });
                 $scope.dreamFlyList = response.data.content;
-                if (response.data.totalPages > dreamPage) {
+                if(response.data.totalRecords > dreamPage * 10) {
                     dreamPage++;
                 } else {
-                    myApp.detachInfiniteScroll(angular.element('.dream-infinite'));
-                    angular.element('.dream-infinite-preloader').remove();
+                    $scope.dreamEnd = true;
+                    angular.element('.airjet-infinite-preloader').hide();
                 }
                 dreamLoading = false;
             });
@@ -205,6 +214,16 @@
         };
 
         function tabSwitch(tab) {
+            angular.element('.airjet-infinite').off('infinite');
+            if(tab === '#dream-flying') {
+                getDream();
+                angular.element('.airjet-infinite').on('infinite', getDream);
+            } else if(tab === '#card-sevice') {
+                getCard();
+                angular.element('.airjet-infinite').on('infinite', getCard);
+            } else {
+                angular.element('.airjet-infinite-preloader').hide();
+            }
             myApp.showTab(tab);
             StorageService.put('airjetTab', tab);
         };
@@ -301,6 +320,16 @@
 
         function jumpDream(data) {
             if (data.id && !data.expired) {
+                if(visited && visited.indexOf(data.id) === -1) {
+                    StorageService.put('dreamVisited', visited + ',' + data.id);
+                } else {
+                    StorageService.put('dreamVisited', data.id);
+                }
+                $scope.dreamFlyList.map(function (item) {
+                    if(data.id === item.id) {
+                        item.visited = true;
+                    }
+                });
                 mainView.router.loadPage('app/components/airjet/dream-inner.html?id=' + data.id)
             }
         };
