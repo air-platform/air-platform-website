@@ -229,10 +229,7 @@
 
         $scope.$watch('family', function() {
           if($scope.family) {
-            controller.map = {};
             controller.transports = [];
-            controller.mapPoints = [];
-            $scope.routes = [];
             $scope.schedules = [
                 {
                     'date': '',
