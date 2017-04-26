@@ -39,37 +39,33 @@
           });
         });
 
-        var loadTransports = function(page, family) {
-          var hasMore = true;
-          var page = 1;
-          NetworkService.get("transports",
-          {page: page, family: family},
-          function getMapMakers(res) {
-            var data = res.data;
-            hasMore = data.hasNextPage;
-            page = data.page;
-            // TODO: quick fix...
-            if(page == 1) controller.transports = [];
-            controller.transports = controller.transports.concat(data.content);
-            console.log(controller.transports);
-            $scope.routes = parseRoutes(controller.transports);
-            controller.mapPoints = _.flatten(_.map(controller.transports, function(transport) {
-              return [[transport.flightRoute.departure,
-                      transport.flightRoute.departureLongitude,
-                      transport.flightRoute.departureLatitude],
-                      [transport.flightRoute.arrival,
-                      transport.flightRoute.arrivalLongitude,
-                      transport.flightRoute.arrivalLatitude]]
-            }), true);
-          }, function(res) {
-            NotificationService.alert.error(res.statusText, null);
-            hasMore = false;
-          });
-          return {
-            "hasMore": hasMore,
-            "page": page
+        var loadTransports = function(start, family) {
+          var loadPage = function(page) {
+            NetworkService.get("transports", {
+              'page': page, 'family': family
+            }, function(res) {
+              var data = res.data;
+              if(page == 1) controller.transports = [];
+              controller.transports = controller.transports.concat(data.content);
+              if(data.hasNextPage) {
+                loadPage(data.page + 1);
+              } else {
+                $scope.routes = parseRoutes(controller.transports);
+                controller.mapPoints = _.flatten(_.map(controller.transports, function(transport) {
+                  return [[transport.flightRoute.departure,
+                          transport.flightRoute.departureLongitude,
+                          transport.flightRoute.departureLatitude],
+                          [transport.flightRoute.arrival,
+                          transport.flightRoute.arrivalLongitude,
+                          transport.flightRoute.arrivalLatitude]]
+                }), true);
+              }
+            }, function(res) {
+              NotificationService.alert.error(res.statusText, null);
+            });
           };
-        }
+          loadPage(start);
+        };
 
         $scope.schedules = [
             {
