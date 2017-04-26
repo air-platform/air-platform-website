@@ -61,7 +61,7 @@
                                       <!-- departure and arrival -->
                                       <div class="row">
                                           <div class="field-block departure-city col-50">
-                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text=" ">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text="&nbsp;">
                                                 <select name="departure" ng-model="schedule.departure" ng-disabled="$index != 0">
                                                   <option value="" selected>选择出发地</option>
                                                   <option value="{{ city }}" ng-repeat="city in ctl.departures(routes)">{{ city }}</option>
@@ -75,7 +75,7 @@
                                               </a>
                                           </div>
                                           <div class="field-block arrival-city col-50">
-                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text=" ">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text="&nbsp;">
                                                 <select name="arrival" ng-model="schedule.arrival" ng-disabled="$index != 0">
                                                   <option value="" selected>选择到达地</option>
                                                   <option value="{{ city }}" ng-repeat="city in ctl.arrivals(routes, schedule.departure)">{{ city }}</option>
@@ -105,7 +105,7 @@
                                             </a>
                                           </div>
                                           <div class="field-block col-50">
-                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text=" ">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text="&nbsp;">
                                                   <select name="time" ng-model="schedule.time"
                                                           ng-options="slot for slot in ctl.timeSlots()"
                                                           ng-disabled="$index != 0">
