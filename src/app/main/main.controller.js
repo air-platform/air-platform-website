@@ -39,9 +39,9 @@
             {
                 title: '空中专车',
                 subtitle:'Air Jet', items: [
-                {'title': '包机预定', target: constdata.router.airjet.home + '?type=1'},
-                {'title': '缘梦飞行', target: constdata.router.airjet.home + '?tabActive=tab2'},
-                {'title': '卡产品', target: constdata.router.airjet.home + '?tabActive=tab3'}
+                {'title': '旅行计划', target: constdata.router.airjet.travel},
+                {'title': '缘梦飞行', target: constdata.router.airjet.dream},
+                {'title': '卡产品', target: constdata.router.airjet.card}
             ]
             },
             {
