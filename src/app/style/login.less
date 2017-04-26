@@ -20,6 +20,7 @@
   background-size: cover;
   .block-center();
   position: relative;
+  transition: height .3s;
 
   &:after {
     content: "";
@@ -27,6 +28,10 @@
     bottom: 0;
     left: 1.12rem;
     .triangle-top(10px);
+  }
+
+  &.focus {
+    height: 2.66rem;
   }
 
   img{

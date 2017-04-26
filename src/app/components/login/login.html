@@ -16,7 +16,7 @@
 <div class="pages navbar-through">
     <div data-page="login-screen" class="page no-navbar no-swipeback no-border" ng-controller="loginController">
         <div class="page-content login-screen-content no-border">
-            <div class="air-login-top">
+            <div class="air-login-top {{userFocus}}">
                 <div><a class="login-cancel" ng-click="cancelAction()"><i class="f7-icons">close</i></a></div>
                 <div class="air-login-container">
                     <img src="../../../assets/images/login_logo_icon.svg">
@@ -30,7 +30,7 @@
                             <div class="item-inner login-inner {{userActive}}">
                                 <div class="item-title login-icon login-user"></div>
                                 <div class="item-input">
-                                    <input class="login-placeholder" type="text" id="autocomplete-dropdown" ng-focus="" autocomplete="off" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active'" ng-blur="userActive=''" required/>
+                                    <input class="login-placeholder" type="text" id="autocomplete-dropdown" ng-focus="" autocomplete="off" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-focus="userFocus='focus';" ng-click="userActive='active';userFocus='focus'" ng-blur="userActive='';userFocus=''" required/>
                                 </div>
                             </div>
                         </li>
@@ -38,7 +38,7 @@
                             <div class="item-inner login-inner {{passwordActive}}">
                                 <div class="item-title login-icon login-password"></div>
                                 <div class="item-input">
-                                    <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active'" ng-blur="passwordActive=''" required/>
+                                    <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active';userFocus='focus'" ng-blur="passwordActive='';userFocus=''" ng-focus="userFocus='focus';" required/>
                                 </div>
                             </div>
                         </li>

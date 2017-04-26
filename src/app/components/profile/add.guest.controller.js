@@ -8,7 +8,7 @@
     $scope.quest = {
       name: '',
       identity: '',
-      mobile: '13012345678'
+      mobile: ''
     };
 
     // $scope.addGuest = function() {
@@ -19,13 +19,18 @@
     // };
 
     $$('.alert-check').on('click', function() {
-      if ($scope.quest.name === '' || $scope.quest.identity === '') {
+      if ($scope.quest.name === '' || $scope.quest.identity === '' || $scope.quest.mobile === '') {
         NotificationService.alert.success(i18n.t('profile.check-input'), i18n.t('profile.addGuest'));
         return;
       }
 
       if(!REGEX.IDCARD.test($scope.quest.identity)) {
         myApp.alert('身份证格式不正确！', null);
+        return;
+      }
+
+      if(!REGEX.PHONE.test($scope.quest.mobile)) {
+        myApp.alert('手机号格式不正确！', null);
         return;
       }
 

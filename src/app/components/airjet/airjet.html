@@ -2,7 +2,7 @@
 <!-- Top Navbar-->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="left sliding"><a href="" class="back link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
+    <div class="left sliding"><a href="index.html" class="link">&nbsp;&nbsp;<i class="icon f7-icons">left</i><span>&nbsp;&nbsp;</span></a></div>
     <div class="center sliding">Air Jet</div>
       <div class="right">
           <a href="#" data-panel="right" class="link icon-only open-panel"><i class="icon icon-user"></i></a>
@@ -10,8 +10,8 @@
   </div>
 </div>
 <div data-page="airjet" class="page" ng-controller="jetController">
-    <div class="page-content">
-        <div class="buttons-row air-tabs">
+    <div class="page-content infinite-scroll airjet-infinite">
+        <div class="air-tabs clearfix">
             <!-- Link to 1st tab, active -->
             <a href="#travel-plan" ng-click="tabSwitch('#travel-plan')" class="tab-link active"><span>{{'airjet.travel-plan' | translate}}</span></a>
             <!-- Link to 2nd tab -->
@@ -19,7 +19,7 @@
             <!-- Link to 3rd tab -->
             <a href="#card-sevice" ng-click="tabSwitch('#card-sevice')" class="tab-link"><span>{{'airjet.card-products' | translate}}</span></a>
         </div>
-        <div class="tabs">
+        <div class="tabs airjet-tabs">
             <!-- Tab 1, active by default -->
             <div id="travel-plan" class="tab active">
                 <div class="travel-plan-content">
@@ -155,9 +155,9 @@
                 </div>
             </div>
             <!-- Tab 2 -->
-            <div id="dream-flying" class="tab infinite-scroll dream-infinite">
+            <div id="dream-flying" class="tab">
                 <div class="dream-flying-content">
-                    <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" ng-click="jumpDream(item)">
+                    <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" ng-class="item.visited ? 'visited' : ''" ng-click="jumpDream(item)">
                         <div class="dfi-left">
                             <div class="dfi-top">
                                 <div class="dreaam-flying-logo">{{item.vendor.name}} {{item.flightNo}}</div>
@@ -200,12 +200,9 @@
                         </div>
                     </a>
                 </div>
-                <div class="infinite-scroll-preloader dream-infinite-preloader">
-                    <div class="preloader"></div>
-                </div>
             </div>
             <!-- Tab 3 -->
-            <div id="card-sevice" class="tab infinite-scroll dream-infinite">
+            <div id="card-sevice" class="tab">
                 <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList | orderBy: 'level' track by $index" ng-click="jumpTourDetail(card)">
                     <div class="card-header">
                         <span>{{card.vendor.name}}&nbsp;&nbsp;{{card.type}}</span>
@@ -220,10 +217,10 @@
                         <span>{{card.currencyUnit | uppercase}}&nbsp;{{card.price | currency:'':0}}</span>
                     </div>
                 </div>
-                <div class="infinite-scroll-preloader card-infinite-preloader">
-                    <div class="preloader"></div>
-                </div>
             </div>
+        </div>
+        <div class="infinite-scroll-preloader airjet-infinite-preloader">
+            <div class="preloader"></div>
         </div>
     </div>
 </div>

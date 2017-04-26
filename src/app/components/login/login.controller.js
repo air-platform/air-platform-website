@@ -28,6 +28,7 @@
         if (!fruits){
             fruits = [];
         }
+        console.log(fruits);
 
         var autocompleteDropdownSimple = myApp.autocomplete({
             input: '#autocomplete-dropdown',
@@ -80,8 +81,15 @@
 
             var isExist = fruits.indexOf($scope.principal);
             if (isExist === -1){
-                fruits.push($scope.principal);
+                fruits.splice(0,0,$scope.principal);
+            }else {
+                fruits.remove($scope.principal);
+                fruits.splice(0,0,$scope.principal);
             }
+            if (fruits.length > 5){
+                fruits.splice(5,fruits.length - 5);
+            }
+
             StorageService.put(constdata.account_list,fruits,24 * 30 * 60 * 60);
 
 
@@ -106,7 +114,6 @@
             NetworkService.get(UrlService.getUrl(URL.PROFILE), null,function (response) {
 
                 var data = response.data;
-                console.log(data);
                 var userInfo = {nickName:data.nickName,mobile:data.mobile,avatar:data.avatar,email:data.email,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
 
                 StorageService.put(constdata.information,userInfo,24 * 7 * 60 * 60);//7 天过期
@@ -129,7 +136,11 @@
         }
         function showErrorAlert(err) {
             var errDesc = err.statusText;
-            NotificationService.alert.error('操作失败！' + errDesc, null)
+            if (err.status === 401){
+                errDesc = "用户名或密码错误";
+            }
+
+            NotificationService.alert.error('操作失败！' + errDesc, null);
         }
         function gotoRegister() {
             mainView.router.loadPage('app/components/login/register.html');
