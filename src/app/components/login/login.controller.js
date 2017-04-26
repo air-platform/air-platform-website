@@ -72,7 +72,7 @@
 
 
         function cancelAction() {
-            mainView.router.back();
+            mainView.router.loadPage('index.html');
         }
 
         function signinAction() {
