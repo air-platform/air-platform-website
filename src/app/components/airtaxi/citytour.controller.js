@@ -290,7 +290,7 @@
       $('.navbar-tour').append($('<div class="subnavbar tourview-subnavbar">' +
         '<div class="buttons-row air-tabs airtaxi-nav">' +
         '<a href="#island-mapview-order" class="tab-link active"><span>海岛行</span></a>' +
-        '<a href="#tour-project-list" class="tab-link"><span>海岛观光</span></a>' +
+        '<a href="#tour-project-list" class="tab-link"><span>蜈支洲岛</span></a>' +
         '</div>' +
         '</div>'));
       myApp.showTab('#island-mapview-order');
