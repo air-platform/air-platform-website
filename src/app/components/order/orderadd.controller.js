@@ -168,8 +168,7 @@
                 closeModalAction();
             }else{
                 OrderServer.addPassenger($scope.newPerson,function (res) {
-                    $scope.passengers.push({name:$scope.newPerson.name,mobile:$scope.newPerson.mobile,identity:$scope.newPerson.identity});
-                    console.log(res);
+                    $scope.passengers.push({name:$scope.newPerson.name,mobile:$scope.newPerson.mobile,identity:$scope.newPerson.identity,id:res.data.id});
                     closeModalAction();
                     myApp.hideIndicator();
                 },function (err) {
