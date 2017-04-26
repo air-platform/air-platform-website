@@ -10,15 +10,15 @@
     <div class="page-content">
         <div class="buttons-row air-tabs">
             <!-- Link to 1st tab, active -->
-            <a href="#tab1" ng-click="tabActive = 'tab1'" class="tab-link" ng-class="{'active': tabActive === 'tab1'}"><span>{{'airjet.travel-plan' | translate}}</span></a>
+            <a href="#travel-plan" ng-click="tabSwitch('#travel-plan')" class="tab-link active"><span>{{'airjet.travel-plan' | translate}}</span></a>
             <!-- Link to 2nd tab -->
-            <a href="#tab2" ng-click="tabActive = 'tab2'" class="tab-link" ng-class="{'active': tabActive === 'tab2'}"><span>{{'airjet.dream-flying' | translate}}</span></a>
+            <a href="#dream-flying" ng-click="tabSwitch('#dream-flying')" class="tab-link"><span>{{'airjet.dream-flying' | translate}}</span></a>
             <!-- Link to 3rd tab -->
-            <a href="#tab3" ng-click="tabActive = 'tab3'" class="tab-link" ng-class="{'active': tabActive === 'tab3'}"><span>{{'airjet.card-products' | translate}}</span></a>
+            <a href="#card-sevice" ng-click="tabSwitch('#card-sevice')" class="tab-link"><span>{{'airjet.card-products' | translate}}</span></a>
         </div>
         <div class="tabs">
             <!-- Tab 1, active by default -->
-            <div id="tab1" class="tab" ng-class="{'active': tabActive === 'tab1'}">
+            <div id="travel-plan" class="tab active">
                 <div class="travel-plan-content">
                     <div class="travel-plan-card" ng-repeat="item in travelStrokeList track by $index">
                         <div class="tpc-top">
@@ -31,11 +31,6 @@
                                     <em>{{'airjet.departure' | translate}}</em>
                                     <div class="tpcbt-select">
                                         <a ng-click="jumpCity($index, 'departure')">
-                                        <!--<a href="#" class="item-link smart-select" data-searchbar="true" data-back-on-select="true" data-searchbar-placeholder="Search City">
-                                            <select ng-model="item.departure">
-                                                <option value="{{'airjet.select' | translate}}" selected>{{'airjet.select' | translate}}</option>
-                                                <option ng-repeat="opts in cityList track by $index" value="{{opts.name}}" ng-bind="opts.name"></option>
-                                            </select>-->
                                             <div class="item-content">
                                                 <div class="item-after" ng-bind="item.departure"></div>
                                             </div>
@@ -135,7 +130,7 @@
                         <div class="tpbr-top clearfix">
                             <img src="assets/images/travel/icon_trip_recommend.svg">
                             <span>{{'airjet.stroke-recommend' | translate}}</span>
-                            <a href="#tab2" class="tab-link pull-right" ng-click="tabActive = 'tab2'">{{'airjet.look-more' | translate}}<i class="fa fa-angle-right"></i></a>
+                            <a class="tab-link pull-right" ng-click="tabSwitch('#dream-flying')">{{'airjet.look-more' | translate}}<i class="fa fa-angle-right"></i></a>
                         </div>
                         <div class="tpbr-middle">
                             <a class="tpbrm-item" ng-repeat="rec in recommendList track by $index"  href="app/components/airjet/dream-inner.html?id={{rec.id}}">
@@ -157,7 +152,7 @@
                 </div>
             </div>
             <!-- Tab 2 -->
-            <div id="tab2" class="tab infinite-scroll dream-infinite" ng-class="{'active': tabActive === 'tab2'}">
+            <div id="dream-flying" class="tab infinite-scroll dream-infinite">
                 <div class="dream-flying-content">
                     <a class="dream-flying-item" ng-repeat="item in dreamFlyList track by $index" ng-click="jumpDream(item)">
                         <div class="dfi-left">
@@ -207,7 +202,7 @@
                 </div>
             </div>
             <!-- Tab 3 -->
-            <div id="tab3" class="tab infinite-scroll dream-infinite" ng-class="{'active': tabActive === 'tab3'}">
+            <div id="card-sevice" class="tab infinite-scroll dream-infinite">
                 <div class="card air-card air-card-level-{{card.level}}" ng-repeat="card in cardList | orderBy: 'level' track by $index" ng-click="jumpTourDetail(card)">
                     <div class="card-header">
                         <span>{{card.vendor.name}}&nbsp;&nbsp;{{card.type}}</span>

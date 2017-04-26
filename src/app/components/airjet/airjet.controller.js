@@ -19,6 +19,7 @@
         $scope.cityShow = 20;
         $scope.citySearch = '';
         $scope.citySelect = citySelect;
+        $scope.tabSwitch = tabSwitch;
         $scope.roundChange = roundChange;
         $scope.reversal = reversal;
         $scope.submit = submit;
@@ -28,7 +29,6 @@
         $scope.jumpTourDetail = jumpTourDetail;
         $scope.jumpCity = jumpCity;
         $scope.datepicter = datepicter;
-        $scope.tabActive = queryData.tabActive || 'tab1';
         angular.element('.card-infinite').on('infinite', getCard);
         angular.element('.dream-infinite').on('infinite', getDream);
         angular.element('.infinite-scroll').on('infinite', cityInfinite);
@@ -47,6 +47,12 @@
         }
         if(queryData.index && queryData.name){
             $scope.currentCity = $scope.travelStrokeList[queryData.index][queryData.name];
+        }
+        if(queryData.tabActive) {
+            tabSwitch(queryData.tabActive);
+        }
+        if(StorageService.get('airjetTab')){
+            tabSwitch(StorageService.get('airjetTab'));
         }
 
         function search(newValue, oldValue) {
@@ -196,6 +202,11 @@
                     }
                 });
             });
+        };
+
+        function tabSwitch(tab) {
+            myApp.showTab(tab);
+            StorageService.put('airjetTab', tab);
         };
 
         function roundChange(index){

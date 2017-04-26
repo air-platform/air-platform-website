@@ -27,9 +27,9 @@
                 },
                 airjet:{
                     home:'app/components/airjet/airjet.html',
-                    travel:'app/components/airjet/airjet.html?tabActive=tab1',
-                    dream:'app/components/airjet/airjet.html?tabActive=tab2',
-                    card:'app/components/airjet/airjet.html?tabActive=tab3',
+                    travel:'app/components/airjet/airjet.html?tabActive=#travel-plan',
+                    dream:'app/components/airjet/airjet.html?tabActive=#dream-flying',
+                    card:'app/components/airjet/airjet.html?tabActive=#card-sevice',
                     ordersuccess:'app/components/airjet/order-success.html'
                 },
                 airtaxi:{
