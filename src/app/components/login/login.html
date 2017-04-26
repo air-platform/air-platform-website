@@ -30,7 +30,7 @@
                             <div class="item-inner login-inner {{userActive}}">
                                 <div class="item-title login-icon login-user"></div>
                                 <div class="item-input">
-                                    <input class="login-placeholder" type="text" id="autocomplete-dropdown" ng-focus="" autocomplete="off" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-click="handleInputClick($event)" ng-blur="userActive='';userFocus=''" required/>
+                                    <input class="login-placeholder" type="text" id="autocomplete-dropdown" ng-focus="" autocomplete="off" ng-model="principal" name="username" ng-minlength="4" placeholder="{{'login.login-placeholder' | translate}}" ng-click="userActive='active';" ng-blur="userActive='';" required/>
                                 </div>
                             </div>
                         </li>
@@ -38,7 +38,7 @@
                             <div class="item-inner login-inner {{passwordActive}}">
                                 <div class="item-title login-icon login-password"></div>
                                 <div class="item-input">
-                                    <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="handleInputClick($event)" ng-blur="passwordActive='';userFocus=''" required/>
+                                    <input class="login-placeholder" type="password" ng-model="credential" name="password" placeholder="{{'login.password-placeholder' | translate}}" ng-click="passwordActive='active';" ng-blur="passwordActive='';" required/>
                                 </div>
                             </div>
                         </li>
