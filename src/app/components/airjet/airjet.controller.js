@@ -37,8 +37,11 @@
                 angular.element('.city-infinite').on('infinite', cityInfinite);
             } else {
                 getRecommended();
-                if(queryData.tabActive || StorageService.get('airjetTab')){
-                    tabSwitch(queryData.tabActive || StorageService.get('airjetTab'));
+                if(StorageService.get('airjetTab')){
+                    tabSwitch(StorageService.get('airjetTab'));
+                }
+                if(queryData.tabActive){
+                    tabSwitch('#' + queryData.tabActive);
                 }
             }
         }, 300);
