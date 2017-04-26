@@ -34,7 +34,7 @@
         map.setViewport(_.map(markerPoints, function(p) { return p[1]; }));
 
         if (config.markers) { // add point markers
-          addMarkers(markerPoints, config.labels);
+          addMarkers(markerPoints, { 'labelType': config.labels });
         }
         if (config.curves) { // draw curve routes
           drawCurves(map, routes);
@@ -53,12 +53,13 @@
           return routes;
         }
 
-        function addMarkers(markerPoints, withLabels) {
-          _.each(markerPoints, function (pt) {
+        function addMarkers(markerPoints, config) {
+          map.getOverlays;
+          _.each(markerPoints, function(pt) {
             var icon = new BMap.Icon("assets/images/airtaxi/map-marker.svg",
               new BMap.Size(20, 30));
             var marker = new BMap.Marker(pt[1], {icon: icon});
-            if(withLabels) {
+            if(config.labelType == 'static' ) {
               var label = new BMap.Label(pt[0], {
                   offset: new BMap.Size(20, 5)
               });
@@ -67,6 +68,26 @@
                 height: "18px"
               });
               marker.setLabel(label);
+            }
+            if(config.labelType == 'onclick') {
+              marker.addEventListener('click', function(e) {
+                var markers = _.each(map.getOverlays(), function(overlay) {
+                  if(overlay instanceof BMap.Marker) {
+                    var label = overlay.getLabel();
+                    if(label) label.remove();
+                  }
+                });
+                if(marker.getLabel() == null) {
+                  var label = new BMap.Label(pt[0], {
+                      offset: new BMap.Size(20, 5)
+                  });
+                  label.setStyle({
+                    fontSize : "12px",
+                    height: "18px"
+                  });
+                  marker.setLabel(label);
+                }
+              });
             }
             marker.setOffset(new BMap.Size(0, -20));
             marker.setZIndex(100);
@@ -169,7 +190,7 @@
       return marker;
     }
 
-    var removeMarkedCurve = function(map) {
+    var removeMarkedCurve = function(map, withCurves) {
       // TODO: Baidu map bug?: delete all overlays
       var curves = _.filter(map.getOverlays(), function(overlay) {
         return !!overlay.cornerPoints;
@@ -177,7 +198,7 @@
       while (window.markedOverlays.length > 0)
         map.removeOverlay(window.markedOverlays.pop());
       while(curves.length > 0) map.removeOverlay(curves.pop());
-      drawCurves(map, window.mapDrawPointRoutes);
+      if(withCurves) drawCurves(map, window.mapDrawPointRoutes);
     }
     return {
       'drawMap': drawMap,

@@ -35,7 +35,7 @@
                                     <div class="tpcbt-select">
                                         <a ng-click="jumpCity($index, 'departure')">
                                             <div class="item-content">
-                                                <div class="item-after" ng-bind="item.departure"></div>
+                                                <div class="item-after" ng-bind="item.departure | characters:7"></div>
                                             </div>
                                         </a>
                                     </div>
@@ -48,7 +48,7 @@
                                     <div class="tpcbt-select">
                                         <a ng-click="jumpCity($index, 'arrival')">
                                             <div class="item-content">
-                                                <div class="item-after" ng-bind="item.arrival"></div>
+                                                <div class="item-after" ng-bind="item.arrival | characters:7"></div>
                                             </div>
                                         </a>
                                     </div>
@@ -84,7 +84,7 @@
                                     <div class="tpcbt-select">
                                         <a ng-click="jumpCity($index, 'arrival')">
                                             <div class="item-content">
-                                                <div class="item-after" ng-bind="item.arrival"></div>
+                                                <div class="item-after" ng-bind="item.arrival | characters:7"></div>
                                             </div>
                                         </a>
                                     </div>
@@ -97,7 +97,7 @@
                                     <div class="tpcbt-select">
                                         <a ng-click="jumpCity($index, 'departure')">
                                             <div class="item-content">
-                                                <div class="item-after" ng-bind="item.departure"></div>
+                                                <div class="item-after" ng-bind="item.departure | characters:7"></div>
                                             </div>
                                         </a>
                                     </div>

@@ -269,7 +269,7 @@
                   flight1.arrival == flight2.arrival;
           }
           if(!routesEqual(newValue[0], oldValue[0])) {
-            mapUtilsService.removeMarkedCurve(controller.map);
+            mapUtilsService.removeMarkedCurve(controller.map, true);
             if(newValue[0].departure && newValue[0].arrival) {
               if(!_.contains(controller.arrivals($scope.routes, newValue[0].departure), newValue[0].arrival)) {
                 $timeout(function() {
@@ -290,9 +290,10 @@
             if( newValue != oldValue ) {
               if(controller.mapPoints.length > 0) {
                 var mapviewid = ($scope.family == "飞越海峡")?'airtrans-map-view-channel' : 'airtrans-map-view-mongolia';
-                controller.map = mapUtilsService.drawMap(mapviewid, controller.mapPoints, {curves: true, markers: true, labels: true});
+                controller.map = mapUtilsService.drawMap(mapviewid, controller.mapPoints,
+                    {curves: true, markers: true, labels: 'static'});
                   if (queryData.departure != null){
-                      mapUtilsService.removeMarkedCurve(controller.map);
+                      mapUtilsService.removeMarkedCurve(controller.map, true);
                       if($scope.schedules[0].departure && $scope.schedules[0].arrival) {
                           if(!_.contains(controller.arrivals($scope.routes, $scope.schedules[0].departure), $scope.schedules[0].arrival)) {
                               $timeout(function() {
