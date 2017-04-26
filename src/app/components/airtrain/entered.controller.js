@@ -10,7 +10,6 @@
     $scope.enterObj = angular.fromJson(queryData.param);
     // $scope.enterObj.license = '私照';
     // $scope.enterObj.location = '北京';
-      console.log($scope.enterObj);
     $scope.enterObj.course = $scope.enterObj.id;
 
     delete $scope.enterObj.id;
