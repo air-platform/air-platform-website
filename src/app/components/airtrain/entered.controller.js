@@ -4,7 +4,7 @@
   angular.module('airsc').controller('enteredController', enteredController);
 
   /** @ngInject */
-  function enteredController($scope, iotUtil, i18n, NetworkService, UrlService, URL, REGEX) {
+  function enteredController($scope, iotUtil, i18n, NetworkService, UrlService, URL, REGEX,$rootScope,constdata) {
     var queryData = myApp.views[0].activePage.query;
 
     $scope.enterObj = angular.fromJson(queryData.param);
@@ -27,6 +27,7 @@
     }
 
     $scope.enterBtn = function() {
+
       if(!$scope.enterObj.person && !$scope.enterObj.identity) {
         myApp.alert(i18n.t('profile.check-input'), null);
         return;
@@ -35,6 +36,11 @@
       if(!REGEX.IDCARD.test($scope.enterObj.identity)) {
         myApp.alert('身份证格式不正确！', null);
         return;
+      }
+
+      if (!iotUtil.islogin()){
+          $rootScope.$emit(constdata.notification_refresh_information,{action:'login'});
+          return;
       }
 
       NetworkService.post(UrlService.getUrl(URL.COURSEENTER), $scope.enterObj, function(res) {
