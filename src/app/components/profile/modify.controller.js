@@ -12,7 +12,6 @@
       realName: i18n.t('profile.username'),
       email: i18n.t('profile.email')
     };
-    console.log(queryData);
     $.each(queryData, function(index, item) {
       $scope.headText = i18n.t('profile.modify') + infoObj[index];
       $scope.info = index;
@@ -20,6 +19,8 @@
     });
 
     $scope.saveBtn = function() {
+
+
       if ($rootScope.userInfo.email && $scope.info === 'email' && queryData.email !== $rootScope.userInfo.email) {
         NetworkService.post(UrlService.getUrl(URL.USEREMAIL), {email: $rootScope.userInfo.email}, function(res) {
           myApp.alert(i18n.t('profile.modifySuccessEmail'), $scope.headText);
@@ -35,7 +36,9 @@
           myApp.alert(i18n.t('profile.modifyFailed'), $scope.headText);
           mainView.router.back();
         });
-      } else if ($rootScope.userInfo[$scope.info] && $rootScope.userInfo[$scope.info] === $scope.info) {
+      } else if ($rootScope.userInfo[$scope.info] && $rootScope.userInfo[$scope.info] !== $scope.info) {
+
+
         NetworkService.put(UrlService.getUrl(URL.PROFILE), $rootScope.userInfo, function(res) {
           myApp.alert(i18n.t('profile.modifySuccess'), $scope.headText);
           mainView.router.back();
