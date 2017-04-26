@@ -28,11 +28,11 @@
                     <img ng-src="{{plane.image}}" alt="plane">
                     <div class="plane-num">
                         <strong>{{plane.vendor.name}} {{plane.flightNo}}</strong>
-                        <a ng-click="jumpPlaneDetail(plane.id);$event.stopPropagation();">{{'airjet.click-detail' | translate}}</a>
+                        <div class="clearfix">
+                            <a class="pull-left" ng-click="jumpPlaneDetail(plane.id);$event.stopPropagation();">{{'airjet.click-detail' | translate}}</a>
+                            <em class="pull-right">每小时<span ng-bind="plane.price | RMB"></span>元起</em>
+                        </div>
                     </div>
-                </div>
-                <div class="plane-money">
-                    <em>以<span ng-bind="plane.price | RMB"></span>元起</em>
                 </div>
             </div>
             <div class="travel-plane-submit block-center" ng-click="jumpInfo(planeList)">{{'airjet.next' | translate}}</div>
