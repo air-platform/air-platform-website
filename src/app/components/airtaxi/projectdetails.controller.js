@@ -46,6 +46,7 @@
                 console.log(res);
                 vm.site = res.data;
                 vm.city = res.data.city;
+                mainView.pageData.site = res.data;
                 vm.mapPoints = mapUtilsService.extractPoints(vm.site.tourPoint);
                 angular.element(".navbar-inner .topbar-with-icon").text(vm.city);
                 drawMap("airtaxi-details-map-view", vm.mapPoints);
