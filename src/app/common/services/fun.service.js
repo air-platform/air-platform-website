@@ -126,7 +126,11 @@
                 if (Number(float) !== 0) {
                     result += '.' + float;
                 }
-                result = unit || '¥' + result;
+                if(angular.isDefined(unit)){
+                    result = unit + result;
+                } else {
+                    result = '¥' + result;
+                }
                 if ((number + '').length >= 5) {
                     result += '万';
                 } else {
