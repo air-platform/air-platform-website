@@ -96,8 +96,8 @@ div[data-page=projectdetails] {
     height: 1.2rem;
     position: absolute;
     top: 0.88rem;
-    left: 0.2rem;
-    right: 0.2rem;
+    left: 0;
+    right: 0;
 
     .left-media {
       display: inline-block;
@@ -123,11 +123,14 @@ div[data-page=projectdetails] {
       width: calc(~"100% - 2rem");
       display: inline-block;
     }
-    .project-price {
-      padding: 0 0.3rem;
-      line-height: 0.5rem;
-      color: @font-red;
-      font-size: 0.28rem;
+    .abstract-info {
+      display: block;
+      display: -webkit-box;
+      padding: 0 0.3rem 0.05rem;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
