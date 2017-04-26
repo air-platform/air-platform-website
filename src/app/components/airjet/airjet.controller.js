@@ -216,6 +216,7 @@
         };
 
         function getRecommended() {
+            angular.element('.airjet-infinite-preloader').hide();
             $scope.recommendList = [];
             NetworkService.get(UrlService.getUrl(URL.AIRJET_RECOMMENDED), null, function (response) {
                 response.data.forEach(function(item) {
