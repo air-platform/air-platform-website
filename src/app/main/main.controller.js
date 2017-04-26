@@ -155,7 +155,7 @@
         }
 
         $scope.imgSrc = [
-            'assets/images/index/banner1.jpeg',
+            'assets/images/index/banner1.jpg',
             'assets/images/index/banner2.jpg',
             'assets/images/index/banner3.jpg'
         ];
