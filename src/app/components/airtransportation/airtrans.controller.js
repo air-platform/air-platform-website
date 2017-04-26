@@ -228,49 +228,46 @@
         }
 
         $scope.$watch('family', function() {
-          $timeout(function() {
-            if($scope.family) {
-              controller.map = {};
-              controller.datepicker = {};
-              controller.transports = [];
-              controller.mapPoints = [];
-              $scope.routes = [];
-              $scope.schedules = [
-                  {
-                      'date': '',
-                      'time': '',
-                      'departure': '',
-                      'arrival': '',
-                      'flight': ''
-                  }
-              ];
-              loadTransports(1, $scope.family);
-                if (queryData.departure != null &&  $scope.family == '飞越海峡'){
-                    var param = queryData.departure.split(',');
-                    $scope.schedules = [
-                        {
-                            'date': '',
-                            'time': '',
-                            'departure': param[0],
-                            'arrival': param[1],
-                            'flight': ''
-                        }
-                    ];
+          if($scope.family) {
+            controller.map = {};
+            controller.transports = [];
+            controller.mapPoints = [];
+            $scope.routes = [];
+            $scope.schedules = [
+                {
+                    'date': '',
+                    'time': '',
+                    'departure': '',
+                    'arrival': '',
+                    'flight': ''
                 }
+            ];
+            loadTransports(1, $scope.family);
+              if (queryData.departure != null &&  $scope.family == '飞越海峡'){
+                  var param = queryData.departure.split(',');
+                  $scope.schedules = [
+                      {
+                          'date': '',
+                          'time': '',
+                          'departure': param[0],
+                          'arrival': param[1],
+                          'flight': ''
+                      }
+                  ];
+              }
 
-                if (queryData.departure != null &&  $scope.family == '内蒙航线'){
-                    $scope.schedules = [
-                        {
-                            'date': '',
-                            'time': '',
-                            'departure': '',
-                            'arrival': '',
-                            'flight': ''
-                        }
-                    ];
-                }
-            }
-          });
+              if (queryData.departure != null &&  $scope.family == '内蒙航线'){
+                  $scope.schedules = [
+                      {
+                          'date': '',
+                          'time': '',
+                          'departure': '',
+                          'arrival': '',
+                          'flight': ''
+                      }
+                  ];
+              }
+          }
         });
 
         $scope.$watch('schedules', function(newValue, oldValue){
