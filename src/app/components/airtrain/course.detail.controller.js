@@ -7,9 +7,8 @@
   function courseDetailController($scope, CommentServer, $timeout, NetworkService, $compile, UrlService, URL) {
     var queryData = myApp.views[0].activePage.query;
 
-    myApp.showIndicator();
-
     if (queryData.id) {
+      myApp.showIndicator();
       NetworkService.get(UrlService.getUrl(URL.COURSE + '/' + queryData.id), null, function(res) {
         $scope.courseObj = res.data;
         console.log($scope.courseObj);
@@ -30,6 +29,8 @@
       }, function(err) {
         myApp.hideIndicator();
       });
+    } else {
+      mainView.router.loadPage('app/components/airtrain/airtrain.html');
     }
 
 
