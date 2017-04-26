@@ -274,6 +274,9 @@
             return flight1.departure == flight2.departure &&
                   flight1.arrival == flight2.arrival;
           }
+          //TODO: fixed bug: not reset time
+          if(!_.contains(controller.timeSlots(), $scope.schedules[0].time))
+            angular.element('[ng-model="schedule.time"] + .item-content .smart-select-value').text("选择时间段");
           if(!routesEqual(newValue[0], oldValue[0])) {
             mapUtilsService.removeMarkedCurve(controller.map, true);
             if(newValue[0].departure && newValue[0].arrival) {
