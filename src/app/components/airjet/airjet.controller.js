@@ -116,20 +116,7 @@
                     if (item.name.indexOf('机场') === -1) {
                         return item.name += '机场';
                     }
-                    if(item.city.length){
-                        if($scope.aa) {
-                            if(item.city.length > $scope.aa.length){
-                                $scope.aa = item.city;
-                            }
-                        } else {
-                            $scope.aa = item.city;
-                        }
-                        if(item.city.length > 7){
-                            console.log(item.city)
-                        }
-                    }
                 });
-                console.log($scope.aa)
             // }, function () {
             //     myApp.alert('数据获取失败，请重试', null);
             // });
