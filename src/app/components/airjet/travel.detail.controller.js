@@ -11,7 +11,6 @@
         var queryData = myApp.views[0].activePage.query;
         var transferData = StorageService.get('plan');
 
-
         $scope.telephone = 'tel:' + constdata.supportTelephone;
 
         $scope.removeOrder = removeOrder;
