@@ -171,6 +171,12 @@
         }
 
         controller.timeSlots = function() {
+          var today = new Date();
+          if(today - new Date($scope.schedules[0].date) > 0) {
+            return _.filter(scheduleUtilsService.timeSlots(9, 17, 2), function(slot) {
+              return parseInt(slot.split(':')[0]) > today.getHours();
+            });
+          }
           return scheduleUtilsService.timeSlots(9, 17, 2);
         };
 

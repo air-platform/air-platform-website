@@ -66,7 +66,13 @@
     }
 
     controller.timeSlots = function() {
-      return scheduleUtilsService.timeSlots(9, 17, 1);
+      var today = new Date();
+      if(today - new Date($scope.schedules[0].date) > 0) {
+        return _.filter(scheduleUtilsService.timeSlots(9, 17, 2), function(slot) {
+          return parseInt(slot.split(':')[0]) > today.getHours();
+        });
+      }
+      return scheduleUtilsService.timeSlots(9, 17, 2);
     };
 
     controller.arrivals = function(routes, departure) {
@@ -227,7 +233,7 @@
       var today = new Date();
       var calendarDateFormat = myApp.calendar({
         input: '#airtrans-schedule-datepicker-0',
-        dateFormat: 'yyyy年m月d日',
+        dateFormat: 'yyyy-mm-dd',
         monthNames: DATEPICKER.monthNames,
         dayNamesShort: DATEPICKER.dayNamesShort,
         disabled: {
