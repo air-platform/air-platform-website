@@ -11,7 +11,7 @@
             logLevel: 111111,//控制log显示的级别（0不显示,1显示）,从左到右每位分别代表[error,warn,info,debug,log]
             apiHost_ONLINE:'http://aircommunity.net/api/v1/',
             apiHost_OFFLINE:'http://aircommunity.net/api/v1/',
-            ipCurrent: 'http://airbb.aircommunity.net',
+            ipCurrent: 'http://aircommunity.net/airbb',
             supportTelephone:'400-0666-888',
             token:'airspc_access_token',
             information:'airspc_information',
