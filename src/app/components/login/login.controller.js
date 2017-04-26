@@ -28,7 +28,6 @@
         if (!fruits){
             fruits = [];
         }
-        console.log(fruits);
 
         var autocompleteDropdownSimple = myApp.autocomplete({
             input: '#autocomplete-dropdown',
