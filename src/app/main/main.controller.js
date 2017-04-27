@@ -174,9 +174,9 @@
         }
 
         $scope.imgSrc = [
-            'assets/images/index/banner1.jpg',
-            'assets/images/index/banner2.jpg',
-            'assets/images/index/banner3.jpg'
+            'assets/images/index/banner1.png',
+            'assets/images/index/banner2.png',
+            'assets/images/index/banner3.png'
         ];
 
         NetworkService.get(UrlService.getUrl(URL.TOPICS), null, function(res) {

@@ -44,16 +44,21 @@ img {
   }
 }
 
+.view-main .navbar {
+  &:after{
+    background-color: @nav-color;
+  }
+}
 .view-main .navbar .navbar-inner {
   .left {
     i.icon {
-      color: #000;
+      color: @nav-btn-color;
       font-size: .5rem;
     }
   }
   .right {
     i.icon {
-      color: #000;
+      color: @nav-btn-color;
       font-size: .35rem;
     }
   }
