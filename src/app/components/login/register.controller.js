@@ -64,7 +64,7 @@
 
 
             if(!REGEX.PASSWORD.test($scope.password)) {
-                myApp.alert('密码格式有误，必须为字母/数字或者特殊符号(-_@.$%#&*)，长度在8-20之间');
+                myApp.alert('必须为字母、数字或者特殊符号(-_@.$%#&*)，长度在8-20之间','密码格式有误');
                 return;
             }
 
