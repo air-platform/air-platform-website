@@ -11,7 +11,7 @@
 
   /** @ngInject */
   function citytourController($scope, $timeout, mapUtilsService, NotificationService,
-    NetworkService, scheduleUtilsService,iotUtil,$rootScope,constdata, DATEPICKER) {
+    NetworkService, StorageService, scheduleUtilsService,iotUtil,$rootScope,constdata, DATEPICKER) {
     var controller = this;
     var citys = ['北京', '桂林', '海南', '宁波'];
     var today = new Date();
@@ -34,6 +34,9 @@
       controller.mapPoints = controller.mapPoints || [];
       controller.taxiRoutes = [];
       controller.map = {};
+      if(StorageService.get(constdata.cookie.airtaxi.data)){
+        $scope.schedules = StorageService.get(constdata.cookie.airtaxi.data);
+      }
 
       setTimeout(function() {
         controller.datepicker = createDatePicker();
@@ -278,6 +281,7 @@
           }
         }
       }
+      StorageService.put(constdata.cookie.airtaxi.data, $scope.schedules);
     }, true);
 
     $scope.$watch(function() {
