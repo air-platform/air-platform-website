@@ -9,7 +9,7 @@
     /** @ngInject */
     function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
-        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
+        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 须知和免责声明
         $scope.gotoAirbbLinkAction = gotoAirbbLinkAction;
 
         // 订阅登录通知->刷新界面
