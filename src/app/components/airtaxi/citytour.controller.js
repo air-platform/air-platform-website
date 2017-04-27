@@ -213,7 +213,9 @@
         },
         onOpen: function(p) {
           var available = new Date(calendarDateFormat.params.disabled.to);
-          calendarDateFormat.setYearMonth(available.getFullYear(), available.getMonth(), 0);
+          calendarDateFormat.setYearMonth(available.getFullYear(), available.getMonth(), 10);
+          if(!calendarDateFormat.value)
+            calendarDateFormat.setValue([$scope.tourdate]);
         }
       });
       return calendarDateFormat;
@@ -267,10 +269,10 @@
         loadMapData(1);
         $('body').trigger('citytour.addMapView');
       }
-      // temporarily set '桂林' available from 2017-5-11
+      // temporarily set '桂林' available from 2017-05-11
       if(newValue == '桂林') {
-        if(today - new Date('2017-5-11'))
-        var availableDate = today - new Date('2017-5-11') > 0?today:new Date('2017-5-11');
+        if(today - new Date('2017-05-11'))
+        var availableDate = today - new Date('2017-05-11') > 0?today:new Date('2017-05-11');
         delete controller.topDatepicker;
         controller.topDatepicker = createTopNavCalendar({
           'disabled': { 'to': availableDate.setDate(availableDate.getDate()-1) }
