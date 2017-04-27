@@ -12,7 +12,7 @@
             apiHost_ONLINE:'http://aircommunity.net/api/v1/',
             apiHost_OFFLINE:'http://aircommunity.net/api/v1/',
             ipCurrent: 'http://aircommunity.net/airbb',
-            supportTelephone:'400-0666-888',
+            supportTelephone:'400-066-6888',
             token:'airspc_access_token',
             information:'airspc_information',
             notification_refresh_information:'airspc_notification_refresh_information',
