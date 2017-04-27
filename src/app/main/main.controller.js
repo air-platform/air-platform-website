@@ -7,7 +7,7 @@
     angular.module('airsc').controller('mainController', mainController);
 
     /** @ngInject */
-    function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
+    function mainController($scope, $rootScope, NotificationService, iotUtil, $cookieStore, NetworkService, UrlService, URL, constdata, StorageService) {
 
         $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 须知和免责声明
         $scope.gotoAirbbLinkAction = gotoAirbbLinkAction;
@@ -130,6 +130,7 @@
         function logoutAction() {
             StorageService.clear(constdata.token);
             StorageService.clear(constdata.information);
+            $cookieStore.remove("token");
             for(var key in constdata.cookie) {
                 if(angular.isObject(constdata.cookie[key])){
                     for(var i in constdata.cookie[key]) {

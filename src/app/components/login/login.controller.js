@@ -98,16 +98,9 @@
                 //保存token到本地
                 var token = response.data.token;
 
-                //设置cookie
-                $cookieStore.put('token',token + ';Version=1;Domain=aircommunity.net;Path=/;Max-Age=86400;HttpOnly');
-
                 // console.log($cookieStore.get('token'));
 
                 StorageService.put(constdata.token,token,24 * 3 * 60 * 60);//3 天过期
-
-                $cookieStore.put('token', token);
-                $cookieStore.put('Domain', location.host);
-                $cookieStore.put('HttpOnly', null);
 
                 $timeout(function () {
                     getProfileInfo();
@@ -121,6 +114,18 @@
         }
         function getProfileInfo() {
             NetworkService.get(UrlService.getUrl(URL.PROFILE), null,function (response) {
+
+                NetworkService.get('account/airq', null,function (response) {
+                    var newtoken = response.data.token;
+                    //设置cookie
+                    $cookieStore.put('token',newtoken + ';Version=1;Domain=aircommunity.net;Path=/;Max-Age=86400;HttpOnly');
+
+                },function (err) {
+                    console.log(err);
+                    console.log('Air Q获取Token 失败');
+                });
+
+
 
                 var data = response.data;
                 var userInfo = {nickName:data.nickName,mobile:data.mobile,avatar:data.avatar,email:data.email,id:data.id,realName:data.realName,city:data.city,birthday:data.birthday};
