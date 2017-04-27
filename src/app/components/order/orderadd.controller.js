@@ -235,6 +235,7 @@
                 // console.log(res);
                 var local = res.headers('location').split('/');
                 var nOrderId = local[local.length - 1];
+                StorageService.clear(constdata.cookie.airtaxi.data)
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + nOrderId);
             },function (err) {
                 showErrorAlert(err);

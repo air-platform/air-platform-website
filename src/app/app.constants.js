@@ -26,6 +26,9 @@
                     travel_base: 'airjet_travel_base',
                     dream_visited: 'airjet_dream_visited'
                 },
+                airtaxi:{
+                    data:'airtaxi_data'
+                },
                 airtrans: {
                     tab: 'airtrans_tab_active',
                     data: 'airtrans_data'
