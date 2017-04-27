@@ -101,7 +101,7 @@
                 //设置cookie
                 $cookieStore.put('token',token + ';Version=1;Domain=aircommunity.net;Path=/;Max-Age=86400;HttpOnly');
 
-                console.log($cookieStore.get('token'));
+                // console.log($cookieStore.get('token'));
 
                 StorageService.put(constdata.token,token,24 * 3 * 60 * 60);//3 天过期
 
