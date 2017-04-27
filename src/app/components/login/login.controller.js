@@ -10,7 +10,7 @@
     angular.module('airsc').controller('loginController', loginController);
 
     /** @ngInject */
-    function loginController($scope,NetworkService,StorageService,constdata,$rootScope,NotificationService, UrlService, URL,$timeout, ValidatorService) {
+    function loginController($scope,NetworkService,StorageService,$cookieStore,constdata,$rootScope,NotificationService, UrlService, URL,$timeout, ValidatorService) {
 
 
         $scope.principal = '';
@@ -98,6 +98,10 @@
                 //保存token到本地
                 var token = response.data.token;
                 StorageService.put(constdata.token,token,24 * 3 * 60 * 60);//3 天过期
+
+                $cookieStore.put('token', token);
+                $cookieStore.put('Domain', location.host);
+                $cookieStore.put('HttpOnly', null);
 
                 $timeout(function () {
                     getProfileInfo();
