@@ -207,6 +207,16 @@
           }
         }
 
+        controller.isRouteDisabled = function(newValue) {
+          return (newValue[0].departure == '徐闻' && newValue[0].arrival == '美兰机场') ||
+            (newValue[0].departure == '美兰机场' && newValue[0].arrival == '徐闻');
+        }
+
+        controller.temporarilyDisable = function() {
+          return  ($scope.schedules[0].departure == '徐闻' && $scope.schedules[0].arrival == '美兰机场') ||
+                ($scope.schedules[0].arrival == '徐闻' && $scope.schedules[0].departure == '美兰机场');
+        }
+
         var parseRoutes = function(transports) {
           return _.map(transports, function(transport){
             return {
@@ -287,6 +297,9 @@
           if(!_.contains(controller.timeSlots(), $scope.schedules[0].time))
             angular.element('[ng-model="schedule.time"] + .item-content .smart-select-value').text("选择时间段");
           if(!routesEqual(newValue[0], oldValue[0])) {
+            if(controller.isRouteDisabled(newValue)) {
+              NotificationService.alert.success('线路即将开放，敬请期待！', null);
+            }
             mapUtilsService.removeMarkedCurve(controller.map, true);
             if(newValue[0].departure && newValue[0].arrival) {
               if(!_.contains(controller.arrivals($scope.routes, newValue[0].departure), newValue[0].arrival)) {

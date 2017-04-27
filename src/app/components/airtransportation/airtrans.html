@@ -78,7 +78,7 @@
                                       <!-- date and time -->
                                       <div class="row">
                                           <div class="field-block col-50">
-                                            <a href="#" class="item-link">
+                                            <a href="#" class="item-link" ng-disabled="trans.temporarilyDisable()">
                                               <div class="item-content">
                                                   <div class="item-inner">
                                                       <div class="item-title airtaxi-select-label">选择日期</div>
@@ -91,7 +91,7 @@
                                             </a>
                                           </div>
                                           <div class="field-block col-50">
-                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text="&nbsp;">
+                                              <a href="#" class="item-link smart-select" data-open-in="picker" data-back-text="&nbsp;" ng-disabled="trans.temporarilyDisable()">
                                                   <select name="time" ng-model="schedule.time"
                                                           ng-options="slot for slot in trans.timeSlots()"
                                                           ng-disabled="$index != 0">
