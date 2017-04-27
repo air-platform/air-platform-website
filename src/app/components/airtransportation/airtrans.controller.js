@@ -11,25 +11,24 @@
 
     /** @ngInject */
     function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
-            NotificationService, scheduleUtilsService,$rootScope,constdata, DATEPICKER) {
+            NotificationService, scheduleUtilsService, StorageService, $rootScope,constdata, DATEPICKER) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
         var ROUTES_FAMILIES = {'air-taxi-cross-channel': '飞越海峡', 'mongolia-routes': '内蒙航线'};
         $scope.schedules = [];
         $scope.routes = [];
+        controller.tabSwitch = tabSwitch;
         controller.mapPoints = [];
         controller.datepicker = {};
         controller.transports = [];
         controller.map = {};
-        if(queryData.tabActive === 'tab1'){
-          $scope.tabActive = 'tab1';
-          myApp.showTab('#air-taxi-cross-channel');
-        }
 
-        if(queryData.tabActive === 'tab2'){
-          $scope.tabActive = 'tab2';
-          myApp.showTab('#mongolia-routes');
+        if(queryData.tabActive){
+          tabSwitch('#' + queryData.tabActive);
+        }
+        if(StorageService.get('airtransActive')){
+          tabSwitch(StorageService.get('airtransActive'));
         }
 
         $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
@@ -108,6 +107,13 @@
           );
           mainView.router.loadPage(goto);
         }
+
+        function tabSwitch(tab, status) {
+            StorageService.put('airtransActive', tab);
+            if(!status){
+              myApp.showTab(tab);
+            }
+        };
 
         // controller.addSchedule = function() {
         //   if($scope.schedules.length >= MAX_SCHEDULE_NUM) {

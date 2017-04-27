@@ -36,7 +36,9 @@
                     home:'app/components/airtaxi/airtaxi.html'
                 },
                 airtrans:{
-                    home:'app/components/airtransportation/airtrans.html'
+                    home:'app/components/airtransportation/airtrans.html',
+                    cross:'app/components/airtransportation/airtrans.html?tabActive=air-taxi-cross-channel',
+                    mongolia:'app/components/airtransportation/airtrans.html?tabActive=mongolia-routes',
                 },
                 airtour:{
                     home:'app/components/airtour/airtour.html'
