@@ -7,7 +7,7 @@
     angular.module('airsc').controller('jetController', jetController);
 
     /** @ngInject */
-    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT, DATEPICKER, REGEX) {
+    function jetController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, CITYLIST, CITYHOT, DATEPICKER, REGEX, constdata) {
         var cardPage = 1;
         var dreamPage = 1;
         var cityPage = 1;
@@ -15,7 +15,7 @@
         var cityLoading = false;
         var cardLoading = false;
         var queryData = myApp.views[0].activePage.query;
-        var visited = StorageService.get('dreamVisited');
+        var visited = StorageService.get(constdata.cookie.airjet.dream_visited);
         $scope.travelStrokeList = [{ departure: '请选择', arrival: '请选择' }];
         $scope.cityShow = 20;
         $scope.citySearch = '';
@@ -37,16 +37,16 @@
                 angular.element('.city-infinite').on('infinite', cityInfinite);
             } else {
                 getRecommended();
-                if(StorageService.get('airjetTab')){
-                    tabSwitch(StorageService.get('airjetTab'));
+                if(StorageService.get(constdata.cookie.airjet.tab)){
+                    tabSwitch(StorageService.get(constdata.cookie.airjet.tab));
                 }
                 if(queryData.tabActive){
                     tabSwitch('#' + queryData.tabActive);
                 }
             }
         }, 300);
-        if(StorageService.get('travel')){
-            $scope.travelStrokeList = StorageService.get('travel');
+        if(StorageService.get(constdata.cookie.airjet.travel_base)){
+            $scope.travelStrokeList = StorageService.get(constdata.cookie.airjet.travel_base);
         }
         if(queryData.index && queryData.name){
             $scope.currentCity = $scope.travelStrokeList[queryData.index][queryData.name];
@@ -97,7 +97,7 @@
                 }
                 $scope.travelStrokeList[queryData.index][queryData.name] = item.city;
             }
-            StorageService.put('travel', $scope.travelStrokeList);
+            StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
             mainView.router.back({url: 'app/components/airjet/airjet.html', force: true, pushState: false});
         };
 
@@ -229,12 +229,12 @@
                 angular.element('.airjet-infinite-preloader').hide();
             }
             myApp.showTab(tab);
-            StorageService.put('airjetTab', tab);
+            StorageService.put(constdata.cookie.airjet.tab, tab);
         };
 
         function roundChange(index){
             $scope.travelStrokeList[index].round = !$scope.travelStrokeList[index].round;
-            StorageService.put('travel', $scope.travelStrokeList);
+            StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
         };
 
         function reversal(item, order) {
@@ -246,7 +246,7 @@
                     return;
                 }
             });
-            StorageService.put('travel', $scope.travelStrokeList);
+            StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
         };
 
         function submit(data, status) {
@@ -311,8 +311,8 @@
 
                 });
                 if (valid) {
-                    StorageService.put('travel', $scope.travelStrokeList);
-                    StorageService.put('plan', { base: base });
+                    StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
+                    StorageService.put(constdata.cookie.airjet.travel, { base: base });
                     if (status) {
                         mainView.router.loadPage('app/components/airjet/travel-info.html');
                     } else {
@@ -324,20 +324,20 @@
 
         function addCard() {
             $scope.travelStrokeList.push({ departure: '请选择', arrival: '请选择' });
-            StorageService.put('travel', $scope.travelStrokeList);
+            StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
         };
 
         function removeCard(index) {
             $scope.travelStrokeList.splice(index, 1);
-            StorageService.put('travel', $scope.travelStrokeList);
+            StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
         };
 
         function jumpDream(data) {
             if (data.id && !data.expired) {
                 if(visited && visited.indexOf(data.id) === -1) {
-                    StorageService.put('dreamVisited', visited + ',' + data.id);
+                    StorageService.put(constdata.cookie.airjet.dream_visited, visited + ',' + data.id);
                 } else {
-                    StorageService.put('dreamVisited', data.id);
+                    StorageService.put(constdata.cookie.airjet.dream_visited, data.id);
                 }
                 $scope.dreamFlyList.map(function (item) {
                     if(data.id === item.id) {
@@ -356,7 +356,7 @@
 
         function jumpCity(index, name) {
             if (angular.isNumber(index) && name) {
-                StorageService.put('travel', $scope.travelStrokeList);
+                StorageService.put(constdata.cookie.airjet.travel_base, $scope.travelStrokeList);
                 mainView.router.load({url:'app/components/airjet/travel-city.html?index=' + index + '&name=' + name, pushState: false})
             }
         };

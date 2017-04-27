@@ -7,9 +7,9 @@
     angular.module('airsc').controller('travelPlaneController', travelPlaneController);
 
     /** @ngInject */
-    function travelPlaneController($scope, $timeout, NotificationService, CommentServer, StorageService, NetworkService, UrlService, URL) {
+    function travelPlaneController($scope, $timeout, NotificationService, CommentServer, StorageService, NetworkService, UrlService, URL, constdata) {
         var page = 1;
-        var transferData = StorageService.get('plan');
+        var transferData = StorageService.get(constdata.cookie.airjet.travel);
         var queryData = myApp.views[0].activePage.query;
         $scope.jumpInfo = jumpInfo;
         $scope.jumpPlaneDetail = jumpPlaneDetail;
@@ -85,7 +85,7 @@
                 }
             });
             transferData.plane = $scope.planeArr;
-            StorageService.put('plan', transferData);
+            StorageService.put(constdata.cookie.airjet.travel, transferData);
             mainView.router.loadPage('app/components/airjet/travel-info.html');
         };
 
