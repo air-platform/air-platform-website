@@ -130,9 +130,9 @@
         function logoutAction() {
             StorageService.clear(constdata.token);
             StorageService.clear(constdata.information);
-            console.log($cookieStore.get('token'));
+            // console.log($cookieStore.get('token'));
             $cookieStore.remove("token");
-            console.log($cookieStore.get('token'));
+            // console.log($cookieStore.get('token'));
             for(var key in constdata.cookie) {
                 if(angular.isObject(constdata.cookie[key])){
                     for(var i in constdata.cookie[key]) {
