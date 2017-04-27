@@ -7,8 +7,8 @@
     angular.module('airsc').controller('travelModelController', travelModelController);
 
     /** @ngInject */
-    function travelModelController($scope, $timeout, StorageService, NetworkService, UrlService, URL) {
-        var transferData = StorageService.get('plan');
+    function travelModelController($scope, $timeout, StorageService, NetworkService, UrlService, URL, constdata) {
+        var transferData = StorageService.get(constdata.cookie.airjet.travel);
         $scope.modelData = {};
         $scope.radioCheck = radioCheck;
         $scope.jumpPlane = jumpPlane;
@@ -32,7 +32,7 @@
         function jumpPlane() {
             if($scope.checkModel){
                 transferData.planeType = $scope.checkModel;
-                StorageService.put('plan', transferData);
+                StorageService.put(constdata.cookie.airjet.travel, transferData);
                 mainView.router.loadPage('app/components/airjet/travel-plane.html?type=' + $scope.checkModel);
             }
         };

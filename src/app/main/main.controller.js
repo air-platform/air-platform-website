@@ -9,7 +9,7 @@
     /** @ngInject */
     function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
-        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
+        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 须知和免责声明
         $scope.gotoAirbbLinkAction = gotoAirbbLinkAction;
 
         // 订阅登录通知->刷新界面
@@ -130,12 +130,31 @@
         function logoutAction() {
             StorageService.clear(constdata.token);
             StorageService.clear(constdata.information);
+            for(var key in constdata.cookie) {
+                if(angular.isObject(constdata.cookie[key])){
+                    for(var i in constdata.cookie[key]) {
+                        StorageService.clear(constdata.cookie[key][i]);
+                    }
+                } else {
+                    StorageService.clear(constdata.cookie[key]);
+                }
+            }
             refresh();
             myApp.alert('退出成功！');
         }
         function pleaseReComeIn() {
             StorageService.clear(constdata.token);
             StorageService.clear(constdata.information);
+            for(var key in constdata.cookie) {
+                if(angular.isObject(constdata.cookie[key])){
+                    for(var i in constdata.cookie[key]) {
+                        StorageService.clear(constdata.cookie[key][i]);
+                    }
+                } else {
+                    StorageService.clear(constdata.cookie[key]);
+                }
+            }
+            StorageService.clear('tabActive');
             refresh();
             mainView.router.loadPage(constdata.router.login.login);
         }

@@ -10,7 +10,7 @@
     angular.module('airsc').controller('registerController', registerController);
 
     /** @ngInject */
-    function registerController($scope,NetworkService,$interval,constdata) {
+    function registerController($scope,NetworkService,$interval,constdata,REGEX) {
 
         $scope.mobile = '';
         $scope.password = '';
@@ -61,6 +61,14 @@
         }
         
         function registerAction() {
+
+
+            if(!REGEX.PASSWORD.test($scope.password)) {
+                myApp.alert('必须为字母、数字或者特殊符号(-_@.$%#&*)，长度在8-20之间','密码格式有误');
+                return;
+            }
+
+
             myApp.showIndicator();
 
             NetworkService.post('account',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {

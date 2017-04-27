@@ -89,7 +89,7 @@
             if (response.data && response.data.message){
                 newResponse.statusText = response.data.message;
             }else{
-                newResponse.statusText = '服务器出错了~';
+                newResponse.statusText = '服务器出错了~';//未知错误，先显示成这样
             }
 
             if (response.status === 401 && path !== 'account/auth'){//token过期，或者未登录

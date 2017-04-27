@@ -9,7 +9,7 @@
     /** @ngInject */
     function travelDetailController($scope, $timeout, NotificationService, StorageService, NetworkService, UrlService, URL, constdata) {
         var queryData = myApp.views[0].activePage.query;
-        var transferData = StorageService.get('plan');
+        var transferData = StorageService.get(constdata.cookie.airjet.travel);
 
         $scope.telephone = 'tel:' + constdata.supportTelephone;
 
