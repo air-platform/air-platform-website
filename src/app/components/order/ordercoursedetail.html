@@ -12,8 +12,8 @@
             <div class="course-detail-header">{{'airjet.order-numver' | translate}}{{order.orderNo}}</div>
             <div class="course-detail-line"></div>
             <div class="course-detail-content">
-                <div class="content-item"><span class="content-title">姓名：</span>{{order.person}}</div>
-                <div class="content-item"><span class="content-title">身份证：</span>{{order.identity}}</div>
+                <div class="content-item"><span class="content-title">姓名：</span>{{order.contact.person}}</div>
+                <div class="content-item"><span class="content-title">手机号：</span>{{order.contact.mobile}}</div>
                 <div class="content-item"><span class="content-title">学习类型：</span>{{order.course.airType}}</div>
                 <div class="content-item"><span class="content-title">驾驶证类型：</span>{{order.course.license}}</div>
                 <div class="content-item"><span class="content-title">价格：</span>￥{{order.course.price.toFixed(2)}}</div>
