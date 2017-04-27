@@ -16,6 +16,8 @@
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
         var ROUTES_FAMILIES = {'air-taxi-cross-channel': '飞越海峡', 'mongolia-routes': '内蒙航线'};
+        var storageData = StorageService.get(constdata.cookie.airtrans.data);
+        $scope.routesStatus = false;
         $scope.schedules = [];
         $scope.routes = [];
         controller.tabSwitch = tabSwitch;
@@ -39,6 +41,7 @@
         });
 
         var loadTransports = function(start, family) {
+          $scope.routesStatus = true;
           var loadPage = function(page) {
             NetworkService.get("transports", {
               'page': page, 'family': family
@@ -59,6 +62,7 @@
                           transport.flightRoute.arrivalLatitude]]
                 }), true);
               }
+              $scope.routesStatus = false;
             }, function(res) {
               NotificationService.alert.error(res.statusText, null);
             });
@@ -257,6 +261,15 @@
                     'flight': ''
                 }
             ];
+            if(storageData){
+              if(storageData[0] && $scope.family === '飞越海峡'){
+                $scope.schedules = storageData[0];
+              }
+              if(storageData[1] && $scope.family === '内蒙航线'){
+                $scope.schedules = storageData[1];
+              }
+            }
+
             loadTransports(1, $scope.family);
               if (queryData.departure != null &&  $scope.family == '飞越海峡'){
                   var param = queryData.departure.split(',');
@@ -283,9 +296,6 @@
                   ];
               }
           }
-          if(StorageService.get(constdata.cookie.airtrans.data)){
-            $scope.schedules = StorageService.get(constdata.cookie.airtrans.data);
-          }
         });
 
         $scope.$watch('schedules', function(newValue, oldValue){
@@ -296,7 +306,7 @@
           //TODO: fixed bug: not reset time
           if(!_.contains(controller.timeSlots(), $scope.schedules[0].time))
             angular.element('[ng-model="schedule.time"] + .item-content .smart-select-value').text("选择时间段");
-          if(!routesEqual(newValue[0], oldValue[0])) {
+          if(!routesEqual(newValue[0], oldValue[0]) && !$scope.routesStatus) {
             if(controller.isRouteDisabled(newValue)) {
               NotificationService.alert.success('线路即将开放，敬请期待！', null);
             }
@@ -313,7 +323,13 @@
               }
             }
           }
-          StorageService.put(constdata.cookie.airtrans.data, $scope.schedules);
+          var saveData = storageData || [];
+          if($scope.family === '飞越海峡') {
+            saveData[0] = $scope.schedules;
+          } else {
+            saveData[1] = $scope.schedules;
+          }
+          StorageService.put(constdata.cookie.airtrans.data, saveData);
         }, true);
 
         $scope.$watch(function() {
