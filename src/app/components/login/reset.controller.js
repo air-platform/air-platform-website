@@ -10,7 +10,7 @@
     angular.module('airsc').controller('resetController', resetController);
 
     /** @ngInject */
-    function resetController($scope,NetworkService,$interval,iotUtil) {
+    function resetController($scope,NetworkService,$interval,REGEX) {
 
         $scope.mobile = '';
         $scope.password = '';
@@ -51,6 +51,12 @@
         }
 
         function resetAction() {
+
+            if(!REGEX.PASSWORD.test($scope.password)) {
+                myApp.alert('密码格式有误，必须为字母/数字或者特殊符号(-_@.$%#&*)，长度在8-20之间');
+                return;
+            }
+
             myApp.showIndicator();
 
             NetworkService.post('account/password/reset',{mobile:$scope.mobile,verificationCode:$scope.authcode,newPassword:$scope.password},function (res) {
