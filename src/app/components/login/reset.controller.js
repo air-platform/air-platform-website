@@ -61,7 +61,7 @@
 
             NetworkService.post('account/password/reset',{mobile:$scope.mobile,verificationCode:$scope.authcode,newPassword:$scope.password},function (res) {
                 myApp.hideIndicator();
-                myApp.alert('重置密码成功！', 'Air Community', function () {
+                myApp.alert('重置密码成功！', '空中社区', function () {
                     mainView.router.back();
                 });
             },function (err) {
