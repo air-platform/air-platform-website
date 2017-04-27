@@ -10,7 +10,7 @@
     angular.module('airsc').controller('loginController', loginController);
 
     /** @ngInject */
-    function loginController($scope,NetworkService,StorageService,$cookieStore,constdata,$rootScope,NotificationService, UrlService, URL,$timeout, ValidatorService) {
+    function loginController($scope,NetworkService,StorageService,$cookieStore,constdata,$rootScope,NotificationService, UrlService, URL,$timeout) {
 
 
         $scope.principal = '';
@@ -97,6 +97,12 @@
 
                 //保存token到本地
                 var token = response.data.token;
+
+                //设置cookie
+                $cookieStore.put('token',token + ';Version=1;Domain=aircommunity.net;Path=/;Max-Age=86400;HttpOnly');
+
+                console.log($cookieStore.get('token'));
+
                 StorageService.put(constdata.token,token,24 * 3 * 60 * 60);//3 天过期
 
                 $cookieStore.put('token', token);
