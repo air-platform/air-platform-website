@@ -187,11 +187,11 @@
                     if (item.minPassengers) {
                         item.least = { number: item.minPassengers }
                     }
-                    if(visited && visited.indexOf(item.id) !== -1) {
-                        item.visited = true;
-                    }
                     if (new Date(item.date).getTime() - new Date().getTime() < 0) {
                         item.expired = true;
+                    }
+                    if(visited && visited.indexOf(item.id) !== -1 && !item.expired) {
+                        item.visited = true;
                     }
                 });
                 $scope.dreamFlyList = response.data.content;
