@@ -56,8 +56,7 @@
             }, 1000);
         }
 
-        function citySelect(item){
-            localStorage.city = item.city;
+        function citySelect(){
             mainView.router.back();
         };
 

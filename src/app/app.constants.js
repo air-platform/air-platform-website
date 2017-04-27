@@ -19,6 +19,20 @@
             notification_refresh_order_status:'notification_refresh_order_status',
             account_list:'aircommunity.account.list',
             page:{size:20},
+            cookie:{
+                airjet: {
+                    tab: 'airjet_tab_active',
+                    travel: 'airjet_travel',
+                    travel_base: 'airjet_travel_base',
+                    dream_visited: 'airjet_dream_visited'
+                },
+                airtrans: {
+                    tab: 'airtrans_tab_active'
+                },
+                airtrain: {
+                    school_id: 'airtrain_school_id'
+                }
+            },
             router:{
                 login:{
                   login:'app/components/login/login.html',

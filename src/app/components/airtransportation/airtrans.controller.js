@@ -11,7 +11,7 @@
 
     /** @ngInject */
     function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
-            NotificationService, scheduleUtilsService, StorageService, $rootScope,constdata, DATEPICKER) {
+            NotificationService, scheduleUtilsService, StorageService, $rootScope, constdata, DATEPICKER) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
@@ -27,8 +27,8 @@
         if(queryData.tabActive){
           tabSwitch('#' + queryData.tabActive);
         }
-        if(StorageService.get('airtransActive')){
-          tabSwitch(StorageService.get('airtransActive'));
+        if(StorageService.get(constdata.cookie.airtrans.tab)){
+          tabSwitch(StorageService.get(constdata.cookie.airtrans.tab));
         }
 
         $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
@@ -109,7 +109,7 @@
         }
 
         function tabSwitch(tab, status) {
-            StorageService.put('airtransActive', tab);
+            StorageService.put(constdata.cookie.airtrans.tab, tab);
             if(!status){
               myApp.showTab(tab);
             }
