@@ -27,7 +27,8 @@
                     dream_visited: 'airjet_dream_visited'
                 },
                 airtrans: {
-                    tab: 'airtrans_tab_active'
+                    tab: 'airtrans_tab_active',
+                    data: 'airtrans_data'
                 },
                 airtrain: {
                     school_id: 'airtrain_school_id'

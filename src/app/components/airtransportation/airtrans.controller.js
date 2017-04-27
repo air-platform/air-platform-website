@@ -273,6 +273,9 @@
                   ];
               }
           }
+          if(StorageService.get(constdata.cookie.airtrans.data)){
+            $scope.schedules = StorageService.get(constdata.cookie.airtrans.data);
+          }
         });
 
         $scope.$watch('schedules', function(newValue, oldValue){
@@ -297,6 +300,7 @@
               }
             }
           }
+          StorageService.put(constdata.cookie.airtrans.data, $scope.schedules);
         }, true);
 
         $scope.$watch(function() {
