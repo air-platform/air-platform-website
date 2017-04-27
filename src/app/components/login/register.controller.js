@@ -10,7 +10,7 @@
     angular.module('airsc').controller('registerController', registerController);
 
     /** @ngInject */
-    function registerController($scope,NetworkService,$interval,constdata) {
+    function registerController($scope,NetworkService,$interval,constdata,REGEX) {
 
         $scope.mobile = '';
         $scope.password = '';
@@ -61,6 +61,7 @@
         }
         
         function registerAction() {
+
             myApp.showIndicator();
 
             NetworkService.post('account',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {
