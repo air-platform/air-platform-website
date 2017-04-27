@@ -9,7 +9,7 @@
     /** @ngInject */
     function mainController($scope, $rootScope, NotificationService, iotUtil, $timeout, NetworkService, UrlService, URL, constdata, StorageService) {
 
-        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 安全须知和免责声明
+        $rootScope.gotoAnnounceAction = gotoAnnounceAction; // 须知和免责声明
         $scope.gotoAirbbLinkAction = gotoAirbbLinkAction;
 
         // 订阅登录通知->刷新界面
@@ -39,9 +39,9 @@
             {
                 title: '空中专车',
                 subtitle:'Air Jet', items: [
-                {'title': '包机预定', target: constdata.router.airjet.home + '?type=1'},
-                {'title': '缘梦飞行', target: constdata.router.airjet.home + '?tabActive=tab2'},
-                {'title': '卡产品', target: constdata.router.airjet.home + '?tabActive=tab3'}
+                {'title': '旅行计划', target: constdata.router.airjet.travel},
+                {'title': '缘梦飞行', target: constdata.router.airjet.dream},
+                {'title': '卡产品', target: constdata.router.airjet.card}
             ]
             },
             {
@@ -53,8 +53,8 @@
             {
                 title: '空中快车',
                 subtitle: 'Air Transportation', items: [
-                {'title': '海峡飞行', target: constdata.router.airtrans.home + '?type=1&tabActive=tab1'},
-                {'title': '内蒙航线', target: constdata.router.airtrans.home + '?tabActive=tab2'}
+                {'title': '海峡飞行', target: constdata.router.airtrans.cross},
+                {'title': '内蒙航线', target: constdata.router.airtrans.mongolia}
             ]
             },
             {
@@ -130,12 +130,31 @@
         function logoutAction() {
             StorageService.clear(constdata.token);
             StorageService.clear(constdata.information);
+            for(var key in constdata.cookie) {
+                if(angular.isObject(constdata.cookie[key])){
+                    for(var i in constdata.cookie[key]) {
+                        StorageService.clear(constdata.cookie[key][i]);
+                    }
+                } else {
+                    StorageService.clear(constdata.cookie[key]);
+                }
+            }
             refresh();
             myApp.alert('退出成功！');
         }
         function pleaseReComeIn() {
             StorageService.clear(constdata.token);
             StorageService.clear(constdata.information);
+            for(var key in constdata.cookie) {
+                if(angular.isObject(constdata.cookie[key])){
+                    for(var i in constdata.cookie[key]) {
+                        StorageService.clear(constdata.cookie[key][i]);
+                    }
+                } else {
+                    StorageService.clear(constdata.cookie[key]);
+                }
+            }
+            StorageService.clear('tabActive');
             refresh();
             mainView.router.loadPage(constdata.router.login.login);
         }

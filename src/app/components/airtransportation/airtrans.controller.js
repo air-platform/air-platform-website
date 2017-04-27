@@ -11,25 +11,24 @@
 
     /** @ngInject */
     function transController($scope, $timeout, iotUtil, NetworkService, mapUtilsService,
-            NotificationService, scheduleUtilsService,$rootScope,constdata, DATEPICKER) {
+            NotificationService, scheduleUtilsService, StorageService, $rootScope, constdata, DATEPICKER) {
         var queryData = myApp.views[0].activePage.query;
         var controller = this;
         var MAX_SCHEDULE_NUM = 4;
         var ROUTES_FAMILIES = {'air-taxi-cross-channel': '飞越海峡', 'mongolia-routes': '内蒙航线'};
         $scope.schedules = [];
         $scope.routes = [];
+        controller.tabSwitch = tabSwitch;
         controller.mapPoints = [];
         controller.datepicker = {};
         controller.transports = [];
         controller.map = {};
-        if(queryData.tabActive === 'tab1'){
-          $scope.tabActive = 'tab1';
-          myApp.showTab('#air-taxi-cross-channel');
-        }
 
-        if(queryData.tabActive === 'tab2'){
-          $scope.tabActive = 'tab2';
-          myApp.showTab('#mongolia-routes');
+        if(queryData.tabActive){
+          tabSwitch('#' + queryData.tabActive);
+        }
+        if(StorageService.get(constdata.cookie.airtrans.tab)){
+          tabSwitch(StorageService.get(constdata.cookie.airtrans.tab));
         }
 
         $scope.family = ROUTES_FAMILIES[$('.page[data-page="airtrans"] .tab.active').attr('id')];
@@ -109,6 +108,13 @@
           mainView.router.loadPage(goto);
         }
 
+        function tabSwitch(tab, status) {
+            StorageService.put(constdata.cookie.airtrans.tab, tab);
+            if(!status){
+              myApp.showTab(tab);
+            }
+        };
+
         // controller.addSchedule = function() {
         //   if($scope.schedules.length >= MAX_SCHEDULE_NUM) {
         //     NotificationService.alert.error("已达到单订单上限行程数量！", null);
@@ -171,6 +177,12 @@
         }
 
         controller.timeSlots = function() {
+          var today = new Date();
+          if(today - new Date($scope.schedules[0].date) > 0) {
+            return _.filter(scheduleUtilsService.timeSlots(9, 17, 2), function(slot) {
+              return parseInt(slot.split(':')[0]) > today.getHours();
+            });
+          }
           return scheduleUtilsService.timeSlots(9, 17, 2);
         };
 
@@ -268,6 +280,9 @@
             return flight1.departure == flight2.departure &&
                   flight1.arrival == flight2.arrival;
           }
+          //TODO: fixed bug: not reset time
+          if(!_.contains(controller.timeSlots(), $scope.schedules[0].time))
+            angular.element('[ng-model="schedule.time"] + .item-content .smart-select-value').text("选择时间段");
           if(!routesEqual(newValue[0], oldValue[0])) {
             mapUtilsService.removeMarkedCurve(controller.map, true);
             if(newValue[0].departure && newValue[0].arrival) {

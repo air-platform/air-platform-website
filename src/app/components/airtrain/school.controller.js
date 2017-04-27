@@ -10,15 +10,15 @@
     angular.module('airsc').controller('schoolController', schoolController);
 
     /** @ngInject */
-    function schoolController($scope,TrainServer,NotificationService,StorageService) {
+    function schoolController($scope,TrainServer,NotificationService,StorageService, constdata) {
 
 
         var schoolId = myApp.views[0].activePage.query.schoolId;
 
         if (schoolId && schoolId !== 'undefined'){
-            StorageService.put('tempschoolid',schoolId,24 * 3 * 60 * 60);//3 天过期
+            StorageService.put(constdata.cookie.airtrain.school_id,schoolId,24 * 3 * 60 * 60);//3 天过期
         }else{
-            schoolId = StorageService.get('tempschoolid');
+            schoolId = StorageService.get(constdata.cookie.airtrain.school_id);
         }
 
 

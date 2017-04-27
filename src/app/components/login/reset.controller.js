@@ -46,7 +46,7 @@
                 $scope.authcodediabled = false;
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                myApp.alert('验证码发送失败，请重试');
             });
         }
 
@@ -61,7 +61,7 @@
             },function (err) {
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                myApp.alert('重置密码失败！' + errDesc, null);
             });
 
         }

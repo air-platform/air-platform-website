@@ -66,7 +66,13 @@
     }
 
     controller.timeSlots = function() {
-      return scheduleUtilsService.timeSlots(9, 17, 1);
+      var today = new Date();
+      if(today - new Date($scope.schedules[0].date) > 0) {
+        return _.filter(scheduleUtilsService.timeSlots(9, 17, 2), function(slot) {
+          return parseInt(slot.split(':')[0]) > today.getHours();
+        });
+      }
+      return scheduleUtilsService.timeSlots(9, 17, 2);
     };
 
     controller.arrivals = function(routes, departure) {
@@ -227,7 +233,7 @@
       var today = new Date();
       var calendarDateFormat = myApp.calendar({
         input: '#airtrans-schedule-datepicker-0',
-        dateFormat: 'yyyy年m月d日',
+        dateFormat: 'yyyy-mm-dd',
         monthNames: DATEPICKER.monthNames,
         dayNamesShort: DATEPICKER.dayNamesShort,
         disabled: {
@@ -255,6 +261,9 @@
         return flight1.departure == flight2.departure &&
               flight1.arrival == flight2.arrival;
       }
+      //TODO: fixed bug: not reset time
+      if(!_.contains(controller.timeSlots(), $scope.schedules[0].time))
+        angular.element('[ng-model="schedule.time"] + .item-content .smart-select-value').text("选择时间段");
       if(!routesEqual(newValue[0], oldValue[0])) {
         mapUtilsService.removeMarkedCurve(controller.map);
         if(newValue[0].departure && newValue[0].arrival) {
@@ -288,7 +297,7 @@
 
     $('body').on('citytour.addMapView', function(e) {
       angular.element('#citytour-title').text('Air Taxi');
-      $('.navbar-tour').append($('<div class="subnavbar tourview-subnavbar">' +
+      $('.airtour-city').append($('<div class="subnavbar tourview-subnavbar">' +
         '<div class="buttons-row air-tabs airtaxi-nav">' +
         '<a href="#island-mapview-order" class="tab-link active"><span>海岛行</span></a>' +
         '<a href="#tour-project-list" class="tab-link"><span>蜈支洲岛</span></a>' +
@@ -297,5 +306,37 @@
       myApp.showTab('#island-mapview-order');
     });
 
+    // silly bitch client...
+    var fakePoints = '海口市西海岸会所,110.2263889,20.03611111;' +
+                    '海口国兴大道海航广场,110.3402778,20.03611111;' +
+                    '三亚市南山寺,109.2088889,18.29638889;' +
+                    '三亚市亚太国际会议中心,109.3883333,18.290000;' +
+                    '三亚市海棠湾109.7377778,18.35194444;' +
+                    '万宁市兴隆康乐园,110.2252778,18.76055556;' +
+                    '陵水YOHO湾,110.0461111,18.54583333;' +
+                    '琼海市博鳌男爵公馆110.5933333,19.16416667;' +
+                    '海口市新国宾酒店,110.2144444,20.0525;' +
+                    '海南市南海明珠,110.1894444,20.06611111;' +
+                    '海口美兰机场,110.468596,19.944221;' +
+                    '五指山风景区,109.6777778,18.90916667;' +
+                    '临高县临高角109.7097222,20.00388889;' +
+                    '乐东县莺歌海,108.6958333,18.51472222;' +
+                    '东方市八所,108.62,19.09444444;' +
+                    '保亭神玉文化中心,109.5786111,18.65472222;' +
+                    '文县市铺前港,110.5755556,20.02416667;' +
+                    '屯昌县木色湖,109.9811111,19.20388889;' +
+                    '东方通用机场,108.68,19.13305556;' +
+                    '珠海直三亚基地,109.4316667,18.30527778;' +
+                    '三亚市海航旅游学院,109.4316667,18.29361111;' +
+                    '三亚市凯宾斯基酒店,109.7372222,18.32861111;' +
+                    '三亚市万豪酒店,109.6375,18.23194444;' +
+                    '三亚市丽思卡尔顿酒店,109.6327778,18.23027778;' +
+                    '三亚市红树林酒店,109.7338889,18.34111111;' +
+                    '三亚市凤凰岛度假酒店,109.4991667,18.24666667;' +
+                    '三亚市鹿回头洲际酒店109.4961111,18.21277778;' +
+                    '三亚市西岛,109.3622222,18.22916667;' +
+                    '博鳌市男爵公馆,110.4536111,19.13916667;' +
+                    '三亚市大小洞天,109.1483333,18.30916667;' +
+                    '三亚市香格里拉酒店 109.7472222 18.35777778';
   };
 })();

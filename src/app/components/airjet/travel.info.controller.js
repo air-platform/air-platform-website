@@ -7,7 +7,7 @@
     angular.module('airsc').controller('travelInfoController', travelInfoController);
 
     /** @ngInject */
-    function travelInfoController($scope,constdata, NotificationService, StorageService, NetworkService, UrlService, URL, REGEX) {
+    function travelInfoController($scope, constdata, NotificationService, StorageService, NetworkService, UrlService, URL, REGEX) {
         $scope.infoData = {};
         $scope.infoSubmit = infoSubmit;
 
@@ -42,7 +42,7 @@
                 NotificationService.alert.success('请您先阅读并同意Air Community免责条款', null);
                 return;
             }
-            var transferData = StorageService.get('plan');
+            var transferData = StorageService.get(constdata.cookie.airjet.travel);
             var params = {
                 "contact": {
                     "person": data.name,
@@ -54,8 +54,8 @@
                 "fleetCandidates": transferData.plane
             }
             NetworkService.post(UrlService.getUrl(URL.AIRJET_ORDER), params, function(response) {
-                StorageService.remove('plan');
-                StorageService.remove('travel');
+                StorageService.remove(constdata.cookie.airjet.travel);
+                StorageService.remove(constdata.cookie.airjet.travel_base);
                 var local = response.headers('location').split('/');
                 mainView.router.loadPage('app/components/airjet/order-success.html?order=' + local[local.length - 1]);
             }, function() {

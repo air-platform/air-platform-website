@@ -106,8 +106,6 @@
     height: 1.44rem;
     padding: .24rem .18rem .22rem .32rem;
     background-color: @bg-white;
-    display: flex;
-    justify-content: space-between;
     border-bottom: .02rem solid @border-gray;
     .tpc-left{
         display: flex;
@@ -126,6 +124,7 @@
             flex-direction: column;
         }
         .plane-num{
+            width: 4.4rem;
             font-size: .32rem;
             color: @font-black;
             strong{
@@ -136,6 +135,12 @@
                 margin-top: .1rem;
                 color: @font-blue;
                 font-size: .24rem;
+            }
+            em{
+                font-size: .28rem;
+                color: @font-red;
+                font-style: normal;
+                margin-top: .1rem;
             }
         }
     }

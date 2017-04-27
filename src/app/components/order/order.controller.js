@@ -155,7 +155,7 @@
                     $scope.items[tabIndex] = tempData;
                 }
 
-                console.log(data);
+                // console.log(data);
 
                 //数量超过分页数量的时候，才需要
                 if (data.length >= constdata.page.size){

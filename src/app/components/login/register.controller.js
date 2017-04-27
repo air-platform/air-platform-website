@@ -56,7 +56,7 @@
                 $scope.authcodediabled = false;
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                myApp.alert('验证码发送失败，请重试');
             });
         }
         
@@ -65,13 +65,13 @@
 
             NetworkService.post('account',{mobile:$scope.mobile,verificationCode:$scope.authcode,password:$scope.password},function (res) {
                 myApp.hideIndicator();
-                myApp.alert('注册成功！', 'Air Community', function () {
+                myApp.alert('注册成功！', '空中社区', function () {
                     mainView.router.back();
                 });
             },function (err) {
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                myApp.alert('注册失败！' + errDesc, null);
             });
             
         }
