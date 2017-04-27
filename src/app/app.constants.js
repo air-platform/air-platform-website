@@ -31,6 +31,7 @@
                 },
                 airtrans: {
                     tab: 'airtrans_tab_active',
+                    type: 'airtrans_type',
                     data: 'airtrans_data'
                 },
                 airtrain: {

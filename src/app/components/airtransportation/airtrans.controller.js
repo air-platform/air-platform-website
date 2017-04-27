@@ -251,6 +251,7 @@
 
         $scope.$watch('family', function() {
           if($scope.family) {
+            StorageService.put(constdata.cookie.airtrans.type, $scope.family);
             controller.transports = [];
             $scope.schedules = [
                 {

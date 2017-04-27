@@ -19,6 +19,8 @@
 
         var mobile = '';
         var information = StorageService.get(constdata.information);
+        var airtransType = StorageService.get(constdata.cookie.airtrans.type);
+        var airtransData = StorageService.get(constdata.cookie.airtrans.data);
         if (information){
             $scope.infoData = {name:information.realName,phone:information.mobile,email:information.email};
             mobile = information.mobile;
@@ -240,7 +242,14 @@
                         StorageService.clear(constdata.cookie.airtaxi.data);
                     }
                     if(pageType === 'transportation') {
-                        StorageService.clear(constdata.cookie.airtrans.data);
+                        if(airtransType){
+                            if(airtransType === '飞越海峡') {
+                                airtransData[0] = null;
+                            } else {
+                                airtransData[1] = null;
+                            }
+                            StorageService.put(constdata.cookie.airtrans.data, airtransData);
+                        }
                     }
                 }
                 mainView.router.loadPage('app/components/order/ordersuc.html?type='+ pageType +'&orderId=' + nOrderId);
