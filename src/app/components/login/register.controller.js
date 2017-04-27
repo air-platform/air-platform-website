@@ -56,7 +56,7 @@
                 $scope.authcodediabled = false;
                 var errDesc = err.statusText;
                 myApp.hideIndicator();
-                myApp.alert('操作失败！' + errDesc, null);
+                myApp.alert('验证码发送失败，请重试');
             });
         }
         
