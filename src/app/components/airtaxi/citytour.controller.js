@@ -22,7 +22,6 @@
       $scope.sitesList = [];
       $scope.city = queryData.city || citys[0];
       angular.element('#citytour-title').text($scope.city + '观光');
-      $scope.tourdate = convertDate(today);
       $scope.routes = [];
       $scope.schedules = [{
         'date': '',
@@ -40,6 +39,9 @@
 
       setTimeout(function() {
         controller.datepicker = createDatePicker();
+        var available = new Date(controller.topDatepicker.params.disabled.to);
+        var date = new Date(available.setDate(available.getDate()+1));
+        $scope.tourdate = convertDate(date);
       }, 0);
     }
     var loadTourList = function(page) {
@@ -87,9 +89,6 @@
     }
 
     controller.submitSchedules = function() {
-
-
-
       var data = $scope.schedules;
       var errors = scheduleUtilsService.validateSchedules(data);
       if (_.keys(errors).length != 0) {
@@ -186,7 +185,6 @@
 
     var parseRoutes = function(taxiRoutes) {
       return _.map(taxiRoutes, function(route) {
-        console.log(route);
         return {
           'departure': route.departure,
           'arrival': route.arrival,
@@ -195,19 +193,31 @@
         };
       });
     };
-    var calendarDateFormat = myApp.calendar({
-      input: '#tourcity-datepicker',
-      dateFormat: 'yyyy-mm-dd',
-      monthNames: DATEPICKER.monthNames,
-      dayNamesShort: DATEPICKER.dayNamesShort,
-      disabled: {
+
+    var createTopNavCalendar = function(config) {
+      var disabled = {
         to: new Date().setDate(today.getDate() - 1)
-      },
-      onDayClick: function(item, ele, year, month, day) {
-        $scope.tourdate = convertDate(new Date(year, month, day));
-        calendarDateFormat.close();
+      };
+      if(config && config.disabled) {
+        disabled = config.disabled;
       }
-    });
+      var calendarDateFormat = myApp.calendar({
+        input: '#tourcity-datepicker',
+        dateFormat: 'yyyy-mm-dd',
+        monthNames: DATEPICKER.monthNames,
+        dayNamesShort: DATEPICKER.dayNamesShort,
+        disabled: disabled,
+        onDayClick: function(item, ele, year, month, day) {
+          $scope.tourdate = convertDate(new Date(year, month, day));
+          calendarDateFormat.close();
+        },
+        onOpen: function(p) {
+          var available = new Date(calendarDateFormat.params.disabled.to);
+          calendarDateFormat.setYearMonth(available.getFullYear(), available.getMonth(), 0);
+        }
+      });
+      return calendarDateFormat;
+    }
 
     var convertDate = function(date) {
       var yyyy = date.getFullYear().toString();
@@ -256,6 +266,18 @@
       if (newValue == '海南') {
         loadMapData(1);
         $('body').trigger('citytour.addMapView');
+      }
+      // temporarily set '桂林' available from 2017-5-11
+      if(newValue == '桂林') {
+        if(today - new Date('2017-5-11'))
+        var availableDate = today - new Date('2017-5-11') > 0?today:new Date('2017-5-11');
+        delete controller.topDatepicker;
+        controller.topDatepicker = createTopNavCalendar({
+          'disabled': { 'to': availableDate.setDate(availableDate.getDate()-1) }
+        });
+      } else {
+        delete controller.topDatepicker;
+        controller.topDatepicker = createTopNavCalendar();
       }
     });
 
