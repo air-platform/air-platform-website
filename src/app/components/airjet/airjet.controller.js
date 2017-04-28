@@ -103,18 +103,44 @@
 
         function getCity() {
             $scope.hotList = CITYHOT;
-            $scope.hotList.map(function (item) {
+            $scope.hotList.map(function (item, index) {
                 if (item.name.indexOf('机场') === -1) {
                     return item.name += '机场';
+                }
+                if(queryData.index && queryData.name){
+                    if(queryData.name === 'departure'){
+                        var arrival = $scope.travelStrokeList[queryData.index]['arrival'];
+                        if(arrival !== '请选择' && item.city === arrival){
+                            $scope.hotList.splice(index, 1);
+                        }
+                    } else {
+                        var departure = $scope.travelStrokeList[queryData.index]['departure'];
+                        if(departure !== '请选择' && item.city === departure){
+                            $scope.hotList.splice(index, 1);
+                        }
+                    }
                 }
             });
             $scope.totalRecords = $scope.hotList.length;
             // NetworkService.get(UrlService.getUrl(URL.AIRJET_CITY), null, function (response) {
                 // $scope.cityList = response.data.content;
                 $scope.cityList = CITYLIST;
-                $scope.cityList.map(function (item) {
+                $scope.cityList.map(function (item, index) {
                     if (item.name.indexOf('机场') === -1) {
                         return item.name += '机场';
+                    }
+                    if(queryData.index && queryData.name){
+                        if(queryData.name === 'departure'){
+                            var arrival = $scope.travelStrokeList[queryData.index]['arrival'];
+                            if(arrival !== '请选择' && item.city === arrival){
+                                $scope.cityList.splice(index, 1);
+                            }
+                        } else {
+                            var departure = $scope.travelStrokeList[queryData.index]['departure'];
+                            if(departure !== '请选择' && item.city === departure){
+                                $scope.cityList.splice(index, 1);
+                            }
+                        }
                     }
                 });
             // }, function () {
@@ -362,15 +388,32 @@
         };
 
         function datepicter(name, index) {
+            var currentData = $scope.travelStrokeList[index];
+            if(name === "datepicter"){
+                $scope.disabledDate = new Date().setDate(new Date().getDate() - 1);
+            }
+   
             var calendar = myApp.calendar({
                 input: '.' + name + index,
                 disabled: {
-                    to: new Date().setDate(new Date().getDate() - 1)
+                    to: $scope.disabledDate
                 },
                 monthNames: DATEPICKER.monthNames,
                 dayNamesShort: DATEPICKER.dayNamesShort,
-                onDayClick: function () {
+                onDayClick: function (c, ele, year, m, d) {
+                    var month = m < 10 ? '0' + (Number(m) + 1) : (Number(m) + 1);
+                    var day = d < 10 ? '0' + d : d;
+                    var startDate = year + '/' + month + '/' + day;
+                    if(name === "datepicter"){
+                        if(currentData.endTime) {
+                            if((year + month + day) > currentData.endTime.split('-').join('')) {
+                                $scope.travelStrokeList[index].endTime = undefined;
+                            }
+                        }
+                        $scope.disabledDate = new Date(startDate).setDate(new Date(startDate).getDate() - 1);
+                    }
                     calendar.close();
+                    calendar.destroy();
                 }
             });
             calendar.open();
