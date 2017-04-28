@@ -275,7 +275,7 @@
                         return;
                     }
                     if(!REGEX.NUMBER.test(item.guestStart)){
-                        NotificationService.alert.success('请填写数字', null);
+                        NotificationService.alert.success('请填写四位以下的数字', null);
                         valid = false;
                         return;
                     }
@@ -297,7 +297,7 @@
                             return;
                         }
                         if(!REGEX.NUMBER.test(item.guestEnd)){
-                            NotificationService.alert.success('请填写数字', null);
+                            NotificationService.alert.success('请填写四位以下的数字', null);
                             valid = false;
                             return;
                         }
